@@ -1,7 +1,7 @@
 # La métrica — instrucciones para Claude Code
 
 ## Qué es este proyecto
-Libro universitario interactivo, en español, sobre **geometría diferencial de superficies, cálculo tensorial y mecánica de láminas** (de las superficies a los elementos finitos). Quarto (libro multipágina) + Julia + JavaScript, destino GitHub Pages. Autor: Rafael Castro Triguero (GitHub `me1catrr`). Repositorio previsto: `lametrica`. La carpeta local aún se llama `geometry`.
+Libro universitario interactivo, en español, sobre **geometría diferencial de superficies, cálculo tensorial y mecánica de láminas** (de las superficies a los elementos finitos). Quarto (libro multipágina) + Julia + JavaScript, destino GitHub Pages. Autor: Rafael Castro Triguero (GitHub `me1catrr`). Repositorio previsto: `lametrica`. 
 
 Fuente científica primaria: tesis doctoral del autor, *Vibraciones de Estructuras Laminares con forma de Paraboloide Hiperbólico de Planta Rectangular* (Univ. de Sevilla, 2008), en `docs/`. El libro **no es una conversión de la tesis**: es un texto didáctico propio.
 
@@ -15,7 +15,7 @@ Fuente científica primaria: tesis doctoral del autor, *Vibraciones de Estructur
 
 ## Rigor matemático (prioridad máxima)
 - Respetar la notación de la tesis (ver `book/apendices/notacion.qmd`). Distinguir siempre vector `V` de sus componentes `Vⁱ`, `Vᵢ`; índices arriba/abajo; convenio de Einstein; índices griegos 1–2, latinos 1–3.
-- Documentar convenios de signo (curvatura `b_{αβ}`, Christoffel). Los pendientes de confirmar están listados en el apéndice de notación: no fijarlos sin confirmación.
+- Documentar convenios de signo (curvatura `b_{αβ}`, Christoffel). Fijados por el autor (2026-10-20: las discrepancias detectadas se consideran errores de la tesis): `b_{αβ}=â₃·a_{α,β}`, `‖` = derivada covariante en la superficie, `|` = en el espacio 3D. Los pendientes restantes están en el apéndice de notación (componentes físicas en bases no ortogonales, giros de la normal): no fijarlos sin confirmación.
 - Separar Kirchhoff–Love de Reissner–Mindlin. Mantener la formulación **específica** de Hu–Washizu por subdominios de la tesis (Elemento, §3.7), no la genérica.
 - Toda identidad importante lleva comprobación numérica o simbólica (tests en Julia).
 - Distinguir y etiquetar: *calculado*, *analítico*, *ilustrativo*.
@@ -54,7 +54,7 @@ Flujo para cambiar algo de geometría: Julia (código + test) → regenerar JSON
 - Datos aleatorios con semilla fija.
 - Bloques semánticos: definición `{#def-…}` (azul), teorema/proposición `{#thm-…}`/`{#prp-…}` (verde), advertencia `callout-warning` (ámbar), laboratorio/ejemplo computacional `callout-tip` o `.laboratorio` (violeta), demostración `callout-note .demostracion collapse="true"` y observación (gris). Ecuaciones `{#eq-…}`, figuras `{#fig-…}`, secciones `{#sec-…}`.
 - Plantilla de capítulo: objetivos · motivación · desarrollo riguroso · interpretación geométrica · figuras · simulación · ejemplo Julia · demostraciones desplegables · ejercicios · trazabilidad con la tesis · referencias comentadas.
-- Cada capítulo incluye una tabla de **trazabilidad** (contenido → fichero/sección de la tesis → estado de verificación).
+- Los capítulos **no** citan la tesis (decisión del autor, 2026-10-20): se da por hecho que buena parte de la información procede de ella. La trazabilidad contenido → tesis se mantiene solo en `planning/02-trazabilidad-tesis.md`.
 - En salidas OJS no se tipografía LaTeX: usar símbolos Unicode.
 - Figuras de geometría exacta: generarlas por código (Julia/JS → SVG). FigureLabs solo para ilustraciones conceptuales y diagramas de flujo; no enviar material de `docs/` a servicios externos sin permiso.
 - Bibliografía: solo entradas verificables (partir de `docs/Texto Final Tesis Linux/bibliografia.bib`); datos dudosos con `note = {VERIFICAR}`.
@@ -66,4 +66,4 @@ Flujo para cambiar algo de geometría: Julia (código + test) → regenerar JSON
 - El Anexo C de la tesis es código Mathematica; su reescritura en Julia debe contrastarse con resultados de la tesis.
 
 ## Estado
-Fase 2 (prototipo) hecha: Cap. 1, laboratorio de bases (Cap. 3), paquete `Geometria`, tema SCSS, render local. Pendiente de decisión del autor: renombrar carpeta a `lametrica`, licencias, publicación (Fase 5). Plan completo en `planning/`.
+Fase 2 (prototipo) hecha. Fase 3 en curso: Partes I (caps. 1–5) y II (caps. 6–9) escritas, con figuras SVG generadas por Julia (`julia/scripts/generar_figuras*.jl`, procedencia en `figures/figures.yml`) y laboratorio de bases (Cap. 3). Partes III–V pendientes. Pendiente de decisión del autor: licencias, publicación (Fase 5). Plan completo en `planning/`.

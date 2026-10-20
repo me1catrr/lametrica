@@ -21,7 +21,7 @@ cd web && npm test
 ```
 
 ## Estructura
-Ver `CLAUDE.md` y `planning/`. La documentación científica original (`docs/`) no forma parte del repositorio público.
+Ver `CLAUDE.md` y `planning/`. La documentación científica original (`docs/`) no forma parte del repositorio.
 
 ## Licencias
 Pendiente de decidir.

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576.0 459.0" role="img" aria-label="Plano tangente: base covariante a₁, a₂ y su recíproca a¹, a² con la métrica del punto">
+<title>Plano tangente: base covariante a₁, a₂ y su recíproca a¹, a² con la métrica del punto</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<polygon points="210.0,288.0 361.6,288.0 392.82,147.98 241.21,147.98 210.0,288.0" fill="#eff6ff" stroke="#cbd5e1" stroke-width="1.2" opacity="1.0" stroke-linejoin="round"/>
+<line x1="210.0" y1="288.0" x2="361.6" y2="288.0" stroke="#1d4ed8" stroke-width="3"/>
+<polygon points="361.6,288.0 352.39,291.89 352.39,284.11" fill="#1d4ed8"/>
+<text x="367.6" y="304.0" fill="#1d4ed8" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">a₁</text>
+<line x1="210.0" y1="288.0" x2="241.21" y2="147.98" stroke="#1d4ed8" stroke-width="3"/>
+<polygon points="241.21,147.98 243.01,157.82 235.41,156.12" fill="#1d4ed8"/>
+<text x="249.21" y="145.98" fill="#1d4ed8" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">a₂</text>
+<line x1="210.0" y1="288.0" x2="321.47" y2="312.85" stroke="#b45309" stroke-width="2.6" stroke-dasharray="6 4"/>
+<polygon points="321.47,312.85 311.64,314.65 313.33,307.04" fill="#b45309"/>
+<text x="327.47" y="316.85" fill="#b45309" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">a¹  (⊥ a₂)</text>
+<line x1="210.0" y1="288.0" x2="210.0" y2="167.3" stroke="#b45309" stroke-width="2.6" stroke-dasharray="6 4"/>
+<polygon points="210.0,167.3 213.89,176.52 206.11,176.52" fill="#b45309"/>
+<text x="158.0" y="161.3" fill="#b45309" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">a²  (⊥ a₁)</text>
+<circle cx="210.0" cy="288.0" r="4" fill="#1f2937"/>
+</svg>

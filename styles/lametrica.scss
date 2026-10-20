@@ -6,6 +6,7 @@ $c-teorema:    #15803d;   // verde
 $c-advertencia:#b45309;   // ámbar
 $c-laboratorio:#6d28d9;   // violeta
 $c-neutro:     #4b5563;   // gris (demostraciones y observaciones)
+$c-idea:       #0e7490;   // verde azulado (idea clave)
 
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -17,6 +18,7 @@ $link-color: $c-definicion;
 $callout-color-note: $c-neutro;          // observación / demostración
 $callout-color-warning: $c-advertencia;  // advertencia matemática
 $callout-color-tip: $c-laboratorio;      // laboratorio / ejemplo computacional
+$callout-color-important: $c-idea;       // idea clave
 
 /*-- scss:rules --*/
 
@@ -35,6 +37,9 @@ h1, h2, h3, h4, .sidebar, .nav-link, .callout-title-container { font-family: $fo
 }
 
 div.definition  { @include bloque($c-definicion); }
+div.theorem.definition { @include bloque($c-definicion); }   // Quarto marca las definiciones también como .theorem
+div.theorem.example { @include bloque($c-laboratorio); }
+div.theorem.remark { @include bloque($c-neutro); }
 div.theorem, div.proposition, div.lemma, div.corollary { @include bloque($c-teorema); }
 div.example     { @include bloque($c-laboratorio); }
 div.remark, div.proof { @include bloque($c-neutro); }

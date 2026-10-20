@@ -9,7 +9,7 @@
 - **ADR-006** Una única `.bib`; figuras exactas generadas por código.
 
 ## Riesgos abiertos
-1. **Quarto no instalado**; versión a fijar (¿1.10.x?). Requiere autorización.
+1. ~~Quarto no instalado~~ Resuelto: Quarto 1.10.19, fijado también en el workflow `publish.yml`.
 2. **Escaneos sin texto**: OCR no fiable en ecuaciones.
 3. **Convenciones de la tesis** (signo de `b_{αβ}`, `Γ̄`, `ẽ`, `‖`, componentes físicas): documentar y confirmar antes de fijar.
 4. **KL vs. RM**: mantener separadas las hipótesis cinemáticas.
@@ -19,4 +19,4 @@
 8. **Derechos**: © 2008; redacción nueva, sin copia literal, sin publicar `docs/`; licencia del libro por decidir.
 9. **Bibliografía**: tipos dudosos; saneado manual.
 10. **Rendimiento web**: JSON ligeros; Three.js solo cuando Plotly no baste.
-11. **Carpeta local `geometry`**: no se renombra sin orden del autor.
+11. ~~Carpeta local `geometry`~~ Resuelto: la carpeta ya se llama `lametrica`.

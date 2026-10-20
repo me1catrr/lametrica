@@ -71,13 +71,6 @@ Vup = comps_contravariantes(B, V)
 - El **capítulo 2** (en preparación) estudiará cómo se transforman las componentes al cambiar de coordenadas.
 - El **capítulo 3** formaliza las bases covariante y contravariante y trae el primer laboratorio interactivo.
 
-## Trazabilidad con la tesis {#sec-traza-1}
-
-| Contenido | Fuente | Estado |
-|---|---|---|
-| Superficie de referencia $\theta^3=0$, normal y bases $\mathbf{g}_i$ en la lámina | Anexo A (`AnexoGeometria.tex`), «Vectores básicos y tensor métrico de una superficie» | Contenido leído en el `.tex`; **numeración de ecuaciones sin verificar** |
-| Coordenadas polares y métrica | Ejemplo original de este libro | No procede de la tesis |
-
 ## Ejercicios {#sec-ejercicios-1}
 
 1. Calcula $g_{ij}$ para las coordenadas cilíndricas $(\rho,\varphi,z)$ y comprueba que $ds^2=d\rho^2+\rho^2d\varphi^2+dz^2$.
@@ -86,7 +79,7 @@ Vup = comps_contravariantes(B, V)
 
 ## Referencias comentadas {#sec-refs-1}
 
-Las siguientes obras figuran en el apartado de tensores de la bibliografía de la tesis [@CastroTesis]. Aún **no se han leído para este libro**; el comentario de relevancia queda pendiente.
+Lecturas de apoyo sobre análisis tensorial. Aún **no se han leído para este libro**; el comentario de relevancia queda pendiente.
 
 - @Flugge — análisis tensorial y mecánica del continuo.
 - @Spiegel — introducción al análisis tensorial.

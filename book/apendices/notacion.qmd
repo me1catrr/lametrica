@@ -2,28 +2,32 @@
 title: "Notación y convenios"
 ---
 
-Este apéndice crecerá con el libro. Recoge los símbolos de la tesis (según `Nomenclatura.tex`) y su equivalente en este texto.
+Este apéndice crecerá con el libro. Recoge los símbolos del libro y su significado.
 
-## Correspondencia de notación {#sec-notacion}
+## Notación {#sec-notacion}
 
-| Tesis | Significado en la tesis | Aquí |
+| Símbolo | Significado | Observación |
 |---|---|---|
-| $\theta^1,\theta^2$ | Coordenadas curvilíneas sobre la superficie de referencia | igual |
-| $\theta^3$ | Distancia a lo largo de la normal | igual |
-| $\mathbf{r}$, ${}_0\mathbf{r}$ | Vector de posición de la lámina / de la superficie de referencia | igual |
-| $\hat{\mathbf{a}}_3$ | Normal unitaria | igual |
-| $\mathbf{g}_i$ | Vectores básicos tangentes del sistema de coordenadas | igual |
-| $\mathbf{a}_i$ | Vectores básicos en la superficie de referencia | igual |
+| $\theta^1,\theta^2$ | Coordenadas curvilíneas sobre la superficie de referencia | — |
+| $\theta^3$ | Distancia a lo largo de la normal | — |
+| $\mathbf{r}$, ${}_0\mathbf{r}$ | Vector de posición de la lámina / de la superficie de referencia | — |
+| $\hat{\mathbf{a}}_3$ | Normal unitaria | — |
+| $\mathbf{g}_i$ | Vectores básicos tangentes del sistema de coordenadas | — |
+| $\mathbf{a}_i$ | Vectores básicos en la superficie de referencia | — |
 | $\mathbf{a}^i$ | Vectores básicos normales a las superficies $\theta^i$ | base recíproca |
-| $a_{\alpha\beta}$, $a^{\alpha\beta}$ | Componentes covariantes y contravariantes del tensor métrico | igual |
-| $b_{\alpha\beta}$ | Tensor curvatura de la superficie | por confirmar |
-| $\bar\Gamma^{\gamma}_{\alpha\beta}$ | Símbolos de Christoffel | por confirmar |
+| $a_{\alpha\beta}$, $a^{\alpha\beta}$ | Componentes covariantes y contravariantes del tensor métrico | — |
+| $b_{\alpha\beta}$ | Tensor de curvatura: $b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}$ con $\hat{\mathbf{a}}_3=\mathbf{a}_1\times\mathbf{a}_2/\|\cdot\|$ (@sec-convenio-b) | fijado |
+| $\bar\Gamma^{\gamma}_{\alpha\beta}$ | Símbolos de Christoffel de la superficie: $\mathbf{a}^\gamma\cdot\mathbf{a}_{\alpha,\beta}$ (índice $\alpha$: vector derivado; $\beta$: coordenada) | fijado |
 
-## Convenios pendientes de confirmar con el autor
+## Convenios fijados
 
-- Signo de $b_{\alpha\beta}$ y de la curvatura normal.
-- Definición y posición de índices de $\bar\Gamma_{\alpha\beta\gamma}$.
-- Definición de componentes físicas.
-- Uso de la barra `‖` para la derivada covariante.
+- **Signo de $b_{\alpha\beta}$ y de la curvatura normal:** $b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}$; $\kappa=b_{\alpha\beta}\lambda^\alpha\lambda^\beta>0$ si la curva se dobla hacia la normal. En una esfera con normal saliente, $b_{\alpha\beta}<0$.
+- **Curvaturas:** $K=\det(b^\alpha_\beta)$ (Gauss, independiente del signo de la normal) y $H=\tfrac12 b^\alpha_\alpha$ (media, cambia de signo con la normal).
+- **Símbolos de Christoffel:** $\Gamma^k_{ij}=\mathbf{g}^k\cdot\partial_j\mathbf{g}_i$ (segunda especie) y $\Gamma_{ij,k}=\mathbf{g}_k\cdot\partial_j\mathbf{g}_i$ (primera especie); simétricos en $i,j$.
+- **Barras de derivada covariante:** $\|$ respecto de la superficie (índices griegos); $|$ respecto del espacio tridimensional.
+- **Componentes físicas:** coordenadas respecto de la base normalizada, solo para bases **ortogonales** (@def-comps-fisicas).
 
-Hasta confirmarlos no se fijan en el texto.
+## Convenios pendientes de fijar
+
+- Definición de componentes físicas para bases **no** ortogonales (necesaria en láminas con coordenadas no ortogonales).
+- Convenio de signo y orientación de los giros de la normal en la cinemática de lámina (Parte III).

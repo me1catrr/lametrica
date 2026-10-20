@@ -1,0 +1,84 @@
+# Procedencia de las figuras. Todas generadas por código: julia --project=. julia/scripts/generar_figuras.jl
+# Estado de revisión matemática: "automática" = vectores calculados con Geometria; falta revisión visual humana.
+- id: fig-vector-dos-bases
+  archivo: figures/svg/vector-dos-bases.svg
+  capitulo: book/01-fundamentos/02-transformacion.qmd
+  herramienta: Julia (SVG a mano) + Geometria.base_polar
+  revision: automática (vectores) · visual pendiente
+- id: fig-jacobiano
+  archivo: figures/svg/jacobiano-area.svg
+  capitulo: book/01-fundamentos/02-transformacion.qmd
+  herramienta: Julia + Geometria.base_polar
+  revision: automática · visual pendiente
+- id: fig-galeria
+  archivo: figures/svg/galeria-coordenadas.svg
+  capitulo: book/01-fundamentos/02-transformacion.qmd
+  herramienta: Julia
+  revision: ilustrativa (mallas) · visual pendiente
+- id: fig-arcos
+  archivo: figures/svg/metrica-arcos.svg
+  capitulo: book/01-fundamentos/04-metrica.qmd
+  herramienta: Julia
+  revision: automática · visual pendiente
+- id: fig-fisicas
+  archivo: figures/svg/componentes-fisicas.svg
+  capitulo: book/01-fundamentos/04-metrica.qmd
+  herramienta: Julia + Geometria.base_polar
+  revision: automática · visual pendiente
+- id: fig-christoffel
+  archivo: figures/svg/christoffel-polares.svg
+  capitulo: book/01-fundamentos/05-christoffel.qmd
+  herramienta: Julia + Geometria.base_polar (derivadas analíticas; contrastadas con cristoffel() en tests)
+  revision: automática · visual pendiente
+- id: fig-campo-constante
+  archivo: figures/svg/campo-constante-polares.svg
+  capitulo: book/01-fundamentos/05-christoffel.qmd
+  herramienta: Julia
+  revision: automática · visual pendiente
+- id: fig-esfera
+  archivo: figures/svg/esfera-coordenadas.svg
+  capitulo: book/01-fundamentos/05-christoffel.qmd
+  herramienta: Julia + Geometria.base_esferica
+  revision: automática · visual pendiente
+- id: fig-hypar-triada
+  archivo: figures/svg/hypar-triada.svg
+  capitulo: book/02-superficies/06-superficies.qmd
+  herramienta: Julia + Geometria.base_superficie (verifica a^α·a_β=δ y n̂⊥aα)
+  generador: julia/scripts/generar_figuras_superficies.jl
+  revision: automática · visual pendiente
+- id: fig-plano-tangente
+  archivo: figures/svg/plano-tangente-bases.svg
+  capitulo: book/02-superficies/06-superficies.qmd
+  herramienta: Julia (reconstruye el plano tangente solo con a_{αβ}; verifica reciprocidad)
+  generador: julia/scripts/generar_figuras_superficies.jl
+  revision: automática · visual pendiente
+- id: fig-gauss
+  archivo: figures/svg/gauss-descomposicion.svg
+  capitulo: book/02-superficies/07-formas-fundamentales.qmd
+  herramienta: Julia + Geometria (verifica fórmula de Gauss antes de dibujar)
+  generador: julia/scripts/generar_figuras_superficies.jl
+  revision: automática · visual pendiente
+- id: fig-secciones
+  archivo: figures/svg/secciones-normales.svg
+  capitulo: book/02-superficies/08-curvaturas.qmd
+  herramienta: Julia + Geometria (verifica signos de κ en tres direcciones)
+  generador: julia/scripts/generar_figuras_superficies.jl
+  revision: automática · visual pendiente
+- id: fig-euler
+  archivo: figures/svg/curvatura-euler.svg
+  capitulo: book/02-superficies/08-curvaturas.qmd
+  herramienta: Julia + Geometria.curvatura_normal (verifica Euler)
+  generador: julia/scripts/generar_figuras_superficies.jl
+  revision: automática · visual pendiente
+- id: fig-generatrices
+  archivo: figures/svg/hypar-generatrices.svg
+  capitulo: book/02-superficies/09-paraboloide.qmd
+  herramienta: Julia + paraboloide_recto
+  generador: julia/scripts/generar_figuras_superficies.jl
+  revision: automática · visual pendiente
+- id: fig-bordes
+  archivo: figures/svg/hypar-bordes.svg
+  capitulo: book/02-superficies/09-paraboloide.qmd
+  herramienta: Julia (esquema en planta; giro de 45° verificado en tests)
+  generador: julia/scripts/generar_figuras_superficies.jl
+  revision: automática · visual pendiente

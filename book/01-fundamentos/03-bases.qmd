@@ -16,10 +16,10 @@ En un sistema cartesiano ortonormal, las componentes de un vector se obtienen pr
 
 ## Convenios
 
-Se usa el convenio de suma de Einstein: un índice repetido, una vez arriba y otra abajo, indica suma. En este capítulo los índices recorren $1,\dots,n$ (con $n=2$ en el laboratorio). En el tratamiento de láminas de la tesis, los índices griegos toman los valores $1,2$ y los latinos $1,2,3$ (ver @sec-notacion).
+Se usa el convenio de suma de Einstein: un índice repetido, una vez arriba y otra abajo, indica suma. En este capítulo los índices recorren $1,\dots,n$ (con $n=2$ en el laboratorio). En el tratamiento de láminas, los índices griegos toman los valores $1,2$ y los latinos $1,2,3$ (ver @sec-notacion).
 
-::: {.callout-warning title="Notación de la tesis"}
-La tesis denota por $\mathbf{g}_i$ las bases de la lámina y por $\mathbf{a}_i$ las de la superficie de referencia ($\theta^3=0$), y llama «vectores básicos normales a las superficies $\theta^i$» a los $\mathbf{a}^i$ (Nomenclatura, `Nomenclatura.tex`). Aquí se usa $\mathbf{g}_i$ para una base genérica y, al llegar a las superficies, se hará la correspondencia explícita.
+::: {.callout-warning title="Notación"}
+En el libro, $\mathbf{g}_i$ denota las bases de la lámina y $\mathbf{a}_i$ las de la superficie de referencia ($\theta^3=0$); los $\mathbf{a}^i$ son los vectores básicos normales a las superficies $\theta^i$. Aquí se usa $\mathbf{g}_i$ para una base genérica y, al llegar a las superficies, se hará la correspondencia explícita.
 :::
 
 ## Definiciones
@@ -169,13 +169,6 @@ Vdn = comps_covariantes(B, V)
 ```
 
 Las mismas identidades se comprueban de forma automática en `julia/test/runtests.jl` y, para el código JavaScript, en `web/tests/bases.test.mjs`.
-
-## Trazabilidad con la tesis {#sec-traza-3}
-
-| Contenido | Fuente | Estado |
-|---|---|---|
-| $\mathbf{g}_\alpha=\mathbf{r}_{,\alpha}$, $\mathbf{g}_3=\hat{\mathbf{a}}_3$ y $\mathbf{g}_\alpha=\mathbf{a}_\alpha+\theta^3\hat{\mathbf{a}}_{3,\alpha}$ | Anexo A, «Vectores básicos y tensor métrico de una superficie» | Leído en `.tex`; numeración **sin verificar** |
-| Reciprocidad, métrica contravariante, @prp-g-dual y @prp-componentes | Desarrollo original de este libro (resultado estándar) | No se atribuye a la tesis |
 
 ## Ejercicios {#sec-ejercicios-3}
 

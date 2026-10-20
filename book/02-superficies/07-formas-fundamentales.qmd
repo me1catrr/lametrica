@@ -1,0 +1,172 @@
+---
+title: "Formas fundamentales y fórmulas de Gauss–Weingarten"
+subtitle: "Cómo se curva una superficie y cómo cambian sus vectores básicos"
+engine: julia
+---
+
+::: {.callout-note title="Objetivos de aprendizaje"}
+Al terminar el capítulo sabrás:
+
+1. definir las formas fundamentales primera, segunda y tercera de una superficie;
+2. calcular el tensor de curvatura $b_{\alpha\beta}$ y sus componentes mixtas $b^\alpha_\beta$;
+3. deducir las fórmulas de **Gauss** (derivadas de $\mathbf{a}_\alpha$) y de **Weingarten** (derivada de $\hat{\mathbf{a}}_3$);
+4. derivar un vector expresado en la terna de la superficie, y distinguir derivada covariante en la superficie de derivada en el espacio;
+5. verificar numéricamente Gauss y Weingarten sobre un paraboloide hiperbólico.
+:::
+
+## Motivación {#sec-motivacion-7}
+
+La primera forma (la métrica) mide longitudes y ángulos **dentro** de la superficie, pero no distingue un plano de un cilindro: ambos tienen la métrica euclídea con coordenadas adecuadas. Lo que los diferencia es cómo se **curva** en el espacio, y eso se detecta con el cambio de la normal $\hat{\mathbf{a}}_3$ al movernos sobre la superficie.
+
+::: {.callout-important title="Idea clave"}
+Primera forma fundamental: geometría **intrínseca** (medidas dentro de la superficie). Segunda forma: cómo está **inmersa** en el espacio (cuánto se separa de su plano tangente).
+:::
+
+## Las tres formas fundamentales {#sec-formas}
+
+Un desplazamiento infinitesimal sobre la superficie cambia la posición y la normal:
+$$
+d\,{}_0\mathbf{r}=\mathbf{a}_\alpha\,d\theta^\alpha,\qquad d\hat{\mathbf{a}}_3=\hat{\mathbf{a}}_{3,\alpha}\,d\theta^\alpha .
+$$
+
+::: {#def-formas}
+## Formas fundamentales
+$$
+\begin{aligned}
+\mathrm{I}&=d\,{}_0\mathbf{r}\cdot d\,{}_0\mathbf{r}=a_{\alpha\beta}\,d\theta^\alpha d\theta^\beta,\\
+\mathrm{II}&=-\,d\,{}_0\mathbf{r}\cdot d\hat{\mathbf{a}}_3=b_{\alpha\beta}\,d\theta^\alpha d\theta^\beta,\\
+\mathrm{III}&=d\hat{\mathbf{a}}_3\cdot d\hat{\mathbf{a}}_3=a_{\gamma\eta}\,b^\eta_\alpha b^\gamma_\beta\,d\theta^\alpha d\theta^\beta .
+\end{aligned}
+$$ {#eq-formas}
+Aquí $b_{\alpha\beta}$ es el **tensor de curvatura** de la superficie y $b^\alpha_\beta=a^{\alpha\gamma}b_{\gamma\beta}$ sus componentes mixtas.
+:::
+
+::: {#prp-b-simetrico}
+## Definición equivalente y simetría de $b_{\alpha\beta}$
+$$
+b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}=-\,\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_{3,\beta}=b_{\beta\alpha} .
+$$ {#eq-b-def}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-b-simetrico
+Derivando $\hat{\mathbf{a}}_3\cdot\mathbf{a}_\alpha=0$ respecto de $\theta^\beta$: $\hat{\mathbf{a}}_{3,\beta}\cdot\mathbf{a}_\alpha+\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}=0$, que da la igualdad de las dos expresiones. La simetría es consecuencia de $\mathbf{a}_{\alpha,\beta}={}_0\mathbf{r}_{,\alpha\beta}=\mathbf{a}_{\beta,\alpha}$ (la superficie es $C^2$). $\blacksquare$
+:::
+
+### Convenio de signo {#sec-convenio-b}
+
+::: {.callout-warning title="Signo de $b_{\alpha\beta}$"}
+Este libro adopta $b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}$ con $\hat{\mathbf{a}}_3=\mathbf{a}_1\times\mathbf{a}_2/\|\cdot\|$. Consecuencias:
+
+- $b_{\alpha\beta}>0$ si la superficie se curva **hacia** $\hat{\mathbf{a}}_3$ (concavidad del lado de la normal);
+- en una esfera con normal **saliente**, $b_{\alpha\beta}<0$ (y la curvatura media es negativa);
+- al invertir la normal $\hat{\mathbf{a}}_3\to-\hat{\mathbf{a}}_3$, $b_{\alpha\beta}$ cambia de signo. La curvatura de Gauss $K$ **no** cambia (@sec-principales).
+
+Otros textos usan $b_{\alpha\beta}=-\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_{3,\beta}$ con la normal opuesta o definen la segunda forma con el signo contrario; al comparar fórmulas hay que comprobar el convenio.
+:::
+
+## Fórmulas de Gauss y Weingarten {#sec-gauss-weingarten}
+
+Las derivadas $\mathbf{a}_{\alpha,\beta}$ y $\hat{\mathbf{a}}_{3,\beta}$ son vectores de $\mathbb{R}^3$; se descomponen en la terna.
+
+::: {#prp-gauss}
+## Fórmulas de Gauss
+$$
+\mathbf{a}_{\alpha,\beta}=\bar\Gamma^{\gamma}_{\alpha\beta}\,\mathbf{a}_\gamma+b_{\alpha\beta}\,\hat{\mathbf{a}}_3,
+\qquad
+\bar\Gamma^{\gamma}_{\alpha\beta}=\mathbf{a}^\gamma\cdot\mathbf{a}_{\alpha,\beta}=\tfrac12\,a^{\gamma\mu}\bigl(a_{\mu\alpha,\beta}+a_{\mu\beta,\alpha}-a_{\alpha\beta,\mu}\bigr).
+$$ {#eq-gauss}
+:::
+
+::: {#prp-weingarten}
+## Fórmulas de Weingarten
+$$
+\hat{\mathbf{a}}_{3,\beta}=-\,b_{\alpha\beta}\,\mathbf{a}^\alpha=-\,b^\alpha_\beta\,\mathbf{a}_\alpha .
+$$ {#eq-weingarten}
+También: $\mathbf{a}^\alpha_{,\beta}=-\bar\Gamma^\alpha_{\beta\gamma}\,\mathbf{a}^\gamma+b^\alpha_\beta\,\hat{\mathbf{a}}_3$.
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-gauss y @prp-weingarten
+*Gauss.* Al descomponer $\mathbf{a}_{\alpha,\beta}$ en la terna $\{\mathbf{a}_\gamma,\hat{\mathbf{a}}_3\}$, las componentes son los productos escalares con la terna recíproca: $\mathbf{a}^\gamma\cdot\mathbf{a}_{\alpha,\beta}$ (tangente) y $\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}=b_{\alpha\beta}$ (normal). La expresión con la métrica es la del @eq-christoffel-metrica, porque los productos $\mathbf{a}_\gamma\cdot\mathbf{a}_{\alpha,\beta}$ solo involucran $a_{\alpha\beta}$ y sus derivadas.
+
+*Weingarten.* Como $\hat{\mathbf{a}}_3\cdot\hat{\mathbf{a}}_3=1$, derivando, $\hat{\mathbf{a}}_3\cdot\hat{\mathbf{a}}_{3,\beta}=0$: $\hat{\mathbf{a}}_{3,\beta}$ es tangente. Su componente sobre $\mathbf{a}_\alpha$ se obtiene con $\mathbf{a}^\alpha$ y @eq-b-def: $\hat{\mathbf{a}}_{3,\beta}=(\hat{\mathbf{a}}_{3,\beta}\cdot\mathbf{a}_\alpha)\,\mathbf{a}^\alpha=-b_{\alpha\beta}\mathbf{a}^\alpha$. Subiendo el índice, $-b^\alpha_\beta\mathbf{a}_\alpha$. La fórmula de $\mathbf{a}^\alpha_{,\beta}$ sale de derivar $\mathbf{a}^\alpha\cdot\mathbf{a}_\gamma=\delta^\alpha_\gamma$. $\blacksquare$
+:::
+
+Los símbolos de Christoffel de la superficie $\bar\Gamma^\gamma_{\alpha\beta}$ (con barra: evaluados en $\theta^3=0$) son los del capítulo 5, con índices griegos $1,2$ y la métrica $a_{\alpha\beta}$. Las fórmulas de Gauss dicen que $\mathbf{a}_{\alpha,\beta}$ tiene **una parte tangente** (recogida por $\bar\Gamma$) y **una parte normal** (recogida por $b_{\alpha\beta}$), como muestra la @fig-gauss.
+
+![Fórmula de Gauss para $\mathbf{a}_{1,1}$ (negro) en el paraboloide hiperbólico: la parte tangente $\bar\Gamma^\gamma_{11}\mathbf{a}_\gamma$ (azul) y la parte normal $b_{11}\hat{\mathbf{a}}_3$ (violeta) suman $\mathbf{a}_{1,1}$. Los vectores están ampliados $\times3$ y el plano violeta es el tangente. Con la normal hacia arriba, $b_{11}<0$ porque la superficie se curva hacia abajo en la dirección $\theta^1$.](../../figures/svg/gauss-descomposicion.svg){#fig-gauss fig-alt="Descomposición de la derivada del vector base en parte tangente y parte normal" width="85%"}
+
+## Derivadas de un vector {#sec-derivada-vector}
+
+Un vector $\mathbf{V}=V^\alpha\mathbf{a}_\alpha+V^3\hat{\mathbf{a}}_3$ definido sobre la superficie se deriva con la regla del producto y las fórmulas de Gauss y Weingarten.
+
+::: {#prp-derivada-vector}
+## Derivada de un campo vectorial
+$$
+\mathbf{V}_{,\alpha}=\bigl(V^\mu{}_{\|\alpha}-V^3\,b^\mu_\alpha\bigr)\,\mathbf{a}_\mu+\bigl(V^3_{,\alpha}+V^\beta\,b_{\alpha\beta}\bigr)\,\hat{\mathbf{a}}_3,
+$$ {#eq-derivada-vector}
+con la **derivada covariante en la superficie**
+$$
+V^\mu{}_{\|\alpha}=V^\mu_{,\alpha}+\bar\Gamma^\mu_{\beta\alpha}\,V^\beta,\qquad
+V_{\mu\|\alpha}=V_{\mu,\alpha}-\bar\Gamma^\beta_{\mu\alpha}\,V_\beta .
+$$ {#eq-cov-sup}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-derivada-vector
+$\mathbf{V}_{,\alpha}=V^\beta_{,\alpha}\mathbf{a}_\beta+V^\beta\mathbf{a}_{\beta,\alpha}+V^3_{,\alpha}\hat{\mathbf{a}}_3+V^3\hat{\mathbf{a}}_{3,\alpha}$. Sustituyendo @eq-gauss y @eq-weingarten: $V^\beta\mathbf{a}_{\beta,\alpha}=V^\beta\bar\Gamma^\mu_{\beta\alpha}\mathbf{a}_\mu+V^\beta b_{\beta\alpha}\hat{\mathbf{a}}_3$ y $V^3\hat{\mathbf{a}}_{3,\alpha}=-V^3b^\mu_\alpha\mathbf{a}_\mu$. Agrupando por $\mathbf{a}_\mu$ y $\hat{\mathbf{a}}_3$ se obtiene @eq-derivada-vector. $\blacksquare$
+:::
+
+::: {.callout-warning title="Notación de la doble barra"}
+En este libro, $\|$ denota la derivada covariante **respecto de la superficie** (índices griegos, símbolos $\bar\Gamma$ y métrica $a_{\alpha\beta}$), como en @eq-cov-sup. Para la derivada covariante respecto del espacio tridimensional se usa la barra simple, $V^\alpha|_\beta=V^\alpha_{,\beta}+V^i\,\Gamma^\alpha_{i\beta}$. En el capítulo 5, donde no había superficie, $\|$ se usó para la derivada covariante genérica de $n$ coordenadas; en este y los siguientes capítulos tiene el sentido de superficie.
+:::
+
+El término $-V^3b^\mu_\alpha$ muestra que la **curvatura mezcla** las componentes tangentes y normales: un vector normal a la superficie, al desplazarse, produce una variación tangente. En el siguiente capítulo esto explica por qué una lámina curva acopla membrana y flexión.
+
+## Ejemplo computacional en Julia {#sec-julia-gauss}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Se verifican @eq-gauss y @eq-weingarten en un punto del paraboloide hiperbólico del capítulo 6, y que el vector constante $\mathbf{C}=(0{,}3,-0{,}2,0{,}9)$ tiene derivada nula según @eq-derivada-vector.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+Rx, Ry = 3.0, -2.0
+θ = [0.7, -0.4]
+r = paraboloide_curvo(Rx, Ry)
+A = base_superficie(r, θ); a = metrica(A); n = normal_unitaria(A)
+D = derivadas_segundas(r, θ)              # D[:, α, β] = aα,β
+Γ = cristoffel_superficie(r, θ)           # Γ[γ, α, β]
+b = segunda_forma(r, θ)                   # bαβ = n̂·aα,β
+bm = tensor_curvatura_mixto(a, b)         # b^α_β
+
+gauss = all(D[:, α, β] ≈ A * Γ[:, α, β] + b[α, β] * n for α in 1:2, β in 1:2)
+
+h = 1e-6
+weingarten = all(1:2) do β
+    e = β == 1 ? [h, 0] : [0, h]
+    dn = (normal_unitaria(base_superficie(r, θ .+ e)) - normal_unitaria(base_superficie(r, θ .- e))) / 2h
+    isapprox(dn, -A * bm[:, β]; atol = 1e-5)
+end
+(gauss = gauss, weingarten = weingarten, b = round.(b; digits = 5), b_mixto = round.(bm; digits = 5))
+```
+
+## Ejercicios {#sec-ejercicios-7}
+
+1. Calcula $b_{\alpha\beta}$ para la esfera de radio $\rho$ con normal saliente y comprueba que $b_{\alpha\beta}=-\tfrac1\rho\,a_{\alpha\beta}$.
+2. Para un cilindro circular, calcula $a_{\alpha\beta}$ y $b_{\alpha\beta}$ y razona por qué la primera forma es euclídea pero la segunda no se anula.
+3. Demuestra que $\mathrm{III}-2H\,\mathrm{II}+K\,\mathrm{I}=0$ cuando se haya definido $H$ y $K$ (capítulo 8).
+4. Comprueba @eq-derivada-vector para el campo $\mathbf{V}=\hat{\mathbf{a}}_3$ y recupera @eq-weingarten.
+5. Escribe $\mathbf{a}^\alpha_{,\beta}$ en términos de $\bar\Gamma$ y $b^\alpha_\beta$ y verifícalo con `Geometria`.
+
+## Referencias comentadas {#sec-refs-7}
+
+Aún **no se han contrastado línea a línea con este texto**.
+
+- @DoCarmo — segunda forma fundamental, aplicación de Gauss y fórmulas de Weingarten.
+- @Struik — fórmulas de Gauss y Weingarten en notación tensorial.
+- @Weatherburn — formas fundamentales con notación vectorial.
+- @Novozhilov — aplicación de estas fórmulas a la teoría de láminas delgadas.
+- @Lipschultz — problemas de formas fundamentales.

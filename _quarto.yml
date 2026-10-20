@@ -25,6 +25,14 @@ book:
         - book/01-fundamentos/01-motivacion.qmd
         - book/01-fundamentos/02-transformacion.qmd
         - book/01-fundamentos/03-bases.qmd
+        - book/01-fundamentos/04-metrica.qmd
+        - book/01-fundamentos/05-christoffel.qmd
+    - part: "Parte II — Geometría de superficies"
+      chapters:
+        - book/02-superficies/06-superficies.qmd
+        - book/02-superficies/07-formas-fundamentales.qmd
+        - book/02-superficies/08-curvaturas.qmd
+        - book/02-superficies/09-paraboloide.qmd
     - book/referencias.qmd
   appendices:
     - book/apendices/notacion.qmd
