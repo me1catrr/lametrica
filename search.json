@@ -1,0 +1,251 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "La métrica",
+    "section": "",
+    "text": "Presentación\nLa métrica es un libro interactivo sobre tres ideas que se necesitan unas a otras: la geometría diferencial de superficies, el cálculo tensorial y la mecánica de láminas. Recorre el camino que va de un cambio de coordenadas sobre una superficie hasta el cálculo de las frecuencias propias de una lámina con forma de paraboloide hiperbólico mediante elementos finitos.\nEl hilo conductor es la tesis doctoral Vibraciones de Estructuras Laminares con forma de Paraboloide Hiperbólico de Planta Rectangular (Castro Triguero 2008), pero el libro no la reproduce: reordena y explica sus fundamentos con una secuencia didáctica propia, demostraciones, simulaciones y código ejecutable.",
+    "crumbs": [
+      "Presentación"
+    ]
+  },
+  {
+    "objectID": "index.html#cómo-está-hecho",
+    "href": "index.html#cómo-está-hecho",
+    "title": "La métrica",
+    "section": "Cómo está hecho",
+    "text": "Cómo está hecho\n\nMatemáticas: MathJax; ecuaciones, definiciones y teoremas numerados y referenciables.\nJulia: el módulo Geometria calcula bases, métricas y componentes, con pruebas automáticas de las identidades.\nJavaScript: laboratorios que funcionan en el navegador, sin servidor. Cada resultado se etiqueta como calculado, analítico o ilustrativo.",
+    "crumbs": [
+      "Presentación"
+    ]
+  },
+  {
+    "objectID": "index.html#código-de-colores",
+    "href": "index.html#código-de-colores",
+    "title": "La métrica",
+    "section": "Código de colores",
+    "text": "Código de colores\n\nDefinición 1 (Definición (azul)) Los conceptos que se definen aparecen en bloques azules.\n\n\nTeorema 1 (Teorema o propiedad (verde)) Los resultados demostrables aparecen en bloques verdes.\n\n\n\n\n\n\n\nAdvertenciaAdvertencia (ámbar)\n\n\n\nLas trampas habituales de notación y de convenios de signo aparecen en ámbar.\n\n\n\n\n\n\n\n\nTipLaboratorio (violeta)\n\n\n\nLos ejemplos computacionales y laboratorios aparecen en violeta.\n\n\n\n\n\n\n\n\nNotaDemostración (gris, desplegable)\n\n\n\n\n\nLas demostraciones y observaciones son neutras y están plegadas por defecto.\n\n\n\n\n\n\n\nCastro Triguero, R. 2008. «Vibraciones de Estructuras Laminares con forma de Paraboloide Hiperbólico de Planta Rectangular». Tesis doctoral, Universidad de Sevilla.",
+    "crumbs": [
+      "Presentación"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/01-motivacion.html",
+    "href": "book/01-fundamentos/01-motivacion.html",
+    "title": "1  Por qué tensores",
+    "section": "",
+    "text": "1.1 Motivación física\nUna fuerza, un desplazamiento o una velocidad son entidades físicas: existen con independencia de cómo decidamos medirlas. Lo que sí depende de nuestra elección es la lista de números con que las describimos. Si giramos los ejes, los números cambian; el objeto, no.\nEsto no es una sutileza. Una ley física solo es admisible si dice lo mismo para todos los observadores y para todos los sistemas de coordenadas. El cálculo tensorial es el lenguaje que permite escribir ecuaciones cuya forma se conserva al cambiar de coordenadas.\nEn el problema que nos ocupa hay una razón adicional. Una lámina es un sólido cuya geometría está gobernada por una superficie curva. Sobre ella no existen, en general, ejes cartesianos globales: hay que trabajar con coordenadas curvilíneas \\(\\theta^1,\\theta^2\\) sobre la superficie y con la distancia \\(\\theta^3\\) medida a lo largo de la normal. Las bases asociadas varían de un punto a otro y no son, en general, ortonormales.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Por qué tensores</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/01-motivacion.html#sec-motivacion",
+    "href": "book/01-fundamentos/01-motivacion.html#sec-motivacion",
+    "title": "1  Por qué tensores",
+    "section": "",
+    "text": "AdvertenciaVector y componentes no son lo mismo\n\n\n\nEscribir \\(\\mathbf{V}=(2,-1)\\) no define un vector: define sus componentes respecto a una base concreta. En este libro se distingue siempre entre el vector \\(\\mathbf{V}\\) y sus componentes \\(V^i\\) o \\(V_i\\).",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Por qué tensores</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/01-motivacion.html#sec-polares",
+    "href": "book/01-fundamentos/01-motivacion.html#sec-polares",
+    "title": "1  Por qué tensores",
+    "section": "1.2 Un primer ejemplo: coordenadas polares",
+    "text": "1.2 Un primer ejemplo: coordenadas polares\nEn el plano, con coordenadas cartesianas \\((x,y)\\) y polares \\((r,\\theta)\\) relacionadas por \\(x=r\\cos\\theta,\\; y=r\\sin\\theta\\), el vector de posición es \\(\\mathbf{r}(r,\\theta)=(r\\cos\\theta,\\,r\\sin\\theta)\\). Las bases naturales son\n\\[\n\\mathbf{g}_1=\\frac{\\partial\\mathbf{r}}{\\partial r}=(\\cos\\theta,\\;\\sin\\theta),\n\\qquad\n\\mathbf{g}_2=\\frac{\\partial\\mathbf{r}}{\\partial\\theta}=(-r\\sin\\theta,\\;r\\cos\\theta).\n\\tag{1.1}\\]\nSon ortogonales, pero \\(\\|\\mathbf{g}_2\\|=r\\) no es 1 y además ambas giran con \\(\\theta\\). Sus productos escalares \\(g_{ij}=\\mathbf{g}_i\\cdot\\mathbf{g}_j\\) forman el tensor métrico:\n\\[\n(g_{ij})=\\begin{pmatrix}1&0\\\\0&r^2\\end{pmatrix}\n\\quad\\Longrightarrow\\quad\nds^2=g_{ij}\\,d\\theta^i\\,d\\theta^j=dr^2+r^2\\,d\\theta^2 .\n\\tag{1.2}\\]\nLa longitud de un arco depende de la métrica: la misma variación \\(d\\theta\\) recorre más distancia cuanto mayor es \\(r\\). Ese es el contenido geométrico de \\(g_{22}=r^2\\).\n\n1.2.1 Comprobación en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado El módulo Geometria implementa Ecuación 1.1 y la métrica. Se comprueba Ecuación 1.2 en un punto.\n\n\n\nusing Geometria\n\nr, θ = 2.0, π / 6\nB = base_polar(r, θ)      # columnas: g₁ y g₂\nmetrica(B)                # debe ser diag(1, r²) = diag(1, 4)\n\n2×2 Matrix{Float64}:\n 1.0  0.0\n 0.0  4.0\n\n\n\n# Reciprocidad gⁱ·gⱼ = δⁱⱼ y reconstrucción de un vector\nV = [1.0, 0.5]\nVup = comps_contravariantes(B, V)\n(reciprocidad(B), desde_contravariantes(B, Vup) ≈ V)\n\n([1.0 0.0; 0.0 1.0], true)",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Por qué tensores</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/01-motivacion.html#qué-viene-después",
+    "href": "book/01-fundamentos/01-motivacion.html#qué-viene-después",
+    "title": "1  Por qué tensores",
+    "section": "1.3 Qué viene después",
+    "text": "1.3 Qué viene después\n\nEl capítulo 2 (en preparación) estudiará cómo se transforman las componentes al cambiar de coordenadas.\nEl capítulo 3 formaliza las bases covariante y contravariante y trae el primer laboratorio interactivo.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Por qué tensores</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/01-motivacion.html#sec-traza-1",
+    "href": "book/01-fundamentos/01-motivacion.html#sec-traza-1",
+    "title": "1  Por qué tensores",
+    "section": "1.4 Trazabilidad con la tesis",
+    "text": "1.4 Trazabilidad con la tesis\n\n\n\n\n\n\n\n\nContenido\nFuente\nEstado\n\n\n\n\nSuperficie de referencia \\(\\theta^3=0\\), normal y bases \\(\\mathbf{g}_i\\) en la lámina\nAnexo A (AnexoGeometria.tex), «Vectores básicos y tensor métrico de una superficie»\nContenido leído en el .tex; numeración de ecuaciones sin verificar\n\n\nCoordenadas polares y métrica\nEjemplo original de este libro\nNo procede de la tesis",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Por qué tensores</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/01-motivacion.html#sec-ejercicios-1",
+    "href": "book/01-fundamentos/01-motivacion.html#sec-ejercicios-1",
+    "title": "1  Por qué tensores",
+    "section": "1.5 Ejercicios",
+    "text": "1.5 Ejercicios\n\nCalcula \\(g_{ij}\\) para las coordenadas cilíndricas \\((\\rho,\\varphi,z)\\) y comprueba que \\(ds^2=d\\rho^2+\\rho^2d\\varphi^2+dz^2\\).\nCon base_polar, verifica numéricamente que \\(\\det(g_{ij})=r^2\\) para varios valores de \\(r\\) y \\(\\theta\\).\nExplica con tus palabras por qué \\(\\mathbf{V}=(2,-1)\\) no basta para definir un vector.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Por qué tensores</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/01-motivacion.html#sec-refs-1",
+    "href": "book/01-fundamentos/01-motivacion.html#sec-refs-1",
+    "title": "1  Por qué tensores",
+    "section": "1.6 Referencias comentadas",
+    "text": "1.6 Referencias comentadas\nLas siguientes obras figuran en el apartado de tensores de la bibliografía de la tesis (Castro Triguero 2008). Aún no se han leído para este libro; el comentario de relevancia queda pendiente.\n\nFlügge (1972) — análisis tensorial y mecánica del continuo.\nSpiegel (1959) — introducción al análisis tensorial.\nLebedev y Cloud (2003) — texto sobre análisis tensorial.\nHeinbockel (1996) — cálculo tensorial y mecánica del continuo.\n\n\n\n\n\nCastro Triguero, R. 2008. «Vibraciones de Estructuras Laminares con forma de Paraboloide Hiperbólico de Planta Rectangular». Tesis doctoral, Universidad de Sevilla.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nHeinbockel, J. H. 1996. Introduction to Tensor Calculus and Continuum Mechanics. Department of Mathematics; Statistics, Old Dominion University.\n\n\nLebedev, L. P., y M. J. Cloud. 2003. Tensor Analysis. World Scientific.\n\n\nSpiegel, M. R. 1959. Vector Analysis and an Introduction to Tensor Analysis. Schaum’s Outlines.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Por qué tensores</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/02-transformacion.html",
+    "href": "book/01-fundamentos/02-transformacion.html",
+    "title": "2  Transformación de coordenadas",
+    "section": "",
+    "text": "AdvertenciaCapítulo en preparación\n\n\n\nEste capítulo desarrollará las leyes de transformación de componentes y tensores. De momento, la ley que necesita el capítulo siguiente aparece en Proposición 3.3.\n\n\nContenido previsto: coordenadas admisibles, matriz jacobiana y su inversa, transformación de componentes de vectores y de tensores de orden dos, e invariantes.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Transformación de coordenadas</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html",
+    "href": "book/01-fundamentos/03-bases.html",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "",
+    "text": "3.1 Motivación geométrica\nEn un sistema cartesiano ortonormal, las componentes de un vector se obtienen proyectando sobre los ejes y no hay nada que distinguir. Si la base es oblicua o sus vectores no tienen longitud unidad, hay dos formas naturales de describir un vector: como combinación lineal de los vectores de la base, o por sus proyecciones sobre ellos. Ambas coinciden solo en el caso ortonormal.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html#convenios",
+    "href": "book/01-fundamentos/03-bases.html#convenios",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "3.2 Convenios",
+    "text": "3.2 Convenios\nSe usa el convenio de suma de Einstein: un índice repetido, una vez arriba y otra abajo, indica suma. En este capítulo los índices recorren \\(1,\\dots,n\\) (con \\(n=2\\) en el laboratorio). En el tratamiento de láminas de la tesis, los índices griegos toman los valores \\(1,2\\) y los latinos \\(1,2,3\\) (ver Sección A.1).\n\n\n\n\n\n\nAdvertenciaNotación de la tesis\n\n\n\nLa tesis denota por \\(\\mathbf{g}_i\\) las bases de la lámina y por \\(\\mathbf{a}_i\\) las de la superficie de referencia (\\(\\theta^3=0\\)), y llama «vectores básicos normales a las superficies \\(\\theta^i\\)» a los \\(\\mathbf{a}^i\\) (Nomenclatura, Nomenclatura.tex). Aquí se usa \\(\\mathbf{g}_i\\) para una base genérica y, al llegar a las superficies, se hará la correspondencia explícita.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html#definiciones",
+    "href": "book/01-fundamentos/03-bases.html#definiciones",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "3.3 Definiciones",
+    "text": "3.3 Definiciones\n\nDefinición 3.1 (Base covariante natural) Sea \\(\\mathbf{r}(\\theta^1,\\dots,\\theta^n)\\) el vector de posición. La base covariante en un punto es \\[\n\\mathbf{g}_i=\\frac{\\partial\\mathbf{r}}{\\partial\\theta^i},\\qquad i=1,\\dots,n,\n\\tag{3.1}\\] supuesta linealmente independiente.\n\n\nDefinición 3.2 (Tensor métrico) Las componentes covariantes del tensor métrico son \\(g_{ij}=\\mathbf{g}_i\\cdot\\mathbf{g}_j\\), y las contravariantes \\(g^{ij}\\) son los elementos de la matriz inversa: \\(g^{ij}g_{jk}=\\delta^i_k\\).\n\n\nDefinición 3.3 (Base recíproca (contravariante)) La base recíproca \\(\\{\\mathbf{g}^i\\}\\) está definida por la condición de reciprocidad \\[\n\\mathbf{g}^i\\cdot\\mathbf{g}_j=\\delta^i_j .\n\\tag{3.2}\\]",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html#resultados",
+    "href": "book/01-fundamentos/03-bases.html#resultados",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "3.4 Resultados",
+    "text": "3.4 Resultados\n\nProposición 3.1 (Construcción de la base recíproca) La base recíproca existe, es única y verifica \\[\n\\mathbf{g}^i=g^{ij}\\,\\mathbf{g}_j,\\qquad\n\\mathbf{g}_i=g_{ij}\\,\\mathbf{g}^j,\\qquad\ng^{ij}=\\mathbf{g}^i\\cdot\\mathbf{g}^j .\n\\tag{3.3}\\]\n\n\n\n\n\n\n\nNotaDemostración de Proposición 3.1\n\n\n\n\n\n\\((g_{ij})\\) es la matriz de Gram de vectores linealmente independientes, luego es simétrica definida positiva y, por tanto, invertible; así \\(g^{ij}\\) existe.\nExistencia. Sea \\(\\mathbf{g}^i:=g^{ik}\\mathbf{g}_k\\). Entonces \\(\\mathbf{g}^i\\cdot\\mathbf{g}_j=g^{ik}g_{kj}=\\delta^i_j\\), que es Ecuación 3.2.\nUnicidad. Como \\(\\{\\mathbf{g}_k\\}\\) es base, cualquier solución se escribe \\(\\mathbf{g}^i=A^{ik}\\mathbf{g}_k\\). Imponer Ecuación 3.2 da \\(A^{ik}g_{kj}=\\delta^i_j\\), o sea \\(A=(g_{ij})^{-1}\\).\nFórmulas restantes. \\(\\mathbf{g}^i\\cdot\\mathbf{g}^j=g^{ik}\\,\\mathbf{g}_k\\cdot\\mathbf{g}^j=g^{ik}\\delta_k^j=g^{ij}\\). Multiplicando \\(\\mathbf{g}^j=g^{jk}\\mathbf{g}_k\\) por \\(g_{ij}\\) y usando \\(g_{ij}g^{jk}=\\delta_i^k\\) se obtiene \\(\\mathbf{g}_i=g_{ij}\\mathbf{g}^j\\). \\(\\blacksquare\\)\n\n\n\n\nProposición 3.2 (Componentes de un vector) Todo vector admite dos descomposiciones, \\[\n\\mathbf{V}=V^i\\,\\mathbf{g}_i=V_i\\,\\mathbf{g}^i,\n\\tag{3.4}\\] con \\[\nV^i=\\mathbf{V}\\cdot\\mathbf{g}^i,\\qquad V_i=\\mathbf{V}\\cdot\\mathbf{g}_i,\\qquad\nV_i=g_{ij}V^j,\\qquad V^i=g^{ij}V_j,\n\\tag{3.5}\\] y la norma cumple \\(\\|\\mathbf{V}\\|^2=g_{ij}V^iV^j=V^iV_i\\).\n\n\n\n\n\n\n\nNotaDemostración de Proposición 3.2\n\n\n\n\n\nAl ser \\(\\{\\mathbf{g}_i\\}\\) base, \\(\\mathbf{V}=V^j\\mathbf{g}_j\\). Multiplicando por \\(\\mathbf{g}^i\\) y usando Ecuación 3.2, \\(V^i=\\mathbf{V}\\cdot\\mathbf{g}^i\\). Análogamente, como \\(\\{\\mathbf{g}^i\\}\\) también es base (por Proposición 3.1), \\(\\mathbf{V}=V_j\\mathbf{g}^j\\) y \\(V_i=\\mathbf{V}\\cdot\\mathbf{g}_i\\). Entonces \\(V_i=\\mathbf{V}\\cdot\\mathbf{g}_i=V^j\\,\\mathbf{g}_j\\cdot\\mathbf{g}_i=g_{ij}V^j\\), y de modo simétrico \\(V^i=g^{ij}V_j\\). Finalmente \\(\\|\\mathbf{V}\\|^2=\\mathbf{V}\\cdot\\mathbf{V}=V^i\\,\\mathbf{g}_i\\cdot V^j\\mathbf{g}_j=g_{ij}V^iV^j=V^iV_i\\). \\(\\blacksquare\\)\n\n\n\n\nProposición 3.3 (Cambio de coordenadas) Si \\(\\theta'^i=\\theta'^i(\\theta^1,\\dots,\\theta^n)\\) es un cambio de coordenadas regular, entonces \\[\n\\mathbf{g}'_i=\\frac{\\partial\\theta^j}{\\partial\\theta'^i}\\,\\mathbf{g}_j,\\qquad\n\\mathbf{g}'^i=\\frac{\\partial\\theta'^i}{\\partial\\theta^j}\\,\\mathbf{g}^j,\\qquad\nV'^i=\\frac{\\partial\\theta'^i}{\\partial\\theta^j}\\,V^j .\n\\tag{3.6}\\]\n\n\n\n\n\n\n\nNotaDemostración de Proposición 3.3\n\n\n\n\n\nPor la regla de la cadena, \\(\\mathbf{g}'_i=\\partial\\mathbf{r}/\\partial\\theta'^i=(\\partial\\theta^j/\\partial\\theta'^i)\\,\\partial\\mathbf{r}/\\partial\\theta^j\\). Sea \\(J^i_j=\\partial\\theta'^i/\\partial\\theta^j\\) y \\(\\tilde J^j_i=\\partial\\theta^j/\\partial\\theta'^i\\); son matrices inversas entre sí. Definiendo \\(\\mathbf{g}'^i:=J^i_j\\mathbf{g}^j\\) se tiene \\(\\mathbf{g}'^i\\cdot\\mathbf{g}'_k=J^i_j\\tilde J^l_k\\,\\delta^j_l=J^i_j\\tilde J^j_k=\\delta^i_k\\), así que es la base recíproca (por unicidad). Como \\(\\mathbf{V}\\) no depende de la base, \\(V'^i=\\mathbf{V}\\cdot\\mathbf{g}'^i=J^i_j\\,\\mathbf{V}\\cdot\\mathbf{g}^j=J^i_jV^j\\). \\(\\blacksquare\\)\n\n\n\nLas componentes \\(V^i\\) se transforman como las diferenciales \\(d\\theta^i\\) (contravariantes) y las bases \\(\\mathbf{g}_i\\) como las derivadas \\(\\partial/\\partial\\theta^i\\) (covariantes). El vector \\(\\mathbf{V}\\) no cambia.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html#sec-lab-bases",
+    "href": "book/01-fundamentos/03-bases.html#sec-lab-bases",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "3.5 Laboratorio interactivo",
+    "text": "3.5 Laboratorio interactivo\n\n\nLaboratorio 3.1 · Bases covariante y contravariante en el plano\n\ncalculado en el navegador Verificado frente a Julia (web/tests/bases.test.mjs).\nSe fija una base oblicua \\(\\{\\mathbf{g}_1,\\mathbf{g}_2\\}\\) (azul) y se muestra su base recíproca (ámbar, discontinua). Observa que \\(\\mathbf{g}^1\\perp\\mathbf{g}_2\\) y \\(\\mathbf{g}^2\\perp\\mathbf{g}_1\\), y que si el ángulo es \\(90^\\circ\\) y las longitudes son 1, ambas bases coinciden.\n\n\nbases = import(new URL(\"../../web/ojs/bases.js\", document.baseURI))\n\n\n\n\n\n\n\nviewof ang = Inputs.range([20, 160], {value: 70, step: 1, label: \"Ángulo entre g₁ y g₂ (°)\"})\nviewof l1 = Inputs.range([0.5, 2], {value: 1, step: 0.05, label: \"|g₁|\"})\nviewof l2 = Inputs.range([0.5, 2], {value: 1.2, step: 0.05, label: \"|g₂|\"})\nviewof vx = Inputs.range([-2, 2], {value: 1.2, step: 0.05, label: \"Vₓ (cartesiana)\"})\nviewof vy = Inputs.range([-2, 2], {value: 0.8, step: 0.05, label: \"V_y (cartesiana)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbase = bases.baseDesdeAngulo(l1, l2, ang)\nV = [vx, vy]\nres = bases.analizar(base.g1, base.g2, V)\ntxt = bases.resumen(res)\nhtml`&lt;div&gt;${(() =&gt; { const d = document.createElement(\"div\"); d.innerHTML = bases.dibujarSVG(base.g1, base.g2, V, res); return d; })()}&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;table class=\"table table-sm\" style=\"max-width:34rem\"&gt;\n&lt;tr&gt;&lt;td&gt;Métrica gᵢⱼ&lt;/td&gt;&lt;td&gt;[${txt.g[0].join(\", \")}; ${txt.g[1].join(\", \")}]&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;Contravariantes Vⁱ&lt;/td&gt;&lt;td&gt;(${txt.contra.join(\", \")})&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;Covariantes Vᵢ&lt;/td&gt;&lt;td&gt;(${txt.co.join(\", \")})&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;Reciprocidad gⁱ·gⱼ&lt;/td&gt;&lt;td&gt;[${txt.reciprocidad[0].join(\", \")}; ${txt.reciprocidad[1].join(\", \")}]&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;`",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html#sec-julia-bases",
+    "href": "book/01-fundamentos/03-bases.html#sec-julia-bases",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "3.6 Ejemplo computacional en Julia",
+    "text": "3.6 Ejemplo computacional en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Aritmética exacta con racionales: la reciprocidad es exactamente la identidad.\n\n\n\nusing Geometria, LinearAlgebra\n\nB = [2//1 1//1; 0//1 3//1]     # g₁ = (2,0), g₂ = (1,3): base oblicua\nV = [5//1, 4//1]\n\ng   = metrica(B)\nVup = comps_contravariantes(B, V)\nVdn = comps_covariantes(B, V)\n\n(; g, reciprocidad = reciprocidad(B), Vup, Vdn,\n   bajar = Vdn == g * Vup,                     # V_i = g_ij V^j\n   norma = dot(Vup, Vdn) == dot(V, V))         # |V|² = Vⁱ Vᵢ\n\n(g = Rational{Int64}[4 2; 2 10], reciprocidad = Rational{Int64}[1 0; 0 1], Vup = Rational{Int64}[11//6, 4//3], Vdn = Rational{Int64}[10, 17], bajar = true, norma = true)\n\n\nLas mismas identidades se comprueban de forma automática en julia/test/runtests.jl y, para el código JavaScript, en web/tests/bases.test.mjs.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html#sec-traza-3",
+    "href": "book/01-fundamentos/03-bases.html#sec-traza-3",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "3.7 Trazabilidad con la tesis",
+    "text": "3.7 Trazabilidad con la tesis\n\n\n\n\n\n\n\n\nContenido\nFuente\nEstado\n\n\n\n\n\\(\\mathbf{g}_\\alpha=\\mathbf{r}_{,\\alpha}\\), \\(\\mathbf{g}_3=\\hat{\\mathbf{a}}_3\\) y \\(\\mathbf{g}_\\alpha=\\mathbf{a}_\\alpha+\\theta^3\\hat{\\mathbf{a}}_{3,\\alpha}\\)\nAnexo A, «Vectores básicos y tensor métrico de una superficie»\nLeído en .tex; numeración sin verificar\n\n\nReciprocidad, métrica contravariante, Proposición 3.1 y Proposición 3.2\nDesarrollo original de este libro (resultado estándar)\nNo se atribuye a la tesis",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/01-fundamentos/03-bases.html#sec-ejercicios-3",
+    "href": "book/01-fundamentos/03-bases.html#sec-ejercicios-3",
+    "title": "3  Bases covariantes y contravariantes",
+    "section": "3.8 Ejercicios",
+    "text": "3.8 Ejercicios\n\nDemuestra que \\(\\det(g_{ij})=(\\det B)^2\\) si \\(B\\) es la matriz de columnas \\(\\mathbf{g}_i\\).\nEn el laboratorio, ¿para qué ángulo y longitudes coinciden \\(\\mathbf{g}^i\\) y \\(\\mathbf{g}_i\\)? Justifícalo con Ecuación 3.3.\nComprueba con Geometria que, en polares, \\(V_2=r^2V^2\\).\nPrueba que \\(V^i\\,W_i\\) es invariante bajo Ecuación 3.6.",
+    "crumbs": [
+      "Parte I — Fundamentos tensoriales",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bases covariantes y contravariantes</span>"
+    ]
+  },
+  {
+    "objectID": "book/referencias.html",
+    "href": "book/referencias.html",
+    "title": "Referencias",
+    "section": "",
+    "text": "Castro Triguero, R. 2008. “Vibraciones de Estructuras Laminares\nCon Forma de Paraboloide Hiperbólico de Planta Rectangular.” PhD\nthesis, Universidad de Sevilla.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics.\nSpringer-Verlag.\n\n\nHeinbockel, J. H. 1996. Introduction to Tensor Calculus and\nContinuum Mechanics. Department of Mathematics; Statistics, Old\nDominion University.\n\n\nLebedev, L. P., and M. J. Cloud. 2003. Tensor Analysis. World\nScientific.\n\n\nSpiegel, M. R. 1959. Vector Analysis and an Introduction to Tensor\nAnalysis. Schaum’s Outlines.",
+    "crumbs": [
+      "Referencias"
+    ]
+  },
+  {
+    "objectID": "book/apendices/notacion.html",
+    "href": "book/apendices/notacion.html",
+    "title": "Apéndice A — Notación y convenios",
+    "section": "",
+    "text": "A.1 Correspondencia de notación\nEste apéndice crecerá con el libro. Recoge los símbolos de la tesis (según Nomenclatura.tex) y su equivalente en este texto.",
+    "crumbs": [
+      "Apéndices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Notación y convenios</span>"
+    ]
+  },
+  {
+    "objectID": "book/apendices/notacion.html#sec-notacion",
+    "href": "book/apendices/notacion.html#sec-notacion",
+    "title": "Apéndice A — Notación y convenios",
+    "section": "",
+    "text": "Tesis\nSignificado en la tesis\nAquí\n\n\n\n\n\\(\\theta^1,\\theta^2\\)\nCoordenadas curvilíneas sobre la superficie de referencia\nigual\n\n\n\\(\\theta^3\\)\nDistancia a lo largo de la normal\nigual\n\n\n\\(\\mathbf{r}\\), \\({}_0\\mathbf{r}\\)\nVector de posición de la lámina / de la superficie de referencia\nigual\n\n\n\\(\\hat{\\mathbf{a}}_3\\)\nNormal unitaria\nigual\n\n\n\\(\\mathbf{g}_i\\)\nVectores básicos tangentes del sistema de coordenadas\nigual\n\n\n\\(\\mathbf{a}_i\\)\nVectores básicos en la superficie de referencia\nigual\n\n\n\\(\\mathbf{a}^i\\)\nVectores básicos normales a las superficies \\(\\theta^i\\)\nbase recíproca\n\n\n\\(a_{\\alpha\\beta}\\), \\(a^{\\alpha\\beta}\\)\nComponentes covariantes y contravariantes del tensor métrico\nigual\n\n\n\\(b_{\\alpha\\beta}\\)\nTensor curvatura de la superficie\npor confirmar\n\n\n\\(\\bar\\Gamma^{\\gamma}_{\\alpha\\beta}\\)\nSímbolos de Christoffel\npor confirmar",
+    "crumbs": [
+      "Apéndices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Notación y convenios</span>"
+    ]
+  },
+  {
+    "objectID": "book/apendices/notacion.html#convenios-pendientes-de-confirmar-con-el-autor",
+    "href": "book/apendices/notacion.html#convenios-pendientes-de-confirmar-con-el-autor",
+    "title": "Apéndice A — Notación y convenios",
+    "section": "A.2 Convenios pendientes de confirmar con el autor",
+    "text": "A.2 Convenios pendientes de confirmar con el autor\n\nSigno de \\(b_{\\alpha\\beta}\\) y de la curvatura normal.\nDefinición y posición de índices de \\(\\bar\\Gamma_{\\alpha\\beta\\gamma}\\).\nDefinición de componentes físicas.\nUso de la barra ‖ para la derivada covariante.\n\nHasta confirmarlos no se fijan en el texto.",
+    "crumbs": [
+      "Apéndices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Notación y convenios</span>"
+    ]
+  }
+]

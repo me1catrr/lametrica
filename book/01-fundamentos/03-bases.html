@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
+
+<title>3&nbsp; Bases covariantes y contravariantes – La métrica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/referencias.html" rel="next">
+<link href="../../book/01-fundamentos/02-transformacion.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-1c32ec8e1f275abdb831a30245d2b940.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/01-motivacion.html">Parte I — Fundamentos tensoriales</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/03-bases.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">La métrica</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte I — Fundamentos tensoriales</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/01-motivacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Por qué tensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/02-transformacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/03-bases.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notación y convenios</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#motivación-geométrica" id="toc-motivación-geométrica" class="nav-link active" data-scroll-target="#motivación-geométrica"><span class="header-section-number">3.1</span> Motivación geométrica</a></li>
+  <li><a href="#convenios" id="toc-convenios" class="nav-link" data-scroll-target="#convenios"><span class="header-section-number">3.2</span> Convenios</a></li>
+  <li><a href="#definiciones" id="toc-definiciones" class="nav-link" data-scroll-target="#definiciones"><span class="header-section-number">3.3</span> Definiciones</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados"><span class="header-section-number">3.4</span> Resultados</a></li>
+  <li><a href="#sec-lab-bases" id="toc-sec-lab-bases" class="nav-link" data-scroll-target="#sec-lab-bases"><span class="header-section-number">3.5</span> Laboratorio interactivo</a></li>
+  <li><a href="#sec-julia-bases" id="toc-sec-julia-bases" class="nav-link" data-scroll-target="#sec-julia-bases"><span class="header-section-number">3.6</span> Ejemplo computacional en Julia</a></li>
+  <li><a href="#sec-traza-3" id="toc-sec-traza-3" class="nav-link" data-scroll-target="#sec-traza-3"><span class="header-section-number">3.7</span> Trazabilidad con la tesis</a></li>
+  <li><a href="#sec-ejercicios-3" id="toc-sec-ejercicios-3" class="nav-link" data-scroll-target="#sec-ejercicios-3"><span class="header-section-number">3.8</span> Ejercicios</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/01-motivacion.html">Parte I — Fundamentos tensoriales</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/03-bases.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note callout-titled" title="Objetivos de aprendizaje">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Objetivos de aprendizaje
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Definir la base covariante natural y la base recíproca (contravariante) de un sistema de coordenadas.</li>
+<li>Calcular el tensor métrico y usarlo para subir y bajar índices.</li>
+<li>Distinguir componentes covariantes <span class="math inline">\(V_i\)</span> y contravariantes <span class="math inline">\(V^i\)</span> de un mismo vector.</li>
+<li>Verificar numéricamente la reciprocidad <span class="math inline">\(\mathbf{g}^i\cdot\mathbf{g}_j=\delta^i_j\)</span>.</li>
+</ol>
+</div>
+</div>
+<section id="motivación-geométrica" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="motivación-geométrica"><span class="header-section-number">3.1</span> Motivación geométrica</h2>
+<p>En un sistema cartesiano ortonormal, las componentes de un vector se obtienen proyectando sobre los ejes y no hay nada que distinguir. Si la base es oblicua o sus vectores no tienen longitud unidad, hay <strong>dos</strong> formas naturales de describir un vector: como combinación lineal de los vectores de la base, o por sus proyecciones sobre ellos. Ambas coinciden solo en el caso ortonormal.</p>
+</section>
+<section id="convenios" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="convenios"><span class="header-section-number">3.2</span> Convenios</h2>
+<p>Se usa el convenio de suma de Einstein: un índice repetido, una vez arriba y otra abajo, indica suma. En este capítulo los índices recorren <span class="math inline">\(1,\dots,n\)</span> (con <span class="math inline">\(n=2\)</span> en el laboratorio). En el tratamiento de láminas de la tesis, los índices griegos toman los valores <span class="math inline">\(1,2\)</span> y los latinos <span class="math inline">\(1,2,3\)</span> (ver <a href="../apendices/notacion.html#sec-notacion" class="quarto-xref"><span>Sección A.1</span></a>).</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Notación de la tesis">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Notación de la tesis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La tesis denota por <span class="math inline">\(\mathbf{g}_i\)</span> las bases de la lámina y por <span class="math inline">\(\mathbf{a}_i\)</span> las de la superficie de referencia (<span class="math inline">\(\theta^3=0\)</span>), y llama «vectores básicos normales a las superficies <span class="math inline">\(\theta^i\)</span>» a los <span class="math inline">\(\mathbf{a}^i\)</span> (Nomenclatura, <code>Nomenclatura.tex</code>). Aquí se usa <span class="math inline">\(\mathbf{g}_i\)</span> para una base genérica y, al llegar a las superficies, se hará la correspondencia explícita.</p>
+</div>
+</div>
+</section>
+<section id="definiciones" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="definiciones"><span class="header-section-number">3.3</span> Definiciones</h2>
+<div id="def-base-covariante" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 3.1 (Base covariante natural)</strong></span> Sea <span class="math inline">\(\mathbf{r}(\theta^1,\dots,\theta^n)\)</span> el vector de posición. La <strong>base covariante</strong> en un punto es <span id="eq-base-cov"><span class="math display">\[
+\mathbf{g}_i=\frac{\partial\mathbf{r}}{\partial\theta^i},\qquad i=1,\dots,n,
+\tag{3.1}\]</span></span> supuesta linealmente independiente.</p>
+</div>
+<div id="def-metrica" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 3.2 (Tensor métrico)</strong></span> Las componentes <strong>covariantes</strong> del tensor métrico son <span class="math inline">\(g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j\)</span>, y las <strong>contravariantes</strong> <span class="math inline">\(g^{ij}\)</span> son los elementos de la matriz inversa: <span class="math inline">\(g^{ij}g_{jk}=\delta^i_k\)</span>.</p>
+</div>
+<div id="def-base-recip" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 3.3 (Base recíproca (contravariante))</strong></span> La <strong>base recíproca</strong> <span class="math inline">\(\{\mathbf{g}^i\}\)</span> está definida por la condición de reciprocidad <span id="eq-reciprocidad"><span class="math display">\[
+\mathbf{g}^i\cdot\mathbf{g}_j=\delta^i_j .
+\tag{3.2}\]</span></span></p>
+</div>
+</section>
+<section id="resultados" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="resultados"><span class="header-section-number">3.4</span> Resultados</h2>
+<div id="prp-g-dual" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 3.1 (Construcción de la base recíproca)</strong></span> La base recíproca existe, es única y verifica <span id="eq-subir-bajar-base"><span class="math display">\[
+\mathbf{g}^i=g^{ij}\,\mathbf{g}_j,\qquad
+\mathbf{g}_i=g_{ij}\,\mathbf{g}^j,\qquad
+g^{ij}=\mathbf{g}^i\cdot\mathbf{g}^j .
+\tag{3.3}\]</span></span></p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>3.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((g_{ij})\)</span> es la matriz de Gram de vectores linealmente independientes, luego es simétrica definida positiva y, por tanto, invertible; así <span class="math inline">\(g^{ij}\)</span> existe.</p>
+<p><em>Existencia.</em> Sea <span class="math inline">\(\mathbf{g}^i:=g^{ik}\mathbf{g}_k\)</span>. Entonces <span class="math inline">\(\mathbf{g}^i\cdot\mathbf{g}_j=g^{ik}g_{kj}=\delta^i_j\)</span>, que es <a href="#eq-reciprocidad" class="quarto-xref">Ecuación&nbsp;<span>3.2</span></a>.</p>
+<p><em>Unicidad.</em> Como <span class="math inline">\(\{\mathbf{g}_k\}\)</span> es base, cualquier solución se escribe <span class="math inline">\(\mathbf{g}^i=A^{ik}\mathbf{g}_k\)</span>. Imponer <a href="#eq-reciprocidad" class="quarto-xref">Ecuación&nbsp;<span>3.2</span></a> da <span class="math inline">\(A^{ik}g_{kj}=\delta^i_j\)</span>, o sea <span class="math inline">\(A=(g_{ij})^{-1}\)</span>.</p>
+<p><em>Fórmulas restantes.</em> <span class="math inline">\(\mathbf{g}^i\cdot\mathbf{g}^j=g^{ik}\,\mathbf{g}_k\cdot\mathbf{g}^j=g^{ik}\delta_k^j=g^{ij}\)</span>. Multiplicando <span class="math inline">\(\mathbf{g}^j=g^{jk}\mathbf{g}_k\)</span> por <span class="math inline">\(g_{ij}\)</span> y usando <span class="math inline">\(g_{ij}g^{jk}=\delta_i^k\)</span> se obtiene <span class="math inline">\(\mathbf{g}_i=g_{ij}\mathbf{g}^j\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div id="prp-componentes" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 3.2 (Componentes de un vector)</strong></span> Todo vector admite dos descomposiciones, <span id="eq-descomposicion"><span class="math display">\[
+\mathbf{V}=V^i\,\mathbf{g}_i=V_i\,\mathbf{g}^i,
+\tag{3.4}\]</span></span> con <span id="eq-componentes"><span class="math display">\[
+V^i=\mathbf{V}\cdot\mathbf{g}^i,\qquad V_i=\mathbf{V}\cdot\mathbf{g}_i,\qquad
+V_i=g_{ij}V^j,\qquad V^i=g^{ij}V_j,
+\tag{3.5}\]</span></span> y la norma cumple <span class="math inline">\(\|\mathbf{V}\|^2=g_{ij}V^iV^j=V^iV_i\)</span>.</p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-componentes" class="quarto-xref">Proposición&nbsp;<span>3.2</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Al ser <span class="math inline">\(\{\mathbf{g}_i\}\)</span> base, <span class="math inline">\(\mathbf{V}=V^j\mathbf{g}_j\)</span>. Multiplicando por <span class="math inline">\(\mathbf{g}^i\)</span> y usando <a href="#eq-reciprocidad" class="quarto-xref">Ecuación&nbsp;<span>3.2</span></a>, <span class="math inline">\(V^i=\mathbf{V}\cdot\mathbf{g}^i\)</span>. Análogamente, como <span class="math inline">\(\{\mathbf{g}^i\}\)</span> también es base (por <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>3.1</span></a>), <span class="math inline">\(\mathbf{V}=V_j\mathbf{g}^j\)</span> y <span class="math inline">\(V_i=\mathbf{V}\cdot\mathbf{g}_i\)</span>. Entonces <span class="math inline">\(V_i=\mathbf{V}\cdot\mathbf{g}_i=V^j\,\mathbf{g}_j\cdot\mathbf{g}_i=g_{ij}V^j\)</span>, y de modo simétrico <span class="math inline">\(V^i=g^{ij}V_j\)</span>. Finalmente <span class="math inline">\(\|\mathbf{V}\|^2=\mathbf{V}\cdot\mathbf{V}=V^i\,\mathbf{g}_i\cdot V^j\mathbf{g}_j=g_{ij}V^iV^j=V^iV_i\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div id="prp-transformacion-bases" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 3.3 (Cambio de coordenadas)</strong></span> Si <span class="math inline">\(\theta'^i=\theta'^i(\theta^1,\dots,\theta^n)\)</span> es un cambio de coordenadas regular, entonces <span id="eq-transformacion"><span class="math display">\[
+\mathbf{g}'_i=\frac{\partial\theta^j}{\partial\theta'^i}\,\mathbf{g}_j,\qquad
+\mathbf{g}'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,\mathbf{g}^j,\qquad
+V'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,V^j .
+\tag{3.6}\]</span></span></p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-transformacion-bases" class="quarto-xref">Proposición&nbsp;<span>3.3</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por la regla de la cadena, <span class="math inline">\(\mathbf{g}'_i=\partial\mathbf{r}/\partial\theta'^i=(\partial\theta^j/\partial\theta'^i)\,\partial\mathbf{r}/\partial\theta^j\)</span>. Sea <span class="math inline">\(J^i_j=\partial\theta'^i/\partial\theta^j\)</span> y <span class="math inline">\(\tilde J^j_i=\partial\theta^j/\partial\theta'^i\)</span>; son matrices inversas entre sí. Definiendo <span class="math inline">\(\mathbf{g}'^i:=J^i_j\mathbf{g}^j\)</span> se tiene <span class="math inline">\(\mathbf{g}'^i\cdot\mathbf{g}'_k=J^i_j\tilde J^l_k\,\delta^j_l=J^i_j\tilde J^j_k=\delta^i_k\)</span>, así que es la base recíproca (por unicidad). Como <span class="math inline">\(\mathbf{V}\)</span> no depende de la base, <span class="math inline">\(V'^i=\mathbf{V}\cdot\mathbf{g}'^i=J^i_j\,\mathbf{V}\cdot\mathbf{g}^j=J^i_jV^j\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<p>Las componentes <span class="math inline">\(V^i\)</span> se transforman como las diferenciales <span class="math inline">\(d\theta^i\)</span> (contravariantes) y las bases <span class="math inline">\(\mathbf{g}_i\)</span> como las derivadas <span class="math inline">\(\partial/\partial\theta^i\)</span> (covariantes). El vector <span class="math inline">\(\mathbf{V}\)</span> no cambia.</p>
+</section>
+<section id="sec-lab-bases" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-lab-bases"><span class="header-section-number">3.5</span> Laboratorio interactivo</h2>
+<div class="laboratorio">
+<div class="laboratorio-titulo">
+Laboratorio 3.1 · Bases covariante y contravariante en el plano
+</div>
+<p><span class="etiqueta-resultado calculado">calculado en el navegador</span> Verificado frente a Julia (<code>web/tests/bases.test.mjs</code>).</p>
+<p>Se fija una base oblicua <span class="math inline">\(\{\mathbf{g}_1,\mathbf{g}_2\}\)</span> (azul) y se muestra su base recíproca (ámbar, discontinua). Observa que <span class="math inline">\(\mathbf{g}^1\perp\mathbf{g}_2\)</span> y <span class="math inline">\(\mathbf{g}^2\perp\mathbf{g}_1\)</span>, y que si el ángulo es <span class="math inline">\(90^\circ\)</span> y las longitudes son 1, ambas bases coinciden.</p>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="118" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 117;"><span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>bases <span class="op">=</span> <span class="im">import</span>(<span class="kw">new</span> <span class="fu">URL</span>(<span class="st">"../../web/ojs/bases.js"</span><span class="op">,</span> <span class="bu">document</span><span class="op">.</span><span class="at">baseURI</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="124" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>viewof ang <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">20</span><span class="op">,</span> <span class="dv">160</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">70</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Ángulo entre g₁ y g₂ (°)"</span>})</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>viewof l1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.5</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"|g₁|"</span>})</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>viewof l2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.5</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">1.2</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"|g₂|"</span>})</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>viewof vx <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">1.2</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Vₓ (cartesiana)"</span>})</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>viewof vy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"V_y (cartesiana)"</span>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="133" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 132;"><span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> bases<span class="op">.</span><span class="fu">baseDesdeAngulo</span>(l1<span class="op">,</span> l2<span class="op">,</span> ang)</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> [vx<span class="op">,</span> vy]</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> bases<span class="op">.</span><span class="fu">analizar</span>(base<span class="op">.</span><span class="at">g1</span><span class="op">,</span> base<span class="op">.</span><span class="at">g2</span><span class="op">,</span> V)</span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> bases<span class="op">.</span><span class="fu">resumen</span>(res)</span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>(() <span class="kw">=&gt;</span> { <span class="kw">const</span> d <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span> d<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> bases<span class="op">.</span><span class="fu">dibujarSVG</span>(base<span class="op">.</span><span class="at">g1</span><span class="op">,</span> base<span class="op">.</span><span class="at">g2</span><span class="op">,</span> V<span class="op">,</span> res)<span class="op">;</span> <span class="cf">return</span> d<span class="op">;</span> })()<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="141" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 140;"><span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;table class="table table-sm" style="max-width:34rem"&gt;</span></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;Métrica gᵢⱼ&lt;/td&gt;&lt;td&gt;[</span><span class="sc">${</span>txt<span class="op">.</span><span class="at">g</span>[<span class="dv">0</span>]<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">; </span><span class="sc">${</span>txt<span class="op">.</span><span class="at">g</span>[<span class="dv">1</span>]<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">]&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;Contravariantes Vⁱ&lt;/td&gt;&lt;td&gt;(</span><span class="sc">${</span>txt<span class="op">.</span><span class="at">contra</span><span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">)&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;Covariantes Vᵢ&lt;/td&gt;&lt;td&gt;(</span><span class="sc">${</span>txt<span class="op">.</span><span class="at">co</span><span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">)&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;Reciprocidad gⁱ·gⱼ&lt;/td&gt;&lt;td&gt;[</span><span class="sc">${</span>txt<span class="op">.</span><span class="at">reciprocidad</span>[<span class="dv">0</span>]<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">; </span><span class="sc">${</span>txt<span class="op">.</span><span class="at">reciprocidad</span>[<span class="dv">1</span>]<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">]&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/table&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="sec-julia-bases" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-julia-bases"><span class="header-section-number">3.6</span> Ejemplo computacional en Julia</h2>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo computacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado calculado">calculado</span> Aritmética <strong>exacta</strong> con racionales: la reciprocidad es exactamente la identidad.</p>
+</div>
+</div>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Geometria</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="fl">2</span><span class="op">//</span><span class="fl">1</span> <span class="fl">1</span><span class="op">//</span><span class="fl">1</span>; <span class="fl">0</span><span class="op">//</span><span class="fl">1</span> <span class="fl">3</span><span class="op">//</span><span class="fl">1</span>]     <span class="co"># g₁ = (2,0), g₂ = (1,3): base oblicua</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> [<span class="fl">5</span><span class="op">//</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">//</span><span class="fl">1</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>g   <span class="op">=</span> <span class="fu">metrica</span>(B)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Vup <span class="op">=</span> <span class="fu">comps_contravariantes</span>(B, V)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>Vdn <span class="op">=</span> <span class="fu">comps_covariantes</span>(B, V)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>(; g, reciprocidad <span class="op">=</span> <span class="fu">reciprocidad</span>(B), Vup, Vdn,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>   bajar <span class="op">=</span> Vdn <span class="op">==</span> g <span class="op">*</span> Vup,                     <span class="co"># V_i = g_ij V^j</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>   norma <span class="op">=</span> <span class="fu">dot</span>(Vup, Vdn) <span class="op">==</span> <span class="fu">dot</span>(V, V))         <span class="co"># |V|² = Vⁱ Vᵢ</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(g = Rational{Int64}[4 2; 2 10], reciprocidad = Rational{Int64}[1 0; 0 1], Vup = Rational{Int64}[11//6, 4//3], Vdn = Rational{Int64}[10, 17], bajar = true, norma = true)</code></pre>
+</div>
+</div>
+<p>Las mismas identidades se comprueban de forma automática en <code>julia/test/runtests.jl</code> y, para el código JavaScript, en <code>web/tests/bases.test.mjs</code>.</p>
+</section>
+<section id="sec-traza-3" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-traza-3"><span class="header-section-number">3.7</span> Trazabilidad con la tesis</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Contenido</th>
+<th>Fuente</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{g}_\alpha=\mathbf{r}_{,\alpha}\)</span>, <span class="math inline">\(\mathbf{g}_3=\hat{\mathbf{a}}_3\)</span> y <span class="math inline">\(\mathbf{g}_\alpha=\mathbf{a}_\alpha+\theta^3\hat{\mathbf{a}}_{3,\alpha}\)</span></td>
+<td>Anexo A, «Vectores básicos y tensor métrico de una superficie»</td>
+<td>Leído en <code>.tex</code>; numeración <strong>sin verificar</strong></td>
+</tr>
+<tr class="even">
+<td>Reciprocidad, métrica contravariante, <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>3.1</span></a> y <a href="#prp-componentes" class="quarto-xref">Proposición&nbsp;<span>3.2</span></a></td>
+<td>Desarrollo original de este libro (resultado estándar)</td>
+<td>No se atribuye a la tesis</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-ejercicios-3" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-ejercicios-3"><span class="header-section-number">3.8</span> Ejercicios</h2>
+<ol type="1">
+<li>Demuestra que <span class="math inline">\(\det(g_{ij})=(\det B)^2\)</span> si <span class="math inline">\(B\)</span> es la matriz de columnas <span class="math inline">\(\mathbf{g}_i\)</span>.</li>
+<li>En el laboratorio, ¿para qué ángulo y longitudes coinciden <span class="math inline">\(\mathbf{g}^i\)</span> y <span class="math inline">\(\mathbf{g}_i\)</span>? Justifícalo con <a href="#eq-subir-bajar-base" class="quarto-xref">Ecuación&nbsp;<span>3.3</span></a>.</li>
+<li>Comprueba con <code>Geometria</code> que, en polares, <span class="math inline">\(V_2=r^2V^2\)</span>.</li>
+<li>Prueba que <span class="math inline">\(V^i\,W_i\)</span> es invariante bajo <a href="#eq-transformacion" class="quarto-xref">Ecuación&nbsp;<span>3.6</span></a>.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJhc2VzID0gaW1wb3J0KG5ldyBVUkwoXCIuLi8uLi93ZWIvb2pzL2Jhc2VzLmpzXCIsIGRvY3VtZW50LmJhc2VVUkkpKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGFuZyA9IElucHV0cy5yYW5nZShbMjAsIDE2MF0sIHt2YWx1ZTogNzAsIHN0ZXA6IDEsIGxhYmVsOiBcIsOBbmd1bG8gZW50cmUgZ+KCgSB5IGfigoIgKMKwKVwifSlcbnZpZXdvZiBsMSA9IElucHV0cy5yYW5nZShbMC41LCAyXSwge3ZhbHVlOiAxLCBzdGVwOiAwLjA1LCBsYWJlbDogXCJ8Z+KCgXxcIn0pXG52aWV3b2YgbDIgPSBJbnB1dHMucmFuZ2UoWzAuNSwgMl0sIHt2YWx1ZTogMS4yLCBzdGVwOiAwLjA1LCBsYWJlbDogXCJ8Z+KCgnxcIn0pXG52aWV3b2YgdnggPSBJbnB1dHMucmFuZ2UoWy0yLCAyXSwge3ZhbHVlOiAxLjIsIHN0ZXA6IDAuMDUsIGxhYmVsOiBcIlbigpMgKGNhcnRlc2lhbmEpXCJ9KVxudmlld29mIHZ5ID0gSW5wdXRzLnJhbmdlKFstMiwgMl0sIHt2YWx1ZTogMC44LCBzdGVwOiAwLjA1LCBsYWJlbDogXCJWX3kgKGNhcnRlc2lhbmEpXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYmFzZSA9IGJhc2VzLmJhc2VEZXNkZUFuZ3VsbyhsMSwgbDIsIGFuZylcblYgPSBbdngsIHZ5XVxucmVzID0gYmFzZXMuYW5hbGl6YXIoYmFzZS5nMSwgYmFzZS5nMiwgVilcbnR4dCA9IGJhc2VzLnJlc3VtZW4ocmVzKVxuaHRtbGA8ZGl2PiR7KCgpID0+IHsgY29uc3QgZCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7IGQuaW5uZXJIVE1MID0gYmFzZXMuZGlidWphclNWRyhiYXNlLmcxLCBiYXNlLmcyLCBWLCByZXMpOyByZXR1cm4gZDsgfSkoKX08L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDx0YWJsZSBjbGFzcz1cInRhYmxlIHRhYmxlLXNtXCIgc3R5bGU9XCJtYXgtd2lkdGg6MzRyZW1cIj5cbjx0cj48dGQ+TcOpdHJpY2EgZ+G1ouKxvDwvdGQ+PHRkPlske3R4dC5nWzBdLmpvaW4oXCIsIFwiKX07ICR7dHh0LmdbMV0uam9pbihcIiwgXCIpfV08L3RkPjwvdHI+XG48dHI+PHRkPkNvbnRyYXZhcmlhbnRlcyBW4oGxPC90ZD48dGQ+KCR7dHh0LmNvbnRyYS5qb2luKFwiLCBcIil9KTwvdGQ+PC90cj5cbjx0cj48dGQ+Q292YXJpYW50ZXMgVuG1ojwvdGQ+PHRkPigke3R4dC5jby5qb2luKFwiLCBcIil9KTwvdGQ+PC90cj5cbjx0cj48dGQ+UmVjaXByb2NpZGFkIGfigbHCt2fisbw8L3RkPjx0ZD5bJHt0eHQucmVjaXByb2NpZGFkWzBdLmpvaW4oXCIsIFwiKX07ICR7dHh0LnJlY2lwcm9jaWRhZFsxXS5qb2luKFwiLCBcIil9XTwvdGQ+PC90cj5cbjwvdGFibGU+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhbmcnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbDEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbDInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndngnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndnknKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../book/01-fundamentos";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/01-fundamentos/02-transformacion.html" class="pagination-link" aria-label="Transformación de coordenadas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../book/referencias.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
