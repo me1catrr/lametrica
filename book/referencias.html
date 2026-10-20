@@ -57,7 +57,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../book/apendices/notacion.html" rel="next">
-<link href="../book/01-fundamentos/03-bases.html" rel="prev">
+<link href="../book/02-superficies/09-paraboloide.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -67,7 +67,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1c32ec8e1f275abdb831a30245d2b940.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d7eac508953fcda7437e633b4fa2855c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -157,13 +157,60 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../book/01-fundamentos/02-transformacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../book/01-fundamentos/03-bases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/01-fundamentos/04-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/01-fundamentos/05-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte II — Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/02-superficies/06-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/02-superficies/07-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/02-superficies/08-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/02-superficies/09-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
   </div>
 </li>
       </ul>
@@ -176,13 +223,13 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Apéndices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
@@ -222,10 +269,17 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-CastroTesis" class="csl-entry" role="listitem">
-Castro Triguero, R. 2008. <span>“Vibraciones de Estructuras Laminares
-Con Forma de Paraboloide Hiperbólico de Planta Rectangular.”</span> PhD
-thesis, Universidad de Sevilla.
+<div id="ref-Canals" class="csl-entry" role="listitem">
+Canals, I. 1976. <em>Cascarones Parabólicos-Hiperbólicos</em>. Editorial
+Limusa, s.a.
+</div>
+<div id="ref-DoCarmo" class="csl-entry" role="listitem">
+Carmo, M. do. 1994. <em>Geometría Diferencial de Curvas y
+Superficies</em>. Alianza Universidad.
+</div>
+<div id="ref-Costaejercicios" class="csl-entry" role="listitem">
+Costa, A. F., M. Gamboa, and A. M. Porto. 1997. <em>Ejercicios de
+Geometría Diferencial de Curvas y Superficies</em>. Sanz y Torres.
 </div>
 <div id="ref-Flugge" class="csl-entry" role="listitem">
 Flügge, W. 1972. <em>Tensor Analysis and Continuum Mechanics</em>.
@@ -240,9 +294,36 @@ Dominion University.
 Lebedev, L. P., and M. J. Cloud. 2003. <em>Tensor Analysis</em>. World
 Scientific.
 </div>
+<div id="ref-Lipschultz" class="csl-entry" role="listitem">
+Lipschultz, M. 1969. <em>Differential Geometry</em>. Schaum’s Outlines.
+</div>
+<div id="ref-Margarit_ph" class="csl-entry" role="listitem">
+Margarit, J., and C. Buxadé. n.d. <em>Cálculo de Estructuras En
+Paraboloide Hiperbólico</em>. Editorial Blume.
+</div>
+<div id="ref-Narita" class="csl-entry" role="listitem">
+Narita, Y., and A. W. Leissa. 1984. <span>“Vibrations of Corner Point
+Supported Shallow Shells of Rectangular Planform.”</span> <em>Earthquake
+Engineering and Structural Dynamics</em> 12: 651–61.
+</div>
+<div id="ref-Novozhilov" class="csl-entry" role="listitem">
+Novozhilov, V. V. 1959. <em>The Theory of Thin Shells</em>. P. Noordhoff
+ltd.
+</div>
+<div id="ref-Romano" class="csl-entry" role="listitem">
+Romano, A., R. Lancellota, and A. Marasco. 2006. <em>Continuum Mechanics
+Using Mathematica</em>. Birkhäuser, Boston.
+</div>
 <div id="ref-Spiegel" class="csl-entry" role="listitem">
 Spiegel, M. R. 1959. <em>Vector Analysis and an Introduction to Tensor
 Analysis</em>. Schaum’s Outlines.
+</div>
+<div id="ref-Struik" class="csl-entry" role="listitem">
+Struik, D. J. 1955. <em>Geometría Diferencial Clásica</em>. Aguilar.
+</div>
+<div id="ref-Weatherburn" class="csl-entry" role="listitem">
+Weatherburn, C. E. 1927. <em>Differential Geometry</em>. Cambridge
+Press.
 </div>
 </div>
 
@@ -651,8 +732,8 @@ Analysis</em>. Schaum’s Outlines.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../book/01-fundamentos/03-bases.html" class="pagination-link" aria-label="Bases covariantes y contravariantes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span>
+      <a href="../book/02-superficies/09-paraboloide.html" class="pagination-link" aria-label="El paraboloide hiperbólico">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

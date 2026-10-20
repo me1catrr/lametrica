@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../book/referencias.html" rel="next">
+<link href="../../book/01-fundamentos/04-metrica.html" rel="next">
 <link href="../../book/01-fundamentos/02-transformacion.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1c32ec8e1f275abdb831a30245d2b940.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d7eac508953fcda7437e633b4fa2855c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -204,13 +204,60 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/01-fundamentos/02-transformacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/01-fundamentos/03-bases.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/04-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/05-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte II — Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/06-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/07-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/08-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/09-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
   </div>
 </li>
       </ul>
@@ -223,13 +270,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Apéndices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
@@ -254,8 +301,7 @@ window.Quarto = {
   <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados"><span class="header-section-number">3.4</span> Resultados</a></li>
   <li><a href="#sec-lab-bases" id="toc-sec-lab-bases" class="nav-link" data-scroll-target="#sec-lab-bases"><span class="header-section-number">3.5</span> Laboratorio interactivo</a></li>
   <li><a href="#sec-julia-bases" id="toc-sec-julia-bases" class="nav-link" data-scroll-target="#sec-julia-bases"><span class="header-section-number">3.6</span> Ejemplo computacional en Julia</a></li>
-  <li><a href="#sec-traza-3" id="toc-sec-traza-3" class="nav-link" data-scroll-target="#sec-traza-3"><span class="header-section-number">3.7</span> Trazabilidad con la tesis</a></li>
-  <li><a href="#sec-ejercicios-3" id="toc-sec-ejercicios-3" class="nav-link" data-scroll-target="#sec-ejercicios-3"><span class="header-section-number">3.8</span> Ejercicios</a></li>
+  <li><a href="#sec-ejercicios-3" id="toc-sec-ejercicios-3" class="nav-link" data-scroll-target="#sec-ejercicios-3"><span class="header-section-number">3.7</span> Ejercicios</a></li>
   </ul>
 </nav>
     </div>
@@ -305,18 +351,18 @@ window.Quarto = {
 </section>
 <section id="convenios" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="convenios"><span class="header-section-number">3.2</span> Convenios</h2>
-<p>Se usa el convenio de suma de Einstein: un índice repetido, una vez arriba y otra abajo, indica suma. En este capítulo los índices recorren <span class="math inline">\(1,\dots,n\)</span> (con <span class="math inline">\(n=2\)</span> en el laboratorio). En el tratamiento de láminas de la tesis, los índices griegos toman los valores <span class="math inline">\(1,2\)</span> y los latinos <span class="math inline">\(1,2,3\)</span> (ver <a href="../apendices/notacion.html#sec-notacion" class="quarto-xref"><span>Sección A.1</span></a>).</p>
-<div class="callout callout-style-simple callout-warning callout-titled" title="Notación de la tesis">
+<p>Se usa el convenio de suma de Einstein: un índice repetido, una vez arriba y otra abajo, indica suma. En este capítulo los índices recorren <span class="math inline">\(1,\dots,n\)</span> (con <span class="math inline">\(n=2\)</span> en el laboratorio). En el tratamiento de láminas, los índices griegos toman los valores <span class="math inline">\(1,2\)</span> y los latinos <span class="math inline">\(1,2,3\)</span> (ver <a href="../apendices/notacion.html#sec-notacion" class="quarto-xref"><span>Sección A.1</span></a>).</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Notación">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Advertencia</span>Notación de la tesis
+<span class="screen-reader-only">Advertencia</span>Notación
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La tesis denota por <span class="math inline">\(\mathbf{g}_i\)</span> las bases de la lámina y por <span class="math inline">\(\mathbf{a}_i\)</span> las de la superficie de referencia (<span class="math inline">\(\theta^3=0\)</span>), y llama «vectores básicos normales a las superficies <span class="math inline">\(\theta^i\)</span>» a los <span class="math inline">\(\mathbf{a}^i\)</span> (Nomenclatura, <code>Nomenclatura.tex</code>). Aquí se usa <span class="math inline">\(\mathbf{g}_i\)</span> para una base genérica y, al llegar a las superficies, se hará la correspondencia explícita.</p>
+<p>En el libro, <span class="math inline">\(\mathbf{g}_i\)</span> denota las bases de la lámina y <span class="math inline">\(\mathbf{a}_i\)</span> las de la superficie de referencia (<span class="math inline">\(\theta^3=0\)</span>); los <span class="math inline">\(\mathbf{a}^i\)</span> son los vectores básicos normales a las superficies <span class="math inline">\(\theta^i\)</span>. Aquí se usa <span class="math inline">\(\mathbf{g}_i\)</span> para una base genérica y, al llegar a las superficies, se hará la correspondencia explícita.</p>
 </div>
 </div>
 </section>
@@ -562,37 +608,8 @@ Laboratorio 3.1 · Bases covariante y contravariante en el plano
 </div>
 <p>Las mismas identidades se comprueban de forma automática en <code>julia/test/runtests.jl</code> y, para el código JavaScript, en <code>web/tests/bases.test.mjs</code>.</p>
 </section>
-<section id="sec-traza-3" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="sec-traza-3"><span class="header-section-number">3.7</span> Trazabilidad con la tesis</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Contenido</th>
-<th>Fuente</th>
-<th>Estado</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\mathbf{g}_\alpha=\mathbf{r}_{,\alpha}\)</span>, <span class="math inline">\(\mathbf{g}_3=\hat{\mathbf{a}}_3\)</span> y <span class="math inline">\(\mathbf{g}_\alpha=\mathbf{a}_\alpha+\theta^3\hat{\mathbf{a}}_{3,\alpha}\)</span></td>
-<td>Anexo A, «Vectores básicos y tensor métrico de una superficie»</td>
-<td>Leído en <code>.tex</code>; numeración <strong>sin verificar</strong></td>
-</tr>
-<tr class="even">
-<td>Reciprocidad, métrica contravariante, <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>3.1</span></a> y <a href="#prp-componentes" class="quarto-xref">Proposición&nbsp;<span>3.2</span></a></td>
-<td>Desarrollo original de este libro (resultado estándar)</td>
-<td>No se atribuye a la tesis</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="sec-ejercicios-3" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="sec-ejercicios-3"><span class="header-section-number">3.8</span> Ejercicios</h2>
+<section id="sec-ejercicios-3" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-ejercicios-3"><span class="header-section-number">3.7</span> Ejercicios</h2>
 <ol type="1">
 <li>Demuestra que <span class="math inline">\(\det(g_{ij})=(\det B)^2\)</span> si <span class="math inline">\(B\)</span> es la matriz de columnas <span class="math inline">\(\mathbf{g}_i\)</span>.</li>
 <li>En el laboratorio, ¿para qué ángulo y longitudes coinciden <span class="math inline">\(\mathbf{g}^i\)</span> y <span class="math inline">\(\mathbf{g}_i\)</span>? Justifícalo con <a href="#eq-subir-bajar-base" class="quarto-xref">Ecuación&nbsp;<span>3.3</span></a>.</li>
@@ -1017,13 +1034,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../book/01-fundamentos/02-transformacion.html" class="pagination-link" aria-label="Transformación de coordenadas">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></span>
+      <a href="../../book/01-fundamentos/02-transformacion.html" class="pagination-link" aria-label="Transformación de coordenadas y tensores">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../book/referencias.html" class="pagination-link" aria-label="Referencias">
-        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../book/01-fundamentos/04-metrica.html" class="pagination-link" aria-label="Tensor métrico y componentes físicas">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

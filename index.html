@@ -28,26 +28,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -67,7 +48,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1c32ec8e1f275abdb831a30245d2b940.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d7eac508953fcda7437e633b4fa2855c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -157,13 +138,60 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./book/01-fundamentos/02-transformacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./book/01-fundamentos/03-bases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./book/01-fundamentos/04-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./book/01-fundamentos/05-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte II — Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./book/02-superficies/06-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./book/02-superficies/07-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./book/02-superficies/08-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./book/02-superficies/09-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
   </div>
 </li>
       </ul>
@@ -176,13 +204,13 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Apéndices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
@@ -246,7 +274,7 @@ div.csl-indent {
 <section id="presentación" class="level1 unnumbered">
 <h1 class="unnumbered">Presentación</h1>
 <p><strong>La métrica</strong> es un libro interactivo sobre tres ideas que se necesitan unas a otras: la <em>geometría diferencial de superficies</em>, el <em>cálculo tensorial</em> y la <em>mecánica de láminas</em>. Recorre el camino que va de un cambio de coordenadas sobre una superficie hasta el cálculo de las frecuencias propias de una lámina con forma de paraboloide hiperbólico mediante elementos finitos.</p>
-<p>El hilo conductor es la tesis doctoral <em>Vibraciones de Estructuras Laminares con forma de Paraboloide Hiperbólico de Planta Rectangular</em> <span class="citation" data-cites="CastroTesis">(<a href="book/referencias.html#ref-CastroTesis" role="doc-biblioref">Castro Triguero 2008</a>)</span>, pero el libro no la reproduce: reordena y explica sus fundamentos con una secuencia didáctica propia, demostraciones, simulaciones y código ejecutable.</p>
+<p>El libro sigue una secuencia didáctica propia, con demostraciones, simulaciones y código ejecutable.</p>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Estado del libro: prototipo (Fase 2)">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -257,7 +285,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solo están desarrollados el capítulo 1 y el laboratorio de bases del capítulo 3. El resto de la estructura es provisional. Las ecuaciones que se atribuyan a la tesis llevan su fuente y un estado de verificación.</p>
+<p>Están desarrolladas la Parte I (capítulos 1 a 5) y la Parte II (capítulos 6 a 9), con un laboratorio interactivo en el capítulo 3. Las Partes III a V (láminas, elementos finitos y vibraciones) están por escribir. El resto de la estructura es provisional.</p>
 </div>
 </div>
 <section id="cómo-está-hecho" class="level2">
@@ -275,6 +303,19 @@ div.csl-indent {
 </div>
 <div id="thm-codigo" class="theorem">
 <p><span class="theorem-title"><strong>Teorema 1 (Teorema o propiedad (verde))</strong></span> Los resultados demostrables aparecen en bloques verdes.</p>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled" title="Idea clave (verde azulado)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Idea clave (verde azulado)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La idea central de cada sección se destaca en este color.</p>
+</div>
 </div>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Advertencia (ámbar)">
 <div class="callout-header d-flex align-content-center">
@@ -303,7 +344,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="demostracion callout callout-style-simple callout-note callout-titled" title="Demostración (gris, desplegable)">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -312,7 +353,7 @@ div.csl-indent {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Las demostraciones y observaciones son neutras y están plegadas por defecto.</p>
 </div>
@@ -320,11 +361,6 @@ div.csl-indent {
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-CastroTesis" class="csl-entry" role="listitem">
-Castro Triguero, R. 2008. <span>«Vibraciones de Estructuras Laminares con forma de Paraboloide Hiperbólico de Planta Rectangular»</span>. Tesis doctoral, Universidad de Sevilla.
-</div>
-</div>
 </section>
 </section>
 

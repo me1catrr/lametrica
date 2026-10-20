@@ -8,7 +8,7 @@
 
 <meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
 
-<title>2&nbsp; Transformación de coordenadas – La métrica</title>
+<title>2&nbsp; Transformación de coordenadas y tensores – La métrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,7 +27,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -48,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1c32ec8e1f275abdb831a30245d2b940.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d7eac508953fcda7437e633b4fa2855c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,6 +131,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -89,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/01-motivacion.html">Parte I — Fundamentos tensoriales</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/02-transformacion.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/01-motivacion.html">Parte I — Fundamentos tensoriales</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/02-transformacion.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -138,13 +221,60 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/01-fundamentos/02-transformacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/01-fundamentos/03-bases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/04-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/05-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte II — Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/06-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/07-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/08-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/09-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
   </div>
 </li>
       </ul>
@@ -157,13 +287,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Apéndices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
@@ -177,15 +307,32 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#sec-motivacion-2" id="toc-sec-motivacion-2" class="nav-link active" data-scroll-target="#sec-motivacion-2"><span class="header-section-number">2.1</span> Motivación</a></li>
+  <li><a href="#sec-admisibles" id="toc-sec-admisibles" class="nav-link" data-scroll-target="#sec-admisibles"><span class="header-section-number">2.2</span> Cambios de coordenadas admisibles</a></li>
+  <li><a href="#sec-factor-area" id="toc-sec-factor-area" class="nav-link" data-scroll-target="#sec-factor-area"><span class="header-section-number">2.3</span> El jacobiano como factor de área</a></li>
+  <li><a href="#sec-transformacion-comps" id="toc-sec-transformacion-comps" class="nav-link" data-scroll-target="#sec-transformacion-comps"><span class="header-section-number">2.4</span> Transformación de componentes</a>
+  <ul class="collapse">
+  <li><a href="#tensores-de-orden-dos" id="toc-tensores-de-orden-dos" class="nav-link" data-scroll-target="#tensores-de-orden-dos"><span class="header-section-number">2.4.1</span> Tensores de orden dos</a></li>
+  </ul></li>
+  <li><a href="#sec-invariantes" id="toc-sec-invariantes" class="nav-link" data-scroll-target="#sec-invariantes"><span class="header-section-number">2.5</span> Invariantes</a></li>
+  <li><a href="#sec-julia-transf" id="toc-sec-julia-transf" class="nav-link" data-scroll-target="#sec-julia-transf"><span class="header-section-number">2.6</span> Ejemplo computacional en Julia</a></li>
+  <li><a href="#sec-ejercicios-2" id="toc-sec-ejercicios-2" class="nav-link" data-scroll-target="#sec-ejercicios-2"><span class="header-section-number">2.7</span> Ejercicios</a></li>
+  <li><a href="#sec-refs-2" id="toc-sec-refs-2" class="nav-link" data-scroll-target="#sec-refs-2"><span class="header-section-number">2.8</span> Referencias comentadas</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/01-motivacion.html">Parte I — Fundamentos tensoriales</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/02-transformacion.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/01-motivacion.html">Parte I — Fundamentos tensoriales</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/02-transformacion.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></h1>
+<p class="subtitle lead">Cómo cambian los números cuando cambia el sistema de referencia</p>
 </div>
 
 
@@ -202,22 +349,351 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-simple callout-warning callout-titled" title="Capítulo en preparación">
+<div class="callout callout-style-simple callout-note callout-titled" title="Objetivos de aprendizaje">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Advertencia</span>Capítulo en preparación
+<span class="screen-reader-only">Nota</span>Objetivos de aprendizaje
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Este capítulo desarrollará las leyes de transformación de componentes y tensores. De momento, la ley que necesita el capítulo siguiente aparece en <a href="03-bases.html#prp-transformacion-bases" class="quarto-xref">Proposición&nbsp;<span>3.3</span></a>.</p>
+<p>Al terminar el capítulo sabrás:</p>
+<ol type="1">
+<li>definir un cambio de coordenadas admisible y calcular su matriz jacobiana y la de su inversa;</li>
+<li>interpretar el determinante jacobiano como razón entre elementos de área o de volumen;</li>
+<li>enunciar las leyes de transformación de componentes contravariantes y covariantes, y definir un <strong>tensor</strong> por la forma en que se transforman sus componentes;</li>
+<li>reconocer los <strong>invariantes</strong> (los números que no dependen del sistema) y usarlos como criterio de corrección;</li>
+<li>comprobar todo ello en Julia con el cambio cartesianas → polares.</li>
+</ol>
 </div>
 </div>
-<p>Contenido previsto: coordenadas admisibles, matriz jacobiana y su inversa, transformación de componentes de vectores y de tensores de orden dos, e invariantes.</p>
+<section id="sec-motivacion-2" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-motivacion-2"><span class="header-section-number">2.1</span> Motivación</h2>
+<p>En el <a href="01-motivacion.html#sec-motivacion" class="quarto-xref"><span>Sección 1.1</span></a> se insistió en que un vector <span class="math inline">\(\mathbf{V}\)</span> es un objeto geométrico y que sus componentes dependen de la base. La <a href="#fig-vector-dos-bases" class="quarto-xref">Figura&nbsp;<span>2.1</span></a> lo muestra con un ejemplo: en el punto <span class="math inline">\(P\)</span> del plano, el mismo vector se descompone sobre la base cartesiana <span class="math inline">\(\{\mathbf{e}_x,\mathbf{e}_y\}\)</span> o sobre la base polar <span class="math inline">\(\{\mathbf{g}_1,\mathbf{g}_2\}\)</span>, con listas de números diferentes.</p>
+<div id="fig-vector-dos-bases" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Base cartesiana y base polar en un punto del plano con un vector">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vector-dos-bases-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/vector-dos-bases.svg" class="img-fluid figure-img" style="width:85.0%" alt="Base cartesiana y base polar en un punto del plano con un vector">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vector-dos-bases-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.1: Un mismo vector <span class="math inline">\(\mathbf{V}\)</span> (ámbar) en el punto <span class="math inline">\(P\)</span>, con la base cartesiana (gris discontinuo) y la base polar natural (azul y verde). <span class="math inline">\(\mathbf{g}_2\)</span> se ha dibujado a mitad de longitud, porque <span class="math inline">\(\|\mathbf{g}_2\|=r\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>La pregunta de este capítulo es: <strong>¿qué regla relaciona las dos listas de números?</strong> La respuesta es la ley de transformación, y es lo que define, en sentido estricto, a un tensor.</p>
+<div class="callout callout-style-simple callout-important callout-titled" title="Idea clave">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un tensor no es «una matriz de números». Es un objeto geométrico cuyas componentes, en cualquier sistema de coordenadas, <strong>se transforman de una manera precisa</strong>. Esa regla es la que garantiza que las ecuaciones de la física valgan en cualquier sistema.</p>
+</div>
+</div>
+</section>
+<section id="sec-admisibles" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-admisibles"><span class="header-section-number">2.2</span> Cambios de coordenadas admisibles</h2>
+<div id="def-cambio-coordenadas" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.1 (Cambio de coordenadas admisible)</strong></span> Sean <span class="math inline">\(\theta^1,\dots,\theta^n\)</span> unas coordenadas en una región <span class="math inline">\(\Omega\)</span>. Un <strong>cambio de coordenadas</strong> es un conjunto de funciones <span id="eq-cambio"><span class="math display">\[
+\theta'^{\,i}=\theta'^{\,i}(\theta^1,\dots,\theta^n),\qquad i=1,\dots,n,
+\tag{2.1}\]</span></span> de clase <span class="math inline">\(C^1\)</span> con inversa <span class="math inline">\(\theta^i=\theta^i(\theta'^1,\dots,\theta'^n)\)</span> también de clase <span class="math inline">\(C^1\)</span>. Es <strong>admisible</strong> en <span class="math inline">\(\Omega\)</span> si el determinante de su jacobiana no se anula en ningún punto de <span class="math inline">\(\Omega\)</span>.</p>
+</div>
+<div id="def-jacobiana" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.2 (Matrices jacobianas)</strong></span> La <strong>jacobiana</strong> del cambio <a href="#eq-cambio" class="quarto-xref">Ecuación&nbsp;<span>2.1</span></a> y la de su inversa son <span id="eq-jacobianas"><span class="math display">\[
+J^i{}_j=\frac{\partial\theta'^{\,i}}{\partial\theta^{\,j}},
+\qquad
+\tilde J^i{}_j=\frac{\partial\theta^{\,i}}{\partial\theta'^{\,j}} .
+\tag{2.2}\]</span></span> El primer índice numera la fila y el segundo la columna.</p>
+</div>
+<div id="prp-jacobianas-inversas" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 2.1 (Las jacobianas son inversas)</strong></span> Si el cambio es admisible, <span class="math inline">\(\tilde J=J^{-1}\)</span>, es decir <span id="eq-jacobianas-inversas"><span class="math display">\[
+\frac{\partial\theta'^{\,i}}{\partial\theta^{\,k}}\,\frac{\partial\theta^{\,k}}{\partial\theta'^{\,j}}=\delta^i_j .
+\tag{2.3}\]</span></span></p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-jacobianas-inversas" class="quarto-xref">Proposición&nbsp;<span>2.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Derivando la identidad <span class="math inline">\(\theta'^{\,i}(\theta(\theta'))=\theta'^{\,i}\)</span> respecto de <span class="math inline">\(\theta'^{\,j}\)</span> con la regla de la cadena se obtiene <span class="math inline">\(\dfrac{\partial\theta'^{\,i}}{\partial\theta^{\,k}}\dfrac{\partial\theta^{\,k}}{\partial\theta'^{\,j}}=\dfrac{\partial\theta'^{\,i}}{\partial\theta'^{\,j}}=\delta^i_j\)</span>. En forma matricial, <span class="math inline">\(J\tilde J=I\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Dónde falla un cambio de coordenadas">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Dónde falla un cambio de coordenadas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Las coordenadas polares son admisibles en <span class="math inline">\(r&gt;0\)</span>, pero no en el origen: allí <span class="math inline">\(\det J\)</span> se anula (o no está definido), la base <span class="math inline">\(\{\mathbf{g}_1,\mathbf{g}_2\}\)</span> degenera (<span class="math inline">\(\mathbf{g}_2=\mathbf{0}\)</span>) y <span class="math inline">\(\theta\)</span> carece de valor. Es el <strong>punto singular</strong> que muestra la <a href="#fig-galeria" class="quarto-xref">Figura&nbsp;<span>2.2</span></a>. Lo mismo ocurre en los polos de las coordenadas esféricas. Los resultados de este libro valen <strong>fuera</strong> de esos puntos.</p>
+</div>
+</div>
+<div id="fig-galeria" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mallas de coordenadas lineales oblicuas, polares y elípticas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-galeria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/galeria-coordenadas.svg" class="img-fluid figure-img" style="width:100.0%" alt="Mallas de coordenadas lineales oblicuas, polares y elípticas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-galeria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.2: Tres sistemas de coordenadas del plano. Las curvas azules son <span class="math inline">\(\theta^1=\text{cte}\)</span> y las verdes <span class="math inline">\(\theta^2=\text{cte}\)</span>. En las polares, el origen (punto ámbar) es singular.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-factor-area" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-factor-area"><span class="header-section-number">2.3</span> El jacobiano como factor de área</h2>
+<div id="prp-jacobiano-area" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 2.2 (Elemento de área y de volumen)</strong></span> Sea <span class="math inline">\(j=\det(\partial\theta'/\partial\theta)\)</span> el determinante jacobiano. Los elementos de volumen (<span class="math inline">\(n\)</span>-dimensional) en ambos sistemas se relacionan por <span id="eq-jacobiano-volumen"><span class="math display">\[
+d\theta'^1\cdots d\theta'^n=|j|\,d\theta^1\cdots d\theta^n,\qquad
+|j|=\left|\det\frac{\partial\theta'}{\partial\theta}\right| .
+\tag{2.4}\]</span></span> En particular, al pasar de polares <span class="math inline">\((\theta^1,\theta^2)=(r,\theta)\)</span> a cartesianas, <span class="math inline">\(dx\,dy=r\,dr\,d\theta\)</span>.</p>
+</div>
+<p>La <a href="#fig-jacobiano" class="quarto-xref">Figura&nbsp;<span>2.3</span></a> muestra la idea: la celda <span class="math inline">\(dr\,d\theta\)</span> del plano paramétrico se convierte en un trozo de corona circular cuyos lados son <span class="math inline">\(\mathbf{g}_1\,dr\)</span> y <span class="math inline">\(\mathbf{g}_2\,d\theta\)</span>. Su área es el área del paralelogramo que forman, <span class="math inline">\(\|\mathbf{g}_1\times\mathbf{g}_2\|\,dr\,d\theta=r\,dr\,d\theta\)</span>.</p>
+<div id="fig-jacobiano" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Celda del plano paramétrico y su imagen en el plano físico como sector de corona">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jacobiano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/jacobiano-area.svg" class="img-fluid figure-img" style="width:100.0%" alt="Celda del plano paramétrico y su imagen en el plano físico como sector de corona">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jacobiano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.3: El plano paramétrico <span class="math inline">\((r,\theta)\)</span> (izquierda) y el plano físico <span class="math inline">\((x,y)\)</span> (derecha). El rectángulo ámbar <span class="math inline">\(dr\,d\theta\)</span> se transforma en un elemento de área <span class="math inline">\(r\,dr\,d\theta\)</span>, de lados <span class="math inline">\(\mathbf{g}_1\,dr\)</span> y <span class="math inline">\(\mathbf{g}_2\,d\theta\)</span>.
+</figcaption>
+</figure>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-jacobiano-area" class="quarto-xref">Proposición&nbsp;<span>2.2</span></a> (caso polar)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es el teorema del cambio de variable en integrales múltiples, que damos por conocido. Para polares, <span class="math inline">\(\partial(x,y)/\partial(r,\theta)=\begin{pmatrix}\cos\theta&amp;-r\sin\theta\\ \sin\theta&amp;r\cos\theta\end{pmatrix}\)</span>, cuyo determinante es <span class="math inline">\(r(\cos^2\theta+\sin^2\theta)=r\)</span>. Como <span class="math inline">\(\det J=1/\det\tilde J\)</span> por <a href="#prp-jacobianas-inversas" class="quarto-xref">Proposición&nbsp;<span>2.1</span></a>, la jacobiana inversa tiene determinante <span class="math inline">\(1/r\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-transformacion-comps" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-transformacion-comps"><span class="header-section-number">2.4</span> Transformación de componentes</h2>
+<p>Fijado el cambio <a href="#eq-cambio" class="quarto-xref">Ecuación&nbsp;<span>2.1</span></a>, las componentes de un vector <span class="math inline">\(\mathbf{V}\)</span> en ambas bases se relacionan así.</p>
+<div id="prp-transf-vectores" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 2.3 (Componentes contravariantes y covariantes)</strong></span> <span id="eq-transf-vectores"><span class="math display">\[
+V'^{\,i}=\frac{\partial\theta'^{\,i}}{\partial\theta^{\,j}}\,V^{\,j}=J^i{}_j\,V^j,
+\qquad
+V'_{\,i}=\frac{\partial\theta^{\,j}}{\partial\theta'^{\,i}}\,V_{\,j}=\tilde J^j{}_i\,V_j .
+\tag{2.5}\]</span></span></p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-transf-vectores" class="quarto-xref">Proposición&nbsp;<span>2.3</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La primera relación es la última de <a href="03-bases.html#eq-transformacion" class="quarto-xref">Ecuación&nbsp;<span>3.6</span></a> (se demuestra en <a href="03-bases.html#prp-transformacion-bases" class="quarto-xref">Proposición&nbsp;<span>3.3</span></a> a partir de las bases). Para la segunda, <span class="math inline">\(V'_i=\mathbf{V}\cdot\mathbf{g}'_i=\mathbf{V}\cdot\tilde J^j{}_i\,\mathbf{g}_j=\tilde J^j{}_i\,V_j\)</span>, porque <span class="math inline">\(\mathbf{g}'_i=\tilde J^j{}_i\,\mathbf{g}_j\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<p>Las dos leyes difieren en <strong>qué matriz</strong> actúa: <span class="math inline">\(J\)</span> para los índices altos, <span class="math inline">\(\tilde J=J^{-1}\)</span> (trasladada) para los bajos. Un truco mnemotécnico: un índice alto se transforma como la diferencial <span class="math inline">\(d\theta^i\)</span> y uno bajo como la derivada parcial <span class="math inline">\(\partial/\partial\theta^i\)</span>.</p>
+<section id="tensores-de-orden-dos" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="tensores-de-orden-dos"><span class="header-section-number">2.4.1</span> Tensores de orden dos</h3>
+<div id="def-tensor-2" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.3 (Tensor de orden dos)</strong></span> Un conjunto de <span class="math inline">\(n^2\)</span> números que, en cada sistema de coordenadas, forman la tabla <span class="math inline">\(T^{ij}\)</span>, <span class="math inline">\(T^i{}_j\)</span> o <span class="math inline">\(T_{ij}\)</span> es un <strong>tensor de orden dos</strong> (contravariante, mixto o covariante) si al cambiar de coordenadas se transforma según <span id="eq-transf-tensor2"><span class="math display">\[
+\begin{aligned}
+T'^{\,ij}&amp;=J^i{}_k\,J^j{}_l\,T^{kl},\\
+T'^{\,i}{}_{j}&amp;=J^i{}_k\,\tilde J^l{}_j\,T^{k}{}_{l},\\
+T'_{\,ij}&amp;=\tilde J^k{}_i\,\tilde J^l{}_j\,T_{kl}.
+\end{aligned}
+\tag{2.6}\]</span></span> Un vector es un tensor de orden uno, y un escalar es un tensor de orden cero (no cambia).</p>
+</div>
+<p>La definición se extiende a órdenes mayores: <strong>un factor <span class="math inline">\(J\)</span> por cada índice alto y un factor <span class="math inline">\(\tilde J\)</span> por cada índice bajo</strong>.</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Un array no es un tensor">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Un array no es un tensor
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Que <span class="math inline">\(T^{ij}\)</span> sea una tabla <span class="math inline">\(2\times2\)</span> no basta: hay que saber cómo se transforma. El ejemplo más importante lo veremos en el capítulo 5: los símbolos de Christoffel <span class="math inline">\(\Gamma^k_{ij}\)</span> se escriben como un array de tres índices, pero <strong>no son un tensor</strong>, porque son nulos en cartesianas y no nulos en polares, y un tensor nulo en un sistema es nulo en todos. La prueba de que un objeto es tensorial es siempre la ley <a href="#eq-transf-tensor2" class="quarto-xref">Ecuación&nbsp;<span>2.6</span></a>.</p>
+</div>
+</div>
+<div id="prp-metrica-tensor" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 2.4 (El tensor métrico es un tensor)</strong></span> Las componentes <span class="math inline">\(g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j\)</span> se transforman como un tensor covariante de orden dos, y los <span class="math inline">\(g^{ij}\)</span> como uno contravariante.</p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-metrica-tensor" class="quarto-xref">Proposición&nbsp;<span>2.4</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como <span class="math inline">\(\mathbf{g}'_i=\tilde J^k{}_i\,\mathbf{g}_k\)</span>, <span class="math inline">\(g'_{ij}=\mathbf{g}'_i\cdot\mathbf{g}'_j=\tilde J^k{}_i\tilde J^l{}_j\,\mathbf{g}_k\cdot\mathbf{g}_l=\tilde J^k{}_i\tilde J^l{}_j\,g_{kl}\)</span>, que es la tercera fila de <a href="#eq-transf-tensor2" class="quarto-xref">Ecuación&nbsp;<span>2.6</span></a>. La versión contravariante es la matriz inversa: <span class="math inline">\(g'^{ij}=J^i{}_kJ^j{}_l\,g^{kl}\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-invariantes" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-invariantes"><span class="header-section-number">2.5</span> Invariantes</h2>
+<p>Los tensores son útiles porque permiten construir cantidades que <strong>no</strong> dependen de las coordenadas.</p>
+<div id="prp-invariantes" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 2.5 (Contracciones invariantes)</strong></span> Si <span class="math inline">\(V^i,W_i\)</span> son las componentes de dos vectores y <span class="math inline">\(T^i{}_j\)</span> las de un tensor mixto, son invariantes (idénticos en cualquier sistema): <span id="eq-invariantes"><span class="math display">\[
+V^iW_i,\qquad T^i{}_i,\qquad g_{ij}V^iV^j=\|\mathbf{V}\|^2 .
+\tag{2.7}\]</span></span></p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-invariantes" class="quarto-xref">Proposición&nbsp;<span>2.5</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Con <a href="#eq-transf-vectores" class="quarto-xref">Ecuación&nbsp;<span>2.5</span></a> y <a href="#eq-jacobianas-inversas" class="quarto-xref">Ecuación&nbsp;<span>2.3</span></a>, <span class="math inline">\(V'^iW'_i=J^i{}_j\,\tilde J^k{}_i\,V^jW_k=\delta^k_j\,V^jW_k=V^jW_j\)</span>. Del mismo modo, <span class="math inline">\(T'^i{}_i=J^i{}_k\tilde J^l{}_i\,T^k{}_l=\delta^l_k\,T^k{}_l=T^k{}_k\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled" title="Idea clave">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Criterio de corrección.</strong> En una fórmula con índices, cada índice libre debe aparecer en los dos miembros en la misma posición (alto o bajo) y cada índice repetido debe aparecer una vez arriba y otra abajo. Si es así, la ecuación se conserva al cambiar de coordenadas. Si no, hay un error (o un objeto que no es tensor).</p>
+</div>
+</div>
+</section>
+<section id="sec-julia-transf" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-julia-transf"><span class="header-section-number">2.6</span> Ejemplo computacional en Julia</h2>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo computacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado calculado">calculado</span> Cartesianas → polares en el punto <span class="math inline">\((r,\theta)=(2,\pi/6)\)</span>. La jacobiana <span class="math inline">\(\partial(r,\theta)/\partial(x,y)\)</span> se obtiene por diferencias finitas y se compara con la inversa de la base polar.</p>
+</div>
+</div>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Geometria</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a_polar</span>(x) <span class="op">=</span> [<span class="fu">hypot</span>(x[<span class="fl">1</span>], x[<span class="fl">2</span>]), <span class="fu">atan</span>(x[<span class="fl">2</span>], x[<span class="fl">1</span>])]   <span class="co"># (x,y) ↦ (r,θ)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>r, θ <span class="op">=</span> <span class="fl">2.0</span>, <span class="cn">π</span> <span class="op">/</span> <span class="fl">6</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> [r <span class="op">*</span> <span class="fu">cos</span>(θ), r <span class="op">*</span> <span class="fu">sin</span>(θ)]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> <span class="fu">jacobiana_numerica</span>(a_polar, x0)        <span class="co"># ∂(r,θ)/∂(x,y)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">base_polar</span>(r, θ)                       <span class="co"># ∂(x,y)/∂(r,θ)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>(J_por_B <span class="op">=</span> <span class="fu">round</span>.(J <span class="op">*</span> B; digits <span class="op">=</span> <span class="fl">8</span>), det_J <span class="op">=</span> <span class="fu">det</span>(J), uno_entre_r <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> r)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(J_por_B = [1.0 -0.0; 0.0 1.0], det_J = 0.500000000022319, uno_entre_r = 0.5)</code></pre>
+</div>
+</div>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> [<span class="fl">0.4</span>, <span class="op">-</span><span class="fl">1.3</span>]                            <span class="co"># componentes cartesianas</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> [<span class="op">-</span><span class="fl">0.9</span>, <span class="fl">0.5</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Vup <span class="op">=</span> <span class="fu">transformar_contra</span>(J, V)             <span class="co"># Vʳ, Vᶿ</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Wdn <span class="op">=</span> <span class="fu">transformar_cov</span>(J, W)                <span class="co"># Wᵣ, Wᶿ</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>(contravariantes_V <span class="op">=</span> Vup,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a> comprobacion <span class="op">=</span> Vup <span class="op">≈</span> <span class="fu">comps_contravariantes</span>(B, V),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a> invariante_polar <span class="op">=</span> <span class="fu">dot</span>(Vup, Wdn),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a> invariante_cartesiano <span class="op">=</span> <span class="fu">dot</span>(V, W))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(contravariantes_V = [-0.3035898384129432, -0.6629165124838465], comprobacion = true, invariante_polar = -1.0099999999999998, invariante_cartesiano = -1.01)</code></pre>
+</div>
+</div>
+<div id="6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># La métrica cartesiana δ se transforma en el tensor métrico de las polares (@prp-metrica-tensor)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">transformar_tensor_cov</span>(J, <span class="fu">Matrix</span>(<span class="fl">1.0</span>I, <span class="fl">2</span>, <span class="fl">2</span>)), <span class="fu">metrica</span>(B))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>([0.999999999955362 -1.1102230246251565e-16; -1.1102230246251565e-16 3.9999999998214473], [1.0 0.0; 0.0 4.0])</code></pre>
+</div>
+</div>
+<p>Estas identidades se verifican de forma automática en <code>julia/test/runtests.jl</code> (conjunto «Transformación de coordenadas»).</p>
+</section>
+<section id="sec-ejercicios-2" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-ejercicios-2"><span class="header-section-number">2.7</span> Ejercicios</h2>
+<ol type="1">
+<li>Calcula <span class="math inline">\(J\)</span> y <span class="math inline">\(\det J\)</span> para el paso de cartesianas <span class="math inline">\((x,y,z)\)</span> a cilíndricas <span class="math inline">\((\rho,\varphi,z)\)</span> y comprueba que <span class="math inline">\(dV=\rho\,d\rho\,d\varphi\,dz\)</span>.</li>
+<li>Demuestra que <span class="math inline">\(\delta^i_j\)</span> es un tensor mixto invariante: <span class="math inline">\(\delta'^i{}_j=\delta^i{}_j\)</span>.</li>
+<li>Un tensor covariante es <strong>simétrico</strong> si <span class="math inline">\(T_{ij}=T_{ji}\)</span>. Prueba que esta propiedad se conserva al cambiar de coordenadas.</li>
+<li>Con <code>Geometria</code>, transforma el tensor covariante <span class="math inline">\(T=\begin{pmatrix}2&amp;1\\1&amp;3\end{pmatrix}\)</span> de cartesianas a polares en <span class="math inline">\((r,\theta)=(1.5,0.8)\)</span> y verifica que <span class="math inline">\(T_{ij}V^iV^j\)</span> no cambia.</li>
+<li>¿Para qué cambios lineales <span class="math inline">\(\theta'=A\theta\)</span> coinciden las leyes de <span class="math inline">\(V^i\)</span> y <span class="math inline">\(V_i\)</span>? (Pista: la condición es <span class="math inline">\(A^{-\mathsf T}=A\)</span>, es decir, <span class="math inline">\(A\)</span> ortogonal.)</li>
+</ol>
+</section>
+<section id="sec-refs-2" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="sec-refs-2"><span class="header-section-number">2.8</span> Referencias comentadas</h2>
+<p>Lecturas para profundizar. Aún <strong>no se han contrastado línea a línea con este texto</strong>; los comentarios indican el tipo de apoyo.</p>
+<ul>
+<li><span class="citation" data-cites="Heinbockel">Heinbockel (<a href="../referencias.html#ref-Heinbockel" role="doc-biblioref">1996</a>)</span> — desarrollo paso a paso de las leyes de transformación de tensores, con muchos ejemplos resueltos.</li>
+<li><span class="citation" data-cites="Lebedev">Lebedev y Cloud (<a href="../referencias.html#ref-Lebedev" role="doc-biblioref">2003</a>)</span> — presentación de los tensores a partir de las leyes de transformación y sus invariantes.</li>
+<li><span class="citation" data-cites="Spiegel">Spiegel (<a href="../referencias.html#ref-Spiegel" role="doc-biblioref">1959</a>)</span> — texto de problemas resueltos de análisis vectorial y tensorial; útil para ejercitarse.</li>
+<li><span class="citation" data-cites="Flugge">Flügge (<a href="../referencias.html#ref-Flugge" role="doc-biblioref">1972</a>)</span> — enlaza el análisis tensorial con la mecánica del continuo, que es el destino de este libro.</li>
+<li><span class="citation" data-cites="Lipschultz">Lipschultz (<a href="../referencias.html#ref-Lipschultz" role="doc-biblioref">1969</a>)</span> — colección de problemas de geometría diferencial; los primeros capítulos sirven de repaso de coordenadas curvilíneas.</li>
+</ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Flugge" class="csl-entry" role="listitem">
+Flügge, W. 1972. <em>Tensor Analysis and Continuum Mechanics</em>. Springer-Verlag.
+</div>
+<div id="ref-Heinbockel" class="csl-entry" role="listitem">
+Heinbockel, J. H. 1996. <em>Introduction to Tensor Calculus and Continuum Mechanics</em>. Department of Mathematics; Statistics, Old Dominion University.
+</div>
+<div id="ref-Lebedev" class="csl-entry" role="listitem">
+Lebedev, L. P., y M. J. Cloud. 2003. <em>Tensor Analysis</em>. World Scientific.
+</div>
+<div id="ref-Lipschultz" class="csl-entry" role="listitem">
+Lipschultz, M. 1969. <em>Differential Geometry</em>. Schaum’s Outlines.
+</div>
+<div id="ref-Spiegel" class="csl-entry" role="listitem">
+Spiegel, M. R. 1959. <em>Vector Analysis and an Introduction to Tensor Analysis</em>. Schaum’s Outlines.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

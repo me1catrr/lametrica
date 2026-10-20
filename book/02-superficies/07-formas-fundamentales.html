@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
+
+<title>7&nbsp; Formas fundamentales y fórmulas de Gauss–Weingarten – La métrica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/02-superficies/08-curvaturas.html" rel="next">
+<link href="../../book/02-superficies/06-superficies.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d7eac508953fcda7437e633b4fa2855c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/02-superficies/06-superficies.html">Parte II — Geometría de superficies</a></li><li class="breadcrumb-item"><a href="../../book/02-superficies/07-formas-fundamentales.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">La métrica</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte I — Fundamentos tensoriales</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/01-motivacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Por qué tensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/02-transformacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/03-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/04-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/01-fundamentos/05-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte II — Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/06-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/07-formas-fundamentales.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/08-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/02-superficies/09-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notación y convenios</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#sec-motivacion-7" id="toc-sec-motivacion-7" class="nav-link active" data-scroll-target="#sec-motivacion-7"><span class="header-section-number">7.1</span> Motivación</a></li>
+  <li><a href="#sec-formas" id="toc-sec-formas" class="nav-link" data-scroll-target="#sec-formas"><span class="header-section-number">7.2</span> Las tres formas fundamentales</a>
+  <ul class="collapse">
+  <li><a href="#sec-convenio-b" id="toc-sec-convenio-b" class="nav-link" data-scroll-target="#sec-convenio-b"><span class="header-section-number">7.2.1</span> Convenio de signo</a></li>
+  </ul></li>
+  <li><a href="#sec-gauss-weingarten" id="toc-sec-gauss-weingarten" class="nav-link" data-scroll-target="#sec-gauss-weingarten"><span class="header-section-number">7.3</span> Fórmulas de Gauss y Weingarten</a></li>
+  <li><a href="#sec-derivada-vector" id="toc-sec-derivada-vector" class="nav-link" data-scroll-target="#sec-derivada-vector"><span class="header-section-number">7.4</span> Derivadas de un vector</a></li>
+  <li><a href="#sec-julia-gauss" id="toc-sec-julia-gauss" class="nav-link" data-scroll-target="#sec-julia-gauss"><span class="header-section-number">7.5</span> Ejemplo computacional en Julia</a></li>
+  <li><a href="#sec-ejercicios-7" id="toc-sec-ejercicios-7" class="nav-link" data-scroll-target="#sec-ejercicios-7"><span class="header-section-number">7.6</span> Ejercicios</a></li>
+  <li><a href="#sec-refs-7" id="toc-sec-refs-7" class="nav-link" data-scroll-target="#sec-refs-7"><span class="header-section-number">7.7</span> Referencias comentadas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/02-superficies/06-superficies.html">Parte II — Geometría de superficies</a></li><li class="breadcrumb-item"><a href="../../book/02-superficies/07-formas-fundamentales.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></h1>
+<p class="subtitle lead">Cómo se curva una superficie y cómo cambian sus vectores básicos</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note callout-titled" title="Objetivos de aprendizaje">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Objetivos de aprendizaje
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al terminar el capítulo sabrás:</p>
+<ol type="1">
+<li>definir las formas fundamentales primera, segunda y tercera de una superficie;</li>
+<li>calcular el tensor de curvatura <span class="math inline">\(b_{\alpha\beta}\)</span> y sus componentes mixtas <span class="math inline">\(b^\alpha_\beta\)</span>;</li>
+<li>deducir las fórmulas de <strong>Gauss</strong> (derivadas de <span class="math inline">\(\mathbf{a}_\alpha\)</span>) y de <strong>Weingarten</strong> (derivada de <span class="math inline">\(\hat{\mathbf{a}}_3\)</span>);</li>
+<li>derivar un vector expresado en la terna de la superficie, y distinguir derivada covariante en la superficie de derivada en el espacio;</li>
+<li>verificar numéricamente Gauss y Weingarten sobre un paraboloide hiperbólico.</li>
+</ol>
+</div>
+</div>
+<section id="sec-motivacion-7" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-motivacion-7"><span class="header-section-number">7.1</span> Motivación</h2>
+<p>La primera forma (la métrica) mide longitudes y ángulos <strong>dentro</strong> de la superficie, pero no distingue un plano de un cilindro: ambos tienen la métrica euclídea con coordenadas adecuadas. Lo que los diferencia es cómo se <strong>curva</strong> en el espacio, y eso se detecta con el cambio de la normal <span class="math inline">\(\hat{\mathbf{a}}_3\)</span> al movernos sobre la superficie.</p>
+<div class="callout callout-style-simple callout-important callout-titled" title="Idea clave">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Primera forma fundamental: geometría <strong>intrínseca</strong> (medidas dentro de la superficie). Segunda forma: cómo está <strong>inmersa</strong> en el espacio (cuánto se separa de su plano tangente).</p>
+</div>
+</div>
+</section>
+<section id="sec-formas" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-formas"><span class="header-section-number">7.2</span> Las tres formas fundamentales</h2>
+<p>Un desplazamiento infinitesimal sobre la superficie cambia la posición y la normal: <span class="math display">\[
+d\,{}_0\mathbf{r}=\mathbf{a}_\alpha\,d\theta^\alpha,\qquad d\hat{\mathbf{a}}_3=\hat{\mathbf{a}}_{3,\alpha}\,d\theta^\alpha .
+\]</span></p>
+<div id="def-formas" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.1 (Formas fundamentales)</strong></span> <span id="eq-formas"><span class="math display">\[
+\begin{aligned}
+\mathrm{I}&amp;=d\,{}_0\mathbf{r}\cdot d\,{}_0\mathbf{r}=a_{\alpha\beta}\,d\theta^\alpha d\theta^\beta,\\
+\mathrm{II}&amp;=-\,d\,{}_0\mathbf{r}\cdot d\hat{\mathbf{a}}_3=b_{\alpha\beta}\,d\theta^\alpha d\theta^\beta,\\
+\mathrm{III}&amp;=d\hat{\mathbf{a}}_3\cdot d\hat{\mathbf{a}}_3=a_{\gamma\eta}\,b^\eta_\alpha b^\gamma_\beta\,d\theta^\alpha d\theta^\beta .
+\end{aligned}
+\tag{7.1}\]</span></span> Aquí <span class="math inline">\(b_{\alpha\beta}\)</span> es el <strong>tensor de curvatura</strong> de la superficie y <span class="math inline">\(b^\alpha_\beta=a^{\alpha\gamma}b_{\gamma\beta}\)</span> sus componentes mixtas.</p>
+</div>
+<div id="prp-b-simetrico" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 7.1 (Definición equivalente y simetría de <span class="math inline">\(b_{\alpha\beta}\)</span>)</strong></span> <span id="eq-b-def"><span class="math display">\[
+b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}=-\,\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_{3,\beta}=b_{\beta\alpha} .
+\tag{7.2}\]</span></span></p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-b-simetrico" class="quarto-xref">Proposición&nbsp;<span>7.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Derivando <span class="math inline">\(\hat{\mathbf{a}}_3\cdot\mathbf{a}_\alpha=0\)</span> respecto de <span class="math inline">\(\theta^\beta\)</span>: <span class="math inline">\(\hat{\mathbf{a}}_{3,\beta}\cdot\mathbf{a}_\alpha+\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}=0\)</span>, que da la igualdad de las dos expresiones. La simetría es consecuencia de <span class="math inline">\(\mathbf{a}_{\alpha,\beta}={}_0\mathbf{r}_{,\alpha\beta}=\mathbf{a}_{\beta,\alpha}\)</span> (la superficie es <span class="math inline">\(C^2\)</span>). <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<section id="sec-convenio-b" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="sec-convenio-b"><span class="header-section-number">7.2.1</span> Convenio de signo</h3>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Signo de $b_{\alpha\beta}$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Signo de <span class="math inline">\(b_{\alpha\beta}\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este libro adopta <span class="math inline">\(b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}\)</span> con <span class="math inline">\(\hat{\mathbf{a}}_3=\mathbf{a}_1\times\mathbf{a}_2/\|\cdot\|\)</span>. Consecuencias:</p>
+<ul>
+<li><span class="math inline">\(b_{\alpha\beta}&gt;0\)</span> si la superficie se curva <strong>hacia</strong> <span class="math inline">\(\hat{\mathbf{a}}_3\)</span> (concavidad del lado de la normal);</li>
+<li>en una esfera con normal <strong>saliente</strong>, <span class="math inline">\(b_{\alpha\beta}&lt;0\)</span> (y la curvatura media es negativa);</li>
+<li>al invertir la normal <span class="math inline">\(\hat{\mathbf{a}}_3\to-\hat{\mathbf{a}}_3\)</span>, <span class="math inline">\(b_{\alpha\beta}\)</span> cambia de signo. La curvatura de Gauss <span class="math inline">\(K\)</span> <strong>no</strong> cambia (<a href="08-curvaturas.html#sec-principales" class="quarto-xref"><span>Sección 8.3</span></a>).</li>
+</ul>
+<p>Otros textos usan <span class="math inline">\(b_{\alpha\beta}=-\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_{3,\beta}\)</span> con la normal opuesta o definen la segunda forma con el signo contrario; al comparar fórmulas hay que comprobar el convenio.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-gauss-weingarten" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-gauss-weingarten"><span class="header-section-number">7.3</span> Fórmulas de Gauss y Weingarten</h2>
+<p>Las derivadas <span class="math inline">\(\mathbf{a}_{\alpha,\beta}\)</span> y <span class="math inline">\(\hat{\mathbf{a}}_{3,\beta}\)</span> son vectores de <span class="math inline">\(\mathbb{R}^3\)</span>; se descomponen en la terna.</p>
+<div id="prp-gauss" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 7.2 (Fórmulas de Gauss)</strong></span> <span id="eq-gauss"><span class="math display">\[
+\mathbf{a}_{\alpha,\beta}=\bar\Gamma^{\gamma}_{\alpha\beta}\,\mathbf{a}_\gamma+b_{\alpha\beta}\,\hat{\mathbf{a}}_3,
+\qquad
+\bar\Gamma^{\gamma}_{\alpha\beta}=\mathbf{a}^\gamma\cdot\mathbf{a}_{\alpha,\beta}=\tfrac12\,a^{\gamma\mu}\bigl(a_{\mu\alpha,\beta}+a_{\mu\beta,\alpha}-a_{\alpha\beta,\mu}\bigr).
+\tag{7.3}\]</span></span></p>
+</div>
+<div id="prp-weingarten" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 7.3 (Fórmulas de Weingarten)</strong></span> <span id="eq-weingarten"><span class="math display">\[
+\hat{\mathbf{a}}_{3,\beta}=-\,b_{\alpha\beta}\,\mathbf{a}^\alpha=-\,b^\alpha_\beta\,\mathbf{a}_\alpha .
+\tag{7.4}\]</span></span> También: <span class="math inline">\(\mathbf{a}^\alpha_{,\beta}=-\bar\Gamma^\alpha_{\beta\gamma}\,\mathbf{a}^\gamma+b^\alpha_\beta\,\hat{\mathbf{a}}_3\)</span>.</p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-gauss" class="quarto-xref">Proposición&nbsp;<span>7.2</span></a> y <a href="#prp-weingarten" class="quarto-xref">Proposición&nbsp;<span>7.3</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><em>Gauss.</em> Al descomponer <span class="math inline">\(\mathbf{a}_{\alpha,\beta}\)</span> en la terna <span class="math inline">\(\{\mathbf{a}_\gamma,\hat{\mathbf{a}}_3\}\)</span>, las componentes son los productos escalares con la terna recíproca: <span class="math inline">\(\mathbf{a}^\gamma\cdot\mathbf{a}_{\alpha,\beta}\)</span> (tangente) y <span class="math inline">\(\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}=b_{\alpha\beta}\)</span> (normal). La expresión con la métrica es la del <a href="../01-fundamentos/05-christoffel.html#eq-christoffel-metrica" class="quarto-xref">Ecuación&nbsp;<span>5.2</span></a>, porque los productos <span class="math inline">\(\mathbf{a}_\gamma\cdot\mathbf{a}_{\alpha,\beta}\)</span> solo involucran <span class="math inline">\(a_{\alpha\beta}\)</span> y sus derivadas.</p>
+<p><em>Weingarten.</em> Como <span class="math inline">\(\hat{\mathbf{a}}_3\cdot\hat{\mathbf{a}}_3=1\)</span>, derivando, <span class="math inline">\(\hat{\mathbf{a}}_3\cdot\hat{\mathbf{a}}_{3,\beta}=0\)</span>: <span class="math inline">\(\hat{\mathbf{a}}_{3,\beta}\)</span> es tangente. Su componente sobre <span class="math inline">\(\mathbf{a}_\alpha\)</span> se obtiene con <span class="math inline">\(\mathbf{a}^\alpha\)</span> y <a href="#eq-b-def" class="quarto-xref">Ecuación&nbsp;<span>7.2</span></a>: <span class="math inline">\(\hat{\mathbf{a}}_{3,\beta}=(\hat{\mathbf{a}}_{3,\beta}\cdot\mathbf{a}_\alpha)\,\mathbf{a}^\alpha=-b_{\alpha\beta}\mathbf{a}^\alpha\)</span>. Subiendo el índice, <span class="math inline">\(-b^\alpha_\beta\mathbf{a}_\alpha\)</span>. La fórmula de <span class="math inline">\(\mathbf{a}^\alpha_{,\beta}\)</span> sale de derivar <span class="math inline">\(\mathbf{a}^\alpha\cdot\mathbf{a}_\gamma=\delta^\alpha_\gamma\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<p>Los símbolos de Christoffel de la superficie <span class="math inline">\(\bar\Gamma^\gamma_{\alpha\beta}\)</span> (con barra: evaluados en <span class="math inline">\(\theta^3=0\)</span>) son los del capítulo 5, con índices griegos <span class="math inline">\(1,2\)</span> y la métrica <span class="math inline">\(a_{\alpha\beta}\)</span>. Las fórmulas de Gauss dicen que <span class="math inline">\(\mathbf{a}_{\alpha,\beta}\)</span> tiene <strong>una parte tangente</strong> (recogida por <span class="math inline">\(\bar\Gamma\)</span>) y <strong>una parte normal</strong> (recogida por <span class="math inline">\(b_{\alpha\beta}\)</span>), como muestra la <a href="#fig-gauss" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>.</p>
+<div id="fig-gauss" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Descomposición de la derivada del vector base en parte tangente y parte normal">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gauss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/gauss-descomposicion.svg" class="img-fluid figure-img" style="width:85.0%" alt="Descomposición de la derivada del vector base en parte tangente y parte normal">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gauss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.1: Fórmula de Gauss para <span class="math inline">\(\mathbf{a}_{1,1}\)</span> (negro) en el paraboloide hiperbólico: la parte tangente <span class="math inline">\(\bar\Gamma^\gamma_{11}\mathbf{a}_\gamma\)</span> (azul) y la parte normal <span class="math inline">\(b_{11}\hat{\mathbf{a}}_3\)</span> (violeta) suman <span class="math inline">\(\mathbf{a}_{1,1}\)</span>. Los vectores están ampliados <span class="math inline">\(\times3\)</span> y el plano violeta es el tangente. Con la normal hacia arriba, <span class="math inline">\(b_{11}&lt;0\)</span> porque la superficie se curva hacia abajo en la dirección <span class="math inline">\(\theta^1\)</span>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-derivada-vector" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-derivada-vector"><span class="header-section-number">7.4</span> Derivadas de un vector</h2>
+<p>Un vector <span class="math inline">\(\mathbf{V}=V^\alpha\mathbf{a}_\alpha+V^3\hat{\mathbf{a}}_3\)</span> definido sobre la superficie se deriva con la regla del producto y las fórmulas de Gauss y Weingarten.</p>
+<div id="prp-derivada-vector" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 7.4 (Derivada de un campo vectorial)</strong></span> <span id="eq-derivada-vector"><span class="math display">\[
+\mathbf{V}_{,\alpha}=\bigl(V^\mu{}_{\|\alpha}-V^3\,b^\mu_\alpha\bigr)\,\mathbf{a}_\mu+\bigl(V^3_{,\alpha}+V^\beta\,b_{\alpha\beta}\bigr)\,\hat{\mathbf{a}}_3,
+\tag{7.5}\]</span></span> con la <strong>derivada covariante en la superficie</strong> <span id="eq-cov-sup"><span class="math display">\[
+V^\mu{}_{\|\alpha}=V^\mu_{,\alpha}+\bar\Gamma^\mu_{\beta\alpha}\,V^\beta,\qquad
+V_{\mu\|\alpha}=V_{\mu,\alpha}-\bar\Gamma^\beta_{\mu\alpha}\,V_\beta .
+\tag{7.6}\]</span></span></p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-derivada-vector" class="quarto-xref">Proposición&nbsp;<span>7.4</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\mathbf{V}_{,\alpha}=V^\beta_{,\alpha}\mathbf{a}_\beta+V^\beta\mathbf{a}_{\beta,\alpha}+V^3_{,\alpha}\hat{\mathbf{a}}_3+V^3\hat{\mathbf{a}}_{3,\alpha}\)</span>. Sustituyendo <a href="#eq-gauss" class="quarto-xref">Ecuación&nbsp;<span>7.3</span></a> y <a href="#eq-weingarten" class="quarto-xref">Ecuación&nbsp;<span>7.4</span></a>: <span class="math inline">\(V^\beta\mathbf{a}_{\beta,\alpha}=V^\beta\bar\Gamma^\mu_{\beta\alpha}\mathbf{a}_\mu+V^\beta b_{\beta\alpha}\hat{\mathbf{a}}_3\)</span> y <span class="math inline">\(V^3\hat{\mathbf{a}}_{3,\alpha}=-V^3b^\mu_\alpha\mathbf{a}_\mu\)</span>. Agrupando por <span class="math inline">\(\mathbf{a}_\mu\)</span> y <span class="math inline">\(\hat{\mathbf{a}}_3\)</span> se obtiene <a href="#eq-derivada-vector" class="quarto-xref">Ecuación&nbsp;<span>7.5</span></a>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Notación de la doble barra">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Notación de la doble barra
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En este libro, <span class="math inline">\(\|\)</span> denota la derivada covariante <strong>respecto de la superficie</strong> (índices griegos, símbolos <span class="math inline">\(\bar\Gamma\)</span> y métrica <span class="math inline">\(a_{\alpha\beta}\)</span>), como en <a href="#eq-cov-sup" class="quarto-xref">Ecuación&nbsp;<span>7.6</span></a>. Para la derivada covariante respecto del espacio tridimensional se usa la barra simple, <span class="math inline">\(V^\alpha|_\beta=V^\alpha_{,\beta}+V^i\,\Gamma^\alpha_{i\beta}\)</span>. En el capítulo 5, donde no había superficie, <span class="math inline">\(\|\)</span> se usó para la derivada covariante genérica de <span class="math inline">\(n\)</span> coordenadas; en este y los siguientes capítulos tiene el sentido de superficie.</p>
+</div>
+</div>
+<p>El término <span class="math inline">\(-V^3b^\mu_\alpha\)</span> muestra que la <strong>curvatura mezcla</strong> las componentes tangentes y normales: un vector normal a la superficie, al desplazarse, produce una variación tangente. En el siguiente capítulo esto explica por qué una lámina curva acopla membrana y flexión.</p>
+</section>
+<section id="sec-julia-gauss" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-julia-gauss"><span class="header-section-number">7.5</span> Ejemplo computacional en Julia</h2>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo computacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado calculado">calculado</span> Se verifican <a href="#eq-gauss" class="quarto-xref">Ecuación&nbsp;<span>7.3</span></a> y <a href="#eq-weingarten" class="quarto-xref">Ecuación&nbsp;<span>7.4</span></a> en un punto del paraboloide hiperbólico del capítulo 6, y que el vector constante <span class="math inline">\(\mathbf{C}=(0{,}3,-0{,}2,0{,}9)\)</span> tiene derivada nula según <a href="#eq-derivada-vector" class="quarto-xref">Ecuación&nbsp;<span>7.5</span></a>.</p>
+</div>
+</div>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Geometria</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Rx, Ry <span class="op">=</span> <span class="fl">3.0</span>, <span class="op">-</span><span class="fl">2.0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> [<span class="fl">0.7</span>, <span class="op">-</span><span class="fl">0.4</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fu">paraboloide_curvo</span>(Rx, Ry)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">base_superficie</span>(r, θ); a <span class="op">=</span> <span class="fu">metrica</span>(A); n <span class="op">=</span> <span class="fu">normal_unitaria</span>(A)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fu">derivadas_segundas</span>(r, θ)              <span class="co"># D[:, α, β] = aα,β</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Γ <span class="op">=</span> <span class="fu">cristoffel_superficie</span>(r, θ)           <span class="co"># Γ[γ, α, β]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fu">segunda_forma</span>(r, θ)                   <span class="co"># bαβ = n̂·aα,β</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>bm <span class="op">=</span> <span class="fu">tensor_curvatura_mixto</span>(a, b)         <span class="co"># b^α_β</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>gauss <span class="op">=</span> <span class="fu">all</span>(D[<span class="op">:</span>, α, β] <span class="op">≈</span> A <span class="op">*</span> Γ[<span class="op">:</span>, α, β] <span class="op">+</span> b[α, β] <span class="op">*</span> n <span class="cf">for</span> α <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, β <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>weingarten <span class="op">=</span> <span class="fu">all</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>) <span class="cf">do</span> β</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cn">e</span> <span class="op">=</span> β <span class="op">==</span> <span class="fl">1</span> ? [h, <span class="fl">0</span>] <span class="op">:</span> [<span class="fl">0</span>, h]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    dn <span class="op">=</span> (<span class="fu">normal_unitaria</span>(<span class="fu">base_superficie</span>(r, θ <span class="op">.+</span> <span class="cn">e</span>)) <span class="op">-</span> <span class="fu">normal_unitaria</span>(<span class="fu">base_superficie</span>(r, θ <span class="op">.-</span> <span class="cn">e</span>))) <span class="op">/</span> <span class="fl">2</span>h</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">isapprox</span>(dn, <span class="op">-</span>A <span class="op">*</span> bm[<span class="op">:</span>, β]; atol <span class="op">=</span> <span class="fl">1e-5</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>(gauss <span class="op">=</span> gauss, weingarten <span class="op">=</span> weingarten, b <span class="op">=</span> <span class="fu">round</span>.(b; digits <span class="op">=</span> <span class="fl">5</span>), b_mixto <span class="op">=</span> <span class="fu">round</span>.(bm; digits <span class="op">=</span> <span class="fl">5</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(gauss = true, weingarten = true, b = [-0.31863 0.0; 0.0 0.47794], b_mixto = [-0.30278 -0.02038; 0.01359 0.46047])</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-ejercicios-7" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sec-ejercicios-7"><span class="header-section-number">7.6</span> Ejercicios</h2>
+<ol type="1">
+<li>Calcula <span class="math inline">\(b_{\alpha\beta}\)</span> para la esfera de radio <span class="math inline">\(\rho\)</span> con normal saliente y comprueba que <span class="math inline">\(b_{\alpha\beta}=-\tfrac1\rho\,a_{\alpha\beta}\)</span>.</li>
+<li>Para un cilindro circular, calcula <span class="math inline">\(a_{\alpha\beta}\)</span> y <span class="math inline">\(b_{\alpha\beta}\)</span> y razona por qué la primera forma es euclídea pero la segunda no se anula.</li>
+<li>Demuestra que <span class="math inline">\(\mathrm{III}-2H\,\mathrm{II}+K\,\mathrm{I}=0\)</span> cuando se haya definido <span class="math inline">\(H\)</span> y <span class="math inline">\(K\)</span> (capítulo 8).</li>
+<li>Comprueba <a href="#eq-derivada-vector" class="quarto-xref">Ecuación&nbsp;<span>7.5</span></a> para el campo <span class="math inline">\(\mathbf{V}=\hat{\mathbf{a}}_3\)</span> y recupera <a href="#eq-weingarten" class="quarto-xref">Ecuación&nbsp;<span>7.4</span></a>.</li>
+<li>Escribe <span class="math inline">\(\mathbf{a}^\alpha_{,\beta}\)</span> en términos de <span class="math inline">\(\bar\Gamma\)</span> y <span class="math inline">\(b^\alpha_\beta\)</span> y verifícalo con <code>Geometria</code>.</li>
+</ol>
+</section>
+<section id="sec-refs-7" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="sec-refs-7"><span class="header-section-number">7.7</span> Referencias comentadas</h2>
+<p>Aún <strong>no se han contrastado línea a línea con este texto</strong>.</p>
+<ul>
+<li><span class="citation" data-cites="DoCarmo">Carmo (<a href="../referencias.html#ref-DoCarmo" role="doc-biblioref">1994</a>)</span> — segunda forma fundamental, aplicación de Gauss y fórmulas de Weingarten.</li>
+<li><span class="citation" data-cites="Struik">Struik (<a href="../referencias.html#ref-Struik" role="doc-biblioref">1955</a>)</span> — fórmulas de Gauss y Weingarten en notación tensorial.</li>
+<li><span class="citation" data-cites="Weatherburn">Weatherburn (<a href="../referencias.html#ref-Weatherburn" role="doc-biblioref">1927</a>)</span> — formas fundamentales con notación vectorial.</li>
+<li><span class="citation" data-cites="Novozhilov">Novozhilov (<a href="../referencias.html#ref-Novozhilov" role="doc-biblioref">1959</a>)</span> — aplicación de estas fórmulas a la teoría de láminas delgadas.</li>
+<li><span class="citation" data-cites="Lipschultz">Lipschultz (<a href="../referencias.html#ref-Lipschultz" role="doc-biblioref">1969</a>)</span> — problemas de formas fundamentales.</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-DoCarmo" class="csl-entry" role="listitem">
+Carmo, M. do. 1994. <em>Geometría diferencial de curvas y superficies</em>. Alianza Universidad.
+</div>
+<div id="ref-Lipschultz" class="csl-entry" role="listitem">
+Lipschultz, M. 1969. <em>Differential Geometry</em>. Schaum’s Outlines.
+</div>
+<div id="ref-Novozhilov" class="csl-entry" role="listitem">
+Novozhilov, V. V. 1959. <em>The Theory of Thin Shells</em>. P. Noordhoff ltd.
+</div>
+<div id="ref-Struik" class="csl-entry" role="listitem">
+Struik, D. J. 1955. <em>Geometría Diferencial Clásica</em>. Aguilar.
+</div>
+<div id="ref-Weatherburn" class="csl-entry" role="listitem">
+Weatherburn, C. E. 1927. <em>Differential Geometry</em>. Cambridge Press.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/02-superficies/06-superficies.html" class="pagination-link" aria-label="Superficies parametrizadas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../book/02-superficies/08-curvaturas.html" class="pagination-link" aria-label="Curvaturas de una superficie">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
