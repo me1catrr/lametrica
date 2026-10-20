@@ -1,0 +1,29 @@
+---
+title: "Notación y convenios"
+---
+
+Este apéndice crecerá con el libro. Recoge los símbolos de la tesis (según `Nomenclatura.tex`) y su equivalente en este texto.
+
+## Correspondencia de notación {#sec-notacion}
+
+| Tesis | Significado en la tesis | Aquí |
+|---|---|---|
+| $\theta^1,\theta^2$ | Coordenadas curvilíneas sobre la superficie de referencia | igual |
+| $\theta^3$ | Distancia a lo largo de la normal | igual |
+| $\mathbf{r}$, ${}_0\mathbf{r}$ | Vector de posición de la lámina / de la superficie de referencia | igual |
+| $\hat{\mathbf{a}}_3$ | Normal unitaria | igual |
+| $\mathbf{g}_i$ | Vectores básicos tangentes del sistema de coordenadas | igual |
+| $\mathbf{a}_i$ | Vectores básicos en la superficie de referencia | igual |
+| $\mathbf{a}^i$ | Vectores básicos normales a las superficies $\theta^i$ | base recíproca |
+| $a_{\alpha\beta}$, $a^{\alpha\beta}$ | Componentes covariantes y contravariantes del tensor métrico | igual |
+| $b_{\alpha\beta}$ | Tensor curvatura de la superficie | por confirmar |
+| $\bar\Gamma^{\gamma}_{\alpha\beta}$ | Símbolos de Christoffel | por confirmar |
+
+## Convenios pendientes de confirmar con el autor
+
+- Signo de $b_{\alpha\beta}$ y de la curvatura normal.
+- Definición y posición de índices de $\bar\Gamma_{\alpha\beta\gamma}$.
+- Definición de componentes físicas.
+- Uso de la barra `‖` para la derivada covariante.
+
+Hasta confirmarlos no se fijan en el texto.

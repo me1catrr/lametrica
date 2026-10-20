@@ -1,0 +1,5 @@
+[deps]
+Geometria = "801cfd36-2ac7-4ffb-8119-3180ba330421"
+
+[sources]
+Geometria = {path = "julia"}

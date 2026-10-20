@@ -1,0 +1,39 @@
+# Presentación {.unnumbered}
+
+**La métrica** es un libro interactivo sobre tres ideas que se necesitan unas a otras: la *geometría diferencial de superficies*, el *cálculo tensorial* y la *mecánica de láminas*. Recorre el camino que va de un cambio de coordenadas sobre una superficie hasta el cálculo de las frecuencias propias de una lámina con forma de paraboloide hiperbólico mediante elementos finitos.
+
+El hilo conductor es la tesis doctoral *Vibraciones de Estructuras Laminares con forma de Paraboloide Hiperbólico de Planta Rectangular* [@CastroTesis], pero el libro no la reproduce: reordena y explica sus fundamentos con una secuencia didáctica propia, demostraciones, simulaciones y código ejecutable.
+
+::: {.callout-warning title="Estado del libro: prototipo (Fase 2)"}
+Solo están desarrollados el capítulo 1 y el laboratorio de bases del capítulo 3. El resto de la estructura es provisional. Las ecuaciones que se atribuyan a la tesis llevan su fuente y un estado de verificación.
+:::
+
+## Cómo está hecho
+
+- **Matemáticas**: MathJax; ecuaciones, definiciones y teoremas numerados y referenciables.
+- **Julia**: el módulo `Geometria` calcula bases, métricas y componentes, con pruebas automáticas de las identidades.
+- **JavaScript**: laboratorios que funcionan en el navegador, sin servidor. Cada resultado se etiqueta como <span class="etiqueta-resultado calculado">calculado</span>, <span class="etiqueta-resultado analitico">analítico</span> o <span class="etiqueta-resultado ilustrativo">ilustrativo</span>.
+
+## Código de colores
+
+::: {#def-codigo}
+## Definición (azul)
+Los conceptos que se definen aparecen en bloques azules.
+:::
+
+::: {#thm-codigo}
+## Teorema o propiedad (verde)
+Los resultados demostrables aparecen en bloques verdes.
+:::
+
+::: {.callout-warning title="Advertencia (ámbar)"}
+Las trampas habituales de notación y de convenios de signo aparecen en ámbar.
+:::
+
+::: {.callout-tip title="Laboratorio (violeta)"}
+Los ejemplos computacionales y laboratorios aparecen en violeta.
+:::
+
+::: {.callout-note .demostracion collapse="true" title="Demostración (gris, desplegable)"}
+Las demostraciones y observaciones son neutras y están plegadas por defecto.
+:::

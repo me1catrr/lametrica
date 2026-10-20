@@ -1,0 +1,49 @@
+project:
+  type: book
+  output-dir: _book
+  # La documentación original de la tesis NO se renderiza ni se publica.
+  render:
+    - index.qmd
+    - book/**/*.qmd
+  resources:
+    - web/ojs/*.js
+    - web/datos/*.json
+
+book:
+  title: "La métrica"
+  subtitle: "De la geometría de las superficies a los elementos finitos"
+  author: "Rafael Castro Triguero"
+  description: "Geometría diferencial · Cálculo tensorial · Mecánica de láminas"
+  language: es
+  search: true
+  sidebar:
+    style: docked
+  chapters:
+    - index.qmd
+    - part: "Parte I — Fundamentos tensoriales"
+      chapters:
+        - book/01-fundamentos/01-motivacion.qmd
+        - book/01-fundamentos/02-transformacion.qmd
+        - book/01-fundamentos/03-bases.qmd
+    - book/referencias.qmd
+  appendices:
+    - book/apendices/notacion.qmd
+
+lang: es
+bibliography: bib/lametrica.bib
+citations-hover: true
+link-citations: true
+
+format:
+  html:
+    theme: [cosmo, styles/lametrica.scss]
+    html-math-method: mathjax
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    number-sections: true
+    callout-appearance: simple
+  # pdf: se configurará en una fase posterior (requiere LaTeX/Typst)
+
+execute:
+  freeze: auto

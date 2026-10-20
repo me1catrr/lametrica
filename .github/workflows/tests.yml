@@ -1,0 +1,31 @@
+# Pruebas de Julia (identidades de Geometria) y de JavaScript (contra la referencia de Julia).
+name: Pruebas
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  julia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: "1.12"
+      - uses: julia-actions/julia-buildpkg@v1
+        with:
+          project: julia
+      - uses: julia-actions/julia-runtest@v1
+        with:
+          project: julia
+
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm test
+        working-directory: web

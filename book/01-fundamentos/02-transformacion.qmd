@@ -1,0 +1,9 @@
+---
+title: "Transformación de coordenadas"
+---
+
+::: {.callout-warning title="Capítulo en preparación"}
+Este capítulo desarrollará las leyes de transformación de componentes y tensores. De momento, la ley que necesita el capítulo siguiente aparece en @prp-transformacion-bases.
+:::
+
+Contenido previsto: coordenadas admisibles, matriz jacobiana y su inversa, transformación de componentes de vectores y de tensores de orden dos, e invariantes.

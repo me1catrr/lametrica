@@ -1,0 +1,94 @@
+---
+title: "Por qué tensores"
+subtitle: "Motivación del cálculo tensorial en mecánica"
+engine: julia
+---
+
+::: {.callout-note title="Objetivos de aprendizaje"}
+Al terminar el capítulo sabrás:
+
+1. explicar por qué las leyes de la mecánica se formulan con objetos que no dependen del sistema de coordenadas;
+2. distinguir un **vector** (objeto geométrico) de sus **componentes** (números que dependen de la base);
+3. reconocer por qué una lámina obliga a usar coordenadas curvilíneas;
+4. calcular en Julia la base natural y la métrica de las coordenadas polares.
+:::
+
+## Motivación física {#sec-motivacion}
+
+Una fuerza, un desplazamiento o una velocidad son entidades físicas: existen con independencia de cómo decidamos medirlas. Lo que sí depende de nuestra elección es la lista de números con que las describimos. Si giramos los ejes, los números cambian; el objeto, no.
+
+Esto no es una sutileza. Una ley física solo es admisible si dice lo mismo para todos los observadores y para todos los sistemas de coordenadas. El cálculo tensorial es el lenguaje que permite escribir ecuaciones **cuya forma se conserva** al cambiar de coordenadas.
+
+En el problema que nos ocupa hay una razón adicional. Una lámina es un sólido cuya geometría está gobernada por una superficie curva. Sobre ella no existen, en general, ejes cartesianos globales: hay que trabajar con coordenadas curvilíneas $\theta^1,\theta^2$ sobre la superficie y con la distancia $\theta^3$ medida a lo largo de la normal. Las bases asociadas varían de un punto a otro y no son, en general, ortonormales.
+
+::: {.callout-warning title="Vector y componentes no son lo mismo"}
+Escribir $\mathbf{V}=(2,-1)$ no define un vector: define sus componentes **respecto a una base concreta**. En este libro se distingue siempre entre el vector $\mathbf{V}$ y sus componentes $V^i$ o $V_i$.
+:::
+
+## Un primer ejemplo: coordenadas polares {#sec-polares}
+
+En el plano, con coordenadas cartesianas $(x,y)$ y polares $(r,\theta)$ relacionadas por $x=r\cos\theta,\; y=r\sin\theta$, el vector de posición es $\mathbf{r}(r,\theta)=(r\cos\theta,\,r\sin\theta)$. Las bases naturales son
+
+$$
+\mathbf{g}_1=\frac{\partial\mathbf{r}}{\partial r}=(\cos\theta,\;\sin\theta),
+\qquad
+\mathbf{g}_2=\frac{\partial\mathbf{r}}{\partial\theta}=(-r\sin\theta,\;r\cos\theta).
+$$ {#eq-base-polar}
+
+Son ortogonales, pero $\|\mathbf{g}_2\|=r$ **no es 1** y además ambas giran con $\theta$. Sus productos escalares $g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j$ forman el tensor métrico:
+
+$$
+(g_{ij})=\begin{pmatrix}1&0\\0&r^2\end{pmatrix}
+\quad\Longrightarrow\quad
+ds^2=g_{ij}\,d\theta^i\,d\theta^j=dr^2+r^2\,d\theta^2 .
+$$ {#eq-metrica-polar}
+
+La longitud de un arco depende de la métrica: la misma variación $d\theta$ recorre más distancia cuanto mayor es $r$. Ese es el contenido geométrico de $g_{22}=r^2$.
+
+### Comprobación en Julia {#sec-julia-polares}
+
+::: {.callout-tip title="Ejemplo computacional" .laboratorio-julia}
+<span class="etiqueta-resultado calculado">calculado</span> El módulo `Geometria` implementa @eq-base-polar y la métrica. Se comprueba @eq-metrica-polar en un punto.
+:::
+
+```{julia}
+using Geometria
+
+r, θ = 2.0, π / 6
+B = base_polar(r, θ)      # columnas: g₁ y g₂
+metrica(B)                # debe ser diag(1, r²) = diag(1, 4)
+```
+
+```{julia}
+# Reciprocidad gⁱ·gⱼ = δⁱⱼ y reconstrucción de un vector
+V = [1.0, 0.5]
+Vup = comps_contravariantes(B, V)
+(reciprocidad(B), desde_contravariantes(B, Vup) ≈ V)
+```
+
+## Qué viene después
+
+- El **capítulo 2** (en preparación) estudiará cómo se transforman las componentes al cambiar de coordenadas.
+- El **capítulo 3** formaliza las bases covariante y contravariante y trae el primer laboratorio interactivo.
+
+## Trazabilidad con la tesis {#sec-traza-1}
+
+| Contenido | Fuente | Estado |
+|---|---|---|
+| Superficie de referencia $\theta^3=0$, normal y bases $\mathbf{g}_i$ en la lámina | Anexo A (`AnexoGeometria.tex`), «Vectores básicos y tensor métrico de una superficie» | Contenido leído en el `.tex`; **numeración de ecuaciones sin verificar** |
+| Coordenadas polares y métrica | Ejemplo original de este libro | No procede de la tesis |
+
+## Ejercicios {#sec-ejercicios-1}
+
+1. Calcula $g_{ij}$ para las coordenadas cilíndricas $(\rho,\varphi,z)$ y comprueba que $ds^2=d\rho^2+\rho^2d\varphi^2+dz^2$.
+2. Con `base_polar`, verifica numéricamente que $\det(g_{ij})=r^2$ para varios valores de $r$ y $\theta$.
+3. Explica con tus palabras por qué $\mathbf{V}=(2,-1)$ no basta para definir un vector.
+
+## Referencias comentadas {#sec-refs-1}
+
+Las siguientes obras figuran en el apartado de tensores de la bibliografía de la tesis [@CastroTesis]. Aún **no se han leído para este libro**; el comentario de relevancia queda pendiente.
+
+- @Flugge — análisis tensorial y mecánica del continuo.
+- @Spiegel — introducción al análisis tensorial.
+- @Lebedev — texto sobre análisis tensorial.
+- @Heinbockel — cálculo tensorial y mecánica del continuo.

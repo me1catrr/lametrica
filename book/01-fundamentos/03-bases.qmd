@@ -1,0 +1,185 @@
+---
+title: "Bases covariantes y contravariantes"
+engine: julia
+---
+
+::: {.callout-note title="Objetivos de aprendizaje"}
+1. Definir la base covariante natural y la base recíproca (contravariante) de un sistema de coordenadas.
+2. Calcular el tensor métrico y usarlo para subir y bajar índices.
+3. Distinguir componentes covariantes $V_i$ y contravariantes $V^i$ de un mismo vector.
+4. Verificar numéricamente la reciprocidad $\mathbf{g}^i\cdot\mathbf{g}_j=\delta^i_j$.
+:::
+
+## Motivación geométrica
+
+En un sistema cartesiano ortonormal, las componentes de un vector se obtienen proyectando sobre los ejes y no hay nada que distinguir. Si la base es oblicua o sus vectores no tienen longitud unidad, hay **dos** formas naturales de describir un vector: como combinación lineal de los vectores de la base, o por sus proyecciones sobre ellos. Ambas coinciden solo en el caso ortonormal.
+
+## Convenios
+
+Se usa el convenio de suma de Einstein: un índice repetido, una vez arriba y otra abajo, indica suma. En este capítulo los índices recorren $1,\dots,n$ (con $n=2$ en el laboratorio). En el tratamiento de láminas de la tesis, los índices griegos toman los valores $1,2$ y los latinos $1,2,3$ (ver @sec-notacion).
+
+::: {.callout-warning title="Notación de la tesis"}
+La tesis denota por $\mathbf{g}_i$ las bases de la lámina y por $\mathbf{a}_i$ las de la superficie de referencia ($\theta^3=0$), y llama «vectores básicos normales a las superficies $\theta^i$» a los $\mathbf{a}^i$ (Nomenclatura, `Nomenclatura.tex`). Aquí se usa $\mathbf{g}_i$ para una base genérica y, al llegar a las superficies, se hará la correspondencia explícita.
+:::
+
+## Definiciones
+
+::: {#def-base-covariante}
+## Base covariante natural
+Sea $\mathbf{r}(\theta^1,\dots,\theta^n)$ el vector de posición. La **base covariante** en un punto es
+$$
+\mathbf{g}_i=\frac{\partial\mathbf{r}}{\partial\theta^i},\qquad i=1,\dots,n,
+$$ {#eq-base-cov}
+supuesta linealmente independiente.
+:::
+
+::: {#def-metrica}
+## Tensor métrico
+Las componentes **covariantes** del tensor métrico son $g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j$, y las **contravariantes** $g^{ij}$ son los elementos de la matriz inversa: $g^{ij}g_{jk}=\delta^i_k$.
+:::
+
+::: {#def-base-recip}
+## Base recíproca (contravariante)
+La **base recíproca** $\{\mathbf{g}^i\}$ está definida por la condición de reciprocidad
+$$
+\mathbf{g}^i\cdot\mathbf{g}_j=\delta^i_j .
+$$ {#eq-reciprocidad}
+:::
+
+## Resultados
+
+::: {#prp-g-dual}
+## Construcción de la base recíproca
+La base recíproca existe, es única y verifica
+$$
+\mathbf{g}^i=g^{ij}\,\mathbf{g}_j,\qquad
+\mathbf{g}_i=g_{ij}\,\mathbf{g}^j,\qquad
+g^{ij}=\mathbf{g}^i\cdot\mathbf{g}^j .
+$$ {#eq-subir-bajar-base}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-g-dual
+$(g_{ij})$ es la matriz de Gram de vectores linealmente independientes, luego es simétrica definida positiva y, por tanto, invertible; así $g^{ij}$ existe.
+
+*Existencia.* Sea $\mathbf{g}^i:=g^{ik}\mathbf{g}_k$. Entonces $\mathbf{g}^i\cdot\mathbf{g}_j=g^{ik}g_{kj}=\delta^i_j$, que es @eq-reciprocidad.
+
+*Unicidad.* Como $\{\mathbf{g}_k\}$ es base, cualquier solución se escribe $\mathbf{g}^i=A^{ik}\mathbf{g}_k$. Imponer @eq-reciprocidad da $A^{ik}g_{kj}=\delta^i_j$, o sea $A=(g_{ij})^{-1}$.
+
+*Fórmulas restantes.* $\mathbf{g}^i\cdot\mathbf{g}^j=g^{ik}\,\mathbf{g}_k\cdot\mathbf{g}^j=g^{ik}\delta_k^j=g^{ij}$. Multiplicando $\mathbf{g}^j=g^{jk}\mathbf{g}_k$ por $g_{ij}$ y usando $g_{ij}g^{jk}=\delta_i^k$ se obtiene $\mathbf{g}_i=g_{ij}\mathbf{g}^j$. $\blacksquare$
+:::
+
+::: {#prp-componentes}
+## Componentes de un vector
+Todo vector admite dos descomposiciones,
+$$
+\mathbf{V}=V^i\,\mathbf{g}_i=V_i\,\mathbf{g}^i,
+$$ {#eq-descomposicion}
+con
+$$
+V^i=\mathbf{V}\cdot\mathbf{g}^i,\qquad V_i=\mathbf{V}\cdot\mathbf{g}_i,\qquad
+V_i=g_{ij}V^j,\qquad V^i=g^{ij}V_j,
+$$ {#eq-componentes}
+y la norma cumple $\|\mathbf{V}\|^2=g_{ij}V^iV^j=V^iV_i$.
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-componentes
+Al ser $\{\mathbf{g}_i\}$ base, $\mathbf{V}=V^j\mathbf{g}_j$. Multiplicando por $\mathbf{g}^i$ y usando @eq-reciprocidad, $V^i=\mathbf{V}\cdot\mathbf{g}^i$. Análogamente, como $\{\mathbf{g}^i\}$ también es base (por @prp-g-dual), $\mathbf{V}=V_j\mathbf{g}^j$ y $V_i=\mathbf{V}\cdot\mathbf{g}_i$. Entonces $V_i=\mathbf{V}\cdot\mathbf{g}_i=V^j\,\mathbf{g}_j\cdot\mathbf{g}_i=g_{ij}V^j$, y de modo simétrico $V^i=g^{ij}V_j$. Finalmente $\|\mathbf{V}\|^2=\mathbf{V}\cdot\mathbf{V}=V^i\,\mathbf{g}_i\cdot V^j\mathbf{g}_j=g_{ij}V^iV^j=V^iV_i$. $\blacksquare$
+:::
+
+::: {#prp-transformacion-bases}
+## Cambio de coordenadas
+Si $\theta'^i=\theta'^i(\theta^1,\dots,\theta^n)$ es un cambio de coordenadas regular, entonces
+$$
+\mathbf{g}'_i=\frac{\partial\theta^j}{\partial\theta'^i}\,\mathbf{g}_j,\qquad
+\mathbf{g}'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,\mathbf{g}^j,\qquad
+V'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,V^j .
+$$ {#eq-transformacion}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-transformacion-bases
+Por la regla de la cadena, $\mathbf{g}'_i=\partial\mathbf{r}/\partial\theta'^i=(\partial\theta^j/\partial\theta'^i)\,\partial\mathbf{r}/\partial\theta^j$. Sea $J^i_j=\partial\theta'^i/\partial\theta^j$ y $\tilde J^j_i=\partial\theta^j/\partial\theta'^i$; son matrices inversas entre sí. Definiendo $\mathbf{g}'^i:=J^i_j\mathbf{g}^j$ se tiene $\mathbf{g}'^i\cdot\mathbf{g}'_k=J^i_j\tilde J^l_k\,\delta^j_l=J^i_j\tilde J^j_k=\delta^i_k$, así que es la base recíproca (por unicidad). Como $\mathbf{V}$ no depende de la base, $V'^i=\mathbf{V}\cdot\mathbf{g}'^i=J^i_j\,\mathbf{V}\cdot\mathbf{g}^j=J^i_jV^j$. $\blacksquare$
+:::
+
+Las componentes $V^i$ se transforman como las diferenciales $d\theta^i$ (contravariantes) y las bases $\mathbf{g}_i$ como las derivadas $\partial/\partial\theta^i$ (covariantes). El vector $\mathbf{V}$ no cambia.
+
+## Laboratorio interactivo {#sec-lab-bases}
+
+::: {.laboratorio}
+<div class="laboratorio-titulo">Laboratorio 3.1 · Bases covariante y contravariante en el plano</div>
+<span class="etiqueta-resultado calculado">calculado en el navegador</span> Verificado frente a Julia (`web/tests/bases.test.mjs`).
+
+Se fija una base oblicua $\{\mathbf{g}_1,\mathbf{g}_2\}$ (azul) y se muestra su base recíproca (ámbar, discontinua). Observa que $\mathbf{g}^1\perp\mathbf{g}_2$ y $\mathbf{g}^2\perp\mathbf{g}_1$, y que si el ángulo es $90^\circ$ y las longitudes son 1, ambas bases coinciden.
+:::
+
+```{ojs}
+//| echo: false
+bases = import(new URL("../../web/ojs/bases.js", document.baseURI))
+```
+
+```{ojs}
+//| echo: false
+viewof ang = Inputs.range([20, 160], {value: 70, step: 1, label: "Ángulo entre g₁ y g₂ (°)"})
+viewof l1 = Inputs.range([0.5, 2], {value: 1, step: 0.05, label: "|g₁|"})
+viewof l2 = Inputs.range([0.5, 2], {value: 1.2, step: 0.05, label: "|g₂|"})
+viewof vx = Inputs.range([-2, 2], {value: 1.2, step: 0.05, label: "Vₓ (cartesiana)"})
+viewof vy = Inputs.range([-2, 2], {value: 0.8, step: 0.05, label: "V_y (cartesiana)"})
+```
+
+```{ojs}
+//| echo: false
+base = bases.baseDesdeAngulo(l1, l2, ang)
+V = [vx, vy]
+res = bases.analizar(base.g1, base.g2, V)
+txt = bases.resumen(res)
+html`<div>${(() => { const d = document.createElement("div"); d.innerHTML = bases.dibujarSVG(base.g1, base.g2, V, res); return d; })()}</div>`
+```
+
+```{ojs}
+//| echo: false
+html`<table class="table table-sm" style="max-width:34rem">
+<tr><td>Métrica gᵢⱼ</td><td>[${txt.g[0].join(", ")}; ${txt.g[1].join(", ")}]</td></tr>
+<tr><td>Contravariantes Vⁱ</td><td>(${txt.contra.join(", ")})</td></tr>
+<tr><td>Covariantes Vᵢ</td><td>(${txt.co.join(", ")})</td></tr>
+<tr><td>Reciprocidad gⁱ·gⱼ</td><td>[${txt.reciprocidad[0].join(", ")}; ${txt.reciprocidad[1].join(", ")}]</td></tr>
+</table>`
+```
+
+## Ejemplo computacional en Julia {#sec-julia-bases}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Aritmética **exacta** con racionales: la reciprocidad es exactamente la identidad.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+B = [2//1 1//1; 0//1 3//1]     # g₁ = (2,0), g₂ = (1,3): base oblicua
+V = [5//1, 4//1]
+
+g   = metrica(B)
+Vup = comps_contravariantes(B, V)
+Vdn = comps_covariantes(B, V)
+
+(; g, reciprocidad = reciprocidad(B), Vup, Vdn,
+   bajar = Vdn == g * Vup,                     # V_i = g_ij V^j
+   norma = dot(Vup, Vdn) == dot(V, V))         # |V|² = Vⁱ Vᵢ
+```
+
+Las mismas identidades se comprueban de forma automática en `julia/test/runtests.jl` y, para el código JavaScript, en `web/tests/bases.test.mjs`.
+
+## Trazabilidad con la tesis {#sec-traza-3}
+
+| Contenido | Fuente | Estado |
+|---|---|---|
+| $\mathbf{g}_\alpha=\mathbf{r}_{,\alpha}$, $\mathbf{g}_3=\hat{\mathbf{a}}_3$ y $\mathbf{g}_\alpha=\mathbf{a}_\alpha+\theta^3\hat{\mathbf{a}}_{3,\alpha}$ | Anexo A, «Vectores básicos y tensor métrico de una superficie» | Leído en `.tex`; numeración **sin verificar** |
+| Reciprocidad, métrica contravariante, @prp-g-dual y @prp-componentes | Desarrollo original de este libro (resultado estándar) | No se atribuye a la tesis |
+
+## Ejercicios {#sec-ejercicios-3}
+
+1. Demuestra que $\det(g_{ij})=(\det B)^2$ si $B$ es la matriz de columnas $\mathbf{g}_i$.
+2. En el laboratorio, ¿para qué ángulo y longitudes coinciden $\mathbf{g}^i$ y $\mathbf{g}_i$? Justifícalo con @eq-subir-bajar-base.
+3. Comprueba con `Geometria` que, en polares, $V_2=r^2V^2$.
+4. Prueba que $V^i\,W_i$ es invariante bajo @eq-transformacion.

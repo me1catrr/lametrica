@@ -1,0 +1,77 @@
+/*-- scss:defaults --*/
+
+// Paleta semántica del libro (ver planning/03-arquitectura.md)
+$c-definicion: #1d4ed8;   // azul
+$c-teorema:    #15803d;   // verde
+$c-advertencia:#b45309;   // ámbar
+$c-laboratorio:#6d28d9;   // violeta
+$c-neutro:     #4b5563;   // gris (demostraciones y observaciones)
+
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+$headings-font-weight: 600;
+$body-color: #1f2937;
+$link-color: $c-definicion;
+
+// Callouts nativos de Quarto reutilizados con significado propio
+$callout-color-note: $c-neutro;          // observación / demostración
+$callout-color-warning: $c-advertencia;  // advertencia matemática
+$callout-color-tip: $c-laboratorio;      // laboratorio / ejemplo computacional
+
+/*-- scss:rules --*/
+
+body { font-family: $font-family-serif; font-size: 1.05rem; line-height: 1.6; }
+h1, h2, h3, h4, .sidebar, .nav-link, .callout-title-container { font-family: $font-family-sans-serif; }
+
+// Bloques matemáticos numerados (definition, theorem, …)
+@mixin bloque($color) {
+  border-left: 4px solid $color;
+  background: rgba($color, 0.06);
+  padding: 0.6rem 1rem;
+  margin: 1.2rem 0;
+  border-radius: 0 4px 4px 0;
+  .theorem-title, .definition-title, .proposition-title, .lemma-title,
+  .corollary-title, .example-title, .remark-title, .proof-title { color: $color; }
+}
+
+div.definition  { @include bloque($c-definicion); }
+div.theorem, div.proposition, div.lemma, div.corollary { @include bloque($c-teorema); }
+div.example     { @include bloque($c-laboratorio); }
+div.remark, div.proof { @include bloque($c-neutro); }
+div.proof { background: transparent; font-size: 0.97rem; }
+
+// Demostraciones desplegables: callout "note" con clase .demostracion
+.callout.demostracion {
+  border-left-color: $c-neutro !important;
+  .callout-header { background: rgba($c-neutro, 0.08); }
+}
+
+// Laboratorio interactivo
+.laboratorio {
+  border: 1px solid rgba($c-laboratorio, 0.4);
+  border-top: 4px solid $c-laboratorio;
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  margin: 1.5rem 0;
+  background: rgba($c-laboratorio, 0.03);
+  > .laboratorio-titulo { color: $c-laboratorio; font-family: $font-family-sans-serif; font-weight: 600; }
+}
+
+// Etiqueta de procedencia de resultados
+.etiqueta-resultado {
+  display: inline-block; font-family: $font-family-sans-serif; font-size: 0.75rem;
+  padding: 0.05rem 0.5rem; border-radius: 999px; border: 1px solid currentColor;
+  &.calculado { color: $c-definicion; }
+  &.analitico { color: $c-teorema; }
+  &.ilustrativo { color: $c-advertencia; }
+}
+
+// Impresión
+@media print {
+  body { font-size: 10.5pt; line-height: 1.45; }
+  .sidebar, .nav-footer, #quarto-sidebar, .quarto-search { display: none !important; }
+  div.definition, div.theorem, div.proposition, div.lemma, div.corollary,
+  div.example, div.remark, .laboratorio, .callout { break-inside: avoid; }
+  .laboratorio input, .laboratorio form { display: none; }
+  details { display: block; }
+}

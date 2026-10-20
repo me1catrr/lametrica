@@ -1,0 +1,21 @@
+# Documentación científica original: no se versiona en el repositorio público
+docs/
+
+# Salidas de Quarto
+_book/
+_site/
+.quarto/
+/.luarc.json
+*_files/
+
+# Julia
+julia/Manifest.toml
+
+# Node
+node_modules/
+
+# Sistema
+.DS_Store
+
+/.quarto/
+**/*.quarto_ipynb
