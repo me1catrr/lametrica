@@ -1,0 +1,218 @@
+---
+title: "Interpolación de deformaciones"
+subtitle: "Reemplazar las deformaciones del campo por deformaciones propias: lineales o por escalones"
+engine: julia
+---
+
+![Una deformación $\varepsilon_{11}$ que varía a lo largo del elemento (gris), su **interpolación lineal** en $\eta$ (azul discontinuo) y su aproximación por **dos escalones** (naranja), uno por subdominio, con el valor medio de cada mitad. Esquema *ilustrativo* con una función de prueba.](../../figures/svg/interpolacion-subdominios.svg){#fig-interp-def .portada fig-alt="Una curva gris suave de deformación frente a la coordenada eta, una recta azul discontinua que une los extremos y un escalón naranja con dos tramos horizontales"}
+
+::: {.pregunta-guia}
+Qué se gana al dejar de calcular las deformaciones como derivadas del campo de desplazamientos y tratarlas como incógnitas con su propia interpolación
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- escribir la **interpolación lineal** de las deformaciones $\varepsilon$, $\kappa$ y $\gamma$ de un elemento de cuatro nodos;
+- escribir la interpolación **por subdominios** (escalones) y calcular el valor de cada escalón como una media;
+- **contar parámetros** y decir por qué ambas interpolaciones evitan los modos espurios y el bloqueo;
+- reconocer la deformación por subdominios como una **proyección** de la del campo de desplazamientos;
+- comparar **ventajas e inconvenientes** de cada opción.
+
+**Prerrequisitos.** [E5](E5-bloqueo.qmd) (bloqueo y espurios) y [E4](E4-matrices-b.qmd) ($\mathbf H$).
+
+**Secciones del tema**
+
+- **@sec-porque-e6** · Por qué una interpolación propia · **@sec-lineal-e6** · Interpolación lineal · **@sec-subdominios-e6** · Subdominios
+- **@sec-conteo-e6** · Contar parámetros · **@sec-proyeccion-e6** · Promediar es proyectar · **@sec-julia-e6** · Práctica guiada
+
+::: {.callout-note title="Notación y convenciones de este tema"}
+| Símbolo | Significado |
+|---|---|
+| $\bar\varepsilon_{\alpha\beta},\ \bar{\bar\varepsilon}_{\alpha\beta}$ | parámetros (constantes) de la interpolación de la deformación (una raya: valor medio; dos: pendiente) |
+| $A_j$ | área del subdominio (o unión de subdominios) donde vale la deformación $j$ |
+| $\hat{\boldsymbol\varepsilon}$ | vector de parámetros de deformación del elemento (5 de extensión, 5 de flexión, 4 de cortante) |
+| $\boldsymbol\varepsilon_u=\mathbf H_E\boldsymbol\delta$ | deformación **del campo de desplazamientos** (E4) |
+:::
+
+::: {.callout-note .ingenieros title="Explicación para ingenieros: escalones frente a rampa"}
+Para pintar un degradado en una pared, tienes dos opciones: pasar **una rampa continua** de un color a otro (interpolación lineal) o pintar **dos franjas planas** con el color medio de cada mitad (subdominios). La rampa se parece más a la realidad, pero las franjas son **mucho más fáciles de calcular** (cada integral es una constante por un área) y, lo importante, **tienen la media correcta**. En el elemento finito sucede igual: con el valor medio de cada subdominio se conserva lo esencial (el trabajo realizado) y se pierde sólo el detalle fino dentro de cada franja.
+:::
+
+## Por qué una interpolación propia {#sec-porque-e6}
+
+En el tema E4 la deformación **salía** del campo: $\boldsymbol\varepsilon_u=\mathbf H_E\boldsymbol\delta$. Eso fuerza a que cada deformación tenga la forma que dicta la interpolación de los desplazamientos, incluida la parte parásita (el cortante de la @fig-matrices-h). Si en la energía se usa, en cambio, una deformación **independiente** $\hat{\boldsymbol\varepsilon}$, con su propia interpolación, se puede elegir una que **no contenga** las partes parásitas. La condición de que ambos campos sigan siendo compatibles se impone de forma **débil** (promediada) mediante un principio mixto: el de Hu–Washizu (D8), tema E7.
+
+## Interpolación lineal {#sec-lineal-e6}
+
+La opción más natural es **una función lineal por dirección**, con las dependencias que tiene el campo bilineal de desplazamientos:
+
+$$
+\begin{aligned}
+\text{Extensión:}\ &\varepsilon_{11}=\bar\varepsilon_{11}+\bar{\bar\varepsilon}_{11}\,\eta,\quad \varepsilon_{22}=\bar\varepsilon_{22}+\bar{\bar\varepsilon}_{22}\,\xi,\quad \varepsilon_{12}=\bar\varepsilon_{12},\\
+\text{Flexión:}\ &\kappa_{11}=\bar\kappa_{11}+\bar{\bar\kappa}_{11}\,\eta,\quad \kappa_{22}=\bar\kappa_{22}+\bar{\bar\kappa}_{22}\,\xi,\quad \kappa_{12}=\bar\kappa_{12},\\
+\text{Cortante:}\ &\gamma_1=\bar\gamma_1+\bar{\bar\gamma}_1\,\eta,\quad \gamma_2=\bar\gamma_2+\bar{\bar\gamma}_2\,\xi.
+\end{aligned}
+$$ {#eq-lineal-e6}
+
+Es decir: $\varepsilon_{11}$ puede variar sólo **a lo largo de $\eta$** (la otra dirección del elemento) y $\varepsilon_{22}$ sólo a lo largo de $\xi$; la deformación de cizalladura $\varepsilon_{12}$ se toma **constante**. Cada familia tiene **cinco** parámetros (extensión y flexión) o **cuatro** (cortante).
+
+## Interpolación por subdominios {#sec-subdominios-e6}
+
+Una alternativa es dividir el elemento en **cuatro subdominios** (cuadrantes, @fig-cuadrantes) y tomar la deformación **constante a trozos**, con los mismos «grados de libertad»:
+
+$$
+\begin{aligned}
+\varepsilon_{11}&=\begin{cases}\varepsilon_{11}^{A}&\text{en }A_{\mathrm I}+A_{\mathrm{II}}\ (\eta<0)\\\varepsilon_{11}^{B}&\text{en }A_{\mathrm{III}}+A_{\mathrm{IV}}\ (\eta>0)\end{cases}\qquad
+\varepsilon_{22}=\begin{cases}\varepsilon_{22}^{C}&\text{en }A_{\mathrm I}+A_{\mathrm{IV}}\ (\xi<0)\\\varepsilon_{22}^{D}&\text{en }A_{\mathrm{II}}+A_{\mathrm{III}}\ (\xi>0)\end{cases}\\
+\varepsilon_{12}&=\bar\varepsilon_{12}\ \text{(constante en todo el elemento)},
+\end{aligned}
+$$ {#eq-subdom-e6}
+
+y lo mismo para $\kappa_{\alpha\beta}$ y $\gamma_\alpha$. Los escalones de @eq-subdom-e6 son los **valores medios** de la rampa de @eq-lineal-e6 en cada mitad: cinco parámetros en extensión y flexión, cuatro en cortante: el **mismo número** que en la interpolación lineal. La gran diferencia es práctica: las integrales sobre cada subdominio son **constantes por áreas**, y la extensión a comportamiento no lineal es directa (cada subdominio puede tener su propio estado de material).
+
+::: {#exm-escalones-e6}
+## Ejemplo resuelto: los escalones de una deformación
+Sea $\varepsilon_{11}(\eta)=\eta+\eta^2$ en un elemento ($\eta\in[-1,1]$). La interpolación lineal que pasa por los extremos ($\varepsilon(-1)=0$, $\varepsilon(1)=2$) es $\bar\varepsilon+\bar{\bar\varepsilon}\eta=1+\eta$. Los dos escalones son las medias de cada mitad:
+$$
+\varepsilon^A=\int_{-1}^0(\eta+\eta^2)\,d\eta=-\tfrac12+\tfrac13=-\tfrac16,\qquad
+\varepsilon^B=\int_0^1(\eta+\eta^2)\,d\eta=\tfrac12+\tfrac13=\tfrac56 .
+$$
+La energía $\int\varepsilon^2d\eta$ vale: exacta, $\tfrac{16}{15}=1{,}067$; lineal, $\tfrac83=2{,}67$; escalones, $\tfrac1{36}+\tfrac{25}{36}=0{,}72$. La interpolación lineal **sobrestima** la energía (ha tomado los valores de los extremos); la de escalones **la subestima**. Resultado *analítico*.
+:::
+
+::: {.ejercicio tipo="numerico" id="e6-escalon" respuesta="0.8333" tol="0.5%" unidad=""}
+En el @exm-escalones-e6, ¿cuánto vale el escalón $\varepsilon^B$ de la mitad $\eta>0$?
+
+::: {.pista}
+Es la media: $\int_0^1(\eta+\eta^2)\,d\eta$ (la mitad tiene longitud 1).
+:::
+
+::: {.solucion}
+$\int_0^1\eta\,d\eta+\int_0^1\eta^2\,d\eta=\tfrac12+\tfrac13=\tfrac56=0{,}8333$.
+:::
+:::
+
+::: {.callout-warning title="Dos puntos que suelen confundir"}
+- **Los escalones no son los valores en los extremos.** Son medias: el escalón de la mitad $\eta>0$ de $\eta+\eta^2$ es $5/6$, no $2$.
+- **Subdominio ≠ elemento.** Los cuatro subdominios son sólo una partición para **definir deformaciones**; los **desplazamientos** siguen siendo bilineales sobre el elemento entero.
+:::
+
+## Contar parámetros {#sec-conteo-e6}
+
+Una interpolación de deformaciones sólo es razonable si el número de **parámetros independientes** coincide con el número de **modos de deformación** del elemento (modos de $\boldsymbol\delta$ que **no** son sólido rígido):
+
+| Familia | Modos del elemento | Parámetros de deformación |
+|---|---|---|
+| Extensión (membrana) | $8-3=5$ | 5 |
+| Flexión + cortante (placa) | $12-3=9$ | $5+4=9$ |
+| **Total (placa y membrana)** | $20-6=14$ | $5+5+4=14$ |
+
+Con **menos** parámetros quedan modos de energía nula (espurios); con **más** sobreabundan y reaparece el bloqueo. Que ambas interpolaciones tengan exactamente $5+5+4$ es la razón de que no tengan modos espurios ni bloqueo en el elemento plano (@fig-espectro del tema E5).
+
+::: {.ejercicio tipo="opcion" id="e6-conteo" respuesta="d"}
+Un elemento plano de cuatro nodos con 5 g.d.l. por nodo tiene 6 movimientos rígidos. ¿Cuántos parámetros independientes **totales** de deformación (extensión, flexión y cortante) hacen falta?
+
+::: {.opciones}
+- 20
+- 16
+- 12
+- 14
+:::
+
+::: {.solucion}
+$20-6=14=5$ (extensión) $+5$ (flexión) $+4$ (cortante).
+:::
+:::
+
+## Promediar es proyectar {#sec-proyeccion-e6}
+
+Los escalones tienen una expresión en función de los desplazamientos: **la media** de la deformación del campo en cada región,
+
+$$
+\hat\varepsilon_j=\frac1{A_j}\int_{A_j}\bigl(\mathbf H_E\,\boldsymbol\delta\bigr)_j\,dA\ =\ \bigl(\mathbf A^{-1}\mathbf E\,\boldsymbol\delta\bigr)_j,\qquad \mathbf A=\mathrm{diag}(A_j),\quad \mathbf E_{ji}=\int_{A_j}\mathbf H_E(j,i)\,dA .
+$$ {#eq-proy-e6}
+
+Es la **proyección ortogonal** (en $L^2$) del campo de deformaciones sobre las funciones constantes a trozos: lo que queda es lo mejor que se puede hacer con un escalón por región. En el tema E7 las matrices $\mathbf E$ y $\mathbf A$ de @eq-proy-e6 son las mismas que salen del principio de Hu–Washizu, sólo que allí aparecen como **consecuencia** de variar la tensión.
+
+::: {.callout-tip .aplicacion title="Aplicación real: esfuerzos «por panel» en el proyecto de forjados y láminas"}
+<span class="etiqueta-resultado ilustrativo">ilustrativo</span> En el cálculo de losas, forjados y cubiertas por elementos de lámina, es habitual dar los esfuerzos como **valores medios por elemento** (los «escalones») y dimensionar la armadura panel a panel a partir de ellos. Es la misma idea de esta sección llevada a la práctica de proyecto: el valor medio conserva el trabajo y es robusto frente a la oscilación punto a punto. *Idea de aplicación sin fuente verificada: es una orientación, no una cita.*
+:::
+
+## Un poco de historia {#sec-historia-e6}
+
+::: {.callout-note .historia icon=false title="Un poco de historia: las deformaciones «supuestas»"}
+La idea de **sustituir** las deformaciones del campo por otras de interpolación propia, elegidas para no bloquear, se conoce como *deformaciones supuestas* (*assumed strain*). Su ejemplo más difundido es el elemento de placa MITC4 de Bathe y Dvorkin (1985), que interpola de forma independiente las componentes del cortante; otras formulaciones (como la de Hu–Washizu, tema D8) llegan a resultados equivalentes por la vía de un principio variacional mixto. El elemento de este libro usa deformaciones constantes por subdominios dentro de un principio de Hu–Washizu **específico** (tema E7).
+
+<span class="fuentes-caja">Fuentes (secundarias): [Asymptotically accurate and locking-free FE implementation of first order shear deformation theory for plates (arXiv:2310.19443)](https://arxiv.org/pdf/2310.19443); [@BatheDvorkin]. No se leyeron los originales. Consultado el 21-10-2026.</span>
+:::
+
+## Práctica guiada en Julia {#sec-julia-e6}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> (1) Los escalones y la rampa de @exm-escalones-e6 con integración numérica. (2) El **rango** de las matrices de proyección $\mathbf E$ de un elemento plano: $5$, $5$ y $4$ filas independientes, es decir, los $14$ parámetros del conteo.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+# (1) Escalones de ε(η) = η + η²
+ε(η) = η + η^2
+g2 = (-1 / sqrt(3), 1 / sqrt(3))
+media(a, b) = sum(ε((a + b) / 2 + (b - a) / 2 * x) for x in g2) / 2      # media = (1/(b−a)) ∫ ε, con Gauss de 2 puntos
+(escalón_A = media(-1, 0), escalón_B = media(0, 1), energía_exacta = 16 / 15,
+ energía_lineal = 8 / 3, energía_escalones = media(-1, 0)^2 + media(0, 1)^2)
+```
+
+```{julia}
+# (2) Rango de las matrices E (5×20, 5×20, 4×20) del elemento plano
+plana = placa_oblicua(π / 2); X = [0.0 1 1 0; 0 0 1 1]
+fila11 = (1, 1, 2, 2); fila22 = (3, 4, 4, 3)
+EE = zeros(5, 20); EB = zeros(5, 20); ES = zeros(4, 20)
+for q in 1:4, (ξ, η, w) in Geometria.puntos_gauss(Geometria.CUADRANTES[q][1], Geometria.CUADRANTES[q][2], 2)
+    g, N, dN, dA, _, _, _ = punto_elemento(plana, X, ξ, η, 1.0, 0.3, 0.1)
+    HE, HB, HS = matrices_H(g, N, dN)
+    P = zeros(5, 3); P[fila11[q], 1] = 1; P[fila22[q], 2] = 1; P[5, 3] = 1
+    PS = zeros(4, 2); PS[fila11[q], 1] = 1; PS[fila22[q], 2] = 1
+    EE .+= P * HE * (w * dA); EB .+= P * HB * (w * dA); ES .+= PS * HS * (w * dA)
+end
+(rango_E = rank(EE; atol = 1e-10), rango_B = rank(EB; atol = 1e-10), rango_S = rank(ES; atol = 1e-10),
+ total = rank(vcat(EE, EB, ES); atol = 1e-10))
+```
+
+Los rangos son $5+5+4=14$ y el rango del conjunto es **14**: las 14 combinaciones de desplazamientos que no son sólido rígido están todas «vistas» por los escalones.
+
+## Ejercicios {#sec-ejercicios-e6}
+
+1. **Parámetros.** ¿Cuántos parámetros de deformación tiene la interpolación lineal de la flexión? ¿Y la de cortante?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Flexión: $\bar\kappa_{11},\bar{\bar\kappa}_{11},\bar\kappa_{22},\bar{\bar\kappa}_{22},\bar\kappa_{12}$ (5). Cortante: $\bar\gamma_1,\bar{\bar\gamma}_1,\bar\gamma_2,\bar{\bar\gamma}_2$ (4).
+   :::
+
+2. **Media de una media.** Si $\varepsilon$ es lineal en $\eta$, ¿qué relación tiene su media en cada mitad con su valor en el centro de esa mitad?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Son iguales: la media de una función lineal sobre un intervalo es su valor en el punto medio. Con una sola mitad: $\varepsilon(-\tfrac12)$ y $\varepsilon(\tfrac12)$.
+   :::
+
+3. **Energía del escalón.** Demuestra que, para cualquier $\varepsilon$, la energía de los escalones $\sum_jA_j\hat\varepsilon_j^2$ es menor o igual que la de $\varepsilon$ (con $E$ constante).
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Por la desigualdad de Cauchy–Schwarz: $A_j\hat\varepsilon_j^2=\bigl(\int_{A_j}\varepsilon\,dA\bigr)^2/A_j\le\int_{A_j}\varepsilon^2dA$. Los escalones **subestiman** la energía en cada región (de ahí que el elemento pueda resultar algo flexible, como en el ejemplo de la viga del tema E2).
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- Escribo las interpolaciones lineal y por subdominios de las tres familias de deformaciones.
+- Calculo un escalón como una media.
+- Cuento parámetros y sé por qué 14 es el número correcto.
+- Digo que promediar es proyectar y que los escalones subestiman la energía.
+- Sé comparar ventajas e inconvenientes de la rampa y el escalón.
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo; las interpolaciones lineal y por subdominios son las de la formulación del elemento estudiado en este libro; los resultados de rango y los números del ejemplo se comprueban en Julia. Deformaciones supuestas en general: [@BatheDvorkin; @Bathe].
+
+**Qué queda pendiente.** La afirmación «el conteo $14$ evita modos espurios y bloqueo» está comprobada numéricamente para el elemento plano, no demostrada en general; el comportamiento en láminas curvas se contrasta en F1–F3; nota histórica con fuentes secundarias; figura con revisión visual pendiente.
+:::

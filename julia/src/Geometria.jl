@@ -29,7 +29,10 @@ export metrica, base_reciproca, comps_contravariantes, comps_covariantes,
        lame, hooke_contravariante, tension_hooke, energia_deformacion, matriz_tension_plana,
        deformacion_pequena, gradiente_desplazamiento, green_lagrange_desde_u, green_lagrange,
        cauchy_green, divergencia_tensor, deformacion_lamina_exacta, deformacion_lamina_lineal,
-       campos_lamina, rigidez_lamina
+       campos_lamina, rigidez_lamina,
+       formas_bilineales, geometria_punto, matrices_H, punto_elemento, rigidez_elemento, masa_elemento, cargas_elemento,
+       malla_rectangular, ensamblar, gdl, gdl_elemento, resolver_estatica, frecuencias,
+       desplazamiento_cartesiano, deformaciones_medias
 
 """
     metrica(B)
@@ -517,5 +520,6 @@ function codazzi(r, θ::AbstractVector; h = 1e-4)
 end
 
 include("Laminas.jl")
+include("ElementoLamina.jl")
 
 end # module

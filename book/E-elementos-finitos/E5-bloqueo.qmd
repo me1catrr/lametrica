@@ -1,0 +1,215 @@
+---
+title: "Bloqueo y modos espurios"
+subtitle: "Por qué los elementos ingenuos fallan en láminas delgadas y cómo se arregla"
+engine: julia
+---
+
+![Flecha central de una placa delgada simplemente apoyada ($t/L=0{,}01$) frente al número de elementos por lado, relativa a la solución de Navier. El elemento de **desplazamientos puros** (naranja) se queda en el 13 % con $16\times16$ elementos; la **integración reducida selectiva** (violeta) y los **subdominios** (azul) convergen. Cálculo *calculado*.](../../figures/svg/bloqueo-convergencia.svg){#fig-bloqueo-conv .portada fig-alt="Gráfica de convergencia con tres curvas: la naranja casi pegada al eje horizontal, las violeta y azul alcanzando 1,0 con cuatro elementos por lado"}
+
+::: {.pregunta-guia}
+Por qué un elemento perfectamente correcto sobre el papel puede dar una lámina delgada cientos de veces más rígida de lo que es
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- reconocer el **bloqueo** (*locking*) por sus síntomas: resultado demasiado rígido que empeora al adelgazar la lámina;
+- explicar el **bloqueo por cortante** con una viga de un elemento y cuantificarlo;
+- distinguir el bloqueo de **membrana** del de cortante y por qué la lámina curva sufre los dos;
+- detectar **modos espurios** (energía nula) mirando los autovalores de $\mathbf K_e$;
+- comparar los tres remedios: integración reducida, deformaciones supuestas y subdominios.
+
+**Prerrequisitos.** [E4](E4-matrices-b.qmd) (cortante parásito) y [E2](E2-cuadrilatero-plano.qmd) (Gauss).
+
+**Secciones del tema**
+
+- **@sec-sintomas-e5** · Síntomas del bloqueo · **@sec-cortante-e5** · Bloqueo por cortante · **@sec-membrana-e5** · Bloqueo de membrana
+- **@sec-espurios-e5** · Modos espurios · **@sec-remedios-e5** · Remedios · **@sec-julia-e5** · Práctica guiada
+
+::: {.callout-note title="Notación y convenciones de este tema"}
+| Símbolo | Significado |
+|---|---|
+| $t/L$ | esbeltez de la lámina (espesor entre luz) |
+| $w_h/w_{\text{ex}}$ | flecha de elementos finitos entre flecha exacta ($<1$: demasiado rígido) |
+| $\lambda_i(\mathbf K_e)$ | autovalores de la matriz de rigidez del elemento |
+| *espurio* | modo de energía nula que **no** es un movimiento rígido |
+| *desplazamientos*, *reducida*, *subdominios* | las tres variantes de rigidez de `rigidez_elemento` |
+:::
+
+::: {.callout-note .ingenieros title="Explicación para ingenieros: el elemento con la camisa de fuerza"}
+Imagina que a un elemento se le dan **pocas formas de moverse** y, además, se le penaliza cada pequeña deformación «de más» con una energía enorme. Una lámina delgada quiere **doblarse** (cuesta poco), pero el elemento sólo sabe doblarse **estirándose o cizallándose a la vez** — deformaciones falsas que cuestan mucho. Resultado: el elemento prefiere **no moverse**, como quien lleva una camisa de fuerza. Y cuanto más delgada es la lámina, más pesa la rigidez falsa frente a la verdadera: la camisa aprieta más. Los remedios consisten en **soltar** las deformaciones falsas (promediarlas, reducir la integración o reinterpolarlas).
+:::
+
+## Síntomas del bloqueo {#sec-sintomas-e5}
+
+- La estructura **se deforma muy poco** (la flecha es una pequeña fracción de la correcta).
+- El error **aumenta al adelgazar** la lámina (@fig-bloqueo-esp) y **desaparece** con espesores gruesos.
+- Refinar la malla **ayuda muy despacio**: con $t/L=0{,}01$ ni $16\times16$ elementos bastan (@fig-bloqueo-conv).
+
+![Con malla fija ($8\times8$) el elemento de desplazamientos puros pierde casi toda su capacidad cuando el espesor relativo baja de $0{,}05$. Con $t/L=0{,}2$ (placa gruesa) todas las curvas pasan por encima de 1 porque la flecha incluye la deformación por cortante, que la solución de Navier (Kirchhoff) no recoge. *Calculado*.](../../figures/svg/bloqueo-espesor.svg){#fig-bloqueo-esp fig-alt="Gráfica de la flecha relativa frente al espesor en escala logarítmica: la curva naranja cae a cero al disminuir el espesor mientras las otras dos permanecen en uno"}
+
+## Bloqueo por cortante {#sec-cortante-e5}
+
+El cortante transversal $\gamma_\alpha=\varphi_\alpha+w_{,\alpha}$ pesa en la energía con la rigidez $t\mu$, mientras que la flexión lo hace con $t^3/12$: **su cociente crece como $1/t^2$**. En flexión pura el cortante exacto es nulo ($\varphi_\alpha=-w_{,\alpha}$), pero el campo interpolado (E4) **no puede** hacerlo cero a la vez en todo el elemento. Si ese cortante parásito se evalúa punto a punto, su energía **domina** y obliga a $w\to0$.
+
+::: {#exm-viga-bloqueo-e5}
+## Ejemplo resuelto: una viga de un solo elemento
+Voladizo de longitud $L$ con **un** elemento de dos nodos, $w$ y $\theta$ lineales ($w=w_2x/L$, $\theta=\theta_2x/L$), cortante $\gamma=w'-\theta$ y una fuerza $P$ en el extremo. Las energías de flexión y de cortante son
+$$
+U_B=\tfrac12EI\,\frac{\theta_2^2}{L},\qquad U_S=\tfrac12\kappa GA\,L\Bigl[\bigl(\tfrac{w_2}{L}\bigr)^2-\tfrac{w_2\theta_2}{L}+\tfrac{\theta_2^2}3\Bigr].
+$$
+Derivando respecto de $(w_2,\theta_2)$ y despejando con la carga $P$ en $w_2$:
+$$
+w_2=P\,\frac{EI/L+\kappa GAL/3}{\kappa GA\,EI/L^2+(\kappa GA)^2/12},\qquad w_{\text{ex}}=\frac{PL^3}{3EI}+\frac{PL}{\kappa GA}.
+$$
+Para una viga delgada ($\kappa GAL^2\gg EI$), $w_2\to4PL/(\kappa GA)$, y $w_{\text{ex}}/w_2\to\dfrac{\kappa GA\,L^2}{12\,EI}$: **crece como $(L/t)^2$**. Con $\kappa=1$, $\nu=0{,}3$, espesor $t=1$ y $L=100$ ($E=1$, $P=1$): $w_2=1039{,}8$ y $w_{\text{ex}}=4\,000\,260$, es decir, el elemento resulta **3847 veces más rígido** de lo que es. Resultado *analítico*.
+:::
+
+::: {.ejercicio tipo="numerico" id="e5-rigidez-espuria" respuesta="3847" tol="1%" unidad="veces"}
+En el @exm-viga-bloqueo-e5 (con $E=1$, $\nu=0{,}3$, $\kappa=1$, $t=1$, $L=100$, $P=1$), ¿cuántas veces más rígida resulta la viga de un solo elemento respecto de la solución exacta, $w_{\text{ex}}/w_2$?
+
+::: {.pista}
+Calcula $EI=Et^3/12$, $GA=Et/(2(1+\nu))$ y sustituye en las dos fórmulas del ejemplo.
+:::
+
+::: {.solucion}
+$EI=1/12$, $GA=1/2{,}6=0{,}3846$. $w_2=(EI/L+GAL/3)/(GA\,EI/L^2+GA^2/12)=1039{,}8$; $w_{\text{ex}}=PL^3/(3EI)+PL/GA=4\,000\,000+260=4\,000\,260$. Cociente: $3847$.
+:::
+:::
+
+## Bloqueo de membrana {#sec-membrana-e5}
+
+Una lámina **curva** sufre además el **bloqueo de membrana**: su modo de deformación «natural» es la **flexión sin estiramiento** (inextensional), pero el elemento no la reproduce sin estirar algo la superficie media. Como la rigidez de membrana es $\propto t$ y la de flexión $\propto t^3$, el estiramiento parásito domina cuando la lámina es delgada. Ocurre aunque la lámina se cargue sólo a flexión y se nota en cilindros y paraboloides. En la práctica se ve en el *Scordelis–Lo* (tema F2): con $8\times8$ elementos, la formulación de desplazamientos alcanza **un 12 %** de la flecha de referencia y la de subdominios, **más del 96 %**.
+
+::: {.callout-warning title="Dos puntos que suelen confundir"}
+- **No es un fallo del programa.** Con la formulación y la integración de Gauss «correctas» el elemento da *exactamente* el bloqueo que predice la teoría: es una propiedad del espacio de interpolación, no un error de código.
+- **Bloqueo ≠ modos espurios.** El bloqueo es *exceso* de rigidez; los modos espurios son *defecto*: movimientos con energía nula que no son del sólido rígido. Un remedio mal elegido cambia uno por otro.
+:::
+
+## Modos espurios {#sec-espurios-e5}
+
+Un elemento **no debe** tener más movimientos de energía nula que los rígidos: una lámina plana tiene **seis** (tres traslaciones y tres giros; el giro alrededor de la normal aparece como combinación de desplazamientos en el plano, ya que no hay g.d.l. propio). Cualquier modo extra es un **modo espurio** (*hourglass*): se manifiesta en la malla como un patrón de «reloj de arena» sin resistencia.
+
+![Autovalores de $\mathbf K_e$ para un elemento plano con tres formulaciones. Los seis primeros (grises) son los movimientos rígidos; en la **integración reducida selectiva** hay **dos más** (naranja): son modos espurios. Con **desplazamientos** y **subdominios** sólo hay seis. *Calculado*.](../../figures/svg/espectro-rigidez.svg){#fig-espectro fig-alt="Tres diagramas de barras con los veinte autovalores de una matriz de rigidez: seis casi nulos en la primera y tercera, ocho en la segunda"}
+
+::: {.ejercicio tipo="opcion" id="e5-modos-espurios" respuesta="b"}
+Un elemento plano de cuatro nodos y 5 g.d.l. por nodo tiene $\mathbf K_e$ con **ocho** autovalores nulos. ¿Qué indica?
+
+::: {.opciones}
+- Es correcto: seis rígidos y dos de reserva
+- Hay seis movimientos rígidos y dos **modos espurios** de energía nula
+- La matriz está mal ensamblada
+- El elemento está bloqueado
+:::
+
+::: {.solucion}
+Un elemento plano admite exactamente seis modos de energía nula (rígidos). Ocho indica **dos modos espurios** (ocurre con la integración reducida del cortante a un punto, @fig-espectro). Bloqueo es lo contrario: *exceso* de rigidez.
+:::
+:::
+
+## Remedios {#sec-remedios-e5}
+
+| Remedio | Idea | Efecto |
+|---|---|---|
+| **Integración reducida selectiva** | Evaluar el cortante (o la membrana) con **menos** puntos de Gauss | Quita el bloqueo, pero puede introducir modos espurios (@fig-espectro) |
+| **Deformaciones supuestas** (por ejemplo, MITC) | Interpolar el cortante **aparte**, con una fórmula pensada para que no bloquee | Sin modos espurios, algo más de programación |
+| **Subdominios** (E6–E7) | Promediar cada deformación en subregiones del elemento y variar con **Hu–Washizu** | Sin bloqueo ni modos espurios en el elemento plano |
+
+La nota histórica y la formulación detallada se dan en los temas siguientes: el tema E6 explica *qué* se interpola y E7 *cómo* sale la matriz de rigidez.
+
+::: {.callout-important title="Idea clave"}
+Todo remedio consiste en **desacoplar** las deformaciones calculadas de los desplazamientos: que lo que entra en la energía **no sea exactamente** la derivada del campo interpolado. Sólo así se evita que las deformaciones «parásitas» del campo (cortante, estiramiento) almacenen energía.
+:::
+
+::: {.callout-tip .aplicacion title="Aplicación real: torres de refrigeración y tejidos blandos"}
+<span class="etiqueta-resultado ilustrativo">ilustrativo</span> **Obra civil.** Las torres de refrigeración hiperbólicas de hormigón son cáscaras muy esbeltas: un estudio de inspección de una torre de 1959 cita un espesor de proyecto de entre unos 0,12 y 0,4 m para un cuerpo de decenas de metros. Con esa relación $t/R$ tan pequeña, un elemento propenso al bloqueo daría una torre «de piedra». **Biomecánica.** Los tejidos blandos son casi incompresibles ($\nu\to0{,}5$), lo que provoca un bloqueo volumétrico análogo; existen elementos de lámina gruesa pensados específicamente para ellos.
+
+<span class="fuentes-caja">Fuentes (secundarias): [Laser Scanner-Based Hyperboloid Cooling Tower Geometry Inspection (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11435781/) (espesores de proyecto); [A New Continuum-Based Thick Shell Finite Element for Soft Biological Tissues in Dynamics (arXiv:1801.04029)](https://arxiv.org/pdf/1801.04029) (sólo el título y el resumen; el bloqueo volumétrico es afirmación general, sin fuente leída). Consultado el 21-10-2026.</span>
+:::
+
+## Un poco de historia {#sec-historia-e5}
+
+::: {.callout-note .historia icon=false title="Un poco de historia: de la integración reducida a MITC"}
+La integración reducida como remedio del bloqueo en placas y láminas se asocia al artículo de Zienkiewicz, Taylor y Too (1971): al integrar el cortante con menos puntos de Gauss se «relaja» el elemento. Años después, Bathe y Dvorkin (1985) propusieron el elemento de placa de cuatro nodos MITC4, basado en una **interpolación mixta de las componentes tensoriales** del cortante, que evita los modos espurios que la integración reducida puede producir. El título exacto del artículo de 1971 varía según las fuentes secundarias.
+
+<span class="fuentes-caja">Fuentes (secundarias): [A new locking-free polygonal plate element… (arXiv:1810.08900)](https://arxiv.org/pdf/1810.08900); [The simplified MITC4+ shell element… (ACM)](https://dl.acm.org/doi/10.1016/j.compstruc.2023.107177); [@ZienkiewiczTaylorToo; @BatheDvorkin]. No se leyeron los originales. Consultado el 21-10-2026.</span>
+:::
+
+## Práctica guiada en Julia {#sec-julia-e5}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Se resuelve la placa cuadrada simplemente apoyada con carga uniforme con las tres variantes de rigidez y se compara con la solución de Navier; después se cuentan los autovalores nulos de cada $\mathbf K_e$.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+# Solución de Navier (placa simplemente apoyada a×a, carga uniforme q, rigidez D): flecha central
+navier(a, q, D; N = 199) = 16q / (π^6 * D) * sum(sin(m * π / 2) * sin(n * π / 2) / (m * n * (m^2 + n^2)^2 / a^4) for m in 1:2:N, n in 1:2:N)
+
+function flecha_centro(n, t, modo; E = 1.0e4, ν = 0.3, L = 1.0)
+    r = placa_oblicua(π / 2)
+    nodos, conn = malla_rectangular((0, L), (0, L), n, n)
+    K, _, F = ensamblar(r, nodos, conn, E, ν, t; modo, f = θ -> [0, 0, -1.0])
+    fij = Int[]
+    for k in 1:size(nodos, 2)
+        x, y = nodos[:, k]
+        append!(fij, [gdl(k, 1), gdl(k, 2)])
+        (x ≈ 0 || x ≈ L || y ≈ 0 || y ≈ L) && push!(fij, gdl(k, 3))
+        (x ≈ 0 || x ≈ L) && push!(fij, gdl(k, 5))
+        (y ≈ 0 || y ≈ L) && push!(fij, gdl(k, 4))
+    end
+    u = resolver_estatica(K, F, unique(fij))
+    c = findfirst(k -> nodos[1, k] ≈ L / 2 && nodos[2, k] ≈ L / 2, 1:size(nodos, 2))
+    -u[gdl(c, 3)]
+end
+
+E, ν, t = 1.0e4, 0.3, 0.01; D = E * t^3 / (12 * (1 - ν^2))
+wref = navier(1.0, 1.0, D)
+tabla = [(n = n, desplazamientos = flecha_centro(n, t, :desplazamientos) / wref,
+          reducida = flecha_centro(n, t, :reducida_selectiva) / wref,
+          subdominios = flecha_centro(n, t, :subdominios) / wref) for n in (2, 4, 8)]
+```
+
+```{julia}
+X = [0.0 1 1 0; 0 0 1 1]
+for modo in (:desplazamientos, :reducida_selectiva, :subdominios)
+    ev = eigvals(Symmetric(rigidez_elemento(placa_oblicua(π / 2), X, 1.0, 0.3, 0.1; modo)))
+    println(rpad(modo, 20), "autovalores nulos: ", count(<(1e-9 * maximum(ev)), ev))
+end
+```
+
+## Ejercicios {#sec-ejercicios-e5}
+
+1. **Escala del bloqueo.** Si el espesor de una placa pasa de $t/L=0{,}1$ a $0{,}01$, ¿cuánto crece el factor de rigidez espuria del elemento de desplazamientos?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Como $\propto(L/t)^2$, crece $10^2=100$ veces: de unos 40 a unos 4000 en el ejemplo.
+   :::
+
+2. **Hourglass.** Explica por qué un elemento con un solo punto de Gauss tiene modos de energía nula.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Con un punto sólo se «ven» las deformaciones constantes del elemento; los modos de deformación de orden superior (flexión, torsión en el plano) quedan sin energía, aunque no sean movimientos rígidos.
+   :::
+
+3. **Qué mirar.** ¿Cómo se detecta un modo espurio sin resolver ningún problema?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Contando los autovalores nulos de la matriz de rigidez de **un solo elemento libre**: si hay más que movimientos rígidos, hay modos espurios (@fig-espectro).
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- Reconozco el bloqueo por sus síntomas y sé que empeora con $t\to0$.
+- Explico por qué el cortante parásito domina ($\propto1/t^2$) y calculo el factor de una viga de un elemento.
+- Distingo bloqueo de membrana y de cortante, y bloqueo de modos espurios.
+- Cuento los autovalores nulos de una $\mathbf K_e$ e interpreto el resultado.
+- Enumero los tres remedios y su inconveniente principal.
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo; el bloqueo y sus remedios son estándar [@Bathe; @Hughes; @ZienkiewiczTaylor]. Los números son *calculados* con `Geometria` y la placa, contrastada con la solución de Navier [@TimoshenkoWK] (calculada aquí con la serie, no tomada de la tabla del libro).
+
+**Qué queda pendiente.** El bloqueo de membrana se ilustra con el caso del tema F2, no se demuestra aquí; la nota histórica y los datos de la «Aplicación real» provienen de fuentes secundarias; el comentario sobre el bloqueo volumétrico de tejidos blandos es una afirmación general sin fuente leída; revisión visual de las figuras.
+:::

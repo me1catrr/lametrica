@@ -173,42 +173,50 @@ pregunta = "¿Cómo lo calcula un ordenador sin que el elemento se bloquee?"
   [[bloque.tema]]
   id = "E1"
   titulo = "El método de elementos finitos en una barra"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E1-mef-barra.qmd"
   requiere = ["D8"]
   [[bloque.tema]]
   id = "E2"
   titulo = "El cuadrilátero bilineal en tensión plana"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E2-cuadrilatero-plano.qmd"
   requiere = ["E1"]
   [[bloque.tema]]
   id = "E3"
   titulo = "El elemento lámina de cuatro nodos"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E3-elemento-lamina.qmd"
   requiere = ["E2", "D6"]
   [[bloque.tema]]
   id = "E4"
   titulo = "Matrices deformación–desplazamiento"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E4-matrices-b.qmd"
   requiere = ["E3"]
   [[bloque.tema]]
   id = "E5"
   titulo = "Bloqueo y modos espurios"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E5-bloqueo.qmd"
   requiere = ["E4"]
   [[bloque.tema]]
   id = "E6"
   titulo = "Interpolación de deformaciones"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E6-interpolacion-deformaciones.qmd"
   requiere = ["E5"]
   [[bloque.tema]]
   id = "E7"
   titulo = "Hu–Washizu por subdominios"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E7-hu-washizu-subdominios.qmd"
   requiere = ["E6", "D8"]
   [[bloque.tema]]
   id = "E8"
   titulo = "Cargas y matriz de masa"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E8-cargas-masa.qmd"
   requiere = ["E7"]
   [[bloque.tema]]
   id = "E9"
@@ -219,33 +227,38 @@ pregunta = "¿Cómo lo calcula un ordenador sin que el elemento se bloquee?"
 # ---------------------------------------------------------------- Bloque F
 [[bloque]]
 id = "F"
-titulo = "Vibraciones y validación"
-pregunta = "¿A qué frecuencias vibra un paraboloide hiperbólico y cuánto podemos fiarnos del cálculo?"
+titulo = "Validación y vibraciones"
+pregunta = "¿Cuánto podemos fiarnos del cálculo y a qué frecuencias vibra un paraboloide hiperbólico?"
   [[bloque.tema]]
   id = "F1"
-  titulo = "Vibraciones de láminas"
+  titulo = "Validación estática (I): la placa"
   estado = "pendiente"
   requiere = ["E9"]
   [[bloque.tema]]
   id = "F2"
-  titulo = "Validación estática"
+  titulo = "Validación estática (II): el cilindro"
   estado = "pendiente"
-  requiere = ["E9"]
+  requiere = ["F1"]
   [[bloque.tema]]
   id = "F3"
-  titulo = "El hypar de bordes curvos"
+  titulo = "El paraboloide hiperbólico bajo carga"
   estado = "pendiente"
-  requiere = ["F1", "C5"]
+  requiere = ["F2", "C5"]
   [[bloque.tema]]
   id = "F4"
-  titulo = "El hypar de bordes rectos"
+  titulo = "Vibraciones de láminas"
   estado = "pendiente"
   requiere = ["F3"]
   [[bloque.tema]]
   id = "F5"
-  titulo = "Implementación reproducible en Julia"
+  titulo = "Frecuencias del paraboloide hiperbólico"
   estado = "pendiente"
   requiere = ["F4"]
+  [[bloque.tema]]
+  id = "F6"
+  titulo = "Implementación reproducible en Julia"
+  estado = "pendiente"
+  requiere = ["F5"]
 
 # ---------------------------------------------------------------- Bloque G
 [[bloque]]
@@ -256,4 +269,4 @@ pregunta = "¿Qué hemos aprendido, qué límites tiene el modelo y hacia dónde
   id = "G1"
   titulo = "Conclusiones y futuro"
   estado = "pendiente"
-  requiere = ["F5"]
+  requiere = ["F6"]

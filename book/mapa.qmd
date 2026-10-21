@@ -6,7 +6,7 @@
 
 Este es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como *por escribir* aparecerán a medida que avance el libro.
 
-**Estado:** 21 temas publicados, 0 en reescritura y 15 por escribir (de 36).
+**Estado:** 29 temas publicados, 0 en reescritura y 8 por escribir (de 37).
 
 ## Bloque A · Preludio: la forma que resiste {.unnumbered}
 
@@ -73,29 +73,30 @@ Cómo lo calcula un ordenador sin que el elemento se bloquee
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| E1 | El método de elementos finitos en una barra | ○ por escribir | D8 |
-| E2 | El cuadrilátero bilineal en tensión plana | ○ por escribir | E1 |
-| E3 | El elemento lámina de cuatro nodos | ○ por escribir | E2, D6 |
-| E4 | Matrices deformación–desplazamiento | ○ por escribir | E3 |
-| E5 | Bloqueo y modos espurios | ○ por escribir | E4 |
-| E6 | Interpolación de deformaciones | ○ por escribir | E5 |
-| E7 | Hu–Washizu por subdominios | ○ por escribir | E6, D8 |
-| E8 | Cargas y matriz de masa | ○ por escribir | E7 |
+| E1 | [El método de elementos finitos en una barra](E-elementos-finitos/E1-mef-barra.html) | ● publicado | D8 |
+| E2 | [El cuadrilátero bilineal en tensión plana](E-elementos-finitos/E2-cuadrilatero-plano.html) | ● publicado | E1 |
+| E3 | [El elemento lámina de cuatro nodos](E-elementos-finitos/E3-elemento-lamina.html) | ● publicado | E2, D6 |
+| E4 | [Matrices deformación–desplazamiento](E-elementos-finitos/E4-matrices-b.html) | ● publicado | E3 |
+| E5 | [Bloqueo y modos espurios](E-elementos-finitos/E5-bloqueo.html) | ● publicado | E4 |
+| E6 | [Interpolación de deformaciones](E-elementos-finitos/E6-interpolacion-deformaciones.html) | ● publicado | E5 |
+| E7 | [Hu–Washizu por subdominios](E-elementos-finitos/E7-hu-washizu-subdominios.html) | ● publicado | E6, D8 |
+| E8 | [Cargas y matriz de masa](E-elementos-finitos/E8-cargas-masa.html) | ● publicado | E7 |
 | E9 | Ensamblaje, condiciones de contorno y autovalores | ○ por escribir | E8 |
 
-## Bloque F · Vibraciones y validación {.unnumbered}
+## Bloque F · Validación y vibraciones {.unnumbered}
 
 ::: {.pregunta-guia}
-A qué frecuencias vibra un paraboloide hiperbólico y cuánto podemos fiarnos del cálculo
+Cuánto podemos fiarnos del cálculo y a qué frecuencias vibra un paraboloide hiperbólico
 :::
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| F1 | Vibraciones de láminas | ○ por escribir | E9 |
-| F2 | Validación estática | ○ por escribir | E9 |
-| F3 | El hypar de bordes curvos | ○ por escribir | F1, C5 |
-| F4 | El hypar de bordes rectos | ○ por escribir | F3 |
-| F5 | Implementación reproducible en Julia | ○ por escribir | F4 |
+| F1 | Validación estática (I): la placa | ○ por escribir | E9 |
+| F2 | Validación estática (II): el cilindro | ○ por escribir | F1 |
+| F3 | El paraboloide hiperbólico bajo carga | ○ por escribir | F2, C5 |
+| F4 | Vibraciones de láminas | ○ por escribir | F3 |
+| F5 | Frecuencias del paraboloide hiperbólico | ○ por escribir | F4 |
+| F6 | Implementación reproducible en Julia | ○ por escribir | F5 |
 
 ## Bloque G · Cierre {.unnumbered}
 
@@ -105,5 +106,5 @@ Qué hemos aprendido, qué límites tiene el modelo y hacia dónde seguir
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| G1 | Conclusiones y futuro | ○ por escribir | F5 |
+| G1 | Conclusiones y futuro | ○ por escribir | F6 |
 

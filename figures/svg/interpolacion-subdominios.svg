@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 453.5 296.0" role="img" aria-label="Una deformación que varía a lo largo del elemento, su interpolación lineal y su aproximación por dos escalones constantes (una por subdominio)">
+<title>Una deformación que varía a lo largo del elemento, su interpolación lineal y su aproximación por dos escalones constantes (una por subdominio)</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<line x1="43.0" y1="215.5" x2="410.5" y2="215.5" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="410.5,215.5 401.29,219.39 401.29,211.61" fill="#6b7280"/>
+<text x="414.5" y="231.5" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">η</text>
+<line x1="43.0" y1="215.5" x2="43.0" y2="43.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="43.0,43.0 46.89,52.21 39.11,52.21" fill="#6b7280"/>
+<text x="51.0" y="49.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">ε₁₁</text>
+<polyline points="65.5,223.0 65.5,208.0" fill="none" stroke="#6b7280" stroke-width="1.5" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="365.5,223.0 365.5,208.0" fill="none" stroke="#6b7280" stroke-width="1.5" opacity="1.0" stroke-linejoin="round"/>
+<text x="65.5" y="241.0" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">−1</text>
+<text x="365.5" y="241.0" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">1</text>
+<polyline points="65.5,212.5 70.58,213.38 75.67,214.08 80.75,214.61 85.84,214.97 90.92,215.16 96.01,215.2 101.09,215.07 106.18,214.79 111.26,214.36 116.35,213.78 121.43,213.06 126.52,212.2 131.6,211.2 136.69,210.06 141.77,208.8 146.86,207.41 151.94,205.89 157.03,204.26 162.11,202.51 167.19,200.64 172.28,198.67 177.36,196.6 182.45,194.42 187.53,192.14 192.62,189.76 197.7,187.3 202.79,184.75 207.87,182.11 212.96,179.39 218.04,176.59 223.13,173.72 228.21,170.78 233.3,167.77 238.38,164.7 243.47,161.57 248.55,158.38 253.64,155.14 258.72,151.85 263.81,148.51 268.89,145.13 273.97,141.71 279.06,138.26 284.14,134.77 289.23,131.26 294.31,127.72 299.4,124.16 304.48,120.58 309.57,116.98 314.65,113.38 319.74,109.77 324.82,106.15 329.91,102.53 334.99,98.92 340.08,95.31 345.16,91.72 350.25,88.13 355.33,84.57 360.42,81.02 365.5,77.5" fill="none" stroke="#6b7280" stroke-width="3.0" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="65.5,204.45 215.5,204.45 215.5,129.49 365.5,129.49" fill="none" stroke="#d95f02" stroke-width="3.4" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="65.5,212.5 365.5,77.5" fill="none" stroke="#1b6ca8" stroke-width="2.6" opacity="1.0" stroke-dasharray="7 4" stroke-linejoin="round"/>
+<text x="73.0" y="62.5" fill="#6b7280" font-size="12.5" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">deformación del campo de desplazamientos</text>
+<text x="73.0" y="73.0" fill="#1b6ca8" font-size="12.5" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">interpolación lineal en η</text>
+<text x="73.0" y="83.5" fill="#d95f02" font-size="12.5" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">subdominios: un valor por mitad</text>
+</svg>

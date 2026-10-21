@@ -537,3 +537,106 @@ end
     @test CSo ≈ t * μ * inv(a) atol = 1e-8
     @test C3[1, 3, 2, 3] ≈ μ * inv(a)[1, 2] atol = 1e-8
 end
+
+@testset "Elemento finito de lámina (bloque E)" begin
+    plana = placa_oblicua(π / 2)
+    X = [0.0 1 1 0; 0 0 1 1]
+
+    @testset "Funciones de forma" begin
+        N, dξ, dη = formas_bilineales(0.3, -0.2)
+        @test sum(N) ≈ 1 atol = 1e-14                         # partición de la unidad
+        @test abs(sum(dξ)) < 1e-14 && abs(sum(dη)) < 1e-14
+        for (k, (ξk, ηk)) in enumerate(((-1, -1), (1, -1), (1, 1), (-1, 1)))
+            Nk, _, _ = formas_bilineales(ξk, ηk)
+            @test Nk ≈ [j == k ? 1.0 : 0.0 for j in 1:4] atol = 1e-14     # delta de Kronecker en los nodos
+        end
+    end
+
+    @testset "Modos de sólido rígido y de energía nula" begin
+        ceros(K) = (ev = eigvals(Symmetric(K)); count(<(1e-9 * maximum(ev)), ev))
+        K1 = rigidez_elemento(plana, X, 1.0, 0.3, 0.1; modo = :subdominios)
+        @test K1 ≈ K1' atol = 1e-10
+        @test ceros(K1) == 6                                   # 3 en el plano + 3 de placa: ni más ni menos
+        @test ceros(rigidez_elemento(plana, X, 1.0, 0.3, 0.1; modo = :desplazamientos)) == 6
+        @test ceros(rigidez_elemento(plana, X, 1.0, 0.3, 0.1; modo = :reducida_selectiva)) == 8   # 2 modos espurios
+        # traslación vertical rígida de la placa: u₃ = 1 en los cuatro nodos
+        d = zeros(20); for k in 1:4; d[5(k-1)+3] = 1.0; end
+        @test norm(K1 * d) < 1e-10
+    end
+
+    @testset "Placa simplemente apoyada (Navier) y bloqueo" begin
+        navier(a, q, D; N = 99) = 16q / (π^6 * D) * sum(sin(m * π / 2) * sin(n * π / 2) / (m * n * (m^2 + n^2)^2 / a^4) for m in 1:2:N, n in 1:2:N)
+        E, ν, t, L = 1.0e4, 0.3, 0.01, 1.0
+        D = E * t^3 / (12 * (1 - ν^2))
+        @test navier(L, 1.0, D) * D ≈ 0.00406235 atol = 1e-7
+        function wcentro(n, modo)
+            nodos, conn = malla_rectangular((0, L), (0, L), n, n)
+            K, _, F = ensamblar(plana, nodos, conn, E, ν, t; modo, f = θ -> [0, 0, -1.0])
+            fij = Int[]
+            for k in 1:size(nodos, 2)
+                x, y = nodos[:, k]
+                append!(fij, [gdl(k, 1), gdl(k, 2)])
+                (x ≈ 0 || x ≈ L || y ≈ 0 || y ≈ L) && push!(fij, gdl(k, 3))
+                (x ≈ 0 || x ≈ L) && push!(fij, gdl(k, 5))
+                (y ≈ 0 || y ≈ L) && push!(fij, gdl(k, 4))
+            end
+            u = resolver_estatica(K, F, unique(fij))
+            -u[gdl(findfirst(k -> nodos[1, k] ≈ L / 2 && nodos[2, k] ≈ L / 2, 1:size(nodos, 2)), 3)]
+        end
+        wref = navier(L, 1.0, D)
+        @test wcentro(8, :subdominios) / wref ≈ 1 atol = 2e-3
+        @test wcentro(8, :reducida_selectiva) / wref ≈ 1 atol = 1e-2
+        @test wcentro(8, :desplazamientos) / wref < 0.1        # bloqueo por cortante: ¡la placa sale 30 veces más rígida!
+    end
+
+    @testset "Cilindro: modo de respiración" begin
+        R, t, E, ν, ρ = 1.0, 0.02, 1.0e4, 0.3, 1.0
+        r = θ -> [θ[1], R * sin(θ[2]), R * cos(θ[2])]
+        nodos, conn = malla_rectangular((0, 1), (0, π / 2), 2, 8)
+        K, M, _ = ensamblar(r, nodos, conn, E, ν, t; ρ)
+        fij = Int[]
+        for k in 1:size(nodos, 2)
+            _, φ = nodos[:, k]; append!(fij, [gdl(k, 1), gdl(k, 4)])
+            (φ ≈ 0 || φ ≈ π / 2) && append!(fij, [gdl(k, 2), gdl(k, 5)])
+        end
+        ω, _ = frecuencias(K, M, unique(fij); n = 12)
+        ωres = sqrt(E / (ρ * R^2 * (1 - ν^2)))
+        @test minimum(abs.(ω .- ωres)) / ωres < 5e-3
+    end
+end
+
+@testset "Matrices deformación–desplazamiento = relaciones de D6 (tema E4)" begin
+    for (r, X, θ0) in ((θ -> [θ[1], 500sin(θ[2]), 500cos(θ[2])], [0.0 100 100 0; 0 0 0.1 0.1], [30.0, 0.03]),
+                       (paraboloide_recto(0.2), [0.0 1 1 0; 0 0 1 1], [0.3, 0.6]))
+        δ = collect(range(-1, 1; length = 20)) .^ 3 .* [1, 1, 1, 0.01, 0.01][mod1.(1:20, 5)]
+        hx = (X[1, 2] - X[1, 1]) / 2; hy = (X[2, 4] - X[2, 1]) / 2
+        cx = (X[1, 1] + X[1, 2]) / 2; cy = (X[2, 1] + X[2, 4]) / 2
+        function campo(θ)
+            N, _, _ = formas_bilineales((θ[1] - cx) / hx, (θ[2] - cy) / hy)
+            d = [sum(N[k] * δ[5(k-1)+c] for k in 1:4) for c in 1:5]
+            (d[1:2], d[3], d[4:5])
+        end
+        ξ = (θ0[1] - cx) / hx; η = (θ0[2] - cy) / hy
+        g, N, dN, _, _, _, _ = punto_elemento(r, X, ξ, η, 1.0, 0.3, 1.0)
+        HE, HB, HS = matrices_H(g, N, dN)
+        γ0, γ1, γS = deformacion_lamina_lineal(r, t -> campo(t)[1], t -> campo(t)[2], t -> campo(t)[3], θ0)
+        @test HE * δ ≈ [γ0[1, 1], γ0[2, 2], 2γ0[1, 2]] rtol = 1e-6 atol = 1e-8
+        @test HB * δ ≈ [γ1[1, 1], γ1[2, 2], 2γ1[1, 2]] rtol = 1e-6 atol = 1e-8
+        @test HS * δ ≈ γS rtol = 1e-6 atol = 1e-8
+    end
+end
+
+@testset "Masa y cargas del elemento (tema E8)" begin
+    R = 0.5; r = θ -> [θ[1], R * sin(θ[2]), R * cos(θ[2])]
+    X = [0.0 0.1 0.1 0; 0 0 0.1 0.1]
+    ρ, t = 7850.0, 0.005
+    M = masa_elemento(r, X, ρ, t)
+    @test M ≈ M' atol = 1e-12
+    δ = zeros(20); for k in 1:4; δ[5(k-1)+1] = 1.0; end            # traslación axial rígida (u₁ = 1 constante)
+    @test δ' * M * δ ≈ ρ * t * 0.1 * R * 0.1 rtol = 1e-9              # masa total = ρ t A
+    @test all(eigvals(Symmetric(M)) .> -1e-12)
+    Xp = [0.0 100 100 0; 0 0 50 50]
+    F = cargas_elemento(placa_oblicua(π / 2), Xp, θ -> [0, 0, -0.01])
+    @test F[[3, 8, 13, 18]] ≈ fill(-0.01 * 5000 / 4, 4) rtol = 1e-6   # presión uniforme: A p / 4 por nodo
+    @test norm(F[[1, 2, 4, 5]]) < 1e-9
+end

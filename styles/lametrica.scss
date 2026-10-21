@@ -111,6 +111,18 @@ div.callout.noticia .callout-title-container::before { content: "▤ "; margin-r
 div.callout.historia .callout-icon, div.callout.noticia .callout-icon { display: none; }
 .fuentes-caja { font-size: 0.88rem; color: #4b5563; margin-top: 0.4rem; }
 
+/* «Explicación para ingenieros» y «Aplicación real»: cajas con rótulo escrito (el color no es la única señal) */
+div.callout.ingenieros, div.callout.aplicacion { border-left-width: 0.35rem; border-radius: 0 0.4rem 0.4rem 0; margin: 1.4rem 0; }
+div.callout.ingenieros { border-left-color: var(--r-azul) !important; }
+div.callout.ingenieros > .callout-header, div.callout.ingenieros .callout-header { background: #e3eef8 !important; color: #124a74; }
+div.callout.ingenieros .callout-body-container { background: #f6fafd; }
+div.callout.ingenieros .callout-title-container::before { content: "⚙ "; margin-right: 0.35em; }
+div.callout.aplicacion { border-left-color: #2a9d8f !important; }
+div.callout.aplicacion > .callout-header, div.callout.aplicacion .callout-header { background: #dff3f0 !important; color: #17625a; }
+div.callout.aplicacion .callout-body-container { background: #f5fbfa; }
+div.callout.aplicacion .callout-title-container::before { content: "◈ "; margin-right: 0.35em; }
+div.callout.ingenieros .callout-icon, div.callout.aplicacion .callout-icon { display: none; }
+
 /* Pregunta guía y «La doy por superada si…» */
 .pregunta-guia {
   margin: 1.2rem 0 1.6rem; padding: 0.8rem 1.1rem;

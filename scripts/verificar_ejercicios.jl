@@ -10,6 +10,41 @@ raiz = normpath(joinpath(@__DIR__, ".."))
 const B60 = [1.0 0.5; 0.0 sqrt(3) / 2]      # base oblicua a 60°
 const V60 = [2.0, 1.5]
 referencia = Dict{String,Float64}(
+    "e1-despl-medio" => (2e4 .* [2.0 -1; -1 1] \ [2500.0, 1250.0])[1],
+    "e2-area" => let X = [0.0 4 5 0; 0 0 3 2]
+        sum(det(vcat(formas_bilineales(ξ, η)[2]', formas_bilineales(ξ, η)[3]') * X') for ξ in Geometria.GAUSS2, η in Geometria.GAUSS2)
+    end,
+    "e2-k11" => (D = matriz_tension_plana(1.0, 0.3); (D[1, 1] + D[3, 3]) / 3),
+    "e3-area" => let R = 500.0, X = [0.0 100 100 0; 0 0 0.1 0.1]
+        r = θ -> [θ[1], R * sin(θ[2]), R * cos(θ[2])]
+        sum(w * punto_elemento(r, X, ξ, η, 1.0, 0.3, 1.0)[4] for (ξ, η, w) in Geometria.puntos_gauss((-1.0, 1.0), (-1.0, 1.0), 2))
+    end,
+    "e4-hoop" => let R = 500.0, X = [0.0 100 100 0; 0 0 0.1 0.1]
+        r = θ -> [θ[1], R * sin(θ[2]), R * cos(θ[2])]
+        g, N, dN = punto_elemento(r, X, 0.3, -0.2, 1.0, 0.3, 1.0)
+        δ = zeros(20); δ[3:5:20] .= 0.01
+        (matrices_H(g, N, dN)[1] * δ)[2] / g.a[2, 2]
+    end,
+    "e4-cortante-nodo" => let X = [0.0 1 1 0; 0 0 1 1]
+        g, N, dN = punto_elemento(placa_oblicua(π / 2), X, -1.0, 0.0, 1.0, 0.3, 1.0)
+        δ = zeros(20); δ[3:5:20] = X[1, :].^2 ./ 2; δ[4:5:20] = -X[1, :]
+        (matrices_H(g, N, dN)[3] * δ)[1]
+    end,
+    "e5-rigidez-espuria" => let L = 100.0, EI = 1 / 12, GA = 1 / (2 * (1 + 0.3))
+        w = [GA / L -GA / 2; -GA / 2 EI / L + GA * L / 3] \ [1.0, 0.0]
+        (L^3 / (3EI) + L / GA) / w[1]
+    end,
+    "e6-escalon" => sum((η = (1 + ξ) / 2; η + η^2) for ξ in Geometria.GAUSS2) / 2,
+    "e7-energia" => let X = [0.0 1 1 0; 0 0 1 1]
+        δ = zeros(20); δ[1:5:20] = 0.01 .* X[1, :]
+        dot(δ, rigidez_elemento(placa_oblicua(π / 2), X, 1.0, 0.0, 1.0) * δ) / 2
+    end,
+    "e8-carga-nodal" => abs(cargas_elemento(placa_oblicua(π / 2), [0.0 100 100 0; 0 0 50 50], θ -> [0, 0, -0.01])[3]),
+    "e8-masa" => let R = 0.5, X = [0.0 0.1 0.1 0; 0 0 0.1 0.1]
+        r = θ -> [θ[1], R * sin(θ[2]), R * cos(θ[2])]
+        δ = zeros(20); δ[1:5:20] .= 1.0
+        dot(δ, masa_elemento(r, X, 7850.0, 0.005) * δ)
+    end,
     "d3-aro-interior" => 1 / 1950,
     "d4-fibra-extrema" => (let L = 1000.0, w0 = 5.0
         w(t) = w0 * sin(π * t[1] / L)

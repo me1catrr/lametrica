@@ -32,6 +32,16 @@ book:
         - book/D-elasticidad/D6-deformaciones-desplazamientos.qmd
         - book/D-elasticidad/D7-leyes-constitutivas.qmd
         - book/D-elasticidad/D8-principios-variacionales.qmd
+    - part: "Bloque E · Elementos finitos de lámina"
+      chapters:
+        - book/E-elementos-finitos/E1-mef-barra.qmd
+        - book/E-elementos-finitos/E2-cuadrilatero-plano.qmd
+        - book/E-elementos-finitos/E3-elemento-lamina.qmd
+        - book/E-elementos-finitos/E4-matrices-b.qmd
+        - book/E-elementos-finitos/E5-bloqueo.qmd
+        - book/E-elementos-finitos/E6-interpolacion-deformaciones.qmd
+        - book/E-elementos-finitos/E7-hu-washizu-subdominios.qmd
+        - book/E-elementos-finitos/E8-cargas-masa.qmd
     - book/referencias.qmd
   appendices:
     - book/apendices/notacion.qmd

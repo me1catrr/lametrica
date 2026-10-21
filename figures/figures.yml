@@ -190,3 +190,78 @@
   herramienta: Julia (julia/scripts/generar_figuras.jl)
   etiqueta: ilustrativa (esquema)
   revision: visual pendiente
+- id: fig-barra-fem
+  archivo: figures/svg/fem-barra.svg
+  capitulo: book/E-elementos-finitos/E1-mef-barra.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia (solución analítica y poligonal nodal)
+  revision: visual pendiente
+- id: fig-isoparam
+  archivo: figures/svg/cuadrilatero-isoparametrico.svg
+  capitulo: book/E-elementos-finitos/E2-cuadrilatero-plano.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia (mapa bilineal y puntos de Gauss)
+  etiqueta: ilustrativa
+  revision: visual pendiente
+- id: fig-elemento
+  archivo: figures/svg/elemento-lamina-4nodos.svg
+  capitulo: book/E-elementos-finitos/E3-elemento-lamina.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia + Geometria
+  etiqueta: ilustrativa (geometría calculada)
+  revision: visual pendiente
+- id: fig-matrices-h
+  archivo: figures/svg/matrices-H.svg
+  capitulo: book/E-elementos-finitos/E4-matrices-b.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia + Geometria.matrices_H
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-bloqueo-conv
+  archivo: figures/svg/bloqueo-convergencia.svg
+  capitulo: book/E-elementos-finitos/E5-bloqueo.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia + Geometria (placa frente a la serie de Navier)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-bloqueo-esp
+  archivo: figures/svg/bloqueo-espesor.svg
+  capitulo: book/E-elementos-finitos/E5-bloqueo.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia + Geometria (placa frente a la serie de Navier)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-espectro
+  archivo: figures/svg/espectro-rigidez.svg
+  capitulo: book/E-elementos-finitos/E5-bloqueo.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia + Geometria.rigidez_elemento
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-interp-def
+  archivo: figures/svg/interpolacion-subdominios.svg
+  capitulo: book/E-elementos-finitos/E6-interpolacion-deformaciones.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia (función de prueba)
+  etiqueta: ilustrativa
+  revision: visual pendiente
+- id: fig-cuadrantes
+  archivo: figures/svg/subdominios-cuadrantes.svg
+  capitulo: book/E-elementos-finitos/E7-hu-washizu-subdominios.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia (esquema de regiones)
+  etiqueta: ilustrativa
+  revision: visual pendiente
+- id: fig-masa-barra
+  archivo: figures/svg/masa-barra.svg
+  capitulo: book/E-elementos-finitos/E8-cargas-masa.qmd
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia (autovalores de matrices de barra)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-malla-ensamblaje
+  archivo: figures/svg/malla-ensamblaje.svg
+  generador: julia/scripts/generar_figuras_fem.jl
+  herramienta: Julia + Geometria.malla_rectangular
+  etiqueta: ilustrativa (reservada para E9, pendiente)
+  revision: visual pendiente

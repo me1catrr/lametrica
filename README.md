@@ -3,7 +3,9 @@
 *De la geometría de las superficies a los elementos finitos.*
 Geometría diferencial · Cálculo tensorial · Mecánica de láminas.
 
-Libro interactivo hecho con Quarto, Julia y JavaScript. **Estado: desarrollo (Fase 3) — Partes I y II escritas; ver `planning/07-plan-fases.md`.**
+Libro interactivo hecho con Quarto, Julia y JavaScript. **Estado: desarrollo — bloques A–D y temas E1–E8 disponibles (29 de 37 temas); E9 y bloques F–G pendientes.** Ver `temario.toml` y el punto de continuación de `CLAUDE.md`.
+
+Web: [me1catrr.github.io/lametrica](https://me1catrr.github.io/lametrica/).
 
 ## Visibilidad del repositorio
 El 21 de octubre de 2026 se cambió la visibilidad de [me1catrr/lametrica](https://github.com/me1catrr/lametrica) de privado a **público** mediante la API de GitHub.
