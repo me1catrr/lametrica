@@ -8,7 +8,7 @@
 
 <meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
 
-<title>3&nbsp; Bases covariantes y contravariantes – La métrica</title>
+<title>4&nbsp; Bases covariantes y contravariantes – La métrica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -91,8 +91,8 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../book/01-fundamentos/04-metrica.html" rel="next">
-<link href="../../book/01-fundamentos/02-transformacion.html" rel="prev">
+<link href="../../book/B-tensorial/B3-metrica.html" rel="next">
+<link href="../../book/B-tensorial/B1-transformacion.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2e0faa02337211aba94f60dcf390ad79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bf301d7d37cc149758e3e4af7a473f5e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -174,7 +174,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/02-transformacion.html">Bloque B · Cálculo tensorial</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/03-bases.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/B-tensorial/B1-transformacion.html">Bloque B · Cálculo tensorial</a></li><li class="breadcrumb-item"><a href="../../book/B-tensorial/B2-bases.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -222,8 +222,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/01-fundamentos/01-motivacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Por qué tensores</span></span></a>
+  <a href="../../book/A-preludio/A1-caparazon-hypar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La cáscara y el paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A2-vectores-y-coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Los objetos físicos no dependen de las coordenadas</span></span></a>
   </div>
 </li>
       </ul>
@@ -239,26 +245,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/01-fundamentos/02-transformacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
+  <a href="../../book/B-tensorial/B1-transformacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/01-fundamentos/03-bases.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  <a href="../../book/B-tensorial/B2-bases.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/01-fundamentos/04-metrica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  <a href="../../book/B-tensorial/B3-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/01-fundamentos/05-christoffel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  <a href="../../book/B-tensorial/B4-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B5-analisis-tensorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Álgebra y análisis tensorial en curvilíneas</span></span></a>
   </div>
 </li>
       </ul>
@@ -274,26 +286,38 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/02-superficies/06-superficies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  <a href="../../book/C-superficies/C1-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/02-superficies/07-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  <a href="../../book/C-superficies/C2-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/02-superficies/08-curvaturas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  <a href="../../book/C-superficies/C3-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/02-superficies/09-paraboloide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
+  <a href="../../book/C-superficies/C4-geodesicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Curvas sobre superficies: geodésicas y compatibilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C5-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C6-bestiario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bestiario de láminas: cilindro, esfera, cono y placa oblicua</span></span></a>
   </div>
 </li>
       </ul>
@@ -332,13 +356,13 @@ window.Quarto = {
    
   <ul>
   <li><a href="#objetivos-y-prerrequisitos" id="toc-objetivos-y-prerrequisitos" class="nav-link active" data-scroll-target="#objetivos-y-prerrequisitos">Objetivos y prerrequisitos</a></li>
-  <li><a href="#sec-dos-preguntas" id="toc-sec-dos-preguntas" class="nav-link" data-scroll-target="#sec-dos-preguntas"><span class="header-section-number">3.1</span> Dos preguntas sobre un mismo vector</a></li>
-  <li><a href="#sec-reciproca" id="toc-sec-reciproca" class="nav-link" data-scroll-target="#sec-reciproca"><span class="header-section-number">3.2</span> La base recíproca</a></li>
-  <li><a href="#sec-componentes" id="toc-sec-componentes" class="nav-link" data-scroll-target="#sec-componentes"><span class="header-section-number">3.3</span> Componentes y tensor métrico: subir y bajar índices</a></li>
-  <li><a href="#sec-cambio" id="toc-sec-cambio" class="nav-link" data-scroll-target="#sec-cambio"><span class="header-section-number">3.4</span> Qué ocurre al cambiar de coordenadas</a></li>
-  <li><a href="#sec-lab-bases" id="toc-sec-lab-bases" class="nav-link" data-scroll-target="#sec-lab-bases"><span class="header-section-number">3.5</span> Laboratorio interactivo</a></li>
-  <li><a href="#sec-julia-bases" id="toc-sec-julia-bases" class="nav-link" data-scroll-target="#sec-julia-bases"><span class="header-section-number">3.6</span> Práctica guiada en Julia</a></li>
-  <li><a href="#sec-ejercicios-3" id="toc-sec-ejercicios-3" class="nav-link" data-scroll-target="#sec-ejercicios-3"><span class="header-section-number">3.7</span> Ejercicios</a></li>
+  <li><a href="#sec-dos-preguntas" id="toc-sec-dos-preguntas" class="nav-link" data-scroll-target="#sec-dos-preguntas"><span class="header-section-number">4.1</span> Dos preguntas sobre un mismo vector</a></li>
+  <li><a href="#sec-reciproca" id="toc-sec-reciproca" class="nav-link" data-scroll-target="#sec-reciproca"><span class="header-section-number">4.2</span> La base recíproca</a></li>
+  <li><a href="#sec-componentes" id="toc-sec-componentes" class="nav-link" data-scroll-target="#sec-componentes"><span class="header-section-number">4.3</span> Componentes y tensor métrico: subir y bajar índices</a></li>
+  <li><a href="#sec-cambio" id="toc-sec-cambio" class="nav-link" data-scroll-target="#sec-cambio"><span class="header-section-number">4.4</span> Qué ocurre al cambiar de coordenadas</a></li>
+  <li><a href="#sec-lab-bases" id="toc-sec-lab-bases" class="nav-link" data-scroll-target="#sec-lab-bases"><span class="header-section-number">4.5</span> Laboratorio interactivo</a></li>
+  <li><a href="#sec-julia-bases" id="toc-sec-julia-bases" class="nav-link" data-scroll-target="#sec-julia-bases"><span class="header-section-number">4.6</span> Práctica guiada en Julia</a></li>
+  <li><a href="#sec-ejercicios-3" id="toc-sec-ejercicios-3" class="nav-link" data-scroll-target="#sec-ejercicios-3"><span class="header-section-number">4.7</span> Ejercicios</a></li>
   <li><a href="#la-doy-por-superada-si" id="toc-la-doy-por-superada-si" class="nav-link" data-scroll-target="#la-doy-por-superada-si">La doy por superada si…</a></li>
   <li><a href="#referencias-unidad" id="toc-referencias-unidad" class="nav-link" data-scroll-target="#referencias-unidad">Referencias</a></li>
   <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
@@ -348,9 +372,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/01-fundamentos/02-transformacion.html">Bloque B · Cálculo tensorial</a></li><li class="breadcrumb-item"><a href="../../book/01-fundamentos/03-bases.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/B-tensorial/B1-transformacion.html">Bloque B · Cálculo tensorial</a></li><li class="breadcrumb-item"><a href="../../book/B-tensorial/B2-bases.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></h1>
 <p class="subtitle lead">Dos maneras de describir un vector: componiendo o proyectando</p>
 </div>
 
@@ -382,14 +406,14 @@ window.Quarto = {
 <li>deducir cómo cambian bases y componentes al cambiar de coordenadas, y por qué se llaman <em>contravariantes</em> y <em>covariantes</em>;</li>
 <li>verificar todo ello con un ejemplo concreto (una placa oblicua) y con las coordenadas polares.</li>
 </ul>
-<p><strong>Prerrequisitos.</strong> <a href="../../book/01-fundamentos/02-transformacion.html">Transformación de coordenadas y tensores</a> y, de álgebra lineal, el producto escalar y la inversa de una matriz <span class="math inline">\(2\times2\)</span>.</p>
+<p><strong>Prerrequisitos.</strong> <a href="../../book/B-tensorial/B1-transformacion.html">Transformación de coordenadas y tensores</a> y, de álgebra lineal, el producto escalar y la inversa de una matriz <span class="math inline">\(2\times2\)</span>.</p>
 <p><strong>Temas de la unidad</strong></p>
 <ul>
-<li><strong>Sección 3.1</strong> · Dos preguntas sobre un mismo vector</li>
-<li><strong>Sección 3.2</strong> · La base recíproca</li>
-<li><strong>Sección 3.3</strong> · Componentes y tensor métrico: subir y bajar índices</li>
-<li><strong>Sección 3.4</strong> · Qué ocurre al cambiar de coordenadas</li>
-<li><strong>Secciones 3.5 y 3.6</strong> · Laboratorio interactivo y práctica guiada en Julia</li>
+<li><strong><a href="#sec-dos-preguntas" class="quarto-xref"><span>Sección 4.1</span></a></strong> · Dos preguntas sobre un mismo vector</li>
+<li><strong><a href="#sec-reciproca" class="quarto-xref"><span>Sección 4.2</span></a></strong> · La base recíproca</li>
+<li><strong><a href="#sec-componentes" class="quarto-xref"><span>Sección 4.3</span></a></strong> · Componentes y tensor métrico: subir y bajar índices</li>
+<li><strong><a href="#sec-cambio" class="quarto-xref"><span>Sección 4.4</span></a></strong> · Qué ocurre al cambiar de coordenadas</li>
+<li><strong><a href="#sec-lab-bases" class="quarto-xref"><span>Sección 4.5</span></a> y <a href="#sec-julia-bases" class="quarto-xref"><span>Sección 4.6</span></a></strong> · Laboratorio interactivo y práctica guiada en Julia</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Notación y convenciones de este tema">
 <div class="callout-header d-flex align-content-center">
@@ -443,12 +467,12 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="sec-dos-preguntas" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-dos-preguntas"><span class="header-section-number">3.1</span> Dos preguntas sobre un mismo vector</h2>
+<section id="sec-dos-preguntas" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-dos-preguntas"><span class="header-section-number">4.1</span> Dos preguntas sobre un mismo vector</h2>
 <p>En un sistema cartesiano ortonormal todo es sencillo: las componentes de un vector son a la vez «cuánto avanzo en cada eje» y «cuánto proyecta el vector sobre cada eje». Ambas ideas coinciden y por eso se confunden. Pero basta que los ejes no sean perpendiculares, o que no midan lo mismo, para que se separen en <strong>dos listas de números distintas</strong>.</p>
 <p>Un ejemplo físico lo muestra enseguida. Una <strong>placa oblicua</strong> (un paralelogramo) tiene sus lados formando <span class="math inline">\(60^\circ\)</span>. Es natural elegir como ejes los propios lados: <span id="eq-placa-base"><span class="math display">\[
 \mathbf{g}_1=(1,\,0),\qquad \mathbf{g}_2=\Bigl(\tfrac12,\ \tfrac{\sqrt3}{2}\Bigr),
-\tag{3.1}\]</span></span> dados en una base cartesiana ortonormal. Sea <span class="math inline">\(\mathbf{V}=(2,\ \tfrac32)\)</span> un vector (por ejemplo, un desplazamiento) expresado en cartesianas. Hay dos preguntas razonables:</p>
+\tag{4.1}\]</span></span> dados en una base cartesiana ortonormal. Sea <span class="math inline">\(\mathbf{V}=(2,\ \tfrac32)\)</span> un vector (por ejemplo, un desplazamiento) expresado en cartesianas. Hay dos preguntas razonables:</p>
 <ol type="1">
 <li><strong>Componer.</strong> ¿Cuántas veces hay que sumar <span class="math inline">\(\mathbf{g}_1\)</span> y <span class="math inline">\(\mathbf{g}_2\)</span> para obtener <span class="math inline">\(\mathbf{V}\)</span>? Es decir, ¿qué <span class="math inline">\(V^1,V^2\)</span> cumplen <span class="math inline">\(\mathbf{V}=V^1\mathbf{g}_1+V^2\mathbf{g}_2\)</span>?</li>
 <li><strong>Proyectar.</strong> ¿Cuánto vale el producto escalar de <span class="math inline">\(\mathbf{V}\)</span> con cada eje, <span class="math inline">\(V_1=\mathbf{V}\cdot\mathbf{g}_1\)</span> y <span class="math inline">\(V_2=\mathbf{V}\cdot\mathbf{g}_2\)</span>?</li>
@@ -459,12 +483,12 @@ window.Quarto = {
 <img src="../../figures/svg/bases-componer-proyectar.svg" class="img-fluid figure-img" style="width:95.0%" alt="Dos paneles con el mismo vector: a la izquierda, el paralelogramo que lo descompone en múltiplos de los ejes oblicuos; a la derecha, las perpendiculares de su punta a cada eje">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-componer-proyectar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3.1: Las dos preguntas para la placa oblicua de <span class="math inline">\(60^\circ\)</span>. (a) Componer: el paralelogramo de lados paralelos a <span class="math inline">\(\mathbf{g}_1\)</span> y <span class="math inline">\(\mathbf{g}_2\)</span> que tiene a <span class="math inline">\(\mathbf{V}\)</span> como diagonal da <span class="math inline">\(V^1\mathbf{g}_1\)</span> y <span class="math inline">\(V^2\mathbf{g}_2\)</span>. (b) Proyectar: las perpendiculares desde la punta de <span class="math inline">\(\mathbf{V}\)</span> a cada eje dan <span class="math inline">\(V_1\)</span> y <span class="math inline">\(V_2\)</span> (como <span class="math inline">\(|\mathbf{g}_i|=1\)</span>, las longitudes naranjas coinciden con los productos escalares). Geometría exacta; los valores se comprueban en los tests de <code>Geometria</code>.
+Figura&nbsp;4.1: Las dos preguntas para la placa oblicua de <span class="math inline">\(60^\circ\)</span>. (a) Componer: el paralelogramo de lados paralelos a <span class="math inline">\(\mathbf{g}_1\)</span> y <span class="math inline">\(\mathbf{g}_2\)</span> que tiene a <span class="math inline">\(\mathbf{V}\)</span> como diagonal da <span class="math inline">\(V^1\mathbf{g}_1\)</span> y <span class="math inline">\(V^2\mathbf{g}_2\)</span>. (b) Proyectar: las perpendiculares desde la punta de <span class="math inline">\(\mathbf{V}\)</span> a cada eje dan <span class="math inline">\(V_1\)</span> y <span class="math inline">\(V_2\)</span> (como <span class="math inline">\(|\mathbf{g}_i|=1\)</span>, las longitudes naranjas coinciden con los productos escalares). Geometría exacta; los valores se comprueban en los tests de <code>Geometria</code>.
 </figcaption>
 </figure>
 </div>
 <div id="exm-placa" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.1 (Ejemplo resuelto: componer y proyectar en la placa oblicua)</strong></span> <strong>Componer.</strong> Se resuelve <span class="math inline">\(V^1\mathbf{g}_1+V^2\mathbf{g}_2=\mathbf{V}\)</span> por coordenadas: <span class="math display">\[
+<p><span class="theorem-title"><strong>Ejemplo 4.1 (Ejemplo resuelto: componer y proyectar en la placa oblicua)</strong></span> <strong>Componer.</strong> Se resuelve <span class="math inline">\(V^1\mathbf{g}_1+V^2\mathbf{g}_2=\mathbf{V}\)</span> por coordenadas: <span class="math display">\[
 \begin{cases}
 V^1+\tfrac12V^2=2\\[2pt]
 \tfrac{\sqrt3}{2}V^2=\tfrac32
@@ -501,7 +525,7 @@ V_2=\mathbf{V}\cdot\mathbf{g}_2=2\cdot\tfrac12+\tfrac32\cdot\tfrac{\sqrt3}{2}=1+
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>El vector no es contravariante ni covariante</strong>; lo son sus <em>componentes</em>. <span class="math inline">\(\mathbf{V}\)</span> es el mismo en ambos casos: lo que cambia es la lista de números.</li>
-<li>«Contravariante» no significa «contrario a <span class="math inline">\(\mathbf{V}\)</span>», ni «covariante» «igual que <span class="math inline">\(\mathbf{V}\)</span>». Los nombres vienen de cómo se transforman las componentes cuando se cambia la base (sección <a href="#sec-cambio" class="quarto-xref"><span>Sección 3.4</span></a>).</li>
+<li>«Contravariante» no significa «contrario a <span class="math inline">\(\mathbf{V}\)</span>», ni «covariante» «igual que <span class="math inline">\(\mathbf{V}\)</span>». Los nombres vienen de cómo se transforman las componentes cuando se cambia la base (<a href="#sec-cambio" class="quarto-xref"><span>Sección 4.4</span></a>).</li>
 </ul>
 </div>
 </div>
@@ -535,7 +559,7 @@ V_2=\mathbf{V}\cdot\mathbf{g}_2=2\cdot\tfrac12+\tfrac32\cdot\tfrac{\sqrt3}{2}=1+
 </div>
 </div>
 <div id="b2-v1" class="ejercicio" data-tipo="numerico" data-respuesta="1.134" data-tol="1%">
-<p>En la placa oblicua de <span class="math inline">\(60^\circ\)</span> del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>3.1</span></a>, calcula la componente contravariante <span class="math inline">\(V^1\)</span>.</p>
+<p>En la placa oblicua de <span class="math inline">\(60^\circ\)</span> del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>4.1</span></a>, calcula la componente contravariante <span class="math inline">\(V^1\)</span>.</p>
 <div class="pista">
 <p>Resuelve primero la segunda ecuación, que solo contiene <span class="math inline">\(V^2\)</span>.</p>
 </div>
@@ -546,32 +570,32 @@ V_2=\mathbf{V}\cdot\mathbf{g}_2=2\cdot\tfrac12+\tfrac32\cdot\tfrac{\sqrt3}{2}=1+
 <div id="b2-vi-coef" class="ejercicio" data-tipo="vf" data-respuesta="falso">
 <p>Las componentes covariantes <span class="math inline">\(V_i\)</span> son los coeficientes de la combinación <span class="math inline">\(\mathbf{V}=V_1\mathbf{g}_1+V_2\mathbf{g}_2\)</span>.</p>
 <div class="solucion">
-<p><strong>Falso.</strong> Los <span class="math inline">\(V_i\)</span> son productos escalares. Son los coeficientes de <span class="math inline">\(\mathbf{V}\)</span> respecto de la base <strong>recíproca</strong>: <span class="math inline">\(\mathbf{V}=V_i\mathbf{g}^i\)</span> (sección <a href="#sec-reciproca" class="quarto-xref"><span>Sección 3.2</span></a>). En el ejemplo, <span class="math inline">\(V_1\mathbf{g}_1+V_2\mathbf{g}_2=(2+1{,}150,\ 1{,}991)\neq\mathbf{V}\)</span>.</p>
+<p><strong>Falso.</strong> Los <span class="math inline">\(V_i\)</span> son productos escalares. Son los coeficientes de <span class="math inline">\(\mathbf{V}\)</span> respecto de la base <strong>recíproca</strong>: <span class="math inline">\(\mathbf{V}=V_i\mathbf{g}^i\)</span> (<a href="#sec-reciproca" class="quarto-xref"><span>Sección 4.2</span></a>). En el ejemplo, <span class="math inline">\(V_1\mathbf{g}_1+V_2\mathbf{g}_2=(2+1{,}150,\ 1{,}991)\neq\mathbf{V}\)</span>.</p>
 </div>
 </div>
 </section>
-<section id="sec-reciproca" class="level2 page-columns page-full" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="sec-reciproca"><span class="header-section-number">3.2</span> La base recíproca</h2>
+<section id="sec-reciproca" class="level2 page-columns page-full" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-reciproca"><span class="header-section-number">4.2</span> La base recíproca</h2>
 <p>Para que <span class="math inline">\(V_i\)</span> también sean <em>coeficientes</em> de una combinación lineal hace falta otra base. Primero fijamos la que ya tenemos.</p>
 <div id="def-base-covariante" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.1 (Base covariante natural)</strong></span> Sea <span class="math inline">\(\mathbf{r}(\theta^1,\dots,\theta^n)\)</span> el vector de posición. La <strong>base covariante</strong> en un punto es <span id="eq-base-cov"><span class="math display">\[
+<p><span class="theorem-title"><strong>Definición 4.1 (Base covariante natural)</strong></span> Sea <span class="math inline">\(\mathbf{r}(\theta^1,\dots,\theta^n)\)</span> el vector de posición. La <strong>base covariante</strong> en un punto es <span id="eq-base-cov"><span class="math display">\[
 \mathbf{g}_i=\frac{\partial\mathbf{r}}{\partial\theta^i},\qquad i=1,\dots,n,
-\tag{3.2}\]</span></span> supuesta linealmente independiente.</p>
+\tag{4.2}\]</span></span> supuesta linealmente independiente.</p>
 </div>
 <div id="def-metrica" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.2 (Tensor métrico)</strong></span> Las componentes <strong>covariantes</strong> del tensor métrico son <span class="math inline">\(g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j\)</span>, y las <strong>contravariantes</strong> <span class="math inline">\(g^{ij}\)</span> son los elementos de la matriz inversa: <span class="math inline">\(g^{ij}g_{jk}=\delta^i_k\)</span>.</p>
+<p><span class="theorem-title"><strong>Definición 4.2 (Tensor métrico)</strong></span> Las componentes <strong>covariantes</strong> del tensor métrico son <span class="math inline">\(g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j\)</span>, y las <strong>contravariantes</strong> <span class="math inline">\(g^{ij}\)</span> son los elementos de la matriz inversa: <span class="math inline">\(g^{ij}g_{jk}=\delta^i_k\)</span>.</p>
 </div>
 <div id="def-base-recip" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.3 (Base recíproca (contravariante))</strong></span> La <strong>base recíproca</strong> <span class="math inline">\(\{\mathbf{g}^i\}\)</span> está definida por la condición de reciprocidad <span id="eq-reciprocidad"><span class="math display">\[
+<p><span class="theorem-title"><strong>Definición 4.3 (Base recíproca (contravariante))</strong></span> La <strong>base recíproca</strong> <span class="math inline">\(\{\mathbf{g}^i\}\)</span> está definida por la condición de reciprocidad <span id="eq-reciprocidad"><span class="math display">\[
 \mathbf{g}^i\cdot\mathbf{g}_j=\delta^i_j .
-\tag{3.3}\]</span></span></p>
+\tag{4.3}\]</span></span></p>
 </div>
 <div id="prp-g-dual" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposición 3.1 (Construcción de la base recíproca)</strong></span> La base recíproca existe, es única y verifica <span id="eq-subir-bajar-base"><span class="math display">\[
+<p><span class="theorem-title"><strong>Proposición 4.1 (Construcción de la base recíproca)</strong></span> La base recíproca existe, es única y verifica <span id="eq-subir-bajar-base"><span class="math display">\[
 \mathbf{g}^i=g^{ij}\,\mathbf{g}_j,\qquad
 \mathbf{g}_i=g_{ij}\,\mathbf{g}^j,\qquad
 g^{ij}=\mathbf{g}^i\cdot\mathbf{g}^j .
-\tag{3.4}\]</span></span></p>
+\tag{4.4}\]</span></span></p>
 </div>
 <div class="demostracion callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -579,40 +603,40 @@ g^{ij}=\mathbf{g}^i\cdot\mathbf{g}^j .
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>3.1</span></a>
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>4.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\((g_{ij})\)</span> es la matriz de Gram de vectores linealmente independientes, luego es simétrica definida positiva y, por tanto, invertible; así <span class="math inline">\(g^{ij}\)</span> existe.</p>
-<p><em>Existencia.</em> Sea <span class="math inline">\(\mathbf{g}^i:=g^{ik}\mathbf{g}_k\)</span>. Entonces <span class="math inline">\(\mathbf{g}^i\cdot\mathbf{g}_j=g^{ik}g_{kj}=\delta^i_j\)</span>, que es <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>3.3</span></a>.</p>
-<p><em>Unicidad.</em> Como <span class="math inline">\(\{\mathbf{g}_k\}\)</span> es base, cualquier solución se escribe <span class="math inline">\(\mathbf{g}^i=A^{ik}\mathbf{g}_k\)</span>. Imponer <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>3.3</span></a> da <span class="math inline">\(A^{ik}g_{kj}=\delta^i_j\)</span>, o sea <span class="math inline">\(A=(g_{ij})^{-1}\)</span>.</p>
+<p><em>Existencia.</em> Sea <span class="math inline">\(\mathbf{g}^i:=g^{ik}\mathbf{g}_k\)</span>. Entonces <span class="math inline">\(\mathbf{g}^i\cdot\mathbf{g}_j=g^{ik}g_{kj}=\delta^i_j\)</span>, que es <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>4.3</span></a>.</p>
+<p><em>Unicidad.</em> Como <span class="math inline">\(\{\mathbf{g}_k\}\)</span> es base, cualquier solución se escribe <span class="math inline">\(\mathbf{g}^i=A^{ik}\mathbf{g}_k\)</span>. Imponer <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>4.3</span></a> da <span class="math inline">\(A^{ik}g_{kj}=\delta^i_j\)</span>, o sea <span class="math inline">\(A=(g_{ij})^{-1}\)</span>.</p>
 <p><em>Fórmulas restantes.</em> <span class="math inline">\(\mathbf{g}^i\cdot\mathbf{g}^j=g^{ik}\,\mathbf{g}_k\cdot\mathbf{g}^j=g^{ik}\delta_k^j=g^{ij}\)</span>. Multiplicando <span class="math inline">\(\mathbf{g}^j=g^{jk}\mathbf{g}_k\)</span> por <span class="math inline">\(g_{ij}\)</span> y usando <span class="math inline">\(g_{ij}g^{jk}=\delta_i^k\)</span> se obtiene <span class="math inline">\(\mathbf{g}_i=g_{ij}\mathbf{g}^j\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 </div>
 </div>
 </div>
-<p>La condición <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>3.3</span></a> tiene una lectura geométrica sencilla (<a href="#fig-reciproca" class="quarto-xref">Figura&nbsp;<span>3.2</span></a>): <span class="math inline">\(\mathbf{g}^1\)</span> es <strong>perpendicular a <span class="math inline">\(\mathbf{g}_2\)</span></strong> (porque <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_2=0\)</span>) y su longitud se ajusta para que <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_1=1\)</span>; análogamente <span class="math inline">\(\mathbf{g}^2\perp\mathbf{g}_1\)</span>. Las construcciones con <span class="math inline">\(g^{ij}\)</span> son las habituales en los textos de cálculo tensorial <span class="citation" data-cites="Lebedev Heinbockel">(<a href="../referencias.html#ref-Lebedev" role="doc-biblioref">Lebedev y Cloud 2003</a>; <a href="../referencias.html#ref-Heinbockel" role="doc-biblioref">Heinbockel 1996</a>)</span>.</p>
+<p>La condición <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>4.3</span></a> tiene una lectura geométrica sencilla (<a href="#fig-reciproca" class="quarto-xref">Figura&nbsp;<span>4.2</span></a>): <span class="math inline">\(\mathbf{g}^1\)</span> es <strong>perpendicular a <span class="math inline">\(\mathbf{g}_2\)</span></strong> (porque <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_2=0\)</span>) y su longitud se ajusta para que <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_1=1\)</span>; análogamente <span class="math inline">\(\mathbf{g}^2\perp\mathbf{g}_1\)</span>. Las construcciones con <span class="math inline">\(g^{ij}\)</span> son las habituales en los textos de cálculo tensorial <span class="citation" data-cites="Lebedev Heinbockel">(<a href="../referencias.html#ref-Lebedev" role="doc-biblioref">Lebedev y Cloud 2003</a>; <a href="../referencias.html#ref-Heinbockel" role="doc-biblioref">Heinbockel 1996</a>)</span>.</p>
 <div class="no-row-height column-margin column-container"></div><div id="fig-reciproca" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los vectores g1 y g2 en azul a 60 grados y los vectores recíprocos g1 y g2 con índice alto en naranja, cada uno perpendicular al vector azul de índice distinto, con marcas de ángulo recto">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-reciproca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../../figures/svg/base-reciproca-construccion.svg" class="img-fluid figure-img" style="width:60.0%" alt="Los vectores g1 y g2 en azul a 60 grados y los vectores recíprocos g1 y g2 con índice alto en naranja, cada uno perpendicular al vector azul de índice distinto, con marcas de ángulo recto">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reciproca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3.2: Base recíproca de la placa oblicua: <span class="math inline">\(\mathbf{g}^1\)</span> es perpendicular a <span class="math inline">\(\mathbf{g}_2\)</span> y <span class="math inline">\(\mathbf{g}^2\)</span> a <span class="math inline">\(\mathbf{g}_1\)</span>. La longitud de cada recíproco compensa el ángulo: <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_1=1\)</span> (la proyección de <span class="math inline">\(\mathbf{g}_1\)</span> sobre <span class="math inline">\(\mathbf{g}^1\)</span> cae justo en la punta de <span class="math inline">\(\mathbf{g}^1\)</span>, línea de puntos).
+Figura&nbsp;4.2: Base recíproca de la placa oblicua: <span class="math inline">\(\mathbf{g}^1\)</span> es perpendicular a <span class="math inline">\(\mathbf{g}_2\)</span> y <span class="math inline">\(\mathbf{g}^2\)</span> a <span class="math inline">\(\mathbf{g}_1\)</span>. La longitud de cada recíproco compensa el ángulo: <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_1=1\)</span> (la proyección de <span class="math inline">\(\mathbf{g}_1\)</span> sobre <span class="math inline">\(\mathbf{g}^1\)</span> cae justo en la punta de <span class="math inline">\(\mathbf{g}^1\)</span>, línea de puntos).
 </figcaption>
 </figure>
 </div>
 <div id="exm-reciproca" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.2 (Ejemplo resuelto: la base recíproca de la placa oblicua)</strong></span> La métrica es <span class="math display">\[
+<p><span class="theorem-title"><strong>Ejemplo 4.2 (Ejemplo resuelto: la base recíproca de la placa oblicua)</strong></span> La métrica es <span class="math display">\[
 (g_{ij})=\begin{pmatrix}\mathbf{g}_1\!\cdot\!\mathbf{g}_1&amp;\mathbf{g}_1\!\cdot\!\mathbf{g}_2\\ \mathbf{g}_2\!\cdot\!\mathbf{g}_1&amp;\mathbf{g}_2\!\cdot\!\mathbf{g}_2\end{pmatrix}
 =\begin{pmatrix}1&amp;\tfrac12\\[2pt] \tfrac12&amp;1\end{pmatrix},\qquad
 \det(g_{ij})=\tfrac34,\qquad
 (g^{ij})=\tfrac43\begin{pmatrix}1&amp;-\tfrac12\\[2pt] -\tfrac12&amp;1\end{pmatrix}.
-\]</span> Con <a href="#eq-subir-bajar-base" class="quarto-xref">ecuación&nbsp;<span>3.4</span></a>: <span class="math display">\[
+\]</span> Con <a href="#eq-subir-bajar-base" class="quarto-xref">ecuación&nbsp;<span>4.4</span></a>: <span class="math display">\[
 \mathbf{g}^1=g^{11}\mathbf{g}_1+g^{12}\mathbf{g}_2=\tfrac43\mathbf{g}_1-\tfrac23\mathbf{g}_2=\Bigl(1,\,-\tfrac1{\sqrt3}\Bigr),\qquad
 \mathbf{g}^2=g^{21}\mathbf{g}_1+g^{22}\mathbf{g}_2=\tfrac43\mathbf{g}_2-\tfrac23\mathbf{g}_1=\Bigl(0,\,\tfrac2{\sqrt3}\Bigr).
-\]</span> <strong>Comprobación de <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>3.3</span></a>:</strong> <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_1=1\)</span>, <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_2=\tfrac12-\tfrac1{\sqrt3}\tfrac{\sqrt3}{2}=0\)</span>, <span class="math inline">\(\mathbf{g}^2\cdot\mathbf{g}_1=0\)</span> y <span class="math inline">\(\mathbf{g}^2\cdot\mathbf{g}_2=\tfrac{2}{\sqrt3}\tfrac{\sqrt3}{2}=1\)</span>.</p>
+\]</span> <strong>Comprobación de <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>4.3</span></a>:</strong> <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_1=1\)</span>, <span class="math inline">\(\mathbf{g}^1\cdot\mathbf{g}_2=\tfrac12-\tfrac1{\sqrt3}\tfrac{\sqrt3}{2}=0\)</span>, <span class="math inline">\(\mathbf{g}^2\cdot\mathbf{g}_1=0\)</span> y <span class="math inline">\(\mathbf{g}^2\cdot\mathbf{g}_2=\tfrac{2}{\sqrt3}\tfrac{\sqrt3}{2}=1\)</span>.</p>
 <p>Observa que <span class="math inline">\(\|\mathbf{g}^1\|=\sqrt{1+\tfrac13}=\tfrac{2}{\sqrt3}\approx1{,}155&gt;1=\|\mathbf{g}_1\|\)</span>: <strong>al cerrarse el ángulo entre los ejes, los recíprocos se alargan</strong> (<span class="math inline">\(\|\mathbf{g}^1\|=1/\operatorname{sen}\varphi\)</span> cuando <span class="math inline">\(\|\mathbf{g}_i\|=1\)</span>).</p>
 </div>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Errores frecuentes">
@@ -648,7 +672,7 @@ Figura&nbsp;3.2: Base recíproca de la placa oblicua: <span class="math inline">
 </div>
 <p><strong>Pon a prueba lo anterior.</strong></p>
 <div id="b2-g12" class="ejercicio" data-tipo="numerico" data-respuesta="0.5" data-tol="abs:0.01">
-<p>Para la placa oblicua del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>3.1</span></a>, calcula <span class="math inline">\(g_{12}=\mathbf{g}_1\cdot\mathbf{g}_2\)</span>.</p>
+<p>Para la placa oblicua del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>4.1</span></a>, calcula <span class="math inline">\(g_{12}=\mathbf{g}_1\cdot\mathbf{g}_2\)</span>.</p>
 <div class="solucion">
 <p><span class="math inline">\(g_{12}=1\cdot\tfrac12+0\cdot\tfrac{\sqrt3}{2}=\tfrac12=\cos60^\circ\)</span>, porque <span class="math inline">\(\|\mathbf{g}_1\|=\|\mathbf{g}_2\|=1\)</span>.</p>
 </div>
@@ -669,16 +693,16 @@ Figura&nbsp;3.2: Base recíproca de la placa oblicua: <span class="math inline">
 </div>
 </div>
 </section>
-<section id="sec-componentes" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sec-componentes"><span class="header-section-number">3.3</span> Componentes y tensor métrico: subir y bajar índices</h2>
-<p>Ya podemos formalizar las dos descomposiciones del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>3.1</span></a>.</p>
+<section id="sec-componentes" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-componentes"><span class="header-section-number">4.3</span> Componentes y tensor métrico: subir y bajar índices</h2>
+<p>Ya podemos formalizar las dos descomposiciones del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>4.1</span></a>.</p>
 <div id="prp-componentes" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposición 3.2 (Componentes de un vector)</strong></span> Todo vector admite dos descomposiciones, <span id="eq-descomposicion"><span class="math display">\[
+<p><span class="theorem-title"><strong>Proposición 4.2 (Componentes de un vector)</strong></span> Todo vector admite dos descomposiciones, <span id="eq-descomposicion"><span class="math display">\[
 \mathbf{V}=V^i\,\mathbf{g}_i=V_i\,\mathbf{g}^i,
-\tag{3.5}\]</span></span> con <span id="eq-componentes"><span class="math display">\[
+\tag{4.5}\]</span></span> con <span id="eq-componentes"><span class="math display">\[
 V^i=\mathbf{V}\cdot\mathbf{g}^i,\qquad V_i=\mathbf{V}\cdot\mathbf{g}_i,\qquad
 V_i=g_{ij}V^j,\qquad V^i=g^{ij}V_j,
-\tag{3.6}\]</span></span> y la norma cumple <span class="math inline">\(\|\mathbf{V}\|^2=g_{ij}V^iV^j=V^iV_i\)</span>.</p>
+\tag{4.6}\]</span></span> y la norma cumple <span class="math inline">\(\|\mathbf{V}\|^2=g_{ij}V^iV^j=V^iV_i\)</span>.</p>
 </div>
 <div class="demostracion callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
@@ -686,22 +710,22 @@ V_i=g_{ij}V^j,\qquad V^i=g^{ij}V_j,
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-componentes" class="quarto-xref">Proposición&nbsp;<span>3.2</span></a>
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-componentes" class="quarto-xref">Proposición&nbsp;<span>4.2</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Al ser <span class="math inline">\(\{\mathbf{g}_i\}\)</span> base, <span class="math inline">\(\mathbf{V}=V^j\mathbf{g}_j\)</span>. Multiplicando por <span class="math inline">\(\mathbf{g}^i\)</span> y usando <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>3.3</span></a>, <span class="math inline">\(V^i=\mathbf{V}\cdot\mathbf{g}^i\)</span>. Análogamente, como <span class="math inline">\(\{\mathbf{g}^i\}\)</span> también es base (por <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>3.1</span></a>), <span class="math inline">\(\mathbf{V}=V_j\mathbf{g}^j\)</span> y <span class="math inline">\(V_i=\mathbf{V}\cdot\mathbf{g}_i\)</span>. Entonces <span class="math inline">\(V_i=\mathbf{V}\cdot\mathbf{g}_i=V^j\,\mathbf{g}_j\cdot\mathbf{g}_i=g_{ij}V^j\)</span>, y de modo simétrico <span class="math inline">\(V^i=g^{ij}V_j\)</span>. Finalmente <span class="math inline">\(\|\mathbf{V}\|^2=\mathbf{V}\cdot\mathbf{V}=V^i\,\mathbf{g}_i\cdot V^j\mathbf{g}_j=g_{ij}V^iV^j=V^iV_i\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+<p>Al ser <span class="math inline">\(\{\mathbf{g}_i\}\)</span> base, <span class="math inline">\(\mathbf{V}=V^j\mathbf{g}_j\)</span>. Multiplicando por <span class="math inline">\(\mathbf{g}^i\)</span> y usando <a href="#eq-reciprocidad" class="quarto-xref">ecuación&nbsp;<span>4.3</span></a>, <span class="math inline">\(V^i=\mathbf{V}\cdot\mathbf{g}^i\)</span>. Análogamente, como <span class="math inline">\(\{\mathbf{g}^i\}\)</span> también es base (por <a href="#prp-g-dual" class="quarto-xref">Proposición&nbsp;<span>4.1</span></a>), <span class="math inline">\(\mathbf{V}=V_j\mathbf{g}^j\)</span> y <span class="math inline">\(V_i=\mathbf{V}\cdot\mathbf{g}_i\)</span>. Entonces <span class="math inline">\(V_i=\mathbf{V}\cdot\mathbf{g}_i=V^j\,\mathbf{g}_j\cdot\mathbf{g}_i=g_{ij}V^j\)</span>, y de modo simétrico <span class="math inline">\(V^i=g^{ij}V_j\)</span>. Finalmente <span class="math inline">\(\|\mathbf{V}\|^2=\mathbf{V}\cdot\mathbf{V}=V^i\,\mathbf{g}_i\cdot V^j\mathbf{g}_j=g_{ij}V^iV^j=V^iV_i\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 </div>
 </div>
 </div>
 <p>El tensor métrico es, por tanto, el «conversor» entre las dos listas: <span class="math inline">\(g_{ij}\)</span> <strong>baja</strong> el índice y <span class="math inline">\(g^{ij}\)</span> lo <strong>sube</strong>.</p>
 <div id="exm-subir-bajar" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.3 (Ejemplo resuelto: subir y bajar índices en la placa oblicua)</strong></span> Con <span class="math inline">\(V^1=2-\tfrac{\sqrt3}{2}\approx1{,}134\)</span>, <span class="math inline">\(V^2=\sqrt3\approx1{,}732\)</span> y <span class="math inline">\((g_{ij})\)</span> del <a href="#exm-reciproca" class="quarto-xref">Ejemplo&nbsp;<span>3.2</span></a>: <span class="math display">\[
+<p><span class="theorem-title"><strong>Ejemplo 4.3 (Ejemplo resuelto: subir y bajar índices en la placa oblicua)</strong></span> Con <span class="math inline">\(V^1=2-\tfrac{\sqrt3}{2}\approx1{,}134\)</span>, <span class="math inline">\(V^2=\sqrt3\approx1{,}732\)</span> y <span class="math inline">\((g_{ij})\)</span> del <a href="#exm-reciproca" class="quarto-xref">Ejemplo&nbsp;<span>4.2</span></a>: <span class="math display">\[
 V_1=g_{11}V^1+g_{12}V^2=1{,}134+\tfrac12\cdot1{,}732=2{,}000,\qquad
 V_2=g_{21}V^1+g_{22}V^2=\tfrac12\cdot1{,}134+1{,}732=2{,}299 ,
-\]</span> que coinciden con los productos escalares calculados directamente en el <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>3.1</span></a>. Y la norma: <span class="math display">\[
+\]</span> que coinciden con los productos escalares calculados directamente en el <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>4.1</span></a>. Y la norma: <span class="math display">\[
 V^iV_i=1{,}134\cdot2{,}000+1{,}732\cdot2{,}299=6{,}25=2^2+\bigl(\tfrac32\bigr)^2=\|\mathbf{V}\|^2 .
 \]</span></p>
 </div>
@@ -727,15 +751,15 @@ V^iV_i=1{,}134\cdot2{,}000+1{,}732\cdot2{,}299=6{,}25=2^2+\bigl(\tfrac32\bigr)^2
 </div>
 </div>
 </section>
-<section id="sec-cambio" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="sec-cambio"><span class="header-section-number">3.4</span> Qué ocurre al cambiar de coordenadas</h2>
+<section id="sec-cambio" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-cambio"><span class="header-section-number">4.4</span> Qué ocurre al cambiar de coordenadas</h2>
 <p>Las bases naturales dependen de las coordenadas. ¿Cómo cambian al pasar de unas <span class="math inline">\(\theta^i\)</span> a otras <span class="math inline">\(\theta'^i\)</span>?</p>
 <div id="prp-transformacion-bases" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposición 3.3 (Cambio de coordenadas)</strong></span> Si <span class="math inline">\(\theta'^i=\theta'^i(\theta^1,\dots,\theta^n)\)</span> es un cambio de coordenadas regular, entonces <span id="eq-transformacion"><span class="math display">\[
+<p><span class="theorem-title"><strong>Proposición 4.3 (Cambio de coordenadas)</strong></span> Si <span class="math inline">\(\theta'^i=\theta'^i(\theta^1,\dots,\theta^n)\)</span> es un cambio de coordenadas regular, entonces <span id="eq-transformacion"><span class="math display">\[
 \mathbf{g}'_i=\frac{\partial\theta^j}{\partial\theta'^i}\,\mathbf{g}_j,\qquad
 \mathbf{g}'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,\mathbf{g}^j,\qquad
 V'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,V^j .
-\tag{3.7}\]</span></span></p>
+\tag{4.7}\]</span></span></p>
 </div>
 <div class="demostracion callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
@@ -743,7 +767,7 @@ V'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,V^j .
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-transformacion-bases" class="quarto-xref">Proposición&nbsp;<span>3.3</span></a>
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-transformacion-bases" class="quarto-xref">Proposición&nbsp;<span>4.3</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -755,12 +779,12 @@ V'^i=\frac{\partial\theta'^i}{\partial\theta^j}\,V^j .
 </div>
 <p>Las componentes <span class="math inline">\(V^i\)</span> se transforman <strong>como las diferenciales</strong> <span class="math inline">\(d\theta^i\)</span> (con la matriz <span class="math inline">\(J\)</span>) y la base <span class="math inline">\(\mathbf{g}_i\)</span> <strong>como las derivadas</strong> <span class="math inline">\(\partial/\partial\theta^i\)</span> (con la inversa): se mueven «en sentido contrario». De ahí los nombres: las componentes que <strong>contravarían</strong> respecto de la base son las <span class="math inline">\(V^i\)</span>, y las que <strong>covarían</strong> con ella, las <span class="math inline">\(V_i\)</span>. El vector <span class="math inline">\(\mathbf{V}\)</span> no cambia.</p>
 <div id="exm-polares" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.4 (Ejemplo resuelto: un vector constante en polares)</strong></span> Sea <span class="math inline">\(\mathbf{V}=(1,0)\)</span> el mismo vector en todos los puntos del plano. Con coordenadas polares <span class="math inline">\((\theta^1,\theta^2)=(r,\theta)\)</span>, la base natural es <span class="math inline">\(\mathbf{g}_1=(\cos\theta,\operatorname{sen}\theta)\)</span> y <span class="math inline">\(\mathbf{g}_2=r(-\operatorname{sen}\theta,\cos\theta)\)</span> (ortogonal, con <span class="math inline">\(g_{11}=1\)</span>, <span class="math inline">\(g_{22}=r^2\)</span>). En el punto <span class="math inline">\(r=2\)</span>, <span class="math inline">\(\theta=\pi/6\)</span>: <span class="math display">\[
+<p><span class="theorem-title"><strong>Ejemplo 4.4 (Ejemplo resuelto: un vector constante en polares)</strong></span> Sea <span class="math inline">\(\mathbf{V}=(1,0)\)</span> el mismo vector en todos los puntos del plano. Con coordenadas polares <span class="math inline">\((\theta^1,\theta^2)=(r,\theta)\)</span>, la base natural es <span class="math inline">\(\mathbf{g}_1=(\cos\theta,\operatorname{sen}\theta)\)</span> y <span class="math inline">\(\mathbf{g}_2=r(-\operatorname{sen}\theta,\cos\theta)\)</span> (ortogonal, con <span class="math inline">\(g_{11}=1\)</span>, <span class="math inline">\(g_{22}=r^2\)</span>). En el punto <span class="math inline">\(r=2\)</span>, <span class="math inline">\(\theta=\pi/6\)</span>: <span class="math display">\[
 V^1=\mathbf{V}\cdot\mathbf{g}^1=\cos\theta=0{,}866,\qquad
 V^2=\mathbf{V}\cdot\mathbf{g}^2=-\frac{\operatorname{sen}\theta}{r}=-0{,}25,
 \]</span> <span class="math display">\[
 V_2=\mathbf{V}\cdot\mathbf{g}_2=-r\operatorname{sen}\theta=-1,\qquad V_2=g_{22}V^2=4\cdot(-0{,}25)=-1\ \checkmark
-\]</span> (usando <span class="math inline">\(\mathbf{g}^2=\mathbf{g}_2/r^2\)</span>, que sale de <a href="#eq-subir-bajar-base" class="quarto-xref">ecuación&nbsp;<span>3.4</span></a> con <span class="math inline">\(g^{22}=1/r^2\)</span>). Aunque <span class="math inline">\(\mathbf{V}\)</span> es constante, sus componentes polares <strong>varían de punto a punto</strong>: es el origen de los símbolos de Christoffel (capítulo 5).</p>
+\]</span> (usando <span class="math inline">\(\mathbf{g}^2=\mathbf{g}_2/r^2\)</span>, que sale de <a href="#eq-subir-bajar-base" class="quarto-xref">ecuación&nbsp;<span>4.4</span></a> con <span class="math inline">\(g^{22}=1/r^2\)</span>). Aunque <span class="math inline">\(\mathbf{V}\)</span> es constante, sus componentes polares <strong>varían de punto a punto</strong>: es el origen de los símbolos de Christoffel (<a href="B4-christoffel.html#sec-christoffel" class="quarto-xref"><span>Sección 6.2</span></a>).</p>
 </div>
 <p><strong>Pon a prueba lo anterior.</strong></p>
 <div id="b2-polar-vtheta" class="ejercicio" data-tipo="numerico" data-respuesta="-0.25" data-tol="abs:0.005">
@@ -779,8 +803,8 @@ V_2=\mathbf{V}\cdot\mathbf{g}_2=-r\operatorname{sen}\theta=-1,\qquad V_2=g_{22}V
 </div>
 </div>
 </section>
-<section id="sec-lab-bases" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="sec-lab-bases"><span class="header-section-number">3.5</span> Laboratorio interactivo</h2>
+<section id="sec-lab-bases" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-lab-bases"><span class="header-section-number">4.5</span> Laboratorio interactivo</h2>
 <div class="laboratorio">
 <div class="laboratorio-titulo">
 Laboratorio · Bases covariante y contravariante en el plano
@@ -791,7 +815,7 @@ Laboratorio · Bases covariante y contravariante en el plano
 <li><span class="math inline">\(\mathbf{g}^1\perp\mathbf{g}_2\)</span> y <span class="math inline">\(\mathbf{g}^2\perp\mathbf{g}_1\)</span> para cualquier ángulo y cualquier longitud.</li>
 <li>Con ángulo <span class="math inline">\(90^\circ\)</span> y longitudes 1, ambas bases coinciden y también <span class="math inline">\(V^i=V_i\)</span> (compruébalo en la tabla).</li>
 <li>Al <strong>cerrar el ángulo</strong> (<span class="math inline">\(\to0^\circ\)</span> o <span class="math inline">\(\to180^\circ\)</span>) los recíprocos se alargan: <span class="math inline">\(\|\mathbf{g}^i\|=1/(\|\mathbf{g}_i\|\operatorname{sen}\varphi)\)</span>, y <span class="math inline">\(\det(g_{ij})\to0\)</span>.</li>
-<li>Los valores iniciales (<span class="math inline">\(60^\circ\)</span>, <span class="math inline">\(|\mathbf{g}_1|=|\mathbf{g}_2|=1\)</span>, <span class="math inline">\(\mathbf{V}=(2;\,1{,}5)\)</span>) son los de la placa del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>3.1</span></a>: comprueba en la tabla <span class="math inline">\(V^i\)</span>, <span class="math inline">\(V_i\)</span> y <span class="math inline">\(g_{ij}\)</span>.</li>
+<li>Los valores iniciales (<span class="math inline">\(60^\circ\)</span>, <span class="math inline">\(|\mathbf{g}_1|=|\mathbf{g}_2|=1\)</span>, <span class="math inline">\(\mathbf{V}=(2;\,1{,}5)\)</span>) son los de la placa del <a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>4.1</span></a>: comprueba en la tabla <span class="math inline">\(V^i\)</span>, <span class="math inline">\(V_i\)</span> y <span class="math inline">\(g_{ij}\)</span>.</li>
 </ol>
 </div>
 <div class="cell">
@@ -900,8 +924,8 @@ Laboratorio · Bases covariante y contravariante en el plano
 </div>
 </div>
 </section>
-<section id="sec-julia-bases" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="sec-julia-bases"><span class="header-section-number">3.6</span> Práctica guiada en Julia</h2>
+<section id="sec-julia-bases" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-julia-bases"><span class="header-section-number">4.6</span> Práctica guiada en Julia</h2>
 <div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -912,7 +936,7 @@ Laboratorio · Bases covariante y contravariante en el plano
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="etiqueta-resultado calculado">calculado</span> Primero, la placa oblicua de <span class="math inline">\(60^\circ\)</span> (<a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>3.1</span></a>, <a href="#exm-reciproca" class="quarto-xref">Ejemplo&nbsp;<span>3.2</span></a> y <a href="#exm-subir-bajar" class="quarto-xref">Ejemplo&nbsp;<span>3.3</span></a>) con el paquete <code>Geometria</code>; después, una base con coeficientes racionales para ver que la reciprocidad es <strong>exactamente</strong> la identidad.</p>
+<p><span class="etiqueta-resultado calculado">calculado</span> Primero, la placa oblicua de <span class="math inline">\(60^\circ\)</span> (<a href="#exm-placa" class="quarto-xref">Ejemplo&nbsp;<span>4.1</span></a>, <a href="#exm-reciproca" class="quarto-xref">Ejemplo&nbsp;<span>4.2</span></a> y <a href="#exm-subir-bajar" class="quarto-xref">Ejemplo&nbsp;<span>4.3</span></a>) con el paquete <code>Geometria</code>; después, una base con coeficientes racionales para ver que la reciprocidad es <strong>exactamente</strong> la identidad.</p>
 </div>
 </div>
 <div id="2" class="cell" data-execution_count="1">
@@ -948,8 +972,8 @@ Laboratorio · Bases covariante y contravariante en el plano
 </div>
 <p>Las mismas identidades se comprueban de forma automática en <code>julia/test/runtests.jl</code> (conjuntos «Bases covariantes y contravariantes» y «Base oblicua a 60°») y, para el código JavaScript del laboratorio, en <code>web/tests/bases.test.mjs</code>. Las respuestas numéricas de los ejercicios de este tema se verifican con <code>scripts/verificar_ejercicios.jl</code>.</p>
 </section>
-<section id="sec-ejercicios-3" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="sec-ejercicios-3"><span class="header-section-number">3.7</span> Ejercicios</h2>
+<section id="sec-ejercicios-3" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-ejercicios-3"><span class="header-section-number">4.7</span> Ejercicios</h2>
 <ol type="1">
 <li><p><strong>Determinante.</strong> Demuestra que <span class="math inline">\(\det(g_{ij})=(\det B)^2\)</span> si <span class="math inline">\(B\)</span> es la matriz de columnas <span class="math inline">\(\mathbf{g}_i\)</span>.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
@@ -964,7 +988,7 @@ Laboratorio · Bases covariante y contravariante en el plano
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j\)</span> es <span class="math inline">\(B^{\mathsf T}B\)</span> (matriz de Gram), luego <span class="math inline">\(\det(g_{ij})=\det(B^{\mathsf T})\det B=(\det B)^2\)</span>. En la placa oblicua, <span class="math inline">\(\det B=\tfrac{\sqrt3}{2}\)</span> y <span class="math inline">\((\det B)^2=\tfrac34\)</span>, que coincide con el <a href="#exm-reciproca" class="quarto-xref">Ejemplo&nbsp;<span>3.2</span></a>.</p>
+<p><span class="math inline">\(g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j\)</span> es <span class="math inline">\(B^{\mathsf T}B\)</span> (matriz de Gram), luego <span class="math inline">\(\det(g_{ij})=\det(B^{\mathsf T})\det B=(\det B)^2\)</span>. En la placa oblicua, <span class="math inline">\(\det B=\tfrac{\sqrt3}{2}\)</span> y <span class="math inline">\((\det B)^2=\tfrac34\)</span>, que coincide con el <a href="#exm-reciproca" class="quarto-xref">Ejemplo&nbsp;<span>4.2</span></a>.</p>
 </div>
 </div>
 </div></li>
@@ -998,11 +1022,11 @@ Laboratorio · Bases covariante y contravariante en el plano
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>La métrica es <span class="math inline">\(\operatorname{diag}(1,r^2)\)</span>, luego <span class="math inline">\(g^{22}=1/r^2\)</span> y <span class="math inline">\(\mathbf{g}^2=g^{22}\mathbf{g}_2=\mathbf{g}_2/r^2\)</span> (<a href="#eq-subir-bajar-base" class="quarto-xref">ecuación&nbsp;<span>3.4</span></a>). Entonces <span class="math inline">\(V^\theta=g^{22}V_\theta=V_\theta/r^2\)</span>.</p>
+<p>La métrica es <span class="math inline">\(\operatorname{diag}(1,r^2)\)</span>, luego <span class="math inline">\(g^{22}=1/r^2\)</span> y <span class="math inline">\(\mathbf{g}^2=g^{22}\mathbf{g}_2=\mathbf{g}_2/r^2\)</span> (<a href="#eq-subir-bajar-base" class="quarto-xref">ecuación&nbsp;<span>4.4</span></a>). Entonces <span class="math inline">\(V^\theta=g^{22}V_\theta=V_\theta/r^2\)</span>.</p>
 </div>
 </div>
 </div></li>
-<li><p><strong>Invariancia.</strong> Prueba que <span class="math inline">\(V^iW_i\)</span> no depende de la base, usando <a href="#eq-transformacion" class="quarto-xref">ecuación&nbsp;<span>3.7</span></a> y la matriz inversa.</p>
+<li><p><strong>Invariancia.</strong> Prueba que <span class="math inline">\(V^iW_i\)</span> no depende de la base, usando <a href="#eq-transformacion" class="quarto-xref">ecuación&nbsp;<span>4.7</span></a> y la matriz inversa.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1045,7 +1069,7 @@ Laboratorio · Bases covariante y contravariante en el plano
 <li>Construyo la base recíproca a partir de <span class="math inline">\(g_{ij}\)</span> y compruebo <span class="math inline">\(\mathbf{g}^i\cdot\mathbf{g}_j=\delta^i_j\)</span>.</li>
 <li>Sé que <span class="math inline">\(\mathbf{g}^1\perp\mathbf{g}_2\)</span> y que los recíprocos se alargan cuando se cierra el ángulo entre los ejes.</li>
 <li>Subo y bajo índices con <span class="math inline">\(g^{ij}\)</span> y <span class="math inline">\(g_{ij}\)</span> y reconozco <span class="math inline">\(V^iV_i\)</span> como la norma al cuadrado.</li>
-<li>Explico por qué se llaman <em>contravariantes</em> y <em>covariantes</em> a partir de <a href="#eq-transformacion" class="quarto-xref">ecuación&nbsp;<span>3.7</span></a>.</li>
+<li>Explico por qué se llaman <em>contravariantes</em> y <em>covariantes</em> a partir de <a href="#eq-transformacion" class="quarto-xref">ecuación&nbsp;<span>4.7</span></a>.</li>
 <li>Sé que un vector constante tiene componentes polares variables, y que esto motiva los símbolos de Christoffel.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
@@ -1120,7 +1144,7 @@ eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwt
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../book/01-fundamentos";
+window._ojs.paths.runtimeToDoc = "../../book/B-tensorial";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "../..";
 window._ojs.selfContained = false;
@@ -1528,13 +1552,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../book/01-fundamentos/02-transformacion.html" class="pagination-link" aria-label="Transformación de coordenadas y tensores">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span>
+      <a href="../../book/B-tensorial/B1-transformacion.html" class="pagination-link" aria-label="Transformación de coordenadas y tensores">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../book/01-fundamentos/04-metrica.html" class="pagination-link" aria-label="Tensor métrico y componentes físicas">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../book/B-tensorial/B3-metrica.html" class="pagination-link" aria-label="Tensor métrico y componentes físicas">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

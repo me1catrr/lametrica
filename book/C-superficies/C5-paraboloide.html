@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
+
+<title>12&nbsp; El paraboloide hiperbólico – La métrica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/C-superficies/C6-bestiario.html" rel="next">
+<link href="../../book/C-superficies/C4-geodesicas.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bf301d7d37cc149758e3e4af7a473f5e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/C-superficies/C1-superficies.html">Bloque C · Geometría de superficies</a></li><li class="breadcrumb-item"><a href="../../book/C-superficies/C5-paraboloide.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">La métrica</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/mapa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapa del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque A · Preludio: la forma que resiste</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A1-caparazon-hypar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La cáscara y el paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A2-vectores-y-coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Los objetos físicos no dependen de las coordenadas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque B · Cálculo tensorial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B1-transformacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B2-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B3-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B4-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B5-analisis-tensorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Álgebra y análisis tensorial en curvilíneas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque C · Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C1-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C2-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C3-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C4-geodesicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Curvas sobre superficies: geodésicas y compatibilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C5-paraboloide.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C6-bestiario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bestiario de láminas: cilindro, esfera, cono y placa oblicua</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notación y convenios</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#objetivos-y-prerrequisitos" id="toc-objetivos-y-prerrequisitos" class="nav-link active" data-scroll-target="#objetivos-y-prerrequisitos">Objetivos y prerrequisitos</a></li>
+  <li><a href="#sec-motivacion-9" id="toc-sec-motivacion-9" class="nav-link" data-scroll-target="#sec-motivacion-9"><span class="header-section-number">12.1</span> Motivación</a></li>
+  <li><a href="#sec-descripcion" id="toc-sec-descripcion" class="nav-link" data-scroll-target="#sec-descripcion"><span class="header-section-number">12.2</span> Descripción geométrica</a>
+  <ul class="collapse">
+  <li><a href="#forma-explícita-bordes-curvos" id="toc-forma-explícita-bordes-curvos" class="nav-link" data-scroll-target="#forma-explícita-bordes-curvos"><span class="header-section-number">12.2.1</span> Forma explícita (bordes curvos)</a></li>
+  <li><a href="#forma-reglada-bordes-rectos" id="toc-forma-reglada-bordes-rectos" class="nav-link" data-scroll-target="#forma-reglada-bordes-rectos"><span class="header-section-number">12.2.2</span> Forma reglada (bordes rectos)</a></li>
+  </ul></li>
+  <li><a href="#sec-tensores-curvo" id="toc-sec-tensores-curvo" class="nav-link" data-scroll-target="#sec-tensores-curvo"><span class="header-section-number">12.3</span> Tensores geométricos del paraboloide de bordes curvos</a>
+  <ul class="collapse">
+  <li><a href="#sec-no-ortogonal" id="toc-sec-no-ortogonal" class="nav-link" data-scroll-target="#sec-no-ortogonal"><span class="header-section-number">12.3.1</span> Las curvas coordenadas no son líneas de curvatura</a></li>
+  </ul></li>
+  <li><a href="#sec-curvaturas-recto" id="toc-sec-curvaturas-recto" class="nav-link" data-scroll-target="#sec-curvaturas-recto"><span class="header-section-number">12.4</span> Curvaturas del paraboloide reglado</a></li>
+  <li><a href="#sec-planas" id="toc-sec-planas" class="nav-link" data-scroll-target="#sec-planas"><span class="header-section-number">12.5</span> Láminas muy planas</a></li>
+  <li><a href="#sec-lab-hypar" id="toc-sec-lab-hypar" class="nav-link" data-scroll-target="#sec-lab-hypar"><span class="header-section-number">12.6</span> Laboratorio interactivo</a></li>
+  <li><a href="#sec-julia-hypar" id="toc-sec-julia-hypar" class="nav-link" data-scroll-target="#sec-julia-hypar"><span class="header-section-number">12.7</span> Ejemplo computacional en Julia</a></li>
+  <li><a href="#sec-ejercicios-9" id="toc-sec-ejercicios-9" class="nav-link" data-scroll-target="#sec-ejercicios-9"><span class="header-section-number">12.8</span> Ejercicios</a></li>
+  <li><a href="#la-doy-por-superada-si" id="toc-la-doy-por-superada-si" class="nav-link" data-scroll-target="#la-doy-por-superada-si">La doy por superada si…</a></li>
+  <li><a href="#referencias-unidad" id="toc-referencias-unidad" class="nav-link" data-scroll-target="#referencias-unidad">Referencias</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/C-superficies/C1-superficies.html">Bloque C · Geometría de superficies</a></li><li class="breadcrumb-item"><a href="../../book/C-superficies/C5-paraboloide.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></h1>
+<p class="subtitle lead">Superficie reglada de bordes rectos y de bordes curvos</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="fig-apertura-cap09" class="portada quarto-float quarto-figure quarto-figure-center anchored" alt="Superficie en forma de silla con dos familias de rectas y cuatro bordes rectos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-apertura-cap09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/apertura-cap09-hypar.svg" class="portada img-fluid figure-img" style="width:100.0%" alt="Superficie en forma de silla con dos familias de rectas y cuatro bordes rectos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-apertura-cap09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.1: Paraboloide hiperbólico ilustrativo <span class="math inline">\(z=c\,x\,y\)</span> con sus dos familias de generatrices rectas (azul y verde).
+</figcaption>
+</figure>
+</div>
+<div class="pregunta-guia">
+<p>Por qué una superficie con forma de silla de montar se puede construir con tablones rectos, y qué la hace difícil de calcular</p>
+</div>
+<section id="objetivos-y-prerrequisitos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objetivos-y-prerrequisitos">Objetivos y prerrequisitos</h2>
+<p><strong>Objetivos.</strong> Al terminar el tema sabrás:</p>
+<ul>
+<li>describir el paraboloide hiperbólico como superficie <strong>explícita</strong> y como superficie <strong>reglada</strong>;</li>
+<li>obtener sus tensores geométricos (<span class="math inline">\(a_{\alpha\beta}\)</span>, <span class="math inline">\(\hat{\mathbf{a}}_3\)</span>, <span class="math inline">\(b_{\alpha\beta}\)</span>, <span class="math inline">\(\bar\Gamma^\gamma_{\alpha\beta}\)</span>, <span class="math inline">\(K\)</span>) en forma cerrada y contrastarlos numéricamente;</li>
+<li>explicar por qué las curvas coordenadas <strong>no</strong> son líneas de curvatura en un punto cualquiera;</li>
+<li>distinguir las tipologías de <strong>bordes curvos</strong> y de <strong>bordes rectos</strong> y relacionarlas por un giro de <span class="math inline">\(45^\circ\)</span> en planta;</li>
+<li>justificar cuándo una lámina de este tipo puede considerarse «muy plana» (<em>shallow</em>).</li>
+</ul>
+<p><strong>Prerrequisitos.</strong> <a href="../../book/C-superficies/C3-curvaturas.html">Curvaturas de una superficie</a> y <a href="../../book/C-superficies/C2-formas-fundamentales.html">Formas fundamentales</a>.</p>
+<p><strong>Secciones del tema</strong></p>
+<ul>
+<li><strong><a href="#sec-motivacion-9" class="quarto-xref"><span>Sección 12.1</span></a></strong> · Motivación · <strong><a href="#sec-descripcion" class="quarto-xref"><span>Sección 12.2</span></a></strong> · Descripción geométrica</li>
+<li><strong><a href="#sec-tensores-curvo" class="quarto-xref"><span>Sección 12.3</span></a></strong> · Tensores del hypar de bordes curvos · <strong><a href="#sec-curvaturas-recto" class="quarto-xref"><span>Sección 12.4</span></a></strong> · Curvaturas del hypar reglado</li>
+<li><strong><a href="#sec-planas" class="quarto-xref"><span>Sección 12.5</span></a></strong> · Láminas muy planas · <strong><a href="#sec-lab-hypar" class="quarto-xref"><span>Sección 12.6</span></a></strong> · Laboratorio · <strong><a href="#sec-julia-hypar" class="quarto-xref"><span>Sección 12.7</span></a></strong> · Práctica guiada</li>
+</ul>
+</section>
+<section id="sec-motivacion-9" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sec-motivacion-9"><span class="header-section-number">12.1</span> Motivación</h2>
+<p>El paraboloide hiperbólico («hypar») es una superficie de doble curvatura <strong>negativa</strong> (<span class="math inline">\(K&lt;0\)</span>) que puede construirse con elementos rectos. Esa combinación de rigidez geométrica y facilidad de encofrado lo ha convertido en una forma frecuente de cubiertas de hormigón de espesor muy pequeño. Para el análisis estructural tiene una dificultad: sus curvas coordenadas naturales <strong>no son ortogonales</strong> (<a href="#sec-no-ortogonal" class="quarto-xref"><span>Sección 12.3.1</span></a>), de modo que no sirven las teorías de láminas que suponen coordenadas ortogonales.</p>
+<div class="callout callout-style-simple callout-important callout-titled" title="Idea clave">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lo que se ha aprendido en los temas de superficies, formas fundamentales y curvaturas se aplica aquí sin hipótesis adicionales: <span class="math inline">\(a_{\alpha\beta}\)</span> es <strong>no diagonal</strong>, y por eso el formalismo tensorial completo (bases covariante y recíproca distintas, símbolos de Christoffel no nulos) es necesario.</p>
+</div>
+</div>
+</section>
+<section id="sec-descripcion" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="sec-descripcion"><span class="header-section-number">12.2</span> Descripción geométrica</h2>
+<section id="forma-explícita-bordes-curvos" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="forma-explícita-bordes-curvos"><span class="header-section-number">12.2.1</span> Forma explícita (bordes curvos)</h3>
+<div id="def-hypar-curvo" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 12.1 (Paraboloide hiperbólico en ejes principales)</strong></span> Con ejes cartesianos <span class="math inline">\((x,y,z)\)</span>, la superficie media es <span id="eq-hypar-curvo"><span class="math display">\[
+z=-\frac12\left(\frac{x^2}{R_x}+\frac{y^2}{R_y}\right),\qquad R_xR_y&lt;0,
+\tag{12.1}\]</span></span> y su proyección en planta es un rectángulo <span class="math inline">\([-a/2,a/2]\times[-b/2,b/2]\)</span>. Los bordes son <strong>parábolas</strong> en los planos <span class="math inline">\(x=\pm a/2\)</span> e <span class="math inline">\(y=\pm b/2\)</span>.</p>
+</div>
+<p>Se parametriza por <span class="math inline">\((\theta^1,\theta^2)=(x,y)\)</span>. Las secciones por planos <span class="math inline">\(y=\text{cte}\)</span> son parábolas que se curvan hacia abajo si <span class="math inline">\(R_x&gt;0\)</span>, y las de <span class="math inline">\(x=\text{cte}\)</span> hacia arriba si <span class="math inline">\(R_y&lt;0\)</span>.</p>
+</section>
+<section id="forma-reglada-bordes-rectos" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="forma-reglada-bordes-rectos"><span class="header-section-number">12.2.2</span> Forma reglada (bordes rectos)</h3>
+<div id="def-hypar-recto" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 12.2 (Paraboloide hiperbólico reglado)</strong></span> <span id="eq-hypar-recto"><span class="math display">\[
+z=c\,x\,y,\qquad {}_0\mathbf{r}(\theta^1,\theta^2)=\bigl(\theta^1,\ \theta^2,\ c\,\theta^1\theta^2\bigr).
+\tag{12.2}\]</span></span></p>
+</div>
+<p>Las curvas <span class="math inline">\(\theta^1=\text{cte}\)</span> y <span class="math inline">\(\theta^2=\text{cte}\)</span> son <strong>rectas</strong> (<a href="#fig-generatrices" class="quarto-xref">Figura&nbsp;<span>12.2</span></a>): fijado <span class="math inline">\(\theta^1=u\)</span>, <span class="math inline">\(\theta^2\mapsto(u,\theta^2,c\,u\,\theta^2)\)</span> es lineal. Por tanto el paraboloide hiperbólico contiene <strong>dos familias de generatrices rectas</strong>, y por eso se llama superficie <em>doblemente reglada</em>.</p>
+<div id="fig-generatrices" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Paraboloide hiperbólico con dos familias de rectas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-generatrices-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/hypar-generatrices.svg" class="img-fluid figure-img" style="width:80.0%" alt="Paraboloide hiperbólico con dos familias de rectas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-generatrices-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.2: Paraboloide hiperbólico <span class="math inline">\(z=c\,x\,y\)</span> (<span class="math inline">\(c=0{,}8\)</span>) con sus dos familias de generatrices rectas: <span class="math inline">\(\theta^1=\text{cte}\)</span> (azul) y <span class="math inline">\(\theta^2=\text{cte}\)</span> (verde). Cada punto es la intersección de una recta de cada familia.
+</figcaption>
+</figure>
+</div>
+<div id="prp-giro-45" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 12.1 (Las dos formas son la misma superficie)</strong></span> Con <span class="math inline">\(R_x=R\)</span>, <span class="math inline">\(R_y=-R\)</span> y el giro de <span class="math inline">\(45^\circ\)</span> en planta <span class="math inline">\(x=(X-Y)/\sqrt2\)</span>, <span class="math inline">\(y=(X+Y)/\sqrt2\)</span>, la ecuación <a href="#eq-hypar-curvo" class="quarto-xref">ecuación&nbsp;<span>12.1</span></a> equivale a <a href="#eq-hypar-recto" class="quarto-xref">ecuación&nbsp;<span>12.2</span></a> con <span class="math inline">\(c=-1/R\)</span>.</p>
+</div>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de <a href="#prp-giro-45" class="quarto-xref">Proposición&nbsp;<span>12.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Con <span class="math inline">\(R_x=R,R_y=-R\)</span>: <span class="math inline">\(z=-\tfrac{1}{2R}(X^2-Y^2)\)</span>. Con <span class="math inline">\(X=(x+y)/\sqrt2\)</span>, <span class="math inline">\(Y=(y-x)/\sqrt2\)</span> (el giro inverso), <span class="math inline">\(X^2-Y^2=2xy\)</span>, luego <span class="math inline">\(z=-xy/R=c\,xy\)</span> con <span class="math inline">\(c=-1/R\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<p>Así, <strong>la misma superficie</strong> admite dos tipologías de lámina según cómo se recorte en planta (<a href="#fig-bordes" class="quarto-xref">Figura&nbsp;<span>12.3</span></a>):</p>
+<ul>
+<li><strong>bordes curvos:</strong> el rectángulo en planta tiene lados paralelos a los ejes principales (las secciones con los planos verticales de los bordes son parábolas);</li>
+<li><strong>bordes rectos:</strong> el rectángulo tiene lados paralelos a las generatrices, es decir, a <span class="math inline">\(45^\circ\)</span> de los ejes principales (los bordes son segmentos rectos).</li>
+</ul>
+<div id="fig-bordes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Planta con ejes principales, generatrices y los dos rectángulos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bordes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/hypar-bordes.svg" class="img-fluid figure-img" style="width:75.0%" alt="Planta con ejes principales, generatrices y los dos rectángulos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bordes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.3: Vista en planta. Los ejes principales <span class="math inline">\((X,Y)\)</span> son los de curvatura extrema; las generatrices rectas están a <span class="math inline">\(45^\circ\)</span> (verde discontinuo). Un rectángulo con lados paralelos a los ejes principales da la lámina de bordes curvos (azul); uno con lados paralelos a las generatrices, la de bordes rectos (verde). Ambos recortan la misma superficie.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-tensores-curvo" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="sec-tensores-curvo"><span class="header-section-number">12.3</span> Tensores geométricos del paraboloide de bordes curvos</h2>
+<p>Con <span class="math inline">\({}_0\mathbf{r}=(\theta^1,\theta^2,-\tfrac12(\theta^{1\,2}/R_x+\theta^{2\,2}/R_y))\)</span> y <span class="math inline">\(w^2\equiv a\)</span> (<a href="C1-superficies.html#eq-hypar-metrica" class="quarto-xref">ecuación&nbsp;<span>8.9</span></a>), se obtienen, como se ha calculado en los temas de superficies parametrizadas y de formas fundamentales:</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Resultados analíticos y verificación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Resultados analíticos y verificación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado analitico">analítico</span> <span class="etiqueta-resultado calculado">verificado numéricamente</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Objeto</th>
+<th>Expresión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{a}_{1,1},\ \mathbf{a}_{2,2},\ \mathbf{a}_{1,2}\)</span></td>
+<td><span class="math inline">\((0,0,-1/R_x)\)</span>, <span class="math inline">\((0,0,-1/R_y)\)</span>, <span class="math inline">\(\mathbf{0}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(a^{11},\ a^{22},\ a^{12}\)</span></td>
+<td><span class="math inline">\(\dfrac{R_x^2(R_y^2+\theta_2^2)}{D},\ \dfrac{R_y^2(R_x^2+\theta_1^2)}{D},\ -\dfrac{R_xR_y\theta_1\theta_2}{D}\)</span> con <span class="math inline">\(D=R_y^2\theta_1^2+R_x^2(R_y^2+\theta_2^2)=R_x^2R_y^2\,a\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(b_{11},\ b_{22},\ b_{12}\)</span></td>
+<td><span class="math inline">\(-\dfrac{1}{R_x\sqrt{a}},\ -\dfrac{1}{R_y\sqrt{a}},\ 0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\bar\Gamma^1_{11},\ \bar\Gamma^1_{22}\)</span></td>
+<td><span class="math inline">\(\dfrac{R_y^2\theta_1}{D},\ \dfrac{R_xR_y\theta_1}{D}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\bar\Gamma^2_{11},\ \bar\Gamma^2_{22}\)</span></td>
+<td><span class="math inline">\(\dfrac{R_xR_y\theta_2}{D},\ \dfrac{R_x^2\theta_2}{D}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\bar\Gamma^1_{12},\ \bar\Gamma^2_{12}\)</span></td>
+<td><span class="math inline">\(0,\ 0\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(K=\det(b^\alpha_\beta)\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{R_xR_y\,a^2}&lt;0\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>La expresión de <span class="math inline">\(\bar\Gamma^2_{22}\)</span> se ha <strong>deducido por simetría</strong> con la de <span class="math inline">\(\bar\Gamma^1_{11}\)</span>; se verifica junto con las demás en el test «Superficies: paraboloide hiperbólico de bordes curvos». El resto coincide con las que se obtienen a mano con <a href="C2-formas-fundamentales.html#eq-gauss" class="quarto-xref">ecuación&nbsp;<span>9.3</span></a>.</p>
+<section id="sec-no-ortogonal" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="sec-no-ortogonal"><span class="header-section-number">12.3.1</span> Las curvas coordenadas no son líneas de curvatura</h3>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Curvas coordenadas y direcciones principales">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Curvas coordenadas y direcciones principales
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Como <span class="math inline">\(a_{12}=\theta^1\theta^2/(R_xR_y)\neq0\)</span> salvo sobre los ejes, las curvas coordenadas <strong>no son ortogonales</strong>. Además, <span class="math inline">\(b_{12}=0\)</span> pero <span class="math inline">\(a_{12}\neq0\)</span>, así que las direcciones coordenadas <strong>no</strong> son principales (para serlo, <span class="math inline">\(b_{12}-\kappa a_{12}=0\)</span> con el mismo <span class="math inline">\(\kappa\)</span> en ambas). Solo en el origen y sobre los ejes coinciden las direcciones coordenadas con las principales. Esta es la dificultad que impide usar teorías de láminas con coordenadas ortogonales.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-curvaturas-recto" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="sec-curvaturas-recto"><span class="header-section-number">12.4</span> Curvaturas del paraboloide reglado</h2>
+<p>Para <span class="math inline">\(z=c\,x\,y\)</span>:</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Resultados analíticos">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Resultados analíticos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado analitico">analítico</span> <span class="etiqueta-resultado calculado">verificado numéricamente</span> <span class="math display">\[
+a_{11}=1+c^2(\theta^2)^2,\quad a_{22}=1+c^2(\theta^1)^2,\quad a_{12}=c^2\theta^1\theta^2,\quad a=1+c^2\bigl[(\theta^1)^2+(\theta^2)^2\bigr],
+\]</span> <span id="eq-hypar-recto-tensores"><span class="math display">\[
+b_{11}=b_{22}=0,\qquad b_{12}=\frac{c}{\sqrt{a}},\qquad K=-\frac{c^2}{a^2} .
+\tag{12.3}\]</span></span></p>
+</div>
+</div>
+<p>Como <span class="math inline">\(b_{11}=b_{22}=0\)</span>, la curvatura normal en las direcciones coordenadas es nula: <strong>las rectas generatrices son líneas asintóticas</strong> (<span class="math inline">\(\kappa=0\)</span>), como era de esperar. En el origen, <span class="math inline">\(a_{\alpha\beta}=\delta_{\alpha\beta}\)</span>, <span class="math inline">\(b_{12}=c\)</span> y las curvaturas principales son <span class="math inline">\(\pm c\)</span> en las direcciones a <span class="math inline">\(\pm45^\circ\)</span>.</p>
+<div id="exm-hypar-punto" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 12.1 (Ejemplo resuelto: curvaturas del hypar en un punto)</strong></span> Sea <span class="math inline">\(R_x=3\)</span>, <span class="math inline">\(R_y=-3\)</span> y el punto <span class="math inline">\((\theta^1,\theta^2)=(1,-1)\)</span>. Entonces <span class="math inline">\(a=1+\tfrac19+\tfrac19=\tfrac{11}9\approx1{,}222\)</span>, <span class="math inline">\(\sqrt a\approx1{,}106\)</span> y, por la tabla, <span class="math display">\[
+K=\frac1{R_xR_y\,a^2}=\frac1{-9\cdot1{,}494}=-0{,}0744 .
+\]</span> Es negativa, como en todo el paraboloide. En el origen, en cambio, <span class="math inline">\(a=1\)</span> y <span class="math inline">\(K=1/(R_xR_y)=-\tfrac19=-0{,}111\)</span>: <strong>la superficie se curva más (en valor absoluto) en el centro</strong> que hacia los bordes.</p>
+</div>
+<p><strong>Pon a prueba lo anterior.</strong> Los ejercicios se corrigen en tu navegador y no envían nada a ningún sitio.</p>
+<div id="c5-k" class="ejercicio" data-tipo="numerico" data-respuesta="-0.0744" data-tol="1%">
+<p>Con <span class="math inline">\(R_x=3\)</span>, <span class="math inline">\(R_y=-3\)</span>, ¿cuánto vale <span class="math inline">\(K\)</span> en el punto <span class="math inline">\((\theta^1,\theta^2)=(1,-1)\)</span>?</p>
+<div class="solucion">
+<p><span class="math inline">\(K=1/(R_xR_y\,a^2)\)</span> con <span class="math inline">\(a=11/9\)</span>: <span class="math inline">\(-1/(9\cdot1{,}4938)=-0{,}0744\)</span>.</p>
+</div>
+</div>
+<div id="c5-asintotas" class="ejercicio" data-tipo="opcion" data-respuesta="c">
+<p>En <span class="math inline">\(z=c\,x\,y\)</span>, las curvas coordenadas <span class="math inline">\(\theta^1=\text{cte}\)</span> y <span class="math inline">\(\theta^2=\text{cte}\)</span> son…</p>
+<div class="opciones">
+<ul>
+<li>líneas de curvatura (direcciones principales)</li>
+<li>circunferencias</li>
+<li>rectas, con curvatura normal nula (direcciones asintóticas)</li>
+<li>parábolas</li>
+</ul>
+</div>
+<div class="solucion">
+<p>Son <strong>rectas</strong> (las generatrices) y, como <span class="math inline">\(b_{11}=b_{22}=0\)</span>, su curvatura normal es nula: direcciones asintóticas. Las direcciones principales están a <span class="math inline">\(45^\circ\)</span> en el origen.</p>
+</div>
+</div>
+<div class="historia callout callout-style-simple callout-note no-icon callout-titled" title="Un poco de historia: tablones rectos para una superficie curva">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un poco de historia: tablones rectos para una superficie curva
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La cualidad de superficie reglada fue decisiva para el éxito del paraboloide hiperbólico en la construcción. Las fuentes sobre la obra de Candela coinciden en que descomponía el «hypar» en secuencias de generatrices rectas que giran, lo que permitió concebir <strong>cimbras muy económicas</strong> hechas con <strong>tablones rectos de madera</strong>, sobre las que se colocaba la armadura y se vertía el hormigón. El método, sin embargo, requería mucha mano de obra, y a mediados de los años sesenta el aumento del coste del trabajo y de los materiales lo hizo menos atractivo.</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://acsa-arch.org/chapter/ruled-based-construction-and-thematerialization-of-a-line-in-motion">Ruled-based construction and the materialization of a line in motion, ACSA</a>; <a href="https://gallery400.uic.edu/wp-content/uploads/2020/04/CS_brochure_final.pdf">CS brochure, Gallery 400 (UIC)</a>; <a href="https://www.structuremag.org/wp-content/uploads/2014/09/D-GA-Felix-Candela1.pdf">Félix Candela, Structure Magazine</a>. No se hallaron comparaciones cuantitativas de costes. Consultado el 21-10-2026.</span></p>
+</div>
+</div>
+</section>
+<section id="sec-planas" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sec-planas"><span class="header-section-number">12.5</span> Láminas muy planas</h2>
+<p>Se dice que una lámina de este tipo es <strong>muy plana</strong> (<em>shallow</em>) si la pendiente de la superficie es pequeña, <span class="math inline">\(|\partial z/\partial x|,|\partial z/\partial y|\ll1\)</span>. En un paraboloide con planta <span class="math inline">\(a\times b\)</span> y radios <span class="math inline">\(R_x,R_y\)</span>, las pendientes máximas son <span class="math inline">\(a/(2|R_x|)\)</span> y <span class="math inline">\(b/(2|R_y|)\)</span>. Entonces <span class="math inline">\(a_{\alpha\beta}\approx\delta_{\alpha\beta}\)</span>, <span class="math inline">\(\hat{\mathbf{a}}_3\approx\mathbf{e}_z\)</span> y <span class="math inline">\(b_{\alpha\beta}\approx\operatorname{diag}(-1/R_x,-1/R_y)\)</span> son aproximadamente constantes. La <a href="#tbl-shallow" class="quarto-xref">Tabla&nbsp;<span>12.1</span></a> cuantifica la desviación de la métrica.</p>
+<div id="tbl-shallow" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1" data-tbl-cap="Desviación máxima de la métrica respecto de la identidad en el paraboloide $R_x=-R_y=R$, planta cuadrada de lado $a$ (esquina $\theta=(a/2, a/2)$).">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-shallow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;12.1: [32m[1mPrecompiling[22m[39m packages… 314.3 ms[32m ✓ [39mGeometria 1 dependency successfully precompiled in 0 seconds | <span class="math inline">\(R/a\)</span> | pendiente máxima <span class="math inline">\(a/2R\)</span> | desviación máx. de <span class="math inline">\(a_{\alpha\beta}\)</span> | <span class="math inline">\((a/2R)^2\)</span> | |—:|—:|—:|—:| | 2 | 0.2500 | 0.062500 | 0.062500 | | 5 | 0.1000 | 0.010000 | 0.010000 | | 10 | 0.0500 | 0.002500 | 0.002500 | | 20 | 0.0250 | 0.000625 | 0.000625 | | 50 | 0.0100 | 0.000100 | 0.000100 |
+</figcaption>
+<div aria-describedby="tbl-shallow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Geometria</span>, <span class="bu">LinearAlgebra</span>, <span class="bu">Printf</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a_lado <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"| \$R/a\$ | pendiente máxima \$a/2R\$ | desviación máx. de \$a_{</span><span class="sc">\\</span><span class="st">alpha</span><span class="sc">\\</span><span class="st">beta}\$ | \$(a/2R)^2\$ |"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"|---:|---:|---:|---:|"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ratio <span class="kw">in</span> (<span class="fl">2.0</span>, <span class="fl">5.0</span>, <span class="fl">10.0</span>, <span class="fl">20.0</span>, <span class="fl">50.0</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> ratio <span class="op">*</span> a_lado</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="fu">paraboloide_curvo</span>(R, <span class="op">-</span>R)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> <span class="fu">base_superficie</span>(r, [a_lado <span class="op">/</span> <span class="fl">2</span>, a_lado <span class="op">/</span> <span class="fl">2</span>])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    dev <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.(<span class="fu">metrica</span>(A) <span class="op">-</span> <span class="fu">I</span>(<span class="fl">2</span>)))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    pend <span class="op">=</span> a_lado <span class="op">/</span> (<span class="fl">2</span>R)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@printf</span>(<span class="st">"| %g | %.4f | %.6f | %.6f |</span><span class="sc">\n</span><span class="st">"</span>, ratio, pend, dev, pend<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
+<p>La desviación es del orden de la pendiente al cuadrado, <span class="math inline">\((a/2R)^2\)</span>. Para <span class="math inline">\(R/a\ge10\)</span> la métrica se desvía menos de un <span class="math inline">\(0{,}3\,\%\)</span> de la euclídea.</p>
+</section>
+<section id="sec-lab-hypar" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="sec-lab-hypar"><span class="header-section-number">12.6</span> Laboratorio interactivo</h2>
+<div class="laboratorio">
+<div class="laboratorio-titulo">
+Laboratorio · Tensores del paraboloide hiperbólico
+</div>
+<p><span class="etiqueta-resultado calculado">calculado en el navegador</span> Verificado frente a Julia (<code>web/tests/laboratorios.test.mjs</code>).</p>
+<p>Elige <span class="math inline">\(R_x\)</span>, <span class="math inline">\(R_y\)</span> (de signo contrario) y un punto <span class="math inline">\((x,y)\)</span> del plano. <strong>Qué observar:</strong></p>
+<ol type="1">
+<li>En el origen, <span class="math inline">\(a_{\alpha\beta}=\delta_{\alpha\beta}\)</span> y <span class="math inline">\(b_{\alpha\beta}\)</span> es diagonal: las curvaturas principales son <span class="math inline">\(-1/R_x\)</span> y <span class="math inline">\(-1/R_y\)</span>.</li>
+<li>Al alejarte del origen aparece <span class="math inline">\(a_{12}\neq0\)</span> (coordenadas <strong>no ortogonales</strong>) y <span class="math inline">\(|K|\)</span> <strong>disminuye</strong>.</li>
+<li>Si <span class="math inline">\(R_x=-R_y\)</span>, la curvatura media <span class="math inline">\(H\)</span> es cero en el origen (superficie «mínima» allí).</li>
+<li>Con <span class="math inline">\(R_x\)</span> y <span class="math inline">\(R_y\)</span> grandes (lámina muy plana), <span class="math inline">\(a_{\alpha\beta}\approx\delta_{\alpha\beta}\)</span> en todo el rectángulo.</li>
+</ol>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="207" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 206;"><span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>labs2 <span class="op">=</span> <span class="im">import</span>(<span class="kw">new</span> <span class="fu">URL</span>(<span class="st">"../../web/ojs/laboratorios.js"</span><span class="op">,</span> <span class="bu">document</span><span class="op">.</span><span class="at">baseURI</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="213" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 212;"><span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>viewof rx <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rₓ"</span>})</span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>viewof ry <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">8</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="dv">3</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"R_y"</span>})</span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>viewof px <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"x"</span>})</span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>viewof py <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"y"</span>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="221" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 220;"><span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a>hp <span class="op">=</span> labs2<span class="op">.</span><span class="fu">hypar</span>(rx<span class="op">,</span> ry<span class="op">,</span> px<span class="op">,</span> py)</span>
+<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;table class="table table-sm" style="max-width:36rem"&gt;</span></span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;a&lt;sub&gt;αβ&lt;/sub&gt;&lt;/td&gt;&lt;td&gt;[</span><span class="sc">${</span>hp<span class="op">.</span><span class="at">a</span>[<span class="dv">0</span>]<span class="op">.</span><span class="fu">map</span>(labs2<span class="op">.</span><span class="at">fmt</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">; </span><span class="sc">${</span>hp<span class="op">.</span><span class="at">a</span>[<span class="dv">1</span>]<span class="op">.</span><span class="fu">map</span>(labs2<span class="op">.</span><span class="at">fmt</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">]&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;b&lt;sub&gt;αβ&lt;/sub&gt;&lt;/td&gt;&lt;td&gt;[</span><span class="sc">${</span>hp<span class="op">.</span><span class="at">b</span>[<span class="dv">0</span>]<span class="op">.</span><span class="fu">map</span>(labs2<span class="op">.</span><span class="at">fmt</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">; </span><span class="sc">${</span>hp<span class="op">.</span><span class="at">b</span>[<span class="dv">1</span>]<span class="op">.</span><span class="fu">map</span>(labs2<span class="op">.</span><span class="at">fmt</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)<span class="sc">}</span><span class="vs">]&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;κ₁, κ₂&lt;/td&gt;&lt;td&gt;</span><span class="sc">${</span>labs2<span class="op">.</span><span class="fu">fmt</span>(hp<span class="op">.</span><span class="at">k</span>[<span class="dv">0</span>])<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>labs2<span class="op">.</span><span class="fu">fmt</span>(hp<span class="op">.</span><span class="at">k</span>[<span class="dv">1</span>])<span class="sc">}</span><span class="vs">&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;K&lt;/td&gt;&lt;td&gt;</span><span class="sc">${</span>labs2<span class="op">.</span><span class="fu">fmt</span>(hp<span class="op">.</span><span class="at">K</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;tr&gt;&lt;td&gt;H&lt;/td&gt;&lt;td&gt;</span><span class="sc">${</span>labs2<span class="op">.</span><span class="fu">fmt</span>(hp<span class="op">.</span><span class="at">H</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/table&gt;</span></span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="max-width:300px"&gt;</span><span class="sc">${</span>(() <span class="kw">=&gt;</span> { <span class="kw">const</span> d <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span> d<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> labs2<span class="op">.</span><span class="fu">dibujarEuler</span>(hp<span class="op">.</span><span class="at">k</span>[<span class="dv">0</span>]<span class="op">,</span> hp<span class="op">.</span><span class="at">k</span>[<span class="dv">1</span>])<span class="op">;</span> <span class="cf">return</span> d<span class="op">;</span> })()<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-julia-hypar" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="sec-julia-hypar"><span class="header-section-number">12.7</span> Ejemplo computacional en Julia</h2>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo computacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado calculado">calculado</span> Se comprueban las fórmulas de la tabla de <a href="#sec-tensores-curvo" class="quarto-xref"><span>Sección 12.3</span></a> y de <a href="#eq-hypar-recto-tensores" class="quarto-xref">ecuación&nbsp;<span>12.3</span></a>, y la <a href="#prp-giro-45" class="quarto-xref">Proposición&nbsp;<span>12.1</span></a>, en puntos concretos.</p>
+</div>
+</div>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Geometria</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Rx, Ry <span class="op">=</span> <span class="fl">3.0</span>, <span class="op">-</span><span class="fl">2.0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> [<span class="fl">0.7</span>, <span class="op">-</span><span class="fl">0.4</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fu">paraboloide_curvo</span>(Rx, Ry)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">base_superficie</span>(r, θ); a <span class="op">=</span> <span class="fu">metrica</span>(A); b <span class="op">=</span> <span class="fu">segunda_forma</span>(r, θ)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Γ <span class="op">=</span> <span class="fu">cristoffel_superficie</span>(r, θ)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ainv <span class="op">=</span> <span class="fu">inv</span>(a)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> Ry<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> θ[<span class="fl">1</span>]<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> Rx<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> (Ry<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> θ[<span class="fl">2</span>]<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">det</span>(a))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>(b_ok <span class="op">=</span> b <span class="op">≈</span> [<span class="op">-</span><span class="fl">1</span><span class="op">/</span>(Rx<span class="op">*</span>w) <span class="fl">0</span>; <span class="fl">0</span> <span class="op">-</span><span class="fl">1</span><span class="op">/</span>(Ry<span class="op">*</span>w)],</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a> ainv12_ok <span class="op">=</span> ainv[<span class="fl">1</span>, <span class="fl">2</span>] <span class="op">≈</span> <span class="op">-</span>Rx<span class="op">*</span>Ry<span class="op">*</span>θ[<span class="fl">1</span>]<span class="op">*</span>θ[<span class="fl">2</span>] <span class="op">/</span> D,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a> Γ<span class="fl">1_11</span>_ok <span class="op">=</span> Γ[<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>] <span class="op">≈</span> Ry<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> θ[<span class="fl">1</span>] <span class="op">/</span> D,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a> Γ<span class="fl">1_22</span>_ok <span class="op">=</span> Γ[<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>] <span class="op">≈</span> Rx<span class="op">*</span>Ry<span class="op">*</span>θ[<span class="fl">1</span>] <span class="op">/</span> D,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a> Γ<span class="fl">2_11</span>_ok <span class="op">=</span> Γ[<span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">1</span>] <span class="op">≈</span> Rx<span class="op">*</span>Ry<span class="op">*</span>θ[<span class="fl">2</span>] <span class="op">/</span> D,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a> Γ<span class="fl">2_22</span>_ok <span class="op">=</span> Γ[<span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>] <span class="op">≈</span> Rx<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> θ[<span class="fl">2</span>] <span class="op">/</span> D,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a> K_ok <span class="op">=</span> <span class="fu">curvaturas_principales</span>(a, b).K <span class="op">≈</span> <span class="fl">1</span> <span class="op">/</span> (<span class="fu">Rx*Ry*det</span>(a)<span class="op">^</span><span class="fl">2</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(b_ok = true, ainv12_ok = true, Γ1_11_ok = true, Γ1_22_ok = true, Γ2_11_ok = true, Γ2_22_ok = true, K_ok = true)</code></pre>
+</div>
+</div>
+<div id="6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Direcciones principales en el punto: ¿coinciden con las coordenadas?</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pc <span class="op">=</span> <span class="fu">curvaturas_principales</span>(a, b)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>(κ <span class="op">=</span> pc.κ, λ<span class="fl">1</span> <span class="op">=</span> pc.λ[<span class="op">:</span>, <span class="fl">1</span>], λ<span class="fl">2</span> <span class="op">=</span> pc.λ[<span class="op">:</span>, <span class="fl">2</span>], a12 <span class="op">=</span> a[<span class="fl">1</span>, <span class="fl">2</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(κ = [-0.30241311065905063, 0.4601089629566834], λ1 = [-0.974457030198639, 0.017353958794629455], λ2 = [0.026216470919493237, -0.9814023725339406], a12 = 0.04666666666738451)</code></pre>
+</div>
+</div>
+<div id="8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paraboloide reglado z = c·x·y: b₁₁ = b₂₂ = 0, K = −c²/a²</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>c0 <span class="op">=</span> <span class="fl">0.8</span>; rec <span class="op">=</span> <span class="fu">paraboloide_recto</span>(c0); t <span class="op">=</span> [<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.7</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Ar <span class="op">=</span> <span class="fu">base_superficie</span>(rec, t); ar <span class="op">=</span> <span class="fu">metrica</span>(Ar); br <span class="op">=</span> <span class="fu">segunda_forma</span>(rec, t)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ap <span class="op">=</span> <span class="fl">1</span> <span class="op">+</span> c0<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> (t[<span class="fl">1</span>]<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> t[<span class="fl">2</span>]<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>(b <span class="op">=</span> <span class="fu">round</span>.(br; digits <span class="op">=</span> <span class="fl">6</span>), b12_ok <span class="op">=</span> br[<span class="fl">1</span>, <span class="fl">2</span>] <span class="op">≈</span> c0 <span class="op">/</span> <span class="fu">sqrt</span>(ap),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a> K <span class="op">=</span> <span class="fu">curvaturas_principales</span>(ar, br).K, K_ok <span class="op">=</span> <span class="fu">curvaturas_principales</span>(ar, br).K <span class="op">≈</span> <span class="op">-</span>c0<span class="op">^</span><span class="fl">2</span> <span class="op">/</span> ap<span class="op">^</span><span class="fl">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(b = [-0.0 0.659022; 0.659022 -0.0], b12_ok = true, K = -0.2947275594184845, K_ok = true)</code></pre>
+</div>
+</div>
+<div id="10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Giro de 45°: misma altura z en ambas descripciones (R_x = −R_y = R, c = −1/R)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">2.5</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cur <span class="op">=</span> <span class="fu">paraboloide_curvo</span>(R, <span class="op">-</span>R); rect <span class="op">=</span> <span class="fu">paraboloide_recto</span>(<span class="op">-</span><span class="fl">1</span> <span class="op">/</span> R)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="fl">0.4</span>, <span class="fl">0.9</span>]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> [(X[<span class="fl">1</span>] <span class="op">-</span> X[<span class="fl">2</span>]) <span class="op">/</span> <span class="fu">sqrt</span>(<span class="fl">2</span>), (X[<span class="fl">1</span>] <span class="op">+</span> X[<span class="fl">2</span>]) <span class="op">/</span> <span class="fu">sqrt</span>(<span class="fl">2</span>)]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>(<span class="fu">cur</span>(X)[<span class="fl">3</span>], <span class="fu">rect</span>(xy)[<span class="fl">3</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(0.13, 0.13)</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-ejercicios-9" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="sec-ejercicios-9"><span class="header-section-number">12.8</span> Ejercicios</h2>
+<ol type="1">
+<li><p><strong>Generatrices.</strong> Demuestra que la recta <span class="math inline">\(\theta^1=u\)</span> de <a href="#eq-hypar-recto" class="quarto-xref">ecuación&nbsp;<span>12.2</span></a> está contenida en la superficie y que por cada punto pasan exactamente dos generatrices.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((u,\theta^2,c\,u\,\theta^2)\)</span> es lineal en <span class="math inline">\(\theta^2\)</span> y cumple <span class="math inline">\(z=cxy\)</span>. Por el punto <span class="math inline">\((x_0,y_0,z_0)\)</span> pasan la recta <span class="math inline">\(x=x_0\)</span> (de la primera familia) y la recta <span class="math inline">\(y=y_0\)</span> (de la segunda): exactamente dos.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Tensores.</strong> Comprueba <a href="#eq-hypar-recto-tensores" class="quarto-xref">ecuación&nbsp;<span>12.3</span></a> con <code>Geometria</code> para <span class="math inline">\(c=1\)</span> en tres puntos distintos.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>r = paraboloide_recto(1.0)</code>, <code>a = metrica_superficie(r, t)</code>, <code>b = segunda_forma(r, t)</code>: <code>det(a) ≈ 1 + t[1]^2 + t[2]^2</code> y <code>b ≈ [0 1/√a; 1/√a 0]</code>.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Direcciones principales.</strong> Calcula las direcciones principales de <span class="math inline">\(z=c\,x\,y\)</span> en un punto cualquiera y comprueba que solo en el origen forman <span class="math inline">\(45^\circ\)</span> con los ejes.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Con <code>curvaturas_principales(a, b)</code>: en el origen <span class="math inline">\(\lambda=(\pm1,1)/\sqrt2\)</span>; en otros puntos <span class="math inline">\(a_{12}=c^2xy\neq0\)</span> y las direcciones, ortogonales respecto de <span class="math inline">\(a_{\alpha\beta}\)</span>, giran.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Pendiente máxima.</strong> Para <span class="math inline">\(R_x=-R_y=R\)</span>, ¿para qué valores de <span class="math inline">\(a/R\)</span> la pendiente máxima en el borde de una planta cuadrada de lado <span class="math inline">\(a\)</span> supera <span class="math inline">\(0{,}25\)</span>?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La pendiente en el borde es <span class="math inline">\(a/(2R)\)</span>; supera <span class="math inline">\(0{,}25\)</span> si <span class="math inline">\(a/R&gt;0{,}5\)</span>.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Curvas de nivel.</strong> Dibuja, para <span class="math inline">\(c=0{,}5\)</span>, las curvas de nivel <span class="math inline">\(z=\text{cte}\)</span> y las generatrices proyectadas en planta; ¿qué forma tienen?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Las curvas de nivel son <strong>hipérbolas</strong> <span class="math inline">\(xy=z/c\)</span>; las generatrices proyectadas son las rectas <span class="math inline">\(x=\text{cte}\)</span> y <span class="math inline">\(y=\text{cte}\)</span> paralelas a los ejes.</p>
+</div>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="la-doy-por-superada-si" class="level2 unnumbered page-columns page-full">
+<h2 class="unnumbered anchored" data-anchor-id="la-doy-por-superada-si">La doy por superada si…</h2>
+<ul>
+<li>Describo el hypar por <span class="math inline">\(z=-\tfrac12(x^2/R_x+y^2/R_y)\)</span> y por <span class="math inline">\(z=cxy\)</span> y sé relacionarlos con un giro de <span class="math inline">\(45^\circ\)</span>.</li>
+<li>Reconozco las dos familias de generatrices rectas y su curvatura normal nula.</li>
+<li>Conozco <span class="math inline">\(a_{\alpha\beta}\)</span>, <span class="math inline">\(b_{\alpha\beta}\)</span>, <span class="math inline">\(K\)</span> y los símbolos de Christoffel del hypar y sé verificarlos.</li>
+<li>Explico por qué las curvas coordenadas no son líneas de curvatura salvo en puntos especiales.</li>
+<li>Sé cuándo una lámina puede tratarse como muy plana.</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Fuentes, correcciones y qué queda pendiente
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Fuentes.</strong> Texto autónomo, resultados estándar de geometría de superficies <span class="citation" data-cites="DoCarmo Novozhilov Canals Margarit_ph Narita">(<a href="../referencias.html#ref-DoCarmo" role="doc-biblioref">Carmo 1994</a>; <a href="../referencias.html#ref-Novozhilov" role="doc-biblioref">Novozhilov 1959</a>; <a href="../referencias.html#ref-Canals" role="doc-biblioref">Canals 1976</a>; <a href="../referencias.html#ref-Margarit_ph" role="doc-biblioref">Margarit y Buxadé, s.&nbsp;f.</a>; <a href="../referencias.html#ref-Narita" role="doc-biblioref">Narita y Leissa 1984</a>)</span>. La tabla de tensores y símbolos de Christoffel del hypar de bordes curvos se contrasta con <code>Geometria</code>; la expresión de <span class="math inline">\(\bar\Gamma^2_{22}\)</span> se dedujo por simetría y está verificada.</p>
+<p><strong>Qué queda pendiente.</strong> Figuras con revisión visual pendiente; nota histórica de fuentes secundarias sin datos cuantitativos de costes; referencias no leídas línea a línea (las de Canals y Margarit son las de la bibliografía del tema; <strong>la de Margarit carece de año</strong>).</p>
+</div>
+</div>
+</div>
+
+
+<div class="no-row-height column-margin column-container"><div id="ref-Narita" class="csl-entry" role="listitem">
+Narita, Y., y A. W. Leissa. 1984. <span>«Vibrations of Corner Point Supported Shallow Shells of Rectangular Planform»</span>. <em>Earthquake Engineering and Structural Dynamics</em> 12: 651-61.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Margarit_ph" class="csl-entry" role="listitem">
+Margarit, J., y C. Buxadé. s.&nbsp;f. <em>Cálculo de Estructuras en Paraboloide Hiperbólico</em>. Editorial Blume.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Canals" class="csl-entry" role="listitem">
+Canals, I. 1976. <em>Cascarones Parabólicos-Hiperbólicos</em>. Editorial Limusa, s.a.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Novozhilov" class="csl-entry" role="listitem">
+Novozhilov, V. V. 1959. <em>The Theory of Thin Shells</em>. P. Noordhoff ltd.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-DoCarmo" class="csl-entry" role="listitem">
+Carmo, M. do. 1994. <em>Geometría diferencial de curvas y superficies</em>. Alianza Universidad.
+</div></div></section>
+<section id="referencias-unidad" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="referencias-unidad">Referencias</h2>
+<p><em>Son las mismas que aparecen en el margen, junto al texto.</em></p>
+<div id="refs-unidad" class="referencias-unidad">
+<div class="ref-final">
+<p>Canals, I. 1976. <em>Cascarones Parabólicos-Hiperbólicos</em>. Editorial Limusa, s.a.</p>
+</div>
+<div class="ref-final">
+<p>Carmo, M. do. 1994. <em>Geometría diferencial de curvas y superficies</em>. Alianza Universidad.</p>
+</div>
+<div class="ref-final">
+<p>Margarit, J., y C. Buxadé. s.&nbsp;f. <em>Cálculo de Estructuras en Paraboloide Hiperbólico</em>. Editorial Blume.</p>
+</div>
+<div class="ref-final">
+<p>Narita, Y., y A. W. Leissa. 1984. <span>«Vibrations of Corner Point Supported Shallow Shells of Rectangular Planform»</span>. <em>Earthquake Engineering and Structural Dynamics</em> 12: 651-61.</p>
+</div>
+<div class="ref-final">
+<p>Novozhilov, V. V. 1959. <em>The Theory of Thin Shells</em>. P. Noordhoff ltd.</p>
+</div>
+</div>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Referencias</h1>
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImxhYnMyID0gaW1wb3J0KG5ldyBVUkwoXCIuLi8uLi93ZWIvb2pzL2xhYm9yYXRvcmlvcy5qc1wiLCBkb2N1bWVudC5iYXNlVVJJKSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiByeCA9IElucHV0cy5yYW5nZShbMSwgOF0sIHt2YWx1ZTogMywgc3RlcDogMC4xLCBsYWJlbDogXCJS4oKTXCJ9KVxudmlld29mIHJ5ID0gSW5wdXRzLnJhbmdlKFstOCwgLTFdLCB7dmFsdWU6IC0zLCBzdGVwOiAwLjEsIGxhYmVsOiBcIlJfeVwifSlcbnZpZXdvZiBweCA9IElucHV0cy5yYW5nZShbLTIsIDJdLCB7dmFsdWU6IDEsIHN0ZXA6IDAuMDUsIGxhYmVsOiBcInhcIn0pXG52aWV3b2YgcHkgPSBJbnB1dHMucmFuZ2UoWy0yLCAyXSwge3ZhbHVlOiAtMSwgc3RlcDogMC4wNSwgbGFiZWw6IFwieVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImhwID0gbGFiczIuaHlwYXIocngsIHJ5LCBweCwgcHkpXG5odG1sYDx0YWJsZSBjbGFzcz1cInRhYmxlIHRhYmxlLXNtXCIgc3R5bGU9XCJtYXgtd2lkdGg6MzZyZW1cIj5cbjx0cj48dGQ+YTxzdWI+zrHOsjwvc3ViPjwvdGQ+PHRkPlske2hwLmFbMF0ubWFwKGxhYnMyLmZtdCkuam9pbihcIiwgXCIpfTsgJHtocC5hWzFdLm1hcChsYWJzMi5mbXQpLmpvaW4oXCIsIFwiKX1dPC90ZD48L3RyPlxuPHRyPjx0ZD5iPHN1Yj7Osc6yPC9zdWI+PC90ZD48dGQ+WyR7aHAuYlswXS5tYXAobGFiczIuZm10KS5qb2luKFwiLCBcIil9OyAke2hwLmJbMV0ubWFwKGxhYnMyLmZtdCkuam9pbihcIiwgXCIpfV08L3RkPjwvdHI+XG48dHI+PHRkPs664oKBLCDOuuKCgjwvdGQ+PHRkPiR7bGFiczIuZm10KGhwLmtbMF0pfSwgJHtsYWJzMi5mbXQoaHAua1sxXSl9PC90ZD48L3RyPlxuPHRyPjx0ZD5LPC90ZD48dGQ+JHtsYWJzMi5mbXQoaHAuSyl9PC90ZD48L3RyPlxuPHRyPjx0ZD5IPC90ZD48dGQ+JHtsYWJzMi5mbXQoaHAuSCl9PC90ZD48L3RyPlxuPC90YWJsZT5cbjxkaXYgc3R5bGU9XCJtYXgtd2lkdGg6MzAwcHhcIj4keygoKSA9PiB7IGNvbnN0IGQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpOyBkLmlubmVySFRNTCA9IGxhYnMyLmRpYnVqYXJFdWxlcihocC5rWzBdLCBocC5rWzFdKTsgcmV0dXJuIGQ7IH0pKCl9PC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdyeCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdyeScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdweCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdweScpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../book/C-superficies";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/C-superficies/C4-geodesicas.html" class="pagination-link" aria-label="Curvas sobre superficies: geodésicas y compatibilidad">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Curvas sobre superficies: geodésicas y compatibilidad</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../book/C-superficies/C6-bestiario.html" class="pagination-link" aria-label="Bestiario de láminas: cilindro, esfera, cono y placa oblicua">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bestiario de láminas: cilindro, esfera, cono y placa oblicua</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>
+/* =============================================================================
+ * ejercicios.js: ejercicios intercalados en el texto (autoevaluación)
+ *
+ * Lo inserta scripts/ejercicios.lua, en línea, solo en las páginas que tienen
+ * ejercicios. Sin dependencias. Todo ocurre en el navegador: las respuestas y
+ * el progreso se guardan en localStorage (nada sale del equipo del lector).
+ *
+ * Se escribe en Markdown (véase la guía en planning/plantilla-tema.qmd):
+ *   ::: {.ejercicio tipo="numerico" id="m5-2-zeta" respuesta="0.2" tol="1%" unidad=""}
+ *   Enunciado…
+ *   ::: {.pista}  …  :::
+ *   ::: {.solucion}  …  :::
+ *   :::
+ * Tipos: vf, opcion, numerico, abierta, programacion, investigacion, encuesta.
+ *
+ * La lógica de corrección (parseNumero, comprobarNumerico, …) es pura y se
+ * prueba con web/tests/ejercicios.test.mjs.
+ * ========================================================================== */
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------ */
+  /* Lógica pura                                                         */
+  /* ------------------------------------------------------------------ */
+
+  /** Lee un número escrito a la española o a la inglesa: «0,0307», «3.07e-2»,
+   *  «3,07·10^-2», «30,7 mm» (se ignora lo que siga al número). NaN si no hay. */
+  function parseNumero(texto) {
+    if (texto === null || texto === undefined) return NaN;
+    let t = String(texto).trim().replace(/−/g, "-").replace(/\s+/g, "");
+    // 3,07·10^-2 · 3.07x10^-2 · 3,07×10-2  →  3.07e-2
+    t = t.replace(/[x×·*]10\^?\(?(-?\+?\d+)\)?/gi, "e$1");
+    if (t.includes(",")) t = t.replace(/\./g, "").replace(",", ".");
+    const m = t.match(/^[+-]?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?/i);
+    return m ? parseFloat(m[0]) : NaN;
+  }
+
+  /** Interpreta la tolerancia: «1%» (relativa), «0.01» o «abs:0.01» (absoluta). */
+  function parseTolerancia(tol) {
+    const t = String(tol === undefined || tol === null || tol === "" ? "1%" : tol).trim();
+    if (t.endsWith("%")) return { tipo: "rel", valor: parseFloat(t) / 100 };
+    return { tipo: "abs", valor: parseFloat(t.replace(/^abs:/, "")) };
+  }
+
+  /** ¿Es correcta la respuesta numérica? Devuelve {ok, valor, error}. */
+  function comprobarNumerico(entrada, objetivo, tol) {
+    const valor = parseNumero(entrada);
+    if (!Number.isFinite(valor)) return { ok: false, valor, error: null, invalida: true };
+    const o = typeof objetivo === "number" ? objetivo : parseNumero(objetivo);
+    const t = parseTolerancia(tol);
+    const dif = Math.abs(valor - o);
+    const limite = t.tipo === "rel" && o !== 0 ? Math.abs(o) * t.valor : t.tipo === "rel" ? t.valor : t.valor;
+    return { ok: dif <= limite, valor, error: o !== 0 ? dif / Math.abs(o) : dif, invalida: false };
+  }
+
+  /** Normaliza «V», «Verdadero», «cierto», «F», «falso» a "verdadero" | "falso". */
+  function normalizaVF(x) {
+    const t = String(x).trim().toLowerCase();
+    if (["v", "verdadero", "cierto", "si", "sí", "true"].includes(t)) return "verdadero";
+    if (["f", "falso", "no", "false"].includes(t)) return "falso";
+    return t;
+  }
+
+  /** Compara conjuntos de letras para opción múltiple: «a,c» ≡ «c, a». */
+  function mismasOpciones(elegidas, correctas) {
+    const norm = (x) => Array.from(new Set(String(x).toLowerCase().split(/[,\s;]+/).filter(Boolean))).sort().join(",");
+    return norm(elegidas) === norm(correctas);
+  }
+
+  const LETRAS = "abcdefghijklmnopqrstuvwxyz";
+
+  /* ------------------------------------------------------------------ */
+  /* Almacenamiento local (con tolerancia a que no exista)               */
+  /* ------------------------------------------------------------------ */
+  const PREFIJO = "lametrica:ej:" + (typeof location !== "undefined" ? location.pathname : "");
+
+  function leer(id) {
+    try {
+      const v = localStorage.getItem(PREFIJO + ":" + id);
+      return v ? JSON.parse(v) : null;
+    } catch (e) { return null; }
+  }
+  function guardar(id, estado) {
+    try { localStorage.setItem(PREFIJO + ":" + id, JSON.stringify(estado)); } catch (e) { /* sin almacenamiento */ }
+  }
+  function borrarTodo() {
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => localStorage.removeItem(k));
+    } catch (e) { /* nada */ }
+  }
+  function todos() {
+    const out = {};
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => {
+        out[k.slice(PREFIJO.length + 1)] = JSON.parse(localStorage.getItem(k));
+      });
+    } catch (e) { /* nada */ }
+    return out;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Capa DOM                                                            */
+  /* ------------------------------------------------------------------ */
+  const ETIQUETA = {
+    vf: "Verdadero o falso", opcion: "Test", numerico: "Cálculo", abierta: "Respuesta abierta",
+    programacion: "Programación", investigacion: "Investigación", encuesta: "Reflexión (no evaluada)",
+  };
+  const ICONO = { vf: "✓✗", opcion: "◉", numerico: "∑", abierta: "✎", programacion: "⌘", investigacion: "⌕", encuesta: "☰" };
+
+  function el(tag, props, ...hijos) {
+    const e = document.createElement(tag);
+    if (props) for (const k of Object.keys(props)) {
+      if (k === "class") e.className = props[k];
+      else if (k === "text") e.textContent = props[k];
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), props[k]);
+      else e.setAttribute(k, props[k]);
+    }
+    hijos.flat().forEach((h) => h && e.append(h));
+    return e;
+  }
+
+  function sacar(ej, clase) {
+    const n = ej.querySelector(":scope > ." + clase);
+    if (n) n.remove();
+    return n;
+  }
+
+  function mensaje(zona, tipo, texto) {
+    zona.className = "ej-feedback ej-" + tipo;
+    zona.textContent = texto;
+  }
+
+  function construir(ej, indice) {
+    const tipo = ej.dataset.tipo;
+    if (!ETIQUETA[tipo]) return null;
+    const id = ej.id || "ej-" + indice;
+    ej.id = id;
+    ej.classList.add("ej-activo");
+
+    const pista = sacar(ej, "pista");
+    const solucion = sacar(ej, "solucion");
+    const opciones = sacar(ej, "opciones");
+    const rubrica = sacar(ej, "rubrica");
+    const criterios = sacar(ej, "criterios");
+
+    const cab = el("div", { class: "ej-cabecera" },
+      el("span", { class: "ej-icono", "aria-hidden": "true", text: ICONO[tipo] }),
+      el("span", { class: "ej-tipo", text: "Ejercicio · " + ETIQUETA[tipo] }),
+      el("span", { class: "ej-estado", "aria-live": "polite" }));
+    ej.prepend(cab);
+
+    const zona = el("div", { class: "ej-ui" });
+    const fb = el("div", { class: "ej-feedback", role: "status", "aria-live": "polite" });
+    const botones = el("div", { class: "ej-botones" });
+    const estado = leer(id) || { estado: "pendiente", intentos: 0 };
+
+    const marca = () => {
+      const m = { correcto: "✔ Resuelto", hecho: "✔ Hecho", visto: "Solución vista", enviado: "Guardado", pendiente: "" }[estado.estado] || "";
+      cab.querySelector(".ej-estado").textContent = m;
+      ej.dataset.estado = estado.estado;
+      guardar(id, estado);
+      actualizarProgreso();
+    };
+
+    const revelar = (nodo) => { if (nodo) { nodo.classList.remove("ej-oculto"); nodo.hidden = false; } };
+    [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+
+    const btn = (texto, fn, clase) => el("button", { type: "button", class: "ej-btn " + (clase || ""), onclick: fn, text: texto });
+
+    const btnPista = pista ? btn("Pista", () => { revelar(pista); }) : null;
+    const btnSolucion = solucion ? btn("Ver solución", () => {
+      revelar(solucion);
+      if (estado.estado === "pendiente") estado.estado = "visto";
+      marca();
+    }) : null;
+
+    /* ---------- por tipo ---------- */
+    let comprobar = null;
+    let recoger = () => null;
+
+    if (tipo === "vf") {
+      const grupo = el("div", { role: "radiogroup", "aria-label": "Verdadero o falso", class: "ej-vf" });
+      ["verdadero", "falso"].forEach((v) => {
+        grupo.append(el("label", { class: "ej-opcion" },
+          el("input", { type: "radio", name: id, value: v }), el("span", { text: v === "verdadero" ? "Verdadero" : "Falso" })));
+      });
+      zona.append(grupo);
+      recoger = () => (zona.querySelector("input:checked") || {}).value || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (r === normalizaVF(ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else { mensaje(fb, "mal", "No es correcto. Piénsalo otra vez o pide la pista."); }
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "opcion") {
+      const multiple = ej.dataset.multiple === "true";
+      const items = opciones ? Array.from(opciones.querySelectorAll(":scope > ul > li, :scope > ol > li")) : [];
+      const grupo = el("div", { role: multiple ? "group" : "radiogroup", class: "ej-opciones" });
+      items.forEach((li, i) => {
+        const l = LETRAS[i];
+        const input = el("input", { type: multiple ? "checkbox" : "radio", name: id, value: l });
+        const etiqueta = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-letra", text: l + ")" }), el("span", { class: "ej-texto" }));
+        while (li.firstChild) etiqueta.querySelector(".ej-texto").append(li.firstChild);
+        grupo.append(etiqueta);
+      });
+      zona.append(grupo);
+      recoger = () => Array.from(zona.querySelectorAll("input:checked")).map((i) => i.value).join(",") || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (mismasOpciones(r, ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else mensaje(fb, "mal", "No es correcto. Revisa el razonamiento.");
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "numerico" || tipo === "programacion") {
+      if (ej.dataset.respuesta !== undefined && ej.dataset.respuesta !== "") {
+        const entrada = el("input", { type: "text", inputmode: "decimal", autocomplete: "off", class: "ej-entrada", "aria-label": "Tu resultado", placeholder: "Tu resultado" });
+        zona.append(el("div", { class: "ej-numero" }, entrada, ej.dataset.unidad ? el("span", { class: "ej-unidad", text: ej.dataset.unidad }) : null));
+        entrada.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); comprobar(); } });
+        recoger = () => entrada.value.trim() || null;
+        comprobar = () => {
+          const r = recoger();
+          if (!r) return mensaje(fb, "aviso", "Escribe un valor numérico.");
+          const c = comprobarNumerico(r, ej.dataset.respuesta, ej.dataset.tol);
+          if (c.invalida) return mensaje(fb, "aviso", "No entiendo ese número. Puedes escribir 0,031 o 3.1e-2.");
+          estado.intentos++; estado.respuesta = r;
+          if (c.ok) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+          else mensaje(fb, "mal", "Aún no. Revisa las unidades y los pasos (tolerancia " + (ej.dataset.tol || "1%") + ").");
+          marca();
+        };
+        if (estado.respuesta) entrada.value = estado.respuesta;
+      }
+    }
+
+    if (tipo === "abierta" || tipo === "investigacion" || tipo === "programacion" || tipo === "encuesta") {
+      const necesitaTexto = tipo === "abierta" || tipo === "investigacion" || (tipo === "encuesta" && ej.dataset.texto === "true");
+      if (necesitaTexto) {
+        const ta = el("textarea", { class: "ej-texto-libre", rows: tipo === "investigacion" ? "6" : "4", "aria-label": "Tu respuesta", placeholder: "Escribe aquí tu respuesta (se guarda solo en este navegador)." });
+        ta.value = estado.texto || "";
+        ta.addEventListener("input", () => { estado.texto = ta.value; guardar(id, estado); });
+        zona.append(ta);
+      }
+      const lista = rubrica || criterios;
+      if (lista && tipo !== "encuesta") {
+        const titulo = tipo === "investigacion" ? "Criterios (márcalos cuando los cumplas)" : "Autoevalúate: ¿tu respuesta incluye…?";
+        const caja = el("fieldset", { class: "ej-rubrica" }, el("legend", { text: titulo }));
+        const marcados = estado.rubrica || [];
+        Array.from(lista.querySelectorAll("li")).forEach((li, i) => {
+          const cb = el("input", { type: "checkbox", value: String(i) });
+          cb.checked = marcados.includes(i);
+          cb.addEventListener("change", () => {
+            estado.rubrica = Array.from(caja.querySelectorAll("input:checked")).map((x) => Number(x.value));
+            guardar(id, estado);
+          });
+          const l = el("label", { class: "ej-opcion" }, cb, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          caja.append(l);
+        });
+        zona.append(caja);
+      }
+      if (tipo !== "programacion" || !comprobar) {
+        comprobar = () => {
+          if (tipo === "encuesta") {
+            const r = recoger();
+            estado.estado = "enviado";
+            mensaje(fb, "ok", "Guardado en este navegador. Puedes cambiarlo cuando quieras.");
+            marca(); return;
+          }
+          const hechos = (estado.rubrica || []).length;
+          const total = (lista ? lista.querySelectorAll("li").length : 0);
+          if (total && hechos < total) return mensaje(fb, "aviso", "Marca todos los puntos cuando los cumplas, o mira la solución modelo.");
+          estado.estado = "hecho"; mensaje(fb, "ok", "Hecho. Compara con la solución modelo si quieres."); marca();
+        };
+      }
+    }
+
+    if (tipo === "encuesta") {
+      const items = opciones ? Array.from(opciones.querySelectorAll("li")) : [];
+      if (items.length) {
+        const grupo = el("div", { role: "radiogroup", class: "ej-opciones" });
+        items.forEach((li, i) => {
+          const input = el("input", { type: "radio", name: id, value: String(i) });
+          input.checked = estado.respuesta === String(i);
+          const l = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          grupo.append(l);
+        });
+        zona.prepend(grupo);
+        recoger = () => (zona.querySelector("input[type=radio]:checked") || {}).value || null;
+        const previo = comprobar;
+        comprobar = () => { const r = recoger(); estado.respuesta = r; previo(); };
+      }
+    }
+
+    /* restaurar estado visual */
+    if (estado.respuesta && (tipo === "vf" || tipo === "opcion")) {
+      String(estado.respuesta).split(",").forEach((v) => {
+        const i = zona.querySelector('input[value="' + v + '"]'); if (i) i.checked = true;
+      });
+    }
+
+    if (comprobar) botones.append(btn(tipo === "encuesta" ? "Guardar" : tipo === "abierta" || tipo === "investigacion" ? "He terminado" : "Comprobar", comprobar, "ej-btn-principal"));
+    if (btnPista) botones.append(btnPista);
+    if (btnSolucion) botones.append(btnSolucion);
+    botones.append(btn("Reiniciar", () => {
+      estado.estado = "pendiente"; estado.intentos = 0; delete estado.respuesta; delete estado.rubrica; delete estado.texto;
+      zona.querySelectorAll("input").forEach((i) => { if (i.type === "checkbox" || i.type === "radio") i.checked = false; else i.value = ""; });
+      zona.querySelectorAll("textarea").forEach((t) => (t.value = ""));
+      [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+      fb.className = "ej-feedback"; fb.textContent = ""; marca();
+    }, "ej-btn-sec"));
+
+    ej.append(zona, botones, fb);
+    [pista, solucion].forEach((n) => { if (n) ej.append(n); });
+    marca();
+    return ej;
+  }
+
+  /* ---------- panel de progreso ---------- */
+  let panel = null;
+  function actualizarProgreso() {
+    if (!panel) return;
+    const lista = Array.from(document.querySelectorAll(".ejercicio.ej-activo"));
+    const evaluables = lista.filter((e) => e.dataset.tipo !== "encuesta");
+    const hechos = evaluables.filter((e) => ["correcto", "hecho"].includes(e.dataset.estado)).length;
+    const vistos = evaluables.filter((e) => e.dataset.estado === "visto").length;
+    panel.querySelector(".ej-resumen").textContent =
+      "Tu progreso en esta unidad: " + hechos + " de " + evaluables.length + " ejercicios resueltos" + (vistos ? " (" + vistos + " con la solución vista)" : "") + ".";
+    const barra = panel.querySelector("progress");
+    barra.max = Math.max(evaluables.length, 1); barra.value = hechos;
+  }
+
+  function crearPanel(n) {
+    panel = el("div", { class: "ej-progreso", role: "region", "aria-label": "Progreso de los ejercicios" },
+      el("p", { class: "ej-resumen" }),
+      el("progress", { max: "1", value: "0", "aria-hidden": "true" }),
+      el("p", { class: "ej-nota", text: "Tus respuestas y tu progreso se guardan solo en este navegador. No se envían a ningún sitio." }),
+      el("div", { class: "ej-botones" },
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Descargar mis respuestas", onclick: () => {
+          const blob = new Blob([JSON.stringify({ pagina: location.pathname, fecha: new Date().toISOString(), respuestas: todos() }, null, 2)], { type: "application/json" });
+          const a = el("a", { href: URL.createObjectURL(blob), download: "lametrica-respuestas.json" }); a.click();
+        } }),
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Borrar mis respuestas", onclick: () => {
+          if (confirm("¿Borrar todas tus respuestas y tu progreso en esta página?")) { borrarTodo(); location.reload(); }
+        } })));
+    const primero = document.querySelector(".ejercicio.ej-activo");
+    const hueco = document.querySelector("#quarto-document-content h2, main h2");
+    (hueco || primero).before(panel);
+  }
+
+  function iniciar() {
+    const lista = Array.from(document.querySelectorAll(".ejercicio"));
+    if (!lista.length) return;
+    lista.forEach((e, i) => construir(e, i + 1));
+    crearPanel(lista.length);
+    actualizarProgreso();
+  }
+
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
+    else iniciar();
+  }
+
+  if (typeof globalThis !== "undefined" && globalThis.__EJ_TEST__) {
+    globalThis.__EJ_EXPORTS__ = { parseNumero, parseTolerancia, comprobarNumerico, normalizaVF, mismasOpciones };
+  }
+})();
+
+</script>
+
+
+
+
+</body></html>
