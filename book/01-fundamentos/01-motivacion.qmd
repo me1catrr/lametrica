@@ -4,6 +4,8 @@ subtitle: "Motivación del cálculo tensorial en mecánica"
 engine: julia
 ---
 
+![Superficie ilustrativa con dos vectores tangentes (azul y verde) y la normal (ámbar) en tres puntos: las bases locales cambian al recorrer la lámina.](../../figures/svg/apertura-cap01-bases.svg){#fig-apertura-cap01 .apertura fig-alt="Lámina curva con bases tangentes y normales que varían de un punto a otro" width="100%"}
+
 ::: {.callout-note title="Objetivos de aprendizaje"}
 Al terminar el capítulo sabrás:
 

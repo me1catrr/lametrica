@@ -2,6 +2,7 @@
 # Comprueba que nada ajeno va a publicarse. Falla (código 1) si encuentra:
 #   - archivos de docs/ versionados o preparados para subir,
 #   - formatos de documento/figura de terceros (pdf, eps, tex, docx...) versionados,
+#     salvo las dos fuentes TikZ originales indicadas explícitamente abajo,
 #   - rutas locales (/Users/...) en archivos versionados.
 # Uso manual:   scripts/comprobar_publicable.sh
 # Como hook:    ln -sf ../../scripts/comprobar_publicable.sh .git/hooks/pre-push
@@ -9,12 +10,14 @@ set -u
 cd "$(git rev-parse --show-toplevel)"
 fallo=0
 
-malos=$(git ls-files | grep -E '^docs/|\.(pdf|eps|ai|ps|dvi|tex|docx|pptx|zip)$' || true)
+# Lista cerrada, en consonancia con las excepciones de .gitignore.
+tikz_originales='^figures/fuentes/tikz/(apertura-cap01-bases|apertura-cap09-hypar)\.tex$'
+malos=$(git ls-files | grep -E '^docs/|\.(pdf|eps|ai|ps|dvi|tex|docx|pptx|zip)$' | grep -v -E "$tikz_originales" || true)
 if [ -n "$malos" ]; then
   echo "ERROR: archivos versionados que no deberían publicarse:"; echo "$malos"; fallo=1
 fi
 
-preparados=$(git diff --cached --name-only | grep -E '^docs/|\.(pdf|eps|ai|ps|dvi|tex|docx|pptx|zip)$' || true)
+preparados=$(git diff --cached --name-only | grep -E '^docs/|\.(pdf|eps|ai|ps|dvi|tex|docx|pptx|zip)$' | grep -v -E "$tikz_originales" || true)
 if [ -n "$preparados" ]; then
   echo "ERROR: archivos preparados (staged) que no deberían publicarse:"; echo "$preparados"; fallo=1
 fi

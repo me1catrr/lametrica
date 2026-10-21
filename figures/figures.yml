@@ -82,3 +82,15 @@
   herramienta: Julia (esquema en planta; giro de 45° verificado en tests)
   generador: julia/scripts/generar_figuras_superficies.jl
   revision: automática · visual pendiente
+- id: fig-apertura-cap01
+  archivo: figures/svg/apertura-cap01-bases.svg
+  capitulo: book/01-fundamentos/01-motivacion.qmd
+  herramienta: TikZ (latex + dvisvgm) vía scripts/compilar_tikz.sh
+  fuente: figures/fuentes/tikz/apertura-cap01-bases.tex
+  revision: ilustrativa (superficie z = A sin(kx) cos(ky) inventada; vectores tangentes y normal exactos) · visual pendiente
+- id: fig-apertura-cap09
+  archivo: figures/svg/apertura-cap09-hypar.svg
+  capitulo: book/02-superficies/09-paraboloide.qmd
+  herramienta: TikZ (latex + dvisvgm) vía scripts/compilar_tikz.sh
+  fuente: figures/fuentes/tikz/apertura-cap09-hypar.tex
+  revision: ilustrativa (z = c·x·y, malla 22×22, proyección oblicua a mano; vértices altos y bajos comprobados a mano) · visual pendiente
