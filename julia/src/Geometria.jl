@@ -28,7 +28,8 @@ export metrica, base_reciproca, comps_contravariantes, comps_covariantes,
        curvatura_gauss_brioschi, curvaturas_curva, geodesica, codazzi,
        lame, hooke_contravariante, tension_hooke, energia_deformacion, matriz_tension_plana,
        deformacion_pequena, gradiente_desplazamiento, green_lagrange_desde_u, green_lagrange,
-       cauchy_green, divergencia_tensor
+       cauchy_green, divergencia_tensor, deformacion_lamina_exacta, deformacion_lamina_lineal,
+       campos_lamina, rigidez_lamina
 
 """
     metrica(B)

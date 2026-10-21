@@ -469,3 +469,71 @@ end
     Grot = metrica(jacobiana_numerica(Rg, t0; h = 1e-6))
     @test green_lagrange(metrica(base(t0)), Grot) ≈ zeros(2, 2) atol = 1e-8
 end
+
+@testset "Cinemática de láminas (temas D3–D6)" begin
+    r = paraboloide_curvo(3.0, -2.0); θ = [0.7, -0.4]
+    # campos suaves arbitrarios (componentes covariantes de u sobre aα y giro φ del director)
+    udn(t) = [0.30 * sin(t[1]) + 0.1 * t[2], 0.20 * cos(t[2]) - 0.05 * t[1]]
+    u3(t) = 0.25 * t[1] * t[2] + 0.1 * cos(t[1])
+    φdn(t) = [0.12 * t[2] - 0.05, -0.08 * t[1] + 0.03 * sin(t[2])]
+    # (1) Linealización: las deformaciones exactas / s → fórmulas lineales
+    s = 1e-6
+    R0, A3 = campos_lamina(r, udn, u3, φdn, s)
+    γ0, γ1, γS = deformacion_lamina_lineal(r, udn, u3, φdn, θ)
+    γ_exacta(θ3) = deformacion_lamina_exacta(r, R0, A3, θ, θ3; h = 1e-5) / s
+    @test γ_exacta(0.0)[1:2, 1:2] ≈ γ0 atol = 2e-4                        # membrana en θ³ = 0
+    # parte lineal en θ³: ∂γαβ/∂θ³ = γ¹αβ ;  ∂²/∂θ³² = O(s) (término cuadrático)
+    d(θ3) = (γ_exacta(θ3)[1:2, 1:2] - γ_exacta(-θ3)[1:2, 1:2]) / (2θ3)
+    @test d(0.05) ≈ γ1 atol = 2e-3
+    # cortante: 2γα3 = φα + u₃,α + bᵅρ uρ  (exactamente en θ³ y a orden lineal)
+    @test 2 .* [γ_exacta(0.0)[1, 3], γ_exacta(0.0)[2, 3]] ≈ γS atol = 2e-4
+    @test 2 .* [γ_exacta(0.05)[1, 3], γ_exacta(0.05)[2, 3]] ≈ γS atol = 2e-4   # sin dependencia en θ³
+    # (2) Límite de Kirchhoff: φα = −(u₃,α + bᵅρ uρ) ⇒ cortante nulo y A₃ ≈ normal de la deformada
+    a = metrica_superficie(r, θ); b = segunda_forma(r, θ); bm = tensor_curvatura_mixto(a, b)
+    function φkl(t)
+        h = 1e-5
+        bmt = tensor_curvatura_mixto(metrica_superficie(r, t), segunda_forma(r, t))
+        du3 = [(u3(t .+ h .* (1:2 .== α)) - u3(t .- h .* (1:2 .== α))) / 2h for α in 1:2]
+        -(du3 .+ [sum(bmt[ρ, α] * udn(t)[ρ] for ρ in 1:2) for α in 1:2])
+    end
+    _, _, γSkl = deformacion_lamina_lineal(r, udn, u3, φkl, θ)
+    @test γSkl ≈ zeros(2) atol = 1e-7
+    # Kirchhoff exacto: director = normal de la superficie deformada ⇒ γα3 = γ33 = 0 a O(s²) y γ¹ = b − B
+    R0k, _ = campos_lamina(r, udn, u3, φkl, s)
+    A3k(t) = normal_unitaria(base_superficie(R0k, t))
+    γk = deformacion_lamina_exacta(r, R0k, A3k, θ, 0.0; h = 1e-5)
+    @test abs(γk[1, 3]) + abs(γk[2, 3]) + abs(γk[3, 3]) < 5e-7
+    Bk = segunda_forma(R0k, θ)
+    d1 = (deformacion_lamina_exacta(r, R0k, A3k, θ, 0.02; h = 1e-5)[1:2, 1:2] - deformacion_lamina_exacta(r, R0k, A3k, θ, -0.02; h = 1e-5)[1:2, 1:2]) / 0.04
+    @test d1 ≈ b - Bk atol = 2e-6                                          # γ¹ = −(Bαβ − bαβ)
+    # (3) Placa plana: γ¹ = −u₃,αβ (curvatura de Kirchhoff), γ⁰ = deformación en el plano
+    plana = placa_oblicua(π / 2)
+    w(t) = 0.3 * sin(t[1]) * cos(t[2])
+    φpl(t) = -[0.3 * cos(t[1]) * cos(t[2]), -0.3 * sin(t[1]) * sin(t[2])]       # φ = −∇w
+    _, g1p, _ = deformacion_lamina_lineal(plana, t -> [0.0, 0.0], w, φpl, [0.4, 0.5])
+    @test g1p ≈ -[-0.3 * sin(0.4) * cos(0.5)  -0.3 * cos(0.4) * sin(0.5); -0.3 * cos(0.4) * sin(0.5)  -0.3 * sin(0.4) * cos(0.5)] atol = 1e-5
+end
+
+@testset "Rigidez de la lámina (tema D7)" begin
+    E, ν, t = 210e3, 0.3, 0.1
+    # Base ortonormal: la matriz de membrana es la de tensión plana por el espesor
+    CE, CB, CS = rigidez_lamina(Matrix(1.0I, 2, 2), E, ν, t)
+    @test CE ≈ t * matriz_tension_plana(E, ν) atol = 1e-6
+    @test CB ≈ t^3 / 12 * matriz_tension_plana(E, ν) atol = 1e-6
+    @test CS ≈ t * E / (2 * (1 + ν)) * I(2) atol = 1e-6
+    # Base oblicua: la condensación estática de γ₃₃ del Hooke 3D da el mismo tensor plano
+    φ = π / 3; a = [1 cos(φ); cos(φ) 1]
+    ginv3 = zeros(3, 3); ginv3[1:2, 1:2] = inv(a); ginv3[3, 3] = 1
+    C3 = hooke_contravariante(ginv3, E, ν)
+    Cplana(α, β, γ, δ) = C3[α, β, γ, δ] - C3[3, 3, α, β] * C3[3, 3, γ, δ] / C3[3, 3, 3, 3]
+    CEo, CBo, CSo = rigidez_lamina(a, E, ν, t)
+    # U de membrana con un γ⁰ cualquiera: ½ t Cᵃᵇᶜᵈ γαβ γγδ  (comparación con la forma de Voigt)
+    γ = [2e-3 5e-4; 5e-4 -1e-3]
+    U_tensor = 0.5 * t * sum(Cplana(α, β, γd, δ) * γ[α, β] * γ[γd, δ] for α in 1:2, β in 1:2, γd in 1:2, δ in 1:2)
+    v = [γ[1, 1], γ[2, 2], 2γ[1, 2]]
+    @test 0.5 * v' * CEo * v ≈ U_tensor atol = 1e-9
+    # cortante: Eᵅ³ᵝ³ = μ aᵅᵝ
+    μ = E / (2 * (1 + ν))
+    @test CSo ≈ t * μ * inv(a) atol = 1e-8
+    @test C3[1, 3, 2, 3] ≈ μ * inv(a)[1, 2] atol = 1e-8
+end

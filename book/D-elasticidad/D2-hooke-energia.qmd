@@ -1,0 +1,261 @@
+---
+title: "Ley de Hooke y energía de deformación"
+subtitle: "De 81 coeficientes a dos constantes, y la tensión plana"
+engine: julia
+---
+
+![Ley de Hooke uniaxial: la tensión es proporcional a la deformación hasta el límite elástico (pendiente $E$) y la **energía de deformación** por unidad de volumen, $W=\tfrac12\sigma\varepsilon$, es el área del triángulo naranja.](../../figures/svg/hooke-uniaxial.svg){#fig-hooke .portada fig-alt="Gráfica de tensión frente a deformación con un tramo recto hasta el límite elástico, un tramo curvo discontinuo después, y el área bajo la recta sombreada como energía"}
+
+::: {.pregunta-guia}
+Cuántas constantes hacen falta para relacionar tensiones y deformaciones, y qué se simplifica en una lámina delgada
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- escribir la **ley de Hooke** generalizada $\sigma^{ij}=C^{ijkl}\varepsilon_{kl}$ y razonar por qué tiene 81, 36, 21 o 2 constantes según las simetrías;
+- escribir el tensor **isótropo** con $\lambda$ y $\mu$ y pasar a $E$ y $\nu$;
+- calcular la **energía de deformación** y justificar por qué $E>0$ y $-1<\nu<\tfrac12$;
+- deducir la ley de **tensión plana** y obtener su matriz $3\times3$;
+- comprobar en Julia que Hooke es un tensor (vale en polares).
+
+**Prerrequisitos.** [Deformación y tensión en el sólido](D1-deformacion-tension.qmd).
+
+**Secciones del tema**
+
+- **@sec-hooke-general** · La ley de Hooke generalizada · **@sec-isotropia** · Isotropía
+- **@sec-energia** · Energía de deformación · **@sec-plana** · Tensión plana · **@sec-julia-d2** · Práctica guiada
+
+## La ley de Hooke generalizada {#sec-hooke-general}
+
+Un material elástico lineal tiene una relación **lineal** entre la tensión y la deformación, que se escribe con un tensor de orden cuatro:
+$$
+\sigma^{ij}=C^{ijkl}\,\varepsilon_{kl}.
+$$ {#eq-hooke}
+
+El tensor $C^{ijkl}$ tiene $3^4=81$ componentes en 3D. Las simetrías las reducen:
+
+| Simetría | Razón | Componentes independientes |
+|---|---|---|
+| ninguna | — | 81 |
+| $C^{ijkl}=C^{jikl}$ | $\sigma^{ij}$ simétrico | 54 |
+| $C^{ijkl}=C^{ijlk}$ | $\varepsilon_{kl}$ simétrico | **36** |
+| $C^{ijkl}=C^{klij}$ | existe una energía de deformación $W(\varepsilon)$ | **21** (material anisótropo general) |
+| isotropía | sin direcciones privilegiadas | **2** |
+
+Con las dos primeras simetrías, $\sigma$ y $\varepsilon$ son vectores de **6** componentes y $C$ una matriz $6\times6$ (36 coeficientes); la simetría respecto de la energía la hace simétrica (21).
+
+::: {.callout-tip .idea-clave title="Idea clave"}
+$C^{ijkl}$ es un **tensor**: sus componentes cambian al cambiar de coordenadas con la ley de transformación de orden cuatro. Si se escribe con la métrica, como en el caso isótropo, vale **en cualquier sistema** sin más trabajo (@sec-julia-d2).
+:::
+
+## Isotropía {#sec-isotropia}
+
+::: {#prp-hooke-isotropo}
+## Ley de Hooke isótropa
+Un material isótropo y elástico lineal queda caracterizado por dos constantes, las de **Lamé** $\lambda$ y $\mu$:
+$$
+C^{ijkl}=\lambda\,g^{ij}g^{kl}+\mu\bigl(g^{ik}g^{jl}+g^{il}g^{jk}\bigr),\qquad
+\sigma^{ij}=\lambda\,(\varepsilon^k{}_k)\,g^{ij}+2\mu\,\varepsilon^{ij} .
+$$ {#eq-hooke-isotropo}
+En términos del módulo de Young $E$ y el coeficiente de Poisson $\nu$:
+$$
+\mu=G=\frac{E}{2(1+\nu)},\qquad \lambda=\frac{E\,\nu}{(1+\nu)(1-2\nu)},\qquad
+\varepsilon_{ij}=\frac1E\Bigl[(1+\nu)\,\sigma_{ij}-\nu\,\sigma^k{}_k\,g_{ij}\Bigr] .
+$$ {#eq-lame}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Idea de la demostración de @prp-hooke-isotropo
+Un tensor de orden cuatro **isótropo** (invariante por cualquier rotación) se construye solo con la métrica, porque no hay otro tensor invariante que se pueda formar con índices libres; las tres combinaciones posibles $g^{ij}g^{kl}$, $g^{ik}g^{jl}$, $g^{il}g^{jk}$ se reducen a dos por la simetría $C^{ijkl}=C^{ijlk}$. De ahí @eq-hooke-isotropo. Para ver la relación con $E,\nu$: en tracción uniaxial $\sigma^{11}=\sigma$ (cartesiano), @eq-hooke-isotropo da $\varepsilon_{11}=\sigma/E$ con $E=\mu(3\lambda+2\mu)/(\lambda+\mu)$ y $\varepsilon_{22}=-\nu\varepsilon_{11}$ con $\nu=\lambda/(2(\lambda+\mu))$; invirtiendo se obtienen @eq-lame. $\square$
+:::
+
+::: {#exm-acero}
+## Ejemplo resuelto: constantes del acero
+Con $E=210\,000$ MPa y $\nu=0{,}3$:
+$$
+\mu=\frac{210\,000}{2\cdot1{,}3}=80\,769\ \text{MPa},\qquad
+\lambda=\frac{210\,000\cdot0{,}3}{1{,}3\cdot0{,}4}=121\,154\ \text{MPa}.
+$$
+En tracción uniaxial de $\sigma=100$ MPa: $\varepsilon_{11}=100/210\,000=4{,}76\cdot10^{-4}$ y $\varepsilon_{22}=\varepsilon_{33}=-0{,}3\cdot4{,}76\cdot10^{-4}=-1{,}43\cdot10^{-4}$.
+:::
+
+**Pon a prueba lo anterior.** Los ejercicios se corrigen en tu navegador y no envían nada a ningún sitio.
+
+::: {.ejercicio tipo="numerico" id="d2-mu" respuesta="80769" tol="0.2%" unidad="MPa"}
+Para $E=210\,000$ MPa y $\nu=0{,}3$, ¿cuánto vale el módulo de cortante $\mu=G$?
+
+::: {.solucion}
+$G=E/(2(1+\nu))=210\,000/2{,}6=80\,769$ MPa.
+:::
+:::
+
+::: {.ejercicio tipo="opcion" id="d2-constantes" respuesta="b"}
+¿Cuántas constantes elásticas independientes tiene un material **isótropo** elástico lineal?
+
+::: {.opciones}
+- 1
+- 2
+- 21
+- 36
+:::
+
+::: {.solucion}
+**Dos** ($\lambda,\mu$ o, equivalentemente, $E,\nu$). 21 es el caso anisótropo general y 36 es el número antes de imponer la simetría de la energía.
+:::
+:::
+
+::: {.callout-note .historia icon=false title="Un poco de historia: «ut tensio, sic vis»"}
+Robert Hooke enunció su ley de la elasticidad en forma de anagrama latino en 1676 y publicó la solución en 1678: *ut tensio, sic vis* («como la extensión, así la fuerza»). En esa obra afirmaba conocer la ley desde 1660. La proporcionalidad entre fuerza y deformación es lo que permite escribir, en el límite de pequeñas deformaciones, la relación lineal @eq-hooke; su generalización a tensores de orden cuatro vino más de un siglo después, con la teoría del continuo de Cauchy.
+
+<span class="fuentes-caja">Fuentes (secundarias): [Hooke's law, Wikipedia](https://en.wikipedia.org/wiki/Hooke%27s_law); [Hooke's Law, Princeton MAE](https://www.princeton.edu/~maelabs/mae324/glos324/hooke.htm). Las fuentes dan fechas distintas para el primer enunciado (1660, 1676); no se verificó la generalización de Cauchy ni la de Green con fuentes específicas. Consultado el 21-10-2026.</span>
+:::
+
+## Energía de deformación {#sec-energia}
+
+La energía almacenada por unidad de volumen es
+$$
+W=\tfrac12\,\sigma^{ij}\varepsilon_{ij}=\tfrac12\,C^{ijkl}\varepsilon_{ij}\varepsilon_{kl}.
+$$ {#eq-energia}
+Su derivada respecto de la deformación es la tensión: $\sigma^{ij}=\partial W/\partial\varepsilon_{ij}$. Para que el material sea **estable** (energía positiva para cualquier deformación no nula) hace falta $\mu>0$ y $3\lambda+2\mu>0$, es decir,
+$$
+E>0,\qquad -1<\nu<\tfrac12 .
+$$
+
+::: {.callout-warning title="Errores frecuentes"}
+- **$\nu=0{,}5$ no es «material normal»**: es el límite incompresible ($\lambda\to\infty$), donde la ley de Hooke con $E,\nu$ deja de ser útil sin una formulación especial.
+- **$W=\tfrac12\sigma\varepsilon$ solo vale en el régimen lineal**: en la curva no lineal del dibujo, la energía es el área bajo la curva, no un triángulo.
+:::
+
+## Tensión plana {#sec-plana}
+
+En una lámina delgada se supone que la tensión **normal a la superficie media** es nula, $\sigma^{33}=0$ (la carga en el espesor es despreciable). Entonces $\varepsilon_{33}$ ya no es libre: se **condensa**.
+
+::: {#prp-plana}
+## Tensión plana
+Con $\sigma^{33}=0$ la ley de Hooke isótropa se reduce a un problema bidimensional con las constantes
+$$
+\lambda^*=\frac{E\nu}{1-\nu^2},\qquad \mu=\frac{E}{2(1+\nu)},\qquad
+C^{\alpha\beta\gamma\delta}=\lambda^*a^{\alpha\beta}a^{\gamma\delta}+\mu\bigl(a^{\alpha\gamma}a^{\beta\delta}+a^{\alpha\delta}a^{\beta\gamma}\bigr),
+$$ {#eq-plana}
+y en una base ortonormal la matriz en notación de Voigt $(\varepsilon_{11},\varepsilon_{22},2\varepsilon_{12})$ es
+$$
+D=\frac{E}{1-\nu^2}\begin{pmatrix}1&\nu&0\\\nu&1&0\\0&0&\tfrac{1-\nu}2\end{pmatrix}.
+$$ {#eq-matriz-plana}
+Equivale a la condensación estática $C^{\alpha\beta\gamma\delta}=E^{\alpha\beta\gamma\delta}-E^{33\alpha\beta}E^{33\gamma\delta}/E^{3333}$ del tensor 3D.
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-plana
+De $\sigma^{33}=\lambda\,\mathrm{tr}\,\varepsilon+2\mu\,\varepsilon_{33}=0$ con $\mathrm{tr}\,\varepsilon=\varepsilon^\alpha{}_\alpha+\varepsilon_{33}$ se despeja $\varepsilon_{33}=-\dfrac{\lambda}{\lambda+2\mu}\,\varepsilon^\alpha{}_\alpha$. Sustituyendo en $\sigma^{\alpha\beta}=\lambda(\varepsilon^\gamma{}_\gamma+\varepsilon_{33})a^{\alpha\beta}+2\mu\varepsilon^{\alpha\beta}$ queda $\sigma^{\alpha\beta}=\Bigl(\lambda-\dfrac{\lambda^2}{\lambda+2\mu}\Bigr)\varepsilon^\gamma{}_\gamma a^{\alpha\beta}+2\mu\varepsilon^{\alpha\beta}$, y $\lambda-\dfrac{\lambda^2}{\lambda+2\mu}=\dfrac{2\lambda\mu}{\lambda+2\mu}=\dfrac{E\nu}{1-\nu^2}=\lambda^*$. $\blacksquare$
+:::
+
+::: {#exm-plana}
+## Ejemplo resuelto: la matriz de tensión plana del acero
+Con $E=210\,000$ MPa y $\nu=0{,}3$: $E/(1-\nu^2)=230\,769$ MPa y
+$$
+D=\begin{pmatrix}230\,769&69\,231&0\\69\,231&230\,769&0\\0&0&80\,769\end{pmatrix}\ \text{MPa}.
+$$
+El término de cortante $\tfrac{1-\nu}{2}\cdot230\,769=80\,769$ MPa es el módulo $G$ del material (con $2\varepsilon_{12}$ en el vector de deformaciones).
+:::
+
+**Pon a prueba lo anterior.**
+
+::: {.ejercicio tipo="numerico" id="d2-d11" respuesta="230769" tol="0.2%" unidad="MPa"}
+Para $E=210\,000$ MPa y $\nu=0{,}3$, ¿cuánto vale $D_{11}=E/(1-\nu^2)$ de tensión plana?
+
+::: {.solucion}
+$210\,000/(1-0{,}09)=230\,769$ MPa.
+:::
+:::
+
+::: {.ejercicio tipo="numerico" id="d2-d12" respuesta="69231" tol="0.2%" unidad="MPa"}
+¿Y $D_{12}=\nu E/(1-\nu^2)$?
+
+::: {.solucion}
+$0{,}3\cdot230\,769=69\,231$ MPa.
+:::
+:::
+
+::: {.ejercicio tipo="vf" id="d2-plana-e33" respuesta="falso"}
+En tensión plana, $\varepsilon_{33}=0$.
+
+::: {.solucion}
+**Falso.** En tensión plana es $\sigma^{33}=0$ y $\varepsilon_{33}=-\nu(\varepsilon_{11}+\varepsilon_{22})/(1-\nu)\neq0$ (el espesor cambia por el efecto de Poisson).
+:::
+:::
+
+## Práctica guiada en Julia {#sec-julia-d2}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Se verifica Hooke isótropo, la energía, la matriz de tensión plana y que el tensor vale **en polares** sin cambiar nada más que la métrica.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+E, ν = 210e3, 0.3
+λ, μ = lame(E, ν)
+D = matriz_tension_plana(E, ν)
+(λ = λ, μ = μ, D = round.(D; digits = 0))
+```
+
+```{julia}
+# Hooke en cartesianas y en polares: la energía es la misma
+C = hooke_contravariante(Matrix(1.0I, 3, 3), E, ν)
+ε = [1e-3 2e-4 0; 2e-4 -5e-4 1e-4; 0 1e-4 3e-4]
+pol(t) = [cos(t[2]) -t[1] * sin(t[2]) 0; sin(t[2]) t[1] * cos(t[2]) 0; 0 0 1]
+B = pol([1.4, 0.7])
+Cpol = hooke_contravariante(inv(metrica(B)), E, ν)
+εpol = transpose(B) * ε * B                                   # componentes covariantes en polares
+(W_cartesianas = energia_deformacion(C, ε), W_polares = energia_deformacion(Cpol, εpol))
+```
+
+```{julia}
+# Tensión plana como condensación de Hooke 3D
+ε3 = [1e-3 3e-4 0; 3e-4 -4e-4 0; 0 0 -ν / (1 - ν) * (1e-3 - 4e-4)]
+σ3 = tension_hooke(C, ε3)
+σvoigt = D * [1e-3, -4e-4, 2 * 3e-4]
+(σ33 = σ3[3, 3], σ11_σ22_σ12 = [σ3[1, 1], σ3[2, 2], σ3[1, 2]], matriz_plana = σvoigt)
+```
+
+## Ejercicios {#sec-ejercicios-d2}
+
+1. **Compresibilidad.** Calcula el módulo de compresibilidad $K=\lambda+\tfrac23\mu$ del acero y comprueba que es $E/(3(1-2\nu))$.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $K=121\,154+53\,846=175\,000$ MPa $=210\,000/(3\cdot0{,}4)$ ✓.
+   :::
+
+2. **Energía.** Calcula $W$ para la tracción uniaxial de $\sigma=100$ MPa del @exm-acero.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $W=\tfrac12\sigma\varepsilon_{11}=\tfrac12\cdot100\cdot4{,}76\cdot10^{-4}=0{,}0238$ MPa (N·mm/mm³).
+   :::
+
+3. **Isótropo y base.** Demuestra que @eq-hooke-isotropo no depende del sistema de coordenadas.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Está construido solo con $g^{ij}$, que es un tensor: sus componentes se transforman con $J$ y el resultado es un tensor de orden cuatro. Se comprueba en la práctica con la energía en polares.
+   :::
+
+4. **Poisson.** ¿Qué ocurre con $\lambda$ cuando $\nu\to0{,}5$?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $\lambda=E\nu/((1+\nu)(1-2\nu))\to\infty$: el material se vuelve incompresible.
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- Justifico por qué $C^{ijkl}$ tiene 81, 36, 21 y 2 constantes según las simetrías.
+- Escribo la ley de Hooke isótropa con la métrica y paso entre $(\lambda,\mu)$ y $(E,\nu)$.
+- Calculo la energía de deformación y sé las condiciones de estabilidad.
+- Deduzco la ley de tensión plana y su matriz $3\times3$, y sé qué pasa con $\varepsilon_{33}$.
+- Sé que Hooke es un tensor y funciona igual en polares.
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo, resultados estándar de elasticidad lineal [@Flugge; @Novozhilov; @Romano]. Las constantes y la tensión plana se verifican con `Geometria` (conjunto «Elasticidad del sólido» y «Rigidez de la lámina»).
+
+**Qué queda pendiente.** La demostración de la isotropía es una idea; materiales anisótropos y ortótropos (laminados) no se tratan; nota histórica con fuentes secundarias; figuras con revisión visual pendiente; referencias no leídas línea a línea.
+:::

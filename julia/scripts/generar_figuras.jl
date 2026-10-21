@@ -366,6 +366,23 @@ function fig_elemento_tensiones()
             ancho(v), alto(v), s)
 end
 
+# 0e. Ley de Hooke y energía de deformación (tema D2) ------------------------------------------
+function fig_hooke()
+    v = Vista(-0.5, 5.4, -0.6, 3.6; s = 100)
+    s = ejes(v; ox = 0.0, oy = 0.0, ex = 5.2, ey = 3.4, lx = "ε", ly = "σ")
+    εy = 2.6; E = 1.0
+    s *= linea(v, [(0.0, 0.0), (εy, εy * E)]; color = AZUL, w = 3)
+    cola = [(εy + x, εy * E + 0.55 * (1 - exp(-1.6 * x))) for x in range(0, 2.2; length = 30)]
+    s *= linea(v, cola; color = AZUL, w = 2.4, dash = "6 4")
+    ε0 = 1.7
+    s *= linea(v, [(0.0, 0.0), (ε0, 0.0), (ε0, ε0 * E), (0.0, 0.0)]; color = NARANJA, w = 2, fill = NARANJA, op = 0.25)
+    s *= linea(v, [(ε0, 0.0), (ε0, ε0 * E)]; color = GRIS, w = 1.2, dash = "3 3")
+    s *= textov(v, (1.55, 0.5), "W = ½ σ ε"; color = NARANJA, tam = 14, cursiva = false)
+    s *= textov(v, (0.5, 1.15), "pendiente E"; color = AZUL, tam = 14, cursiva = false)
+    s *= textov(v, (εy + 0.1, εy * E - 0.3), "límite elástico"; color = GRIS, tam = 13, cursiva = false)
+    guardar("hooke-uniaxial", "Ley de Hooke uniaxial: tension proporcional a la deformacion hasta el limite elastico, con la energia de deformacion como area del triangulo", ancho(v), alto(v), s)
+end
+
 println("Generando figuras:")
 fig_vector_dos_bases(); fig_jacobiano(); fig_galeria(); fig_fisicas()
-fig_ejes_girados(); fig_celda_divergencia(); fig_deformacion(); fig_elemento_tensiones(); fig_arcos(); fig_christoffel(); fig_campo_constante(); fig_esfera()
+fig_ejes_girados(); fig_celda_divergencia(); fig_deformacion(); fig_elemento_tensiones(); fig_hooke(); fig_arcos(); fig_christoffel(); fig_campo_constante(); fig_esfera()

@@ -145,6 +145,48 @@
   revision: automática · visual pendiente
 - id: fig-elemento-tensiones
   archivo: figures/svg/elemento-tensiones.svg
-  capitulo: book/D-elasticidad/D2-hooke-energia.qmd
+  capitulo: book/D-elasticidad/D1-deformacion-tension.qmd
   herramienta: Julia (julia/scripts/generar_figuras.jl)
   revision: ilustrativa (esquema) · visual pendiente
+- id: fig-cinematica
+  archivo: figures/svg/cinematica-lamina.svg
+  capitulo: book/D-elasticidad/D3-cinematica-lamina.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_laminas.jl)
+  etiqueta: ilustrativa (deformación exagerada)
+  revision: visual pendiente
+- id: fig-kirchhoff
+  archivo: figures/svg/kirchhoff-love.svg
+  capitulo: book/D-elasticidad/D4-kirchhoff-love.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_laminas.jl)
+  etiqueta: ilustrativa (deformación exagerada)
+  revision: visual pendiente
+- id: fig-reissner
+  archivo: figures/svg/reissner-mindlin.svg
+  capitulo: book/D-elasticidad/D5-reissner-mindlin.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_laminas.jl)
+  etiqueta: ilustrativa (deformación exagerada)
+  revision: visual pendiente
+- id: fig-modos
+  archivo: figures/svg/modos-deformacion-lamina.svg
+  capitulo: book/D-elasticidad/D6-deformaciones-desplazamientos.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_laminas.jl)
+  etiqueta: ilustrativa (esquema)
+  revision: visual pendiente
+- id: fig-espesor
+  archivo: figures/svg/tensiones-espesor.svg
+  capitulo: book/D-elasticidad/D7-leyes-constitutivas.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_laminas.jl)
+  etiqueta: ilustrativa (esquema)
+  revision: visual pendiente
+- id: fig-principios
+  archivo: figures/svg/principios-variacionales.svg
+  capitulo: book/D-elasticidad/D8-principios-variacionales.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_laminas.jl)
+  etiqueta: ilustrativa (esquema conceptual)
+  revision: visual pendiente
+- id: fig-hooke
+  archivo: figures/svg/hooke-uniaxial.svg
+  capitulo: book/D-elasticidad/D2-hooke-energia.qmd
+  herramienta: Julia (julia/scripts/generar_figuras.jl)
+  etiqueta: ilustrativa (esquema)
+  revision: visual pendiente

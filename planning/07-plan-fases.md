@@ -1,6 +1,6 @@
 # 07 · Plan de desarrollo (5 fases)
 
-**Última actualización: 2026-10-21 (Fase 2 del rediseño cerrada en local; commit/push al cerrar).** Libro: 13 de 36 temas publicados (bloques A, B y C completos) en el nuevo estilo; Fase 1 publicada en `f2c51f8`. Punto de continuación operativo en `CLAUDE.md`.
+**Última actualización: 2026-10-21 (Fase 3 del rediseño cerrada en local; commit/push al cerrar).** Libro: 21 de 36 temas publicados (bloques A–D completos) en el nuevo estilo; Fase 1 publicada en `f2c51f8`, Fase 2 en `4dac20a`. Punto de continuación operativo en `CLAUDE.md`.
 
 ## Plan de rediseño: estética de Resonancia + índice de 36 temas (5 fases)
 Índice: `planning/01-indice-libro.md` y `temario.toml` (fuente de verdad). Plantilla: `planning/plantilla-tema.qmd`. Autorizado por el autor: ejecutar las Fases 1–3, con **commit y push a `main` al cerrar cada fase**; las Fases 4–5 se ejecutan con orden posterior.
@@ -24,7 +24,11 @@ Cierre de cada fase: verificación (render sin avisos, tests Julia/JS, `scripts/
 - Poppler ya estaba instalado (26.10.0). **Node reinstalado por el autor** (v26.12.0): `npm test` pasa, 6/6 (JS coincide con Julia 1.12.3).
 - Repositorio público `me1catrr/lametrica`; `main` local y remoto verificados en `ebe70d7` (continuidad posterior a la PR #1, ya fusionada; rama de trabajo eliminada). Workflows `Pruebas` y `Publicar` correctos para `ebe70d7`; GitHub Pages publica desde `gh-pages` y la portada responde HTTP 200. Tests de Julia (123) y de JS (6) re-ejecutados en local con resultado correcto.
 
-## Estado de la Fase 3
+## Estado de la Fase 3 (bloque D: elasticidad y láminas)
+
+Hecha en local: D1–D8 escritos (`book/D-elasticidad/`), `Laminas.jl` con tests (cinemática exacta y lineal, rigideces), 6+3 figuras SVG de Julia, 42 ejercicios numéricos verificados. Convenios pendientes del autor marcados «por confirmar» en D5, D6 y D7 (componentes físicas no ortogonales, giros del director, factor de corrección de cortante). Lo siguiente (Fase 4, requiere orden): bloque E.
+
+> Tabla heredada de la versión previa del plan (capítulos antiguos); el estado vigente es `temario.toml`.
 
 ### Capítulos
 | Parte | Caps. | Estado |

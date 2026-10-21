@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1098.0 281.0" role="img" aria-label="Tres modos de deformación de una lámina: extensión de la superficie media, flexión (cambio de curvatura) y cortante transversal">
+<title>Tres modos de deformación de una lámina: extensión de la superficie media, flexión (cambio de curvatura) y cortante transversal</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<g transform="translate(0.0,0.0)">
+<polygon points="55.0,181.0 271.0,181.0 271.0,136.0 55.0,136.0 55.0,181.0" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5" opacity="1.0" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<polygon points="55.0,181.0 316.0,181.0 316.0,136.0 55.0,136.0 55.0,181.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.4" opacity="0.18" stroke-linejoin="round"/>
+<line x1="271.0" y1="158.5" x2="316.0" y2="158.5" stroke="#d95f02" stroke-width="2.4"/>
+<polygon points="316.0,158.5 306.79,162.39 306.79,154.61" fill="#d95f02"/>
+<text x="181.0" y="235.0" fill="#1f2937" font-size="14" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">extensión γ⁰</text>
+</g>
+<g transform="translate(366.0,0.0)">
+<polygon points="55.0,181.0 271.0,181.0 271.0,136.0 55.0,136.0 55.0,181.0" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5" opacity="1.0" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<polygon points="55.0,181.0 60.97,180.94 66.94,180.77 72.9,180.48 78.86,180.08 84.81,179.57 90.75,178.94 96.67,178.19 102.58,177.33 108.47,176.36 114.34,175.28 120.19,174.08 126.02,172.77 131.82,171.35 137.59,169.81 143.33,168.17 149.04,166.42 154.71,164.55 160.35,162.58 165.94,160.5 171.5,158.32 177.01,156.02 182.48,153.62 187.9,151.12 193.27,148.51 198.59,145.8 203.86,142.99 209.07,140.08 214.23,137.06 219.33,133.95 224.36,130.74 229.33,127.44 234.24,124.04 239.09,120.55 243.86,116.96 248.56,113.28 253.2,109.52 257.76,105.66 262.24,101.72 266.65,97.69 235.98,64.76 232.21,68.21 228.37,71.58 224.47,74.88 220.51,78.1 216.49,81.24 212.41,84.31 208.27,87.29 204.07,90.2 199.82,93.03 195.51,95.77 191.15,98.43 186.74,101.01 182.29,103.5 177.78,105.9 173.23,108.22 168.64,110.45 164.01,112.59 159.33,114.64 154.62,116.6 149.87,118.47 145.08,120.25 140.26,121.94 135.41,123.53 130.53,125.03 125.62,126.44 120.69,127.75 115.73,128.96 110.75,130.08 105.74,131.11 100.72,132.03 95.69,132.86 90.63,133.6 85.57,134.23 80.49,134.77 75.4,135.21 70.31,135.56 65.21,135.8 60.11,135.95 55.0,136.0 55.0,181.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.4" opacity="0.18" stroke-linejoin="round"/>
+<polyline points="55.0,181.0 55.0,136.0" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="114.34,175.28 105.74,131.11" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="171.5,158.32 154.62,116.6" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="224.36,130.74 199.82,93.03" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<text x="181.0" y="235.0" fill="#1f2937" font-size="14" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">flexión γ¹</text>
+</g>
+<g transform="translate(732.0,0.0)">
+<polygon points="55.0,181.0 271.0,181.0 271.0,136.0 55.0,136.0 55.0,181.0" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5" opacity="1.0" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<polygon points="55.0,181.0 271.0,181.0 311.5,136.0 95.5,136.0 55.0,181.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.4" opacity="0.18" stroke-linejoin="round"/>
+<polyline points="75.25,158.5 75.25,158.5" fill="none" stroke="#1b6ca8" stroke-width="1.5" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="82.0,181.0 122.5,136.0" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="136.0,181.0 176.5,136.0" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="190.0,181.0 230.5,136.0" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="244.0,181.0 284.5,136.0" fill="none" stroke="#6f42c1" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<text x="181.0" y="235.0" fill="#1f2937" font-size="14" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">cortante γ</text>
+</g>
+</svg>

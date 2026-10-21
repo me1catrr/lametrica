@@ -119,42 +119,50 @@ pregunta = "¿Cómo se deforma una lámina y cuánta energía almacena?"
   [[bloque.tema]]
   id = "D1"
   titulo = "Deformación y tensión en el sólido"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D1-deformacion-tension.qmd"
   requiere = ["B5"]
   [[bloque.tema]]
   id = "D2"
   titulo = "Ley de Hooke y energía de deformación"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D2-hooke-energia.qmd"
   requiere = ["D1"]
   [[bloque.tema]]
   id = "D3"
   titulo = "Cinemática de la lámina"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D3-cinematica-lamina.qmd"
   requiere = ["C3", "D1"]
   [[bloque.tema]]
   id = "D4"
   titulo = "La hipótesis de Kirchhoff–Love"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D4-kirchhoff-love.qmd"
   requiere = ["D3"]
   [[bloque.tema]]
   id = "D5"
   titulo = "Reissner–Mindlin: el cortante transversal"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D5-reissner-mindlin.qmd"
   requiere = ["D4"]
   [[bloque.tema]]
   id = "D6"
   titulo = "Relaciones deformación–desplazamiento"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D6-deformaciones-desplazamientos.qmd"
   requiere = ["D5"]
   [[bloque.tema]]
   id = "D7"
   titulo = "Leyes constitutivas de la lámina"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D7-leyes-constitutivas.qmd"
   requiere = ["D2", "D6"]
   [[bloque.tema]]
   id = "D8"
   titulo = "Principios variacionales"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/D-elasticidad/D8-principios-variacionales.qmd"
   requiere = ["D7"]
 
 # ---------------------------------------------------------------- Bloque E

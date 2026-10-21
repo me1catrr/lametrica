@@ -22,6 +22,16 @@ book:
         - book/C-superficies/C4-geodesicas.qmd
         - book/C-superficies/C5-paraboloide.qmd
         - book/C-superficies/C6-bestiario.qmd
+    - part: "Bloque D · Elasticidad: del sólido a la lámina"
+      chapters:
+        - book/D-elasticidad/D1-deformacion-tension.qmd
+        - book/D-elasticidad/D2-hooke-energia.qmd
+        - book/D-elasticidad/D3-cinematica-lamina.qmd
+        - book/D-elasticidad/D4-kirchhoff-love.qmd
+        - book/D-elasticidad/D5-reissner-mindlin.qmd
+        - book/D-elasticidad/D6-deformaciones-desplazamientos.qmd
+        - book/D-elasticidad/D7-leyes-constitutivas.qmd
+        - book/D-elasticidad/D8-principios-variacionales.qmd
     - book/referencias.qmd
   appendices:
     - book/apendices/notacion.qmd

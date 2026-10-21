@@ -78,10 +78,10 @@ Flujo para cambiar algo de geometría: Julia (código + test) → regenerar JSON
 - El Anexo C de la tesis es código Mathematica; su reescritura en Julia debe contrastarse con resultados de la tesis.
 
 ## Estado
-Fase 2 (prototipo) hecha. Rediseño en 5 fases (`planning/07-plan-fases.md`): **Fases 1 y 2 hechas** (estética de Resonancia, índice de 36 temas en `temario.toml`, bloques A–C completos: 13 temas), Fase 3 (bloque D: elasticidad y láminas, `Laminas.jl`) siguiente. Figuras: SVG generados por Julia (`julia/scripts/generar_figuras*.jl`), TikZ (`figures/fuentes/tikz`) y una ilustración FigureLabs; procedencia en `figures/figures.yml`; revisión visual humana pendiente en todas. Licencia y publicación definitiva pendientes.
+Fase 2 (prototipo) hecha. Rediseño en 5 fases (`planning/07-plan-fases.md`): **Fases 1, 2 y 3 hechas** (estética de Resonancia, índice de 36 temas en `temario.toml`, bloques A–D completos: 21 temas, `Laminas.jl`); la Fase 4 (bloque E: elementos finitos) espera nueva orden. Figuras: SVG generados por Julia (`julia/scripts/generar_figuras*.jl`), TikZ (`figures/fuentes/tikz`) y una ilustración FigureLabs; procedencia en `figures/figures.yml`; revisión visual humana pendiente en todas. Licencia y publicación definitiva pendientes.
 
-## Punto de continuación — 2026-10-21 (tras la Fase 2)
+## Punto de continuación — 2026-10-21 (tras la Fase 3)
 - Ejecución autorizada: Fases 1–3 con commit y push a `main` al cerrar cada fase (ver «Reglas inviolables»). Fases 4–5 requieren nueva orden.
-- Antes de la Fase 3, convenios pendientes del autor (apéndice A): componentes físicas en bases **no** ortogonales; giros de la normal; si los g.d.l. son componentes físicas. Se adoptarán propuestas razonables marcadas como «por confirmar» sin bloquear.
+- Convenios pendientes del autor (apéndice A), marcados «por confirmar» en D5–D7: componentes físicas en bases **no** ortogonales; giros de la normal; si los g.d.l. son componentes físicas. Se adoptarán propuestas razonables marcadas como «por confirmar» sin bloquear.
 - Cómo retomar: leer este archivo, `planning/07-plan-fases.md`, `planning/01-indice-libro.md` y `temario.toml`; `git status`; `bash scripts/comprobar_publicable.sh`. Antes de publicar: render sin avisos, tests Julia/JS, `julia scripts/{sincronizar_paleta,generar_estructura}.jl --check`, `julia scripts/verificar_figuras.jl`, `julia --project=. scripts/verificar_ejercicios.jl`.
 - Nota operativa: si los webhooks de GitHub fallan y no arrancan los workflows, `gh workflow run publish.yml` los lanza a mano (ocurrió en la Fase 1).

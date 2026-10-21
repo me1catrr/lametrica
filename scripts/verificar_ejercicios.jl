@@ -10,6 +10,29 @@ raiz = normpath(joinpath(@__DIR__, ".."))
 const B60 = [1.0 0.5; 0.0 sqrt(3) / 2]      # base oblicua a 60°
 const V60 = [2.0, 1.5]
 referencia = Dict{String,Float64}(
+    "d3-aro-interior" => 1 / 1950,
+    "d4-fibra-extrema" => (let L = 1000.0, w0 = 5.0
+        w(t) = w0 * sin(π * t[1] / L)
+        _, g1, _ = deformacion_lamina_lineal(placa_oblicua(π / 2), t -> [0.0, 0.0], w, t -> [-w0 * π / L * cos(π * t[1] / L), 0.0], [L / 2, 0.0])
+        g1[1, 1] * 10.0
+    end),
+    "d5-ratio-cortante" => 8 * (1 + 0.3) / 5 * 0.1^2,
+    "d6-membrana" => (let r = cilindro(2000.0), θ = [0.9, 0.3]
+        γ0, _, _ = deformacion_lamina_lineal(r, t -> [0.0, 0.0], t -> 1.0, t -> [0.0, 0.0], θ)
+        γ0[1, 1] / metrica_superficie(r, θ)[1, 1]
+    end),
+    "d6-flexion" => (let r = cilindro(2000.0), θ = [0.9, 0.3]
+        _, γ1, _ = deformacion_lamina_lineal(r, t -> [0.0, 0.0], t -> 1.0, t -> [0.0, 0.0], θ)
+        γ1[1, 1] / metrica_superficie(r, θ)[1, 1]
+    end),
+    "d7-membrana" => rigidez_lamina(Matrix(1.0I, 2, 2), 210e3, 0.3, 10.0)[1][1, 1],
+    "d7-flexion" => rigidez_lamina(Matrix(1.0I, 2, 2), 210e3, 0.3, 10.0)[2][1, 1],
+    "d8-barra" => 10_000.0 * 2000.0 / (210e3 * 100.0),
+    "d2-mu" => lame(210e3, 0.3)[2],
+    "d2-d11" => matriz_tension_plana(210e3, 0.3)[1, 1],
+    "d2-d12" => matriz_tension_plana(210e3, 0.3)[1, 2],
+    "d1-e11" => green_lagrange(Matrix(1.0I, 2, 2), cauchy_green([1.15 0.25; 0.0 0.95]))[1, 1],
+    "d1-e12" => green_lagrange(Matrix(1.0I, 2, 2), cauchy_green([1.0 0.2; 0.0 1.0]))[1, 2],
     "c6-a12inv" => inv(metrica(base_superficie(placa_oblicua(π / 3), [0.4, 0.2])[1:2, :]))[1, 2],
     "c6-sector" => 2π * sin(π / 6),
     "c4-kg" => abs(curvaturas_curva(esfera(1.0), t -> [1.0, t], 0.7)[3]),

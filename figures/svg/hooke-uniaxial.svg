@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 646.0 476.0" role="img" aria-label="Ley de Hooke uniaxial: tension proporcional a la deformacion hasta el limite elastico, con la energia de deformacion como area del triangulo">
+<title>Ley de Hooke uniaxial: tension proporcional a la deformacion hasta el limite elastico, con la energia de deformacion como area del triangulo</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<line x1="78.0" y1="388.0" x2="593.0" y2="388.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="593.0,388.0 583.79,391.89 583.79,384.11" fill="#6b7280"/>
+<text x="597.0" y="404.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">ε</text>
+<line x1="78.0" y1="388.0" x2="78.0" y2="53.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="78.0,53.0 81.89,62.21 74.11,62.21" fill="#6b7280"/>
+<text x="86.0" y="59.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">σ</text>
+<polyline points="78.0,388.0 338.0,128.0" fill="none" stroke="#1b6ca8" stroke-width="3" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="338.0,128.0 345.59,121.71 353.17,116.15 360.76,111.21 368.34,106.85 375.93,102.98 383.52,99.55 391.1,96.52 398.69,93.83 406.28,91.45 413.86,89.34 421.45,87.47 429.03,85.82 436.62,84.35 444.21,83.05 451.79,81.91 459.38,80.89 466.97,79.99 474.55,79.19 482.14,78.48 489.72,77.85 497.31,77.3 504.9,76.81 512.48,76.37 520.07,75.99 527.66,75.65 535.24,75.34 542.83,75.08 550.41,74.84 558.0,74.63" fill="none" stroke="#1b6ca8" stroke-width="2.4" opacity="1.0" stroke-dasharray="6 4" stroke-linejoin="round"/>
+<polygon points="78.0,388.0 248.0,388.0 248.0,218.0 78.0,388.0" fill="#d95f02" stroke="#d95f02" stroke-width="2" opacity="0.25" stroke-linejoin="round"/>
+<polyline points="248.0,388.0 248.0,218.0" fill="none" stroke="#6b7280" stroke-width="1.2" opacity="1.0" stroke-dasharray="3 3" stroke-linejoin="round"/>
+<text x="233.0" y="338.0" fill="#d95f02" font-size="14" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">W = ½ σ ε</text>
+<text x="128.0" y="273.0" fill="#1b6ca8" font-size="14" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">pendiente E</text>
+<text x="348.0" y="158.0" fill="#6b7280" font-size="13" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">límite elástico</text>
+</svg>

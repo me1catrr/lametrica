@@ -6,7 +6,7 @@
 
 Este es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como *por escribir* aparecerán a medida que avance el libro.
 
-**Estado:** 13 temas publicados, 0 en reescritura y 23 por escribir (de 36).
+**Estado:** 21 temas publicados, 0 en reescritura y 15 por escribir (de 36).
 
 ## Bloque A · Preludio: la forma que resiste {.unnumbered}
 
@@ -56,14 +56,14 @@ Cómo se deforma una lámina y cuánta energía almacena
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| D1 | Deformación y tensión en el sólido | ○ por escribir | B5 |
-| D2 | Ley de Hooke y energía de deformación | ○ por escribir | D1 |
-| D3 | Cinemática de la lámina | ○ por escribir | C3, D1 |
-| D4 | La hipótesis de Kirchhoff–Love | ○ por escribir | D3 |
-| D5 | Reissner–Mindlin: el cortante transversal | ○ por escribir | D4 |
-| D6 | Relaciones deformación–desplazamiento | ○ por escribir | D5 |
-| D7 | Leyes constitutivas de la lámina | ○ por escribir | D2, D6 |
-| D8 | Principios variacionales | ○ por escribir | D7 |
+| D1 | [Deformación y tensión en el sólido](D-elasticidad/D1-deformacion-tension.html) | ● publicado | B5 |
+| D2 | [Ley de Hooke y energía de deformación](D-elasticidad/D2-hooke-energia.html) | ● publicado | D1 |
+| D3 | [Cinemática de la lámina](D-elasticidad/D3-cinematica-lamina.html) | ● publicado | C3, D1 |
+| D4 | [La hipótesis de Kirchhoff–Love](D-elasticidad/D4-kirchhoff-love.html) | ● publicado | D3 |
+| D5 | [Reissner–Mindlin: el cortante transversal](D-elasticidad/D5-reissner-mindlin.html) | ● publicado | D4 |
+| D6 | [Relaciones deformación–desplazamiento](D-elasticidad/D6-deformaciones-desplazamientos.html) | ● publicado | D5 |
+| D7 | [Leyes constitutivas de la lámina](D-elasticidad/D7-leyes-constitutivas.html) | ● publicado | D2, D6 |
+| D8 | [Principios variacionales](D-elasticidad/D8-principios-variacionales.html) | ● publicado | D7 |
 
 ## Bloque E · Elementos finitos de lámina {.unnumbered}
 

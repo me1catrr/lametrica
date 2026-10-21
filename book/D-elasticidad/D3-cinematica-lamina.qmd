@@ -1,0 +1,245 @@
+---
+title: "Cinemática de la lámina"
+subtitle: "Una superficie media, un director y la deformación de Green–Lagrange del espesor"
+engine: julia
+---
+
+![Sección de una lámina antes (gris discontinuo) y después de deformarse (azul): cada **línea normal** $\theta^3$ de la configuración de referencia pasa a ser un **segmento recto** de dirección $\mathbf{A}_3$ (violeta), que ya no tiene por qué ser normal a la superficie deformada ni medir uno. La superficie media se desplaza $\mathbf{u}$ (naranja). Deformación exagerada: figura *ilustrativa*.](../../figures/svg/cinematica-lamina.svg){#fig-cinematica .portada fig-alt="Sección de una lámina curva en gris discontinuo y su forma deformada en azul, con el desplazamiento de un punto de la superficie media, la normal de referencia y el director deformado no perpendicular a la nueva superficie"}
+
+::: {.pregunta-guia}
+Cómo se describe el movimiento de un sólido muy delgado con solo una superficie y una flecha en cada punto, y qué deformaciones produce
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- escribir el punto del sólido-lámina como $\mathbf{r}+\theta^3\hat{\mathbf{a}}_3$ y su base $\mathbf{g}_i$ en función de la curvatura;
+- enunciar la **hipótesis cinemática** $\mathbf{R}=\mathbf{R}_0+\theta^3\mathbf{A}_3$ y contar los grados de libertad que deja;
+- calcular **exactamente** la deformación de Green–Lagrange de la lámina y separarla en **extensión**, **flexión** y **cortante**;
+- reconocer qué hipótesis se añadirán después (Kirchhoff–Love en @sec-kl-d4, Reissner–Mindlin en @sec-rm-d5);
+- comprobar todo con `Laminas.jl` en un cilindro que se hincha.
+
+**Prerrequisitos.** [Deformación y tensión en el sólido](D1-deformacion-tension.qmd) y [Curvaturas](../C-superficies/C3-curvaturas.qmd) (la base de la lámina y $\sqrt g$).
+
+**Secciones del tema**
+
+- **@sec-solido-lamina** · El sólido-lámina · **@sec-hipotesis-cin** · La hipótesis cinemática
+- **@sec-gl-lamina** · Deformación de Green–Lagrange · **@sec-gdl** · Grados de libertad · **@sec-julia-d3** · Práctica guiada
+
+::: {.callout-note title="Notación y convenciones de este tema"}
+| Símbolo | Significado |
+|---|---|
+| $\theta^1,\theta^2$; $\theta^3\in[-t/2,t/2]$ | coordenadas sobre la superficie media y en el espesor |
+| $\mathbf{r}(\theta^\alpha)$, $\mathbf{a}_\alpha$, $\hat{\mathbf{a}}_3$ | superficie media, su base tangente y su normal unitaria |
+| $\mathbf{g}_i$, $g_{ij}$ | base y métrica del sólido-lámina **de referencia** |
+| $\mathbf{R}_0$, $\mathbf{A}_3$ | superficie media y director **deformados** |
+| $\mathbf{G}_i$, $G_{ij}$ | base y métrica del sólido **deformado** |
+| $\gamma_{ij}=\tfrac12(G_{ij}-g_{ij})$ | deformación de Green–Lagrange (se usa $\gamma$ en las láminas) |
+| $b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}$ | curvatura de la superficie de referencia (convenio del libro) |
+:::
+
+## El sólido-lámina {#sec-solido-lamina}
+
+Una lámina es un sólido de espesor $t$ muy pequeño frente a sus otras dimensiones y a sus radios de curvatura. Para describirlo se toma una **superficie media** $\mathbf{r}(\theta^1,\theta^2)$ y se recorre el espesor a lo largo de la normal:
+$$
+\mathbf{R}_{\rm ref}(\theta^1,\theta^2,\theta^3)=\mathbf{r}(\theta^\alpha)+\theta^3\,\hat{\mathbf{a}}_3(\theta^\alpha),\qquad -\tfrac t2\le\theta^3\le\tfrac t2 .
+$$ {#eq-solido-lamina}
+
+Derivando y usando Weingarten (@eq-weingarten), la base de este sólido es
+$$
+\mathbf{g}_\alpha=\mathbf{a}_\alpha+\theta^3\hat{\mathbf{a}}_{3,\alpha}=\bigl(\delta_\alpha^\beta-\theta^3 b_\alpha^\beta\bigr)\mathbf{a}_\beta,\qquad
+\mathbf{g}_3=\hat{\mathbf{a}}_3 .
+$$ {#eq-base-lamina-d3}
+Es la base de la lámina del tema de curvaturas: los vectores tangentes **se acortan o alargan** según la curvatura y el signo de $\theta^3$. Su volumen es $\sqrt g\,d\theta^1d\theta^2d\theta^3$ con $\sqrt g=\sqrt a\,(1-2H\theta^3+K\theta^{3\,2})$.
+
+::: {#exm-cilindro-ref}
+## Ejemplo resuelto: la base de un cilindro
+Cilindro de radio $R$ con $\theta^1=\varphi$ (ángulo) y $\theta^2=z$, y normal exterior. Entonces $\mathbf{a}_\varphi=R\,\mathbf{e}_\varphi$, $\mathbf{a}_z=\mathbf{e}_z$ y $b_{\varphi\varphi}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\varphi,\varphi}=-R$, de modo que $b^\varphi_\varphi=-1/R$. Por @eq-base-lamina-d3,
+$$
+\mathbf{g}_\varphi=\Bigl(1+\frac{\theta^3}{R}\Bigr)\mathbf{a}_\varphi=(R+\theta^3)\,\mathbf{e}_\varphi ,
+$$
+que es lo correcto: la fibra a distancia $\theta^3$ de la superficie media es un círculo de radio $R+\theta^3$. Y $\sqrt g=R+\theta^3$, de manera que el volumen de una rebanada crece hacia fuera.
+:::
+
+## La hipótesis cinemática {#sec-hipotesis-cin}
+
+Seguir a todos los puntos del sólido sería un problema 3D. La teoría de láminas lo reduce a **dos dimensiones** con una hipótesis sobre cómo se mueve la fibra del espesor:
+
+::: {#def-hipotesis-cin}
+## Hipótesis cinemática de la lámina
+Cada **línea normal** $\{\theta^\alpha\ \text{fijas}\}$ de la configuración de referencia **sigue siendo una recta** tras la deformación, de modo que
+$$
+\mathbf{R}(\theta^\alpha,\theta^3)=\mathbf{R}_0(\theta^\alpha)+\theta^3\,\mathbf{A}_3(\theta^\alpha).
+$$ {#eq-hipotesis}
+$\mathbf{R}_0$ es la nueva posición de la superficie media y $\mathbf{A}_3$ el **director** deformado; *no se exige* que sea unitario ni normal a la superficie deformada.
+:::
+
+La base del sólido deformado es entonces
+$$
+\mathbf{G}_\alpha=\mathbf{R}_{0,\alpha}+\theta^3\mathbf{A}_{3,\alpha},\qquad \mathbf{G}_3=\mathbf{A}_3 .
+$$ {#eq-base-deformada}
+Observa la diferencia con el sólido general de D1, donde el desplazamiento es un campo arbitrario de tres variables: aquí **toda la información del espesor** está en $\mathbf{A}_3$, un vector por punto de la superficie media.
+
+::: {.callout-tip .idea-clave title="Idea clave"}
+Pasamos de un campo de desplazamientos de tres funciones de **tres** variables a seis funciones de **dos**: el desplazamiento $\mathbf{R}_0-\mathbf{r}$ y el cambio del director $\mathbf{A}_3-\hat{\mathbf{a}}_3$. Es una reducción de dimensión, no una aproximación de pequeños desplazamientos.
+:::
+
+## La deformación de Green–Lagrange de la lámina {#sec-gl-lamina}
+
+Con la definición $\gamma_{ij}=\tfrac12(G_{ij}-g_{ij})$ y las bases (@eq-base-lamina-d3, @eq-base-deformada) se obtiene un resultado exacto:
+
+::: {#prp-gl-lamina}
+## Deformación exacta de la lámina
+$$
+\begin{aligned}
+\gamma_{\alpha\beta}&=\gamma^0_{\alpha\beta}+\theta^3\gamma^1_{\alpha\beta}+(\theta^3)^2\gamma^2_{\alpha\beta},\\
+\gamma_{\alpha3}&=\tfrac12\bigl(\mathbf{R}_{0,\alpha}\cdot\mathbf{A}_3-\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_3\bigr)+\tfrac12\theta^3\bigl(\mathbf{A}_{3,\alpha}\cdot\mathbf{A}_3-\hat{\mathbf{a}}_{3,\alpha}\cdot\hat{\mathbf{a}}_3\bigr),\\
+\gamma_{33}&=\tfrac12\bigl(\mathbf{A}_3\cdot\mathbf{A}_3-1\bigr),
+\end{aligned}
+$$ {#eq-gl-lamina}
+con las tres partes del plano
+$$
+\gamma^0_{\alpha\beta}=\tfrac12\bigl(\mathbf{R}_{0,\alpha}\cdot\mathbf{R}_{0,\beta}-a_{\alpha\beta}\bigr),\quad
+\gamma^1_{\alpha\beta}=\tfrac12\bigl(\mathbf{R}_{0,\alpha}\cdot\mathbf{A}_{3,\beta}+\mathbf{R}_{0,\beta}\cdot\mathbf{A}_{3,\alpha}\bigr)+b_{\alpha\beta},\quad
+\gamma^2_{\alpha\beta}=\tfrac12\bigl(\mathbf{A}_{3,\alpha}\cdot\mathbf{A}_{3,\beta}-\hat{\mathbf{a}}_{3,\alpha}\cdot\hat{\mathbf{a}}_{3,\beta}\bigr).
+$$ {#eq-gl-partes}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-gl-lamina
+Es multiplicar bases. De @eq-base-deformada, $G_{\alpha\beta}=\mathbf{R}_{0,\alpha}\cdot\mathbf{R}_{0,\beta}+\theta^3(\mathbf{R}_{0,\alpha}\cdot\mathbf{A}_{3,\beta}+\mathbf{R}_{0,\beta}\cdot\mathbf{A}_{3,\alpha})+(\theta^3)^2\mathbf{A}_{3,\alpha}\cdot\mathbf{A}_{3,\beta}$, y lo mismo para $g_{\alpha\beta}$ con $\mathbf{r}$ y $\hat{\mathbf{a}}_3$. Al restar, el término lineal contiene $-(\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_{3,\beta}+\mathbf{a}_\beta\cdot\hat{\mathbf{a}}_{3,\alpha})=2b_{\alpha\beta}$ por Weingarten (@eq-weingarten): de ahí el $+b_{\alpha\beta}$ de $\gamma^1$. Para $\gamma_{\alpha3}$ y $\gamma_{33}$: $G_{\alpha3}=\mathbf{R}_{0,\alpha}\cdot\mathbf{A}_3+\theta^3\mathbf{A}_{3,\alpha}\cdot\mathbf{A}_3$, $G_{33}=\mathbf{A}_3\cdot\mathbf{A}_3$, y en referencia $g_{\alpha3}=\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_3+\theta^3\hat{\mathbf{a}}_{3,\alpha}\cdot\hat{\mathbf{a}}_3=0$, $g_{33}=1$. $\blacksquare$
+:::
+
+Los tres nombres de las partes dicen su significado físico:
+
+| Parte | Qué mide | Origen |
+|---|---|---|
+| $\gamma^0_{\alpha\beta}$ | **extensión** (membrana): cambio de métrica de la superficie media | $\mathbf{R}_0$ |
+| $\gamma^1_{\alpha\beta}$ | **flexión**: cambio de curvatura (más el estiramiento de la fibra) | $\mathbf{R}_0$ y $\mathbf{A}_3$ |
+| $\gamma_{\alpha3}$ | **cortante transversal**: giro relativo entre la fibra y la superficie | $\mathbf{R}_0$ y $\mathbf{A}_3$ |
+| $\gamma_{33}$ | **estiramiento del espesor** (si $|\mathbf{A}_3|\neq1$) | $\mathbf{A}_3$ |
+
+::: {#exm-cilindro-hincha}
+## Ejemplo resuelto: un cilindro que se hincha
+Se desplaza radialmente la superficie media del cilindro del @exm-cilindro-ref una cantidad $u$ (hacia fuera) y el director sigue siendo la normal: $\mathbf{R}_0=(R+u)\,(\cos\varphi,\sin\varphi)$, $\mathbf{A}_3=\hat{\mathbf{a}}_3$. Entonces $\mathbf{R}_{0,\varphi}=(R+u)\mathbf{e}_\varphi$ y $\mathbf{A}_{3,\varphi}=\mathbf{e}_\varphi$, de modo que por @eq-gl-partes:
+$$
+\gamma^0_{\varphi\varphi}=\tfrac12\bigl[(R+u)^2-R^2\bigr]=Ru+\tfrac12u^2,\qquad
+\gamma^1_{\varphi\varphi}=(R+u)-R=u,\qquad \gamma^2_{\varphi\varphi}=0 .
+$$
+Los demás $\gamma$ valen 0. Por tanto $\gamma_{\varphi\varphi}(\theta^3)=u(R+\theta^3)+\tfrac12u^2$ y la deformación **física** (sobre la base de longitud $R+\theta^3$) es
+$$
+\varepsilon_{\varphi\varphi}(\theta^3)=\frac{\gamma_{\varphi\varphi}}{(R+\theta^3)^2}\approx\frac{u}{R+\theta^3},
+$$
+que es la deformación de un aro de radio $R+\theta^3$ cuyo perímetro crece de $2\pi(R+\theta^3)$ a $2\pi(R+\theta^3+u)$. La fibra exterior se deforma **menos** que la interior. Con $R=2000$ mm, $t=100$ mm y $u=1$ mm, la cara exterior ($\theta^3=50$ mm) da $\varepsilon\approx1/2050=4{,}88\cdot10^{-4}$.
+:::
+
+**Pon a prueba lo anterior.**
+
+::: {.ejercicio tipo="numerico" id="d3-aro-interior" respuesta="0.000513" tol="0.5%" unidad=""}
+En el @exm-cilindro-hincha, ¿cuánto vale la deformación circunferencial de la **cara interior** ($\theta^3=-50$ mm) para $R=2000$ mm y $u=1$ mm? Usa $\varepsilon\approx u/(R+\theta^3)$.
+
+::: {.pista}
+La fibra interior está a $R+\theta^3=1950$ mm del eje.
+:::
+
+::: {.solucion}
+$\varepsilon=1/1950=5{,}13\cdot10^{-4}$, un 5 % mayor que en la cara exterior ($4{,}88\cdot10^{-4}$).
+:::
+:::
+
+::: {.ejercicio tipo="opcion" id="d3-director" respuesta="c"}
+En la hipótesis cinemática general de la lámina, el director deformado $\mathbf{A}_3$:
+
+::: {.opciones}
+- es siempre unitario
+- es siempre normal a la superficie media deformada
+- puede no ser unitario ni normal
+- coincide con $\hat{\mathbf{a}}_3$
+:::
+
+::: {.solucion}
+Es un vector libre en cada punto. Si se impone que sea unitario se pierde el estiramiento del espesor ($\gamma_{33}=0$); si además es normal, se tiene la teoría de Kirchhoff–Love.
+:::
+:::
+
+::: {.callout-warning title="Dos puntos que suelen confundir"}
+- **$\mathbf{A}_3$ no es la «nueva normal»**: es lo que la teoría hace de la fibra. En Kirchhoff–Love coincide con la normal de la deformada (@sec-kl-d4); en Reissner–Mindlin, no.
+- **Hipótesis cinemática $\ne$ pequeños desplazamientos**: @eq-gl-lamina es exacta para cualquier $\mathbf{R}_0$ y $\mathbf{A}_3$; solo la *recta* es una hipótesis.
+:::
+
+## Grados de libertad {#sec-gdl}
+
+La cantidad de funciones independientes que quedan en cada punto distingue las teorías:
+
+| Teoría | Funciones por punto | Hipótesis |
+|---|---|---|
+| Cinemática general (@eq-hipotesis) | 6: $\mathbf{R}_0$ (3) y $\mathbf{A}_3$ (3) | la fibra es recta |
+| con $|\mathbf{A}_3|=1$ | 5: $\mathbf{R}_0$ (3) y dos giros | el espesor no varía |
+| **Reissner–Mindlin** (@sec-rm-d5) | 5 | además se linealiza |
+| **Kirchhoff–Love** (@sec-kl-d4) | 3: solo $\mathbf{R}_0$ | $\mathbf{A}_3\perp$ superficie deformada |
+
+El elemento finito de lámina del libro usa **cinco** grados de libertad por nodo (tres desplazamientos y dos giros del director).
+
+## Práctica guiada en Julia {#sec-julia-d3}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Se reproduce el @exm-cilindro-hincha con `deformacion_lamina_exacta`, que deriva numéricamente $\mathbf{R}_0+\theta^3\mathbf{A}_3$ y $\mathbf{r}+\theta^3\hat{\mathbf{a}}_3$, y se compara con la fórmula cerrada.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+R, u, t = 2000.0, 1.0, 100.0
+r  = cilindro(R)
+R0 = cilindro(R + u)                                   # la superficie media se hincha u
+A3(θ) = [cos(θ[1]), sin(θ[1]), 0.0]                    # el director sigue siendo la normal
+θ = [0.9, 0.3]
+
+γ_ext = deformacion_lamina_exacta(r, R0, A3, θ,  t / 2)    # cara exterior
+γ_int = deformacion_lamina_exacta(r, R0, A3, θ, -t / 2)    # cara interior
+gφφ(θ3) = (R + θ3)^2
+(γφφ_ext = γ_ext[1, 1], formula_ext = u * (R + t / 2) + u^2 / 2,
+ ε_ext = γ_ext[1, 1] / gφφ(t / 2), ε_int = γ_int[1, 1] / gφφ(-t / 2),
+ aprox_ext = u / (R + t / 2), aprox_int = u / (R - t / 2))
+```
+
+```{julia}
+# El resto de componentes es nulo: no hay cortante ni estiramiento del espesor
+(γ_ext[1, 2], γ_ext[1, 3], γ_ext[3, 3], γ_ext[2, 2])
+```
+
+## Ejercicios {#sec-ejercicios-d3}
+
+1. **Estiramiento del espesor.** Si el director mide $|\mathbf{A}_3|=1{,}05$, ¿cuánto vale $\gamma_{33}$?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $\gamma_{33}=\tfrac12(1{,}05^2-1)=0{,}05125$: un 5 % de alargamiento da una deformación de Green–Lagrange del 5,1 %.
+   :::
+
+2. **Esfera.** Una esfera de radio $R$ se infla a radio $R+u$ con director = normal. Calcula $\gamma^0$ y $\gamma^1$ (en componentes físicas, divide por $a_{\alpha\alpha}$).
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Por simetría, en cualquier dirección del plano $\gamma^0\to Ru+\tfrac12u^2$ (en la base de longitud $R$, $\varepsilon^0=u/R+\tfrac12u^2/R^2$) y $\gamma^1=u$. Es el cilindro de dos curvaturas iguales.
+   :::
+
+3. **Giro rígido.** Prueba que si $\mathbf{R}_0$ y $\mathbf{A}_3$ son los de referencia girados por la misma rotación $Q$, todas las deformaciones son nulas.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Los productos escalares $\mathbf{R}_{0,\alpha}\cdot\mathbf{R}_{0,\beta}$, etc. no cambian con una rotación (ortogonal), así que $G_{ij}=g_{ij}$ y $\gamma_{ij}=0$. Es la propiedad de invariancia de Green–Lagrange (D1).
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- Describo el sólido-lámina con $\mathbf{r}+\theta^3\hat{\mathbf{a}}_3$ y escribo su base con $b^\beta_\alpha$.
+- Enuncio la hipótesis cinemática y sé que $\mathbf{A}_3$ no tiene por qué ser unitario ni normal.
+- Calculo $\gamma^0$, $\gamma^1$, $\gamma_{\alpha3}$ y $\gamma_{33}$ de un movimiento sencillo (cilindro que se hincha).
+- Cuento los grados de libertad por punto de cada teoría.
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo; cinemática de láminas con director en la línea de las referencias estándar [@Novozhilov; @Flugge]. Todas las fórmulas de @prp-gl-lamina se comprueban con `deformacion_lamina_exacta` (conjunto «Cinemática de láminas» de los tests).
+
+**Correcciones.** La expresión de $\gamma^1_{\alpha\beta}$ lleva el signo $+b_{\alpha\beta}$ con el convenio $b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}$; con el signo contrario de la curvatura cambia el de ese término (ver notación).
+
+**Qué queda pendiente.** Sin nota histórica (no se dispone aún de fuente verificada); los convenios de giros del director (por confirmar) se tratan en D5; figuras con revisión visual pendiente; referencias no leídas línea a línea.
+:::
