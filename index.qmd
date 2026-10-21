@@ -4,7 +4,7 @@
 
 El libro sigue una secuencia didáctica propia, con demostraciones, simulaciones y código ejecutable.
 
-::: {.callout-warning title="Estado del libro: prototipo (Fase 2)"}
+::: {.callout-warning title="Estado del libro: en desarrollo"}
 Están desarrolladas la Parte I (capítulos 1 a 5) y la Parte II (capítulos 6 a 9), con un laboratorio interactivo en el capítulo 3. Las Partes III a V (láminas, elementos finitos y vibraciones) están por escribir. El resto de la estructura es provisional.
 :::
 
@@ -17,12 +17,12 @@ Están desarrolladas la Parte I (capítulos 1 a 5) y la Parte II (capítulos 6 a
 ## Código de colores
 
 ::: {#def-codigo}
-## Definición (azul)
+## Bloque azul
 Los conceptos que se definen aparecen en bloques azules.
 :::
 
 ::: {#thm-codigo}
-## Teorema o propiedad (verde)
+## Bloque verde
 Los resultados demostrables aparecen en bloques verdes.
 :::
 
