@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
+
+<title>26&nbsp; Bloqueo y modos espurios – La métrica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/E-elementos-finitos/E6-interpolacion-deformaciones.html" rel="next">
+<link href="../../book/E-elementos-finitos/E4-matrices-b.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html">Bloque E · Elementos finitos de lámina</a></li><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E5-bloqueo.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bloqueo y modos espurios</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">La métrica</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/mapa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapa del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque A · Preludio: la forma que resiste</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A1-caparazon-hypar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La cáscara y el paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A2-vectores-y-coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Los objetos físicos no dependen de las coordenadas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque B · Cálculo tensorial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B1-transformacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B2-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B3-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B4-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B5-analisis-tensorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Álgebra y análisis tensorial en curvilíneas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque C · Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C1-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C2-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C3-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C4-geodesicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Curvas sobre superficies: geodésicas y compatibilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C5-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C6-bestiario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bestiario de láminas: cilindro, esfera, cono y placa oblicua</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque D · Elasticidad: del sólido a la lámina</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D1-deformacion-tension.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Deformación y tensión en el sólido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D2-hooke-energia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Ley de Hooke y energía de deformación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D3-cinematica-lamina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cinemática de la lámina</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D4-kirchhoff-love.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">La hipótesis de Kirchhoff–Love</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D5-reissner-mindlin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Reissner–Mindlin: el cortante transversal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D6-deformaciones-desplazamientos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relaciones deformación–desplazamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D7-leyes-constitutivas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Leyes constitutivas de la lámina</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D8-principios-variacionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Principios variacionales</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque E · Elementos finitos de lámina</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E1-mef-barra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">El método de elementos finitos en una barra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E2-cuadrilatero-plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">El cuadrilátero bilineal en tensión plana</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E3-elemento-lamina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">El elemento lámina de cuatro nodos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E4-matrices-b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Matrices deformación–desplazamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E5-bloqueo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bloqueo y modos espurios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E6-interpolacion-deformaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Interpolación de deformaciones</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E7-hu-washizu-subdominios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Hu–Washizu por subdominios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E8-cargas-masa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notación y convenios</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#objetivos-y-prerrequisitos" id="toc-objetivos-y-prerrequisitos" class="nav-link active" data-scroll-target="#objetivos-y-prerrequisitos">Objetivos y prerrequisitos</a></li>
+  <li><a href="#sec-sintomas-e5" id="toc-sec-sintomas-e5" class="nav-link" data-scroll-target="#sec-sintomas-e5"><span class="header-section-number">26.1</span> Síntomas del bloqueo</a></li>
+  <li><a href="#sec-cortante-e5" id="toc-sec-cortante-e5" class="nav-link" data-scroll-target="#sec-cortante-e5"><span class="header-section-number">26.2</span> Bloqueo por cortante</a></li>
+  <li><a href="#sec-membrana-e5" id="toc-sec-membrana-e5" class="nav-link" data-scroll-target="#sec-membrana-e5"><span class="header-section-number">26.3</span> Bloqueo de membrana</a></li>
+  <li><a href="#sec-espurios-e5" id="toc-sec-espurios-e5" class="nav-link" data-scroll-target="#sec-espurios-e5"><span class="header-section-number">26.4</span> Modos espurios</a></li>
+  <li><a href="#sec-remedios-e5" id="toc-sec-remedios-e5" class="nav-link" data-scroll-target="#sec-remedios-e5"><span class="header-section-number">26.5</span> Remedios</a></li>
+  <li><a href="#sec-historia-e5" id="toc-sec-historia-e5" class="nav-link" data-scroll-target="#sec-historia-e5"><span class="header-section-number">26.6</span> Un poco de historia</a></li>
+  <li><a href="#sec-julia-e5" id="toc-sec-julia-e5" class="nav-link" data-scroll-target="#sec-julia-e5"><span class="header-section-number">26.7</span> Práctica guiada en Julia</a></li>
+  <li><a href="#sec-ejercicios-e5" id="toc-sec-ejercicios-e5" class="nav-link" data-scroll-target="#sec-ejercicios-e5"><span class="header-section-number">26.8</span> Ejercicios</a></li>
+  <li><a href="#la-doy-por-superada-si" id="toc-la-doy-por-superada-si" class="nav-link" data-scroll-target="#la-doy-por-superada-si">La doy por superada si…</a></li>
+  <li><a href="#referencias-unidad" id="toc-referencias-unidad" class="nav-link" data-scroll-target="#referencias-unidad">Referencias</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html">Bloque E · Elementos finitos de lámina</a></li><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E5-bloqueo.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bloqueo y modos espurios</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bloqueo y modos espurios</span></h1>
+<p class="subtitle lead">Por qué los elementos ingenuos fallan en láminas delgadas y cómo se arregla</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="fig-bloqueo-conv" class="portada quarto-float quarto-figure quarto-figure-center anchored" alt="Gráfica de convergencia con tres curvas: la naranja casi pegada al eje horizontal, las violeta y azul alcanzando 1,0 con cuatro elementos por lado">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bloqueo-conv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/bloqueo-convergencia.svg" class="portada img-fluid figure-img" alt="Gráfica de convergencia con tres curvas: la naranja casi pegada al eje horizontal, las violeta y azul alcanzando 1,0 con cuatro elementos por lado">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bloqueo-conv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;26.1: Flecha central de una placa delgada simplemente apoyada (<span class="math inline">\(t/L=0{,}01\)</span>) frente al número de elementos por lado, relativa a la solución de Navier. El elemento de <strong>desplazamientos puros</strong> (naranja) se queda en el 13 % con <span class="math inline">\(16\times16\)</span> elementos; la <strong>integración reducida selectiva</strong> (violeta) y los <strong>subdominios</strong> (azul) convergen. Cálculo <em>calculado</em>.
+</figcaption>
+</figure>
+</div>
+<div class="pregunta-guia">
+<p>Por qué un elemento perfectamente correcto sobre el papel puede dar una lámina delgada cientos de veces más rígida de lo que es</p>
+</div>
+<section id="objetivos-y-prerrequisitos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objetivos-y-prerrequisitos">Objetivos y prerrequisitos</h2>
+<p><strong>Objetivos.</strong> Al terminar el tema sabrás:</p>
+<ul>
+<li>reconocer el <strong>bloqueo</strong> (<em>locking</em>) por sus síntomas: resultado demasiado rígido que empeora al adelgazar la lámina;</li>
+<li>explicar el <strong>bloqueo por cortante</strong> con una viga de un elemento y cuantificarlo;</li>
+<li>distinguir el bloqueo de <strong>membrana</strong> del de cortante y por qué la lámina curva sufre los dos;</li>
+<li>detectar <strong>modos espurios</strong> (energía nula) mirando los autovalores de <span class="math inline">\(\mathbf K_e\)</span>;</li>
+<li>comparar los tres remedios: integración reducida, deformaciones supuestas y subdominios.</li>
+</ul>
+<p><strong>Prerrequisitos.</strong> <a href="../../book/E-elementos-finitos/E4-matrices-b.html">E4</a> (cortante parásito) y <a href="../../book/E-elementos-finitos/E2-cuadrilatero-plano.html">E2</a> (Gauss).</p>
+<p><strong>Secciones del tema</strong></p>
+<ul>
+<li><strong><a href="#sec-sintomas-e5" class="quarto-xref"><span>Sección 26.1</span></a></strong> · Síntomas del bloqueo · <strong><a href="#sec-cortante-e5" class="quarto-xref"><span>Sección 26.2</span></a></strong> · Bloqueo por cortante · <strong><a href="#sec-membrana-e5" class="quarto-xref"><span>Sección 26.3</span></a></strong> · Bloqueo de membrana</li>
+<li><strong><a href="#sec-espurios-e5" class="quarto-xref"><span>Sección 26.4</span></a></strong> · Modos espurios · <strong><a href="#sec-remedios-e5" class="quarto-xref"><span>Sección 26.5</span></a></strong> · Remedios · <strong><a href="#sec-julia-e5" class="quarto-xref"><span>Sección 26.7</span></a></strong> · Práctica guiada</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Notación y convenciones de este tema">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Notación y convenciones de este tema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Símbolo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(t/L\)</span></td>
+<td>esbeltez de la lámina (espesor entre luz)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(w_h/w_{\text{ex}}\)</span></td>
+<td>flecha de elementos finitos entre flecha exacta (<span class="math inline">\(&lt;1\)</span>: demasiado rígido)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lambda_i(\mathbf K_e)\)</span></td>
+<td>autovalores de la matriz de rigidez del elemento</td>
+</tr>
+<tr class="even">
+<td><em>espurio</em></td>
+<td>modo de energía nula que <strong>no</strong> es un movimiento rígido</td>
+</tr>
+<tr class="odd">
+<td><em>desplazamientos</em>, <em>reducida</em>, <em>subdominios</em></td>
+<td>las tres variantes de rigidez de <code>rigidez_elemento</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="ingenieros callout callout-style-simple callout-note callout-titled" title="Explicación para ingenieros: el elemento con la camisa de fuerza">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Explicación para ingenieros: el elemento con la camisa de fuerza
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Imagina que a un elemento se le dan <strong>pocas formas de moverse</strong> y, además, se le penaliza cada pequeña deformación «de más» con una energía enorme. Una lámina delgada quiere <strong>doblarse</strong> (cuesta poco), pero el elemento sólo sabe doblarse <strong>estirándose o cizallándose a la vez</strong> — deformaciones falsas que cuestan mucho. Resultado: el elemento prefiere <strong>no moverse</strong>, como quien lleva una camisa de fuerza. Y cuanto más delgada es la lámina, más pesa la rigidez falsa frente a la verdadera: la camisa aprieta más. Los remedios consisten en <strong>soltar</strong> las deformaciones falsas (promediarlas, reducir la integración o reinterpolarlas).</p>
+</div>
+</div>
+</section>
+<section id="sec-sintomas-e5" class="level2" data-number="26.1">
+<h2 data-number="26.1" class="anchored" data-anchor-id="sec-sintomas-e5"><span class="header-section-number">26.1</span> Síntomas del bloqueo</h2>
+<ul>
+<li>La estructura <strong>se deforma muy poco</strong> (la flecha es una pequeña fracción de la correcta).</li>
+<li>El error <strong>aumenta al adelgazar</strong> la lámina (<a href="#fig-bloqueo-esp" class="quarto-xref">Figura&nbsp;<span>26.2</span></a>) y <strong>desaparece</strong> con espesores gruesos.</li>
+<li>Refinar la malla <strong>ayuda muy despacio</strong>: con <span class="math inline">\(t/L=0{,}01\)</span> ni <span class="math inline">\(16\times16\)</span> elementos bastan (<a href="#fig-bloqueo-conv" class="quarto-xref">Figura&nbsp;<span>26.1</span></a>).</li>
+</ul>
+<div id="fig-bloqueo-esp" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Gráfica de la flecha relativa frente al espesor en escala logarítmica: la curva naranja cae a cero al disminuir el espesor mientras las otras dos permanecen en uno">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bloqueo-esp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/bloqueo-espesor.svg" class="img-fluid figure-img" alt="Gráfica de la flecha relativa frente al espesor en escala logarítmica: la curva naranja cae a cero al disminuir el espesor mientras las otras dos permanecen en uno">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bloqueo-esp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;26.2: Con malla fija (<span class="math inline">\(8\times8\)</span>) el elemento de desplazamientos puros pierde casi toda su capacidad cuando el espesor relativo baja de <span class="math inline">\(0{,}05\)</span>. Con <span class="math inline">\(t/L=0{,}2\)</span> (placa gruesa) todas las curvas pasan por encima de 1 porque la flecha incluye la deformación por cortante, que la solución de Navier (Kirchhoff) no recoge. <em>Calculado</em>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-cortante-e5" class="level2" data-number="26.2">
+<h2 data-number="26.2" class="anchored" data-anchor-id="sec-cortante-e5"><span class="header-section-number">26.2</span> Bloqueo por cortante</h2>
+<p>El cortante transversal <span class="math inline">\(\gamma_\alpha=\varphi_\alpha+w_{,\alpha}\)</span> pesa en la energía con la rigidez <span class="math inline">\(t\mu\)</span>, mientras que la flexión lo hace con <span class="math inline">\(t^3/12\)</span>: <strong>su cociente crece como <span class="math inline">\(1/t^2\)</span></strong>. En flexión pura el cortante exacto es nulo (<span class="math inline">\(\varphi_\alpha=-w_{,\alpha}\)</span>), pero el campo interpolado (E4) <strong>no puede</strong> hacerlo cero a la vez en todo el elemento. Si ese cortante parásito se evalúa punto a punto, su energía <strong>domina</strong> y obliga a <span class="math inline">\(w\to0\)</span>.</p>
+<div id="exm-viga-bloqueo-e5" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 26.1 (Ejemplo resuelto: una viga de un solo elemento)</strong></span> Voladizo de longitud <span class="math inline">\(L\)</span> con <strong>un</strong> elemento de dos nodos, <span class="math inline">\(w\)</span> y <span class="math inline">\(\theta\)</span> lineales (<span class="math inline">\(w=w_2x/L\)</span>, <span class="math inline">\(\theta=\theta_2x/L\)</span>), cortante <span class="math inline">\(\gamma=w'-\theta\)</span> y una fuerza <span class="math inline">\(P\)</span> en el extremo. Las energías de flexión y de cortante son <span class="math display">\[
+U_B=\tfrac12EI\,\frac{\theta_2^2}{L},\qquad U_S=\tfrac12\kappa GA\,L\Bigl[\bigl(\tfrac{w_2}{L}\bigr)^2-\tfrac{w_2\theta_2}{L}+\tfrac{\theta_2^2}3\Bigr].
+\]</span> Derivando respecto de <span class="math inline">\((w_2,\theta_2)\)</span> y despejando con la carga <span class="math inline">\(P\)</span> en <span class="math inline">\(w_2\)</span>: <span class="math display">\[
+w_2=P\,\frac{EI/L+\kappa GAL/3}{\kappa GA\,EI/L^2+(\kappa GA)^2/12},\qquad w_{\text{ex}}=\frac{PL^3}{3EI}+\frac{PL}{\kappa GA}.
+\]</span> Para una viga delgada (<span class="math inline">\(\kappa GAL^2\gg EI\)</span>), <span class="math inline">\(w_2\to4PL/(\kappa GA)\)</span>, y <span class="math inline">\(w_{\text{ex}}/w_2\to\dfrac{\kappa GA\,L^2}{12\,EI}\)</span>: <strong>crece como <span class="math inline">\((L/t)^2\)</span></strong>. Con <span class="math inline">\(\kappa=1\)</span>, <span class="math inline">\(\nu=0{,}3\)</span>, espesor <span class="math inline">\(t=1\)</span> y <span class="math inline">\(L=100\)</span> (<span class="math inline">\(E=1\)</span>, <span class="math inline">\(P=1\)</span>): <span class="math inline">\(w_2=1039{,}8\)</span> y <span class="math inline">\(w_{\text{ex}}=4\,000\,260\)</span>, es decir, el elemento resulta <strong>3847 veces más rígido</strong> de lo que es. Resultado <em>analítico</em>.</p>
+</div>
+<div id="e5-rigidez-espuria" class="ejercicio" data-tipo="numerico" data-respuesta="3847" data-tol="1%" data-unidad="veces">
+<p>En el <a href="#exm-viga-bloqueo-e5" class="quarto-xref">Ejemplo&nbsp;<span>26.1</span></a> (con <span class="math inline">\(E=1\)</span>, <span class="math inline">\(\nu=0{,}3\)</span>, <span class="math inline">\(\kappa=1\)</span>, <span class="math inline">\(t=1\)</span>, <span class="math inline">\(L=100\)</span>, <span class="math inline">\(P=1\)</span>), ¿cuántas veces más rígida resulta la viga de un solo elemento respecto de la solución exacta, <span class="math inline">\(w_{\text{ex}}/w_2\)</span>?</p>
+<div class="pista">
+<p>Calcula <span class="math inline">\(EI=Et^3/12\)</span>, <span class="math inline">\(GA=Et/(2(1+\nu))\)</span> y sustituye en las dos fórmulas del ejemplo.</p>
+</div>
+<div class="solucion">
+<p><span class="math inline">\(EI=1/12\)</span>, <span class="math inline">\(GA=1/2{,}6=0{,}3846\)</span>. <span class="math inline">\(w_2=(EI/L+GAL/3)/(GA\,EI/L^2+GA^2/12)=1039{,}8\)</span>; <span class="math inline">\(w_{\text{ex}}=PL^3/(3EI)+PL/GA=4\,000\,000+260=4\,000\,260\)</span>. Cociente: <span class="math inline">\(3847\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="sec-membrana-e5" class="level2" data-number="26.3">
+<h2 data-number="26.3" class="anchored" data-anchor-id="sec-membrana-e5"><span class="header-section-number">26.3</span> Bloqueo de membrana</h2>
+<p>Una lámina <strong>curva</strong> sufre además el <strong>bloqueo de membrana</strong>: su modo de deformación «natural» es la <strong>flexión sin estiramiento</strong> (inextensional), pero el elemento no la reproduce sin estirar algo la superficie media. Como la rigidez de membrana es <span class="math inline">\(\propto t\)</span> y la de flexión <span class="math inline">\(\propto t^3\)</span>, el estiramiento parásito domina cuando la lámina es delgada. Ocurre aunque la lámina se cargue sólo a flexión y se nota en cilindros y paraboloides. En la práctica se ve en el <em>Scordelis–Lo</em> (tema F2): con <span class="math inline">\(8\times8\)</span> elementos, la formulación de desplazamientos alcanza <strong>un 12 %</strong> de la flecha de referencia y la de subdominios, <strong>más del 96 %</strong>.</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Dos puntos que suelen confundir">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Dos puntos que suelen confundir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>No es un fallo del programa.</strong> Con la formulación y la integración de Gauss «correctas» el elemento da <em>exactamente</em> el bloqueo que predice la teoría: es una propiedad del espacio de interpolación, no un error de código.</li>
+<li><strong>Bloqueo ≠ modos espurios.</strong> El bloqueo es <em>exceso</em> de rigidez; los modos espurios son <em>defecto</em>: movimientos con energía nula que no son del sólido rígido. Un remedio mal elegido cambia uno por otro.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec-espurios-e5" class="level2" data-number="26.4">
+<h2 data-number="26.4" class="anchored" data-anchor-id="sec-espurios-e5"><span class="header-section-number">26.4</span> Modos espurios</h2>
+<p>Un elemento <strong>no debe</strong> tener más movimientos de energía nula que los rígidos: una lámina plana tiene <strong>seis</strong> (tres traslaciones y tres giros; el giro alrededor de la normal aparece como combinación de desplazamientos en el plano, ya que no hay g.d.l. propio). Cualquier modo extra es un <strong>modo espurio</strong> (<em>hourglass</em>): se manifiesta en la malla como un patrón de «reloj de arena» sin resistencia.</p>
+<div id="fig-espectro" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tres diagramas de barras con los veinte autovalores de una matriz de rigidez: seis casi nulos en la primera y tercera, ocho en la segunda">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-espectro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/espectro-rigidez.svg" class="img-fluid figure-img" alt="Tres diagramas de barras con los veinte autovalores de una matriz de rigidez: seis casi nulos en la primera y tercera, ocho en la segunda">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-espectro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;26.3: Autovalores de <span class="math inline">\(\mathbf K_e\)</span> para un elemento plano con tres formulaciones. Los seis primeros (grises) son los movimientos rígidos; en la <strong>integración reducida selectiva</strong> hay <strong>dos más</strong> (naranja): son modos espurios. Con <strong>desplazamientos</strong> y <strong>subdominios</strong> sólo hay seis. <em>Calculado</em>.
+</figcaption>
+</figure>
+</div>
+<div id="e5-modos-espurios" class="ejercicio" data-tipo="opcion" data-respuesta="b">
+<p>Un elemento plano de cuatro nodos y 5 g.d.l. por nodo tiene <span class="math inline">\(\mathbf K_e\)</span> con <strong>ocho</strong> autovalores nulos. ¿Qué indica?</p>
+<div class="opciones">
+<ul>
+<li>Es correcto: seis rígidos y dos de reserva</li>
+<li>Hay seis movimientos rígidos y dos <strong>modos espurios</strong> de energía nula</li>
+<li>La matriz está mal ensamblada</li>
+<li>El elemento está bloqueado</li>
+</ul>
+</div>
+<div class="solucion">
+<p>Un elemento plano admite exactamente seis modos de energía nula (rígidos). Ocho indica <strong>dos modos espurios</strong> (ocurre con la integración reducida del cortante a un punto, <a href="#fig-espectro" class="quarto-xref">Figura&nbsp;<span>26.3</span></a>). Bloqueo es lo contrario: <em>exceso</em> de rigidez.</p>
+</div>
+</div>
+</section>
+<section id="sec-remedios-e5" class="level2" data-number="26.5">
+<h2 data-number="26.5" class="anchored" data-anchor-id="sec-remedios-e5"><span class="header-section-number">26.5</span> Remedios</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Remedio</th>
+<th>Idea</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Integración reducida selectiva</strong></td>
+<td>Evaluar el cortante (o la membrana) con <strong>menos</strong> puntos de Gauss</td>
+<td>Quita el bloqueo, pero puede introducir modos espurios (<a href="#fig-espectro" class="quarto-xref">Figura&nbsp;<span>26.3</span></a>)</td>
+</tr>
+<tr class="even">
+<td><strong>Deformaciones supuestas</strong> (por ejemplo, MITC)</td>
+<td>Interpolar el cortante <strong>aparte</strong>, con una fórmula pensada para que no bloquee</td>
+<td>Sin modos espurios, algo más de programación</td>
+</tr>
+<tr class="odd">
+<td><strong>Subdominios</strong> (E6–E7)</td>
+<td>Promediar cada deformación en subregiones del elemento y variar con <strong>Hu–Washizu</strong></td>
+<td>Sin bloqueo ni modos espurios en el elemento plano</td>
+</tr>
+</tbody>
+</table>
+<p>La nota histórica y la formulación detallada se dan en los temas siguientes: el tema E6 explica <em>qué</em> se interpola y E7 <em>cómo</em> sale la matriz de rigidez.</p>
+<div class="callout callout-style-simple callout-important callout-titled" title="Idea clave">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Todo remedio consiste en <strong>desacoplar</strong> las deformaciones calculadas de los desplazamientos: que lo que entra en la energía <strong>no sea exactamente</strong> la derivada del campo interpolado. Sólo así se evita que las deformaciones «parásitas» del campo (cortante, estiramiento) almacenen energía.</p>
+</div>
+</div>
+<div class="aplicacion callout callout-style-simple callout-tip callout-titled" title="Aplicación real: torres de refrigeración y tejidos blandos">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Aplicación real: torres de refrigeración y tejidos blandos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado ilustrativo">ilustrativo</span> <strong>Obra civil.</strong> Las torres de refrigeración hiperbólicas de hormigón son cáscaras muy esbeltas: un estudio de inspección de una torre de 1959 cita un espesor de proyecto de entre unos 0,12 y 0,4 m para un cuerpo de decenas de metros. Con esa relación <span class="math inline">\(t/R\)</span> tan pequeña, un elemento propenso al bloqueo daría una torre «de piedra». <strong>Biomecánica.</strong> Los tejidos blandos son casi incompresibles (<span class="math inline">\(\nu\to0{,}5\)</span>), lo que provoca un bloqueo volumétrico análogo; existen elementos de lámina gruesa pensados específicamente para ellos.</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11435781/">Laser Scanner-Based Hyperboloid Cooling Tower Geometry Inspection (PMC)</a> (espesores de proyecto); <a href="https://arxiv.org/pdf/1801.04029">A New Continuum-Based Thick Shell Finite Element for Soft Biological Tissues in Dynamics (arXiv:1801.04029)</a> (sólo el título y el resumen; el bloqueo volumétrico es afirmación general, sin fuente leída). Consultado el 21-10-2026.</span></p>
+</div>
+</div>
+</section>
+<section id="sec-historia-e5" class="level2 page-columns page-full" data-number="26.6">
+<h2 data-number="26.6" class="anchored" data-anchor-id="sec-historia-e5"><span class="header-section-number">26.6</span> Un poco de historia</h2>
+<div class="historia callout callout-style-simple callout-note no-icon callout-titled" title="Un poco de historia: de la integración reducida a MITC">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un poco de historia: de la integración reducida a MITC
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La integración reducida como remedio del bloqueo en placas y láminas se asocia al artículo de Zienkiewicz, Taylor y Too (1971): al integrar el cortante con menos puntos de Gauss se «relaja» el elemento. Años después, Bathe y Dvorkin (1985) propusieron el elemento de placa de cuatro nodos MITC4, basado en una <strong>interpolación mixta de las componentes tensoriales</strong> del cortante, que evita los modos espurios que la integración reducida puede producir. El título exacto del artículo de 1971 varía según las fuentes secundarias.</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://arxiv.org/pdf/1810.08900">A new locking-free polygonal plate element… (arXiv:1810.08900)</a>; <a href="https://dl.acm.org/doi/10.1016/j.compstruc.2023.107177">The simplified MITC4+ shell element… (ACM)</a>; <span class="citation" data-cites="ZienkiewiczTaylorToo BatheDvorkin">(<a href="../referencias.html#ref-ZienkiewiczTaylorToo" role="doc-biblioref">Zienkiewicz et&nbsp;al. 1971</a>; <a href="../referencias.html#ref-BatheDvorkin" role="doc-biblioref">Bathe y Dvorkin 1985</a>)</span>. No se leyeron los originales. Consultado el 21-10-2026.</span></p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="ref-BatheDvorkin" class="csl-entry" role="listitem">
+Bathe, K. J., y E. N. Dvorkin. 1985. <span>«A four-node plate bending element based on <span>Mindlin/Reissner</span> plate theory and a mixed interpolation»</span>. <em>International Journal for Numerical Methods in Engineering</em> 21: 367-83.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-ZienkiewiczTaylorToo" class="csl-entry" role="listitem">
+Zienkiewicz, O. C., R. L. Taylor, y J. M. Too. 1971. <span>«Reduced integration technique in general analysis of plates and shells»</span>. <em>International Journal for Numerical Methods in Engineering</em> 3: 275-90.
+</div></div></section>
+<section id="sec-julia-e5" class="level2" data-number="26.7">
+<h2 data-number="26.7" class="anchored" data-anchor-id="sec-julia-e5"><span class="header-section-number">26.7</span> Práctica guiada en Julia</h2>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo computacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado calculado">calculado</span> Se resuelve la placa cuadrada simplemente apoyada con carga uniforme con las tres variantes de rigidez y se compara con la solución de Navier; después se cuentan los autovalores nulos de cada <span class="math inline">\(\mathbf K_e\)</span>.</p>
+</div>
+</div>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Geometria</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Solución de Navier (placa simplemente apoyada a×a, carga uniforme q, rigidez D): flecha central</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">navier</span>(a, q, D; N <span class="op">=</span> <span class="fl">199</span>) <span class="op">=</span> <span class="fl">16</span>q <span class="op">/</span> (<span class="cn">π</span><span class="op">^</span><span class="fl">6</span> <span class="op">*</span> D) <span class="op">*</span> <span class="fu">sum</span>(<span class="fu">sin</span>(m <span class="op">*</span> <span class="cn">π</span> <span class="op">/</span> <span class="fl">2</span>) <span class="op">*</span> <span class="fu">sin</span>(n <span class="op">*</span> <span class="cn">π</span> <span class="op">/</span> <span class="fl">2</span>) <span class="op">/</span> (m <span class="op">*</span> n <span class="op">*</span> (m<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> n<span class="op">^</span><span class="fl">2</span>)<span class="op">^</span><span class="fl">2</span> <span class="op">/</span> a<span class="op">^</span><span class="fl">4</span>) <span class="cf">for</span> m <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">:</span>N, n <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">:</span>N)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">flecha_centro</span>(n, t, modo; E <span class="op">=</span> <span class="fl">1.0e4</span>, ν <span class="op">=</span> <span class="fl">0.3</span>, L <span class="op">=</span> <span class="fl">1.0</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="fu">placa_oblicua</span>(<span class="cn">π</span> <span class="op">/</span> <span class="fl">2</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    nodos, conn <span class="op">=</span> <span class="fu">malla_rectangular</span>((<span class="fl">0</span>, L), (<span class="fl">0</span>, L), n, n)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    K, _, F <span class="op">=</span> <span class="fu">ensamblar</span>(r, nodos, conn, E, ν, t; modo, f <span class="op">=</span> θ <span class="op">-&gt;</span> [<span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">1.0</span>])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    fij <span class="op">=</span> <span class="dt">Int</span>[]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(nodos, <span class="fl">2</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> nodos[<span class="op">:</span>, k]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">append!</span>(fij, [<span class="fu">gdl</span>(k, <span class="fl">1</span>), <span class="fu">gdl</span>(k, <span class="fl">2</span>)])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        (x <span class="op">≈</span> <span class="fl">0</span> <span class="op">||</span> x <span class="op">≈</span> L <span class="op">||</span> y <span class="op">≈</span> <span class="fl">0</span> <span class="op">||</span> y <span class="op">≈</span> L) <span class="op">&amp;&amp;</span> <span class="fu">push!</span>(fij, <span class="fu">gdl</span>(k, <span class="fl">3</span>))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        (x <span class="op">≈</span> <span class="fl">0</span> <span class="op">||</span> x <span class="op">≈</span> L) <span class="op">&amp;&amp;</span> <span class="fu">push!</span>(fij, <span class="fu">gdl</span>(k, <span class="fl">5</span>))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        (y <span class="op">≈</span> <span class="fl">0</span> <span class="op">||</span> y <span class="op">≈</span> L) <span class="op">&amp;&amp;</span> <span class="fu">push!</span>(fij, <span class="fu">gdl</span>(k, <span class="fl">4</span>))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    u <span class="op">=</span> <span class="fu">resolver_estatica</span>(K, F, <span class="fu">unique</span>(fij))</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="fu">findfirst</span>(k <span class="op">-&gt;</span> nodos[<span class="fl">1</span>, k] <span class="op">≈</span> L <span class="op">/</span> <span class="fl">2</span> <span class="op">&amp;&amp;</span> nodos[<span class="fl">2</span>, k] <span class="op">≈</span> L <span class="op">/</span> <span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(nodos, <span class="fl">2</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>u[<span class="fu">gdl</span>(c, <span class="fl">3</span>)]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>E, ν, t <span class="op">=</span> <span class="fl">1.0e4</span>, <span class="fl">0.3</span>, <span class="fl">0.01</span>; D <span class="op">=</span> E <span class="op">*</span> t<span class="op">^</span><span class="fl">3</span> <span class="op">/</span> (<span class="fl">12</span> <span class="op">*</span> (<span class="fl">1</span> <span class="op">-</span> ν<span class="op">^</span><span class="fl">2</span>))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>wref <span class="op">=</span> <span class="fu">navier</span>(<span class="fl">1.0</span>, <span class="fl">1.0</span>, D)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>tabla <span class="op">=</span> [(n <span class="op">=</span> n, desplazamientos <span class="op">=</span> <span class="fu">flecha_centro</span>(n, t, <span class="op">:</span>desplazamientos) <span class="op">/</span> wref,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>          reducida <span class="op">=</span> <span class="fu">flecha_centro</span>(n, t, <span class="op">:</span>reducida_selectiva) <span class="op">/</span> wref,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>          subdominios <span class="op">=</span> <span class="fu">flecha_centro</span>(n, t, <span class="op">:</span>subdominios) <span class="op">/</span> wref) for n <span class="kw">in</span> (<span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>)]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>3-element Vector{@NamedTuple{n::Int64, desplazamientos::Float64, reducida::Float64, subdominios::Float64}}:
+ (n = 2, desplazamientos = 0.0021944275011845796, reducida = 0.7856904526528657, subdominios = 0.8553179561148229)
+ (n = 4, desplazamientos = 0.009173110056153146, reducida = 0.9775048419528235, subdominios = 0.9939162145006052)
+ (n = 8, desplazamientos = 0.03568350514075724, reducida = 0.9952909270733621, subdominios = 0.999171734080928)</code></pre>
+</div>
+</div>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="fl">0.0</span> <span class="fl">1</span> <span class="fl">1</span> <span class="fl">0</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">1</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> modo <span class="kw">in</span> (<span class="op">:</span>desplazamientos, <span class="op">:</span>reducida_selectiva, <span class="op">:</span>subdominios)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    ev <span class="op">=</span> <span class="fu">eigvals</span>(<span class="fu">Symmetric</span>(<span class="fu">rigidez_elemento</span>(<span class="fu">placa_oblicua</span>(<span class="cn">π</span> <span class="op">/</span> <span class="fl">2</span>), X, <span class="fl">1.0</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>; modo)))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="fu">rpad</span>(modo, <span class="fl">20</span>), <span class="st">"autovalores nulos: "</span>, <span class="fu">count</span>(<span class="fu">&lt;</span>(<span class="fl">1e-9</span> <span class="op">*</span> <span class="fu">maximum</span>(ev)), ev))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>desplazamientos     autovalores nulos: 6
+reducida_selectiva  autovalores nulos: 8
+subdominios         autovalores nulos: 6</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-ejercicios-e5" class="level2" data-number="26.8">
+<h2 data-number="26.8" class="anchored" data-anchor-id="sec-ejercicios-e5"><span class="header-section-number">26.8</span> Ejercicios</h2>
+<ol type="1">
+<li><p><strong>Escala del bloqueo.</strong> Si el espesor de una placa pasa de <span class="math inline">\(t/L=0{,}1\)</span> a <span class="math inline">\(0{,}01\)</span>, ¿cuánto crece el factor de rigidez espuria del elemento de desplazamientos?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como <span class="math inline">\(\propto(L/t)^2\)</span>, crece <span class="math inline">\(10^2=100\)</span> veces: de unos 40 a unos 4000 en el ejemplo.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Hourglass.</strong> Explica por qué un elemento con un solo punto de Gauss tiene modos de energía nula.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Con un punto sólo se «ven» las deformaciones constantes del elemento; los modos de deformación de orden superior (flexión, torsión en el plano) quedan sin energía, aunque no sean movimientos rígidos.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Qué mirar.</strong> ¿Cómo se detecta un modo espurio sin resolver ningún problema?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Contando los autovalores nulos de la matriz de rigidez de <strong>un solo elemento libre</strong>: si hay más que movimientos rígidos, hay modos espurios (<a href="#fig-espectro" class="quarto-xref">Figura&nbsp;<span>26.3</span></a>).</p>
+</div>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="la-doy-por-superada-si" class="level2 unnumbered page-columns page-full">
+<h2 class="unnumbered anchored" data-anchor-id="la-doy-por-superada-si">La doy por superada si…</h2>
+<ul>
+<li>Reconozco el bloqueo por sus síntomas y sé que empeora con <span class="math inline">\(t\to0\)</span>.</li>
+<li>Explico por qué el cortante parásito domina (<span class="math inline">\(\propto1/t^2\)</span>) y calculo el factor de una viga de un elemento.</li>
+<li>Distingo bloqueo de membrana y de cortante, y bloqueo de modos espurios.</li>
+<li>Cuento los autovalores nulos de una <span class="math inline">\(\mathbf K_e\)</span> e interpreto el resultado.</li>
+<li>Enumero los tres remedios y su inconveniente principal.</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Fuentes, correcciones y qué queda pendiente
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Fuentes.</strong> Texto autónomo; el bloqueo y sus remedios son estándar <span class="citation" data-cites="Bathe Hughes ZienkiewiczTaylor">(<a href="../referencias.html#ref-Bathe" role="doc-biblioref">Bathe 1996</a>; <a href="../referencias.html#ref-Hughes" role="doc-biblioref">Hughes 1987</a>; <a href="../referencias.html#ref-ZienkiewiczTaylor" role="doc-biblioref">Zienkiewicz y Taylor, s.&nbsp;f.</a>)</span>. Los números son <em>calculados</em> con <code>Geometria</code> y la placa, contrastada con la solución de Navier <span class="citation" data-cites="TimoshenkoWK">(<a href="../referencias.html#ref-TimoshenkoWK" role="doc-biblioref">Timoshenko y Woinowsky-Krieger, s.&nbsp;f.</a>)</span> (calculada aquí con la serie, no tomada de la tabla del libro).</p>
+<p><strong>Qué queda pendiente.</strong> El bloqueo de membrana se ilustra con el caso del tema F2, no se demuestra aquí; la nota histórica y los datos de la «Aplicación real» provienen de fuentes secundarias; el comentario sobre el bloqueo volumétrico de tejidos blandos es una afirmación general sin fuente leída; revisión visual de las figuras.</p>
+</div>
+</div>
+</div>
+
+
+<div class="no-row-height column-margin column-container"><div id="ref-TimoshenkoWK" class="csl-entry" role="listitem">
+Timoshenko, S. P., y S. Woinowsky-Krieger. s.&nbsp;f. <em>Theory of Plates and Shells</em>. McGraw-Hill.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-ZienkiewiczTaylor" class="csl-entry" role="listitem">
+Zienkiewicz, O. C., y R. L. Taylor. s.&nbsp;f. <em>The Finite Element Method</em>. Butterworth-Heinemann.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Hughes" class="csl-entry" role="listitem">
+Hughes, T. J. R. 1987. <em>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis</em>. Prentice-Hall.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Bathe" class="csl-entry" role="listitem">
+Bathe, K. J. 1996. <em>Finite Element Procedures</em>. Prentice Hall.
+</div></div></section>
+<section id="referencias-unidad" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="referencias-unidad">Referencias</h2>
+<p><em>Son las mismas que aparecen en el margen, junto al texto.</em></p>
+<div id="refs-unidad" class="referencias-unidad">
+<div class="ref-final">
+<p>Bathe, K. J. 1996. <em>Finite Element Procedures</em>. Prentice Hall.</p>
+</div>
+<div class="ref-final">
+<p>Bathe, K. J., y E. N. Dvorkin. 1985. <span>«A four-node plate bending element based on <span>Mindlin/Reissner</span> plate theory and a mixed interpolation»</span>. <em>International Journal for Numerical Methods in Engineering</em> 21: 367-83.</p>
+</div>
+<div class="ref-final">
+<p>Hughes, T. J. R. 1987. <em>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis</em>. Prentice-Hall.</p>
+</div>
+<div class="ref-final">
+<p>Timoshenko, S. P., y S. Woinowsky-Krieger. s.&nbsp;f. <em>Theory of Plates and Shells</em>. McGraw-Hill.</p>
+</div>
+<div class="ref-final">
+<p>Zienkiewicz, O. C., y R. L. Taylor. s.&nbsp;f. <em>The Finite Element Method</em>. Butterworth-Heinemann.</p>
+</div>
+<div class="ref-final">
+<p>Zienkiewicz, O. C., R. L. Taylor, y J. M. Too. 1971. <span>«Reduced integration technique in general analysis of plates and shells»</span>. <em>International Journal for Numerical Methods in Engineering</em> 3: 275-90.</p>
+</div>
+</div>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Referencias</h1>
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/E-elementos-finitos/E4-matrices-b.html" class="pagination-link" aria-label="Matrices deformación–desplazamiento">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Matrices deformación–desplazamiento</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../book/E-elementos-finitos/E6-interpolacion-deformaciones.html" class="pagination-link" aria-label="Interpolación de deformaciones">
+        <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Interpolación de deformaciones</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>
+/* =============================================================================
+ * ejercicios.js: ejercicios intercalados en el texto (autoevaluación)
+ *
+ * Lo inserta scripts/ejercicios.lua, en línea, solo en las páginas que tienen
+ * ejercicios. Sin dependencias. Todo ocurre en el navegador: las respuestas y
+ * el progreso se guardan en localStorage (nada sale del equipo del lector).
+ *
+ * Se escribe en Markdown (véase la guía en planning/plantilla-tema.qmd):
+ *   ::: {.ejercicio tipo="numerico" id="m5-2-zeta" respuesta="0.2" tol="1%" unidad=""}
+ *   Enunciado…
+ *   ::: {.pista}  …  :::
+ *   ::: {.solucion}  …  :::
+ *   :::
+ * Tipos: vf, opcion, numerico, abierta, programacion, investigacion, encuesta.
+ *
+ * La lógica de corrección (parseNumero, comprobarNumerico, …) es pura y se
+ * prueba con web/tests/ejercicios.test.mjs.
+ * ========================================================================== */
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------ */
+  /* Lógica pura                                                         */
+  /* ------------------------------------------------------------------ */
+
+  /** Lee un número escrito a la española o a la inglesa: «0,0307», «3.07e-2»,
+   *  «3,07·10^-2», «30,7 mm» (se ignora lo que siga al número). NaN si no hay. */
+  function parseNumero(texto) {
+    if (texto === null || texto === undefined) return NaN;
+    let t = String(texto).trim().replace(/−/g, "-").replace(/\s+/g, "");
+    // 3,07·10^-2 · 3.07x10^-2 · 3,07×10-2  →  3.07e-2
+    t = t.replace(/[x×·*]10\^?\(?(-?\+?\d+)\)?/gi, "e$1");
+    if (t.includes(",")) t = t.replace(/\./g, "").replace(",", ".");
+    const m = t.match(/^[+-]?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?/i);
+    return m ? parseFloat(m[0]) : NaN;
+  }
+
+  /** Interpreta la tolerancia: «1%» (relativa), «0.01» o «abs:0.01» (absoluta). */
+  function parseTolerancia(tol) {
+    const t = String(tol === undefined || tol === null || tol === "" ? "1%" : tol).trim();
+    if (t.endsWith("%")) return { tipo: "rel", valor: parseFloat(t) / 100 };
+    return { tipo: "abs", valor: parseFloat(t.replace(/^abs:/, "")) };
+  }
+
+  /** ¿Es correcta la respuesta numérica? Devuelve {ok, valor, error}. */
+  function comprobarNumerico(entrada, objetivo, tol) {
+    const valor = parseNumero(entrada);
+    if (!Number.isFinite(valor)) return { ok: false, valor, error: null, invalida: true };
+    const o = typeof objetivo === "number" ? objetivo : parseNumero(objetivo);
+    const t = parseTolerancia(tol);
+    const dif = Math.abs(valor - o);
+    const limite = t.tipo === "rel" && o !== 0 ? Math.abs(o) * t.valor : t.tipo === "rel" ? t.valor : t.valor;
+    return { ok: dif <= limite, valor, error: o !== 0 ? dif / Math.abs(o) : dif, invalida: false };
+  }
+
+  /** Normaliza «V», «Verdadero», «cierto», «F», «falso» a "verdadero" | "falso". */
+  function normalizaVF(x) {
+    const t = String(x).trim().toLowerCase();
+    if (["v", "verdadero", "cierto", "si", "sí", "true"].includes(t)) return "verdadero";
+    if (["f", "falso", "no", "false"].includes(t)) return "falso";
+    return t;
+  }
+
+  /** Compara conjuntos de letras para opción múltiple: «a,c» ≡ «c, a». */
+  function mismasOpciones(elegidas, correctas) {
+    const norm = (x) => Array.from(new Set(String(x).toLowerCase().split(/[,\s;]+/).filter(Boolean))).sort().join(",");
+    return norm(elegidas) === norm(correctas);
+  }
+
+  const LETRAS = "abcdefghijklmnopqrstuvwxyz";
+
+  /* ------------------------------------------------------------------ */
+  /* Almacenamiento local (con tolerancia a que no exista)               */
+  /* ------------------------------------------------------------------ */
+  const PREFIJO = "lametrica:ej:" + (typeof location !== "undefined" ? location.pathname : "");
+
+  function leer(id) {
+    try {
+      const v = localStorage.getItem(PREFIJO + ":" + id);
+      return v ? JSON.parse(v) : null;
+    } catch (e) { return null; }
+  }
+  function guardar(id, estado) {
+    try { localStorage.setItem(PREFIJO + ":" + id, JSON.stringify(estado)); } catch (e) { /* sin almacenamiento */ }
+  }
+  function borrarTodo() {
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => localStorage.removeItem(k));
+    } catch (e) { /* nada */ }
+  }
+  function todos() {
+    const out = {};
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => {
+        out[k.slice(PREFIJO.length + 1)] = JSON.parse(localStorage.getItem(k));
+      });
+    } catch (e) { /* nada */ }
+    return out;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Capa DOM                                                            */
+  /* ------------------------------------------------------------------ */
+  const ETIQUETA = {
+    vf: "Verdadero o falso", opcion: "Test", numerico: "Cálculo", abierta: "Respuesta abierta",
+    programacion: "Programación", investigacion: "Investigación", encuesta: "Reflexión (no evaluada)",
+  };
+  const ICONO = { vf: "✓✗", opcion: "◉", numerico: "∑", abierta: "✎", programacion: "⌘", investigacion: "⌕", encuesta: "☰" };
+
+  function el(tag, props, ...hijos) {
+    const e = document.createElement(tag);
+    if (props) for (const k of Object.keys(props)) {
+      if (k === "class") e.className = props[k];
+      else if (k === "text") e.textContent = props[k];
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), props[k]);
+      else e.setAttribute(k, props[k]);
+    }
+    hijos.flat().forEach((h) => h && e.append(h));
+    return e;
+  }
+
+  function sacar(ej, clase) {
+    const n = ej.querySelector(":scope > ." + clase);
+    if (n) n.remove();
+    return n;
+  }
+
+  function mensaje(zona, tipo, texto) {
+    zona.className = "ej-feedback ej-" + tipo;
+    zona.textContent = texto;
+  }
+
+  function construir(ej, indice) {
+    const tipo = ej.dataset.tipo;
+    if (!ETIQUETA[tipo]) return null;
+    const id = ej.id || "ej-" + indice;
+    ej.id = id;
+    ej.classList.add("ej-activo");
+
+    const pista = sacar(ej, "pista");
+    const solucion = sacar(ej, "solucion");
+    const opciones = sacar(ej, "opciones");
+    const rubrica = sacar(ej, "rubrica");
+    const criterios = sacar(ej, "criterios");
+
+    const cab = el("div", { class: "ej-cabecera" },
+      el("span", { class: "ej-icono", "aria-hidden": "true", text: ICONO[tipo] }),
+      el("span", { class: "ej-tipo", text: "Ejercicio · " + ETIQUETA[tipo] }),
+      el("span", { class: "ej-estado", "aria-live": "polite" }));
+    ej.prepend(cab);
+
+    const zona = el("div", { class: "ej-ui" });
+    const fb = el("div", { class: "ej-feedback", role: "status", "aria-live": "polite" });
+    const botones = el("div", { class: "ej-botones" });
+    const estado = leer(id) || { estado: "pendiente", intentos: 0 };
+
+    const marca = () => {
+      const m = { correcto: "✔ Resuelto", hecho: "✔ Hecho", visto: "Solución vista", enviado: "Guardado", pendiente: "" }[estado.estado] || "";
+      cab.querySelector(".ej-estado").textContent = m;
+      ej.dataset.estado = estado.estado;
+      guardar(id, estado);
+      actualizarProgreso();
+    };
+
+    const revelar = (nodo) => { if (nodo) { nodo.classList.remove("ej-oculto"); nodo.hidden = false; } };
+    [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+
+    const btn = (texto, fn, clase) => el("button", { type: "button", class: "ej-btn " + (clase || ""), onclick: fn, text: texto });
+
+    const btnPista = pista ? btn("Pista", () => { revelar(pista); }) : null;
+    const btnSolucion = solucion ? btn("Ver solución", () => {
+      revelar(solucion);
+      if (estado.estado === "pendiente") estado.estado = "visto";
+      marca();
+    }) : null;
+
+    /* ---------- por tipo ---------- */
+    let comprobar = null;
+    let recoger = () => null;
+
+    if (tipo === "vf") {
+      const grupo = el("div", { role: "radiogroup", "aria-label": "Verdadero o falso", class: "ej-vf" });
+      ["verdadero", "falso"].forEach((v) => {
+        grupo.append(el("label", { class: "ej-opcion" },
+          el("input", { type: "radio", name: id, value: v }), el("span", { text: v === "verdadero" ? "Verdadero" : "Falso" })));
+      });
+      zona.append(grupo);
+      recoger = () => (zona.querySelector("input:checked") || {}).value || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (r === normalizaVF(ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else { mensaje(fb, "mal", "No es correcto. Piénsalo otra vez o pide la pista."); }
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "opcion") {
+      const multiple = ej.dataset.multiple === "true";
+      const items = opciones ? Array.from(opciones.querySelectorAll(":scope > ul > li, :scope > ol > li")) : [];
+      const grupo = el("div", { role: multiple ? "group" : "radiogroup", class: "ej-opciones" });
+      items.forEach((li, i) => {
+        const l = LETRAS[i];
+        const input = el("input", { type: multiple ? "checkbox" : "radio", name: id, value: l });
+        const etiqueta = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-letra", text: l + ")" }), el("span", { class: "ej-texto" }));
+        while (li.firstChild) etiqueta.querySelector(".ej-texto").append(li.firstChild);
+        grupo.append(etiqueta);
+      });
+      zona.append(grupo);
+      recoger = () => Array.from(zona.querySelectorAll("input:checked")).map((i) => i.value).join(",") || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (mismasOpciones(r, ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else mensaje(fb, "mal", "No es correcto. Revisa el razonamiento.");
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "numerico" || tipo === "programacion") {
+      if (ej.dataset.respuesta !== undefined && ej.dataset.respuesta !== "") {
+        const entrada = el("input", { type: "text", inputmode: "decimal", autocomplete: "off", class: "ej-entrada", "aria-label": "Tu resultado", placeholder: "Tu resultado" });
+        zona.append(el("div", { class: "ej-numero" }, entrada, ej.dataset.unidad ? el("span", { class: "ej-unidad", text: ej.dataset.unidad }) : null));
+        entrada.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); comprobar(); } });
+        recoger = () => entrada.value.trim() || null;
+        comprobar = () => {
+          const r = recoger();
+          if (!r) return mensaje(fb, "aviso", "Escribe un valor numérico.");
+          const c = comprobarNumerico(r, ej.dataset.respuesta, ej.dataset.tol);
+          if (c.invalida) return mensaje(fb, "aviso", "No entiendo ese número. Puedes escribir 0,031 o 3.1e-2.");
+          estado.intentos++; estado.respuesta = r;
+          if (c.ok) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+          else mensaje(fb, "mal", "Aún no. Revisa las unidades y los pasos (tolerancia " + (ej.dataset.tol || "1%") + ").");
+          marca();
+        };
+        if (estado.respuesta) entrada.value = estado.respuesta;
+      }
+    }
+
+    if (tipo === "abierta" || tipo === "investigacion" || tipo === "programacion" || tipo === "encuesta") {
+      const necesitaTexto = tipo === "abierta" || tipo === "investigacion" || (tipo === "encuesta" && ej.dataset.texto === "true");
+      if (necesitaTexto) {
+        const ta = el("textarea", { class: "ej-texto-libre", rows: tipo === "investigacion" ? "6" : "4", "aria-label": "Tu respuesta", placeholder: "Escribe aquí tu respuesta (se guarda solo en este navegador)." });
+        ta.value = estado.texto || "";
+        ta.addEventListener("input", () => { estado.texto = ta.value; guardar(id, estado); });
+        zona.append(ta);
+      }
+      const lista = rubrica || criterios;
+      if (lista && tipo !== "encuesta") {
+        const titulo = tipo === "investigacion" ? "Criterios (márcalos cuando los cumplas)" : "Autoevalúate: ¿tu respuesta incluye…?";
+        const caja = el("fieldset", { class: "ej-rubrica" }, el("legend", { text: titulo }));
+        const marcados = estado.rubrica || [];
+        Array.from(lista.querySelectorAll("li")).forEach((li, i) => {
+          const cb = el("input", { type: "checkbox", value: String(i) });
+          cb.checked = marcados.includes(i);
+          cb.addEventListener("change", () => {
+            estado.rubrica = Array.from(caja.querySelectorAll("input:checked")).map((x) => Number(x.value));
+            guardar(id, estado);
+          });
+          const l = el("label", { class: "ej-opcion" }, cb, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          caja.append(l);
+        });
+        zona.append(caja);
+      }
+      if (tipo !== "programacion" || !comprobar) {
+        comprobar = () => {
+          if (tipo === "encuesta") {
+            const r = recoger();
+            estado.estado = "enviado";
+            mensaje(fb, "ok", "Guardado en este navegador. Puedes cambiarlo cuando quieras.");
+            marca(); return;
+          }
+          const hechos = (estado.rubrica || []).length;
+          const total = (lista ? lista.querySelectorAll("li").length : 0);
+          if (total && hechos < total) return mensaje(fb, "aviso", "Marca todos los puntos cuando los cumplas, o mira la solución modelo.");
+          estado.estado = "hecho"; mensaje(fb, "ok", "Hecho. Compara con la solución modelo si quieres."); marca();
+        };
+      }
+    }
+
+    if (tipo === "encuesta") {
+      const items = opciones ? Array.from(opciones.querySelectorAll("li")) : [];
+      if (items.length) {
+        const grupo = el("div", { role: "radiogroup", class: "ej-opciones" });
+        items.forEach((li, i) => {
+          const input = el("input", { type: "radio", name: id, value: String(i) });
+          input.checked = estado.respuesta === String(i);
+          const l = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          grupo.append(l);
+        });
+        zona.prepend(grupo);
+        recoger = () => (zona.querySelector("input[type=radio]:checked") || {}).value || null;
+        const previo = comprobar;
+        comprobar = () => { const r = recoger(); estado.respuesta = r; previo(); };
+      }
+    }
+
+    /* restaurar estado visual */
+    if (estado.respuesta && (tipo === "vf" || tipo === "opcion")) {
+      String(estado.respuesta).split(",").forEach((v) => {
+        const i = zona.querySelector('input[value="' + v + '"]'); if (i) i.checked = true;
+      });
+    }
+
+    if (comprobar) botones.append(btn(tipo === "encuesta" ? "Guardar" : tipo === "abierta" || tipo === "investigacion" ? "He terminado" : "Comprobar", comprobar, "ej-btn-principal"));
+    if (btnPista) botones.append(btnPista);
+    if (btnSolucion) botones.append(btnSolucion);
+    botones.append(btn("Reiniciar", () => {
+      estado.estado = "pendiente"; estado.intentos = 0; delete estado.respuesta; delete estado.rubrica; delete estado.texto;
+      zona.querySelectorAll("input").forEach((i) => { if (i.type === "checkbox" || i.type === "radio") i.checked = false; else i.value = ""; });
+      zona.querySelectorAll("textarea").forEach((t) => (t.value = ""));
+      [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+      fb.className = "ej-feedback"; fb.textContent = ""; marca();
+    }, "ej-btn-sec"));
+
+    ej.append(zona, botones, fb);
+    [pista, solucion].forEach((n) => { if (n) ej.append(n); });
+    marca();
+    return ej;
+  }
+
+  /* ---------- panel de progreso ---------- */
+  let panel = null;
+  function actualizarProgreso() {
+    if (!panel) return;
+    const lista = Array.from(document.querySelectorAll(".ejercicio.ej-activo"));
+    const evaluables = lista.filter((e) => e.dataset.tipo !== "encuesta");
+    const hechos = evaluables.filter((e) => ["correcto", "hecho"].includes(e.dataset.estado)).length;
+    const vistos = evaluables.filter((e) => e.dataset.estado === "visto").length;
+    panel.querySelector(".ej-resumen").textContent =
+      "Tu progreso en esta unidad: " + hechos + " de " + evaluables.length + " ejercicios resueltos" + (vistos ? " (" + vistos + " con la solución vista)" : "") + ".";
+    const barra = panel.querySelector("progress");
+    barra.max = Math.max(evaluables.length, 1); barra.value = hechos;
+  }
+
+  function crearPanel(n) {
+    panel = el("div", { class: "ej-progreso", role: "region", "aria-label": "Progreso de los ejercicios" },
+      el("p", { class: "ej-resumen" }),
+      el("progress", { max: "1", value: "0", "aria-hidden": "true" }),
+      el("p", { class: "ej-nota", text: "Tus respuestas y tu progreso se guardan solo en este navegador. No se envían a ningún sitio." }),
+      el("div", { class: "ej-botones" },
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Descargar mis respuestas", onclick: () => {
+          const blob = new Blob([JSON.stringify({ pagina: location.pathname, fecha: new Date().toISOString(), respuestas: todos() }, null, 2)], { type: "application/json" });
+          const a = el("a", { href: URL.createObjectURL(blob), download: "lametrica-respuestas.json" }); a.click();
+        } }),
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Borrar mis respuestas", onclick: () => {
+          if (confirm("¿Borrar todas tus respuestas y tu progreso en esta página?")) { borrarTodo(); location.reload(); }
+        } })));
+    const primero = document.querySelector(".ejercicio.ej-activo");
+    const hueco = document.querySelector("#quarto-document-content h2, main h2");
+    (hueco || primero).before(panel);
+  }
+
+  function iniciar() {
+    const lista = Array.from(document.querySelectorAll(".ejercicio"));
+    if (!lista.length) return;
+    lista.forEach((e, i) => construir(e, i + 1));
+    crearPanel(lista.length);
+    actualizarProgreso();
+  }
+
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
+    else iniciar();
+  }
+
+  if (typeof globalThis !== "undefined" && globalThis.__EJ_TEST__) {
+    globalThis.__EJ_EXPORTS__ = { parseNumero, parseTolerancia, comprobarNumerico, normalizaVF, mismasOpciones };
+  }
+})();
+
+</script>
+
+
+
+
+</body></html>

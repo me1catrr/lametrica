@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
+
+<title>29&nbsp; Cargas y matriz de masa – La métrica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/referencias.html" rel="next">
+<link href="../../book/E-elementos-finitos/E7-hu-washizu-subdominios.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html">Bloque E · Elementos finitos de lámina</a></li><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E8-cargas-masa.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">La métrica</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/mapa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapa del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque A · Preludio: la forma que resiste</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A1-caparazon-hypar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La cáscara y el paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A2-vectores-y-coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Los objetos físicos no dependen de las coordenadas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque B · Cálculo tensorial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B1-transformacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B2-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B3-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B4-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B5-analisis-tensorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Álgebra y análisis tensorial en curvilíneas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque C · Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C1-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C2-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C3-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C4-geodesicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Curvas sobre superficies: geodésicas y compatibilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C5-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C6-bestiario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bestiario de láminas: cilindro, esfera, cono y placa oblicua</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque D · Elasticidad: del sólido a la lámina</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D1-deformacion-tension.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Deformación y tensión en el sólido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D2-hooke-energia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Ley de Hooke y energía de deformación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D3-cinematica-lamina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cinemática de la lámina</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D4-kirchhoff-love.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">La hipótesis de Kirchhoff–Love</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D5-reissner-mindlin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Reissner–Mindlin: el cortante transversal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D6-deformaciones-desplazamientos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relaciones deformación–desplazamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D7-leyes-constitutivas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Leyes constitutivas de la lámina</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D8-principios-variacionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Principios variacionales</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque E · Elementos finitos de lámina</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E1-mef-barra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">El método de elementos finitos en una barra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E2-cuadrilatero-plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">El cuadrilátero bilineal en tensión plana</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E3-elemento-lamina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">El elemento lámina de cuatro nodos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E4-matrices-b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Matrices deformación–desplazamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E5-bloqueo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bloqueo y modos espurios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E6-interpolacion-deformaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Interpolación de deformaciones</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E7-hu-washizu-subdominios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Hu–Washizu por subdominios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E8-cargas-masa.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notación y convenios</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#objetivos-y-prerrequisitos" id="toc-objetivos-y-prerrequisitos" class="nav-link active" data-scroll-target="#objetivos-y-prerrequisitos">Objetivos y prerrequisitos</a></li>
+  <li><a href="#sec-cargas-e8" id="toc-sec-cargas-e8" class="nav-link" data-scroll-target="#sec-cargas-e8"><span class="header-section-number">29.1</span> Cargas consistentes</a></li>
+  <li><a href="#sec-peso-e8" id="toc-sec-peso-e8" class="nav-link" data-scroll-target="#sec-peso-e8"><span class="header-section-number">29.2</span> Peso propio de una lámina</a></li>
+  <li><a href="#sec-masa-e8" id="toc-sec-masa-e8" class="nav-link" data-scroll-target="#sec-masa-e8"><span class="header-section-number">29.3</span> Matriz de masa</a></li>
+  <li><a href="#sec-concentrada-e8" id="toc-sec-concentrada-e8" class="nav-link" data-scroll-target="#sec-concentrada-e8"><span class="header-section-number">29.4</span> Masa concentrada y comparación</a></li>
+  <li><a href="#sec-julia-e8" id="toc-sec-julia-e8" class="nav-link" data-scroll-target="#sec-julia-e8"><span class="header-section-number">29.5</span> Práctica guiada en Julia</a></li>
+  <li><a href="#sec-ejercicios-e8" id="toc-sec-ejercicios-e8" class="nav-link" data-scroll-target="#sec-ejercicios-e8"><span class="header-section-number">29.6</span> Ejercicios</a></li>
+  <li><a href="#la-doy-por-superada-si" id="toc-la-doy-por-superada-si" class="nav-link" data-scroll-target="#la-doy-por-superada-si">La doy por superada si…</a></li>
+  <li><a href="#referencias-unidad" id="toc-referencias-unidad" class="nav-link" data-scroll-target="#referencias-unidad">Referencias</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html">Bloque E · Elementos finitos de lámina</a></li><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E8-cargas-masa.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></h1>
+<p class="subtitle lead">Fuerzas nodales equivalentes, peso propio con espesor, masa consistente y masa concentrada</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="fig-masa-barra" class="portada quarto-float quarto-figure quarto-figure-center anchored" alt="Gráfica con dos curvas que se acercan a uno desde arriba la azul y desde abajo la naranja al aumentar el número de elementos de uno a diez">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-masa-barra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/masa-barra.svg" class="portada img-fluid figure-img" alt="Gráfica con dos curvas que se acercan a uno desde arriba la azul y desde abajo la naranja al aumentar el número de elementos de uno a diez">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-masa-barra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;29.1: Primera frecuencia de una barra empotrada–libre calculada con la <strong>masa consistente</strong> (azul), siempre por encima de la exacta, y con la <strong>masa concentrada</strong> (naranja discontinuo), por debajo, frente al número de elementos. Ambas convergen. Cálculo <em>calculado</em> con matrices de <span class="math inline">\(2\times2\)</span>.
+</figcaption>
+</figure>
+</div>
+<div class="pregunta-guia">
+<p>Cómo se traduce una carga repartida (o el propio peso de la lámina) a fuerzas en los nodos, y cómo se reparte la masa para poder calcular frecuencias</p>
+</div>
+<section id="objetivos-y-prerrequisitos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objetivos-y-prerrequisitos">Objetivos y prerrequisitos</h2>
+<p><strong>Objetivos.</strong> Al terminar el tema sabrás:</p>
+<ul>
+<li>obtener el <strong>vector de cargas consistente</strong> de una carga superficial y comprobar que reparte el total correctamente;</li>
+<li>escribir el <strong>peso propio</strong> de una lámina con su espesor, incluida la corrección por curvatura;</li>
+<li>construir la <strong>matriz de masa consistente</strong> a partir de la energía cinética y reconocer sus términos;</li>
+<li>comparar <strong>masa consistente y concentrada</strong> y saber cuál sobrestima y cuál subestima las frecuencias;</li>
+<li>verificar la masa total y el peso total de una malla.</li>
+</ul>
+<p><strong>Prerrequisitos.</strong> <a href="../../book/E-elementos-finitos/E7-hu-washizu-subdominios.html">E7</a> y <a href="../../book/E-elementos-finitos/E1-mef-barra.html">E1</a>.</p>
+<p><strong>Secciones del tema</strong></p>
+<ul>
+<li><strong><a href="#sec-cargas-e8" class="quarto-xref"><span>Sección 29.1</span></a></strong> · Cargas consistentes · <strong><a href="#sec-peso-e8" class="quarto-xref"><span>Sección 29.2</span></a></strong> · Peso propio de una lámina · <strong><a href="#sec-masa-e8" class="quarto-xref"><span>Sección 29.3</span></a></strong> · Matriz de masa</li>
+<li><strong><a href="#sec-concentrada-e8" class="quarto-xref"><span>Sección 29.4</span></a></strong> · Masa concentrada · <strong><a href="#sec-julia-e8" class="quarto-xref"><span>Sección 29.5</span></a></strong> · Práctica guiada</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Notación y convenciones de este tema">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Notación y convenciones de este tema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Símbolo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf f(\theta)\)</span></td>
+<td>carga superficial cartesiana por unidad de superficie media</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathbf X\)</span></td>
+<td>fuerza por unidad de <strong>volumen</strong> (por ejemplo, el peso, <span class="math inline">\(\mathbf X=\rho\,\mathbf g\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf F_e\)</span></td>
+<td>vector de cargas nodales del elemento (<span class="math inline">\(20\times1\)</span>)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\rho,\ t\)</span></td>
+<td>densidad y espesor de la lámina</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(H,\ K\)</span></td>
+<td>curvatura media y de Gauss de la superficie (tema C3)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathbf M_e\)</span></td>
+<td>matriz de masa del elemento (<span class="math inline">\(20\times20\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\boldsymbol\vartheta=\varphi_\alpha\mathbf a^\alpha\)</span></td>
+<td>giro del director (tema E3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="ingenieros callout callout-style-simple callout-note callout-titled" title="Explicación para ingenieros: la manta sobre los cuatro apoyos">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Explicación para ingenieros: la manta sobre los cuatro apoyos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una carga repartida sobre un elemento es como <strong>un peso apoyado sobre una manta tensa sujeta por sus cuatro esquinas</strong>: cada esquina soporta la parte que le corresponde por cercanía. Las funciones de forma son esa regla de «cercanía»: un punto cerca del nodo 1 le manda casi toda su carga y poca a los demás. Con una presión uniforme sobre un rectángulo cada nodo recibe <strong>un cuarto</strong> del total. La masa se reparte igual: la masa consistente la distribuye <strong>con la misma regla</strong> y la concentrada la <strong>«aparca»</strong> directamente en los nodos, como pesas colgadas de las esquinas.</p>
+</div>
+</div>
+</section>
+<section id="sec-cargas-e8" class="level2" data-number="29.1">
+<h2 data-number="29.1" class="anchored" data-anchor-id="sec-cargas-e8"><span class="header-section-number">29.1</span> Cargas consistentes</h2>
+<p>La carga de un elemento es el <strong>trabajo virtual</strong> de las fuerzas exteriores. Para una carga por unidad de superficie media <span class="math inline">\(\mathbf f\)</span>, y con el desplazamiento virtual <span class="math inline">\(\delta\mathbf u=\delta u_\alpha\mathbf a^\alpha+\delta u_3\hat{\mathbf n}\)</span>:</p>
+<p><span id="eq-carga-e8"><span class="math display">\[
+\delta W=\int_{A_e}\bigl(\delta u_\alpha\,\mathbf a^\alpha\!\cdot\mathbf f+\delta u_3\,\hat{\mathbf n}\!\cdot\mathbf f\bigr)\,dA\ \ \Longrightarrow\ \ \mathbf F_e=\int_{A_e}\mathbf T(\xi,\eta)^{\mathsf T}\begin{pmatrix}\mathbf a^1\!\cdot\mathbf f\\\mathbf a^2\!\cdot\mathbf f\\\hat{\mathbf n}\!\cdot\mathbf f\end{pmatrix}dA,
+\tag{29.1}\]</span></span></p>
+<p>donde <span class="math inline">\(\mathbf T\)</span> lleva <span class="math inline">\(u_1,u_2,u_3\)</span> de los nodos a los valores interpolados (con las funciones <span class="math inline">\(N_k\)</span>). Es el mismo <span class="math inline">\(\int\mathbf N^{\mathsf T}\mathbf b\,dx\)</span> de la barra (E1), en dos dimensiones y con la geometría de la superficie. Los <strong>giros</strong> no reciben carga: una fuerza superficial no hace trabajo en <span class="math inline">\(\delta\varphi\)</span>.</p>
+<div id="exm-presion-e8" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 29.1 (Ejemplo resuelto: presión sobre un elemento plano)</strong></span> Elemento plano de <span class="math inline">\(100\times50\)</span> mm con una presión uniforme <span class="math inline">\(p=0{,}01\)</span> N/mm² en dirección <span class="math inline">\(-z\)</span>. Entonces <span class="math inline">\(\mathbf a^\alpha\!\cdot\mathbf f=0\)</span> y <span class="math inline">\(\hat{\mathbf n}\!\cdot\mathbf f=-p\)</span> (con <span class="math inline">\(\hat{\mathbf n}=+\hat{\mathbf z}\)</span>). Con <span class="math inline">\(N_k\)</span> bilineales y <span class="math inline">\(\int_AN_k\,dA=A/4\)</span>: <span class="math display">\[
+F_{3k}=\int_AN_k\,(-p)\,dA=-\frac{pA}{4}=-\frac{0{,}01\cdot5000}{4}=-\mathbf{12{,}5}\ \text{N}\quad(k=1,\dots,4),
+\]</span> y los demás términos, nulos. La suma (<span class="math inline">\(50\)</span> N) es la fuerza total aplicada. Resultado <em>analítico</em>; la práctica lo reproduce con <code>cargas_elemento</code>.</p>
+</div>
+<div id="e8-carga-nodal" class="ejercicio" data-tipo="numerico" data-respuesta="12.5" data-tol="0.5%" data-unidad="N">
+<p>En el <a href="#exm-presion-e8" class="quarto-xref">Ejemplo&nbsp;<span>29.1</span></a>, ¿qué fuerza (en valor absoluto) recibe cada nodo?</p>
+<div class="solucion">
+<p><span class="math inline">\(|F_3|=pA/4=0{,}01\cdot5000/4=12{,}5\)</span> N.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Dos puntos que suelen confundir">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Dos puntos que suelen confundir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>«Consistente» no es «repartir a partes iguales».</strong> En un elemento rectangular con carga uniforme sí coincide, pero en uno distorsionado o con carga variable el reparto es otro; lo da la integral <a href="#eq-carga-e8" class="quarto-xref">ecuación&nbsp;<span>29.1</span></a>.</li>
+<li><strong>Los g.d.l. son covariantes</strong>: <span class="math inline">\(F_{1},F_{2}\)</span> son trabajos por unidad de <span class="math inline">\(u_1,u_2\)</span> (no fuerzas cartesianas). Para un elemento curvo, el total de fuerza se recupera sumando <span class="math inline">\(\delta_{\text{rígido}}^{\mathsf T}\mathbf F\)</span>, con la traslación rígida expresada en esos g.d.l.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec-peso-e8" class="level2" data-number="29.2">
+<h2 data-number="29.2" class="anchored" data-anchor-id="sec-peso-e8"><span class="header-section-number">29.2</span> Peso propio de una lámina</h2>
+<p>El peso es una fuerza por unidad de <strong>volumen</strong>, <span class="math inline">\(\mathbf X=\rho\,\mathbf g\)</span>. Para pasarlo a carga superficial hay que integrar en el espesor, con el factor de volumen <span class="math inline">\(\mu=1-2H\theta^3+K(\theta^3)^2\)</span> del tema C3 y el desplazamiento virtual de la hipótesis cinemática <span class="math inline">\(\delta\mathbf u_{3D}=(\delta u_\rho+\theta^3\delta\varphi_\rho)\mathbf a^\rho+\delta u_3\hat{\mathbf n}\)</span>:</p>
+<p><span id="eq-peso-e8"><span class="math display">\[
+\delta W=\int_A\Bigl[t\bigl(1+\tfrac{Kt^2}{12}\bigr)\bigl(X^\rho\delta u_\rho+X^3\delta u_3\bigr)-\tfrac{Ht^3}{6}\,X^\rho\delta\varphi_\rho\Bigr]dA,\qquad X^\rho=\mathbf a^\rho\!\cdot\mathbf X,\ \ X^3=\hat{\mathbf n}\!\cdot\mathbf X .
+\tag{29.2}\]</span></span></p>
+<p>Se obtiene con los momentos <span class="math inline">\(\int\mu\,d\theta^3=t(1+Kt^2/12)\)</span> y <span class="math inline">\(\int\theta^3\mu\,d\theta^3=-Ht^3/6\)</span>, descomponiendo <span class="math inline">\(\mathbf X\)</span> en la base de la <strong>superficie media</strong> (por eso <span class="math inline">\(X^\rho\)</span> y <span class="math inline">\(X^3\)</span> no dependen de <span class="math inline">\(\theta^3\)</span>). En el orden cero,</p>
+<p><span id="eq-peso0-e8"><span class="math display">\[
+\delta W\approx t\int_A\bigl(X^\rho\delta u_\rho+X^3\delta u_3\bigr)dA,
+\tag{29.3}\]</span></span></p>
+<p>con error relativo <span class="math inline">\(O\bigl((t/R)^2\bigr)\)</span>: es la carga superficial <span class="math inline">\(\mathbf f=t\,\mathbf X\)</span> de <a href="#eq-carga-e8" class="quarto-xref">ecuación&nbsp;<span>29.1</span></a>. Los términos con <span class="math inline">\(K\)</span> y con <span class="math inline">\(\delta\varphi\)</span> sólo importan si la lámina es gruesa respecto de su radio de curvatura.</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Corrección respecto de unos apuntes previos">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Corrección respecto de unos apuntes previos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La expresión de partida de unos apuntes previos del autor (con un factor <span class="math inline">\(\mu^\rho_\alpha\)</span> multiplicando las componentes del peso en la base de la superficie media) <strong>no reproduce el trabajo de un peso uniforme</strong>: para <span class="math inline">\(t/R=0{,}1\)</span> el error relativo es <span class="math inline">\(\sim10^{-4}\)</span> en cilindro, esfera e hypar. La versión <a href="#eq-peso-e8" class="quarto-xref">ecuación&nbsp;<span>29.2</span></a> se ha derivado de nuevo y se ha comprobado numéricamente (error relativo <span class="math inline">\(\sim10^{-16}\)</span> en las tres superficies, con <span class="math inline">\(t=0{,}2\)</span> y <span class="math inline">\(0{,}05\)</span>). <strong>Limitación:</strong> la comprobación usa la misma cinemática; no contrasta que sea la del elemento de otros autores.</p>
+</div>
+</div>
+<div id="e8-peso-giros" class="ejercicio" data-tipo="vf" data-respuesta="verdadero">
+<p>En el orden cero de <a href="#eq-peso-e8" class="quarto-xref">ecuación&nbsp;<span>29.2</span></a>, el peso propio de la lámina sólo carga los desplazamientos <span class="math inline">\(\delta u_\rho\)</span> y <span class="math inline">\(\delta u_3\)</span>, no los giros <span class="math inline">\(\delta\varphi_\rho\)</span>.</p>
+<div class="solucion">
+<p><strong>Verdadero.</strong> El acoplamiento con los giros, <span class="math inline">\(-\tfrac{Ht^3}{6}X^\rho\delta\varphi_\rho\)</span>, es <span class="math inline">\(O\bigl((t/R)^2\bigr)\)</span> frente al término principal y se descarta.</p>
+</div>
+</div>
+</section>
+<section id="sec-masa-e8" class="level2" data-number="29.3">
+<h2 data-number="29.3" class="anchored" data-anchor-id="sec-masa-e8"><span class="header-section-number">29.3</span> Matriz de masa</h2>
+<p>La energía cinética de la lámina, con el mismo desplazamiento 3D y el desarrollo exacto de <span class="math inline">\(\mu\)</span>, es</p>
+<p><span id="eq-cinetica-e8"><span class="math display">\[
+T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\tfrac{4Ht^3}{12}\,\dot{\mathbf u}\!\cdot\!\dot{\boldsymbol\vartheta}+\tfrac{t^3}{12}\,|\dot{\boldsymbol\vartheta}|^2\Bigr]dA,
+\tag{29.4}\]</span></span></p>
+<p>con <span class="math inline">\(|\dot{\mathbf u}|^2=a^{\alpha\beta}\dot u_\alpha\dot u_\beta+\dot u_3^2\)</span>, <span class="math inline">\(|\dot{\boldsymbol\vartheta}|^2=a^{\alpha\beta}\dot\varphi_\alpha\dot\varphi_\beta\)</span> y <span class="math inline">\(\dot{\mathbf u}\cdot\dot{\boldsymbol\vartheta}=a^{\alpha\beta}\dot u_\alpha\dot\varphi_\beta\)</span>. Interpolando con <span class="math inline">\(N_k\)</span>, <span class="math inline">\(T=\tfrac12\dot{\boldsymbol\delta}^{\mathsf T}\mathbf M_e\dot{\boldsymbol\delta}\)</span>, con</p>
+<p><span id="eq-masa-e8"><span class="math display">\[
+\mathbf M_e=\rho\int_A\Bigl[(t+\tfrac{Kt^3}{12})\,\mathbf N_u^{\mathsf T}\mathbf a^{-1}\mathbf N_u+\ldots\Bigr]dA\qquad(\text{inercia de traslación, de acoplamiento y rotatoria}).
+\tag{29.5}\]</span></span></p>
+<p>Tres bloques: <strong>traslación</strong> (<span class="math inline">\(\rho t\)</span> por la métrica inversa en <span class="math inline">\(u_1,u_2\)</span> y por 1 en <span class="math inline">\(u_3\)</span>), <strong>rotatoria</strong> (<span class="math inline">\(\rho t^3/12\)</span> en los giros) y <strong>acoplamiento</strong> (proporcional a <span class="math inline">\(H\)</span>, pequeño). Con la integración <span class="math inline">\(2\times2\)</span> el programa la forma exactamente y <strong>es la misma energía</strong> de la que sale la matriz de rigidez en <a href="E7-hu-washizu-subdominios.html#eq-hw-e7" class="quarto-xref">ecuación&nbsp;<span>28.1</span></a>: <span class="math inline">\(\mathbf M\)</span> es simétrica y semidefinida positiva.</p>
+<div id="exm-masa-e8" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 29.2 (Ejemplo resuelto: la masa de un elemento)</strong></span> Elemento de acero sobre un cilindro de <span class="math inline">\(R=0{,}5\)</span> m, de <span class="math inline">\(0{,}1\)</span> m de longitud axial y <span class="math inline">\(0{,}1\)</span> rad de abertura, con <span class="math inline">\(t=5\)</span> mm y <span class="math inline">\(\rho=7850\)</span> kg/m³. Una <strong>traslación axial rígida</strong> unidad (<span class="math inline">\(u_1=1\)</span> en los cuatro nodos) debe dar <span class="math inline">\(\boldsymbol\delta^{\mathsf T}\mathbf M\boldsymbol\delta=m\)</span> (la masa total). Como <span class="math inline">\(K=0\)</span> en el cilindro, <span class="math inline">\(m=\rho\,t\,A=7850\cdot0{,}005\cdot(0{,}1\cdot0{,}5\cdot0{,}1)=\mathbf{0{,}19625}\)</span> kg, con <span class="math inline">\(A=0{,}005\)</span> m². Resultado <em>analítico</em>; la práctica lo obtiene con <code>masa_elemento</code>.</p>
+</div>
+<div id="e8-masa" class="ejercicio" data-tipo="numerico" data-respuesta="0.19625" data-tol="0.5%" data-unidad="kg">
+<p>En el <a href="#exm-masa-e8" class="quarto-xref">Ejemplo&nbsp;<span>29.2</span></a>, ¿cuánto vale la masa del elemento?</p>
+<div class="solucion">
+<p><span class="math inline">\(m=\rho tA=7850\cdot0{,}005\cdot0{,}005=0{,}19625\)</span> kg.</p>
+</div>
+</div>
+</section>
+<section id="sec-concentrada-e8" class="level2" data-number="29.4">
+<h2 data-number="29.4" class="anchored" data-anchor-id="sec-concentrada-e8"><span class="header-section-number">29.4</span> Masa concentrada y comparación</h2>
+<p>La <strong>masa concentrada</strong> (diagonal) se obtiene colocando en cada nodo <span class="math inline">\(\rho tA/4\)</span> de masa (y la inercia rotatoria que corresponda), sin acoplamientos. Con la misma malla da frecuencias <strong>por debajo</strong> de las exactas, y la consistente <strong>por encima</strong> (<a href="#fig-masa-barra" class="quarto-xref">Figura&nbsp;<span>29.1</span></a>). Para una barra:</p>
+<p><span class="math display">\[
+\mathbf M_{\text{cons}}=\frac{\rho Ah}{6}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix},\qquad \mathbf M_{\text{conc}}=\frac{\rho Ah}{2}\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}.
+\]</span></p>
+<div class="ingenieros callout callout-style-simple callout-note callout-titled" title="Explicación para ingenieros: ¿cuál uso para calcular frecuencias?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Explicación para ingenieros: ¿cuál uso para calcular frecuencias?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Consistente</strong>: da <strong>cota superior</strong> de las frecuencias (el modelo es algo más rígido que la realidad); suele converger más rápido y es la preferible para analizar modos.</li>
+<li><strong>Concentrada</strong>: es diagonal (se resuelve con más rapidez en cálculos en el tiempo con pasos explícitos), da una cota <strong>inferior</strong> y no necesita integrar nada.</li>
+<li><strong>Truco</strong>: una media de ambas suele estar muy cerca de la frecuencia exacta.</li>
+</ul>
+</div>
+</div>
+<div id="e8-masa-cota" class="ejercicio" data-tipo="opcion" data-respuesta="a">
+<p>Con la misma malla de elementos de barra lineales, ¿qué cota dan las frecuencias de la <strong>masa consistente</strong> respecto de las exactas?</p>
+<div class="opciones">
+<ul>
+<li>Cota superior (valores iguales o mayores)</li>
+<li>Cota inferior (valores iguales o menores)</li>
+<li>Pueden ser mayores o menores según el modo</li>
+<li>Son exactas en todos los modos</li>
+</ul>
+</div>
+<div class="solucion">
+<p>Cota superior: el espacio de interpolación restringe el movimiento (principio del mínimo de Rayleigh), y la masa consistente conserva la energía cinética del campo interpolado, de modo que <span class="math inline">\(\omega_h\ge\omega\)</span> (<a href="#fig-masa-barra" class="quarto-xref">Figura&nbsp;<span>29.1</span></a>).</p>
+</div>
+</div>
+<div class="aplicacion callout callout-style-simple callout-tip callout-titled" title="Aplicación real: cubiertas y cráneos bajo cargas dinámicas">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Aplicación real: cubiertas y cráneos bajo cargas dinámicas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado ilustrativo">ilustrativo</span> El análisis modal de una cubierta o de una torre de refrigeración es el paso previo a estudiar su respuesta a <strong>viento</strong> y <strong>sismo</strong>: se necesita la masa real de la lámina (incluido el peso propio como carga estática) y sus frecuencias. En biomecánica, el mismo problema aparece al estimar las frecuencias propias de huesos o de la cavidad craneal bajo impacto. <em>Idea de aplicación sin fuente verificada: es una orientación, no una cita.</em></p>
+</div>
+</div>
+</section>
+<section id="sec-julia-e8" class="level2" data-number="29.5">
+<h2 data-number="29.5" class="anchored" data-anchor-id="sec-julia-e8"><span class="header-section-number">29.5</span> Práctica guiada en Julia</h2>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo computacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado calculado">calculado</span> (1) La carga de presión del <a href="#exm-presion-e8" class="quarto-xref">Ejemplo&nbsp;<span>29.1</span></a> y la masa del <a href="#exm-masa-e8" class="quarto-xref">Ejemplo&nbsp;<span>29.2</span></a> con <code>cargas_elemento</code> y <code>masa_elemento</code>. (2) El <strong>peso total</strong> de un cuarto de cilindro de radio <span class="math inline">\(R=0{,}5\)</span>, longitud 1 y <span class="math inline">\(t=0{,}01\)</span> (carga <span class="math inline">\(\mathbf f=t\mathbf X\)</span>, con <span class="math inline">\(\mathbf X=(0,0,-1)\)</span>), y su convergencia a <span class="math inline">\(0{,}01\cdot R\cdot\pi/2\)</span> al refinar la malla.</p>
+</div>
+</div>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Geometria</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) Presión sobre un elemento plano de 100×50 mm</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Xp <span class="op">=</span> [<span class="fl">0.0</span> <span class="fl">100</span> <span class="fl">100</span> <span class="fl">0</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">50</span> <span class="fl">50</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> <span class="fu">cargas_elemento</span>(<span class="fu">placa_oblicua</span>(<span class="cn">π</span> <span class="op">/</span> <span class="fl">2</span>), Xp, θ <span class="op">-&gt;</span> [<span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">0.01</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Masa de un elemento de cilindro (SI): traslación axial rígida</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">0.5</span>; r <span class="op">=</span> θ <span class="op">-&gt;</span> [θ[<span class="fl">1</span>], R <span class="op">*</span> <span class="fu">sin</span>(θ[<span class="fl">2</span>]), R <span class="op">*</span> <span class="fu">cos</span>(θ[<span class="fl">2</span>])]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="fl">0.0</span> <span class="fl">0.1</span> <span class="fl">0.1</span> <span class="fl">0</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0.1</span> <span class="fl">0.1</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> <span class="fu">masa_elemento</span>(r, X, <span class="fl">7850.0</span>, <span class="fl">0.005</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>δ <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">20</span>); <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>; δ[<span class="fl">5</span>(k<span class="op">-</span><span class="fl">1</span>)<span class="op">+</span><span class="fl">1</span>] <span class="op">=</span> <span class="fl">1.0</span>; <span class="cf">end</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>(F_nodos_w <span class="op">=</span> F[[<span class="fl">3</span>, <span class="fl">8</span>, <span class="fl">13</span>, <span class="fl">18</span>]], masa <span class="op">=</span> δ<span class="ch">' * M * δ, esperada = 7850 * 0.005 * 0.005)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(F_nodos_w = [-12.499999989417384, -12.499999963777881, -12.49999995095813, -12.499999976597634], masa = 0.196249999999541, esperada = 0.19625)</code></pre>
+</div>
+</div>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) Peso total del cuarto de cilindro: δ_rígidoᵀ F frente al valor exacto</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">peso_total</span>(n)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    nodos, conn <span class="op">=</span> <span class="fu">malla_rectangular</span>((<span class="fl">0</span>, <span class="fl">1.0</span>), (<span class="fl">0</span>, <span class="cn">π</span> <span class="op">/</span> <span class="fl">2</span>), n, n)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    _, _, Fg <span class="op">=</span> <span class="fu">ensamblar</span>(r, nodos, conn, <span class="fl">1e3</span>, <span class="fl">0.3</span>, <span class="fl">0.01</span>; f <span class="op">=</span> θ <span class="op">-&gt;</span> [<span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">0.01</span>])      <span class="co"># f = t·X</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    δz <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">5</span><span class="fu">size</span>(nodos, <span class="fl">2</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(nodos, <span class="fl">2</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        g <span class="op">=</span> <span class="fu">geometria_punto</span>(r, nodos[<span class="op">:</span>, k]); u <span class="op">=</span> [<span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        δz[<span class="fl">5</span>(k<span class="op">-</span><span class="fl">1</span>)<span class="op">+</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>(k<span class="op">-</span><span class="fl">1</span>)<span class="op">+</span><span class="fl">2</span>] <span class="op">=</span> g.A<span class="op">'</span> <span class="op">*</span> u; δz[<span class="fl">5</span>(k<span class="op">-</span><span class="fl">1</span>)<span class="op">+</span><span class="fl">3</span>] <span class="op">=</span> <span class="fu">dot</span>(g.n, u)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    δz<span class="op">'</span> <span class="op">*</span> Fg</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>[(n <span class="op">=</span> n, peso <span class="op">=</span> <span class="fu">peso_total</span>(n), exacto <span class="op">=</span> <span class="op">-</span><span class="fl">0.01</span> <span class="op">*</span> R <span class="op">*</span> <span class="cn">π</span> <span class="op">/</span> <span class="fl">2</span>) for n <span class="kw">in</span> (<span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>)]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>3-element Vector{@NamedTuple{n::Int64, peso::Float64, exacto::Float64}}:
+ (n = 2, peso = -0.007460501218044302, exacto = -0.007853981633974483)
+ (n = 4, peso = -0.007753696250043401, exacto = -0.007853981633974483)
+ (n = 8, peso = -0.007828789163278914, exacto = -0.007853981633974483)</code></pre>
+</div>
+</div>
+<p>El peso converge cuadráticamente (<span class="math inline">\(5\,\%\to1{,}3\,\%\to0{,}3\,\%\)</span>): la traslación rígida expresada en componentes covariantes sólo se representa bien con elementos pequeños (aviso de E3).</p>
+</section>
+<section id="sec-ejercicios-e8" class="level2" data-number="29.6">
+<h2 data-number="29.6" class="anchored" data-anchor-id="sec-ejercicios-e8"><span class="header-section-number">29.6</span> Ejercicios</h2>
+<ol type="1">
+<li><p><strong>Carga lineal.</strong> Un elemento de barra de longitud <span class="math inline">\(h\)</span> con carga <span class="math inline">\(b(x)=b_0\,x/h\)</span> (cero en el nodo 1, <span class="math inline">\(b_0\)</span> en el 2). Obtén <span class="math inline">\(\mathbf f_e\)</span>.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(f_1=\int_0^h b_0\frac xh\,(1-\tfrac xh)\,dx=b_0h/6\)</span>, <span class="math inline">\(f_2=\int_0^h b_0\frac xh\cdot\frac xh\,dx=b_0h/3\)</span>. Suman <span class="math inline">\(b_0h/2\)</span> (el área del triángulo): el nodo más cargado recibe más.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Frecuencia de un elemento.</strong> Barra de un elemento, empotrada en el nodo 1 y masa consistente: ¿qué frecuencia da? Compárala con la exacta <span class="math inline">\(\tfrac\pi2\sqrt{E/\rho}/L\)</span>.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(K=EA/L\)</span> y <span class="math inline">\(M=\rho AL/3\)</span> (sólo el término del nodo libre de <span class="math inline">\(\tfrac{\rho AL}6\cdot2\)</span>): <span class="math inline">\(\omega=\sqrt{3E/\rho}/L=1{,}732\sqrt{E/\rho}/L\)</span> frente a <span class="math inline">\(1{,}571\)</span>: un 10 % por encima (primer punto de la <a href="#fig-masa-barra" class="quarto-xref">Figura&nbsp;<span>29.1</span></a>).</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Masa rotatoria.</strong> ¿Por qué el término rotatorio es proporcional a <span class="math inline">\(t^3\)</span>?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es el momento de inercia de la sección por unidad de longitud: <span class="math inline">\(\int\rho(\theta^3)^2d\theta^3=\rho t^3/12\)</span>. Para láminas delgadas es despreciable frente a <span class="math inline">\(\rho t\)</span>; en láminas gruesas y a frecuencias altas puede importar.</p>
+</div>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="la-doy-por-superada-si" class="level2 unnumbered page-columns page-full">
+<h2 class="unnumbered anchored" data-anchor-id="la-doy-por-superada-si">La doy por superada si…</h2>
+<ul>
+<li>Escribo <a href="#eq-carga-e8" class="quarto-xref">ecuación&nbsp;<span>29.1</span></a> y reparto una presión uniforme entre los cuatro nodos.</li>
+<li>Obtengo el peso propio de una lámina y sé qué se desprecia en el orden cero.</li>
+<li>Reconozco los tres bloques de la matriz de masa <a href="#eq-masa-e8" class="quarto-xref">ecuación&nbsp;<span>29.5</span></a>.</li>
+<li>Digo que la masa consistente da cota superior y la concentrada inferior.</li>
+<li>Compruebo la masa total y el peso total de una malla.</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Fuentes, correcciones y qué queda pendiente
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Fuentes.</strong> Texto autónomo: la forma de <a href="#eq-peso-e8" class="quarto-xref">ecuación&nbsp;<span>29.2</span></a> y <a href="#eq-cinetica-e8" class="quarto-xref">ecuación&nbsp;<span>29.4</span></a> es una <strong>derivación propia</strong> con el desarrollo exacto de <span class="math inline">\(\mu\)</span> (verificada numéricamente), no tomada de ninguna publicación; las cargas consistentes y las masas consistente/concentrada son estándar <span class="citation" data-cites="Bathe Hughes ZienkiewiczTaylor">(<a href="../referencias.html#ref-Bathe" role="doc-biblioref">Bathe 1996</a>; <a href="../referencias.html#ref-Hughes" role="doc-biblioref">Hughes 1987</a>; <a href="../referencias.html#ref-ZienkiewiczTaylor" role="doc-biblioref">Zienkiewicz y Taylor, s.&nbsp;f.</a>)</span>.</p>
+<p><strong>Corrección registrada.</strong> La expresión de fuerzas de volumen de unos apuntes previos del autor, marcada por él mismo como errónea, se sustituye por <a href="#eq-peso-e8" class="quarto-xref">ecuación&nbsp;<span>29.2</span></a>.</p>
+<p><strong>Qué queda pendiente.</strong> El convenio de signo y orientación de los giros <span class="math inline">\(\varphi_\rho\)</span> (de él depende el acople con <span class="math inline">\(H\)</span>); el uso de componentes físicas en bases no ortogonales; no hay nota histórica en este tema por falta de fuente verificada; la «Aplicación real» es una orientación sin fuente.</p>
+</div>
+</div>
+</div>
+
+
+<div class="no-row-height column-margin column-container"><div id="ref-ZienkiewiczTaylor" class="csl-entry" role="listitem">
+Zienkiewicz, O. C., y R. L. Taylor. s.&nbsp;f. <em>The Finite Element Method</em>. Butterworth-Heinemann.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Hughes" class="csl-entry" role="listitem">
+Hughes, T. J. R. 1987. <em>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis</em>. Prentice-Hall.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Bathe" class="csl-entry" role="listitem">
+Bathe, K. J. 1996. <em>Finite Element Procedures</em>. Prentice Hall.
+</div></div></section>
+<section id="referencias-unidad" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="referencias-unidad">Referencias</h2>
+<p><em>Son las mismas que aparecen en el margen, junto al texto.</em></p>
+<div id="refs-unidad" class="referencias-unidad">
+<div class="ref-final">
+<p>Bathe, K. J. 1996. <em>Finite Element Procedures</em>. Prentice Hall.</p>
+</div>
+<div class="ref-final">
+<p>Hughes, T. J. R. 1987. <em>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis</em>. Prentice-Hall.</p>
+</div>
+<div class="ref-final">
+<p>Zienkiewicz, O. C., y R. L. Taylor. s.&nbsp;f. <em>The Finite Element Method</em>. Butterworth-Heinemann.</p>
+</div>
+</div>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Referencias</h1>
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/E-elementos-finitos/E7-hu-washizu-subdominios.html" class="pagination-link" aria-label="Hu–Washizu por subdominios">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Hu–Washizu por subdominios</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../book/referencias.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>
+/* =============================================================================
+ * ejercicios.js: ejercicios intercalados en el texto (autoevaluación)
+ *
+ * Lo inserta scripts/ejercicios.lua, en línea, solo en las páginas que tienen
+ * ejercicios. Sin dependencias. Todo ocurre en el navegador: las respuestas y
+ * el progreso se guardan en localStorage (nada sale del equipo del lector).
+ *
+ * Se escribe en Markdown (véase la guía en planning/plantilla-tema.qmd):
+ *   ::: {.ejercicio tipo="numerico" id="m5-2-zeta" respuesta="0.2" tol="1%" unidad=""}
+ *   Enunciado…
+ *   ::: {.pista}  …  :::
+ *   ::: {.solucion}  …  :::
+ *   :::
+ * Tipos: vf, opcion, numerico, abierta, programacion, investigacion, encuesta.
+ *
+ * La lógica de corrección (parseNumero, comprobarNumerico, …) es pura y se
+ * prueba con web/tests/ejercicios.test.mjs.
+ * ========================================================================== */
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------ */
+  /* Lógica pura                                                         */
+  /* ------------------------------------------------------------------ */
+
+  /** Lee un número escrito a la española o a la inglesa: «0,0307», «3.07e-2»,
+   *  «3,07·10^-2», «30,7 mm» (se ignora lo que siga al número). NaN si no hay. */
+  function parseNumero(texto) {
+    if (texto === null || texto === undefined) return NaN;
+    let t = String(texto).trim().replace(/−/g, "-").replace(/\s+/g, "");
+    // 3,07·10^-2 · 3.07x10^-2 · 3,07×10-2  →  3.07e-2
+    t = t.replace(/[x×·*]10\^?\(?(-?\+?\d+)\)?/gi, "e$1");
+    if (t.includes(",")) t = t.replace(/\./g, "").replace(",", ".");
+    const m = t.match(/^[+-]?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?/i);
+    return m ? parseFloat(m[0]) : NaN;
+  }
+
+  /** Interpreta la tolerancia: «1%» (relativa), «0.01» o «abs:0.01» (absoluta). */
+  function parseTolerancia(tol) {
+    const t = String(tol === undefined || tol === null || tol === "" ? "1%" : tol).trim();
+    if (t.endsWith("%")) return { tipo: "rel", valor: parseFloat(t) / 100 };
+    return { tipo: "abs", valor: parseFloat(t.replace(/^abs:/, "")) };
+  }
+
+  /** ¿Es correcta la respuesta numérica? Devuelve {ok, valor, error}. */
+  function comprobarNumerico(entrada, objetivo, tol) {
+    const valor = parseNumero(entrada);
+    if (!Number.isFinite(valor)) return { ok: false, valor, error: null, invalida: true };
+    const o = typeof objetivo === "number" ? objetivo : parseNumero(objetivo);
+    const t = parseTolerancia(tol);
+    const dif = Math.abs(valor - o);
+    const limite = t.tipo === "rel" && o !== 0 ? Math.abs(o) * t.valor : t.tipo === "rel" ? t.valor : t.valor;
+    return { ok: dif <= limite, valor, error: o !== 0 ? dif / Math.abs(o) : dif, invalida: false };
+  }
+
+  /** Normaliza «V», «Verdadero», «cierto», «F», «falso» a "verdadero" | "falso". */
+  function normalizaVF(x) {
+    const t = String(x).trim().toLowerCase();
+    if (["v", "verdadero", "cierto", "si", "sí", "true"].includes(t)) return "verdadero";
+    if (["f", "falso", "no", "false"].includes(t)) return "falso";
+    return t;
+  }
+
+  /** Compara conjuntos de letras para opción múltiple: «a,c» ≡ «c, a». */
+  function mismasOpciones(elegidas, correctas) {
+    const norm = (x) => Array.from(new Set(String(x).toLowerCase().split(/[,\s;]+/).filter(Boolean))).sort().join(",");
+    return norm(elegidas) === norm(correctas);
+  }
+
+  const LETRAS = "abcdefghijklmnopqrstuvwxyz";
+
+  /* ------------------------------------------------------------------ */
+  /* Almacenamiento local (con tolerancia a que no exista)               */
+  /* ------------------------------------------------------------------ */
+  const PREFIJO = "lametrica:ej:" + (typeof location !== "undefined" ? location.pathname : "");
+
+  function leer(id) {
+    try {
+      const v = localStorage.getItem(PREFIJO + ":" + id);
+      return v ? JSON.parse(v) : null;
+    } catch (e) { return null; }
+  }
+  function guardar(id, estado) {
+    try { localStorage.setItem(PREFIJO + ":" + id, JSON.stringify(estado)); } catch (e) { /* sin almacenamiento */ }
+  }
+  function borrarTodo() {
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => localStorage.removeItem(k));
+    } catch (e) { /* nada */ }
+  }
+  function todos() {
+    const out = {};
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => {
+        out[k.slice(PREFIJO.length + 1)] = JSON.parse(localStorage.getItem(k));
+      });
+    } catch (e) { /* nada */ }
+    return out;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Capa DOM                                                            */
+  /* ------------------------------------------------------------------ */
+  const ETIQUETA = {
+    vf: "Verdadero o falso", opcion: "Test", numerico: "Cálculo", abierta: "Respuesta abierta",
+    programacion: "Programación", investigacion: "Investigación", encuesta: "Reflexión (no evaluada)",
+  };
+  const ICONO = { vf: "✓✗", opcion: "◉", numerico: "∑", abierta: "✎", programacion: "⌘", investigacion: "⌕", encuesta: "☰" };
+
+  function el(tag, props, ...hijos) {
+    const e = document.createElement(tag);
+    if (props) for (const k of Object.keys(props)) {
+      if (k === "class") e.className = props[k];
+      else if (k === "text") e.textContent = props[k];
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), props[k]);
+      else e.setAttribute(k, props[k]);
+    }
+    hijos.flat().forEach((h) => h && e.append(h));
+    return e;
+  }
+
+  function sacar(ej, clase) {
+    const n = ej.querySelector(":scope > ." + clase);
+    if (n) n.remove();
+    return n;
+  }
+
+  function mensaje(zona, tipo, texto) {
+    zona.className = "ej-feedback ej-" + tipo;
+    zona.textContent = texto;
+  }
+
+  function construir(ej, indice) {
+    const tipo = ej.dataset.tipo;
+    if (!ETIQUETA[tipo]) return null;
+    const id = ej.id || "ej-" + indice;
+    ej.id = id;
+    ej.classList.add("ej-activo");
+
+    const pista = sacar(ej, "pista");
+    const solucion = sacar(ej, "solucion");
+    const opciones = sacar(ej, "opciones");
+    const rubrica = sacar(ej, "rubrica");
+    const criterios = sacar(ej, "criterios");
+
+    const cab = el("div", { class: "ej-cabecera" },
+      el("span", { class: "ej-icono", "aria-hidden": "true", text: ICONO[tipo] }),
+      el("span", { class: "ej-tipo", text: "Ejercicio · " + ETIQUETA[tipo] }),
+      el("span", { class: "ej-estado", "aria-live": "polite" }));
+    ej.prepend(cab);
+
+    const zona = el("div", { class: "ej-ui" });
+    const fb = el("div", { class: "ej-feedback", role: "status", "aria-live": "polite" });
+    const botones = el("div", { class: "ej-botones" });
+    const estado = leer(id) || { estado: "pendiente", intentos: 0 };
+
+    const marca = () => {
+      const m = { correcto: "✔ Resuelto", hecho: "✔ Hecho", visto: "Solución vista", enviado: "Guardado", pendiente: "" }[estado.estado] || "";
+      cab.querySelector(".ej-estado").textContent = m;
+      ej.dataset.estado = estado.estado;
+      guardar(id, estado);
+      actualizarProgreso();
+    };
+
+    const revelar = (nodo) => { if (nodo) { nodo.classList.remove("ej-oculto"); nodo.hidden = false; } };
+    [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+
+    const btn = (texto, fn, clase) => el("button", { type: "button", class: "ej-btn " + (clase || ""), onclick: fn, text: texto });
+
+    const btnPista = pista ? btn("Pista", () => { revelar(pista); }) : null;
+    const btnSolucion = solucion ? btn("Ver solución", () => {
+      revelar(solucion);
+      if (estado.estado === "pendiente") estado.estado = "visto";
+      marca();
+    }) : null;
+
+    /* ---------- por tipo ---------- */
+    let comprobar = null;
+    let recoger = () => null;
+
+    if (tipo === "vf") {
+      const grupo = el("div", { role: "radiogroup", "aria-label": "Verdadero o falso", class: "ej-vf" });
+      ["verdadero", "falso"].forEach((v) => {
+        grupo.append(el("label", { class: "ej-opcion" },
+          el("input", { type: "radio", name: id, value: v }), el("span", { text: v === "verdadero" ? "Verdadero" : "Falso" })));
+      });
+      zona.append(grupo);
+      recoger = () => (zona.querySelector("input:checked") || {}).value || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (r === normalizaVF(ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else { mensaje(fb, "mal", "No es correcto. Piénsalo otra vez o pide la pista."); }
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "opcion") {
+      const multiple = ej.dataset.multiple === "true";
+      const items = opciones ? Array.from(opciones.querySelectorAll(":scope > ul > li, :scope > ol > li")) : [];
+      const grupo = el("div", { role: multiple ? "group" : "radiogroup", class: "ej-opciones" });
+      items.forEach((li, i) => {
+        const l = LETRAS[i];
+        const input = el("input", { type: multiple ? "checkbox" : "radio", name: id, value: l });
+        const etiqueta = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-letra", text: l + ")" }), el("span", { class: "ej-texto" }));
+        while (li.firstChild) etiqueta.querySelector(".ej-texto").append(li.firstChild);
+        grupo.append(etiqueta);
+      });
+      zona.append(grupo);
+      recoger = () => Array.from(zona.querySelectorAll("input:checked")).map((i) => i.value).join(",") || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (mismasOpciones(r, ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else mensaje(fb, "mal", "No es correcto. Revisa el razonamiento.");
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "numerico" || tipo === "programacion") {
+      if (ej.dataset.respuesta !== undefined && ej.dataset.respuesta !== "") {
+        const entrada = el("input", { type: "text", inputmode: "decimal", autocomplete: "off", class: "ej-entrada", "aria-label": "Tu resultado", placeholder: "Tu resultado" });
+        zona.append(el("div", { class: "ej-numero" }, entrada, ej.dataset.unidad ? el("span", { class: "ej-unidad", text: ej.dataset.unidad }) : null));
+        entrada.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); comprobar(); } });
+        recoger = () => entrada.value.trim() || null;
+        comprobar = () => {
+          const r = recoger();
+          if (!r) return mensaje(fb, "aviso", "Escribe un valor numérico.");
+          const c = comprobarNumerico(r, ej.dataset.respuesta, ej.dataset.tol);
+          if (c.invalida) return mensaje(fb, "aviso", "No entiendo ese número. Puedes escribir 0,031 o 3.1e-2.");
+          estado.intentos++; estado.respuesta = r;
+          if (c.ok) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+          else mensaje(fb, "mal", "Aún no. Revisa las unidades y los pasos (tolerancia " + (ej.dataset.tol || "1%") + ").");
+          marca();
+        };
+        if (estado.respuesta) entrada.value = estado.respuesta;
+      }
+    }
+
+    if (tipo === "abierta" || tipo === "investigacion" || tipo === "programacion" || tipo === "encuesta") {
+      const necesitaTexto = tipo === "abierta" || tipo === "investigacion" || (tipo === "encuesta" && ej.dataset.texto === "true");
+      if (necesitaTexto) {
+        const ta = el("textarea", { class: "ej-texto-libre", rows: tipo === "investigacion" ? "6" : "4", "aria-label": "Tu respuesta", placeholder: "Escribe aquí tu respuesta (se guarda solo en este navegador)." });
+        ta.value = estado.texto || "";
+        ta.addEventListener("input", () => { estado.texto = ta.value; guardar(id, estado); });
+        zona.append(ta);
+      }
+      const lista = rubrica || criterios;
+      if (lista && tipo !== "encuesta") {
+        const titulo = tipo === "investigacion" ? "Criterios (márcalos cuando los cumplas)" : "Autoevalúate: ¿tu respuesta incluye…?";
+        const caja = el("fieldset", { class: "ej-rubrica" }, el("legend", { text: titulo }));
+        const marcados = estado.rubrica || [];
+        Array.from(lista.querySelectorAll("li")).forEach((li, i) => {
+          const cb = el("input", { type: "checkbox", value: String(i) });
+          cb.checked = marcados.includes(i);
+          cb.addEventListener("change", () => {
+            estado.rubrica = Array.from(caja.querySelectorAll("input:checked")).map((x) => Number(x.value));
+            guardar(id, estado);
+          });
+          const l = el("label", { class: "ej-opcion" }, cb, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          caja.append(l);
+        });
+        zona.append(caja);
+      }
+      if (tipo !== "programacion" || !comprobar) {
+        comprobar = () => {
+          if (tipo === "encuesta") {
+            const r = recoger();
+            estado.estado = "enviado";
+            mensaje(fb, "ok", "Guardado en este navegador. Puedes cambiarlo cuando quieras.");
+            marca(); return;
+          }
+          const hechos = (estado.rubrica || []).length;
+          const total = (lista ? lista.querySelectorAll("li").length : 0);
+          if (total && hechos < total) return mensaje(fb, "aviso", "Marca todos los puntos cuando los cumplas, o mira la solución modelo.");
+          estado.estado = "hecho"; mensaje(fb, "ok", "Hecho. Compara con la solución modelo si quieres."); marca();
+        };
+      }
+    }
+
+    if (tipo === "encuesta") {
+      const items = opciones ? Array.from(opciones.querySelectorAll("li")) : [];
+      if (items.length) {
+        const grupo = el("div", { role: "radiogroup", class: "ej-opciones" });
+        items.forEach((li, i) => {
+          const input = el("input", { type: "radio", name: id, value: String(i) });
+          input.checked = estado.respuesta === String(i);
+          const l = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          grupo.append(l);
+        });
+        zona.prepend(grupo);
+        recoger = () => (zona.querySelector("input[type=radio]:checked") || {}).value || null;
+        const previo = comprobar;
+        comprobar = () => { const r = recoger(); estado.respuesta = r; previo(); };
+      }
+    }
+
+    /* restaurar estado visual */
+    if (estado.respuesta && (tipo === "vf" || tipo === "opcion")) {
+      String(estado.respuesta).split(",").forEach((v) => {
+        const i = zona.querySelector('input[value="' + v + '"]'); if (i) i.checked = true;
+      });
+    }
+
+    if (comprobar) botones.append(btn(tipo === "encuesta" ? "Guardar" : tipo === "abierta" || tipo === "investigacion" ? "He terminado" : "Comprobar", comprobar, "ej-btn-principal"));
+    if (btnPista) botones.append(btnPista);
+    if (btnSolucion) botones.append(btnSolucion);
+    botones.append(btn("Reiniciar", () => {
+      estado.estado = "pendiente"; estado.intentos = 0; delete estado.respuesta; delete estado.rubrica; delete estado.texto;
+      zona.querySelectorAll("input").forEach((i) => { if (i.type === "checkbox" || i.type === "radio") i.checked = false; else i.value = ""; });
+      zona.querySelectorAll("textarea").forEach((t) => (t.value = ""));
+      [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+      fb.className = "ej-feedback"; fb.textContent = ""; marca();
+    }, "ej-btn-sec"));
+
+    ej.append(zona, botones, fb);
+    [pista, solucion].forEach((n) => { if (n) ej.append(n); });
+    marca();
+    return ej;
+  }
+
+  /* ---------- panel de progreso ---------- */
+  let panel = null;
+  function actualizarProgreso() {
+    if (!panel) return;
+    const lista = Array.from(document.querySelectorAll(".ejercicio.ej-activo"));
+    const evaluables = lista.filter((e) => e.dataset.tipo !== "encuesta");
+    const hechos = evaluables.filter((e) => ["correcto", "hecho"].includes(e.dataset.estado)).length;
+    const vistos = evaluables.filter((e) => e.dataset.estado === "visto").length;
+    panel.querySelector(".ej-resumen").textContent =
+      "Tu progreso en esta unidad: " + hechos + " de " + evaluables.length + " ejercicios resueltos" + (vistos ? " (" + vistos + " con la solución vista)" : "") + ".";
+    const barra = panel.querySelector("progress");
+    barra.max = Math.max(evaluables.length, 1); barra.value = hechos;
+  }
+
+  function crearPanel(n) {
+    panel = el("div", { class: "ej-progreso", role: "region", "aria-label": "Progreso de los ejercicios" },
+      el("p", { class: "ej-resumen" }),
+      el("progress", { max: "1", value: "0", "aria-hidden": "true" }),
+      el("p", { class: "ej-nota", text: "Tus respuestas y tu progreso se guardan solo en este navegador. No se envían a ningún sitio." }),
+      el("div", { class: "ej-botones" },
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Descargar mis respuestas", onclick: () => {
+          const blob = new Blob([JSON.stringify({ pagina: location.pathname, fecha: new Date().toISOString(), respuestas: todos() }, null, 2)], { type: "application/json" });
+          const a = el("a", { href: URL.createObjectURL(blob), download: "lametrica-respuestas.json" }); a.click();
+        } }),
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Borrar mis respuestas", onclick: () => {
+          if (confirm("¿Borrar todas tus respuestas y tu progreso en esta página?")) { borrarTodo(); location.reload(); }
+        } })));
+    const primero = document.querySelector(".ejercicio.ej-activo");
+    const hueco = document.querySelector("#quarto-document-content h2, main h2");
+    (hueco || primero).before(panel);
+  }
+
+  function iniciar() {
+    const lista = Array.from(document.querySelectorAll(".ejercicio"));
+    if (!lista.length) return;
+    lista.forEach((e, i) => construir(e, i + 1));
+    crearPanel(lista.length);
+    actualizarProgreso();
+  }
+
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
+    else iniciar();
+  }
+
+  if (typeof globalThis !== "undefined" && globalThis.__EJ_TEST__) {
+    globalThis.__EJ_EXPORTS__ = { parseNumero, parseTolerancia, comprobarNumerico, normalizaVF, mismasOpciones };
+  }
+})();
+
+</script>
+
+
+
+
+</body></html>

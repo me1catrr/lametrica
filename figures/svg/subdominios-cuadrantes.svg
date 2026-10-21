@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.0 381.0" role="img" aria-label="El elemento se divide en cuatro cuadrantes: la deformación longitudinal en una dirección toma un valor en cada mitad, la de la otra dirección también, y la deformación de cortante es única">
+<title>El elemento se divide en cuatro cuadrantes: la deformación longitudinal en una dirección toma un valor en cada mitad, la de la otra dirección también, y la deformación de cortante es única</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<polygon points="118.0,288.0 218.0,288.0 218.0,188.0 118.0,188.0 118.0,288.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.0" opacity="0.2" stroke-linejoin="round"/>
+<text x="168.0" y="242.0" fill="#1b6ca8" font-size="15" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">A<tspan dy="3" font-size="11">I</tspan><tspan dy="-3"> </tspan></text>
+<polygon points="218.0,288.0 318.0,288.0 318.0,188.0 218.0,188.0 218.0,288.0" fill="#2a9d8f" stroke="#2a9d8f" stroke-width="2.0" opacity="0.2" stroke-linejoin="round"/>
+<text x="268.0" y="242.0" fill="#2a9d8f" font-size="15" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">A<tspan dy="3" font-size="11">II</tspan><tspan dy="-3"> </tspan></text>
+<polygon points="218.0,188.0 318.0,188.0 318.0,88.0 218.0,88.0 218.0,188.0" fill="#d95f02" stroke="#d95f02" stroke-width="2.0" opacity="0.2" stroke-linejoin="round"/>
+<text x="268.0" y="142.0" fill="#d95f02" font-size="15" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">A<tspan dy="3" font-size="11">III</tspan><tspan dy="-3"> </tspan></text>
+<polygon points="118.0,188.0 218.0,188.0 218.0,88.0 118.0,88.0 118.0,188.0" fill="#6f42c1" stroke="#6f42c1" stroke-width="2.0" opacity="0.2" stroke-linejoin="round"/>
+<text x="168.0" y="142.0" fill="#6f42c1" font-size="15" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">A<tspan dy="3" font-size="11">IV</tspan><tspan dy="-3"> </tspan></text>
+<line x1="118.0" y1="188.0" x2="318.0" y2="188.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="318.0,188.0 308.79,191.89 308.79,184.11" fill="#6b7280"/>
+<text x="314.0" y="180.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">ξ</text>
+<line x1="218.0" y1="288.0" x2="218.0" y2="88.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="218.0,88.0 221.89,97.21 214.11,97.21" fill="#6b7280"/>
+<text x="226.0" y="94.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">η</text>
+<polyline points="330.0,288.0 338.0,288.0 338.0,188.0 330.0,188.0" fill="none" stroke="#6b7280" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<text x="344.0" y="238.0" fill="#1f2937" font-size="13" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">ε₁₁ (A): I + II</text>
+<polyline points="330.0,188.0 338.0,188.0 338.0,88.0 330.0,88.0" fill="none" stroke="#6b7280" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<text x="344.0" y="138.0" fill="#1f2937" font-size="13" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">ε₁₁ (B): III + IV</text>
+<polyline points="118.0,300.0 118.0,308.0 218.0,308.0 218.0,300.0" fill="none" stroke="#6b7280" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<text x="168.0" y="326.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">ε₂₂ (C): I + IV</text>
+<polyline points="218.0,300.0 218.0,308.0 318.0,308.0 318.0,300.0" fill="none" stroke="#6b7280" stroke-width="1.6" opacity="1.0" stroke-linejoin="round"/>
+<text x="268.0" y="326.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">ε₂₂ (D): II + III</text>
+<text x="33.0" y="53.0" fill="#8a5a00" font-size="13" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">ε₁₂ = constante en todo el elemento</text>
+</svg>

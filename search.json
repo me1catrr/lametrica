@@ -34,7 +34,7 @@
     "href": "book/mapa.html",
     "title": "Mapa del libro",
     "section": "",
-    "text": "Bloque A · Preludio: la forma que resiste\nSiete bloques y 36 temas, de la geometría a los elementos finitos.\nEste es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como por escribir aparecerán a medida que avance el libro.\nEstado: 21 temas publicados, 0 en reescritura y 15 por escribir (de 36).",
+    "text": "Bloque A · Preludio: la forma que resiste\nSiete bloques y 36 temas, de la geometría a los elementos finitos.\nEste es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como por escribir aparecerán a medida que avance el libro.\nEstado: 29 temas publicados, 0 en reescritura y 8 por escribir (de 37).",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -84,17 +84,17 @@
     "href": "book/mapa.html#bloque-e-elementos-finitos-de-lámina",
     "title": "Mapa del libro",
     "section": "Bloque E · Elementos finitos de lámina",
-    "text": "Bloque E · Elementos finitos de lámina\n\nCómo lo calcula un ordenador sin que el elemento se bloquee\n\n\n\n\n\n\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nE1\nEl método de elementos finitos en una barra\n○ por escribir\nD8\n\n\nE2\nEl cuadrilátero bilineal en tensión plana\n○ por escribir\nE1\n\n\nE3\nEl elemento lámina de cuatro nodos\n○ por escribir\nE2, D6\n\n\nE4\nMatrices deformación–desplazamiento\n○ por escribir\nE3\n\n\nE5\nBloqueo y modos espurios\n○ por escribir\nE4\n\n\nE6\nInterpolación de deformaciones\n○ por escribir\nE5\n\n\nE7\nHu–Washizu por subdominios\n○ por escribir\nE6, D8\n\n\nE8\nCargas y matriz de masa\n○ por escribir\nE7\n\n\nE9\nEnsamblaje, condiciones de contorno y autovalores\n○ por escribir\nE8",
+    "text": "Bloque E · Elementos finitos de lámina\n\nCómo lo calcula un ordenador sin que el elemento se bloquee\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nE1\nEl método de elementos finitos en una barra\n● publicado\nD8\n\n\nE2\nEl cuadrilátero bilineal en tensión plana\n● publicado\nE1\n\n\nE3\nEl elemento lámina de cuatro nodos\n● publicado\nE2, D6\n\n\nE4\nMatrices deformación–desplazamiento\n● publicado\nE3\n\n\nE5\nBloqueo y modos espurios\n● publicado\nE4\n\n\nE6\nInterpolación de deformaciones\n● publicado\nE5\n\n\nE7\nHu–Washizu por subdominios\n● publicado\nE6, D8\n\n\nE8\nCargas y matriz de masa\n● publicado\nE7\n\n\nE9\nEnsamblaje, condiciones de contorno y autovalores\n○ por escribir\nE8",
     "crumbs": [
       "Mapa del libro"
     ]
   },
   {
-    "objectID": "book/mapa.html#bloque-f-vibraciones-y-validación",
-    "href": "book/mapa.html#bloque-f-vibraciones-y-validación",
+    "objectID": "book/mapa.html#bloque-f-validación-y-vibraciones",
+    "href": "book/mapa.html#bloque-f-validación-y-vibraciones",
     "title": "Mapa del libro",
-    "section": "Bloque F · Vibraciones y validación",
-    "text": "Bloque F · Vibraciones y validación\n\nA qué frecuencias vibra un paraboloide hiperbólico y cuánto podemos fiarnos del cálculo\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nF1\nVibraciones de láminas\n○ por escribir\nE9\n\n\nF2\nValidación estática\n○ por escribir\nE9\n\n\nF3\nEl hypar de bordes curvos\n○ por escribir\nF1, C5\n\n\nF4\nEl hypar de bordes rectos\n○ por escribir\nF3\n\n\nF5\nImplementación reproducible en Julia\n○ por escribir\nF4",
+    "section": "Bloque F · Validación y vibraciones",
+    "text": "Bloque F · Validación y vibraciones\n\nCuánto podemos fiarnos del cálculo y a qué frecuencias vibra un paraboloide hiperbólico\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nF1\nValidación estática (I): la placa\n○ por escribir\nE9\n\n\nF2\nValidación estática (II): el cilindro\n○ por escribir\nF1\n\n\nF3\nEl paraboloide hiperbólico bajo carga\n○ por escribir\nF2, C5\n\n\nF4\nVibraciones de láminas\n○ por escribir\nF3\n\n\nF5\nFrecuencias del paraboloide hiperbólico\n○ por escribir\nF4\n\n\nF6\nImplementación reproducible en Julia\n○ por escribir\nF5",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -104,7 +104,7 @@
     "href": "book/mapa.html#bloque-g-cierre",
     "title": "Mapa del libro",
     "section": "Bloque G · Cierre",
-    "text": "Bloque G · Cierre\n\nQué hemos aprendido, qué límites tiene el modelo y hacia dónde seguir\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nG1\nConclusiones y futuro\n○ por escribir\nF5",
+    "text": "Bloque G · Cierre\n\nQué hemos aprendido, qué límites tiene el modelo y hacia dónde seguir\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nG1\nConclusiones y futuro\n○ por escribir\nF6",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -2475,11 +2475,1001 @@
     ]
   },
   {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Principios variacionales (energía potencial y trabajos virtuales). Álgebra lineal básica.\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#objetivos-y-prerrequisitos",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "",
+    "text": "pasar del problema diferencial de la barra a su forma débil;\nconstruir las funciones de forma lineales y la matriz de rigidez de un elemento barra;\nensamblar varios elementos y aplicar las condiciones de contorno;\nresolver una barra a mano con dos elementos y comprobarlo con un programa de ocho líneas;\ndecir qué significa «converge» y por qué en la barra el resultado es exacto en los nodos.\n\n\n\n\nSección 22.1 · De la forma fuerte a la débil · Sección 22.2 · Funciones de forma y elemento barra\nSección 22.3 · Ensamblaje y contorno · Sección 22.4 · ¿Converge? · Sección 22.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(u(x)\\)\ndesplazamiento axial de la barra\n\n\n\\(EA\\)\nrigidez axial (módulo de Young × área)\n\n\n\\(b(x)\\)\ncarga axial repartida (fuerza por unidad de longitud)\n\n\n\\(N_k(x)\\)\nfunción de forma del nodo \\(k\\)\n\n\n\\(\\mathbf{K},\\ \\mathbf{f},\\ \\mathbf{d}\\)\nmatriz de rigidez, vector de cargas y vector de desplazamientos nodales\n\n\n\\(h\\)\nlongitud de un elemento\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: el método en una frase\n\n\n\nCortar, dar rigidez a cada trozo y pegar. Un elemento de barra de longitud \\(h\\) se comporta exactamente como un muelle de rigidez \\(k=EA/h\\). Una barra partida en tres elementos es, por tanto, una cadena de tres muelles en serie: el alargamiento total es la suma de los tres alargamientos, y la fuerza que cruza cada nodo es la misma a ambos lados. Todo el aparato matemático de este tema es la forma ordenada de escribir esa idea para que se pueda programar.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#sec-fuerte-debil-e1",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#sec-fuerte-debil-e1",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "22.1 De la forma fuerte a la forma débil",
+    "text": "22.1 De la forma fuerte a la forma débil\nIntuición. La barra de la Figura 22.1 está empotrada en \\(x=0\\) y cargada a lo largo. Cada rebanada de longitud \\(dx\\) debe estar en equilibrio: la fuerza axial \\(N=EA\\,u'\\) cambia a lo largo de la barra justo lo que valga la carga.\nLa forma fuerte es la ecuación diferencial con sus condiciones de contorno:\n\\[\n(EA\\,u')'+b=0\\ \\ \\text{en}\\ (0,L),\\qquad u(0)=0,\\qquad EA\\,u'(L)=P .\n\\tag{22.1}\\]\nExige que \\(u\\) tenga dos derivadas. La forma débil pide menos: se multiplica por una función de prueba \\(v(x)\\) (con \\(v(0)=0\\), el «desplazamiento virtual» de Sección 21.1) y se integra por partes:\n\nDefinición 22.1 (Forma débil de la barra) Hallar \\(u\\) con \\(u(0)=0\\) tal que, para toda \\(v\\) con \\(v(0)=0\\), \\[\n\\int_0^L EA\\,u'\\,v'\\,dx=\\int_0^L b\\,v\\,dx+P\\,v(L).\n\\tag{22.2}\\]\n\nEl primer miembro es el trabajo virtual interno, el segundo el externo: es ecuación 21.1 del tema D8 escrita para una barra. Sólo aparecen primeras derivadas, de modo que sirven funciones continuas y lineales a trozos. La condición \\(EA\\,u'(L)=P\\) no hay que imponerla: sale sola de ecuación 22.2 (se llama condición natural); en cambio \\(u(0)=0\\) sí se impone (condición esencial).\n\n\n\n\n\n\nNotaDemostración de que ecuación 22.2 equivale a ecuación 22.1\n\n\n\n\n\nMultiplicando la ecuación por \\(v\\) e integrando, \\(\\int_0^L[(EAu')'+b]v\\,dx=0\\). Integrando por partes, \\(\\int_0^L(EAu')'v\\,dx=[EAu'v]_0^L-\\int_0^LEAu'v'\\,dx\\), y como \\(v(0)=0\\) el término de contorno vale \\(EAu'(L)v(L)=Pv(L)\\). Sustituyendo se obtiene ecuación 22.2. Recíprocamente, si ecuación 22.2 vale para toda \\(v\\), tomando primero \\(v\\) nula en el contorno se recupera la ecuación diferencial, y después \\(v(L)\\neq0\\) da la condición natural. \\(\\blacksquare\\)",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#sec-forma-e1",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#sec-forma-e1",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "22.2 Funciones de forma y el elemento barra",
+    "text": "22.2 Funciones de forma y el elemento barra\nSe divide \\([0,L]\\) en \\(n\\) elementos de longitud \\(h\\) y se aproxima \\(u\\) por una función lineal a trozos, determinada por sus valores \\(d_k=u(x_k)\\) en los nodos:\n\\[\nu(x)\\approx u_h(x)=\\sum_k N_k(x)\\,d_k .\n\\tag{22.3}\\]\nLa función de forma \\(N_k\\) es la «tienda de campaña» de la Figura 22.1: vale 1 en el nodo \\(k\\), 0 en los demás, y es lineal entre nodos. Dentro de un elemento con nodos \\(i\\) y \\(i+1\\), con coordenada local \\(\\xi=(x-x_i)/h\\in[0,1]\\):\n\\[\nN_i=1-\\xi,\\qquad N_{i+1}=\\xi,\\qquad u_h'=\\frac{d_{i+1}-d_i}{h}\\ \\ (\\text{constante}).\n\\]\nSustituyendo en ecuación 22.2 con \\(v=N_j\\) aparece, elemento a elemento, la matriz de rigidez y el vector de cargas (consistente):\n\\[\n\\mathbf{K}_e=\\frac{EA}{h}\\begin{pmatrix}1&-1\\\\-1&1\\end{pmatrix},\\qquad\n\\mathbf{f}_e=\\int_{x_i}^{x_{i+1}} b\\begin{pmatrix}N_i\\\\N_{i+1}\\end{pmatrix}dx\\ \\xrightarrow{\\ b\\ \\text{const.}\\ }\\ \\frac{bh}{2}\\begin{pmatrix}1\\\\1\\end{pmatrix}.\n\\tag{22.4}\\]\n\nEjemplo 22.1 (Ejemplo resuelto: barra con carga uniforme y dos elementos) Barra de \\(L=1000\\) mm, \\(EA=10^7\\) N, empotrada en \\(x=0\\), con \\(b=5\\) N/mm y sin fuerza en el extremo. Dos elementos de \\(h=500\\) mm; nodos 1 (\\(x=0\\)), 2 (\\(x=500\\)) y 3 (\\(x=1000\\)).\nRigidez de cada elemento: \\(EA/h=2\\cdot10^4\\) N/mm, luego \\(\\mathbf{K}_e=2\\cdot10^4\\begin{pmatrix}1&-1\\\\-1&1\\end{pmatrix}\\) para los dos.\nCargas: \\(bh/2=1250\\) N a cada nodo del elemento.\nEnsamblaje. Cada nodo recibe las contribuciones de los elementos que lo comparten (el nodo 2 pertenece a los dos): \\[\n2\\cdot10^4\\begin{pmatrix}1&-1&0\\\\-1&2&-1\\\\0&-1&1\\end{pmatrix}\\begin{pmatrix}d_1\\\\d_2\\\\d_3\\end{pmatrix}=\\begin{pmatrix}1250\\\\2500\\\\1250\\end{pmatrix}+\\begin{pmatrix}R_1\\\\0\\\\0\\end{pmatrix}\n\\]\nContorno. \\(d_1=0\\) (se elimina la primera fila y columna; \\(R_1\\) es la reacción, que ya no hace falta): \\[\n2\\cdot10^4\\begin{pmatrix}2&-1\\\\-1&1\\end{pmatrix}\\begin{pmatrix}d_2\\\\d_3\\end{pmatrix}=\\begin{pmatrix}2500\\\\1250\\end{pmatrix}\\ \\Rightarrow\\ d_2=0{,}1875\\ \\text{mm},\\quad d_3=0{,}25\\ \\text{mm}.\n\\]\nComprobación. La solución exacta es \\(u=b\\,(Lx-x^2/2)/EA\\): \\(u(500)=0{,}1875\\) mm y \\(u(1000)=0{,}25\\) mm. Coinciden en los nodos, aunque la exacta es una parábola y la aproximada, una poligonal. Es el resultado analítico de la Figura 22.1.\n\n\nEn el Ejemplo 22.1, ¿cuánto vale el desplazamiento del nodo central, \\(d_2\\)?\n\nResuelve el sistema \\(2\\times2\\) de debajo del texto «Contorno», o evalúa la solución exacta \\(u=b(Lx-x^2/2)/EA\\) en \\(x=500\\) mm.\n\n\n\\(u(500)=5\\,(1000\\cdot500-500^2/2)/10^7=5\\cdot375\\,000/10^7=0{,}1875\\) mm.\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nLa matriz \\(\\mathbf{K}_e\\) es singular (sus filas suman cero): un elemento suelto puede moverse como sólido rígido. Sólo tras imponer el contorno el sistema global tiene solución única.\n«Eliminar» un g.d.l. no es poner \\(K_{11}=0\\). Se suprime su ecuación; la reacción \\(R_1\\) se recupera después multiplicando la fila suprimida por el vector de desplazamientos.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#sec-ensamblaje-e1",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#sec-ensamblaje-e1",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "22.3 Ensamblaje y condiciones de contorno",
+    "text": "22.3 Ensamblaje y condiciones de contorno\nCon \\(n\\) elementos hay \\(n+1\\) nodos y \\(n+1\\) incógnitas. El ensamblaje suma \\(\\mathbf{K}_e\\) en las filas y columnas de los nodos que usa cada elemento (la conectividad):\n\\[\n\\mathbf{K}=\\sum_e\\mathbf{A}_e^{\\mathsf T}\\mathbf{K}_e\\mathbf{A}_e,\\qquad \\mathbf{f}=\\sum_e\\mathbf{A}_e^{\\mathsf T}\\mathbf{f}_e+\\mathbf{f}_{\\text{nodales}},\n\\tag{22.5}\\]\ndonde \\(\\mathbf A_e\\) es la matriz que selecciona los g.d.l. del elemento \\(e\\) dentro del vector global. En programación nunca se forma \\(\\mathbf A_e\\): se recorre la lista de conectividad. En el tema E9 (pendiente; véase el mapa del libro) se verá esto con los 20 g.d.l. de un elemento de lámina.\n\n\n\n\n\n\nNotaExplicación para ingenieros: ¿por qué «ensamblar» es sumar?\n\n\n\nImagina tres personas tirando de una cuerda unida a un anillo: la fuerza total sobre el anillo es la suma de lo que aporta cada cuerda. Igual en un nodo: la rigidez que «siente» el nodo 2 es la de la barra de su izquierda más la de la barra de su derecha. Por eso en la matriz global el término central es \\(2\\,EA/h\\) y los de los extremos, \\(EA/h\\) (Ejemplo 22.1).\n\n\n\nEn una barra de \\(n\\) elementos iguales de rigidez \\(k=EA/h\\), ¿qué vale el término diagonal de \\(\\mathbf{K}\\) en un nodo interior?\n\n\n\\(k\\)\n\\(2k\\)\n\\(k/2\\)\n\\(4k\\)\n\n\n\nUn nodo interior pertenece a dos elementos y cada uno aporta \\(k\\) a su diagonal: \\(2k\\). Los nodos de los extremos pertenecen a uno solo y tienen \\(k\\) (si no hay apoyo).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#sec-convergencia-e1",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#sec-convergencia-e1",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "22.4 ¿Converge?",
+    "text": "22.4 ¿Converge?\nAquí hay una propiedad especial de la barra. Para \\(EA\\) constante, la solución de elementos finitos es exacta en los nodos para cualquier carga \\(b(x)\\). El motivo: la energía ecuación 22.2 es una proyección: el error \\(u-u_h\\) es \\(a\\)-ortogonal a todo el espacio de funciones lineales a trozos, y la función de Green de este problema es ella misma lineal a trozos entre nodos. Entre los nodos, en cambio, \\(u_h\\) es una recta y el error es de orden \\(h^2\\) (Figura 22.1).\n\n\n\n\n\n\nImportanteIdea clave: convergencia en energía\n\n\n\nEn general (placas, láminas) los elementos finitos no son exactos en los nodos, pero conservan lo esencial: la solución es la mejor aproximación posible en energía dentro del espacio elegido. Al refinar la malla (o subir el grado) el error tiende a cero. Que además converja bien o mal depende del elemento: es el tema de E5.\n\n\n\nEn una barra de sección constante con elementos lineales, el desplazamiento de elementos finitos coincide con el exacto en todos los nodos, sea cual sea la carga repartida.\n\nVerdadero (resultado clásico en una dimensión). No ocurre en general en dos o tres dimensiones, ni si la sección varía.\n\n\n\n\n\n\n\n\nTipAplicación real: de la cercha al andamio, y al hueso\n\n\n\nilustrativo El elemento barra es el más antiguo de la ingeniería estructural por ordenador: las cerchas de cubierta, torres y puentes de celosía se calculan con miles de elementos barra ensamblados exactamente como aquí. En biomecánica, las trabéculas del hueso esponjoso se han modelado como redes de barras o vigas conectadas por nodos; la idea es la misma, pero el material y la geometría son mucho más irregulares. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#sec-historia-e1",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#sec-historia-e1",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "22.5 Un poco de historia",
+    "text": "22.5 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: de Galerkin a los «elementos finitos»\n\n\n\nEn 1915, Boris Galerkin publicó un método de aproximación para problemas de barras y placas que parte de la forma débil, y hoy lleva su nombre (a veces «Bubnov–Galerkin», por la prioridad discutida de Bubnov). Richard Courant utilizó en 1943 elementos triangulares para el problema de torsión de Saint-Venant, aunque su trabajo no tuvo eco inmediato entre los ingenieros. En los años cincuenta, Argyris y el grupo de Turner, Clough, Martin y Topp (1956) desarrollaron el método de rigidez para estructuras de aviones; Ray Clough acuñó el nombre «elementos finitos» en 1960. Las fuentes discrepan en quién merece el título de primero: depende de si se cuenta la idea matemática (Courant) o el método de ingeniería (Turner y colaboradores).\nFuentes (secundarias): Eighty Years of the Finite Element Method (arXiv:2107.04960); History of the Finite Element Method, Springer; Boris Galerkin, MacTutor; referencia de 1956 en (Turner et al. 1956). No se leyeron los originales; MacTutor llama «método de elementos finitos» al trabajo de Galerkin de 1915, algo que otras fuentes no hacen. Consultado el 21-10-2026.\n\n\n\nTurner, M. J., R. W. Clough, H. C. Martin, y L. J. Topp. 1956. «Stiffness and deflection analysis of complex structures». Journal of the Aeronautical Sciences 23: 805-23.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#sec-julia-e1",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#sec-julia-e1",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "22.6 Práctica guiada en Julia",
+    "text": "22.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Un ensamblador de barras de ocho líneas. Se resuelve la barra del Ejemplo 22.1 con \\(n\\) elementos y con una carga no uniforme \\(b(x)=x^2\\) (integrada con Gauss), y se comprueba que el error nodal es del orden del redondeo.\n\n\n\nusing LinearAlgebra\n\nfunction barra_fem(n; L = 1000.0, EA = 1e7, b = x -&gt; 5.0)\n    h = L / n; x = range(0, L; length = n + 1)\n    K = zeros(n + 1, n + 1); f = zeros(n + 1)\n    g = (-1 / sqrt(3), 1 / sqrt(3))                       # Gauss de dos puntos en ξ ∈ [-1, 1]\n    for e in 1:n\n        K[e:e+1, e:e+1] += EA / h * [1 -1; -1 1]          # K_e\n        for ξ in g                                         # f_e = ∫ b N dx\n            xe = (x[e] + x[e+1]) / 2 + ξ * h / 2\n            f[e]   += b(xe) * (1 - ξ) / 2 * h / 2\n            f[e+1] += b(xe) * (1 + ξ) / 2 * h / 2\n        end\n    end\n    d = zeros(n + 1)\n    d[2:end] = K[2:end, 2:end] \\ f[2:end]                  # d₁ = 0 (se suprime la primera ecuación)\n    (x, d)\nend\n\n# Carga uniforme: solución exacta u = b (L x − x²/2) / EA\nx, d = barra_fem(2)\nuex(x) = 5.0 * (1000x - x^2 / 2) / 1e7\n(nodos = collect(x), d = d, exacta = uex.(x))\n\n(nodos = [0.0, 500.0, 1000.0], d = [0.0, 0.1875, 0.25], exacta = [0.0, 0.1875, 0.25])\n\n\n\n# Carga no uniforme b = x²:  EA u′ = ∫ₓᴸ b = (L³ − x³)/3  →  u = (L³x − x⁴/4) / (3EA)\nuex2(x) = (1000.0^3 * x - x^4 / 4) / 3 / 1e7\nfor n in (2, 5, 10)\n    x, d = barra_fem(n; b = x -&gt; x^2)\n    println(\"n = $n   máx |error nodal| = \", maximum(abs.(d .- uex2.(x))))\nend\n\nn = 2   máx |error nodal| = 0.0\nn = 5   máx |error nodal| = 1.4551915228366852e-11\nn = 10   máx |error nodal| = 7.275957614183426e-12\n\n\nEl error nodal sale del orden de \\(10^{-16}\\): es el redondeo, no una aproximación. Prueba a cambiar la sección EA a una función de \\(x\\) y verás que la propiedad deja de cumplirse.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#sec-ejercicios-e1",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#sec-ejercicios-e1",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "22.7 Ejercicios",
+    "text": "22.7 Ejercicios\n\nUna barra, un elemento. Barra de longitud \\(L\\) con un solo elemento, empotrada en \\(x=0\\) y con fuerza \\(P\\) en el extremo. Obtén el desplazamiento del extremo.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nCon un elemento \\(\\frac{EA}{L}d_2=P\\Rightarrow d_2=PL/EA\\): es exacto (la solución es lineal).\n\n\n\nTres muelles en serie. Tres elementos iguales (\\(k=EA/h\\)) con la fuerza \\(P\\) aplicada en el último nodo. Calcula los tres desplazamientos nodales.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nLa fuerza en cada elemento es \\(P\\), luego cada alargamiento es \\(P/k\\) y \\(d_2=P/k\\), \\(d_3=2P/k\\), \\(d_4=3P/k\\) (suma de los tres «muelles»).\n\n\n\nCondición natural. En ecuación 22.2, ¿qué pasaría con la condición \\(EA\\,u'(L)=P\\) si se fuerza \\(u'(L)=0\\) en vez de dejarla natural?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSe estaría imponiendo una fuerza nula en el extremo, que sólo es cierta si \\(P=0\\). En la forma débil la fuerza aplicada entra por el término \\(P\\,v(L)\\); no hay que añadir nada más.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#la-doy-por-superada-si",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo la forma débil de la barra y digo cuál es el trabajo virtual interno y cuál el externo.\nConstruyo \\(\\mathbf{K}_e\\) y \\(\\mathbf{f}_e\\) de un elemento de dos nodos.\nEnsamblo a mano dos o tres elementos y aplico \\(u(0)=0\\).\nDistingo condición esencial (se impone) y natural (sale sola).\nExplico por qué la barra es exacta en los nodos y por qué eso no ocurre en general.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; el método de Galerkin y el elemento barra son estándar en los textos de elementos finitos (Zienkiewicz y Taylor, s. f.; Bathe 1996; Hughes 1987) (datos editoriales sin verificar, ver la bibliografía). La exactitud nodal en una dimensión se comprueba numéricamente en la práctica.\nQué queda pendiente. La demostración de la exactitud nodal es un esquema, no una prueba completa; la nota histórica usa fuentes secundarias; la figura tiene revisión visual pendiente; la «Aplicación real» es una orientación sin fuente.\n\n\n\n\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E1-mef-barra.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E1-mef-barra.html#referencias-unidad",
+    "title": "22  El método de elementos finitos en una barra",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nTurner, M. J., R. W. Clough, H. C. Martin, y L. J. Topp. 1956. «Stiffness and deflection analysis of complex structures». Journal of the Aeronautical Sciences 23: 805-23.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>El método de elementos finitos en una barra</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E1 y Ley de Hooke y energía (D2), donde se obtuvo la matriz de tensión plana.\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#objetivos-y-prerrequisitos",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "",
+    "text": "escribir la ley de Hooke en tensión plana y la energía de un elemento;\nconstruir el mapa isoparamétrico \\((\\xi,\\eta)\\to(x,y)\\) y su jacobiana;\nobtener la matriz \\(\\mathbf{B}\\) y la matriz de rigidez \\(\\mathbf{K}_e=\\int\\mathbf{B}^{\\mathsf T}\\mathbf{D}\\mathbf{B}\\,t\\,dA\\) por cuadratura de Gauss;\ncalcular a mano el área de un elemento con \\(|\\mathbf J|\\);\nreconocer el bloqueo por cortante parásito del cuadrilátero en flexión y por qué motiva el resto del bloque.\n\n\n\n\nSección 23.1 · Tensión plana · Sección 23.2 · Mapa isoparamétrico y jacobiana\nSección 23.3 · Cuadratura de Gauss y matriz de rigidez · Sección 23.4 · El problema de la viga · Sección 23.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\((\\xi,\\eta)\\in[-1,1]^2\\)\ncoordenadas naturales del elemento\n\n\n\\(N_k=\\tfrac14(1+\\xi_k\\xi)(1+\\eta_k\\eta)\\)\nfunciones de forma bilineales (nodos 1–4 en sentido antihorario)\n\n\n\\(\\mathbf{J}\\)\njacobiana \\(\\partial(x,y)/\\partial(\\xi,\\eta)\\); \\(|\\mathbf J|=\\det\\mathbf J\\)\n\n\n\\(\\boldsymbol\\varepsilon=(\\varepsilon_{xx},\\varepsilon_{yy},2\\varepsilon_{xy})^{\\mathsf T}\\)\ndeformación en notación de Voigt\n\n\n\\(\\mathbf{D}\\)\nmatriz de tensión plana (\\(3\\times3\\)), \\(\\boldsymbol\\sigma=\\mathbf D\\boldsymbol\\varepsilon\\)\n\n\n\\(\\mathbf{d}\\)\ndesplazamientos nodales \\((u_1,v_1,\\dots,u_4,v_4)\\), 8 incógnitas\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: ¿por qué «isoparamétrico»?\n\n\n\nImagina el elemento como una goma elástica cuadrada con una cuadrícula dibujada. Para pasar al elemento real se estira esa goma hasta que sus cuatro esquinas caen sobre los nodos; las funciones de forma son la receta del estirado. Iso-paramétrico significa que se usa la misma receta para colocar los puntos del elemento (geometría) y para repartir los desplazamientos dentro de él. Ventaja práctica: basta aprender a integrar en el cuadrado perfecto; la geometría torcida sólo añade un factor, \\(|\\mathbf J|\\).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-tension-plana-e2",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-tension-plana-e2",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "23.1 Tensión plana",
+    "text": "23.1 Tensión plana\nUna chapa delgada cargada en su plano tiene \\(\\sigma_{zz}=\\sigma_{xz}=\\sigma_{yz}=0\\). Con \\(E\\) y \\(\\nu\\), la ley de Hooke queda (tema D2):\n\\[\n\\begin{pmatrix}\\sigma_{xx}\\\\\\sigma_{yy}\\\\\\sigma_{xy}\\end{pmatrix}=\\underbrace{\\frac{E}{1-\\nu^2}\\begin{pmatrix}1&\\nu&0\\\\\\nu&1&0\\\\0&0&\\tfrac{1-\\nu}{2}\\end{pmatrix}}_{\\mathbf D}\\begin{pmatrix}\\varepsilon_{xx}\\\\\\varepsilon_{yy}\\\\2\\varepsilon_{xy}\\end{pmatrix}.\n\\tag{23.1}\\]\nLa energía de un elemento de espesor \\(t\\) y área \\(A_e\\) es \\(U_e=\\tfrac12\\int_{A_e}\\boldsymbol\\varepsilon^{\\mathsf T}\\mathbf D\\boldsymbol\\varepsilon\\,t\\,dA\\). El desplazamiento se interpola con las funciones de forma bilineales:\n\\[\nu(\\xi,\\eta)=\\sum_{k=1}^4N_k\\,u_k,\\qquad v(\\xi,\\eta)=\\sum_{k=1}^4N_k\\,v_k .\n\\tag{23.2}\\]\nCada \\(N_k\\) vale 1 en su nodo y 0 en los otros tres; es el producto de las funciones lineales de E1 en cada dirección.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-isoparam-e2",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-isoparam-e2",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "23.2 Mapa isoparamétrico y jacobiana",
+    "text": "23.2 Mapa isoparamétrico y jacobiana\n\nDefinición 23.1 (Elemento isoparamétrico) Las coordenadas del punto \\((\\xi,\\eta)\\) del elemento se obtienen con las mismas funciones que interpolan los desplazamientos: \\[\nx=\\sum_{k=1}^4N_k(\\xi,\\eta)\\,x_k,\\qquad y=\\sum_{k=1}^4N_k(\\xi,\\eta)\\,y_k .\n\\tag{23.3}\\]\n\nLas deformaciones necesitan derivadas respecto de \\(x\\) e \\(y\\), y las funciones de forma están dadas en \\((\\xi,\\eta)\\). La regla de la cadena da\n\\[\n\\begin{pmatrix}\\partial_\\xi\\\\\\partial_\\eta\\end{pmatrix}=\\underbrace{\\begin{pmatrix}x_{,\\xi}&y_{,\\xi}\\\\x_{,\\eta}&y_{,\\eta}\\end{pmatrix}}_{\\mathbf J}\\begin{pmatrix}\\partial_x\\\\\\partial_y\\end{pmatrix}\\ \\Longrightarrow\\ \\begin{pmatrix}\\partial_x\\\\\\partial_y\\end{pmatrix}=\\mathbf J^{-1}\\begin{pmatrix}\\partial_\\xi\\\\\\partial_\\eta\\end{pmatrix},\\qquad dA=|\\mathbf J|\\,d\\xi\\,d\\eta .\n\\tag{23.4}\\]\nEs la jacobiana del tema B1 aplicada a ecuación 23.3; \\(|\\mathbf J|\\) es el factor de área (tema B3).\n\nEjemplo 23.1 (Ejemplo resuelto: el área de un elemento) Cuadrilátero de vértices \\((0,0)\\), \\((4,0)\\), \\((5,3)\\), \\((0,2)\\) mm. Agrupando los términos de ecuación 23.3: \\[\nx=\\tfrac14(1+\\xi)(9+\\eta),\\qquad y=\\tfrac14(1+\\eta)(5+\\xi).\n\\] Derivando: \\(x_{,\\xi}=\\tfrac14(9+\\eta)\\), \\(x_{,\\eta}=\\tfrac14(1+\\xi)\\), \\(y_{,\\xi}=\\tfrac14(1+\\eta)\\), \\(y_{,\\eta}=\\tfrac14(5+\\xi)\\), de modo que \\[\n|\\mathbf J|=x_{,\\xi}y_{,\\eta}-x_{,\\eta}y_{,\\xi}=\\tfrac1{16}\\bigl[(9+\\eta)(5+\\xi)-(1+\\xi)(1+\\eta)\\bigr]=\\tfrac14\\,(11+2\\xi+\\eta).\n\\] \\(|\\mathbf J|&gt;0\\) en todo el cuadrado (mínimo \\(\\tfrac14\\cdot8\\)): el mapa es válido. El área es \\(A=\\int_{-1}^{1}\\!\\int_{-1}^{1}|\\mathbf J|\\,d\\xi\\,d\\eta=\\tfrac14\\cdot11\\cdot4=\\mathbf{11}\\) mm². Comprobación con la fórmula de los vértices: \\(\\tfrac12|(0)+(12)+(10)+(0)|=11\\) mm². Es un resultado analítico.\n\n\n¿Cuánto vale el área del cuadrilátero de vértices \\((0,0)\\), \\((4,0)\\), \\((5,3)\\), \\((0,2)\\) mm?\n\nFórmula de los vértices (Gauss): \\(A=\\tfrac12\\bigl|\\sum_i(x_iy_{i+1}-x_{i+1}y_i)\\bigr|\\), o integra \\(|\\mathbf J|\\) del ejemplo.\n\n\n\\(A=\\tfrac12|0\\cdot0-4\\cdot0+4\\cdot3-5\\cdot0+5\\cdot2-0\\cdot3+0-0|=11\\) mm².\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\n\\(|\\mathbf J|\\) debe ser positivo en todo el elemento. Un elemento cóncavo o con los nodos mal numerados (sentido horario) da \\(|\\mathbf J|\\le0\\) en algún punto y la rigidez deja de tener sentido.\nLas derivadas no son las de \\(\\xi,\\eta\\). \\(B\\) se construye con \\(\\mathbf J^{-1}\\); olvidarlo da una rigidez correcta sólo para cuadrados de lado 2.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-gauss-e2",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-gauss-e2",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "23.3 Cuadratura de Gauss y matriz de rigidez",
+    "text": "23.3 Cuadratura de Gauss y matriz de rigidez\nCon ecuación 23.2, las deformaciones son \\(\\boldsymbol\\varepsilon=\\mathbf B\\,\\mathbf d\\), con, para cada nodo \\(k\\), \\[\n\\mathbf B_k=\\begin{pmatrix}N_{k,x}&0\\\\0&N_{k,y}\\\\N_{k,y}&N_{k,x}\\end{pmatrix},\\qquad\n\\mathbf K_e=\\int_{-1}^{1}\\!\\!\\int_{-1}^{1}\\mathbf B^{\\mathsf T}\\mathbf D\\,\\mathbf B\\;t\\,|\\mathbf J|\\,d\\xi\\,d\\eta .\n\\tag{23.5}\\]\nEl integrando contiene \\(\\mathbf J^{-1}\\), una función racional si el elemento es distorsionado: no se integra a mano, sino con la cuadratura de Gauss: se sustituye la integral por una suma de valores en puntos especiales, \\[\n\\int_{-1}^{1}g(\\xi)\\,d\\xi\\approx g(-\\tfrac1{\\sqrt3})+g(\\tfrac1{\\sqrt3}),\n\\] exacta para polinomios de grado \\(\\le3\\) con sólo dos puntos. En el cuadrado se usan \\(2\\times2\\) puntos (los puntos naranjas de la Figura 23.1).\n\n\n\n\n\n\nNotaExplicación para ingenieros: ¿por qué dos puntos de Gauss?\n\n\n\nEs como pesar una viga con dos básculas en lugar de con mil: si el perfil de cargas es suave (un polinomio cúbico o menos), dos medidas colocadas en los sitios justos dan el resultado exacto. Los sitios, \\(\\pm1/\\sqrt3\\approx\\pm0{,}577\\), no son los extremos ni el centro: son los que anulan el error del primer término que sobra.\n\n\n\nEjemplo 23.2 (Ejemplo resuelto: un término de la rigidez de un cuadrado) Cuadrado unidad, \\(E=1\\), \\(\\nu=0{,}3\\), \\(t=1\\). Para el nodo 1, \\(N_1=(1-x)(1-y)\\), \\(N_{1,x}=-(1-y)\\), \\(N_{1,y}=-(1-x)\\), y la columna de \\(\\mathbf B\\) de \\(u_1\\) es \\((N_{1,x},0,N_{1,y})^{\\mathsf T}\\). Entonces \\[\nK_{11}=\\int_0^1\\!\\!\\int_0^1\\bigl(D_{11}N_{1,x}^2+D_{33}N_{1,y}^2\\bigr)dx\\,dy=\\frac{D_{11}+D_{33}}3,\n\\] con \\(D_{11}=E/(1-\\nu^2)=1{,}0989\\) y \\(D_{33}=E/(2(1+\\nu))=0{,}3846\\): \\(K_{11}=\\mathbf{0{,}4945}\\). Resultado analítico; la práctica lo reproduce con el programa completo.\n\n\nEn el Ejemplo 23.2, ¿cuánto vale \\(K_{11}\\) del cuadrado unidad con \\(E=1\\), \\(\\nu=0{,}3\\) y \\(t=1\\)?\n\n\\(K_{11}=(1{,}0989+0{,}3846)/3=0{,}4945\\).\n\n\n\n¿Qué le ocurre a \\(\\mathbf K_e\\) si se integra con un solo punto de Gauss?\n\n\nPierde rango: aparecen modos de energía nula además de los tres movimientos rígidos\nQueda exacta, porque la deformación es constante\nSe hace singular sólo si el elemento está distorsionado\nSe duplica el valor de cada término\n\n\n\nCon un punto, \\(\\mathbf K_e\\) tiene rango 3 (las tres deformaciones constantes) frente a las 5 que debe tener (\\(8-3\\) movimientos rígidos): quedan 2 modos «reloj de arena» (hourglass) sin energía. Con \\(2\\times2\\) puntos el rango es 5 (completo).\n\n\n\n\n\n\n\n\nTipAplicación real: muros, vigas de gran canto y secciones óseas\n\n\n\nilustrativo La tensión plana es el modelo de muros de carga y de cortante, vigas de gran canto y ménsulas en edificación, y el primer paso de casi cualquier cálculo con un cuadrilátero. En biomecánica se usa para secciones planas de huesos o de un diente cargado en su plano, siempre que el espesor sea pequeño frente a las otras dimensiones. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-viga-e2",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-viga-e2",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "23.4 El problema de la viga",
+    "text": "23.4 El problema de la viga\nUn buen elemento debe reproducir la flexión. Considera una viga en voladizo de \\(L=20\\), canto \\(h=1\\) y espesor \\(t=1\\) (\\(E=1000\\), \\(\\nu=0{,}3\\)) con una carga transversal \\(P=1\\) en el extremo. La teoría de vigas da una flecha \\(PL^3/(3EI)=32\\), con \\(I=th^3/12\\); el cortante añade menos de un 0,2 %.\nSi el cuadrilátero bilineal se integra con \\(2\\times2\\) puntos, la flexión de la viga no se parece a la real: al deformarse como un arco, el elemento sufre un cortante \\(\\varepsilon_{xy}\\) que no existe en flexión pura (se le llama cortante parásito). Ese cortante almacena energía falsa y la viga resulta demasiado rígida: es el bloqueo por cortante (shear locking). La práctica lo mide.\n\n\n\n\n\n\nImportanteIdea clave: la receta del libro\n\n\n\nSi \\(\\varepsilon_{xy}\\) se promedia (se obliga a ser constante en el elemento) en lugar de evaluarla punto a punto, el cortante parásito desaparece. Esa es la idea que reaparece en E6 y E7: no calcular las deformaciones directamente de los desplazamientos, sino reemplazarlas por promedios por subdominios.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-historia-e2",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-historia-e2",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "23.5 Un poco de historia",
+    "text": "23.5 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: la tensión plana popularizó el nombre\n\n\n\nEl artículo de R. W. Clough «The Finite Element Method in Plane Stress Analysis», presentado en 1960 en la 2.ª Conferencia de la ASCE sobre Computación Electrónica, es el que se cita habitualmente como origen del nombre «método de elementos finitos»; los paneles triangulares y rectangulares de tensión plana ya se habían empleado en el cálculo de alas de avión por Turner, Clough, Martin y Topp en 1956. Las fuentes consultadas discrepan en los matices de prioridad.\nFuentes (secundarias): Eighty Years of the Finite Element Method (arXiv:2107.04960); 75 Years of the Finite Element Method, SimScale; (Turner et al. 1956). No se leyeron los originales. Consultado el 21-10-2026.\n\n\n\nTurner, M. J., R. W. Clough, H. C. Martin, y L. J. Topp. 1956. «Stiffness and deflection analysis of complex structures». Journal of the Aeronautical Sciences 23: 805-23.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-julia-e2",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-julia-e2",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "23.6 Práctica guiada en Julia",
+    "text": "23.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) Un cuadrilátero de tensión plana de 15 líneas: área y \\(K_{11}\\) del Ejemplo 23.2. (2) La viga en voladizo con la formulación de desplazamientos y con la de promedios por subdominios (la del libro), con mallas cada vez más finas.\n\n\n\nusing Geometria, LinearAlgebra\n\n# --- Cuadrilátero de tensión plana, 2×2 puntos de Gauss ---\nfunction kcuad(X, E, ν, t)\n    D = E / (1 - ν^2) * [1 ν 0; ν 1 0; 0 0 (1 - ν) / 2]\n    sξ = (-1, 1, 1, -1); sη = (-1, -1, 1, 1); g = (-1 / sqrt(3), 1 / sqrt(3))\n    K = zeros(8, 8); área = 0.0\n    for ξ in g, η in g\n        dNξ = [sξ[k] * (1 + sη[k] * η) / 4 for k in 1:4]\n        dNη = [sη[k] * (1 + sξ[k] * ξ) / 4 for k in 1:4]\n        J = [dNξ'; dNη'] * X'                      # J = [x,ξ y,ξ ; x,η y,η]\n        dN = inv(J) * [dNξ'; dNη']                  # (∂x, ∂y) de cada N\n        B = zeros(3, 8)\n        for k in 1:4\n            B[:, 2k-1:2k] = [dN[1, k] 0; 0 dN[2, k]; dN[2, k] dN[1, k]]\n        end\n        K += B' * D * B * t * det(J)\n        área += det(J)\n    end\n    (K, área)\nend\n\nK, A = kcuad([0.0 1 1 0; 0 0 1 1], 1.0, 0.3, 1.0)\nKd, Ad = kcuad([0.0 4 5 0; 0 0 3 2], 1.0, 0.3, 1.0)\n(K11 = K[1, 1], área_cuadrado = A, área_cuadrilátero = Ad, movimientos_rígidos = count(&lt;(1e-12), eigvals(Symmetric(Kd))))\n\n(K11 = 0.49450549450549436, área_cuadrado = 1.0, área_cuadrilátero = 10.999999999999998, movimientos_rígidos = 3)\n\n\n\n# --- Viga en voladizo L=20, h=1: flecha relativa a la de Euler–Bernoulli (=32) ---\nfunction voladizo(nx, ny, modo; L = 20.0, h = 1.0, E = 1.0e3, ν = 0.3, t = 1.0, P = 1.0)\n    r = placa_oblicua(π / 2)                        # plano z = 0; sólo trabajan u₁, u₂\n    nodos, conn = malla_rectangular((0, L), (0, h), nx, ny)\n    K, _, _ = ensamblar(r, nodos, conn, E, ν, t; modo)\n    nn = size(nodos, 2); F = zeros(5nn)\n    ext = [k for k in 1:nn if nodos[1, k] ≈ L]\n    for k in ext; F[gdl(k, 2)] = -P / length(ext); end\n    fij = Int[]\n    for k in 1:nn\n        append!(fij, [gdl(k, 3), gdl(k, 4), gdl(k, 5)])\n        nodos[1, k] ≈ 0 && append!(fij, [gdl(k, 1), gdl(k, 2)])\n    end\n    u = resolver_estatica(K, F, unique(fij))\n    -sum(u[gdl(k, 2)] for k in ext) / length(ext) / (P * L^3 / (3E * t * h^3 / 12))\nend\n\nfor (nx, ny) in ((20, 1), (20, 2), (40, 2), (40, 4))\n    println(\"malla $nx×$ny   desplazamientos: \", round(voladizo(nx, ny, :desplazamientos), digits = 3),\n            \"   subdominios: \", round(voladizo(nx, ny, :subdominios), digits = 3))\nend\n\nmalla 20×1   desplazamientos: 0.675   subdominios: 1.214\nmalla 20×2   desplazamientos: 0.709   subdominios: 1.044\nmalla 40×2   desplazamientos: 0.892   subdominios: 1.046\nmalla 40×4   desplazamientos: 0.907   subdominios: 1.011\n\n\nLa formulación de desplazamientos sólo alcanza la flecha correcta con muchos elementos a lo largo del canto; la de subdominios acierta con pocos elementos, aunque con un solo elemento en el canto resulta algo blanda (aproximar la deformación lineal por dos escalones). Es un compromiso que se discute en E6.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-ejercicios-e2",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#sec-ejercicios-e2",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "23.7 Ejercicios",
+    "text": "23.7 Ejercicios\n\nFunciones de forma. Comprueba que \\(\\sum_kN_k=1\\) y que \\(\\sum_kN_k\\,x_k\\) reproduce \\(x=\\bar x\\) en el centro si el elemento es un rectángulo.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\sum_kN_k=\\tfrac14\\sum(1+\\xi_k\\xi)(1+\\eta_k\\eta)=\\tfrac14\\cdot4=1\\) porque \\(\\sum\\xi_k=\\sum\\eta_k=\\sum\\xi_k\\eta_k=0\\). En el centro \\(N_k=\\tfrac14\\) y \\(x=\\tfrac14\\sum x_k\\) es el promedio de las abscisas, es decir, el centro del rectángulo.\n\n\n\nRango. ¿Cuántos autovalores nulos tiene \\(\\mathbf K_e\\) con integración \\(2\\times2\\) y por qué?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nTres: los movimientos rígidos en el plano (dos traslaciones y un giro). Las otras \\(8-3=5\\) deformaciones tienen energía positiva.\n\n\n\nElemento distorsionado. Calcula \\(|\\mathbf J|\\) en el centro del Ejemplo 23.1 y compáralo con \\(A/4\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(|\\mathbf J|(0,0)=11/4=A/4\\). En general, para un elemento bilineal, \\(|\\mathbf J|\\) es lineal y su valor en el centro es la media: de ahí que el área se integre exactamente con un punto.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#la-doy-por-superada-si",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo \\(\\mathbf D\\) de tensión plana y la energía de un elemento.\nConstruyo el mapa isoparamétrico y calculo \\(\\mathbf J\\) y \\(|\\mathbf J|\\) de un cuadrilátero concreto.\nExplico por qué se usa Gauss \\(2\\times2\\) y qué pasa con un solo punto.\nCalculo un término de \\(\\mathbf K_e\\) de un cuadrado.\nReconozco el bloqueo por cortante en flexión y sé que la solución es promediar las deformaciones.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; el elemento isoparamétrico y la cuadratura de Gauss son estándar (Zienkiewicz y Taylor, s. f.; Bathe 1996; Hughes 1987) (datos editoriales sin verificar). Los resultados numéricos son calculados con Geometria.\nQué queda pendiente. La nota histórica usa fuentes secundarias; no se ha verificado el origen del elemento isoparamétrico (no se afirma); la figura tiene revisión visual pendiente; la «Aplicación real» es una orientación sin fuente.\n\n\n\n\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E2-cuadrilatero-plano.html#referencias-unidad",
+    "title": "23  El cuadrilátero bilineal en tensión plana",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nTurner, M. J., R. W. Clough, H. C. Martin, y L. J. Topp. 1956. «Stiffness and deflection analysis of complex structures». Journal of the Aeronautical Sciences 23: 805-23.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>El cuadrilátero bilineal en tensión plana</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E2 (isoparamétrico, Gauss), Cinemática de la lámina y Reissner–Mindlin.\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#objetivos-y-prerrequisitos",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "",
+    "text": "colocar un elemento de cuatro nodos en el plano paramétrico \\((\\theta^1,\\theta^2)\\) y pasar a coordenadas naturales \\((\\xi,\\eta)\\);\ndecir cuáles son los cinco grados de libertad de cada nodo y qué mide cada uno;\ninterpolar desplazamientos y giros con \\(N_k=\\tfrac14(1+\\xi_k\\xi)(1+\\eta_k\\eta)\\);\ncalcular el área del elemento sobre la superficie y el vector de grados de libertad (\\(20\\times1\\));\nexplicar por qué los movimientos rígidos sólo se reproducen aproximadamente.\n\n\n\n\nSección 24.1 · El elemento en el plano paramétrico · Sección 24.2 · Cinco grados de libertad\nSección 24.3 · Interpolación · Sección 24.4 · Área del elemento · Sección 24.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\((\\theta^1,\\theta^2)\\)\ncoordenadas curvilíneas de la superficie media\n\n\n\\(\\theta^\\alpha_0\\)\nsemilado del elemento en \\(\\theta^\\alpha\\) (tema, ec. ecuación 24.1)\n\n\n\\((\\xi,\\eta)\\)\ncoordenadas naturales, \\(\\xi=(\\theta^1-\\bar\\theta^1)/\\theta^1_0\\), \\(\\eta=(\\theta^2-\\bar\\theta^2)/\\theta^2_0\\)\n\n\n\\(u_1,u_2,u_3\\)\ndesplazamiento: componentes covariantes tangentes y componente normal\n\n\n\\(\\varphi_1,\\varphi_2\\)\ncomponentes covariantes del giro del director (convenio pendiente de confirmar, ver el cuadro de abajo)\n\n\n\\(\\boldsymbol\\delta\\)\nvector de los \\(20\\) g.d.l. del elemento\n\n\n\n\n\n\n\n\n\n\n\nAdvertenciaConvenio por confirmar\n\n\n\nEn este libro los g.d.l. son componentes covariantes (no físicas) y los giros \\(\\varphi_\\alpha\\) son las componentes covariantes del giro del director (tema D5). Si se prefieren g.d.l. físicos (por ejemplo, componentes cartesianas), las matrices cambian sólo por una matriz de transformación en cada nodo. El autor aún no ha fijado este convenio: se adopta la elección más sencilla y se marca «por confirmar».\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: ¿por qué cinco y no seis?\n\n\n\nEn el espacio, un punto de un sólido rígido tiene seis g.d.l.: tres traslaciones y tres giros. En una lámina de Reissner–Mindlin el material «director» (el segmento que atraviesa el espesor) puede inclinarse en dos direcciones — eso son los dos giros \\(\\varphi_1,\\varphi_2\\) — pero girar sobre sí mismo (el sexto grado) no cambia nada de la lámina: un lápiz dado vueltas sobre su eje sigue en el mismo sitio. Por eso la formulación tiene tres traslaciones y dos giros, cinco en total. Cuatro nodos por cinco: veinte incógnitas por elemento.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-plano-param-e3",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-plano-param-e3",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "24.1 El elemento en el plano paramétrico",
+    "text": "24.1 El elemento en el plano paramétrico\nSe divide la superficie media \\(\\mathbf r(\\theta^1,\\theta^2)\\) con una malla de rectángulos del plano \\((\\theta^1,\\theta^2)\\): cada elemento es un rectángulo \\([\\bar\\theta^1\\pm\\theta^1_0]\\times[\\bar\\theta^2\\pm\\theta^2_0]\\) en el plano de parámetros, que se ve curvo y distorsionado al llevarlo a la superficie (Figura 24.1). Las coordenadas naturales son\n\\[\n\\xi=\\frac{\\theta^1-\\bar\\theta^1}{\\theta^1_0},\\qquad \\eta=\\frac{\\theta^2-\\bar\\theta^2}{\\theta^2_0},\\qquad 2\\theta^1_0=\\theta^1_{\\text{nodo 2}}-\\theta^1_{\\text{nodo 1}},\\quad 2\\theta^2_0=\\theta^2_{\\text{nodo 4}}-\\theta^2_{\\text{nodo 1}},\n\\tag{24.1}\\]\ny la jacobiana entre ambos sistemas es diagonal y constante: \\(\\partial\\xi/\\partial\\theta^1=1/\\theta^1_0\\), \\(\\partial\\eta/\\partial\\theta^2=1/\\theta^2_0\\). Es un caso mucho más sencillo que el cuadrilátero arbitrario de E2: toda la distorsión geométrica está dentro de la métrica \\(a_{\\alpha\\beta}(\\theta)\\), que ya sabemos calcular (tema C1). Los nodos se numeran en sentido antihorario: \\(1=(-1,-1)\\), \\(2=(1,-1)\\), \\(3=(1,1)\\), \\(4=(-1,1)\\).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-gdl-e3",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-gdl-e3",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "24.2 Cinco grados de libertad",
+    "text": "24.2 Cinco grados de libertad\n\nDefinición 24.1 (Grados de libertad de un nodo) En cada nodo se toman \\[\n\\mathbf d_k=(u_1,\\ u_2,\\ u_3,\\ \\varphi_1,\\ \\varphi_2)_k,\n\\] donde el desplazamiento de la superficie media es \\(\\mathbf u=u_\\alpha\\,\\mathbf a^\\alpha+u_3\\,\\hat{\\mathbf n}\\) y el giro del director es \\(\\boldsymbol\\vartheta=\\varphi_\\alpha\\,\\mathbf a^\\alpha\\) (tema D5). El vector del elemento es \\(\\boldsymbol\\delta=(\\mathbf d_1,\\mathbf d_2,\\mathbf d_3,\\mathbf d_4)\\in\\mathbb R^{20}\\).\n\nEl orden nodo a nodo facilita el ensamblaje (E9): los g.d.l. del nodo \\(n\\) son los de la posición \\(5(n-1)+1,\\dots,5n\\) del vector global.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-interp-e3",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-interp-e3",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "24.3 Interpolación",
+    "text": "24.3 Interpolación\nLas incógnitas se interpolan con las mismas funciones bilineales de E2, componente a componente:\n\\[\nu_\\alpha=\\sum_{k=1}^4N_k\\,u_{\\alpha k},\\quad u_3=\\sum_{k=1}^4N_k\\,u_{3k},\\quad \\varphi_\\alpha=\\sum_{k=1}^4N_k\\,\\varphi_{\\alpha k},\\qquad N_k=\\tfrac14(1+\\xi_k\\xi)(1+\\eta_k\\eta).\n\\tag{24.2}\\]\nLas derivadas con respecto a las coordenadas curvilíneas se obtienen con la jacobiana constante: \\(\\partial N_k/\\partial\\theta^1=N_{k,\\xi}/\\theta^1_0\\), y análogamente para \\(\\theta^2\\). Ya se pueden construir las deformaciones del tema D6 con las incógnitas interpoladas: es el contenido de E4.\n\n\n\n\n\n\nAdvertenciaUn matiz importante sobre los movimientos rígidos\n\n\n\nSe interpolan componentes covariantes, que dependen del punto de la superficie: una traslación rígida del cilindro en la dirección \\(z\\) tiene \\(u_2=-R\\sin\\varphi\\) y \\(u_3=\\cos\\varphi\\) en cada nodo, y la interpolación bilineal de estas funciones no reproduce exactamente la traslación. El elemento sólo es capaz de moverse sin deformarse en el límite de elementos pequeños (excepto en direcciones en las que los componentes son constantes, como la traslación axial del cilindro). La práctica lo cuantifica.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-area-e3",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-area-e3",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "24.4 Área del elemento",
+    "text": "24.4 Área del elemento\nEl área del elemento sobre la superficie es el factor de área \\(\\sqrt a=\\sqrt{\\det a_{\\alpha\\beta}}\\) del tema C1, integrado en el rectángulo paramétrico:\n\\[\nA_e=\\int_{\\bar\\theta^2-\\theta^2_0}^{\\bar\\theta^2+\\theta^2_0}\\!\\int_{\\bar\\theta^1-\\theta^1_0}^{\\bar\\theta^1+\\theta^1_0}\\sqrt{a}\\,d\\theta^1d\\theta^2=\\theta^1_0\\theta^2_0\\int_{-1}^1\\!\\!\\int_{-1}^1\\sqrt{a(\\xi,\\eta)}\\,d\\xi\\,d\\eta .\n\\tag{24.3}\\]\n\nEjemplo 24.1 (Ejemplo resuelto: elemento sobre un cilindro) Cilindro de radio \\(R=500\\) mm con \\(\\mathbf r=(\\theta^1,\\,R\\sin\\theta^2,\\,R\\cos\\theta^2)\\) (\\(\\theta^1\\) a lo largo del eje). Elemento con \\(\\Delta\\theta^1=100\\) mm y \\(\\Delta\\theta^2=0{,}1\\) rad. La métrica es \\(a_{11}=1\\), \\(a_{22}=R^2\\), \\(a_{12}=0\\), de modo que \\(\\sqrt a=R\\) es constante y \\[\nA_e=\\theta^1_0\\theta^2_0\\cdot4\\cdot R=\\Delta\\theta^1\\,\\Delta\\theta^2\\,R=100\\cdot0{,}1\\cdot500=\\mathbf{5000}\\ \\text{mm}^2,\n\\] que coincide con el área del rectángulo desarrollado (\\(100\\times R\\Delta\\theta^2=100\\times50\\) mm). Resultado analítico.\n\n\nEn el Ejemplo 24.1, ¿cuánto vale el área del elemento de \\(100\\) mm de longitud axial y \\(0{,}1\\) rad de abertura sobre un cilindro de radio \\(500\\) mm?\n\n\\(A=\\Delta\\theta^1\\cdot R\\Delta\\theta^2=100\\cdot500\\cdot0{,}1=5000\\) mm².\n\n\n\nUn elemento de lámina de cuatro nodos con cinco g.d.l. por nodo tiene…\n\n\n12 g.d.l. (tres por nodo)\n16 g.d.l.\n20 g.d.l.\n24 g.d.l. (seis por nodo)\n\n\n\n\\(4\\times5=20\\): tres desplazamientos y dos giros del director por nodo; el giro sobre la normal no se incluye.\n\n\n\n\n\n\n\n\nTipAplicación real: del hypar de hormigón a la pared de una arteria\n\n\n\nilustrativo Obra civil. Las cubiertas de Félix Candela y las del Oceanogràfic de Valencia son láminas de doble curvatura de pocos centímetros de espesor: justo el rango donde un elemento de lámina como este, con cortante transversal, es la herramienta adecuada. Biomecánica. Los primeros modelos de aneurismas aórticos se hicieron con elementos de lámina asumiendo tensión uniforme en el espesor, y la cavidad craneal se ha modelado como una estructura de pared delgada con elementos de lámina compuestos.\nFuentes (secundarias): L’Oceanogràfic, Wikipedia; Predictors of Abdominal Aortic Aneurysm Risks (MDPI); Tissue Modeling and Analyzing with FEM: Cranium Brain Imaging (Wiley). No se leyeron los artículos completos. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-historia-e3",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-historia-e3",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "24.5 Un poco de historia",
+    "text": "24.5 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: el elemento «degenerado»\n\n\n\nEn 1970, Ahmad, Irons y Zienkiewicz publicaron Analysis of thick and thin shell structures by curved finite elements, donde obtenían el elemento de lámina «degenerando» un sólido tridimensional: se parte de un elemento 3D con nodos en las caras superior e inferior y se fuerza a que las secciones normales a la superficie media se mantengan rectas. Una versión previa, de 1968, se presentó en una conferencia sobre métodos matriciales en mecánica estructural. Esta formulación domina hoy los programas comerciales por no depender de ninguna teoría concreta de láminas; el elemento de este libro, en cambio, parte de la teoría de láminas en coordenadas curvilíneas arbitrarias (temas D3–D6).\nFuentes (secundarias): Analysis of thick and thin shell structures by curved finite elements (Semantic Scholar); (Ahmad et al. 1970). No se leyó el original. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-julia-e3",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-julia-e3",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "24.6 Práctica guiada en Julia",
+    "text": "24.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) El área del elemento del Ejemplo 24.1 con punto_elemento. (2) Cuánto «cuesta» el movimiento rígido en \\(z\\) sobre el cilindro al reducir el tamaño del elemento: se evalúa \\(\\lVert\\mathbf K\\boldsymbol\\delta\\rVert/\\lVert\\mathbf K\\rVert\\lVert\\boldsymbol\\delta\\rVert\\) con \\(\\boldsymbol\\delta\\) la traslación rígida interpolada nodo a nodo.\n\n\n\nusing Geometria, LinearAlgebra\n\nR = 500.0\nr = θ -&gt; [θ[1], R * sin(θ[2]), R * cos(θ[2])]            # cilindro de eje x\nX = [0.0 100.0 100.0 0.0; 0.0 0.0 0.1 0.1]                 # (θ¹, θ²) de los nodos 1–4\n\n# Área: Σ w·dA con los 2×2 puntos de Gauss\nárea = sum(w * punto_elemento(r, X, ξ, η, 1.0, 0.3, 1.0)[4] for (ξ, η, w) in Geometria.puntos_gauss((-1.0, 1.0), (-1.0, 1.0), 2))\n(área_elemento = área, esperada = 100 * R * 0.1)\n\n(área_elemento = 4999.9999962683405, esperada = 5000.0)\n\n\n\n# Traslación rígida en z: componentes covariantes de u = (0,0,1) en cada nodo\nfunction residuo_rigido(Δφ)\n    X = [0.0 100.0 100.0 0.0; 0.0 0.0 Δφ Δφ]\n    K = rigidez_elemento(r, X, 210e3, 0.3, 5.0; modo = :subdominios)\n    δ = zeros(20)\n    for k in 1:4\n        g = geometria_punto(r, X[:, k]); u = [0.0, 0.0, 1.0]\n        δ[5(k-1)+1:5(k-1)+2] = g.A' * u                  # uα = u·aα\n        δ[5(k-1)+3] = dot(g.n, u)\n    end\n    norm(K * δ) / (norm(K) * norm(δ))\nend\n[(Δφ = Δφ, residuo = residuo_rigido(Δφ)) for Δφ in (0.4, 0.2, 0.1, 0.05)]\n\n4-element Vector{@NamedTuple{Δφ::Float64, residuo::Float64}}:\n (Δφ = 0.4, residuo = 3.334531294666696e-9)\n (Δφ = 0.2, residuo = 1.6630596125336182e-9)\n (Δφ = 0.1, residuo = 8.303571775866207e-10)\n (Δφ = 0.05, residuo = 4.137167355040415e-10)\n\n\nEl residuo disminuye al reducir el elemento (la traslación rígida se representa cada vez mejor); por eso, en un cálculo real, el modo rígido sólo aparece «gratis» cuando la malla es fina.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-ejercicios-e3",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#sec-ejercicios-e3",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "24.7 Ejercicios",
+    "text": "24.7 Ejercicios\n\nOrden de los nodos. ¿Qué ocurre si se numeran los nodos en sentido horario?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nLa jacobiana \\(\\partial(\\xi,\\eta)/\\partial(\\theta^1,\\theta^2)\\) cambia de signo y el «área» sale negativa: el elemento se vuelve del revés. Siempre antihorario visto desde el lado de la normal \\(\\hat{\\mathbf n}\\).\n\n\n\nContar incógnitas. Una malla de \\(10\\times10\\) elementos tiene cuántos nodos y cuántos g.d.l. globales (sin apoyos)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(11\\times11=121\\) nodos; \\(121\\times5=605\\) g.d.l.\n\n\n\nÁrea sobre una esfera. Un elemento de una esfera de radio \\(R\\) entre colatitudes \\(\\theta^1_a,\\theta^1_b\\) y longitudes \\(\\Delta\\theta^2\\) tiene \\(\\sqrt a=R^2\\sin\\theta^1\\). Escribe su área.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(A=R^2\\Delta\\theta^2(\\cos\\theta^1_a-\\cos\\theta^1_b)\\); en este caso \\(\\sqrt a\\) no es constante y los \\(2\\times2\\) puntos de Gauss ya sólo aproximan.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#la-doy-por-superada-si",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nDescribo el elemento como un rectángulo del plano paramétrico y paso a \\((\\xi,\\eta)\\).\nEnumero los cinco g.d.l. de un nodo y digo por qué no hay un sexto.\nEscribo la interpolación ecuación 24.2 y la numeración nodo a nodo.\nCalculo el área de un elemento con \\(\\sqrt a\\).\nSé por qué el movimiento rígido sólo se representa en el límite.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; la formulación de las incógnitas y la geometría siguen los temas D3–D6 y C1. Elemento isoparamétrico y de lámina en (Zienkiewicz y Taylor, s. f.; Bathe 1996; Ahmad et al. 1970).\nQué queda pendiente. El convenio de g.d.l. covariantes y de los giros \\(\\varphi_\\alpha\\) por confirmar por el autor; la nota histórica se basa en fuentes secundarias; revisión visual de la figura; la «Aplicación real» cita fuentes sin haber leído los artículos completos.\n\n\n\n\n\n\nAhmad, S., B. M. Irons, y O. C. Zienkiewicz. 1970. «Analysis of thick and thin shell structures by curved finite elements». International Journal for Numerical Methods in Engineering 2 (3): 419-51. https://doi.org/10.1002/nme.1620020310.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E3-elemento-lamina.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E3-elemento-lamina.html#referencias-unidad",
+    "title": "24  El elemento lámina de cuatro nodos",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nAhmad, S., B. M. Irons, y O. C. Zienkiewicz. 1970. «Analysis of thick and thin shell structures by curved finite elements». International Journal for Numerical Methods in Engineering 2 (3): 419-51. https://doi.org/10.1002/nme.1620020310.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>El elemento lámina de cuatro nodos</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Deformaciones–desplazamientos (D6) y E3.\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#objetivos-y-prerrequisitos",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "",
+    "text": "escribir \\(\\boldsymbol\\gamma^0=\\mathbf H_E\\boldsymbol\\delta\\), \\(\\boldsymbol\\gamma^1=\\mathbf H_B\\boldsymbol\\delta\\) y \\(\\boldsymbol\\gamma_S=\\mathbf H_S\\boldsymbol\\delta\\) a partir de las relaciones del tema D6;\nleer el patrón de ceros de cada matriz y decir qué g.d.l. intervienen en cada deformación;\ncalcular a mano una columna de \\(\\mathbf H\\) para un caso sencillo (placa plana);\nidentificar el cortante parásito en un campo de flexión y ver por qué los promedios lo eliminan;\ndecir qué hay de pendiente en el paso a componentes físicas.\n\n\n\n\nSección 25.1 · De los campos a las matrices · Sección 25.2 · Extensión · Sección 25.3 · Flexión y cortante\nSección 25.4 · El cortante parásito · Sección 25.5 · Componentes físicas (pendiente) · Sección 25.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\boldsymbol\\gamma^0=(\\gamma^0_{11},\\gamma^0_{22},2\\gamma^0_{12})\\)\ndeformación de extensión (membrana) en notación de Voigt\n\n\n\\(\\boldsymbol\\gamma^1=(\\gamma^1_{11},\\gamma^1_{22},2\\gamma^1_{12})\\)\ndeformación de flexión\n\n\n\\(\\boldsymbol\\gamma_S=(\\gamma_1,\\gamma_2)\\)\ndeformación de cortante transversal (\\(\\gamma_\\alpha=2\\gamma_{\\alpha3}\\))\n\n\n\\(\\mathbf H_E,\\ \\mathbf H_B,\\ \\mathbf H_S\\)\nmatrices \\(3\\times20\\), \\(3\\times20\\) y \\(2\\times20\\)\n\n\n\\(N_{k,\\beta}\\)\nderivada de \\(N_k\\) respecto de \\(\\theta^\\beta\\) (con \\(\\theta^\\beta_0\\) de E3)\n\n\n\\(b_{\\alpha\\beta},\\ b^\\rho_\\alpha,\\ \\Gamma^\\gamma_{\\alpha\\beta}\\)\ncurvatura y Christoffel de la superficie (temas C2, C3)\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: la matriz H es un diccionario\n\n\n\nPiensa en un traductor automático: se le da un texto en «idioma nodos» (20 números: cómo se mueven los cuatro nodos) y devuelve el texto en «idioma deformaciones» (extensión, flexión, cortante). Cada columna es una frase del diccionario: «si sólo se mueve el g.d.l. \\(i\\) una unidad, esto es la deformación que se produce». Programar el elemento consiste en rellenar el diccionario una sola vez y usarlo en cada punto de integración. Y el mapa de la Figura 25.1 muestra qué casillas tienen entrada: por ejemplo, los giros no producen extensión, y los desplazamientos tangentes sólo producen flexión si la lámina es curva.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#sec-h-e4",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#sec-h-e4",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "25.1 De los campos a las matrices",
+    "text": "25.1 De los campos a las matrices\nLas relaciones del tema D6 son lineales en los campos y sus primeras derivadas:\n\\[\n\\begin{aligned}\n\\gamma^0_{\\alpha\\beta}&=\\tfrac12(u_{\\alpha\\|\\beta}+u_{\\beta\\|\\alpha})-b_{\\alpha\\beta}u_3,\\\\\n\\gamma^1_{\\alpha\\beta}&=\\tfrac12\\bigl(\\varphi_{\\alpha\\|\\beta}+\\varphi_{\\beta\\|\\alpha}-b^\\mu_\\alpha u_{\\mu\\|\\beta}-b^\\mu_\\beta u_{\\mu\\|\\alpha}+2b^\\mu_\\alpha b_{\\mu\\beta}u_3\\bigr),\\\\\n\\gamma_\\alpha&=\\varphi_\\alpha+u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho,\n\\end{aligned}\n\\tag{25.1}\\]\ncon \\(u_{\\alpha\\|\\beta}=u_{\\alpha,\\beta}-\\Gamma^\\gamma_{\\alpha\\beta}u_\\gamma\\). Sustituyendo la interpolación ecuación 24.2, cada deformación es una combinación lineal de los 20 valores nodales: sus coeficientes forman una fila de \\(\\mathbf H\\). La columna asociada al g.d.l. \\(c\\) del nodo \\(k\\) se obtiene tomando \\(N_k\\) como único campo no nulo en la componente \\(c\\) y evaluando ecuación 25.1: no hay que derivar nada nuevo.\n\nDefinición 25.1 (Matrices deformación–desplazamiento) Para el punto \\((\\xi,\\eta)\\) del elemento, \\[\n\\boldsymbol\\gamma^0=\\mathbf H_E\\,\\boldsymbol\\delta,\\qquad \\boldsymbol\\gamma^1=\\mathbf H_B\\,\\boldsymbol\\delta,\\qquad \\boldsymbol\\gamma_S=\\mathbf H_S\\,\\boldsymbol\\delta,\n\\tag{25.2}\\] donde las entradas dependen de \\(N_k\\), \\(N_{k,\\beta}\\) y de la geometría \\((\\Gamma^\\gamma_{\\alpha\\beta},b_{\\alpha\\beta},b^\\rho_\\alpha)\\) en ese punto.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#sec-extension-e4",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#sec-extension-e4",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "25.2 Extensión",
+    "text": "25.2 Extensión\nLas columnas de \\(\\mathbf H_E\\) son, para el nodo \\(k\\):\n\n\n\n\n\n\n\n\n\ng.d.l.\n\\(\\gamma^0_{11}\\)\n\\(\\gamma^0_{22}\\)\n\\(2\\gamma^0_{12}\\)\n\n\n\n\n\\(u_1\\)\n\\(N_{k,1}-\\Gamma^1_{11}N_k\\)\n\\(-\\Gamma^1_{22}N_k\\)\n\\(N_{k,2}-2\\Gamma^1_{12}N_k\\)\n\n\n\\(u_2\\)\n\\(-\\Gamma^2_{11}N_k\\)\n\\(N_{k,2}-\\Gamma^2_{22}N_k\\)\n\\(N_{k,1}-2\\Gamma^2_{12}N_k\\)\n\n\n\\(u_3\\)\n\\(-b_{11}N_k\\)\n\\(-b_{22}N_k\\)\n\\(-2b_{12}N_k\\)\n\n\n\\(\\varphi_1,\\varphi_2\\)\n0\n0\n0\n\n\n\nLos giros no intervienen (la fila de ceros de la Figura 25.1). Los términos con \\(\\Gamma\\) vienen de la derivada covariante; los de \\(u_3\\), de la curvatura: el desplazamiento normal estira la lámina si ésta es curva (el hinchado de un globo).\n\nEjemplo 25.1 (Ejemplo resuelto: el hinchado de un cilindro) En el cilindro de eje \\(x\\) y radio \\(R\\) con normal exterior, \\(a_{11}=1\\), \\(a_{22}=R^2\\), \\(b_{22}=-R\\) y \\(b_{11}=b_{12}=0\\). Si todos los nodos tienen \\(u_3=\\bar u\\) y el resto nulo, \\(u_3=\\bar u\\) en todo el elemento y la única fila no nula de \\(\\mathbf H_E\\boldsymbol\\delta\\) es \\(\\gamma^0_{22}=-b_{22}\\bar u=R\\bar u\\). La deformación física en la dirección circunferencial es \\(\\gamma^0_{22}/a_{22}=\\bar u/R\\): para \\(R=500\\) mm y \\(\\bar u=0{,}01\\) mm, \\(\\varepsilon_{\\text{aro}}=\\mathbf{2\\cdot10^{-5}}\\). Es el resultado de la tabla de D6, ahora obtenido con los 20 g.d.l. Resultado analítico; la práctica lo recalcula con matrices_H.\n\n\nEn el Ejemplo 25.1, ¿cuánto vale la deformación circunferencial física \\(\\varepsilon_{\\text{aro}}\\) si \\(R=500\\) mm y \\(u_3=0{,}01\\) mm en todos los nodos?\n\n\\(\\varepsilon_{\\text{aro}}=\\gamma^0_{22}/a_{22}=R\\bar u/R^2=\\bar u/R=0{,}01/500=2\\cdot10^{-5}\\).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#sec-flexion-e4",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#sec-flexion-e4",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "25.3 Flexión y cortante",
+    "text": "25.3 Flexión y cortante\nEn \\(\\mathbf H_B\\) intervienen los giros (\\(\\varphi_{\\alpha\\|\\beta}\\)) y, por la curvatura, los desplazamientos tangentes y normales. En \\(\\mathbf H_S\\) intervienen \\(\\varphi_\\alpha\\), \\(u_{3,\\alpha}\\) y, de nuevo por la curvatura, \\(u_\\rho\\). Para una placa plana (\\(b_{\\alpha\\beta}=0\\), \\(\\Gamma=0\\) con \\(\\theta^\\alpha\\) cartesianas) todo se simplifica a lo que ya se conoce de Reissner–Mindlin:\n\\[\n\\gamma^1_{\\alpha\\beta}=\\tfrac12(\\varphi_{\\alpha,\\beta}+\\varphi_{\\beta,\\alpha}),\\qquad \\gamma_\\alpha=\\varphi_\\alpha+w_{,\\alpha}\\quad(w=u_3).\n\\tag{25.3}\\]\nLas columnas de la placa son: \\(\\varphi_\\alpha\\to(N_{k,\\beta}\\ \\text{en}\\ \\gamma^1,\\ N_k\\ \\text{en}\\ \\gamma_\\alpha)\\) y \\(w\\to(\\,N_{k,\\alpha}\\ \\text{en}\\ \\gamma_\\alpha)\\). El acople \\(\\varphi_\\alpha+w_{,\\alpha}\\) es el responsable del bloqueo que se explica a continuación.\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\n\\(\\mathbf H\\) depende del punto. En una lámina curva, \\(\\Gamma\\) y \\(b\\) cambian de un punto a otro: hay que reconstruir \\(\\mathbf H\\) en cada punto de Gauss, no una sola vez por elemento.\nRotaciones y flechas no son «independientes» del cortante. Si \\(\\varphi_\\alpha=-w_{,\\alpha}\\) (Kirchhoff) el cortante es nulo; la discretización lo violará si no se cuida, y ahí empieza el bloqueo.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#sec-parasito-e4",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#sec-parasito-e4",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "25.4 El cortante parásito",
+    "text": "25.4 El cortante parásito\n\nEjemplo 25.2 (Ejemplo resuelto: flexión pura que el elemento ve con cortante) Placa cuadrada unidad (E2, E3). Se impone el campo de flexión pura \\(w=\\tfrac12x^2\\), \\(\\varphi_1=-x\\) (de modo que \\(\\varphi_1=-w_{,x}\\) y \\(\\gamma_1=0\\) exactamente). Con los valores en los nodos \\(w_k=\\tfrac12x_k^2\\) y \\(\\varphi_{1k}=-x_k\\), el elemento interpola linealmente \\(w\\): \\(w_h=\\tfrac12x\\). Entonces \\[\n\\gamma_1^h=\\varphi_1+w_{h,x}=-x+\\tfrac12=\\tfrac12-x,\\qquad \\gamma_1^h(0)=+\\tfrac12,\\quad \\gamma_1^h(1)=-\\tfrac12,\\quad \\overline{\\gamma_1^h}=0 .\n\\] El elemento «cree» que hay un cortante que va de \\(+\\tfrac12\\) a \\(-\\tfrac12\\) y almacena energía con él: es cortante parásito. En un elemento delgado, el cortante pesa tanto (\\(\\propto1/t^2\\)) que obliga a \\(w\\) a ser casi cero: la placa se bloquea. Pero su media sobre el elemento es exactamente nula: un elemento que use la media del cortante en lugar de su valor puntual no ve cortante parásito. Es el argumento del tema E5. Resultado analítico.\n\n\nEn el Ejemplo 25.2, ¿cuánto vale el cortante parásito \\(\\gamma_1^h\\) en el borde \\(x=0\\)?\n\n\\(\\gamma_1^h=\\varphi_1+w_{h,x}\\) con \\(\\varphi_1=-x\\) y \\(w_h=x/2\\).\n\n\n\\(\\gamma_1^h(0)=-0+\\tfrac12=\\tfrac12\\).\n\n\n\n\n\n\n\n\nImportanteIdea clave: promediar elimina el parásito\n\n\n\nEl cortante parásito varía linealmente en el elemento y tiene media nula en flexión pura. Reemplazar el cortante por su valor medio en cada subdominio (E6–E7) quita toda esa energía falsa y deja intacta la del cortante real (que sí tiene media no nula).\n\n\n\nEn el elemento de lámina, los giros \\(\\varphi_1,\\varphi_2\\) no contribuyen a la deformación de extensión \\(\\boldsymbol\\gamma^0\\).\n\nVerdadero. ecuación 25.1 no contiene \\(\\varphi_\\alpha\\) en \\(\\gamma^0_{\\alpha\\beta}\\); es la fila de ceros de la Figura 25.1.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#sec-fisicas-e4",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#sec-fisicas-e4",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "25.5 Componentes físicas (pendiente)",
+    "text": "25.5 Componentes físicas (pendiente)\nLas deformaciones anteriores son covariantes: sus unidades dependen del sistema de coordenadas. Para interpretarlas (o aplicar un criterio de fallo) se pasan a componentes físicas: en una base ortogonal, \\(\\gamma_{\\langle\\alpha\\beta\\rangle}=\\gamma_{\\alpha\\beta}/\\sqrt{a_{\\alpha\\alpha}a_{\\beta\\beta}}\\) (sin suma), como se hizo en el Ejemplo 25.1. En una base no ortogonal (placa oblicua) la definición de «componente física» admite más de una elección razonable.\n\n\n\n\n\n\nAdvertenciaConvenio por confirmar\n\n\n\nLas componentes físicas en bases no ortogonales y los g.d.l. físicos (si los desplazamientos nodales deben interpretarse como componentes cartesianas) son decisiones del autor aún no fijadas. Mientras tanto, el libro trabaja con g.d.l. covariantes y da las componentes físicas sólo en bases ortogonales.\n\n\n\n\n\n\n\n\nTipAplicación real: bandas extensométricas en estructuras y en hueso\n\n\n\nilustrativo Lo que mide una banda extensométrica pegada a una cubierta de hormigón, a un depósito o al hueso de un animal de laboratorio es justamente una componente física de la deformación en una dirección. Por eso la matriz \\(\\mathbf H\\) se usa «al revés» en la validación: se calcula \\(\\boldsymbol\\gamma=\\mathbf H\\boldsymbol\\delta\\) en el punto donde está pegada la banda y se compara con la lectura. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#sec-julia-e4",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#sec-julia-e4",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "25.6 Práctica guiada en Julia",
+    "text": "25.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) El hinchado del cilindro del Ejemplo 25.1 con matrices_H. (2) Comprobación de que \\(\\mathbf H\\boldsymbol\\delta\\) coincide con las relaciones de D6 evaluadas sobre el mismo campo interpolado (diferencias de \\(10^{-12}\\)). (3) El cortante parásito del Ejemplo 25.2 en el elemento plano.\n\n\n\nusing Geometria, LinearAlgebra\n\nR = 500.0; r = θ -&gt; [θ[1], R * sin(θ[2]), R * cos(θ[2])]\nX = [0.0 100.0 100.0 0.0; 0.0 0.0 0.1 0.1]\nξ, η = 0.3, -0.2\ng, N, dN, dA, _, _, _ = punto_elemento(r, X, ξ, η, 1.0, 0.3, 1.0)\nHE, HB, HS = matrices_H(g, N, dN)\n\n# (1) hinchado: u₃ = 0.01 en todos los nodos\nδ = zeros(20); δ[3:5:20] .= 0.01\nγ0 = HE * δ\n(γ⁰₂₂ = γ0[2], ε_aro = γ0[2] / g.a[2, 2], teórica = 0.01 / R, forma = size.((HE, HB, HS)))\n\n(γ⁰₂₂ = 4.999999951366189, ε_aro = 1.999999980540199e-5, teórica = 2.0e-5, forma = ((3, 20), (3, 20), (2, 20)))\n\n\n\n# (3) Cortante parásito en el elemento plano: w = x²/2, φ₁ = −x en los nodos\nplana = placa_oblicua(π / 2); Xp = [0.0 1.0 1.0 0.0; 0.0 0.0 1.0 1.0]\nδp = zeros(20)\nfor k in 1:4\n    x = Xp[1, k]; δp[5(k-1)+3] = x^2 / 2; δp[5(k-1)+4] = -x\nend\nfunction cortante1(ξ, η)\n    gp, Np, dNp, _, _, _, _ = punto_elemento(plana, Xp, ξ, η, 1.0, 0.3, 1.0)\n    HSp = matrices_H(gp, Np, dNp)[3]\n    (HSp * δp)[1]\nend\nvalores = [cortante1(ξ, 0.0) for ξ in (-1.0, 0.0, 1.0)]\n(γ₁_en_x_0_0p5_1 = valores, media = sum(cortante1(ξ, η) for ξ in (-1/√3, 1/√3), η in (-1/√3, 1/√3)) / 4)\n\n(γ₁_en_x_0_0p5_1 = [0.5, 0.0, -0.5], media = 2.7755575615628914e-17)",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#sec-ejercicios-e4",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#sec-ejercicios-e4",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "25.7 Ejercicios",
+    "text": "25.7 Ejercicios\n\nGiros y membrana. Explica por qué un movimiento de sólo-giros no genera energía de membrana en este elemento.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPorque \\(\\gamma^0_{\\alpha\\beta}\\) en ecuación 25.1 sólo contiene \\(u_\\alpha\\) y \\(u_3\\): los giros \\(\\varphi\\) aparecen únicamente en \\(\\gamma^1\\) y \\(\\gamma_S\\).\n\n\n\nPlaca plana. Escribe la fila \\(\\gamma_1\\) de \\(\\mathbf H_S\\) para el nodo \\(k\\) de una placa plana con \\(\\theta^\\alpha\\) cartesianas.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\gamma_1=\\varphi_1+w_{,1}\\): la columna \\(\\varphi_{1k}\\) vale \\(N_k\\), la columna \\(w_k\\) vale \\(N_{k,1}\\) y las demás, 0.\n\n\n\nContar entradas. ¿Cuántos g.d.l. entran en \\(\\gamma^0_{11}\\) para una lámina curva? ¿Y en una placa plana?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nCurva: \\(u_1,u_2,u_3\\) de cada nodo (12); plana (\\(b=0\\), \\(\\Gamma=0\\)): sólo \\(u_1\\) de cada nodo (4).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#la-doy-por-superada-si",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo ecuación 25.1 y sé qué campo entra en cada deformación.\nObtengo una columna de \\(\\mathbf H\\) sustituyendo \\(N_k\\) en una componente.\nInterpreto el patrón de ceros de la Figura 25.1.\nReconozco el cortante parásito y sé que su media en flexión pura es nula.\nSé que las componentes físicas sólo se dan en bases ortogonales y que el resto está por confirmar.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; las relaciones de partida son las de D6 (Novozhilov 1959; Flügge 1972); la construcción de \\(\\mathbf H\\) es estándar en elementos finitos (Bathe 1996; Hughes 1987). La equivalencia \\(\\mathbf H\\boldsymbol\\delta\\) ↔︎ relaciones de D6 se comprueba con test automático (error \\(&lt;10^{-8}\\)).\nQué queda pendiente. Los convenios de componentes físicas no ortogonales y de g.d.l. físicos; este tema no lleva nota histórica por no haber fuente verificada; revisión visual de la figura; la «Aplicación real» es una orientación sin fuente.\n\n\n\n\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E4-matrices-b.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E4-matrices-b.html#referencias-unidad",
+    "title": "25  Matrices deformación–desplazamiento",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Matrices deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E4 (cortante parásito) y E2 (Gauss).\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#objetivos-y-prerrequisitos",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "",
+    "text": "reconocer el bloqueo (locking) por sus síntomas: resultado demasiado rígido que empeora al adelgazar la lámina;\nexplicar el bloqueo por cortante con una viga de un elemento y cuantificarlo;\ndistinguir el bloqueo de membrana del de cortante y por qué la lámina curva sufre los dos;\ndetectar modos espurios (energía nula) mirando los autovalores de \\(\\mathbf K_e\\);\ncomparar los tres remedios: integración reducida, deformaciones supuestas y subdominios.\n\n\n\n\nSección 26.1 · Síntomas del bloqueo · Sección 26.2 · Bloqueo por cortante · Sección 26.3 · Bloqueo de membrana\nSección 26.4 · Modos espurios · Sección 26.5 · Remedios · Sección 26.7 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(t/L\\)\nesbeltez de la lámina (espesor entre luz)\n\n\n\\(w_h/w_{\\text{ex}}\\)\nflecha de elementos finitos entre flecha exacta (\\(&lt;1\\): demasiado rígido)\n\n\n\\(\\lambda_i(\\mathbf K_e)\\)\nautovalores de la matriz de rigidez del elemento\n\n\nespurio\nmodo de energía nula que no es un movimiento rígido\n\n\ndesplazamientos, reducida, subdominios\nlas tres variantes de rigidez de rigidez_elemento\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: el elemento con la camisa de fuerza\n\n\n\nImagina que a un elemento se le dan pocas formas de moverse y, además, se le penaliza cada pequeña deformación «de más» con una energía enorme. Una lámina delgada quiere doblarse (cuesta poco), pero el elemento sólo sabe doblarse estirándose o cizallándose a la vez — deformaciones falsas que cuestan mucho. Resultado: el elemento prefiere no moverse, como quien lleva una camisa de fuerza. Y cuanto más delgada es la lámina, más pesa la rigidez falsa frente a la verdadera: la camisa aprieta más. Los remedios consisten en soltar las deformaciones falsas (promediarlas, reducir la integración o reinterpolarlas).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-sintomas-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-sintomas-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.1 Síntomas del bloqueo",
+    "text": "26.1 Síntomas del bloqueo\n\nLa estructura se deforma muy poco (la flecha es una pequeña fracción de la correcta).\nEl error aumenta al adelgazar la lámina (Figura 26.2) y desaparece con espesores gruesos.\nRefinar la malla ayuda muy despacio: con \\(t/L=0{,}01\\) ni \\(16\\times16\\) elementos bastan (Figura 26.1).\n\n\n\n\n\n\n\nFigura 26.2: Con malla fija (\\(8\\times8\\)) el elemento de desplazamientos puros pierde casi toda su capacidad cuando el espesor relativo baja de \\(0{,}05\\). Con \\(t/L=0{,}2\\) (placa gruesa) todas las curvas pasan por encima de 1 porque la flecha incluye la deformación por cortante, que la solución de Navier (Kirchhoff) no recoge. Calculado.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-cortante-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-cortante-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.2 Bloqueo por cortante",
+    "text": "26.2 Bloqueo por cortante\nEl cortante transversal \\(\\gamma_\\alpha=\\varphi_\\alpha+w_{,\\alpha}\\) pesa en la energía con la rigidez \\(t\\mu\\), mientras que la flexión lo hace con \\(t^3/12\\): su cociente crece como \\(1/t^2\\). En flexión pura el cortante exacto es nulo (\\(\\varphi_\\alpha=-w_{,\\alpha}\\)), pero el campo interpolado (E4) no puede hacerlo cero a la vez en todo el elemento. Si ese cortante parásito se evalúa punto a punto, su energía domina y obliga a \\(w\\to0\\).\n\nEjemplo 26.1 (Ejemplo resuelto: una viga de un solo elemento) Voladizo de longitud \\(L\\) con un elemento de dos nodos, \\(w\\) y \\(\\theta\\) lineales (\\(w=w_2x/L\\), \\(\\theta=\\theta_2x/L\\)), cortante \\(\\gamma=w'-\\theta\\) y una fuerza \\(P\\) en el extremo. Las energías de flexión y de cortante son \\[\nU_B=\\tfrac12EI\\,\\frac{\\theta_2^2}{L},\\qquad U_S=\\tfrac12\\kappa GA\\,L\\Bigl[\\bigl(\\tfrac{w_2}{L}\\bigr)^2-\\tfrac{w_2\\theta_2}{L}+\\tfrac{\\theta_2^2}3\\Bigr].\n\\] Derivando respecto de \\((w_2,\\theta_2)\\) y despejando con la carga \\(P\\) en \\(w_2\\): \\[\nw_2=P\\,\\frac{EI/L+\\kappa GAL/3}{\\kappa GA\\,EI/L^2+(\\kappa GA)^2/12},\\qquad w_{\\text{ex}}=\\frac{PL^3}{3EI}+\\frac{PL}{\\kappa GA}.\n\\] Para una viga delgada (\\(\\kappa GAL^2\\gg EI\\)), \\(w_2\\to4PL/(\\kappa GA)\\), y \\(w_{\\text{ex}}/w_2\\to\\dfrac{\\kappa GA\\,L^2}{12\\,EI}\\): crece como \\((L/t)^2\\). Con \\(\\kappa=1\\), \\(\\nu=0{,}3\\), espesor \\(t=1\\) y \\(L=100\\) (\\(E=1\\), \\(P=1\\)): \\(w_2=1039{,}8\\) y \\(w_{\\text{ex}}=4\\,000\\,260\\), es decir, el elemento resulta 3847 veces más rígido de lo que es. Resultado analítico.\n\n\nEn el Ejemplo 26.1 (con \\(E=1\\), \\(\\nu=0{,}3\\), \\(\\kappa=1\\), \\(t=1\\), \\(L=100\\), \\(P=1\\)), ¿cuántas veces más rígida resulta la viga de un solo elemento respecto de la solución exacta, \\(w_{\\text{ex}}/w_2\\)?\n\nCalcula \\(EI=Et^3/12\\), \\(GA=Et/(2(1+\\nu))\\) y sustituye en las dos fórmulas del ejemplo.\n\n\n\\(EI=1/12\\), \\(GA=1/2{,}6=0{,}3846\\). \\(w_2=(EI/L+GAL/3)/(GA\\,EI/L^2+GA^2/12)=1039{,}8\\); \\(w_{\\text{ex}}=PL^3/(3EI)+PL/GA=4\\,000\\,000+260=4\\,000\\,260\\). Cociente: \\(3847\\).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-membrana-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-membrana-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.3 Bloqueo de membrana",
+    "text": "26.3 Bloqueo de membrana\nUna lámina curva sufre además el bloqueo de membrana: su modo de deformación «natural» es la flexión sin estiramiento (inextensional), pero el elemento no la reproduce sin estirar algo la superficie media. Como la rigidez de membrana es \\(\\propto t\\) y la de flexión \\(\\propto t^3\\), el estiramiento parásito domina cuando la lámina es delgada. Ocurre aunque la lámina se cargue sólo a flexión y se nota en cilindros y paraboloides. En la práctica se ve en el Scordelis–Lo (tema F2): con \\(8\\times8\\) elementos, la formulación de desplazamientos alcanza un 12 % de la flecha de referencia y la de subdominios, más del 96 %.\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nNo es un fallo del programa. Con la formulación y la integración de Gauss «correctas» el elemento da exactamente el bloqueo que predice la teoría: es una propiedad del espacio de interpolación, no un error de código.\nBloqueo ≠ modos espurios. El bloqueo es exceso de rigidez; los modos espurios son defecto: movimientos con energía nula que no son del sólido rígido. Un remedio mal elegido cambia uno por otro.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-espurios-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-espurios-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.4 Modos espurios",
+    "text": "26.4 Modos espurios\nUn elemento no debe tener más movimientos de energía nula que los rígidos: una lámina plana tiene seis (tres traslaciones y tres giros; el giro alrededor de la normal aparece como combinación de desplazamientos en el plano, ya que no hay g.d.l. propio). Cualquier modo extra es un modo espurio (hourglass): se manifiesta en la malla como un patrón de «reloj de arena» sin resistencia.\n\n\n\n\n\n\nFigura 26.3: Autovalores de \\(\\mathbf K_e\\) para un elemento plano con tres formulaciones. Los seis primeros (grises) son los movimientos rígidos; en la integración reducida selectiva hay dos más (naranja): son modos espurios. Con desplazamientos y subdominios sólo hay seis. Calculado.\n\n\n\n\nUn elemento plano de cuatro nodos y 5 g.d.l. por nodo tiene \\(\\mathbf K_e\\) con ocho autovalores nulos. ¿Qué indica?\n\n\nEs correcto: seis rígidos y dos de reserva\nHay seis movimientos rígidos y dos modos espurios de energía nula\nLa matriz está mal ensamblada\nEl elemento está bloqueado\n\n\n\nUn elemento plano admite exactamente seis modos de energía nula (rígidos). Ocho indica dos modos espurios (ocurre con la integración reducida del cortante a un punto, Figura 26.3). Bloqueo es lo contrario: exceso de rigidez.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-remedios-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-remedios-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.5 Remedios",
+    "text": "26.5 Remedios\n\n\n\n\n\n\n\n\nRemedio\nIdea\nEfecto\n\n\n\n\nIntegración reducida selectiva\nEvaluar el cortante (o la membrana) con menos puntos de Gauss\nQuita el bloqueo, pero puede introducir modos espurios (Figura 26.3)\n\n\nDeformaciones supuestas (por ejemplo, MITC)\nInterpolar el cortante aparte, con una fórmula pensada para que no bloquee\nSin modos espurios, algo más de programación\n\n\nSubdominios (E6–E7)\nPromediar cada deformación en subregiones del elemento y variar con Hu–Washizu\nSin bloqueo ni modos espurios en el elemento plano\n\n\n\nLa nota histórica y la formulación detallada se dan en los temas siguientes: el tema E6 explica qué se interpola y E7 cómo sale la matriz de rigidez.\n\n\n\n\n\n\nImportanteIdea clave\n\n\n\nTodo remedio consiste en desacoplar las deformaciones calculadas de los desplazamientos: que lo que entra en la energía no sea exactamente la derivada del campo interpolado. Sólo así se evita que las deformaciones «parásitas» del campo (cortante, estiramiento) almacenen energía.\n\n\n\n\n\n\n\n\nTipAplicación real: torres de refrigeración y tejidos blandos\n\n\n\nilustrativo Obra civil. Las torres de refrigeración hiperbólicas de hormigón son cáscaras muy esbeltas: un estudio de inspección de una torre de 1959 cita un espesor de proyecto de entre unos 0,12 y 0,4 m para un cuerpo de decenas de metros. Con esa relación \\(t/R\\) tan pequeña, un elemento propenso al bloqueo daría una torre «de piedra». Biomecánica. Los tejidos blandos son casi incompresibles (\\(\\nu\\to0{,}5\\)), lo que provoca un bloqueo volumétrico análogo; existen elementos de lámina gruesa pensados específicamente para ellos.\nFuentes (secundarias): Laser Scanner-Based Hyperboloid Cooling Tower Geometry Inspection (PMC) (espesores de proyecto); A New Continuum-Based Thick Shell Finite Element for Soft Biological Tissues in Dynamics (arXiv:1801.04029) (sólo el título y el resumen; el bloqueo volumétrico es afirmación general, sin fuente leída). Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-historia-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-historia-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.6 Un poco de historia",
+    "text": "26.6 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: de la integración reducida a MITC\n\n\n\nLa integración reducida como remedio del bloqueo en placas y láminas se asocia al artículo de Zienkiewicz, Taylor y Too (1971): al integrar el cortante con menos puntos de Gauss se «relaja» el elemento. Años después, Bathe y Dvorkin (1985) propusieron el elemento de placa de cuatro nodos MITC4, basado en una interpolación mixta de las componentes tensoriales del cortante, que evita los modos espurios que la integración reducida puede producir. El título exacto del artículo de 1971 varía según las fuentes secundarias.\nFuentes (secundarias): A new locking-free polygonal plate element… (arXiv:1810.08900); The simplified MITC4+ shell element… (ACM); (Zienkiewicz et al. 1971; Bathe y Dvorkin 1985). No se leyeron los originales. Consultado el 21-10-2026.\n\n\n\nBathe, K. J., y E. N. Dvorkin. 1985. «A four-node plate bending element based on Mindlin/Reissner plate theory and a mixed interpolation». International Journal for Numerical Methods in Engineering 21: 367-83.\n\nZienkiewicz, O. C., R. L. Taylor, y J. M. Too. 1971. «Reduced integration technique in general analysis of plates and shells». International Journal for Numerical Methods in Engineering 3: 275-90.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-julia-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-julia-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.7 Práctica guiada en Julia",
+    "text": "26.7 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se resuelve la placa cuadrada simplemente apoyada con carga uniforme con las tres variantes de rigidez y se compara con la solución de Navier; después se cuentan los autovalores nulos de cada \\(\\mathbf K_e\\).\n\n\n\nusing Geometria, LinearAlgebra\n\n# Solución de Navier (placa simplemente apoyada a×a, carga uniforme q, rigidez D): flecha central\nnavier(a, q, D; N = 199) = 16q / (π^6 * D) * sum(sin(m * π / 2) * sin(n * π / 2) / (m * n * (m^2 + n^2)^2 / a^4) for m in 1:2:N, n in 1:2:N)\n\nfunction flecha_centro(n, t, modo; E = 1.0e4, ν = 0.3, L = 1.0)\n    r = placa_oblicua(π / 2)\n    nodos, conn = malla_rectangular((0, L), (0, L), n, n)\n    K, _, F = ensamblar(r, nodos, conn, E, ν, t; modo, f = θ -&gt; [0, 0, -1.0])\n    fij = Int[]\n    for k in 1:size(nodos, 2)\n        x, y = nodos[:, k]\n        append!(fij, [gdl(k, 1), gdl(k, 2)])\n        (x ≈ 0 || x ≈ L || y ≈ 0 || y ≈ L) && push!(fij, gdl(k, 3))\n        (x ≈ 0 || x ≈ L) && push!(fij, gdl(k, 5))\n        (y ≈ 0 || y ≈ L) && push!(fij, gdl(k, 4))\n    end\n    u = resolver_estatica(K, F, unique(fij))\n    c = findfirst(k -&gt; nodos[1, k] ≈ L / 2 && nodos[2, k] ≈ L / 2, 1:size(nodos, 2))\n    -u[gdl(c, 3)]\nend\n\nE, ν, t = 1.0e4, 0.3, 0.01; D = E * t^3 / (12 * (1 - ν^2))\nwref = navier(1.0, 1.0, D)\ntabla = [(n = n, desplazamientos = flecha_centro(n, t, :desplazamientos) / wref,\n          reducida = flecha_centro(n, t, :reducida_selectiva) / wref,\n          subdominios = flecha_centro(n, t, :subdominios) / wref) for n in (2, 4, 8)]\n\n3-element Vector{@NamedTuple{n::Int64, desplazamientos::Float64, reducida::Float64, subdominios::Float64}}:\n (n = 2, desplazamientos = 0.0021944275011845796, reducida = 0.7856904526528657, subdominios = 0.8553179561148229)\n (n = 4, desplazamientos = 0.009173110056153146, reducida = 0.9775048419528235, subdominios = 0.9939162145006052)\n (n = 8, desplazamientos = 0.03568350514075724, reducida = 0.9952909270733621, subdominios = 0.999171734080928)\n\n\n\nX = [0.0 1 1 0; 0 0 1 1]\nfor modo in (:desplazamientos, :reducida_selectiva, :subdominios)\n    ev = eigvals(Symmetric(rigidez_elemento(placa_oblicua(π / 2), X, 1.0, 0.3, 0.1; modo)))\n    println(rpad(modo, 20), \"autovalores nulos: \", count(&lt;(1e-9 * maximum(ev)), ev))\nend\n\ndesplazamientos     autovalores nulos: 6\nreducida_selectiva  autovalores nulos: 8\nsubdominios         autovalores nulos: 6",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#sec-ejercicios-e5",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#sec-ejercicios-e5",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "26.8 Ejercicios",
+    "text": "26.8 Ejercicios\n\nEscala del bloqueo. Si el espesor de una placa pasa de \\(t/L=0{,}1\\) a \\(0{,}01\\), ¿cuánto crece el factor de rigidez espuria del elemento de desplazamientos?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nComo \\(\\propto(L/t)^2\\), crece \\(10^2=100\\) veces: de unos 40 a unos 4000 en el ejemplo.\n\n\n\nHourglass. Explica por qué un elemento con un solo punto de Gauss tiene modos de energía nula.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nCon un punto sólo se «ven» las deformaciones constantes del elemento; los modos de deformación de orden superior (flexión, torsión en el plano) quedan sin energía, aunque no sean movimientos rígidos.\n\n\n\nQué mirar. ¿Cómo se detecta un modo espurio sin resolver ningún problema?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nContando los autovalores nulos de la matriz de rigidez de un solo elemento libre: si hay más que movimientos rígidos, hay modos espurios (Figura 26.3).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#la-doy-por-superada-si",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nReconozco el bloqueo por sus síntomas y sé que empeora con \\(t\\to0\\).\nExplico por qué el cortante parásito domina (\\(\\propto1/t^2\\)) y calculo el factor de una viga de un elemento.\nDistingo bloqueo de membrana y de cortante, y bloqueo de modos espurios.\nCuento los autovalores nulos de una \\(\\mathbf K_e\\) e interpreto el resultado.\nEnumero los tres remedios y su inconveniente principal.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; el bloqueo y sus remedios son estándar (Bathe 1996; Hughes 1987; Zienkiewicz y Taylor, s. f.). Los números son calculados con Geometria y la placa, contrastada con la solución de Navier (Timoshenko y Woinowsky-Krieger, s. f.) (calculada aquí con la serie, no tomada de la tabla del libro).\nQué queda pendiente. El bloqueo de membrana se ilustra con el caso del tema F2, no se demuestra aquí; la nota histórica y los datos de la «Aplicación real» provienen de fuentes secundarias; el comentario sobre el bloqueo volumétrico de tejidos blandos es una afirmación general sin fuente leída; revisión visual de las figuras.\n\n\n\n\n\n\nTimoshenko, S. P., y S. Woinowsky-Krieger. s. f. Theory of Plates and Shells. McGraw-Hill.\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E5-bloqueo.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E5-bloqueo.html#referencias-unidad",
+    "title": "26  Bloqueo y modos espurios",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nBathe, K. J., y E. N. Dvorkin. 1985. «A four-node plate bending element based on Mindlin/Reissner plate theory and a mixed interpolation». International Journal for Numerical Methods in Engineering 21: 367-83.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nTimoshenko, S. P., y S. Woinowsky-Krieger. s. f. Theory of Plates and Shells. McGraw-Hill.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.\n\n\nZienkiewicz, O. C., R. L. Taylor, y J. M. Too. 1971. «Reduced integration technique in general analysis of plates and shells». International Journal for Numerical Methods in Engineering 3: 275-90.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Bloqueo y modos espurios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html",
+    "title": "27  Interpolación de deformaciones",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E5 (bloqueo y espurios) y E4 (\\(\\mathbf H\\)).\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#objetivos-y-prerrequisitos",
+    "title": "27  Interpolación de deformaciones",
+    "section": "",
+    "text": "escribir la interpolación lineal de las deformaciones \\(\\varepsilon\\), \\(\\kappa\\) y \\(\\gamma\\) de un elemento de cuatro nodos;\nescribir la interpolación por subdominios (escalones) y calcular el valor de cada escalón como una media;\ncontar parámetros y decir por qué ambas interpolaciones evitan los modos espurios y el bloqueo;\nreconocer la deformación por subdominios como una proyección de la del campo de desplazamientos;\ncomparar ventajas e inconvenientes de cada opción.\n\n\n\n\nSección 27.1 · Por qué una interpolación propia · Sección 27.2 · Interpolación lineal · Sección 27.3 · Subdominios\nSección 27.4 · Contar parámetros · Sección 27.5 · Promediar es proyectar · Sección 27.7 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\bar\\varepsilon_{\\alpha\\beta},\\ \\bar{\\bar\\varepsilon}_{\\alpha\\beta}\\)\nparámetros (constantes) de la interpolación de la deformación (una raya: valor medio; dos: pendiente)\n\n\n\\(A_j\\)\nárea del subdominio (o unión de subdominios) donde vale la deformación \\(j\\)\n\n\n\\(\\hat{\\boldsymbol\\varepsilon}\\)\nvector de parámetros de deformación del elemento (5 de extensión, 5 de flexión, 4 de cortante)\n\n\n\\(\\boldsymbol\\varepsilon_u=\\mathbf H_E\\boldsymbol\\delta\\)\ndeformación del campo de desplazamientos (E4)\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: escalones frente a rampa\n\n\n\nPara pintar un degradado en una pared, tienes dos opciones: pasar una rampa continua de un color a otro (interpolación lineal) o pintar dos franjas planas con el color medio de cada mitad (subdominios). La rampa se parece más a la realidad, pero las franjas son mucho más fáciles de calcular (cada integral es una constante por un área) y, lo importante, tienen la media correcta. En el elemento finito sucede igual: con el valor medio de cada subdominio se conserva lo esencial (el trabajo realizado) y se pierde sólo el detalle fino dentro de cada franja.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-porque-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-porque-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.1 Por qué una interpolación propia",
+    "text": "27.1 Por qué una interpolación propia\nEn el tema E4 la deformación salía del campo: \\(\\boldsymbol\\varepsilon_u=\\mathbf H_E\\boldsymbol\\delta\\). Eso fuerza a que cada deformación tenga la forma que dicta la interpolación de los desplazamientos, incluida la parte parásita (el cortante de la Figura 25.1). Si en la energía se usa, en cambio, una deformación independiente \\(\\hat{\\boldsymbol\\varepsilon}\\), con su propia interpolación, se puede elegir una que no contenga las partes parásitas. La condición de que ambos campos sigan siendo compatibles se impone de forma débil (promediada) mediante un principio mixto: el de Hu–Washizu (D8), tema E7.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-lineal-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-lineal-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.2 Interpolación lineal",
+    "text": "27.2 Interpolación lineal\nLa opción más natural es una función lineal por dirección, con las dependencias que tiene el campo bilineal de desplazamientos:\n\\[\n\\begin{aligned}\n\\text{Extensión:}\\ &\\varepsilon_{11}=\\bar\\varepsilon_{11}+\\bar{\\bar\\varepsilon}_{11}\\,\\eta,\\quad \\varepsilon_{22}=\\bar\\varepsilon_{22}+\\bar{\\bar\\varepsilon}_{22}\\,\\xi,\\quad \\varepsilon_{12}=\\bar\\varepsilon_{12},\\\\\n\\text{Flexión:}\\ &\\kappa_{11}=\\bar\\kappa_{11}+\\bar{\\bar\\kappa}_{11}\\,\\eta,\\quad \\kappa_{22}=\\bar\\kappa_{22}+\\bar{\\bar\\kappa}_{22}\\,\\xi,\\quad \\kappa_{12}=\\bar\\kappa_{12},\\\\\n\\text{Cortante:}\\ &\\gamma_1=\\bar\\gamma_1+\\bar{\\bar\\gamma}_1\\,\\eta,\\quad \\gamma_2=\\bar\\gamma_2+\\bar{\\bar\\gamma}_2\\,\\xi.\n\\end{aligned}\n\\tag{27.1}\\]\nEs decir: \\(\\varepsilon_{11}\\) puede variar sólo a lo largo de \\(\\eta\\) (la otra dirección del elemento) y \\(\\varepsilon_{22}\\) sólo a lo largo de \\(\\xi\\); la deformación de cizalladura \\(\\varepsilon_{12}\\) se toma constante. Cada familia tiene cinco parámetros (extensión y flexión) o cuatro (cortante).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-subdominios-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-subdominios-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.3 Interpolación por subdominios",
+    "text": "27.3 Interpolación por subdominios\nUna alternativa es dividir el elemento en cuatro subdominios (cuadrantes, Figura 28.1) y tomar la deformación constante a trozos, con los mismos «grados de libertad»:\n\\[\n\\begin{aligned}\n\\varepsilon_{11}&=\\begin{cases}\\varepsilon_{11}^{A}&\\text{en }A_{\\mathrm I}+A_{\\mathrm{II}}\\ (\\eta&lt;0)\\\\\\varepsilon_{11}^{B}&\\text{en }A_{\\mathrm{III}}+A_{\\mathrm{IV}}\\ (\\eta&gt;0)\\end{cases}\\qquad\n\\varepsilon_{22}=\\begin{cases}\\varepsilon_{22}^{C}&\\text{en }A_{\\mathrm I}+A_{\\mathrm{IV}}\\ (\\xi&lt;0)\\\\\\varepsilon_{22}^{D}&\\text{en }A_{\\mathrm{II}}+A_{\\mathrm{III}}\\ (\\xi&gt;0)\\end{cases}\\\\\n\\varepsilon_{12}&=\\bar\\varepsilon_{12}\\ \\text{(constante en todo el elemento)},\n\\end{aligned}\n\\tag{27.2}\\]\ny lo mismo para \\(\\kappa_{\\alpha\\beta}\\) y \\(\\gamma_\\alpha\\). Los escalones de ecuación 27.2 son los valores medios de la rampa de ecuación 27.1 en cada mitad: cinco parámetros en extensión y flexión, cuatro en cortante: el mismo número que en la interpolación lineal. La gran diferencia es práctica: las integrales sobre cada subdominio son constantes por áreas, y la extensión a comportamiento no lineal es directa (cada subdominio puede tener su propio estado de material).\n\nEjemplo 27.1 (Ejemplo resuelto: los escalones de una deformación) Sea \\(\\varepsilon_{11}(\\eta)=\\eta+\\eta^2\\) en un elemento (\\(\\eta\\in[-1,1]\\)). La interpolación lineal que pasa por los extremos (\\(\\varepsilon(-1)=0\\), \\(\\varepsilon(1)=2\\)) es \\(\\bar\\varepsilon+\\bar{\\bar\\varepsilon}\\eta=1+\\eta\\). Los dos escalones son las medias de cada mitad: \\[\n\\varepsilon^A=\\int_{-1}^0(\\eta+\\eta^2)\\,d\\eta=-\\tfrac12+\\tfrac13=-\\tfrac16,\\qquad\n\\varepsilon^B=\\int_0^1(\\eta+\\eta^2)\\,d\\eta=\\tfrac12+\\tfrac13=\\tfrac56 .\n\\] La energía \\(\\int\\varepsilon^2d\\eta\\) vale: exacta, \\(\\tfrac{16}{15}=1{,}067\\); lineal, \\(\\tfrac83=2{,}67\\); escalones, \\(\\tfrac1{36}+\\tfrac{25}{36}=0{,}72\\). La interpolación lineal sobrestima la energía (ha tomado los valores de los extremos); la de escalones la subestima. Resultado analítico.\n\n\nEn el Ejemplo 27.1, ¿cuánto vale el escalón \\(\\varepsilon^B\\) de la mitad \\(\\eta&gt;0\\)?\n\nEs la media: \\(\\int_0^1(\\eta+\\eta^2)\\,d\\eta\\) (la mitad tiene longitud 1).\n\n\n\\(\\int_0^1\\eta\\,d\\eta+\\int_0^1\\eta^2\\,d\\eta=\\tfrac12+\\tfrac13=\\tfrac56=0{,}8333\\).\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nLos escalones no son los valores en los extremos. Son medias: el escalón de la mitad \\(\\eta&gt;0\\) de \\(\\eta+\\eta^2\\) es \\(5/6\\), no \\(2\\).\nSubdominio ≠ elemento. Los cuatro subdominios son sólo una partición para definir deformaciones; los desplazamientos siguen siendo bilineales sobre el elemento entero.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-conteo-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-conteo-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.4 Contar parámetros",
+    "text": "27.4 Contar parámetros\nUna interpolación de deformaciones sólo es razonable si el número de parámetros independientes coincide con el número de modos de deformación del elemento (modos de \\(\\boldsymbol\\delta\\) que no son sólido rígido):\n\n\n\nFamilia\nModos del elemento\nParámetros de deformación\n\n\n\n\nExtensión (membrana)\n\\(8-3=5\\)\n5\n\n\nFlexión + cortante (placa)\n\\(12-3=9\\)\n\\(5+4=9\\)\n\n\nTotal (placa y membrana)\n\\(20-6=14\\)\n\\(5+5+4=14\\)\n\n\n\nCon menos parámetros quedan modos de energía nula (espurios); con más sobreabundan y reaparece el bloqueo. Que ambas interpolaciones tengan exactamente \\(5+5+4\\) es la razón de que no tengan modos espurios ni bloqueo en el elemento plano (Figura 26.3 del tema E5).\n\nUn elemento plano de cuatro nodos con 5 g.d.l. por nodo tiene 6 movimientos rígidos. ¿Cuántos parámetros independientes totales de deformación (extensión, flexión y cortante) hacen falta?\n\n\n20\n16\n12\n14\n\n\n\n\\(20-6=14=5\\) (extensión) \\(+5\\) (flexión) \\(+4\\) (cortante).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-proyeccion-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-proyeccion-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.5 Promediar es proyectar",
+    "text": "27.5 Promediar es proyectar\nLos escalones tienen una expresión en función de los desplazamientos: la media de la deformación del campo en cada región,\n\\[\n\\hat\\varepsilon_j=\\frac1{A_j}\\int_{A_j}\\bigl(\\mathbf H_E\\,\\boldsymbol\\delta\\bigr)_j\\,dA\\ =\\ \\bigl(\\mathbf A^{-1}\\mathbf E\\,\\boldsymbol\\delta\\bigr)_j,\\qquad \\mathbf A=\\mathrm{diag}(A_j),\\quad \\mathbf E_{ji}=\\int_{A_j}\\mathbf H_E(j,i)\\,dA .\n\\tag{27.3}\\]\nEs la proyección ortogonal (en \\(L^2\\)) del campo de deformaciones sobre las funciones constantes a trozos: lo que queda es lo mejor que se puede hacer con un escalón por región. En el tema E7 las matrices \\(\\mathbf E\\) y \\(\\mathbf A\\) de ecuación 27.3 son las mismas que salen del principio de Hu–Washizu, sólo que allí aparecen como consecuencia de variar la tensión.\n\n\n\n\n\n\nTipAplicación real: esfuerzos «por panel» en el proyecto de forjados y láminas\n\n\n\nilustrativo En el cálculo de losas, forjados y cubiertas por elementos de lámina, es habitual dar los esfuerzos como valores medios por elemento (los «escalones») y dimensionar la armadura panel a panel a partir de ellos. Es la misma idea de esta sección llevada a la práctica de proyecto: el valor medio conserva el trabajo y es robusto frente a la oscilación punto a punto. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-historia-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-historia-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.6 Un poco de historia",
+    "text": "27.6 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: las deformaciones «supuestas»\n\n\n\nLa idea de sustituir las deformaciones del campo por otras de interpolación propia, elegidas para no bloquear, se conoce como deformaciones supuestas (assumed strain). Su ejemplo más difundido es el elemento de placa MITC4 de Bathe y Dvorkin (1985), que interpola de forma independiente las componentes del cortante; otras formulaciones (como la de Hu–Washizu, tema D8) llegan a resultados equivalentes por la vía de un principio variacional mixto. El elemento de este libro usa deformaciones constantes por subdominios dentro de un principio de Hu–Washizu específico (tema E7).\nFuentes (secundarias): Asymptotically accurate and locking-free FE implementation of first order shear deformation theory for plates (arXiv:2310.19443); (Bathe y Dvorkin 1985). No se leyeron los originales. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-julia-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-julia-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.7 Práctica guiada en Julia",
+    "text": "27.7 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) Los escalones y la rampa de Ejemplo 27.1 con integración numérica. (2) El rango de las matrices de proyección \\(\\mathbf E\\) de un elemento plano: \\(5\\), \\(5\\) y \\(4\\) filas independientes, es decir, los \\(14\\) parámetros del conteo.\n\n\n\nusing Geometria, LinearAlgebra\n\n# (1) Escalones de ε(η) = η + η²\nε(η) = η + η^2\ng2 = (-1 / sqrt(3), 1 / sqrt(3))\nmedia(a, b) = sum(ε((a + b) / 2 + (b - a) / 2 * x) for x in g2) / 2      # media = (1/(b−a)) ∫ ε, con Gauss de 2 puntos\n(escalón_A = media(-1, 0), escalón_B = media(0, 1), energía_exacta = 16 / 15,\n energía_lineal = 8 / 3, energía_escalones = media(-1, 0)^2 + media(0, 1)^2)\n\n(escalón_A = -0.16666666666666663, escalón_B = 0.8333333333333334, energía_exacta = 1.0666666666666667, energía_lineal = 2.6666666666666665, energía_escalones = 0.7222222222222223)\n\n\n\n# (2) Rango de las matrices E (5×20, 5×20, 4×20) del elemento plano\nplana = placa_oblicua(π / 2); X = [0.0 1 1 0; 0 0 1 1]\nfila11 = (1, 1, 2, 2); fila22 = (3, 4, 4, 3)\nEE = zeros(5, 20); EB = zeros(5, 20); ES = zeros(4, 20)\nfor q in 1:4, (ξ, η, w) in Geometria.puntos_gauss(Geometria.CUADRANTES[q][1], Geometria.CUADRANTES[q][2], 2)\n    g, N, dN, dA, _, _, _ = punto_elemento(plana, X, ξ, η, 1.0, 0.3, 0.1)\n    HE, HB, HS = matrices_H(g, N, dN)\n    P = zeros(5, 3); P[fila11[q], 1] = 1; P[fila22[q], 2] = 1; P[5, 3] = 1\n    PS = zeros(4, 2); PS[fila11[q], 1] = 1; PS[fila22[q], 2] = 1\n    EE .+= P * HE * (w * dA); EB .+= P * HB * (w * dA); ES .+= PS * HS * (w * dA)\nend\n(rango_E = rank(EE; atol = 1e-10), rango_B = rank(EB; atol = 1e-10), rango_S = rank(ES; atol = 1e-10),\n total = rank(vcat(EE, EB, ES); atol = 1e-10))\n\n(rango_E = 5, rango_B = 5, rango_S = 4, total = 14)\n\n\nLos rangos son \\(5+5+4=14\\) y el rango del conjunto es 14: las 14 combinaciones de desplazamientos que no son sólido rígido están todas «vistas» por los escalones.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-ejercicios-e6",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#sec-ejercicios-e6",
+    "title": "27  Interpolación de deformaciones",
+    "section": "27.8 Ejercicios",
+    "text": "27.8 Ejercicios\n\nParámetros. ¿Cuántos parámetros de deformación tiene la interpolación lineal de la flexión? ¿Y la de cortante?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nFlexión: \\(\\bar\\kappa_{11},\\bar{\\bar\\kappa}_{11},\\bar\\kappa_{22},\\bar{\\bar\\kappa}_{22},\\bar\\kappa_{12}\\) (5). Cortante: \\(\\bar\\gamma_1,\\bar{\\bar\\gamma}_1,\\bar\\gamma_2,\\bar{\\bar\\gamma}_2\\) (4).\n\n\n\nMedia de una media. Si \\(\\varepsilon\\) es lineal en \\(\\eta\\), ¿qué relación tiene su media en cada mitad con su valor en el centro de esa mitad?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSon iguales: la media de una función lineal sobre un intervalo es su valor en el punto medio. Con una sola mitad: \\(\\varepsilon(-\\tfrac12)\\) y \\(\\varepsilon(\\tfrac12)\\).\n\n\n\nEnergía del escalón. Demuestra que, para cualquier \\(\\varepsilon\\), la energía de los escalones \\(\\sum_jA_j\\hat\\varepsilon_j^2\\) es menor o igual que la de \\(\\varepsilon\\) (con \\(E\\) constante).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPor la desigualdad de Cauchy–Schwarz: \\(A_j\\hat\\varepsilon_j^2=\\bigl(\\int_{A_j}\\varepsilon\\,dA\\bigr)^2/A_j\\le\\int_{A_j}\\varepsilon^2dA\\). Los escalones subestiman la energía en cada región (de ahí que el elemento pueda resultar algo flexible, como en el ejemplo de la viga del tema E2).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#la-doy-por-superada-si",
+    "title": "27  Interpolación de deformaciones",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo las interpolaciones lineal y por subdominios de las tres familias de deformaciones.\nCalculo un escalón como una media.\nCuento parámetros y sé por qué 14 es el número correcto.\nDigo que promediar es proyectar y que los escalones subestiman la energía.\nSé comparar ventajas e inconvenientes de la rampa y el escalón.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; las interpolaciones lineal y por subdominios son las de la formulación del elemento estudiado en este libro; los resultados de rango y los números del ejemplo se comprueban en Julia. Deformaciones supuestas en general: (Bathe y Dvorkin 1985; Bathe 1996).\nQué queda pendiente. La afirmación «el conteo \\(14\\) evita modos espurios y bloqueo» está comprobada numéricamente para el elemento plano, no demostrada en general; el comportamiento en láminas curvas se contrasta en F1–F3; nota histórica con fuentes secundarias; figura con revisión visual pendiente.\n\n\n\n\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\nBathe, K. J., y E. N. Dvorkin. 1985. «A four-node plate bending element based on Mindlin/Reissner plate theory and a mixed interpolation». International Journal for Numerical Methods in Engineering 21: 367-83.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E6-interpolacion-deformaciones.html#referencias-unidad",
+    "title": "27  Interpolación de deformaciones",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nBathe, K. J., y E. N. Dvorkin. 1985. «A four-node plate bending element based on Mindlin/Reissner plate theory and a mixed interpolation». International Journal for Numerical Methods in Engineering 21: 367-83.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Interpolación de deformaciones</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E6, Principios variacionales y Leyes constitutivas de la lámina.\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#objetivos-y-prerrequisitos",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "",
+    "text": "escribir el funcional de Hu–Washizu específico del elemento, con \\(\\boldsymbol\\delta\\), \\(\\hat{\\boldsymbol\\varepsilon}\\) y las resultantes \\(\\mathbf N,\\mathbf M,\\mathbf Q\\) por subdominios;\nobtener, variando cada campo, las tres ecuaciones y la condensación que deja \\(\\mathbf K=\\mathbf E^{\\mathsf T}\\mathbf A^{-1}\\bar{\\mathbf D}\\mathbf A^{-1}\\mathbf E\\);\nconstruir las matrices \\(\\mathbf E\\) (con áreas), \\(\\mathbf A\\) y \\(\\bar{\\mathbf D}\\) y leer su estructura de ceros;\nexplicar qué diferencia a esta versión de la genérica del tema D8;\ncomprobar que \\(\\mathbf K\\) es simétrica, semidefinida y no más rígida que la de desplazamientos.\n\n\n\n\nSección 28.1 · El funcional específico · Sección 28.2 · Variar los tres campos · Sección 28.3 · Las matrices \\(\\mathbf E\\), \\(\\mathbf A\\), \\(\\bar{\\mathbf D}\\)\nSección 28.4 · Diferencia con la versión genérica · Sección 28.5 · Propiedades · Sección 28.7 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\boldsymbol\\delta\\in\\mathbb R^{20}\\)\ng.d.l. nodales del elemento\n\n\n\\(\\hat{\\boldsymbol\\varepsilon},\\hat{\\boldsymbol\\kappa}\\in\\mathbb R^5,\\ \\hat{\\boldsymbol\\gamma}\\in\\mathbb R^4\\)\nparámetros de deformación por subdominios (E6)\n\n\n\\(\\mathbf N,\\mathbf M\\in\\mathbb R^5,\\ \\mathbf Q\\in\\mathbb R^4\\)\nparámetros de las resultantes (esfuerzos) con los mismos subdominios\n\n\n\\(\\mathbf E,\\mathbf B,\\mathbf G\\)\nmatrices \\(5\\times20\\), \\(5\\times20\\) y \\(4\\times20\\) de integrales de \\(\\mathbf H\\) (ecuación 28.4)\n\n\n\\(\\mathbf A_N=\\mathbf A_M,\\ \\mathbf A_Q\\)\nmatrices diagonales de áreas de cada región\n\n\n\\(\\bar{\\mathbf D}_E,\\bar{\\mathbf D}_B,\\bar{\\mathbf D}_S\\)\nrigideces constitutivas integradas por regiones\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: tres actores y un juez\n\n\n\nHay tres actores: los desplazamientos de los nodos (lo que realmente se mueve), las deformaciones de cada cuadrante (lo que «dice» el material que se ha deformado) y las tensiones de cada cuadrante (lo que «dice» que se carga). El principio de Hu–Washizu es el juez que exige tres acuerdos: (i) la deformación media de cada cuadrante debe coincidir con la que calculan los desplazamientos; (ii) la tensión del cuadrante debe ser la que corresponde a su deformación según el material; (iii) las fuerzas en los nodos deben equilibrar las tensiones. Una vez firmados los tres acuerdos, los dos actores extra se eliminan y sólo queda una matriz \\(\\mathbf K\\) entre fuerzas y desplazamientos: la del elemento.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-funcional-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-funcional-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.1 El funcional específico",
+    "text": "28.1 El funcional específico\nEn el tema D8 se vio la versión genérica, \\(\\Pi_{HW}(\\mathbf u,\\boldsymbol\\varepsilon,\\boldsymbol\\sigma)=\\int[W(\\boldsymbol\\varepsilon)+\\boldsymbol\\sigma:(\\varepsilon(\\mathbf u)-\\boldsymbol\\varepsilon)]\\,dV\\). Para el elemento de lámina se discretiza por familias (extensión, flexión y cortante) y por regiones, con \\(\\mathbf u\\) interpolado con \\(N_k\\), \\(\\hat{\\boldsymbol\\varepsilon}\\) por subdominios y la resultante con la misma partición:\n\nDefinición 28.1 (Hu–Washizu por subdominios del elemento de lámina) Para cada familia \\(f\\in\\{E,B,S\\}\\) (con \\(\\hat{\\mathbf e}_E=\\hat{\\boldsymbol\\varepsilon}\\), \\(\\hat{\\mathbf e}_B=\\hat{\\boldsymbol\\kappa}\\), \\(\\hat{\\mathbf e}_S=\\hat{\\boldsymbol\\gamma}\\) y \\(\\mathbf S_E=\\mathbf N\\), \\(\\mathbf S_B=\\mathbf M\\), \\(\\mathbf S_S=\\mathbf Q\\)), \\[\n\\Pi=\\sum_{f}\\Bigl[\\tfrac12\\,\\hat{\\mathbf e}_f^{\\mathsf T}\\bar{\\mathbf D}_f\\,\\hat{\\mathbf e}_f+\\mathbf S_f^{\\mathsf T}\\bigl(\\mathbf G_f\\,\\boldsymbol\\delta-\\mathbf A_f\\,\\hat{\\mathbf e}_f\\bigr)\\Bigr]-\\boldsymbol\\delta^{\\mathsf T}\\mathbf F ,\n\\tag{28.1}\\] con \\(\\mathbf G_E=\\mathbf E\\), \\(\\mathbf G_B=\\mathbf B\\) y \\(\\mathbf G_S=\\mathbf G\\) las matrices de ecuación 28.4, y \\(\\mathbf F\\) el vector de cargas nodales.\n\nEl primer término es la energía de deformación con la rigidez integrada por regiones; el segundo, el multiplicador que obliga a que la deformación promediada de los desplazamientos, \\(\\mathbf G_f\\boldsymbol\\delta\\), coincida con la de los escalones, \\(\\mathbf A_f\\hat{\\mathbf e}_f\\) (la proyección ecuación 27.3 del tema E6). El último es el trabajo de las cargas.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-estacionariedad-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-estacionariedad-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.2 Variar los tres campos",
+    "text": "28.2 Variar los tres campos\nPara cada familia, la estacionariedad de ecuación 28.1 respecto de cada campo da:\n\\[\n\\begin{aligned}\n\\delta\\mathbf S_f&:\\quad \\mathbf A_f\\,\\hat{\\mathbf e}_f=\\mathbf G_f\\,\\boldsymbol\\delta &&\\text{(compatibilidad promediada)},\\\\\n\\delta\\hat{\\mathbf e}_f&:\\quad \\bar{\\mathbf D}_f\\,\\hat{\\mathbf e}_f=\\mathbf A_f\\,\\mathbf S_f &&\\text{(ley constitutiva promediada)},\\\\\n\\delta\\boldsymbol\\delta&:\\quad \\textstyle\\sum_f\\mathbf G_f^{\\mathsf T}\\mathbf S_f=\\mathbf F &&\\text{(equilibrio)}.\n\\end{aligned}\n\\tag{28.2}\\]\nSon exactamente las tres ecuaciones que el tema D8 asignaba a cada campo. Eliminando \\(\\hat{\\mathbf e}_f=\\mathbf A_f^{-1}\\mathbf G_f\\boldsymbol\\delta\\) y \\(\\mathbf S_f=\\mathbf A_f^{-1}\\bar{\\mathbf D}_f\\hat{\\mathbf e}_f\\) (condensación estática):\n\nProposición 28.1 (Matriz de rigidez del elemento) \\[\n\\mathbf K=\\sum_{f\\in\\{E,B,S\\}}\\mathbf G_f^{\\mathsf T}\\,\\mathbf A_f^{-1}\\,\\bar{\\mathbf D}_f\\,\\mathbf A_f^{-1}\\,\\mathbf G_f,\\qquad \\mathbf K\\,\\boldsymbol\\delta=\\mathbf F .\n\\tag{28.3}\\]\n\n\n\n\n\n\n\nNotaDemostración de Proposición 28.1\n\n\n\n\n\nDe la primera ecuación de ecuación 28.2, \\(\\hat{\\mathbf e}_f=\\mathbf A_f^{-1}\\mathbf G_f\\boldsymbol\\delta\\). De la segunda, \\(\\mathbf S_f=\\mathbf A_f^{-1}\\bar{\\mathbf D}_f\\hat{\\mathbf e}_f=\\mathbf A_f^{-1}\\bar{\\mathbf D}_f\\mathbf A_f^{-1}\\mathbf G_f\\boldsymbol\\delta\\). Sustituyendo en el equilibrio, \\(\\sum_f\\mathbf G_f^{\\mathsf T}\\mathbf S_f=\\bigl[\\sum_f\\mathbf G_f^{\\mathsf T}\\mathbf A_f^{-1}\\bar{\\mathbf D}_f\\mathbf A_f^{-1}\\mathbf G_f\\bigr]\\boldsymbol\\delta=\\mathbf F\\). (\\(\\mathbf A_f\\) es diagonal con áreas positivas, luego invertible.) \\(\\blacksquare\\)\n\n\n\n\nEjemplo 28.1 (Ejemplo resuelto: un estiramiento uniforme) Cuadrado unidad plano, \\(E=1\\), \\(\\nu=0\\), \\(t=1\\), con el campo \\(u_1=0{,}01\\,x\\) (el resto, nulo). La deformación real es \\(\\varepsilon_{11}=0{,}01\\) constante y todas las demás, nulas. Escalones: \\(\\hat\\varepsilon^A=\\hat\\varepsilon^B=0{,}01\\) (media de una constante), \\(\\hat\\varepsilon^C=\\hat\\varepsilon^D=\\hat\\varepsilon_{12}=0\\). Tensión: con \\(\\nu=0\\), \\(N^A=N^B=E\\,t\\cdot0{,}01=0{,}01\\) y las demás, nulas. Energía: \\(U=\\tfrac12\\boldsymbol\\delta^{\\mathsf T}\\mathbf K\\boldsymbol\\delta=\\tfrac12\\bigl(N^A\\hat\\varepsilon^AA_{\\mathrm{I+II}}+N^B\\hat\\varepsilon^BA_{\\mathrm{III+IV}}\\bigr)=\\tfrac12\\cdot0{,}01\\cdot0{,}01\\cdot(0{,}5+0{,}5)=\\mathbf{5\\cdot10^{-5}}\\). Es el mismo valor que da \\(\\tfrac12EtA\\varepsilon_{11}^2\\) (el campo es constante, no hay nada que promediar). Resultado analítico; la práctica lo recalcula con la matriz \\(\\mathbf K\\).\n\n\nEn el Ejemplo 28.1, ¿cuánto vale la energía de deformación \\(U=\\tfrac12\\boldsymbol\\delta^{\\mathsf T}\\mathbf K\\boldsymbol\\delta\\) del cuadrado unidad (\\(E=1\\), \\(\\nu=0\\), \\(t=1\\)) con \\(u_1=0{,}01x\\)?\n\n\\(U=\\tfrac12EtA\\,\\varepsilon_{11}^2=\\tfrac12\\cdot1\\cdot1\\cdot1\\cdot(0{,}01)^2=5\\cdot10^{-5}\\).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-matrices-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-matrices-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.3 Las matrices \\(\\mathbf E\\), \\(\\mathbf A\\) y \\(\\bar{\\mathbf D}\\)",
+    "text": "28.3 Las matrices \\(\\mathbf E\\), \\(\\mathbf A\\) y \\(\\bar{\\mathbf D}\\)\nLas matrices de ecuación 28.3 son integrales por regiones de lo que ya se conoce. Para la extensión (las de flexión y cortante son análogas, con \\(\\mathbf H_B,\\mathbf H_S\\) y \\(\\mathbf C_B,\\mathbf C_S\\)):\n\\[\n\\mathbf E=\\begin{pmatrix}\\int_{A_{\\mathrm I}+A_{\\mathrm{II}}}\\mathbf H_E(1,\\cdot)\\,dA\\\\\\int_{A_{\\mathrm{III}}+A_{\\mathrm{IV}}}\\mathbf H_E(1,\\cdot)\\,dA\\\\\\int_{A_{\\mathrm I}+A_{\\mathrm{IV}}}\\mathbf H_E(2,\\cdot)\\,dA\\\\\\int_{A_{\\mathrm{II}}+A_{\\mathrm{III}}}\\mathbf H_E(2,\\cdot)\\,dA\\\\\\int_{A}\\mathbf H_E(3,\\cdot)\\,dA\\end{pmatrix},\\qquad\n\\mathbf A_N=\\mathrm{diag}\\bigl(A_{\\mathrm I}+A_{\\mathrm{II}},\\ A_{\\mathrm{III}}+A_{\\mathrm{IV}},\\ A_{\\mathrm I}+A_{\\mathrm{IV}},\\ A_{\\mathrm{II}}+A_{\\mathrm{III}},\\ A\\bigr).\n\\tag{28.4}\\]\nLa matriz \\(\\bar{\\mathbf D}\\) es simétrica, \\(5\\times5\\) (extensión y flexión) o \\(4\\times4\\) (cortante), con la rigidez \\(\\mathbf C(\\theta)=\\mathbf C_E\\) integrada sobre la intersección de las regiones de cada par de deformaciones:\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\varepsilon^A\\)\n\\(\\varepsilon^B\\)\n\\(\\varepsilon^C\\)\n\\(\\varepsilon^D\\)\n\\(\\varepsilon_{12}\\)\n\n\n\n\n\\(\\varepsilon^A\\)\n\\(\\int_{\\mathrm{I+II}}C_{11}\\)\n0\n\\(\\int_{\\mathrm I}C_{12}\\)\n\\(\\int_{\\mathrm{II}}C_{12}\\)\n\\(\\int_{\\mathrm{I+II}}C_{13}\\)\n\n\n\\(\\varepsilon^B\\)\n\n\\(\\int_{\\mathrm{III+IV}}C_{11}\\)\n\\(\\int_{\\mathrm{IV}}C_{12}\\)\n\\(\\int_{\\mathrm{III}}C_{12}\\)\n\\(\\int_{\\mathrm{III+IV}}C_{13}\\)\n\n\n\\(\\varepsilon^C\\)\n\n\n\\(\\int_{\\mathrm{I+IV}}C_{22}\\)\n0\n\\(\\int_{\\mathrm{I+IV}}C_{23}\\)\n\n\n\\(\\varepsilon^D\\)\n\n\n\n\\(\\int_{\\mathrm{II+III}}C_{22}\\)\n\\(\\int_{\\mathrm{II+III}}C_{23}\\)\n\n\n\\(\\varepsilon_{12}\\)\n\n\n\n\n\\(\\int_{A}C_{33}\\)\n\n\n\nLos dos ceros vienen de que \\(\\varepsilon^A\\) y \\(\\varepsilon^B\\) (mitades opuestas en \\(\\eta\\)) no se solapan, igual que \\(\\varepsilon^C\\) y \\(\\varepsilon^D\\): en el producto \\(\\int\\hat{\\varepsilon}\\,C\\,\\hat{\\varepsilon}\\,dA\\) ese término nunca aparece. Como \\(\\mathbf C(\\theta)\\) puede variar dentro del elemento (espesor variable, material graduado), integrar por regiones lo recoge de forma consistente.\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\n\\(\\mathbf D\\) aquí no es la de tensión plana. \\(\\bar{\\mathbf D}_f\\) es la rigidez de la lámina de D7 (con \\(t\\), \\(t^3/12\\) y \\(t\\mu\\)) integrada por regiones; incluye el área.\nLas tensiones \\(\\mathbf N,\\mathbf M,\\mathbf Q\\) son parámetros, no campos. Aparecen por escalones, uno por región, y se eliminan en ecuación 28.3; al final sólo quedan desplazamientos.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-generico-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-generico-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.4 Qué la distingue de la versión genérica",
+    "text": "28.4 Qué la distingue de la versión genérica\n\n\n\n\n\n\n\n\n\nGenérico (tema D8)\nEspecífico (este tema)\n\n\n\n\nCampos\n\\(\\mathbf u(\\mathbf x),\\ \\boldsymbol\\varepsilon(\\mathbf x),\\ \\boldsymbol\\sigma(\\mathbf x)\\) cualesquiera\n\\(\\boldsymbol\\delta,\\ \\hat{\\mathbf e}_f,\\ \\mathbf S_f\\): 20 + 14 + 14 parámetros\n\n\nDominio\ntodo el sólido\nun elemento de lámina dividido en 4 subdominios\n\n\nDeformaciones\ncontinuas\nconstantes a trozos (escalones)\n\n\nResultado\nlas tres ecuaciones del problema elástico\nla matriz \\(\\mathbf K\\) de ecuación 28.3\n\n\n\n\n\n\n\n\n\nImportanteIdea clave\n\n\n\necuación 28.1 es la genérica ecuación 21.5 del tema D8 con una elección: las deformaciones y las tensiones viven en el espacio de funciones constantes a trozos de los cuatro subdominios. Esa elección es la que hace que el multiplicador \\(\\mathbf S_f\\) cuente como una media y desaparezca el cortante parásito (E4–E6).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-propiedades-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-propiedades-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.5 Propiedades",
+    "text": "28.5 Propiedades\n\n\\(\\mathbf K\\) es simétrica y semidefinida positiva (suma de formas cuadráticas con \\(\\bar{\\mathbf D}_f\\) definida positiva).\nCon \\(\\mathbf C\\) constante, \\(\\boldsymbol\\delta^{\\mathsf T}\\mathbf K\\boldsymbol\\delta\\le\\boldsymbol\\delta^{\\mathsf T}\\mathbf K_u\\boldsymbol\\delta\\) siendo \\(\\mathbf K_u\\) la de desplazamientos puros (desigualdad de Cauchy–Schwarz en cada región, ejercicio 2 de E6): el elemento no es más rígido que el de desplazamientos.\nSus autovalores nulos son los de sólido rígido (seis en el elemento plano, Figura 26.3).\n\n\nEn el elemento de lámina por subdominios, las resultantes \\(\\mathbf N,\\mathbf M,\\mathbf Q\\) se interpolan con los mismos subdominios que las deformaciones.\n\nVerdadero. Es lo que hace que el término \\(\\mathbf S_f^{\\mathsf T}(\\mathbf G_f\\boldsymbol\\delta-\\mathbf A_f\\hat{\\mathbf e}_f)\\) sea una suma de productos por áreas y que \\(\\mathbf K\\) se obtenga en forma cerrada.\n\n\n\n\n\n\n\n\nTipAplicación real: espesor variable y material graduado\n\n\n\nilustrativo Obra civil. El casco de una torre de refrigeración de hormigón no tiene espesor constante: en el caso de una torre de 1959 estudiada por inspección láser, el espesor de proyecto va de unos 0,4 m junto a los pilares a 0,12 m a pocos metros de altura, y vuelve a engrosarse hacia el borde superior. Integrar la rigidez por regiones (la matriz \\(\\bar{\\mathbf D}\\)) recoge esa variación dentro del elemento. Biomecánica. Lo mismo vale para huesos o prótesis cuyo módulo de elasticidad varía de forma progresiva de la cortical a la esponjosa.\nFuente (secundaria): Laser Scanner-Based Hyperboloid Cooling Tower Geometry Inspection: Thickness and Deformation Mapping (PMC) (espesores de proyecto). La variación progresiva del módulo del hueso es una afirmación general sin fuente leída. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-historia-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-historia-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.6 Un poco de historia",
+    "text": "28.6 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: tres nombres para un funcional\n\n\n\nComo se contó en el tema D8, el funcional de tres campos se asocia con Hu Haichang (1954–1955) y Kyūichirō Washizu (1955), y hay quien añade a Fraeijs de Veubeke (1951), de modo que la literatura lo llama a veces Veubeke–Hu–Washizu. Su uso para construir elementos (y no sólo como resultado teórico) es el de los llamados elementos mixtos y de deformación mejorada: eliminan las deformaciones parásitas eligiendo el espacio de las deformaciones y las tensiones por separado del de los desplazamientos, que es justo lo que hace la formulación de este tema.\nFuentes (secundarias): Hu–Washizu principle (Wikipedia); Eighty Years of the Finite Element Method (arXiv:2107.04960). No se leyeron los originales. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-julia-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-julia-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.7 Práctica guiada en Julia",
+    "text": "28.7 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) Se construye \\(\\mathbf K\\) desde cero con las matrices \\(\\mathbf E\\), \\(\\mathbf A\\), \\(\\bar{\\mathbf D}\\) de ecuación 28.4 y se compara con rigidez_elemento(…; modo = :subdominios). (2) Se verifica el ejemplo de la energía y la desigualdad con la formulación de desplazamientos.\n\n\n\nusing Geometria, LinearAlgebra, Random\n\nplana = placa_oblicua(π / 2); X = [0.0 1 1 0; 0 0 1 1]\nfila11 = (1, 1, 2, 2); fila22 = (3, 4, 4, 3)          # región de ε₁₁ y de ε₂₂ en cada cuadrante\n\nfunction k_desde_cero(r, X, E, ν, t)\n    DE = zeros(5, 5); DB = zeros(5, 5); DS = zeros(4, 4)\n    EE = zeros(5, 20); EB = zeros(5, 20); ES = zeros(4, 20); AN = zeros(5); AS = zeros(4)\n    for q in 1:4, (ξ, η, w) in Geometria.puntos_gauss(Geometria.CUADRANTES[q][1], Geometria.CUADRANTES[q][2], 2)\n        g, N, dN, dA, CE, CB, CS = punto_elemento(r, X, ξ, η, E, ν, t)\n        HE, HB, HS = matrices_H(g, N, dN)\n        P = zeros(5, 3); P[fila11[q], 1] = 1; P[fila22[q], 2] = 1; P[5, 3] = 1\n        PS = zeros(4, 2); PS[fila11[q], 1] = 1; PS[fila22[q], 2] = 1\n        s = w * dA\n        DE += P * CE * P' * s; DB += P * CB * P' * s; DS += PS * CS * PS' * s\n        EE += P * HE * s; EB += P * HB * s; ES += PS * HS * s\n        for j in (fila11[q], fila22[q], 5); AN[j] += s; end\n        for j in (fila11[q], fila22[q]); AS[j] += s; end\n    end\n    A = Diagonal(AN); As = Diagonal(AS)\n    EE' * (A \\ DE / A) * EE + EB' * (A \\ DB / A) * EB + ES' * (As \\ DS / As) * ES\nend\n\nK1 = k_desde_cero(plana, X, 1.0, 0.3, 0.1)\nK2 = rigidez_elemento(plana, X, 1.0, 0.3, 0.1; modo = :subdominios)\n(diferencia_relativa = norm(K1 - K2) / norm(K2), simétrica = norm(K2 - K2') &lt; 1e-12)\n\n(diferencia_relativa = 0.0, simétrica = true)\n\n\n\n# (2) Energía del estiramiento uniforme (ν = 0, E = t = 1): ½ δᵀ K δ = 5·10⁻⁵\nδ = zeros(20); for k in 1:4; δ[5(k-1)+1] = 0.01 * X[1, k]; end\nK = rigidez_elemento(plana, X, 1.0, 0.0, 1.0)\nU = δ' * K * δ / 2\n\n# Cota: la rigidez por subdominios no supera a la de desplazamientos (membrana, ν = 0.3)\nRandom.seed!(2); d = randn(20); d[[3, 4, 5, 8, 9, 10, 13, 14, 15, 18, 19, 20]] .= 0     # sólo g.d.l. de membrana\nKs = rigidez_elemento(plana, X, 1.0, 0.3, 1.0; modo = :subdominios)\nKu = rigidez_elemento(plana, X, 1.0, 0.3, 1.0; modo = :desplazamientos)\n(U = U, esperada = 5e-5, energía_subdominios = d' * Ks * d, energía_desplazamientos = d' * Ku * d)\n\n(U = 4.999999999920611e-5, esperada = 5.0e-5, energía_subdominios = 8.24943542492868, energía_desplazamientos = 8.64540685572591)",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-ejercicios-e7",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#sec-ejercicios-e7",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "28.8 Ejercicios",
+    "text": "28.8 Ejercicios\n\nEcuación asociada a cada campo. Indica qué ecuación se obtiene variando \\(\\hat{\\mathbf e}_f\\) en ecuación 28.1.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\bar{\\mathbf D}_f\\hat{\\mathbf e}_f-\\mathbf A_f\\mathbf S_f=0\\): la ley constitutiva promediada (\\(\\mathbf S_f=\\mathbf A_f^{-1}\\bar{\\mathbf D}_f\\hat{\\mathbf e}_f\\)).\n\n\n\nElementos con \\(\\mathbf C\\) constante. Si \\(\\mathbf C\\) es constante, ¿qué forma tiene \\(\\bar{\\mathbf D}_E\\) en la primera fila, columna de \\(\\varepsilon^C\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\int_{A_{\\mathrm I}}C_{12}\\,dA=C_{12}A_{\\mathrm I}\\): la constante por el área del cuadrante común.\n\n\n\nSimetría. ¿Por qué \\(\\mathbf K\\) de ecuación 28.3 es simétrica?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\mathbf A^{-1}\\) y \\(\\bar{\\mathbf D}\\) son simétricas (la segunda por serlo \\(\\mathbf C\\)): \\((\\mathbf G^{\\mathsf T}\\mathbf A^{-1}\\bar{\\mathbf D}\\mathbf A^{-1}\\mathbf G)^{\\mathsf T}=\\mathbf G^{\\mathsf T}\\mathbf A^{-1}\\bar{\\mathbf D}^{\\mathsf T}\\mathbf A^{-1}\\mathbf G\\).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#la-doy-por-superada-si",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo ecuación 28.1 y digo qué es cada término.\nObtengo ecuación 28.2 y condenso hasta ecuación 28.3.\nConstruyo \\(\\mathbf E\\), \\(\\mathbf A\\) y \\(\\bar{\\mathbf D}\\) y explico los ceros de \\(\\bar{\\mathbf D}\\).\nSeñalo en qué se diferencia de la versión genérica del tema D8.\nSé que \\(\\mathbf K\\) es simétrica, semidefinida y no más rígida que la de desplazamientos.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; el principio de Hu–Washizu como base de elementos mixtos es estándar (Bathe 1996; Hughes 1987; Zienkiewicz y Taylor, s. f.). La condensación y la igualdad numérica con la matriz de la librería se comprueban en Julia (diferencia relativa \\(\\approx10^{-16}\\)).\nQué queda pendiente. La estructura de \\(\\bar{\\mathbf D}\\) se ha deducido aquí; el signo y el nombre de los multiplicadores siguen la convención de D8; la nota histórica y la «Aplicación real» emplean fuentes secundarias; revisión visual de la figura.\n\n\n\n\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E7-hu-washizu-subdominios.html#referencias-unidad",
+    "title": "28  Hu–Washizu por subdominios",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Hu–Washizu por subdominios</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html",
+    "title": "29  Cargas y matriz de masa",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E7 y E1.\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#objetivos-y-prerrequisitos",
+    "title": "29  Cargas y matriz de masa",
+    "section": "",
+    "text": "obtener el vector de cargas consistente de una carga superficial y comprobar que reparte el total correctamente;\nescribir el peso propio de una lámina con su espesor, incluida la corrección por curvatura;\nconstruir la matriz de masa consistente a partir de la energía cinética y reconocer sus términos;\ncomparar masa consistente y concentrada y saber cuál sobrestima y cuál subestima las frecuencias;\nverificar la masa total y el peso total de una malla.\n\n\n\n\nSección 29.1 · Cargas consistentes · Sección 29.2 · Peso propio de una lámina · Sección 29.3 · Matriz de masa\nSección 29.4 · Masa concentrada · Sección 29.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\mathbf f(\\theta)\\)\ncarga superficial cartesiana por unidad de superficie media\n\n\n\\(\\mathbf X\\)\nfuerza por unidad de volumen (por ejemplo, el peso, \\(\\mathbf X=\\rho\\,\\mathbf g\\))\n\n\n\\(\\mathbf F_e\\)\nvector de cargas nodales del elemento (\\(20\\times1\\))\n\n\n\\(\\rho,\\ t\\)\ndensidad y espesor de la lámina\n\n\n\\(H,\\ K\\)\ncurvatura media y de Gauss de la superficie (tema C3)\n\n\n\\(\\mathbf M_e\\)\nmatriz de masa del elemento (\\(20\\times20\\))\n\n\n\\(\\boldsymbol\\vartheta=\\varphi_\\alpha\\mathbf a^\\alpha\\)\ngiro del director (tema E3)\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: la manta sobre los cuatro apoyos\n\n\n\nUna carga repartida sobre un elemento es como un peso apoyado sobre una manta tensa sujeta por sus cuatro esquinas: cada esquina soporta la parte que le corresponde por cercanía. Las funciones de forma son esa regla de «cercanía»: un punto cerca del nodo 1 le manda casi toda su carga y poca a los demás. Con una presión uniforme sobre un rectángulo cada nodo recibe un cuarto del total. La masa se reparte igual: la masa consistente la distribuye con la misma regla y la concentrada la «aparca» directamente en los nodos, como pesas colgadas de las esquinas.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#sec-cargas-e8",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#sec-cargas-e8",
+    "title": "29  Cargas y matriz de masa",
+    "section": "29.1 Cargas consistentes",
+    "text": "29.1 Cargas consistentes\nLa carga de un elemento es el trabajo virtual de las fuerzas exteriores. Para una carga por unidad de superficie media \\(\\mathbf f\\), y con el desplazamiento virtual \\(\\delta\\mathbf u=\\delta u_\\alpha\\mathbf a^\\alpha+\\delta u_3\\hat{\\mathbf n}\\):\n\\[\n\\delta W=\\int_{A_e}\\bigl(\\delta u_\\alpha\\,\\mathbf a^\\alpha\\!\\cdot\\mathbf f+\\delta u_3\\,\\hat{\\mathbf n}\\!\\cdot\\mathbf f\\bigr)\\,dA\\ \\ \\Longrightarrow\\ \\ \\mathbf F_e=\\int_{A_e}\\mathbf T(\\xi,\\eta)^{\\mathsf T}\\begin{pmatrix}\\mathbf a^1\\!\\cdot\\mathbf f\\\\\\mathbf a^2\\!\\cdot\\mathbf f\\\\\\hat{\\mathbf n}\\!\\cdot\\mathbf f\\end{pmatrix}dA,\n\\tag{29.1}\\]\ndonde \\(\\mathbf T\\) lleva \\(u_1,u_2,u_3\\) de los nodos a los valores interpolados (con las funciones \\(N_k\\)). Es el mismo \\(\\int\\mathbf N^{\\mathsf T}\\mathbf b\\,dx\\) de la barra (E1), en dos dimensiones y con la geometría de la superficie. Los giros no reciben carga: una fuerza superficial no hace trabajo en \\(\\delta\\varphi\\).\n\nEjemplo 29.1 (Ejemplo resuelto: presión sobre un elemento plano) Elemento plano de \\(100\\times50\\) mm con una presión uniforme \\(p=0{,}01\\) N/mm² en dirección \\(-z\\). Entonces \\(\\mathbf a^\\alpha\\!\\cdot\\mathbf f=0\\) y \\(\\hat{\\mathbf n}\\!\\cdot\\mathbf f=-p\\) (con \\(\\hat{\\mathbf n}=+\\hat{\\mathbf z}\\)). Con \\(N_k\\) bilineales y \\(\\int_AN_k\\,dA=A/4\\): \\[\nF_{3k}=\\int_AN_k\\,(-p)\\,dA=-\\frac{pA}{4}=-\\frac{0{,}01\\cdot5000}{4}=-\\mathbf{12{,}5}\\ \\text{N}\\quad(k=1,\\dots,4),\n\\] y los demás términos, nulos. La suma (\\(50\\) N) es la fuerza total aplicada. Resultado analítico; la práctica lo reproduce con cargas_elemento.\n\n\nEn el Ejemplo 29.1, ¿qué fuerza (en valor absoluto) recibe cada nodo?\n\n\\(|F_3|=pA/4=0{,}01\\cdot5000/4=12{,}5\\) N.\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\n«Consistente» no es «repartir a partes iguales». En un elemento rectangular con carga uniforme sí coincide, pero en uno distorsionado o con carga variable el reparto es otro; lo da la integral ecuación 29.1.\nLos g.d.l. son covariantes: \\(F_{1},F_{2}\\) son trabajos por unidad de \\(u_1,u_2\\) (no fuerzas cartesianas). Para un elemento curvo, el total de fuerza se recupera sumando \\(\\delta_{\\text{rígido}}^{\\mathsf T}\\mathbf F\\), con la traslación rígida expresada en esos g.d.l.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#sec-peso-e8",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#sec-peso-e8",
+    "title": "29  Cargas y matriz de masa",
+    "section": "29.2 Peso propio de una lámina",
+    "text": "29.2 Peso propio de una lámina\nEl peso es una fuerza por unidad de volumen, \\(\\mathbf X=\\rho\\,\\mathbf g\\). Para pasarlo a carga superficial hay que integrar en el espesor, con el factor de volumen \\(\\mu=1-2H\\theta^3+K(\\theta^3)^2\\) del tema C3 y el desplazamiento virtual de la hipótesis cinemática \\(\\delta\\mathbf u_{3D}=(\\delta u_\\rho+\\theta^3\\delta\\varphi_\\rho)\\mathbf a^\\rho+\\delta u_3\\hat{\\mathbf n}\\):\n\\[\n\\delta W=\\int_A\\Bigl[t\\bigl(1+\\tfrac{Kt^2}{12}\\bigr)\\bigl(X^\\rho\\delta u_\\rho+X^3\\delta u_3\\bigr)-\\tfrac{Ht^3}{6}\\,X^\\rho\\delta\\varphi_\\rho\\Bigr]dA,\\qquad X^\\rho=\\mathbf a^\\rho\\!\\cdot\\mathbf X,\\ \\ X^3=\\hat{\\mathbf n}\\!\\cdot\\mathbf X .\n\\tag{29.2}\\]\nSe obtiene con los momentos \\(\\int\\mu\\,d\\theta^3=t(1+Kt^2/12)\\) y \\(\\int\\theta^3\\mu\\,d\\theta^3=-Ht^3/6\\), descomponiendo \\(\\mathbf X\\) en la base de la superficie media (por eso \\(X^\\rho\\) y \\(X^3\\) no dependen de \\(\\theta^3\\)). En el orden cero,\n\\[\n\\delta W\\approx t\\int_A\\bigl(X^\\rho\\delta u_\\rho+X^3\\delta u_3\\bigr)dA,\n\\tag{29.3}\\]\ncon error relativo \\(O\\bigl((t/R)^2\\bigr)\\): es la carga superficial \\(\\mathbf f=t\\,\\mathbf X\\) de ecuación 29.1. Los términos con \\(K\\) y con \\(\\delta\\varphi\\) sólo importan si la lámina es gruesa respecto de su radio de curvatura.\n\n\n\n\n\n\nAdvertenciaCorrección respecto de unos apuntes previos\n\n\n\nLa expresión de partida de unos apuntes previos del autor (con un factor \\(\\mu^\\rho_\\alpha\\) multiplicando las componentes del peso en la base de la superficie media) no reproduce el trabajo de un peso uniforme: para \\(t/R=0{,}1\\) el error relativo es \\(\\sim10^{-4}\\) en cilindro, esfera e hypar. La versión ecuación 29.2 se ha derivado de nuevo y se ha comprobado numéricamente (error relativo \\(\\sim10^{-16}\\) en las tres superficies, con \\(t=0{,}2\\) y \\(0{,}05\\)). Limitación: la comprobación usa la misma cinemática; no contrasta que sea la del elemento de otros autores.\n\n\n\nEn el orden cero de ecuación 29.2, el peso propio de la lámina sólo carga los desplazamientos \\(\\delta u_\\rho\\) y \\(\\delta u_3\\), no los giros \\(\\delta\\varphi_\\rho\\).\n\nVerdadero. El acoplamiento con los giros, \\(-\\tfrac{Ht^3}{6}X^\\rho\\delta\\varphi_\\rho\\), es \\(O\\bigl((t/R)^2\\bigr)\\) frente al término principal y se descarta.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#sec-masa-e8",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#sec-masa-e8",
+    "title": "29  Cargas y matriz de masa",
+    "section": "29.3 Matriz de masa",
+    "text": "29.3 Matriz de masa\nLa energía cinética de la lámina, con el mismo desplazamiento 3D y el desarrollo exacto de \\(\\mu\\), es\n\\[\nT=\\tfrac12\\rho\\int_A\\Bigl[\\bigl(t+\\tfrac{Kt^3}{12}\\bigr)\\,|\\dot{\\mathbf u}|^2-\\tfrac{4Ht^3}{12}\\,\\dot{\\mathbf u}\\!\\cdot\\!\\dot{\\boldsymbol\\vartheta}+\\tfrac{t^3}{12}\\,|\\dot{\\boldsymbol\\vartheta}|^2\\Bigr]dA,\n\\tag{29.4}\\]\ncon \\(|\\dot{\\mathbf u}|^2=a^{\\alpha\\beta}\\dot u_\\alpha\\dot u_\\beta+\\dot u_3^2\\), \\(|\\dot{\\boldsymbol\\vartheta}|^2=a^{\\alpha\\beta}\\dot\\varphi_\\alpha\\dot\\varphi_\\beta\\) y \\(\\dot{\\mathbf u}\\cdot\\dot{\\boldsymbol\\vartheta}=a^{\\alpha\\beta}\\dot u_\\alpha\\dot\\varphi_\\beta\\). Interpolando con \\(N_k\\), \\(T=\\tfrac12\\dot{\\boldsymbol\\delta}^{\\mathsf T}\\mathbf M_e\\dot{\\boldsymbol\\delta}\\), con\n\\[\n\\mathbf M_e=\\rho\\int_A\\Bigl[(t+\\tfrac{Kt^3}{12})\\,\\mathbf N_u^{\\mathsf T}\\mathbf a^{-1}\\mathbf N_u+\\ldots\\Bigr]dA\\qquad(\\text{inercia de traslación, de acoplamiento y rotatoria}).\n\\tag{29.5}\\]\nTres bloques: traslación (\\(\\rho t\\) por la métrica inversa en \\(u_1,u_2\\) y por 1 en \\(u_3\\)), rotatoria (\\(\\rho t^3/12\\) en los giros) y acoplamiento (proporcional a \\(H\\), pequeño). Con la integración \\(2\\times2\\) el programa la forma exactamente y es la misma energía de la que sale la matriz de rigidez en ecuación 28.1: \\(\\mathbf M\\) es simétrica y semidefinida positiva.\n\nEjemplo 29.2 (Ejemplo resuelto: la masa de un elemento) Elemento de acero sobre un cilindro de \\(R=0{,}5\\) m, de \\(0{,}1\\) m de longitud axial y \\(0{,}1\\) rad de abertura, con \\(t=5\\) mm y \\(\\rho=7850\\) kg/m³. Una traslación axial rígida unidad (\\(u_1=1\\) en los cuatro nodos) debe dar \\(\\boldsymbol\\delta^{\\mathsf T}\\mathbf M\\boldsymbol\\delta=m\\) (la masa total). Como \\(K=0\\) en el cilindro, \\(m=\\rho\\,t\\,A=7850\\cdot0{,}005\\cdot(0{,}1\\cdot0{,}5\\cdot0{,}1)=\\mathbf{0{,}19625}\\) kg, con \\(A=0{,}005\\) m². Resultado analítico; la práctica lo obtiene con masa_elemento.\n\n\nEn el Ejemplo 29.2, ¿cuánto vale la masa del elemento?\n\n\\(m=\\rho tA=7850\\cdot0{,}005\\cdot0{,}005=0{,}19625\\) kg.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#sec-concentrada-e8",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#sec-concentrada-e8",
+    "title": "29  Cargas y matriz de masa",
+    "section": "29.4 Masa concentrada y comparación",
+    "text": "29.4 Masa concentrada y comparación\nLa masa concentrada (diagonal) se obtiene colocando en cada nodo \\(\\rho tA/4\\) de masa (y la inercia rotatoria que corresponda), sin acoplamientos. Con la misma malla da frecuencias por debajo de las exactas, y la consistente por encima (Figura 29.1). Para una barra:\n\\[\n\\mathbf M_{\\text{cons}}=\\frac{\\rho Ah}{6}\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix},\\qquad \\mathbf M_{\\text{conc}}=\\frac{\\rho Ah}{2}\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}.\n\\]\n\n\n\n\n\n\nNotaExplicación para ingenieros: ¿cuál uso para calcular frecuencias?\n\n\n\n\nConsistente: da cota superior de las frecuencias (el modelo es algo más rígido que la realidad); suele converger más rápido y es la preferible para analizar modos.\nConcentrada: es diagonal (se resuelve con más rapidez en cálculos en el tiempo con pasos explícitos), da una cota inferior y no necesita integrar nada.\nTruco: una media de ambas suele estar muy cerca de la frecuencia exacta.\n\n\n\n\nCon la misma malla de elementos de barra lineales, ¿qué cota dan las frecuencias de la masa consistente respecto de las exactas?\n\n\nCota superior (valores iguales o mayores)\nCota inferior (valores iguales o menores)\nPueden ser mayores o menores según el modo\nSon exactas en todos los modos\n\n\n\nCota superior: el espacio de interpolación restringe el movimiento (principio del mínimo de Rayleigh), y la masa consistente conserva la energía cinética del campo interpolado, de modo que \\(\\omega_h\\ge\\omega\\) (Figura 29.1).\n\n\n\n\n\n\n\n\nTipAplicación real: cubiertas y cráneos bajo cargas dinámicas\n\n\n\nilustrativo El análisis modal de una cubierta o de una torre de refrigeración es el paso previo a estudiar su respuesta a viento y sismo: se necesita la masa real de la lámina (incluido el peso propio como carga estática) y sus frecuencias. En biomecánica, el mismo problema aparece al estimar las frecuencias propias de huesos o de la cavidad craneal bajo impacto. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#sec-julia-e8",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#sec-julia-e8",
+    "title": "29  Cargas y matriz de masa",
+    "section": "29.5 Práctica guiada en Julia",
+    "text": "29.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) La carga de presión del Ejemplo 29.1 y la masa del Ejemplo 29.2 con cargas_elemento y masa_elemento. (2) El peso total de un cuarto de cilindro de radio \\(R=0{,}5\\), longitud 1 y \\(t=0{,}01\\) (carga \\(\\mathbf f=t\\mathbf X\\), con \\(\\mathbf X=(0,0,-1)\\)), y su convergencia a \\(0{,}01\\cdot R\\cdot\\pi/2\\) al refinar la malla.\n\n\n\nusing Geometria, LinearAlgebra\n\n# (1) Presión sobre un elemento plano de 100×50 mm\nXp = [0.0 100 100 0; 0 0 50 50]\nF = cargas_elemento(placa_oblicua(π / 2), Xp, θ -&gt; [0, 0, -0.01])\n\n# Masa de un elemento de cilindro (SI): traslación axial rígida\nR = 0.5; r = θ -&gt; [θ[1], R * sin(θ[2]), R * cos(θ[2])]\nX = [0.0 0.1 0.1 0; 0 0 0.1 0.1]\nM = masa_elemento(r, X, 7850.0, 0.005)\nδ = zeros(20); for k in 1:4; δ[5(k-1)+1] = 1.0; end\n(F_nodos_w = F[[3, 8, 13, 18]], masa = δ' * M * δ, esperada = 7850 * 0.005 * 0.005)\n\n(F_nodos_w = [-12.499999989417384, -12.499999963777881, -12.49999995095813, -12.499999976597634], masa = 0.196249999999541, esperada = 0.19625)\n\n\n\n# (2) Peso total del cuarto de cilindro: δ_rígidoᵀ F frente al valor exacto\nfunction peso_total(n)\n    nodos, conn = malla_rectangular((0, 1.0), (0, π / 2), n, n)\n    _, _, Fg = ensamblar(r, nodos, conn, 1e3, 0.3, 0.01; f = θ -&gt; [0, 0, -0.01])      # f = t·X\n    δz = zeros(5size(nodos, 2))\n    for k in 1:size(nodos, 2)\n        g = geometria_punto(r, nodos[:, k]); u = [0.0, 0.0, 1.0]\n        δz[5(k-1)+1:5(k-1)+2] = g.A' * u; δz[5(k-1)+3] = dot(g.n, u)\n    end\n    δz' * Fg\nend\n[(n = n, peso = peso_total(n), exacto = -0.01 * R * π / 2) for n in (2, 4, 8)]\n\n3-element Vector{@NamedTuple{n::Int64, peso::Float64, exacto::Float64}}:\n (n = 2, peso = -0.007460501218044302, exacto = -0.007853981633974483)\n (n = 4, peso = -0.007753696250043401, exacto = -0.007853981633974483)\n (n = 8, peso = -0.007828789163278914, exacto = -0.007853981633974483)\n\n\nEl peso converge cuadráticamente (\\(5\\,\\%\\to1{,}3\\,\\%\\to0{,}3\\,\\%\\)): la traslación rígida expresada en componentes covariantes sólo se representa bien con elementos pequeños (aviso de E3).",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#sec-ejercicios-e8",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#sec-ejercicios-e8",
+    "title": "29  Cargas y matriz de masa",
+    "section": "29.6 Ejercicios",
+    "text": "29.6 Ejercicios\n\nCarga lineal. Un elemento de barra de longitud \\(h\\) con carga \\(b(x)=b_0\\,x/h\\) (cero en el nodo 1, \\(b_0\\) en el 2). Obtén \\(\\mathbf f_e\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(f_1=\\int_0^h b_0\\frac xh\\,(1-\\tfrac xh)\\,dx=b_0h/6\\), \\(f_2=\\int_0^h b_0\\frac xh\\cdot\\frac xh\\,dx=b_0h/3\\). Suman \\(b_0h/2\\) (el área del triángulo): el nodo más cargado recibe más.\n\n\n\nFrecuencia de un elemento. Barra de un elemento, empotrada en el nodo 1 y masa consistente: ¿qué frecuencia da? Compárala con la exacta \\(\\tfrac\\pi2\\sqrt{E/\\rho}/L\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(K=EA/L\\) y \\(M=\\rho AL/3\\) (sólo el término del nodo libre de \\(\\tfrac{\\rho AL}6\\cdot2\\)): \\(\\omega=\\sqrt{3E/\\rho}/L=1{,}732\\sqrt{E/\\rho}/L\\) frente a \\(1{,}571\\): un 10 % por encima (primer punto de la Figura 29.1).\n\n\n\nMasa rotatoria. ¿Por qué el término rotatorio es proporcional a \\(t^3\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nEs el momento de inercia de la sección por unidad de longitud: \\(\\int\\rho(\\theta^3)^2d\\theta^3=\\rho t^3/12\\). Para láminas delgadas es despreciable frente a \\(\\rho t\\); en láminas gruesas y a frecuencias altas puede importar.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#la-doy-por-superada-si",
+    "title": "29  Cargas y matriz de masa",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo ecuación 29.1 y reparto una presión uniforme entre los cuatro nodos.\nObtengo el peso propio de una lámina y sé qué se desprecia en el orden cero.\nReconozco los tres bloques de la matriz de masa ecuación 29.5.\nDigo que la masa consistente da cota superior y la concentrada inferior.\nCompruebo la masa total y el peso total de una malla.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo: la forma de ecuación 29.2 y ecuación 29.4 es una derivación propia con el desarrollo exacto de \\(\\mu\\) (verificada numéricamente), no tomada de ninguna publicación; las cargas consistentes y las masas consistente/concentrada son estándar (Bathe 1996; Hughes 1987; Zienkiewicz y Taylor, s. f.).\nCorrección registrada. La expresión de fuerzas de volumen de unos apuntes previos del autor, marcada por él mismo como errónea, se sustituye por ecuación 29.2.\nQué queda pendiente. El convenio de signo y orientación de los giros \\(\\varphi_\\rho\\) (de él depende el acople con \\(H\\)); el uso de componentes físicas en bases no ortogonales; no hay nota histórica en este tema por falta de fuente verificada; la «Aplicación real» es una orientación sin fuente.\n\n\n\n\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E8-cargas-masa.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E8-cargas-masa.html#referencias-unidad",
+    "title": "29  Cargas y matriz de masa",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Cargas y matriz de masa</span>"
+    ]
+  },
+  {
     "objectID": "book/referencias.html",
     "href": "book/referencias.html",
     "title": "Referencias",
     "section": "",
-    "text": "Canals, I. 1976. Cascarones Parabólicos-Hiperbólicos. Editorial\nLimusa, s.a.\n\n\nCarmo, M. do. 1994. Geometría Diferencial de Curvas y\nSuperficies. Alianza Universidad.\n\n\nCosta, A. F., M. Gamboa, and A. M. Porto. 1997. Ejercicios de\nGeometría Diferencial de Curvas y Superficies. Sanz y Torres.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics.\nSpringer-Verlag.\n\n\nHeinbockel, J. H. 1996. Introduction to Tensor Calculus and\nContinuum Mechanics. Department of Mathematics; Statistics, Old\nDominion University.\n\n\nLebedev, L. P., and M. J. Cloud. 2003. Tensor Analysis. World\nScientific.\n\n\nLipschultz, M. 1969. Differential Geometry. Schaum’s Outlines.\n\n\nMargarit, J., and C. Buxadé. n.d. Cálculo de Estructuras En\nParaboloide Hiperbólico. Editorial Blume.\n\n\nNarita, Y., and A. W. Leissa. 1984. “Vibrations of Corner Point\nSupported Shallow Shells of Rectangular Planform.” Earthquake\nEngineering and Structural Dynamics 12: 651–61.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff\nltd.\n\n\nRomano, A., R. Lancellota, and A. Marasco. 2006. Continuum Mechanics\nUsing Mathematica. Birkhäuser, Boston.\n\n\nSpiegel, M. R. 1959. Vector Analysis and an Introduction to Tensor\nAnalysis. Schaum’s Outlines.\n\n\nStruik, D. J. 1955. Geometría Diferencial Clásica. Aguilar.\n\n\nWeatherburn, C. E. 1927. Differential Geometry. Cambridge\nPress.",
+    "text": "Ahmad, S., B. M. Irons, and O. C. Zienkiewicz. 1970. “Analysis of\nThick and Thin Shell Structures by Curved Finite Elements.”\nInternational Journal for Numerical Methods in Engineering 2\n(3): 419–51. https://doi.org/10.1002/nme.1620020310.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nBathe, K. J., and E. N. Dvorkin. 1985. “A Four-Node Plate Bending\nElement Based on Mindlin/Reissner Plate Theory and a Mixed\nInterpolation.” International Journal for Numerical Methods\nin Engineering 21: 367–83.\n\n\nCanals, I. 1976. Cascarones Parabólicos-Hiperbólicos. Editorial\nLimusa, s.a.\n\n\nCarmo, M. do. 1994. Geometría Diferencial de Curvas y\nSuperficies. Alianza Universidad.\n\n\nCosta, A. F., M. Gamboa, and A. M. Porto. 1997. Ejercicios de\nGeometría Diferencial de Curvas y Superficies. Sanz y Torres.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics.\nSpringer-Verlag.\n\n\nHeinbockel, J. H. 1996. Introduction to Tensor Calculus and\nContinuum Mechanics. Department of Mathematics; Statistics, Old\nDominion University.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and\nDynamic Finite Element Analysis. Prentice-Hall.\n\n\nLebedev, L. P., and M. J. Cloud. 2003. Tensor Analysis. World\nScientific.\n\n\nLipschultz, M. 1969. Differential Geometry. Schaum’s Outlines.\n\n\nMargarit, J., and C. Buxadé. n.d. Cálculo de Estructuras En\nParaboloide Hiperbólico. Editorial Blume.\n\n\nNarita, Y., and A. W. Leissa. 1984. “Vibrations of Corner Point\nSupported Shallow Shells of Rectangular Planform.” Earthquake\nEngineering and Structural Dynamics 12: 651–61.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff\nltd.\n\n\nRomano, A., R. Lancellota, and A. Marasco. 2006. Continuum Mechanics\nUsing Mathematica. Birkhäuser, Boston.\n\n\nSpiegel, M. R. 1959. Vector Analysis and an Introduction to Tensor\nAnalysis. Schaum’s Outlines.\n\n\nStruik, D. J. 1955. Geometría Diferencial Clásica. Aguilar.\n\n\nTimoshenko, S. P., and S. Woinowsky-Krieger. n.d. Theory of Plates\nand Shells. McGraw-Hill.\n\n\nTurner, M. J., R. W. Clough, H. C. Martin, and L. J. Topp. 1956.\n“Stiffness and Deflection Analysis of Complex Structures.”\nJournal of the Aeronautical Sciences 23: 805–23.\n\n\nWeatherburn, C. E. 1927. Differential Geometry. Cambridge\nPress.\n\n\nZienkiewicz, O. C., and R. L. Taylor. n.d. The Finite Element\nMethod. Butterworth-Heinemann.\n\n\nZienkiewicz, O. C., R. L. Taylor, and J. M. Too. 1971. “Reduced\nIntegration Technique in General Analysis of Plates and Shells.”\nInternational Journal for Numerical Methods in Engineering 3:\n275–90.",
     "crumbs": [
       "Referencias"
     ]

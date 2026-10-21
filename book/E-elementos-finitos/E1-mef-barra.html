@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Geometría diferencial · Cálculo tensorial · Mecánica de láminas">
+
+<title>22&nbsp; El método de elementos finitos en una barra – La métrica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/E-elementos-finitos/E2-cuadrilatero-plano.html" rel="next">
+<link href="../../book/D-elasticidad/D8-principios-variacionales.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html">Bloque E · Elementos finitos de lámina</a></li><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">El método de elementos finitos en una barra</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">La métrica</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/mapa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapa del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque A · Preludio: la forma que resiste</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A1-caparazon-hypar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La cáscara y el paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/A-preludio/A2-vectores-y-coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Los objetos físicos no dependen de las coordenadas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque B · Cálculo tensorial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B1-transformacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformación de coordenadas y tensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B2-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bases covariantes y contravariantes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B3-metrica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tensor métrico y componentes físicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B4-christoffel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Símbolos de Christoffel y derivada covariante</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/B-tensorial/B5-analisis-tensorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Álgebra y análisis tensorial en curvilíneas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque C · Geometría de superficies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C1-superficies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Superficies parametrizadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C2-formas-fundamentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Formas fundamentales y fórmulas de Gauss–Weingarten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C3-curvaturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Curvaturas de una superficie</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C4-geodesicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Curvas sobre superficies: geodésicas y compatibilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C5-paraboloide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">El paraboloide hiperbólico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/C-superficies/C6-bestiario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bestiario de láminas: cilindro, esfera, cono y placa oblicua</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque D · Elasticidad: del sólido a la lámina</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D1-deformacion-tension.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Deformación y tensión en el sólido</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D2-hooke-energia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Ley de Hooke y energía de deformación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D3-cinematica-lamina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cinemática de la lámina</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D4-kirchhoff-love.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">La hipótesis de Kirchhoff–Love</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D5-reissner-mindlin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Reissner–Mindlin: el cortante transversal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D6-deformaciones-desplazamientos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relaciones deformación–desplazamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D7-leyes-constitutivas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Leyes constitutivas de la lámina</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/D-elasticidad/D8-principios-variacionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Principios variacionales</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque E · Elementos finitos de lámina</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E1-mef-barra.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">El método de elementos finitos en una barra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E2-cuadrilatero-plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">El cuadrilátero bilineal en tensión plana</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E3-elemento-lamina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">El elemento lámina de cuatro nodos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E4-matrices-b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Matrices deformación–desplazamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E5-bloqueo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bloqueo y modos espurios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E6-interpolacion-deformaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Interpolación de deformaciones</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E7-hu-washizu-subdominios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Hu–Washizu por subdominios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/E-elementos-finitos/E8-cargas-masa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notación y convenios</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#objetivos-y-prerrequisitos" id="toc-objetivos-y-prerrequisitos" class="nav-link active" data-scroll-target="#objetivos-y-prerrequisitos">Objetivos y prerrequisitos</a></li>
+  <li><a href="#sec-fuerte-debil-e1" id="toc-sec-fuerte-debil-e1" class="nav-link" data-scroll-target="#sec-fuerte-debil-e1"><span class="header-section-number">22.1</span> De la forma fuerte a la forma débil</a></li>
+  <li><a href="#sec-forma-e1" id="toc-sec-forma-e1" class="nav-link" data-scroll-target="#sec-forma-e1"><span class="header-section-number">22.2</span> Funciones de forma y el elemento barra</a></li>
+  <li><a href="#sec-ensamblaje-e1" id="toc-sec-ensamblaje-e1" class="nav-link" data-scroll-target="#sec-ensamblaje-e1"><span class="header-section-number">22.3</span> Ensamblaje y condiciones de contorno</a></li>
+  <li><a href="#sec-convergencia-e1" id="toc-sec-convergencia-e1" class="nav-link" data-scroll-target="#sec-convergencia-e1"><span class="header-section-number">22.4</span> ¿Converge?</a></li>
+  <li><a href="#sec-historia-e1" id="toc-sec-historia-e1" class="nav-link" data-scroll-target="#sec-historia-e1"><span class="header-section-number">22.5</span> Un poco de historia</a></li>
+  <li><a href="#sec-julia-e1" id="toc-sec-julia-e1" class="nav-link" data-scroll-target="#sec-julia-e1"><span class="header-section-number">22.6</span> Práctica guiada en Julia</a></li>
+  <li><a href="#sec-ejercicios-e1" id="toc-sec-ejercicios-e1" class="nav-link" data-scroll-target="#sec-ejercicios-e1"><span class="header-section-number">22.7</span> Ejercicios</a></li>
+  <li><a href="#la-doy-por-superada-si" id="toc-la-doy-por-superada-si" class="nav-link" data-scroll-target="#la-doy-por-superada-si">La doy por superada si…</a></li>
+  <li><a href="#referencias-unidad" id="toc-referencias-unidad" class="nav-link" data-scroll-target="#referencias-unidad">Referencias</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html">Bloque E · Elementos finitos de lámina</a></li><li class="breadcrumb-item"><a href="../../book/E-elementos-finitos/E1-mef-barra.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">El método de elementos finitos en una barra</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">El método de elementos finitos en una barra</span></h1>
+<p class="subtitle lead">Forma débil, funciones de forma, ensamblaje y condiciones de contorno en la estructura más sencilla</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="fig-barra-fem" class="portada quarto-float quarto-figure quarto-figure-center anchored" alt="Gráfica de una solución exacta curva y su aproximación poligonal por elementos finitos, coincidentes en los cuatro nodos, con una función de forma triangular sombreada">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-barra-fem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../figures/svg/fem-barra.svg" class="portada img-fluid figure-img" alt="Gráfica de una solución exacta curva y su aproximación poligonal por elementos finitos, coincidentes en los cuatro nodos, con una función de forma triangular sombreada">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barra-fem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;22.1: Una barra cargada resuelta con cuatro elementos lineales: la poligonal naranja pasa <strong>exactamente</strong> por los nodos de la solución exacta (azul), y la función de forma <span class="math inline">\(N_k\)</span> (violeta) vale 1 en su nodo y 0 en los demás. Cálculo <em>analítico</em> para esta carga; el mismo cálculo se repite en la práctica de Julia.
+</figcaption>
+</figure>
+</div>
+<div class="pregunta-guia">
+<p>Cómo se convierte una ecuación diferencial en un sistema de ecuaciones algebraicas que un ordenador resuelve, y por qué basta «cortar» la estructura en trozos sencillos</p>
+</div>
+<section id="objetivos-y-prerrequisitos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objetivos-y-prerrequisitos">Objetivos y prerrequisitos</h2>
+<p><strong>Objetivos.</strong> Al terminar el tema sabrás:</p>
+<ul>
+<li>pasar del problema diferencial de la barra a su <strong>forma débil</strong>;</li>
+<li>construir las <strong>funciones de forma</strong> lineales y la <strong>matriz de rigidez</strong> de un elemento barra;</li>
+<li><strong>ensamblar</strong> varios elementos y aplicar las condiciones de contorno;</li>
+<li>resolver una barra a mano con dos elementos y comprobarlo con un programa de ocho líneas;</li>
+<li>decir qué significa «converge» y por qué en la barra el resultado es exacto en los nodos.</li>
+</ul>
+<p><strong>Prerrequisitos.</strong> <a href="../../book/D-elasticidad/D8-principios-variacionales.html">Principios variacionales</a> (energía potencial y trabajos virtuales). Álgebra lineal básica.</p>
+<p><strong>Secciones del tema</strong></p>
+<ul>
+<li><strong><a href="#sec-fuerte-debil-e1" class="quarto-xref"><span>Sección 22.1</span></a></strong> · De la forma fuerte a la débil · <strong><a href="#sec-forma-e1" class="quarto-xref"><span>Sección 22.2</span></a></strong> · Funciones de forma y elemento barra</li>
+<li><strong><a href="#sec-ensamblaje-e1" class="quarto-xref"><span>Sección 22.3</span></a></strong> · Ensamblaje y contorno · <strong><a href="#sec-convergencia-e1" class="quarto-xref"><span>Sección 22.4</span></a></strong> · ¿Converge? · <strong><a href="#sec-julia-e1" class="quarto-xref"><span>Sección 22.6</span></a></strong> · Práctica guiada</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Notación y convenciones de este tema">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Notación y convenciones de este tema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Símbolo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(u(x)\)</span></td>
+<td>desplazamiento axial de la barra</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(EA\)</span></td>
+<td>rigidez axial (módulo de Young × área)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(b(x)\)</span></td>
+<td>carga axial repartida (fuerza por unidad de longitud)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N_k(x)\)</span></td>
+<td>función de forma del nodo <span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{K},\ \mathbf{f},\ \mathbf{d}\)</span></td>
+<td>matriz de rigidez, vector de cargas y vector de desplazamientos nodales</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(h\)</span></td>
+<td>longitud de un elemento</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="ingenieros callout callout-style-simple callout-note callout-titled" title="Explicación para ingenieros: el método en una frase">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Explicación para ingenieros: el método en una frase
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Cortar, dar rigidez a cada trozo y pegar.</strong> Un elemento de barra de longitud <span class="math inline">\(h\)</span> se comporta exactamente como un <strong>muelle</strong> de rigidez <span class="math inline">\(k=EA/h\)</span>. Una barra partida en tres elementos es, por tanto, una <strong>cadena de tres muelles en serie</strong>: el alargamiento total es la suma de los tres alargamientos, y la fuerza que cruza cada nodo es la misma a ambos lados. Todo el aparato matemático de este tema es la forma ordenada de escribir esa idea para que se pueda programar.</p>
+</div>
+</div>
+</section>
+<section id="sec-fuerte-debil-e1" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="sec-fuerte-debil-e1"><span class="header-section-number">22.1</span> De la forma fuerte a la forma débil</h2>
+<p><strong>Intuición.</strong> La barra de la <a href="#fig-barra-fem" class="quarto-xref">Figura&nbsp;<span>22.1</span></a> está empotrada en <span class="math inline">\(x=0\)</span> y cargada a lo largo. Cada rebanada de longitud <span class="math inline">\(dx\)</span> debe estar en equilibrio: la fuerza axial <span class="math inline">\(N=EA\,u'\)</span> cambia a lo largo de la barra justo lo que valga la carga.</p>
+<p>La <strong>forma fuerte</strong> es la ecuación diferencial con sus condiciones de contorno:</p>
+<p><span id="eq-fuerte-e1"><span class="math display">\[
+(EA\,u')'+b=0\ \ \text{en}\ (0,L),\qquad u(0)=0,\qquad EA\,u'(L)=P .
+\tag{22.1}\]</span></span></p>
+<p>Exige que <span class="math inline">\(u\)</span> tenga dos derivadas. La <strong>forma débil</strong> pide menos: se multiplica por una función de prueba <span class="math inline">\(v(x)\)</span> (con <span class="math inline">\(v(0)=0\)</span>, el «desplazamiento virtual» de <a href="../D-elasticidad/D8-principios-variacionales.html#sec-trabajos-virtuales" class="quarto-xref"><span>Sección 21.1</span></a>) y se integra por partes:</p>
+<div id="def-forma-debil-e1" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 22.1 (Forma débil de la barra)</strong></span> Hallar <span class="math inline">\(u\)</span> con <span class="math inline">\(u(0)=0\)</span> tal que, para toda <span class="math inline">\(v\)</span> con <span class="math inline">\(v(0)=0\)</span>, <span id="eq-debil-e1"><span class="math display">\[
+\int_0^L EA\,u'\,v'\,dx=\int_0^L b\,v\,dx+P\,v(L).
+\tag{22.2}\]</span></span></p>
+</div>
+<p>El primer miembro es el trabajo virtual interno, el segundo el externo: es <a href="../D-elasticidad/D8-principios-variacionales.html#eq-pvv" class="quarto-xref">ecuación&nbsp;<span>21.1</span></a> del tema D8 escrita para una barra. Sólo aparecen <strong>primeras</strong> derivadas, de modo que sirven funciones continuas y lineales a trozos. La condición <span class="math inline">\(EA\,u'(L)=P\)</span> <strong>no hay que imponerla</strong>: sale sola de <a href="#eq-debil-e1" class="quarto-xref">ecuación&nbsp;<span>22.2</span></a> (se llama <em>condición natural</em>); en cambio <span class="math inline">\(u(0)=0\)</span> sí se impone (<em>condición esencial</em>).</p>
+<div class="demostracion callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración de que <a href="#eq-debil-e1" class="quarto-xref">ecuación&nbsp;<span>22.2</span></a> equivale a <a href="#eq-fuerte-e1" class="quarto-xref">ecuación&nbsp;<span>22.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Multiplicando la ecuación por <span class="math inline">\(v\)</span> e integrando, <span class="math inline">\(\int_0^L[(EAu')'+b]v\,dx=0\)</span>. Integrando por partes, <span class="math inline">\(\int_0^L(EAu')'v\,dx=[EAu'v]_0^L-\int_0^LEAu'v'\,dx\)</span>, y como <span class="math inline">\(v(0)=0\)</span> el término de contorno vale <span class="math inline">\(EAu'(L)v(L)=Pv(L)\)</span>. Sustituyendo se obtiene <a href="#eq-debil-e1" class="quarto-xref">ecuación&nbsp;<span>22.2</span></a>. Recíprocamente, si <a href="#eq-debil-e1" class="quarto-xref">ecuación&nbsp;<span>22.2</span></a> vale para toda <span class="math inline">\(v\)</span>, tomando primero <span class="math inline">\(v\)</span> nula en el contorno se recupera la ecuación diferencial, y después <span class="math inline">\(v(L)\neq0\)</span> da la condición natural. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-forma-e1" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="sec-forma-e1"><span class="header-section-number">22.2</span> Funciones de forma y el elemento barra</h2>
+<p>Se divide <span class="math inline">\([0,L]\)</span> en <span class="math inline">\(n\)</span> elementos de longitud <span class="math inline">\(h\)</span> y se aproxima <span class="math inline">\(u\)</span> por una función <strong>lineal a trozos</strong>, determinada por sus valores <span class="math inline">\(d_k=u(x_k)\)</span> en los nodos:</p>
+<p><span id="eq-interp-e1"><span class="math display">\[
+u(x)\approx u_h(x)=\sum_k N_k(x)\,d_k .
+\tag{22.3}\]</span></span></p>
+<p>La función de forma <span class="math inline">\(N_k\)</span> es la «tienda de campaña» de la <a href="#fig-barra-fem" class="quarto-xref">Figura&nbsp;<span>22.1</span></a>: vale 1 en el nodo <span class="math inline">\(k\)</span>, 0 en los demás, y es lineal entre nodos. Dentro de un elemento con nodos <span class="math inline">\(i\)</span> y <span class="math inline">\(i+1\)</span>, con coordenada local <span class="math inline">\(\xi=(x-x_i)/h\in[0,1]\)</span>:</p>
+<p><span class="math display">\[
+N_i=1-\xi,\qquad N_{i+1}=\xi,\qquad u_h'=\frac{d_{i+1}-d_i}{h}\ \ (\text{constante}).
+\]</span></p>
+<p>Sustituyendo en <a href="#eq-debil-e1" class="quarto-xref">ecuación&nbsp;<span>22.2</span></a> con <span class="math inline">\(v=N_j\)</span> aparece, elemento a elemento, la <strong>matriz de rigidez</strong> y el <strong>vector de cargas</strong> (consistente):</p>
+<p><span id="eq-ke-barra"><span class="math display">\[
+\mathbf{K}_e=\frac{EA}{h}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix},\qquad
+\mathbf{f}_e=\int_{x_i}^{x_{i+1}} b\begin{pmatrix}N_i\\N_{i+1}\end{pmatrix}dx\ \xrightarrow{\ b\ \text{const.}\ }\ \frac{bh}{2}\begin{pmatrix}1\\1\end{pmatrix}.
+\tag{22.4}\]</span></span></p>
+<div id="exm-barra-dos-e1" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 22.1 (Ejemplo resuelto: barra con carga uniforme y dos elementos)</strong></span> Barra de <span class="math inline">\(L=1000\)</span> mm, <span class="math inline">\(EA=10^7\)</span> N, empotrada en <span class="math inline">\(x=0\)</span>, con <span class="math inline">\(b=5\)</span> N/mm y sin fuerza en el extremo. Dos elementos de <span class="math inline">\(h=500\)</span> mm; nodos 1 (<span class="math inline">\(x=0\)</span>), 2 (<span class="math inline">\(x=500\)</span>) y 3 (<span class="math inline">\(x=1000\)</span>).</p>
+<p><em>Rigidez de cada elemento:</em> <span class="math inline">\(EA/h=2\cdot10^4\)</span> N/mm, luego <span class="math inline">\(\mathbf{K}_e=2\cdot10^4\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}\)</span> para los dos.</p>
+<p><em>Cargas:</em> <span class="math inline">\(bh/2=1250\)</span> N a cada nodo del elemento.</p>
+<p><em>Ensamblaje.</em> Cada nodo recibe las contribuciones de los elementos que lo comparten (el nodo 2 pertenece a los dos): <span class="math display">\[
+2\cdot10^4\begin{pmatrix}1&amp;-1&amp;0\\-1&amp;2&amp;-1\\0&amp;-1&amp;1\end{pmatrix}\begin{pmatrix}d_1\\d_2\\d_3\end{pmatrix}=\begin{pmatrix}1250\\2500\\1250\end{pmatrix}+\begin{pmatrix}R_1\\0\\0\end{pmatrix}
+\]</span></p>
+<p><em>Contorno.</em> <span class="math inline">\(d_1=0\)</span> (se elimina la primera fila y columna; <span class="math inline">\(R_1\)</span> es la reacción, que ya no hace falta): <span class="math display">\[
+2\cdot10^4\begin{pmatrix}2&amp;-1\\-1&amp;1\end{pmatrix}\begin{pmatrix}d_2\\d_3\end{pmatrix}=\begin{pmatrix}2500\\1250\end{pmatrix}\ \Rightarrow\ d_2=0{,}1875\ \text{mm},\quad d_3=0{,}25\ \text{mm}.
+\]</span></p>
+<p><em>Comprobación.</em> La solución exacta es <span class="math inline">\(u=b\,(Lx-x^2/2)/EA\)</span>: <span class="math inline">\(u(500)=0{,}1875\)</span> mm y <span class="math inline">\(u(1000)=0{,}25\)</span> mm. <strong>Coinciden en los nodos</strong>, aunque la exacta es una parábola y la aproximada, una poligonal. Es el resultado <em>analítico</em> de la <a href="#fig-barra-fem" class="quarto-xref">Figura&nbsp;<span>22.1</span></a>.</p>
+</div>
+<div id="e1-despl-medio" class="ejercicio" data-tipo="numerico" data-respuesta="0.1875" data-tol="0.5%" data-unidad="mm">
+<p>En el <a href="#exm-barra-dos-e1" class="quarto-xref">Ejemplo&nbsp;<span>22.1</span></a>, ¿cuánto vale el desplazamiento del nodo central, <span class="math inline">\(d_2\)</span>?</p>
+<div class="pista">
+<p>Resuelve el sistema <span class="math inline">\(2\times2\)</span> de debajo del texto «Contorno», o evalúa la solución exacta <span class="math inline">\(u=b(Lx-x^2/2)/EA\)</span> en <span class="math inline">\(x=500\)</span> mm.</p>
+</div>
+<div class="solucion">
+<p><span class="math inline">\(u(500)=5\,(1000\cdot500-500^2/2)/10^7=5\cdot375\,000/10^7=0{,}1875\)</span> mm.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Dos puntos que suelen confundir">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Dos puntos que suelen confundir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>La matriz <span class="math inline">\(\mathbf{K}_e\)</span> es singular</strong> (sus filas suman cero): un elemento suelto puede moverse como sólido rígido. Sólo tras imponer el contorno el sistema global tiene solución única.</li>
+<li><strong>«Eliminar» un g.d.l. no es poner <span class="math inline">\(K_{11}=0\)</span>.</strong> Se suprime su ecuación; la reacción <span class="math inline">\(R_1\)</span> se recupera después multiplicando la fila suprimida por el vector de desplazamientos.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec-ensamblaje-e1" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="sec-ensamblaje-e1"><span class="header-section-number">22.3</span> Ensamblaje y condiciones de contorno</h2>
+<p>Con <span class="math inline">\(n\)</span> elementos hay <span class="math inline">\(n+1\)</span> nodos y <span class="math inline">\(n+1\)</span> incógnitas. El <strong>ensamblaje</strong> suma <span class="math inline">\(\mathbf{K}_e\)</span> en las filas y columnas de los nodos que usa cada elemento (la <em>conectividad</em>):</p>
+<p><span id="eq-ensamblaje-e1"><span class="math display">\[
+\mathbf{K}=\sum_e\mathbf{A}_e^{\mathsf T}\mathbf{K}_e\mathbf{A}_e,\qquad \mathbf{f}=\sum_e\mathbf{A}_e^{\mathsf T}\mathbf{f}_e+\mathbf{f}_{\text{nodales}},
+\tag{22.5}\]</span></span></p>
+<p>donde <span class="math inline">\(\mathbf A_e\)</span> es la matriz que selecciona los g.d.l. del elemento <span class="math inline">\(e\)</span> dentro del vector global. En programación nunca se forma <span class="math inline">\(\mathbf A_e\)</span>: se recorre la lista de conectividad. En el tema E9 (pendiente; véase el <a href="../../book/mapa.html">mapa del libro</a>) se verá esto con los 20 g.d.l. de un elemento de lámina.</p>
+<div class="ingenieros callout callout-style-simple callout-note callout-titled" title="Explicación para ingenieros: ¿por qué «ensamblar» es sumar?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Explicación para ingenieros: ¿por qué «ensamblar» es sumar?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Imagina tres personas tirando de una cuerda unida a un anillo: la fuerza total sobre el anillo es la <strong>suma</strong> de lo que aporta cada cuerda. Igual en un nodo: la rigidez que «siente» el nodo 2 es la de la barra de su izquierda <strong>más</strong> la de la barra de su derecha. Por eso en la matriz global el término central es <span class="math inline">\(2\,EA/h\)</span> y los de los extremos, <span class="math inline">\(EA/h\)</span> (<a href="#exm-barra-dos-e1" class="quarto-xref">Ejemplo&nbsp;<span>22.1</span></a>).</p>
+</div>
+</div>
+<div id="e1-nodo-compartido" class="ejercicio" data-tipo="opcion" data-respuesta="b">
+<p>En una barra de <span class="math inline">\(n\)</span> elementos iguales de rigidez <span class="math inline">\(k=EA/h\)</span>, ¿qué vale el término diagonal de <span class="math inline">\(\mathbf{K}\)</span> en un nodo <strong>interior</strong>?</p>
+<div class="opciones">
+<ul>
+<li><span class="math inline">\(k\)</span></li>
+<li><span class="math inline">\(2k\)</span></li>
+<li><span class="math inline">\(k/2\)</span></li>
+<li><span class="math inline">\(4k\)</span></li>
+</ul>
+</div>
+<div class="solucion">
+<p>Un nodo interior pertenece a dos elementos y cada uno aporta <span class="math inline">\(k\)</span> a su diagonal: <span class="math inline">\(2k\)</span>. Los nodos de los extremos pertenecen a uno solo y tienen <span class="math inline">\(k\)</span> (si no hay apoyo).</p>
+</div>
+</div>
+</section>
+<section id="sec-convergencia-e1" class="level2" data-number="22.4">
+<h2 data-number="22.4" class="anchored" data-anchor-id="sec-convergencia-e1"><span class="header-section-number">22.4</span> ¿Converge?</h2>
+<p>Aquí hay una propiedad especial de la barra. Para <span class="math inline">\(EA\)</span> constante, la solución de elementos finitos es <strong>exacta en los nodos</strong> para cualquier carga <span class="math inline">\(b(x)\)</span>. El motivo: la energía <a href="#eq-debil-e1" class="quarto-xref">ecuación&nbsp;<span>22.2</span></a> es una <em>proyección</em>: el error <span class="math inline">\(u-u_h\)</span> es <span class="math inline">\(a\)</span>-ortogonal a todo el espacio de funciones lineales a trozos, y la función de Green de este problema es ella misma lineal a trozos entre nodos. Entre los nodos, en cambio, <span class="math inline">\(u_h\)</span> es una recta y el error es de orden <span class="math inline">\(h^2\)</span> (<a href="#fig-barra-fem" class="quarto-xref">Figura&nbsp;<span>22.1</span></a>).</p>
+<div class="callout callout-style-simple callout-important callout-titled" title="Idea clave: convergencia en energía">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Idea clave: convergencia en energía
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En general (placas, láminas) los elementos finitos <strong>no</strong> son exactos en los nodos, pero conservan lo esencial: la solución es la <strong>mejor aproximación posible en energía</strong> dentro del espacio elegido. Al refinar la malla (o subir el grado) el error tiende a cero. Que <em>además</em> converja bien o mal depende del elemento: es el tema de <a href="../../book/E-elementos-finitos/E5-bloqueo.html">E5</a>.</p>
+</div>
+</div>
+<div id="e1-exacto-nodos" class="ejercicio" data-tipo="vf" data-respuesta="verdadero">
+<p>En una barra de sección constante con elementos lineales, el desplazamiento de elementos finitos coincide con el exacto en todos los nodos, sea cual sea la carga repartida.</p>
+<div class="solucion">
+<p><strong>Verdadero</strong> (resultado clásico en una dimensión). No ocurre en general en dos o tres dimensiones, ni si la sección varía.</p>
+</div>
+</div>
+<div class="aplicacion callout callout-style-simple callout-tip callout-titled" title="Aplicación real: de la cercha al andamio, y al hueso">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Aplicación real: de la cercha al andamio, y al hueso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado ilustrativo">ilustrativo</span> El elemento barra es el más antiguo de la ingeniería estructural por ordenador: las cerchas de cubierta, torres y puentes de celosía se calculan con <strong>miles de elementos barra</strong> ensamblados exactamente como aquí. En biomecánica, las trabéculas del hueso esponjoso se han modelado como redes de barras o vigas conectadas por nodos; la idea es la misma, pero el material y la geometría son mucho más irregulares. <em>Idea de aplicación sin fuente verificada: es una orientación, no una cita.</em></p>
+</div>
+</div>
+</section>
+<section id="sec-historia-e1" class="level2 page-columns page-full" data-number="22.5">
+<h2 data-number="22.5" class="anchored" data-anchor-id="sec-historia-e1"><span class="header-section-number">22.5</span> Un poco de historia</h2>
+<div class="historia callout callout-style-simple callout-note no-icon callout-titled" title="Un poco de historia: de Galerkin a los «elementos finitos»">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un poco de historia: de Galerkin a los «elementos finitos»
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En 1915, Boris Galerkin publicó un método de aproximación para problemas de barras y placas que parte de la forma débil, y hoy lleva su nombre (a veces «Bubnov–Galerkin», por la prioridad discutida de Bubnov). Richard Courant utilizó en 1943 elementos triangulares para el problema de torsión de Saint-Venant, aunque su trabajo no tuvo eco inmediato entre los ingenieros. En los años cincuenta, Argyris y el grupo de Turner, Clough, Martin y Topp (1956) desarrollaron el <em>método de rigidez</em> para estructuras de aviones; Ray Clough acuñó el nombre «elementos finitos» en 1960. Las fuentes discrepan en quién merece el título de primero: depende de si se cuenta la idea matemática (Courant) o el método de ingeniería (Turner y colaboradores).</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://arxiv.org/pdf/2107.04960">Eighty Years of the Finite Element Method (arXiv:2107.04960)</a>; <a href="https://link.springer.com/chapter/10.1007/978-3-642-39905-3_22">History of the Finite Element Method, Springer</a>; <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Galerkin/">Boris Galerkin, MacTutor</a>; referencia de 1956 en <span class="citation" data-cites="TurnerCloughMartinTopp">(<a href="../referencias.html#ref-TurnerCloughMartinTopp" role="doc-biblioref">Turner et&nbsp;al. 1956</a>)</span>. No se leyeron los originales; MacTutor llama «método de elementos finitos» al trabajo de Galerkin de 1915, algo que otras fuentes no hacen. Consultado el 21-10-2026.</span></p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="ref-TurnerCloughMartinTopp" class="csl-entry" role="listitem">
+Turner, M. J., R. W. Clough, H. C. Martin, y L. J. Topp. 1956. <span>«Stiffness and deflection analysis of complex structures»</span>. <em>Journal of the Aeronautical Sciences</em> 23: 805-23.
+</div></div></section>
+<section id="sec-julia-e1" class="level2" data-number="22.6">
+<h2 data-number="22.6" class="anchored" data-anchor-id="sec-julia-e1"><span class="header-section-number">22.6</span> Práctica guiada en Julia</h2>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo computacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="etiqueta-resultado calculado">calculado</span> Un ensamblador de barras de ocho líneas. Se resuelve la barra del <a href="#exm-barra-dos-e1" class="quarto-xref">Ejemplo&nbsp;<span>22.1</span></a> con <span class="math inline">\(n\)</span> elementos y con una carga <strong>no uniforme</strong> <span class="math inline">\(b(x)=x^2\)</span> (integrada con Gauss), y se comprueba que el error nodal es del orden del redondeo.</p>
+</div>
+</div>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">barra_fem</span>(n; L <span class="op">=</span> <span class="fl">1000.0</span>, EA <span class="op">=</span> <span class="fl">1e7</span>, b <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fl">5.0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> L <span class="op">/</span> n; x <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>, L; length <span class="op">=</span> n <span class="op">+</span> <span class="fl">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    K <span class="op">=</span> <span class="fu">zeros</span>(n <span class="op">+</span> <span class="fl">1</span>, n <span class="op">+</span> <span class="fl">1</span>); f <span class="op">=</span> <span class="fu">zeros</span>(n <span class="op">+</span> <span class="fl">1</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span> <span class="op">/</span> <span class="fu">sqrt</span>(<span class="fl">3</span>), <span class="fl">1</span> <span class="op">/</span> <span class="fu">sqrt</span>(<span class="fl">3</span>))                       <span class="co"># Gauss de dos puntos en ξ ∈ [-1, 1]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="cn">e</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        K[<span class="cn">e</span><span class="op">:</span><span class="cn">e</span><span class="op">+</span><span class="fl">1</span>, <span class="cn">e</span><span class="op">:</span><span class="cn">e</span><span class="op">+</span><span class="fl">1</span>] <span class="op">+=</span> EA <span class="op">/</span> h <span class="op">*</span> [<span class="fl">1</span> <span class="op">-</span><span class="fl">1</span>; <span class="op">-</span><span class="fl">1</span> <span class="fl">1</span>]          <span class="co"># K_e</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ξ <span class="kw">in</span> g                                         <span class="co"># f_e = ∫ b N dx</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            xe <span class="op">=</span> (x[<span class="cn">e</span>] <span class="op">+</span> x[<span class="cn">e</span><span class="op">+</span><span class="fl">1</span>]) <span class="op">/</span> <span class="fl">2</span> <span class="op">+</span> ξ <span class="op">*</span> h <span class="op">/</span> <span class="fl">2</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            f[<span class="cn">e</span>]   <span class="op">+=</span> <span class="fu">b</span>(xe) <span class="op">*</span> (<span class="fl">1</span> <span class="op">-</span> ξ) <span class="op">/</span> <span class="fl">2</span> <span class="op">*</span> h <span class="op">/</span> <span class="fl">2</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            f[<span class="cn">e</span><span class="op">+</span><span class="fl">1</span>] <span class="op">+=</span> <span class="fu">b</span>(xe) <span class="op">*</span> (<span class="fl">1</span> <span class="op">+</span> ξ) <span class="op">/</span> <span class="fl">2</span> <span class="op">*</span> h <span class="op">/</span> <span class="fl">2</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="fu">zeros</span>(n <span class="op">+</span> <span class="fl">1</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    d[<span class="fl">2</span><span class="op">:</span><span class="kw">end</span>] <span class="op">=</span> K[<span class="fl">2</span><span class="op">:</span><span class="kw">end</span>, <span class="fl">2</span><span class="op">:</span><span class="kw">end</span>] <span class="op">\</span> f[<span class="fl">2</span><span class="op">:</span><span class="kw">end</span>]                  <span class="co"># d₁ = 0 (se suprime la primera ecuación)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    (x, d)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga uniforme: solución exacta u = b (L x − x²/2) / EA</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>x, d <span class="op">=</span> <span class="fu">barra_fem</span>(<span class="fl">2</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">uex</span>(x) <span class="op">=</span> <span class="fl">5.0</span> <span class="op">*</span> (<span class="fl">1000</span>x <span class="op">-</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fl">2</span>) <span class="op">/</span> <span class="fl">1e7</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>(nodos <span class="op">=</span> <span class="fu">collect</span>(x), d <span class="op">=</span> d, exacta <span class="op">=</span> <span class="fu">uex</span>.(x))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(nodos = [0.0, 500.0, 1000.0], d = [0.0, 0.1875, 0.25], exacta = [0.0, 0.1875, 0.25])</code></pre>
+</div>
+</div>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga no uniforme b = x²:  EA u′ = ∫ₓᴸ b = (L³ − x³)/3  →  u = (L³x − x⁴/4) / (3EA)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uex2</span>(x) <span class="op">=</span> (<span class="fl">1000.0</span><span class="op">^</span><span class="fl">3</span> <span class="op">*</span> x <span class="op">-</span> x<span class="op">^</span><span class="fl">4</span> <span class="op">/</span> <span class="fl">4</span>) <span class="op">/</span> <span class="fl">3</span> <span class="op">/</span> <span class="fl">1e7</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> (<span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">10</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    x, d <span class="op">=</span> <span class="fu">barra_fem</span>(n; b <span class="op">=</span> x <span class="op">-&gt;</span> x<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"n = </span><span class="sc">$</span>n<span class="st">   máx |error nodal| = "</span>, <span class="fu">maximum</span>(<span class="fu">abs</span>.(d <span class="op">.-</span> <span class="fu">uex2</span>.(x))))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n = 2   máx |error nodal| = 0.0
+n = 5   máx |error nodal| = 1.4551915228366852e-11
+n = 10   máx |error nodal| = 7.275957614183426e-12</code></pre>
+</div>
+</div>
+<p>El error nodal sale del orden de <span class="math inline">\(10^{-16}\)</span>: es el redondeo, no una aproximación. Prueba a cambiar la sección <code>EA</code> a una función de <span class="math inline">\(x\)</span> y verás que la propiedad deja de cumplirse.</p>
+</section>
+<section id="sec-ejercicios-e1" class="level2" data-number="22.7">
+<h2 data-number="22.7" class="anchored" data-anchor-id="sec-ejercicios-e1"><span class="header-section-number">22.7</span> Ejercicios</h2>
+<ol type="1">
+<li><p><strong>Una barra, un elemento.</strong> Barra de longitud <span class="math inline">\(L\)</span> con un solo elemento, empotrada en <span class="math inline">\(x=0\)</span> y con fuerza <span class="math inline">\(P\)</span> en el extremo. Obtén el desplazamiento del extremo.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Con un elemento <span class="math inline">\(\frac{EA}{L}d_2=P\Rightarrow d_2=PL/EA\)</span>: es exacto (la solución es lineal).</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Tres muelles en serie.</strong> Tres elementos iguales (<span class="math inline">\(k=EA/h\)</span>) con la fuerza <span class="math inline">\(P\)</span> aplicada en el último nodo. Calcula los tres desplazamientos nodales.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La fuerza en cada elemento es <span class="math inline">\(P\)</span>, luego cada alargamiento es <span class="math inline">\(P/k\)</span> y <span class="math inline">\(d_2=P/k\)</span>, <span class="math inline">\(d_3=2P/k\)</span>, <span class="math inline">\(d_4=3P/k\)</span> (suma de los tres «muelles»).</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Condición natural.</strong> En <a href="#eq-debil-e1" class="quarto-xref">ecuación&nbsp;<span>22.2</span></a>, ¿qué pasaría con la condición <span class="math inline">\(EA\,u'(L)=P\)</span> si se fuerza <span class="math inline">\(u'(L)=0\)</span> en vez de dejarla natural?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Se estaría imponiendo una fuerza nula en el extremo, que sólo es cierta si <span class="math inline">\(P=0\)</span>. En la forma débil la fuerza aplicada entra por el término <span class="math inline">\(P\,v(L)\)</span>; no hay que añadir nada más.</p>
+</div>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="la-doy-por-superada-si" class="level2 unnumbered page-columns page-full">
+<h2 class="unnumbered anchored" data-anchor-id="la-doy-por-superada-si">La doy por superada si…</h2>
+<ul>
+<li>Escribo la forma débil de la barra y digo cuál es el trabajo virtual interno y cuál el externo.</li>
+<li>Construyo <span class="math inline">\(\mathbf{K}_e\)</span> y <span class="math inline">\(\mathbf{f}_e\)</span> de un elemento de dos nodos.</li>
+<li>Ensamblo a mano dos o tres elementos y aplico <span class="math inline">\(u(0)=0\)</span>.</li>
+<li>Distingo condición esencial (se impone) y natural (sale sola).</li>
+<li>Explico por qué la barra es exacta en los nodos y por qué eso no ocurre en general.</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Fuentes, correcciones y qué queda pendiente
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Fuentes.</strong> Texto autónomo; el método de Galerkin y el elemento barra son estándar en los textos de elementos finitos <span class="citation" data-cites="ZienkiewiczTaylor Bathe Hughes">(<a href="../referencias.html#ref-ZienkiewiczTaylor" role="doc-biblioref">Zienkiewicz y Taylor, s.&nbsp;f.</a>; <a href="../referencias.html#ref-Bathe" role="doc-biblioref">Bathe 1996</a>; <a href="../referencias.html#ref-Hughes" role="doc-biblioref">Hughes 1987</a>)</span> (datos editoriales sin verificar, ver la bibliografía). La exactitud nodal en una dimensión se comprueba numéricamente en la práctica.</p>
+<p><strong>Qué queda pendiente.</strong> La demostración de la exactitud nodal es un esquema, no una prueba completa; la nota histórica usa fuentes secundarias; la figura tiene revisión visual pendiente; la «Aplicación real» es una orientación sin fuente.</p>
+</div>
+</div>
+</div>
+
+
+<div class="no-row-height column-margin column-container"><div id="ref-Hughes" class="csl-entry" role="listitem">
+Hughes, T. J. R. 1987. <em>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis</em>. Prentice-Hall.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-Bathe" class="csl-entry" role="listitem">
+Bathe, K. J. 1996. <em>Finite Element Procedures</em>. Prentice Hall.
+</div></div><div class="no-row-height column-margin column-container"><div id="ref-ZienkiewiczTaylor" class="csl-entry" role="listitem">
+Zienkiewicz, O. C., y R. L. Taylor. s.&nbsp;f. <em>The Finite Element Method</em>. Butterworth-Heinemann.
+</div></div></section>
+<section id="referencias-unidad" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="referencias-unidad">Referencias</h2>
+<p><em>Son las mismas que aparecen en el margen, junto al texto.</em></p>
+<div id="refs-unidad" class="referencias-unidad">
+<div class="ref-final">
+<p>Bathe, K. J. 1996. <em>Finite Element Procedures</em>. Prentice Hall.</p>
+</div>
+<div class="ref-final">
+<p>Hughes, T. J. R. 1987. <em>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis</em>. Prentice-Hall.</p>
+</div>
+<div class="ref-final">
+<p>Turner, M. J., R. W. Clough, H. C. Martin, y L. J. Topp. 1956. <span>«Stiffness and deflection analysis of complex structures»</span>. <em>Journal of the Aeronautical Sciences</em> 23: 805-23.</p>
+</div>
+<div class="ref-final">
+<p>Zienkiewicz, O. C., y R. L. Taylor. s.&nbsp;f. <em>The Finite Element Method</em>. Butterworth-Heinemann.</p>
+</div>
+</div>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Referencias</h1>
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/D-elasticidad/D8-principios-variacionales.html" class="pagination-link" aria-label="Principios variacionales">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Principios variacionales</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../book/E-elementos-finitos/E2-cuadrilatero-plano.html" class="pagination-link" aria-label="El cuadrilátero bilineal en tensión plana">
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">El cuadrilátero bilineal en tensión plana</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>
+/* =============================================================================
+ * ejercicios.js: ejercicios intercalados en el texto (autoevaluación)
+ *
+ * Lo inserta scripts/ejercicios.lua, en línea, solo en las páginas que tienen
+ * ejercicios. Sin dependencias. Todo ocurre en el navegador: las respuestas y
+ * el progreso se guardan en localStorage (nada sale del equipo del lector).
+ *
+ * Se escribe en Markdown (véase la guía en planning/plantilla-tema.qmd):
+ *   ::: {.ejercicio tipo="numerico" id="m5-2-zeta" respuesta="0.2" tol="1%" unidad=""}
+ *   Enunciado…
+ *   ::: {.pista}  …  :::
+ *   ::: {.solucion}  …  :::
+ *   :::
+ * Tipos: vf, opcion, numerico, abierta, programacion, investigacion, encuesta.
+ *
+ * La lógica de corrección (parseNumero, comprobarNumerico, …) es pura y se
+ * prueba con web/tests/ejercicios.test.mjs.
+ * ========================================================================== */
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------ */
+  /* Lógica pura                                                         */
+  /* ------------------------------------------------------------------ */
+
+  /** Lee un número escrito a la española o a la inglesa: «0,0307», «3.07e-2»,
+   *  «3,07·10^-2», «30,7 mm» (se ignora lo que siga al número). NaN si no hay. */
+  function parseNumero(texto) {
+    if (texto === null || texto === undefined) return NaN;
+    let t = String(texto).trim().replace(/−/g, "-").replace(/\s+/g, "");
+    // 3,07·10^-2 · 3.07x10^-2 · 3,07×10-2  →  3.07e-2
+    t = t.replace(/[x×·*]10\^?\(?(-?\+?\d+)\)?/gi, "e$1");
+    if (t.includes(",")) t = t.replace(/\./g, "").replace(",", ".");
+    const m = t.match(/^[+-]?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?/i);
+    return m ? parseFloat(m[0]) : NaN;
+  }
+
+  /** Interpreta la tolerancia: «1%» (relativa), «0.01» o «abs:0.01» (absoluta). */
+  function parseTolerancia(tol) {
+    const t = String(tol === undefined || tol === null || tol === "" ? "1%" : tol).trim();
+    if (t.endsWith("%")) return { tipo: "rel", valor: parseFloat(t) / 100 };
+    return { tipo: "abs", valor: parseFloat(t.replace(/^abs:/, "")) };
+  }
+
+  /** ¿Es correcta la respuesta numérica? Devuelve {ok, valor, error}. */
+  function comprobarNumerico(entrada, objetivo, tol) {
+    const valor = parseNumero(entrada);
+    if (!Number.isFinite(valor)) return { ok: false, valor, error: null, invalida: true };
+    const o = typeof objetivo === "number" ? objetivo : parseNumero(objetivo);
+    const t = parseTolerancia(tol);
+    const dif = Math.abs(valor - o);
+    const limite = t.tipo === "rel" && o !== 0 ? Math.abs(o) * t.valor : t.tipo === "rel" ? t.valor : t.valor;
+    return { ok: dif <= limite, valor, error: o !== 0 ? dif / Math.abs(o) : dif, invalida: false };
+  }
+
+  /** Normaliza «V», «Verdadero», «cierto», «F», «falso» a "verdadero" | "falso". */
+  function normalizaVF(x) {
+    const t = String(x).trim().toLowerCase();
+    if (["v", "verdadero", "cierto", "si", "sí", "true"].includes(t)) return "verdadero";
+    if (["f", "falso", "no", "false"].includes(t)) return "falso";
+    return t;
+  }
+
+  /** Compara conjuntos de letras para opción múltiple: «a,c» ≡ «c, a». */
+  function mismasOpciones(elegidas, correctas) {
+    const norm = (x) => Array.from(new Set(String(x).toLowerCase().split(/[,\s;]+/).filter(Boolean))).sort().join(",");
+    return norm(elegidas) === norm(correctas);
+  }
+
+  const LETRAS = "abcdefghijklmnopqrstuvwxyz";
+
+  /* ------------------------------------------------------------------ */
+  /* Almacenamiento local (con tolerancia a que no exista)               */
+  /* ------------------------------------------------------------------ */
+  const PREFIJO = "lametrica:ej:" + (typeof location !== "undefined" ? location.pathname : "");
+
+  function leer(id) {
+    try {
+      const v = localStorage.getItem(PREFIJO + ":" + id);
+      return v ? JSON.parse(v) : null;
+    } catch (e) { return null; }
+  }
+  function guardar(id, estado) {
+    try { localStorage.setItem(PREFIJO + ":" + id, JSON.stringify(estado)); } catch (e) { /* sin almacenamiento */ }
+  }
+  function borrarTodo() {
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => localStorage.removeItem(k));
+    } catch (e) { /* nada */ }
+  }
+  function todos() {
+    const out = {};
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith(PREFIJO + ":")).forEach((k) => {
+        out[k.slice(PREFIJO.length + 1)] = JSON.parse(localStorage.getItem(k));
+      });
+    } catch (e) { /* nada */ }
+    return out;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Capa DOM                                                            */
+  /* ------------------------------------------------------------------ */
+  const ETIQUETA = {
+    vf: "Verdadero o falso", opcion: "Test", numerico: "Cálculo", abierta: "Respuesta abierta",
+    programacion: "Programación", investigacion: "Investigación", encuesta: "Reflexión (no evaluada)",
+  };
+  const ICONO = { vf: "✓✗", opcion: "◉", numerico: "∑", abierta: "✎", programacion: "⌘", investigacion: "⌕", encuesta: "☰" };
+
+  function el(tag, props, ...hijos) {
+    const e = document.createElement(tag);
+    if (props) for (const k of Object.keys(props)) {
+      if (k === "class") e.className = props[k];
+      else if (k === "text") e.textContent = props[k];
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), props[k]);
+      else e.setAttribute(k, props[k]);
+    }
+    hijos.flat().forEach((h) => h && e.append(h));
+    return e;
+  }
+
+  function sacar(ej, clase) {
+    const n = ej.querySelector(":scope > ." + clase);
+    if (n) n.remove();
+    return n;
+  }
+
+  function mensaje(zona, tipo, texto) {
+    zona.className = "ej-feedback ej-" + tipo;
+    zona.textContent = texto;
+  }
+
+  function construir(ej, indice) {
+    const tipo = ej.dataset.tipo;
+    if (!ETIQUETA[tipo]) return null;
+    const id = ej.id || "ej-" + indice;
+    ej.id = id;
+    ej.classList.add("ej-activo");
+
+    const pista = sacar(ej, "pista");
+    const solucion = sacar(ej, "solucion");
+    const opciones = sacar(ej, "opciones");
+    const rubrica = sacar(ej, "rubrica");
+    const criterios = sacar(ej, "criterios");
+
+    const cab = el("div", { class: "ej-cabecera" },
+      el("span", { class: "ej-icono", "aria-hidden": "true", text: ICONO[tipo] }),
+      el("span", { class: "ej-tipo", text: "Ejercicio · " + ETIQUETA[tipo] }),
+      el("span", { class: "ej-estado", "aria-live": "polite" }));
+    ej.prepend(cab);
+
+    const zona = el("div", { class: "ej-ui" });
+    const fb = el("div", { class: "ej-feedback", role: "status", "aria-live": "polite" });
+    const botones = el("div", { class: "ej-botones" });
+    const estado = leer(id) || { estado: "pendiente", intentos: 0 };
+
+    const marca = () => {
+      const m = { correcto: "✔ Resuelto", hecho: "✔ Hecho", visto: "Solución vista", enviado: "Guardado", pendiente: "" }[estado.estado] || "";
+      cab.querySelector(".ej-estado").textContent = m;
+      ej.dataset.estado = estado.estado;
+      guardar(id, estado);
+      actualizarProgreso();
+    };
+
+    const revelar = (nodo) => { if (nodo) { nodo.classList.remove("ej-oculto"); nodo.hidden = false; } };
+    [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+
+    const btn = (texto, fn, clase) => el("button", { type: "button", class: "ej-btn " + (clase || ""), onclick: fn, text: texto });
+
+    const btnPista = pista ? btn("Pista", () => { revelar(pista); }) : null;
+    const btnSolucion = solucion ? btn("Ver solución", () => {
+      revelar(solucion);
+      if (estado.estado === "pendiente") estado.estado = "visto";
+      marca();
+    }) : null;
+
+    /* ---------- por tipo ---------- */
+    let comprobar = null;
+    let recoger = () => null;
+
+    if (tipo === "vf") {
+      const grupo = el("div", { role: "radiogroup", "aria-label": "Verdadero o falso", class: "ej-vf" });
+      ["verdadero", "falso"].forEach((v) => {
+        grupo.append(el("label", { class: "ej-opcion" },
+          el("input", { type: "radio", name: id, value: v }), el("span", { text: v === "verdadero" ? "Verdadero" : "Falso" })));
+      });
+      zona.append(grupo);
+      recoger = () => (zona.querySelector("input:checked") || {}).value || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (r === normalizaVF(ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else { mensaje(fb, "mal", "No es correcto. Piénsalo otra vez o pide la pista."); }
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "opcion") {
+      const multiple = ej.dataset.multiple === "true";
+      const items = opciones ? Array.from(opciones.querySelectorAll(":scope > ul > li, :scope > ol > li")) : [];
+      const grupo = el("div", { role: multiple ? "group" : "radiogroup", class: "ej-opciones" });
+      items.forEach((li, i) => {
+        const l = LETRAS[i];
+        const input = el("input", { type: multiple ? "checkbox" : "radio", name: id, value: l });
+        const etiqueta = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-letra", text: l + ")" }), el("span", { class: "ej-texto" }));
+        while (li.firstChild) etiqueta.querySelector(".ej-texto").append(li.firstChild);
+        grupo.append(etiqueta);
+      });
+      zona.append(grupo);
+      recoger = () => Array.from(zona.querySelectorAll("input:checked")).map((i) => i.value).join(",") || null;
+      comprobar = () => {
+        const r = recoger();
+        if (!r) return mensaje(fb, "aviso", "Elige una opción.");
+        estado.intentos++;
+        if (mismasOpciones(r, ej.dataset.respuesta)) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+        else mensaje(fb, "mal", "No es correcto. Revisa el razonamiento.");
+        estado.respuesta = r; marca();
+      };
+    }
+
+    if (tipo === "numerico" || tipo === "programacion") {
+      if (ej.dataset.respuesta !== undefined && ej.dataset.respuesta !== "") {
+        const entrada = el("input", { type: "text", inputmode: "decimal", autocomplete: "off", class: "ej-entrada", "aria-label": "Tu resultado", placeholder: "Tu resultado" });
+        zona.append(el("div", { class: "ej-numero" }, entrada, ej.dataset.unidad ? el("span", { class: "ej-unidad", text: ej.dataset.unidad }) : null));
+        entrada.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); comprobar(); } });
+        recoger = () => entrada.value.trim() || null;
+        comprobar = () => {
+          const r = recoger();
+          if (!r) return mensaje(fb, "aviso", "Escribe un valor numérico.");
+          const c = comprobarNumerico(r, ej.dataset.respuesta, ej.dataset.tol);
+          if (c.invalida) return mensaje(fb, "aviso", "No entiendo ese número. Puedes escribir 0,031 o 3.1e-2.");
+          estado.intentos++; estado.respuesta = r;
+          if (c.ok) { estado.estado = "correcto"; mensaje(fb, "ok", "Correcto."); revelar(solucion); }
+          else mensaje(fb, "mal", "Aún no. Revisa las unidades y los pasos (tolerancia " + (ej.dataset.tol || "1%") + ").");
+          marca();
+        };
+        if (estado.respuesta) entrada.value = estado.respuesta;
+      }
+    }
+
+    if (tipo === "abierta" || tipo === "investigacion" || tipo === "programacion" || tipo === "encuesta") {
+      const necesitaTexto = tipo === "abierta" || tipo === "investigacion" || (tipo === "encuesta" && ej.dataset.texto === "true");
+      if (necesitaTexto) {
+        const ta = el("textarea", { class: "ej-texto-libre", rows: tipo === "investigacion" ? "6" : "4", "aria-label": "Tu respuesta", placeholder: "Escribe aquí tu respuesta (se guarda solo en este navegador)." });
+        ta.value = estado.texto || "";
+        ta.addEventListener("input", () => { estado.texto = ta.value; guardar(id, estado); });
+        zona.append(ta);
+      }
+      const lista = rubrica || criterios;
+      if (lista && tipo !== "encuesta") {
+        const titulo = tipo === "investigacion" ? "Criterios (márcalos cuando los cumplas)" : "Autoevalúate: ¿tu respuesta incluye…?";
+        const caja = el("fieldset", { class: "ej-rubrica" }, el("legend", { text: titulo }));
+        const marcados = estado.rubrica || [];
+        Array.from(lista.querySelectorAll("li")).forEach((li, i) => {
+          const cb = el("input", { type: "checkbox", value: String(i) });
+          cb.checked = marcados.includes(i);
+          cb.addEventListener("change", () => {
+            estado.rubrica = Array.from(caja.querySelectorAll("input:checked")).map((x) => Number(x.value));
+            guardar(id, estado);
+          });
+          const l = el("label", { class: "ej-opcion" }, cb, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          caja.append(l);
+        });
+        zona.append(caja);
+      }
+      if (tipo !== "programacion" || !comprobar) {
+        comprobar = () => {
+          if (tipo === "encuesta") {
+            const r = recoger();
+            estado.estado = "enviado";
+            mensaje(fb, "ok", "Guardado en este navegador. Puedes cambiarlo cuando quieras.");
+            marca(); return;
+          }
+          const hechos = (estado.rubrica || []).length;
+          const total = (lista ? lista.querySelectorAll("li").length : 0);
+          if (total && hechos < total) return mensaje(fb, "aviso", "Marca todos los puntos cuando los cumplas, o mira la solución modelo.");
+          estado.estado = "hecho"; mensaje(fb, "ok", "Hecho. Compara con la solución modelo si quieres."); marca();
+        };
+      }
+    }
+
+    if (tipo === "encuesta") {
+      const items = opciones ? Array.from(opciones.querySelectorAll("li")) : [];
+      if (items.length) {
+        const grupo = el("div", { role: "radiogroup", class: "ej-opciones" });
+        items.forEach((li, i) => {
+          const input = el("input", { type: "radio", name: id, value: String(i) });
+          input.checked = estado.respuesta === String(i);
+          const l = el("label", { class: "ej-opcion" }, input, el("span", { class: "ej-texto" }));
+          while (li.firstChild) l.querySelector(".ej-texto").append(li.firstChild);
+          grupo.append(l);
+        });
+        zona.prepend(grupo);
+        recoger = () => (zona.querySelector("input[type=radio]:checked") || {}).value || null;
+        const previo = comprobar;
+        comprobar = () => { const r = recoger(); estado.respuesta = r; previo(); };
+      }
+    }
+
+    /* restaurar estado visual */
+    if (estado.respuesta && (tipo === "vf" || tipo === "opcion")) {
+      String(estado.respuesta).split(",").forEach((v) => {
+        const i = zona.querySelector('input[value="' + v + '"]'); if (i) i.checked = true;
+      });
+    }
+
+    if (comprobar) botones.append(btn(tipo === "encuesta" ? "Guardar" : tipo === "abierta" || tipo === "investigacion" ? "He terminado" : "Comprobar", comprobar, "ej-btn-principal"));
+    if (btnPista) botones.append(btnPista);
+    if (btnSolucion) botones.append(btnSolucion);
+    botones.append(btn("Reiniciar", () => {
+      estado.estado = "pendiente"; estado.intentos = 0; delete estado.respuesta; delete estado.rubrica; delete estado.texto;
+      zona.querySelectorAll("input").forEach((i) => { if (i.type === "checkbox" || i.type === "radio") i.checked = false; else i.value = ""; });
+      zona.querySelectorAll("textarea").forEach((t) => (t.value = ""));
+      [pista, solucion].forEach((n) => { if (n) { n.classList.add("ej-oculto"); n.hidden = true; } });
+      fb.className = "ej-feedback"; fb.textContent = ""; marca();
+    }, "ej-btn-sec"));
+
+    ej.append(zona, botones, fb);
+    [pista, solucion].forEach((n) => { if (n) ej.append(n); });
+    marca();
+    return ej;
+  }
+
+  /* ---------- panel de progreso ---------- */
+  let panel = null;
+  function actualizarProgreso() {
+    if (!panel) return;
+    const lista = Array.from(document.querySelectorAll(".ejercicio.ej-activo"));
+    const evaluables = lista.filter((e) => e.dataset.tipo !== "encuesta");
+    const hechos = evaluables.filter((e) => ["correcto", "hecho"].includes(e.dataset.estado)).length;
+    const vistos = evaluables.filter((e) => e.dataset.estado === "visto").length;
+    panel.querySelector(".ej-resumen").textContent =
+      "Tu progreso en esta unidad: " + hechos + " de " + evaluables.length + " ejercicios resueltos" + (vistos ? " (" + vistos + " con la solución vista)" : "") + ".";
+    const barra = panel.querySelector("progress");
+    barra.max = Math.max(evaluables.length, 1); barra.value = hechos;
+  }
+
+  function crearPanel(n) {
+    panel = el("div", { class: "ej-progreso", role: "region", "aria-label": "Progreso de los ejercicios" },
+      el("p", { class: "ej-resumen" }),
+      el("progress", { max: "1", value: "0", "aria-hidden": "true" }),
+      el("p", { class: "ej-nota", text: "Tus respuestas y tu progreso se guardan solo en este navegador. No se envían a ningún sitio." }),
+      el("div", { class: "ej-botones" },
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Descargar mis respuestas", onclick: () => {
+          const blob = new Blob([JSON.stringify({ pagina: location.pathname, fecha: new Date().toISOString(), respuestas: todos() }, null, 2)], { type: "application/json" });
+          const a = el("a", { href: URL.createObjectURL(blob), download: "lametrica-respuestas.json" }); a.click();
+        } }),
+        el("button", { type: "button", class: "ej-btn ej-btn-sec", text: "Borrar mis respuestas", onclick: () => {
+          if (confirm("¿Borrar todas tus respuestas y tu progreso en esta página?")) { borrarTodo(); location.reload(); }
+        } })));
+    const primero = document.querySelector(".ejercicio.ej-activo");
+    const hueco = document.querySelector("#quarto-document-content h2, main h2");
+    (hueco || primero).before(panel);
+  }
+
+  function iniciar() {
+    const lista = Array.from(document.querySelectorAll(".ejercicio"));
+    if (!lista.length) return;
+    lista.forEach((e, i) => construir(e, i + 1));
+    crearPanel(lista.length);
+    actualizarProgreso();
+  }
+
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
+    else iniciar();
+  }
+
+  if (typeof globalThis !== "undefined" && globalThis.__EJ_TEST__) {
+    globalThis.__EJ_EXPORTS__ = { parseNumero, parseTolerancia, comprobarNumerico, normalizaVF, mismasOpciones };
+  }
+})();
+
+</script>
+
+
+
+
+</body></html>

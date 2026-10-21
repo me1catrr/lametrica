@@ -57,7 +57,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../book/apendices/notacion.html" rel="next">
-<link href="../book/D-elasticidad/D8-principios-variacionales.html" rel="prev">
+<link href="../book/E-elementos-finitos/E8-cargas-masa.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -67,7 +67,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2e0faa02337211aba94f60dcf390ad79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -315,6 +315,65 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque E · Elementos finitos de lámina</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E1-mef-barra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">El método de elementos finitos en una barra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E2-cuadrilatero-plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">El cuadrilátero bilineal en tensión plana</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E3-elemento-lamina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">El elemento lámina de cuatro nodos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E4-matrices-b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Matrices deformación–desplazamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E5-bloqueo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bloqueo y modos espurios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E6-interpolacion-deformaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Interpolación de deformaciones</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E7-hu-washizu-subdominios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Hu–Washizu por subdominios</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/E-elementos-finitos/E8-cargas-masa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../book/referencias.html" class="sidebar-item-text sidebar-link active">
@@ -323,13 +382,13 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Apéndices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../book/apendices/notacion.html" class="sidebar-item-text sidebar-link">
@@ -373,6 +432,21 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-AhmadIronsZienkiewicz" class="csl-entry" role="listitem">
+Ahmad, S., B. M. Irons, and O. C. Zienkiewicz. 1970. <span>“Analysis of
+Thick and Thin Shell Structures by Curved Finite Elements.”</span>
+<em>International Journal for Numerical Methods in Engineering</em> 2
+(3): 419–51. <a href="https://doi.org/10.1002/nme.1620020310">https://doi.org/10.1002/nme.1620020310</a>.
+</div>
+<div id="ref-Bathe" class="csl-entry" role="listitem">
+Bathe, K. J. 1996. <em>Finite Element Procedures</em>. Prentice Hall.
+</div>
+<div id="ref-BatheDvorkin" class="csl-entry" role="listitem">
+Bathe, K. J., and E. N. Dvorkin. 1985. <span>“A Four-Node Plate Bending
+Element Based on <span>Mindlin/Reissner</span> Plate Theory and a Mixed
+Interpolation.”</span> <em>International Journal for Numerical Methods
+in Engineering</em> 21: 367–83.
+</div>
 <div id="ref-Canals" class="csl-entry" role="listitem">
 Canals, I. 1976. <em>Cascarones Parabólicos-Hiperbólicos</em>. Editorial
 Limusa, s.a.
@@ -393,6 +467,10 @@ Springer-Verlag.
 Heinbockel, J. H. 1996. <em>Introduction to Tensor Calculus and
 Continuum Mechanics</em>. Department of Mathematics; Statistics, Old
 Dominion University.
+</div>
+<div id="ref-Hughes" class="csl-entry" role="listitem">
+Hughes, T. J. R. 1987. <em>The Finite Element Method: Linear Static and
+Dynamic Finite Element Analysis</em>. Prentice-Hall.
 </div>
 <div id="ref-Lebedev" class="csl-entry" role="listitem">
 Lebedev, L. P., and M. J. Cloud. 2003. <em>Tensor Analysis</em>. World
@@ -425,9 +503,28 @@ Analysis</em>. Schaum’s Outlines.
 <div id="ref-Struik" class="csl-entry" role="listitem">
 Struik, D. J. 1955. <em>Geometría Diferencial Clásica</em>. Aguilar.
 </div>
+<div id="ref-TimoshenkoWK" class="csl-entry" role="listitem">
+Timoshenko, S. P., and S. Woinowsky-Krieger. n.d. <em>Theory of Plates
+and Shells</em>. McGraw-Hill.
+</div>
+<div id="ref-TurnerCloughMartinTopp" class="csl-entry" role="listitem">
+Turner, M. J., R. W. Clough, H. C. Martin, and L. J. Topp. 1956.
+<span>“Stiffness and Deflection Analysis of Complex Structures.”</span>
+<em>Journal of the Aeronautical Sciences</em> 23: 805–23.
+</div>
 <div id="ref-Weatherburn" class="csl-entry" role="listitem">
 Weatherburn, C. E. 1927. <em>Differential Geometry</em>. Cambridge
 Press.
+</div>
+<div id="ref-ZienkiewiczTaylor" class="csl-entry" role="listitem">
+Zienkiewicz, O. C., and R. L. Taylor. n.d. <em>The Finite Element
+Method</em>. Butterworth-Heinemann.
+</div>
+<div id="ref-ZienkiewiczTaylorToo" class="csl-entry" role="listitem">
+Zienkiewicz, O. C., R. L. Taylor, and J. M. Too. 1971. <span>“Reduced
+Integration Technique in General Analysis of Plates and Shells.”</span>
+<em>International Journal for Numerical Methods in Engineering</em> 3:
+275–90.
 </div>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -832,8 +929,8 @@ Press.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../book/D-elasticidad/D8-principios-variacionales.html" class="pagination-link" aria-label="Principios variacionales">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Principios variacionales</span></span>
+      <a href="../book/E-elementos-finitos/E8-cargas-masa.html" class="pagination-link" aria-label="Cargas y matriz de masa">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Cargas y matriz de masa</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
