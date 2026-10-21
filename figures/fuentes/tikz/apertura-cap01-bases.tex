@@ -6,11 +6,20 @@
 \def\pgfsysdriver{pgfsys-dvisvgm.def}
 \documentclass[tikz,border=0pt]{standalone}
 \usetikzlibrary{calc}
-\definecolor{lo}{HTML}{1D4ED8}   % azul del libro
-\definecolor{hi}{HTML}{0E7490}   % verde azulado del libro
-\definecolor{g1c}{HTML}{1D4ED8}
-\definecolor{g2c}{HTML}{15803D}
-\definecolor{nc}{HTML}{B45309}
+% PALETA-INICIO (generado por scripts/sincronizar_paleta.jl; no editar a mano)
+\definecolor{azul}{HTML}{1B6CA8}
+\definecolor{naranja}{HTML}{D95F02}
+\definecolor{verde}{HTML}{2A9D8F}
+\definecolor{gris}{HTML}{6B7280}
+\definecolor{violeta}{HTML}{6F42C1}
+\definecolor{ocre}{HTML}{8A5A00}
+\definecolor{malla}{HTML}{CBD5E1}
+% PALETA-FIN
+\colorlet{lo}{azul}   % z mínimo
+\colorlet{hi}{verde}  % z máximo
+\colorlet{g1c}{azul}
+\colorlet{g2c}{verde}
+\colorlet{nc}{violeta}
 \begin{document}
 \begin{tikzpicture}[x={(0.95cm,-0.30cm)}, y={(0.62cm,0.50cm)}, z={(0cm,1.1cm)}, line join=round, line cap=round]
   \pgfmathsetmacro{\A}{0.45}

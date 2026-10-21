@@ -1,0 +1,148 @@
+---
+# PLANTILLA DE TEMA — copiar a book/<carpeta>/<nn-slug>.qmd y rellenar.
+# No se renderiza (planning/ está fuera de project.render). El tema piloto es
+# book/01-fundamentos/03-bases.qmd: úsalo como ejemplo completo.
+title: "Título del tema"
+subtitle: "Una frase que diga qué se aprende"
+engine: julia        # solo si hay código Julia; nunca Jupyter
+---
+
+![](../../figures/svg/portada-XXX.svg){.portada fig-alt="Descripción completa de la portada para quien no la ve"}
+
+::: {.pregunta-guia}
+La pregunta que motiva el tema, escrita sin los signos ¿ ? (los pone el estilo)
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- (4–6 verbos de acción medibles)
+
+**Prerrequisitos.** [Tema previo](../ruta/tema-previo.qmd) y los conocimientos externos que haga falta.
+
+**Temas de la unidad**
+
+- **N.1** …
+
+::: {.callout-note title="Notación y convenciones de este tema"}
+| Símbolo | Significado |
+|---|---|
+| … | … |
+:::
+
+<!-- Sin encabezado «Teoría breve»: cada subtema es una sección numerada (N.1, N.2…). -->
+
+## Subtema {#sec-subtema}
+
+Intuición física o geométrica primero (un ejemplo concreto del hilo conductor: placa oblicua,
+cilindro, esfera, paraboloide hiperbólico). Después la definición:
+
+::: {#def-nombre}
+## Nombre de la definición
+Enunciado.
+:::
+
+::: {#exm-nombre}
+## Ejemplo resuelto: título
+Paso a paso, con números, y comprobación final. (Si el valor es numérico, comprobarlo con Geometria/Laminas.)
+:::
+
+::: {#prp-nombre}
+## Nombre del resultado
+Enunciado. $$ ecuación $$ {#eq-nombre}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-nombre
+… $\blacksquare$
+:::
+
+![Pie que describe qué se ve y qué convenios se usan.](../../figures/svg/figura.svg){#fig-nombre fig-alt="Descripción alternativa" width="85%"}
+
+::: {.callout-tip .idea-clave title="Idea clave"}
+Una frase que el lector debe llevarse.
+:::
+
+::: {.callout-warning title="Dos puntos que suelen confundir"}
+- …
+:::
+
+::: {.callout-warning title="Errores frecuentes"}
+- …
+:::
+
+::: {.callout-note .historia icon=false title="Un poco de historia: título"}
+Solo hechos con fuente verificable (búsqueda web); si la fuente es secundaria, decirlo.
+
+<span class="fuentes-caja">Fuentes: [título](https://…). Consultado el AAAA-MM-DD.</span>
+:::
+
+**Pon a prueba lo anterior.**
+
+::: {.ejercicio tipo="opcion" id="tema-n-opcion" respuesta="b"}
+Enunciado.
+
+::: {.opciones}
+- opción a
+- opción b
+:::
+
+::: {.solucion}
+Explicación.
+:::
+:::
+
+::: {.ejercicio tipo="numerico" id="tema-n-numero" respuesta="1.134" tol="1%" unidad=""}
+Enunciado. (Todo ejercicio numérico necesita su cálculo de referencia en scripts/verificar_ejercicios.jl.)
+
+::: {.pista}
+Pista.
+:::
+
+::: {.solucion}
+Solución.
+:::
+:::
+
+::: {.ejercicio tipo="vf" id="tema-n-vf" respuesta="falso"}
+Afirmación.
+
+::: {.solucion}
+**Falso.** Por qué.
+:::
+:::
+
+<!-- Otros tipos: abierta (con ::: {.rubrica}), programacion, investigacion, encuesta. -->
+
+## Laboratorio interactivo {#sec-lab}
+
+::: {.laboratorio}
+<div class="laboratorio-titulo">Laboratorio N.1 · Título</div>
+<span class="etiqueta-resultado calculado">calculado en el navegador</span> Verificado frente a Julia (web/tests/….test.mjs).
+
+**Qué observar:** lista numerada de 3–4 cosas.
+:::
+
+## Práctica guiada en Julia {#sec-julia}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Qué se calcula y qué se comprueba.
+:::
+
+## Ejercicios {#sec-ejercicios}
+
+1. **Título.** Enunciado.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   …
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- (lista de autocomprobación, en primera persona)
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo; resultados estándar [@ClaveBib]. **Correcciones** respecto a las fuentes de partida, si las hay.
+**Qué queda pendiente** (honesto): figuras sin revisión visual, referencias sin leer línea a línea, etc.
+:::

@@ -1,23 +1,28 @@
 # 07 · Plan de desarrollo (5 fases)
 
-**Última actualización: 2026-10-21 (continuidad tras PR #1).** Fase 3 en curso: 9 de 20 capítulos escritos (45 %). Punto de continuación operativo en `CLAUDE.md`.
+**Última actualización: 2026-10-21 (Fase 1 del rediseño cerrada en local; pendiente de commit/push).** Libro: 9 de 36 temas escritos; el tema piloto (B2) ya está en el nuevo estilo. Árbol de trabajo con los cambios de la Fase 1. Punto de continuación operativo en `CLAUDE.md`.
 
-1. **Auditoría y planificación** — hecha.
-2. **Prototipo** — hecha (commit `3e53b62`).
-3. **Desarrollo científico** — en curso (commit `d48fe78`: Partes I y II). Nuevo material del autor disponible (ver abajo).
-4. **Validación** — pendiente (parte adelantada en los tests y scripts de verificación).
-5. **Publicación** — publicación inicial activa en GitHub Pages; licencia y edición definitiva pendientes. Nuevos commits, pushes y publicaciones solo con orden expresa.
+## Plan de rediseño: estética de Resonancia + índice de 36 temas (5 fases)
+Índice: `planning/01-indice-libro.md` y `temario.toml` (fuente de verdad). Plantilla: `planning/plantilla-tema.qmd`. Autorizado por el autor: ejecutar las Fases 1–3, con **commit y push a `main` al cerrar cada fase**; las Fases 4–5 se ejecutan con orden posterior.
 
-Reglas: sin commits ni pushes sin autorización; sin instalaciones globales sin consulta; `docs/` intacto.
+| Fase | Contenido | Estado |
+|---|---|---|
+| **1 · Cimientos y piloto** | Paleta única (`styles/paleta.yml` + sincronización a SCSS/Julia/TikZ); cajas e infraestructura de Resonancia (ejercicios interactivos, referencias al margen, historia); `temario.toml` → navegación y «Mapa del libro»; scripts de verificación (figuras, ejercicios, estructura) y job de CI; tema piloto B2 reescrito (3 figuras TikZ, 10 ejercicios, 2 notas históricas con fuente, laboratorio, práctica Julia, cierre) | **Hecha en local; commit/push al cerrar** |
+| **2 · Bloques A–C al nuevo estilo** | Reescribir B1, B3–B4, C1–C3, C5 y A1; escribir A2, B5, C4, C6; paleta nueva y revisión visual de las figuras; nuevas funciones y tests en `Geometria.jl`; ≥ 3 laboratorios JS | Pendiente |
+| **3 · Bloque D: elasticidad y láminas** | D1–D8 con `Laminas.jl` (cinemática, KL frente a RM, deformaciones, constitutivas) y tests; convenios pendientes (componentes físicas no ortogonales, giros de la normal, g.d.l. físicos) | Pendiente |
+| 4 · Bloque E: elementos finitos | E1–E9 hasta Hu–Washizu por subdominios, masa, ensamblaje | Planificada (orden posterior) |
+| 5 · Bloques F–G, apéndices, validación | Hypar (curvos/rectos), validación, glosario, chuletas, solucionarios, PDF | Planificada (orden posterior) |
 
-## Hecho hoy (2026-10-21)
+Cierre de cada fase: verificación (render sin avisos, tests Julia/JS, `scripts/verificar_*`, `comprobar_publicable.sh`), `_freeze/` versionado, commit, push, comprobar CI y web, actualizar este documento.
+
+## Hecho el 2026-10-21 (antes del rediseño)
 - Tests de Julia: 123 comprobaciones, 7 conjuntos, **pasan** (en el sandbox hace falta `JULIA_DEPOT_PATH="$TMPDIR/depot:$HOME/.julia"`).
 - **P0 hecho:** verificación de `docs/Ejemplos/body_forces.pdf` → `09-verificacion-fuerzas-volumen.md` (`julia/scripts/verificar_fuerzas_volumen.jl`, 29/29). Resumen: págs. 1–2 y 4–6 correctas; pág. 3 con un error de signo, un coeficiente `2/R` (debe ser `1/R`) y una omisión de términos en `K`; y la expresión de partida con `μᵖ_α` **no reproduce el trabajo de un peso uniforme** (error ≈ 10⁻⁴ con `t/R = 0,1`). El propio autor la marca «Wrong! See BF-1÷8» y esas páginas no están en `docs/`. **Decisión del autor:** no dispone de la versión correcta; se adopta la **versión corregida** derivada aquí (`δW = t(1+Kt²/12)(Xᵖδu_ρ+X³δu₃) − (Ht³/6)Xᵖδψ_ρ`, comprobada numéricamente en cilindro, esfera e hypar), que sustituye a SD-12. Limitación: valida el álgebra, no que la cinemática coincida con la de la tesis.
 - **P1 hecho:** `hypar.pdf` págs. 1–3 y `sphere.pdf` pág. 1 coinciden con `Geometria.jl` (15/15, `julia/scripts/verificar_apuntes_geometria.jl`), incluido el convenio `b_αβ = â₃·a_{α,β}`.
 - **P2 hecho:** inventario de `docs/Ejemplos` en `00-inventario-docs.md`.
 - **P3 hecho (parcial):** numeración de secciones de la tesis contrastada con el índice de `Base.pdf`, en `02-trazabilidad-tesis.md` (solo el índice; falta contrastar contenido capítulo a capítulo).
 - Poppler ya estaba instalado (26.10.0). **Node reinstalado por el autor** (v26.12.0): `npm test` pasa, 6/6 (JS coincide con Julia 1.12.3).
-- Repositorio público `me1catrr/lametrica`; `main` local y remoto verificados en `5185908` (PR #1 fusionada). Rama de trabajo eliminada. GitHub Pages publica desde `gh-pages`; workflows `Pruebas` y `Publicar` correctos para ese commit. Web verificada: `https://me1catrr.github.io/lametrica/`.
+- Repositorio público `me1catrr/lametrica`; `main` local y remoto verificados en `ebe70d7` (continuidad posterior a la PR #1, ya fusionada; rama de trabajo eliminada). Workflows `Pruebas` y `Publicar` correctos para `ebe70d7`; GitHub Pages publica desde `gh-pages` y la portada responde HTTP 200. Tests de Julia (123) y de JS (6) re-ejecutados en local con resultado correcto.
 
 ## Estado de la Fase 3
 
@@ -41,7 +46,7 @@ Apéndice A (notación) existe; B, C y D del índice, no.
 Hecha: #3 (bases cov./contrav.). Pendientes: el resto. Los caps. 2 y 4–9 usan figuras SVG estáticas.
 
 ### Figuras, bibliografía, trazabilidad
-- 15 SVG geométricos generados por Julia y dos aperturas ilustrativas TikZ (caps. 1 y 9), **todos con revisión visual humana pendiente**. Las dos fuentes TikZ originales y el script de compilación están versionados con excepciones cerradas en la protección de publicación; sin figuras de FigureLabs.
+- 15 SVG geométricos generados por Julia y dos aperturas ilustrativas TikZ (caps. 1 y 9) = 17 SVG en `figures/svg/`, **todos con revisión visual humana pendiente**. De la propuesta `visualizacion-cientifica.md` solo se ha adoptado la ruta TikZ para esas dos aperturas; el resto (PGFPlots, FigureLabs, catálogo de 15 figuras, validación de figuras en CI, reconciliación de paleta) **sigue como propuesta, sin aprobar**. Las dos fuentes TikZ originales y el script de compilación están versionados con excepciones cerradas en la protección de publicación; sin figuras de FigureLabs.
 - `bib/lametrica.bib`: 15 de las 171 entradas de la tesis, 1 con `VERIFICAR`; `fichas.yml` no existe.
 - `02-trazabilidad-tesis.md`: numeración verificada (solo índice); `trazabilidad/ecuaciones.yml` no creado.
 
@@ -58,7 +63,7 @@ Apuntes manuscritos, **no la tesis**. Detalle en `00-inventario-docs.md`.
 ## Orden de trabajo propuesto (siguientes sesiones)
 1. **Fuerzas de volumen:** versión corregida adoptada. Pendiente de confirmar: que los grados de libertad sean componentes físicas (el autor cree que sí, **sin confirmar**) y el convenio de los giros `δψ_ρ`. Contrastar con la cinemática de la tesis al escribir la Parte III.
 2. **Leer y catalogar el resto de `docs/Ejemplos`** (~150 págs.), empezando por `skew_plate*.pdf` y `pinched_cylinder.pdf` (probables valores de referencia) y `flat_shell.pdf`/`cylindrical*.pdf` (elemento); anotar páginas y datos en el inventario.
-3. **Cerrar Partes I–II:** revisión visual de las 17 figuras y del laboratorio de bases en navegador. El render completo y los enlaces cruzados ya se comprobaron tras la PR #1; repetir después de modificar contenido. CI de Julia y JavaScript pasa en `5185908`.
+3. **Cerrar Partes I–II:** revisión visual de las 17 figuras y del laboratorio de bases en navegador. El render completo y los enlaces cruzados ya se comprobaron tras la PR #1; repetir después de modificar contenido. CI de Julia y JavaScript pasa en `ebe70d7`.
 4. **Parte III (caps. 10–12):** crear `Laminas.jl` (cinemática, Cauchy–Green, KL vs. RM) con tests; antes, fijar los dos convenios pendientes del apéndice A (componentes físicas en bases no ortogonales; giros de la normal) → decisión del autor. `plane_stress.pdf` puede alimentar el cap. 12.
 5. **Partes IV–V (caps. 13–20):** Hu–Washizu por subdominios contrastado con `Elemento.tex` (§3.6.2 y 3.7.1, p. 69–71 de `Base.pdf`); Anexo C (p. 169) reescrito en Julia; casos de las simulaciones (tesis §4.2.2, §4.3.2) y de `skew_plate` para validar.
 6. **Trazabilidad y bibliografía:** `trazabilidad/ecuaciones.yml` a medida que se escriba; entradas del `.bib` solo verificables; `fichas.yml` al final de la Parte III.

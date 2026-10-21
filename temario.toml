@@ -1,0 +1,247 @@
+# =============================================================================
+# La métrica — temario (fuente de verdad del índice)
+# -----------------------------------------------------------------------------
+# Bloques → temas. scripts/generar_estructura.jl genera a partir de este fichero:
+#   _navegacion.yml  (capítulos de la barra lateral: solo los temas con archivo)
+#   book/mapa.qmd    («Mapa del libro» público: título, estado y prerrequisitos)
+# Campos de cada tema: id, titulo, estado ("publicado" | "borrador" | "pendiente"),
+# archivo (ruta del .qmd; vacío si aún no existe), requiere (ids), pregunta (guía).
+# El campo `fuente_interna` es de planificación: NO se publica en el mapa.
+# =============================================================================
+
+[libro]
+titulo = "La métrica"
+subtitulo = "De la geometría de las superficies a los elementos finitos"
+
+# ---------------------------------------------------------------- Bloque A
+[[bloque]]
+id = "A"
+titulo = "Preludio: la forma que resiste"
+pregunta = "¿Por qué una cáscara de pocos centímetros puede cubrir una gran luz, y qué necesitamos saber para calcularla?"
+  [[bloque.tema]]
+  id = "A1"
+  titulo = "Por qué tensores"
+  estado = "publicado"
+  archivo = "book/01-fundamentos/01-motivacion.qmd"
+  requiere = []
+  fuente_interna = "Introduccion.tex (historia de Candela)"
+  [[bloque.tema]]
+  id = "A2"
+  titulo = "Los objetos físicos no dependen de las coordenadas"
+  estado = "pendiente"
+  requiere = ["A1"]
+
+# ---------------------------------------------------------------- Bloque B
+[[bloque]]
+id = "B"
+titulo = "Cálculo tensorial"
+pregunta = "¿Cómo se escriben las leyes de la física para que no dependan del sistema de coordenadas?"
+  [[bloque.tema]]
+  id = "B1"
+  titulo = "Transformación de coordenadas y tensores"
+  estado = "publicado"
+  archivo = "book/01-fundamentos/02-transformacion.qmd"
+  requiere = ["A1"]
+  [[bloque.tema]]
+  id = "B2"
+  titulo = "Bases covariantes y contravariantes"
+  estado = "borrador"
+  archivo = "book/01-fundamentos/03-bases.qmd"
+  requiere = ["B1"]
+  fuente_interna = "skew_plate_2.pdf (placa oblicua)"
+  [[bloque.tema]]
+  id = "B3"
+  titulo = "Tensor métrico y componentes físicas"
+  estado = "publicado"
+  archivo = "book/01-fundamentos/04-metrica.qmd"
+  requiere = ["B2"]
+  [[bloque.tema]]
+  id = "B4"
+  titulo = "Símbolos de Christoffel y derivada covariante"
+  estado = "publicado"
+  archivo = "book/01-fundamentos/05-christoffel.qmd"
+  requiere = ["B3"]
+  [[bloque.tema]]
+  id = "B5"
+  titulo = "Álgebra y análisis tensorial en curvilíneas"
+  estado = "pendiente"
+  requiere = ["B4"]
+
+# ---------------------------------------------------------------- Bloque C
+[[bloque]]
+id = "C"
+titulo = "Geometría de superficies"
+pregunta = "¿Qué es una superficie curva y cómo medimos su forma?"
+  [[bloque.tema]]
+  id = "C1"
+  titulo = "Superficies parametrizadas"
+  estado = "publicado"
+  archivo = "book/02-superficies/06-superficies.qmd"
+  requiere = ["B3"]
+  [[bloque.tema]]
+  id = "C2"
+  titulo = "Formas fundamentales y fórmulas de Gauss–Weingarten"
+  estado = "publicado"
+  archivo = "book/02-superficies/07-formas-fundamentales.qmd"
+  requiere = ["C1", "B4"]
+  [[bloque.tema]]
+  id = "C3"
+  titulo = "Curvaturas de una superficie"
+  estado = "publicado"
+  archivo = "book/02-superficies/08-curvaturas.qmd"
+  requiere = ["C2"]
+  [[bloque.tema]]
+  id = "C4"
+  titulo = "Curvas sobre superficies: geodésicas y compatibilidad"
+  estado = "pendiente"
+  requiere = ["C3"]
+  [[bloque.tema]]
+  id = "C5"
+  titulo = "El paraboloide hiperbólico"
+  estado = "publicado"
+  archivo = "book/02-superficies/09-paraboloide.qmd"
+  requiere = ["C3"]
+  [[bloque.tema]]
+  id = "C6"
+  titulo = "Bestiario de láminas: cilindro, esfera y placa oblicua"
+  estado = "pendiente"
+  requiere = ["C3"]
+
+# ---------------------------------------------------------------- Bloque D
+[[bloque]]
+id = "D"
+titulo = "Elasticidad: del sólido a la lámina"
+pregunta = "¿Cómo se deforma una lámina y cuánta energía almacena?"
+  [[bloque.tema]]
+  id = "D1"
+  titulo = "Deformación y tensión en el sólido"
+  estado = "pendiente"
+  requiere = ["B5"]
+  [[bloque.tema]]
+  id = "D2"
+  titulo = "Ley de Hooke y energía de deformación"
+  estado = "pendiente"
+  requiere = ["D1"]
+  [[bloque.tema]]
+  id = "D3"
+  titulo = "Cinemática de la lámina"
+  estado = "pendiente"
+  requiere = ["C3", "D1"]
+  [[bloque.tema]]
+  id = "D4"
+  titulo = "La hipótesis de Kirchhoff–Love"
+  estado = "pendiente"
+  requiere = ["D3"]
+  [[bloque.tema]]
+  id = "D5"
+  titulo = "Reissner–Mindlin: el cortante transversal"
+  estado = "pendiente"
+  requiere = ["D4"]
+  [[bloque.tema]]
+  id = "D6"
+  titulo = "Relaciones deformación–desplazamiento"
+  estado = "pendiente"
+  requiere = ["D5"]
+  [[bloque.tema]]
+  id = "D7"
+  titulo = "Leyes constitutivas de la lámina"
+  estado = "pendiente"
+  requiere = ["D2", "D6"]
+  [[bloque.tema]]
+  id = "D8"
+  titulo = "Principios variacionales"
+  estado = "pendiente"
+  requiere = ["D7"]
+
+# ---------------------------------------------------------------- Bloque E
+[[bloque]]
+id = "E"
+titulo = "Elementos finitos de lámina"
+pregunta = "¿Cómo lo calcula un ordenador sin que el elemento se bloquee?"
+  [[bloque.tema]]
+  id = "E1"
+  titulo = "El método de elementos finitos en una barra"
+  estado = "pendiente"
+  requiere = ["D8"]
+  [[bloque.tema]]
+  id = "E2"
+  titulo = "El cuadrilátero bilineal en tensión plana"
+  estado = "pendiente"
+  requiere = ["E1"]
+  [[bloque.tema]]
+  id = "E3"
+  titulo = "El elemento lámina de cuatro nodos"
+  estado = "pendiente"
+  requiere = ["E2", "D6"]
+  [[bloque.tema]]
+  id = "E4"
+  titulo = "Matrices deformación–desplazamiento"
+  estado = "pendiente"
+  requiere = ["E3"]
+  [[bloque.tema]]
+  id = "E5"
+  titulo = "Bloqueo y modos espurios"
+  estado = "pendiente"
+  requiere = ["E4"]
+  [[bloque.tema]]
+  id = "E6"
+  titulo = "Interpolación de deformaciones"
+  estado = "pendiente"
+  requiere = ["E5"]
+  [[bloque.tema]]
+  id = "E7"
+  titulo = "Hu–Washizu por subdominios"
+  estado = "pendiente"
+  requiere = ["E6", "D8"]
+  [[bloque.tema]]
+  id = "E8"
+  titulo = "Cargas y matriz de masa"
+  estado = "pendiente"
+  requiere = ["E7"]
+  [[bloque.tema]]
+  id = "E9"
+  titulo = "Ensamblaje, condiciones de contorno y autovalores"
+  estado = "pendiente"
+  requiere = ["E8"]
+
+# ---------------------------------------------------------------- Bloque F
+[[bloque]]
+id = "F"
+titulo = "Vibraciones y validación"
+pregunta = "¿A qué frecuencias vibra un paraboloide hiperbólico y cuánto podemos fiarnos del cálculo?"
+  [[bloque.tema]]
+  id = "F1"
+  titulo = "Vibraciones de láminas"
+  estado = "pendiente"
+  requiere = ["E9"]
+  [[bloque.tema]]
+  id = "F2"
+  titulo = "Validación estática"
+  estado = "pendiente"
+  requiere = ["E9"]
+  [[bloque.tema]]
+  id = "F3"
+  titulo = "El hypar de bordes curvos"
+  estado = "pendiente"
+  requiere = ["F1", "C5"]
+  [[bloque.tema]]
+  id = "F4"
+  titulo = "El hypar de bordes rectos"
+  estado = "pendiente"
+  requiere = ["F3"]
+  [[bloque.tema]]
+  id = "F5"
+  titulo = "Implementación reproducible en Julia"
+  estado = "pendiente"
+  requiere = ["F4"]
+
+# ---------------------------------------------------------------- Bloque G
+[[bloque]]
+id = "G"
+titulo = "Cierre"
+pregunta = "¿Qué hemos aprendido, qué límites tiene el modelo y hacia dónde seguir?"
+  [[bloque.tema]]
+  id = "G1"
+  titulo = "Conclusiones y futuro"
+  estado = "pendiente"
+  requiere = ["F5"]

@@ -7,7 +7,7 @@ Fuente científica primaria: tesis doctoral del autor, *Vibraciones de Estructur
 
 ## Reglas inviolables
 - **`docs/` es solo lectura.** No modificar, mover, borrar ni sobrescribir nada. Está en `.gitignore` y fuera de `project.render`; nunca debe aparecer en `_book/`, en commits ni en GitHub. Antes de cualquier commit, comprobar con `git add -n -A .` que no entra nada de `docs/`.
-- **No hacer commits, pushes ni publicar** (GitHub Actions/Pages) sin autorización expresa. No instalar dependencias globales sin consultar.
+- **Commits, pushes y publicación:** el autor autorizó (2026-10-21) ejecutar las Fases 1–3 del plan de rediseño (`planning/07-plan-fases.md`) con **commit y push a `main` al cerrar cada fase**, para verlo en la web, tras verificación completa y `bash scripts/comprobar_publicable.sh`. Cualquier otro push, cambio de visibilidad, licencia o publicación fuera de ese cauce exige orden expresa. No instalar dependencias globales sin consultar.
 - **No copiar texto de la tesis** (© 2008): redacción nueva, citando fuente y sección.
 - **No inventar** referencias, DOI, datos editoriales ni ecuaciones atribuidas a la tesis. Si una ecuación no se ha verificado contra `docs/`, decirlo (“sin verificar”).
 - **No presentar como verificado** nada que no se haya ejecutado o contrastado.
@@ -30,7 +30,10 @@ web/ojs/                   módulos JS de las simulaciones; web/tests/ pruebas N
 web/datos/                 JSON generados por Julia (referencias y resultados)
 styles/lametrica.scss      tema (colores semánticos, callouts, impresión)
 bib/lametrica.bib          ÚNICA fuente bibliográfica
-figures/                   SVG, fuentes originales TikZ y figures.yml de procedencia
+temario.toml               ÍNDICE (bloques→temas): genera _navegacion.yml y book/mapa.qmd
+styles/paleta.yml          paleta única (se sincroniza a SCSS, figuras Julia y TikZ)
+scripts/                   generar_estructura, sincronizar_paleta, verificar_ejercicios/figuras, *.lua (filtros), compilar_tikz
+figures/                   SVG, fuentes TikZ (figures/fuentes/tikz) y figures.yml de procedencia
 planning/                  plan, índice, trazabilidad, riesgos y decisiones (ADR)
 _freeze/                   resultados Julia cacheados (se versionan)
 _book/, .quarto/           generados; no se versionan
@@ -43,6 +46,10 @@ Quarto 1.10.19 está disponible en el PATH. Comprobar `command -v quarto` y `qua
 quarto render                                   # libro completo → _book/
 quarto preview                                  # vista previa local
 bash scripts/comprobar_publicable.sh             # antes de preparar cambios y tras git add
+julia scripts/generar_estructura.jl             # tras editar temario.toml (--check en CI)
+julia scripts/sincronizar_paleta.jl             # tras editar styles/paleta.yml (--check en CI)
+julia scripts/verificar_figuras.jl              # SVG registrados y con fig-alt
+julia --project=. scripts/verificar_ejercicios.jl  # respuestas numéricas vs Geometria
 bash scripts/compilar_tikz.sh                    # regenera las dos aperturas (requiere latex y dvisvgm)
 julia --project=julia -e 'using Pkg; Pkg.test()'   # tests de Geometria
 julia --project=. julia/scripts/generar_referencia.jl   # regenera web/datos/bases_ref.json
@@ -55,7 +62,10 @@ Flujo para cambiar algo de geometría: Julia (código + test) → regenerar JSON
 - Páginas con código Julia: `engine: julia` en la cabecera. Nunca Jupyter/IJulia. `freeze: auto`: si cambia una página con Julia, renderizarla en local y versionar `_freeze/`.
 - Datos aleatorios con semilla fija.
 - Bloques semánticos: definición `{#def-…}` (azul), teorema/proposición `{#thm-…}`/`{#prp-…}` (verde), advertencia `callout-warning` (ámbar), laboratorio/ejemplo computacional `callout-tip` o `.laboratorio` (violeta), demostración `callout-note .demostracion collapse="true"` y observación (gris). Ecuaciones `{#eq-…}`, figuras `{#fig-…}`, secciones `{#sec-…}`.
-- Plantilla de capítulo: objetivos · motivación · desarrollo riguroso · interpretación geométrica · figuras · simulación · ejemplo Julia · demostraciones desplegables · ejercicios · trazabilidad con la tesis · referencias comentadas.
+- **Plantilla de tema** (estética y didáctica de la web Resonancia; ejemplo completo: `book/01-fundamentos/03-bases.qmd`; esqueleto: `planning/plantilla-tema.qmd`): portada · pregunta guía · objetivos y prerrequisitos · notación · secciones numeradas con intuición → definición → **ejemplo resuelto** (`#exm-`) → resultado + demostración plegada → figura → «Dos puntos que suelen confundir»/«Errores frecuentes» → **«Pon a prueba lo anterior»** (ejercicios interactivos `.ejercicio`) → **«Un poco de historia»** (`.historia`, solo con fuente verificada y fecha de consulta) · laboratorio JS · práctica guiada en Julia · ejercicios con solución plegable · «La doy por superada si…» · «Fuentes, correcciones y qué queda pendiente». Referencias citadas al margen (`citation-location: margin`) y lista final (`scripts/referencias.lua`).
+- Todo ejercicio **numérico** necesita su cálculo de referencia en `scripts/verificar_ejercicios.jl`. Capítulos numerados correlativamente por Quarto: referenciar siempre por etiqueta (`@sec-…`), nunca por número escrito a mano. El índice vive en `temario.toml`; no editar `_navegacion.yml` ni `book/mapa.qmd` a mano.
+- Paleta: solo la de `styles/paleta.yml` (azul definiciones/base covariante · naranja base recíproca/énfasis · verde teoremas/resultados · violeta idea clave/normal · gris demostraciones/ejes · ocre historia/pistas). Nunca el color como única señal.
+- Figuras: geometría exacta con Julia o TikZ (`figures/fuentes/tikz`, `scripts/compilar_tikz.sh`); FigureLabs solo ilustración conceptual/portadas, con el prompt guardado en `figures/fuentes/figurelabs/` y sin material de `docs/`. Cada SVG, registrado en `figures/figures.yml` y con `fig-alt`.
 - Los capítulos **no** citan la tesis (decisión del autor, 2026-10-20): se da por hecho que buena parte de la información procede de ella. La trazabilidad contenido → tesis se mantiene solo en `planning/02-trazabilidad-tesis.md`.
 - En salidas OJS no se tipografía LaTeX: usar símbolos Unicode.
 - Figuras de geometría exacta: generarlas por código (Julia/JS → SVG). FigureLabs solo para ilustraciones conceptuales y diagramas de flujo; no enviar material de `docs/` a servicios externos sin permiso.
@@ -71,8 +81,8 @@ Flujo para cambiar algo de geometría: Julia (código + test) → regenerar JSON
 Fase 2 (prototipo) hecha. Fase 3 en curso: Partes I (caps. 1–5) y II (caps. 6–9) escritas, con 15 SVG generados por Julia y dos aperturas TikZ en los capítulos 1 y 9 (procedencia en `figures/figures.yml`), y laboratorio de bases (Cap. 3). Partes III–V pendientes. Publicación inicial activa; licencia y publicación definitiva del libro pendientes. Plan completo en `planning/`.
 
 ## Punto de continuación — 2026-10-21
-- Base verificada: `main` en `5185908`; PR #1 fusionada y rama `docs/resumen-publicacion` eliminada localmente y en GitHub. No recrear esa PR ni repetir el cambio de visibilidad.
-- GitHub Actions: `Pruebas` y `Publicar` completados correctamente para ese commit. El repositorio es público y GitHub Pages está operativo.
+- Base verificada: `main` en `ebe70d7` (continuidad posterior a `5185908`); PR #1 fusionada y rama `docs/resumen-publicacion` eliminada localmente y en GitHub. No recrear esa PR ni repetir el cambio de visibilidad.
+- GitHub Actions: `Pruebas` y `Publicar` completados correctamente para `ebe70d7`. El repositorio es público y GitHub Pages está operativo.
 - Última comprobación local: `quarto render` generó las 12 páginas sin errores ni avisos SCSS; sin recursos/enlaces locales inexistentes, anclas rotas ni referencias Quarto sin resolver. Las 12 páginas publicadas y los dos SVG nuevos respondieron HTTP 200.
 - Las aperturas ya tienen pies y texto alternativo. El HTML se comprobó estructuralmente, **no mediante revisión visual ni de interactividad en navegador**. Las figuras siguen con revisión visual humana pendiente.
 - `.gitignore` y `scripts/comprobar_publicable.sh` permiten únicamente `figures/fuentes/tikz/apertura-cap01-bases.tex` y `figures/fuentes/tikz/apertura-cap09-hypar.tex`; otros `.tex`, PDF y `docs/` siguen bloqueados. No ampliar las excepciones a todo el directorio.

@@ -94,3 +94,27 @@
   herramienta: TikZ (latex + dvisvgm) vía scripts/compilar_tikz.sh
   fuente: figures/fuentes/tikz/apertura-cap09-hypar.tex
   revision: ilustrativa (z = c·x·y, malla 22×22, proyección oblicua a mano; vértices altos y bajos comprobados a mano) · visual pendiente
+- id: fig-portada-bases
+  archivo: figures/svg/portada-bases.svg
+  capitulo: book/01-fundamentos/03-bases.qmd
+  herramienta: TikZ (figures/fuentes/tikz/portada-bases.tex; compilar con scripts/compilar_tikz.sh)
+  datos: base oblicua a 60°, V=(2,3/2); valores comprobados en julia/test/runtests.jl («Base oblicua a 60°»)
+  revision: automática (datos) · visual pendiente
+- id: fig-componer-proyectar
+  archivo: figures/svg/bases-componer-proyectar.svg
+  capitulo: book/01-fundamentos/03-bases.qmd
+  herramienta: TikZ (figures/fuentes/tikz/bases-componer-proyectar.tex)
+  datos: idem
+  revision: automática (datos) · visual pendiente
+- id: fig-reciproca
+  archivo: figures/svg/base-reciproca-construccion.svg
+  capitulo: book/01-fundamentos/03-bases.qmd
+  herramienta: TikZ (figures/fuentes/tikz/base-reciproca-construccion.tex)
+  datos: idem
+  revision: automática (datos) · visual pendiente
+- id: fig-portada-a1-hypar
+  archivo: figures/img/portada-a1-hypar.jpg
+  capitulo: book/01-fundamentos/01-motivacion.qmd (reservada para la portada del tema A1, Fase 2)
+  herramienta: FigureLabs (prompt y parámetros en figures/fuentes/figurelabs/portada-a1-hypar.md)
+  etiqueta: ilustrativa (no es geometría exacta)
+  revision: visual pendiente

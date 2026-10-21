@@ -274,3 +274,20 @@ end
     pe = curvaturas_principales(ae, be)
     @test area_relativa(pe.H, pe.K, 0.1) ≈ (1 + 0.1 / ρ)^2 atol = 1e-6
 end
+
+@testset "Base oblicua a 60° (ejemplo del tema de bases covariantes y contravariantes)" begin
+    B = [1.0 0.5; 0.0 sqrt(3) / 2]          # g₁ = (1,0), g₂ = (1/2, √3/2)
+    V = [2.0, 1.5]
+    @test metrica(B) ≈ [1 0.5; 0.5 1] atol = 1e-12
+    @test det(metrica(B)) ≈ 3 / 4
+    Br = base_reciproca(B)
+    @test Br[:, 1] ≈ [1, -1 / sqrt(3)] atol = 1e-12            # g¹
+    @test Br[:, 2] ≈ [0, 2 / sqrt(3)] atol = 1e-12             # g²
+    @test reciprocidad(B) ≈ I(2) atol = 1e-12
+    @test norm(Br[:, 1]) ≈ 2 / sqrt(3) atol = 1e-12
+    Vup = comps_contravariantes(B, V); Vdn = comps_covariantes(B, V)
+    @test Vup ≈ [2 - 1.5 / sqrt(3), 3 / sqrt(3)] atol = 1e-12  # V¹, V²
+    @test Vdn ≈ [2, 1 + 3 * sqrt(3) / 4] atol = 1e-12          # V₁, V₂
+    @test desde_contravariantes(B, Vup) ≈ V atol = 1e-12
+    @test dot(Vup, Vdn) ≈ dot(V, V) atol = 1e-12
+end

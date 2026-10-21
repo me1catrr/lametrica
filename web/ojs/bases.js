@@ -68,10 +68,10 @@ export function dibujarSVG(g1, g2, V, res, opciones = {}) {
 <rect width="${ancho}" height="${alto}" fill="none"/>
 <line x1="0" y1="${oy}" x2="${ancho}" y2="${oy}" stroke="#d1d5db"/><line x1="${ox}" y1="0" x2="${ox}" y2="${alto}" stroke="#d1d5db"/>
 ${paralelogramo}
-${flecha(g1, "#1d4ed8", "g₁")}${flecha(g2, "#1d4ed8", "g₂")}
-${flecha(res.d1, "#b45309", "g¹", 2.5, "6 3")}${flecha(res.d2, "#b45309", "g²", 2.5, "6 3")}
-${flecha(V, "#111827", "V", 3)}
-<circle cx="${ox}" cy="${oy}" r="3" fill="#111827"/>
+${flecha(g1, "#1b6ca8", "g₁")}${flecha(g2, "#1b6ca8", "g₂")}
+${flecha(res.d1, "#d95f02", "g¹", 2.5, "6 3")}${flecha(res.d2, "#d95f02", "g²", 2.5, "6 3")}
+${flecha(V, "#6f42c1", "V", 3)}
+<circle cx="${ox}" cy="${oy}" r="3" fill="#6f42c1"/>
 </svg>`;
 }
 

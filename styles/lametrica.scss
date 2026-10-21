@@ -1,101 +1,223 @@
 /*-- scss:defaults --*/
 
-// Paleta semántica del libro (ver planning/03-arquitectura.md)
-$c-definicion: #1d4ed8;   // azul
-$c-teorema:    #15803d;   // verde
-$c-advertencia: #b45309;  // ámbar
-$c-laboratorio: #6d28d9;  // violeta
-$c-neutro:     #4b5563;   // gris (demostraciones y observaciones)
-$c-idea:       #0e7490;   // verde azulado (idea clave)
-$c-historia:   #8a5a2b;   // ocre (cuadros históricos)
-$c-noticia:    #be123c;   // carmín (enlaces a noticias)
+// Paleta única del libro (la misma que Resonancia). Fuente de verdad: styles/paleta.yml.
+// PALETA-INICIO (generado por scripts/sincronizar_paleta.jl; no editar a mano)
+$azul: #1b6ca8;
+$naranja: #d95f02;
+$verde: #2a9d8f;
+$gris: #6b7280;
+$violeta: #6f42c1;
+$ocre: #8a5a00;
+$malla: #cbd5e1;
+// PALETA-FIN
 
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 $headings-font-weight: 600;
 $body-color: #1f2937;
-$link-color: $c-definicion;
+$link-color: $azul;
 
-// Callouts nativos de Quarto reutilizados con significado propio
-$callout-color-note: $c-neutro;          // observación / demostración
-$callout-color-warning: $c-advertencia;  // advertencia matemática
-$callout-color-tip: $c-laboratorio;      // laboratorio / ejemplo computacional
-$callout-color-important: $c-idea;       // idea clave
+// Callouts nativos de Quarto con significado propio (el color nunca es la única señal:
+// cada caja lleva rótulo escrito)
+$callout-color-note: $gris;          // observación / demostración
+$callout-color-warning: $naranja;    // errores frecuentes, advertencias
+$callout-color-tip: $verde;          // ejemplo y laboratorio computacional
+$callout-color-important: $violeta;  // idea clave
 
 /*-- scss:rules --*/
+
+:root {
+  --r-azul: #{$azul};
+  --r-naranja: #{$naranja};
+  --r-verde: #{$verde};
+  --r-gris: #{$gris};
+  --r-violeta: #{$violeta};
+  --r-ocre: #{$ocre};
+
+  --caja-def-borde: #{$azul};       --caja-def-fondo: #eef5fb;
+  --caja-thm-borde: #1f7a6f;        --caja-thm-fondo: #e9f6f3;
+  --caja-exm-borde: #b45f06;        --caja-exm-fondo: #fff5e8;
+  --caja-dem-borde: #{$gris};       --caja-dem-fondo: #f4f5f7;
+  --caja-clave-borde: #{$violeta};  --caja-clave-fondo: #f4effb;
+}
 
 body { font-family: $font-family-serif; font-size: 1.05rem; line-height: 1.6; }
 h1, h2, h3, h4, .sidebar, .nav-link, .callout-title-container { font-family: $font-family-sans-serif; }
 
-// Bloques matemáticos numerados (definition, theorem, …)
-@mixin bloque($color) {
-  border-left: 4px solid $color;
-  background: rgba($color, 0.06);
-  padding: 0.6rem 1rem;
+/* ---------- Definiciones, teoremas y ejemplos (crossref de Quarto) ---------- */
+.theorem, .proposition, .lemma, .corollary,
+.definition, .example, .remark, .hypothesis {
   margin: 1.2rem 0;
-  border-radius: 0 4px 4px 0;
-  .theorem-title, .definition-title, .proposition-title, .lemma-title,
-  .corollary-title, .example-title, .remark-title, .proof-title { color: $color; }
+  padding: 0.7rem 1rem 0.6rem 1rem;
+  border-left: 0.35rem solid var(--caja-def-borde);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background: var(--caja-def-fondo);
 }
-
-div.definition  { @include bloque($c-definicion); }
-div.theorem.definition { @include bloque($c-definicion); }   // Quarto marca las definiciones también como .theorem
-div.theorem.example { @include bloque($c-laboratorio); }
-div.theorem.remark { @include bloque($c-neutro); }
-div.theorem, div.proposition, div.lemma, div.corollary { @include bloque($c-teorema); }
-div.example     { @include bloque($c-laboratorio); }
-div.remark, div.proof { @include bloque($c-neutro); }
-div.proof { background: transparent; font-size: 0.97rem; }
-
-// Demostraciones desplegables: callout "note" con clase .demostracion
-.callout.demostracion {
-  border-left-color: $c-neutro !important;
-  .callout-header { background: rgba($c-neutro, 0.08); }
+.theorem, .proposition, .lemma, .corollary {
+  border-left-color: var(--caja-thm-borde);
+  background: var(--caja-thm-fondo);
 }
-
-// Cuadros históricos y de noticias: callout "note" con clase .historia / .noticia
-.callout.historia, .callout.noticia { margin: 1.4rem 0; }
-.callout.historia {
-  border-left-color: $c-historia !important;
-  .callout-header { background: rgba($c-historia, 0.10); }
-  .callout-title-container { color: $c-historia; }
+.example, .remark {
+  border-left-color: var(--caja-exm-borde);
+  background: var(--caja-exm-fondo);
 }
-.callout.noticia {
-  border-left-color: $c-noticia !important;
-  .callout-header { background: rgba($c-noticia, 0.07); }
-  .callout-title-container { color: $c-noticia; }
-}
+.theorem > p:first-child, .proposition > p:first-child, .lemma > p:first-child,
+.definition > p:first-child, .example > p:first-child, .remark > p:first-child,
+.corollary > p:first-child, .hypothesis > p:first-child { margin-top: 0; }
+.theorem > :last-child, .proposition > :last-child, .lemma > :last-child,
+.definition > :last-child, .example > :last-child, .remark > :last-child,
+.corollary > :last-child, .hypothesis > :last-child { margin-bottom: 0; }
+.theorem-title, .definition-title, .example-title, .proposition-title,
+.lemma-title, .remark-title, .corollary-title, .hypothesis-title { font-weight: 700; }
+.definition .definition-title, .definition > p:first-child > span:first-child { color: #134a73; }
+.theorem .theorem-title, .proposition .proposition-title { color: #14574f; }
+.example .example-title { color: #7a4204; }
 
-// Imagen de apertura de capítulo (TikZ o ilustración): ocupa todo el ancho de la página
+/* Quarto añade la clase «theorem» a todos los entornos: se especifica cada tipo */
+.theorem.definition, .theorem.hypothesis { border-left-color: var(--caja-def-borde); background: var(--caja-def-fondo); }
+.theorem.example, .theorem.remark { border-left-color: var(--caja-exm-borde); background: var(--caja-exm-fondo); }
+.theorem.proposition, .theorem.lemma, .theorem.corollary { border-left-color: var(--caja-thm-borde); background: var(--caja-thm-fondo); }
+
+/* ---------- Cajas basadas en callouts de Quarto ---------- */
+div.callout.demostracion, div.callout.idea-clave, div.callout-important {
+  border-left-width: 0.35rem;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+div.callout.demostracion { border-left-color: var(--caja-dem-borde) !important; }
+div.callout.demostracion > .callout-header,
+div.callout.demostracion .callout-header { background: var(--caja-dem-fondo) !important; color: #374151; }
+div.callout.demostracion .callout-body-container { background: #fbfbfc; }
+div.callout.demostracion .callout-title-container::before { content: "∎ "; margin-right: 0.35em; font-weight: 700; }
+
+// «Idea clave»: callout-important o .idea-clave (violeta, con ★)
+div.callout.idea-clave, div.callout-important { border-left-color: var(--caja-clave-borde) !important; }
+div.callout.idea-clave > .callout-header, div.callout.idea-clave .callout-header,
+div.callout-important > .callout-header, div.callout-important .callout-header {
+  background: var(--caja-clave-fondo) !important; color: #4a2b94;
+}
+div.callout.idea-clave .callout-title-container::before, div.callout-important .callout-title-container::before {
+  content: "★ "; margin-right: 0.35em;
+}
+div.callout-important .callout-icon, div.callout.idea-clave .callout-icon { display: none; }
+
+/* Historia y noticias */
+div.callout.historia, div.callout.noticia { border-left-width: 0.35rem; border-radius: 0 0.4rem 0.4rem 0; margin: 1.4rem 0; }
+div.callout.historia { border-left-color: var(--r-ocre) !important; }
+div.callout.historia > .callout-header, div.callout.historia .callout-header { background: #f8efdc !important; color: #5f3d00; }
+div.callout.historia .callout-title-container::before { content: "◷ "; margin-right: 0.35em; }
+div.callout.noticia { border-left-color: #475569 !important; }
+div.callout.noticia > .callout-header, div.callout.noticia .callout-header { background: #e8edf3 !important; color: #2b3647; }
+div.callout.noticia .callout-title-container::before { content: "▤ "; margin-right: 0.35em; }
+div.callout.historia .callout-icon, div.callout.noticia .callout-icon { display: none; }
+.fuentes-caja { font-size: 0.88rem; color: #4b5563; margin-top: 0.4rem; }
+
+/* Pregunta guía y «La doy por superada si…» */
+.pregunta-guia {
+  margin: 1.2rem 0 1.6rem; padding: 0.8rem 1.1rem;
+  border-left: 0.35rem solid var(--r-violeta); background: var(--caja-clave-fondo);
+  border-radius: 0 0.5rem 0.5rem 0; font-size: 1.12rem; font-style: italic;
+}
+.pregunta-guia > p { display: inline; margin: 0; }
+.pregunta-guia::before { content: "¿"; font-weight: 700; color: var(--r-violeta); margin-right: 0.15em; }
+.pregunta-guia::after { content: "?"; font-weight: 700; color: var(--r-violeta); margin-left: 0.05em; }
+
+/* ---------- Portada de tema y figuras ---------- */
+img.portada, .portada img { display: block; width: 100% !important; max-width: 100% !important; height: auto; margin: 0 0 1.6rem 0; border-radius: 0.6rem; box-shadow: 0 2px 10px rgba(31, 41, 55, 0.12); }
 .apertura, img.apertura { width: 100%; max-width: 100%; border-radius: 10px; margin: 0.2rem 0 1.2rem; }
-
-// Laboratorio interactivo
-.laboratorio {
-  border: 1px solid rgba($c-laboratorio, 0.4);
-  border-top: 4px solid $c-laboratorio;
-  border-radius: 4px;
-  padding: 0.8rem 1rem;
-  margin: 1.5rem 0;
-  background: rgba($c-laboratorio, 0.03);
-  > .laboratorio-titulo { color: $c-laboratorio; font-family: $font-family-sans-serif; font-weight: 600; }
+figure.quarto-float img, figure.quarto-float svg { max-width: 100%; height: auto; }
+figcaption.quarto-float-caption, .figure-caption { font-size: 0.92rem; }
+.figura-ancha { width: 100%; }
+.figura-media { width: 70%; margin-left: auto; margin-right: auto; }
+.quarto-figure img.figure-img, figure.figure > p > img, figure.quarto-float img.img-fluid {
+  background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.7rem;
+  box-shadow: 0 1px 4px rgba(31, 41, 55, 0.07);
+}
+figure.quarto-float { margin: 1.5rem auto; }
+figure.quarto-float > figcaption, .quarto-figure figcaption {
+  margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.45; color: #4b5563; text-align: left;
 }
 
-// Etiqueta de procedencia de resultados
+/* ---------- Referencias: lista final y tarjetas ---------- */
+#refs, .references { font-size: 0.93rem; }
+div.csl-entry { margin-bottom: 0.45rem; }
+div.csl-entry a { word-break: break-word; }
+.cita-bloque { font-size: 0.9rem; color: var(--r-gris); }
+.tippy-content .csl-entry { margin: 0; font-size: 0.9rem; }
+/* La sección vacía «Referencias» que Quarto añade en modo margen, y su entrada del índice */
+section#bibliography { display: none; }
+#TOC li:has(> a[href="#bibliography"]), nav[role="doc-toc"] li:has(> a[href="#bibliography"]) { display: none; }
+.referencias-unidad .ref-final { margin: 0 0 0.5rem 0; padding-left: 1.5rem; text-indent: -1.5rem; font-size: 0.93rem; }
+
+/* ---------- Ejercicios intercalados (scripts/ejercicios.lua + web/ojs/ejercicios.js) ----------
+   Sin JavaScript (o al imprimir) todo el contenido, soluciones incluidas, queda visible. */
+.ejercicio {
+  margin: 1.4rem 0; padding: 0.8rem 1rem 0.9rem 1rem;
+  border: 1px solid #c7ced8; border-left: 0.35rem solid var(--r-azul);
+  border-radius: 0 0.4rem 0.4rem 0; background: #fbfcfe;
+}
+.ejercicio.ej-activo[data-estado="correcto"], .ejercicio.ej-activo[data-estado="hecho"] { border-left-color: var(--r-verde); background: #f3faf8; }
+.ej-cabecera { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 700; color: #134a73; }
+.ej-icono { font-size: 1rem; }
+.ej-estado { margin-left: auto; font-weight: 600; color: #1f7a6f; }
+.ej-oculto, [hidden].ej-oculto { display: none !important; }
+.ej-ui { margin-top: 0.5rem; }
+.ej-opcion { display: flex; gap: 0.5rem; align-items: baseline; margin: 0.25rem 0; cursor: pointer; }
+.ej-opcion input { flex: none; }
+.ej-letra { font-weight: 700; flex: none; }
+.ej-vf { display: flex; gap: 1.5rem; }
+.ej-numero { display: flex; gap: 0.5rem; align-items: center; }
+.ej-entrada { width: 12rem; max-width: 100%; padding: 0.3rem 0.5rem; border: 1px solid #8b95a5; border-radius: 0.25rem; font: inherit; }
+.ej-unidad { color: #4b5563; }
+.ej-texto-libre { width: 100%; padding: 0.4rem 0.5rem; border: 1px solid #8b95a5; border-radius: 0.25rem; font: inherit; }
+.ej-rubrica { margin-top: 0.6rem; padding: 0.4rem 0.7rem; border: 1px dashed #aab2bf; border-radius: 0.3rem; }
+.ej-rubrica legend { font-size: 0.9rem; font-weight: 600; width: auto; padding: 0 0.3rem; }
+.ej-botones { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+.ej-btn { padding: 0.3rem 0.8rem; border: 1px solid var(--r-azul); border-radius: 0.3rem; background: #fff; color: #134a73; font: inherit; font-size: 0.92rem; cursor: pointer; }
+.ej-btn:hover, .ej-btn:focus-visible { background: #eef5fb; outline: 2px solid var(--r-azul); outline-offset: 1px; }
+.ej-btn-principal { background: var(--r-azul); color: #fff; }
+.ej-btn-principal:hover, .ej-btn-principal:focus-visible { background: #14557f; color: #fff; }
+.ej-btn-sec { border-color: #8b95a5; color: #374151; }
+.ej-feedback { margin-top: 0.5rem; font-weight: 600; }
+.ej-feedback:empty { display: none; }
+.ej-feedback.ej-ok { color: #14574f; }
+.ej-feedback.ej-ok::before { content: "✔ "; }
+.ej-feedback.ej-mal { color: #8a3b00; }
+.ej-feedback.ej-mal::before { content: "✗ "; }
+.ej-feedback.ej-aviso { color: #374151; }
+.ej-feedback.ej-aviso::before { content: "ℹ "; }
+.ejercicio .pista, .ejercicio .solucion { margin-top: 0.6rem; padding: 0.5rem 0.8rem; border-radius: 0 0.3rem 0.3rem 0; border-left: 0.25rem solid; }
+.ejercicio .pista { border-left-color: var(--r-ocre); background: #fff7e6; }
+.ejercicio .pista::before { content: "Pista. "; font-weight: 700; color: #6b4400; }
+.ejercicio .solucion { border-left-color: var(--r-verde); background: #eaf6f3; }
+.ejercicio .solucion::before { content: "Solución. "; font-weight: 700; color: #14574f; }
+.ej-progreso { margin: 1rem 0 1.5rem; padding: 0.7rem 1rem; border: 1px solid #c7ced8; border-radius: 0.4rem; background: #f6f8fb; max-width: 100%; }
+.ej-progreso progress { width: 100%; height: 0.8rem; }
+.ej-resumen { margin: 0 0 0.4rem; font-weight: 600; }
+.ej-nota { margin: 0.4rem 0 0; font-size: 0.85rem; color: #4b5563; }
+
+/* ---------- Laboratorio interactivo y etiquetas de procedencia ---------- */
+.laboratorio {
+  border: 1px solid rgba($verde, 0.45); border-top: 4px solid $verde;
+  border-radius: 4px; padding: 0.8rem 1rem; margin: 1.5rem 0; background: rgba($verde, 0.04);
+  > .laboratorio-titulo { color: #1f7a6f; font-family: $font-family-sans-serif; font-weight: 600; }
+}
 .etiqueta-resultado {
   display: inline-block; font-family: $font-family-sans-serif; font-size: 0.75rem;
   padding: 0.05rem 0.5rem; border-radius: 999px; border: 1px solid currentColor;
-  &.calculado { color: $c-definicion; }
-  &.analitico { color: $c-teorema; }
-  &.ilustrativo { color: $c-advertencia; }
+  &.calculado { color: $azul; }
+  &.analitico { color: #1f7a6f; }
+  &.ilustrativo { color: #b45f06; }
 }
 
-// Impresión
+/* ---------- Impresión ---------- */
 @media print {
   body { font-size: 10.5pt; line-height: 1.45; }
   .sidebar, .nav-footer, #quarto-sidebar, .quarto-search { display: none !important; }
   div.definition, div.theorem, div.proposition, div.lemma, div.corollary,
-  div.example, div.remark, .laboratorio, .callout { break-inside: avoid; }
+  div.example, div.remark, .laboratorio, .callout, .ejercicio { break-inside: avoid; }
   .apertura { max-height: 6cm; }
   .laboratorio input, .laboratorio form { display: none; }
+  .ej-botones, .ej-progreso, .ej-ui { display: none !important; }
+  .ej-oculto { display: block !important; }
   details { display: block; }
 }

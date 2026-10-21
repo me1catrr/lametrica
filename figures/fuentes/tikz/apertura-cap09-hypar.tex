@@ -4,10 +4,19 @@
 \def\pgfsysdriver{pgfsys-dvisvgm.def}
 \documentclass[tikz,border=0pt]{standalone}
 \usetikzlibrary{calc}
-\definecolor{lo}{HTML}{0E7490}   % verde azulado del libro (z mínimo)
-\definecolor{hi}{HTML}{B45309}   % ámbar del libro (z máximo)
-\definecolor{fam1}{HTML}{1D4ED8} % generatrices θ¹ = cte
-\definecolor{fam2}{HTML}{15803D} % generatrices θ² = cte
+% PALETA-INICIO (generado por scripts/sincronizar_paleta.jl; no editar a mano)
+\definecolor{azul}{HTML}{1B6CA8}
+\definecolor{naranja}{HTML}{D95F02}
+\definecolor{verde}{HTML}{2A9D8F}
+\definecolor{gris}{HTML}{6B7280}
+\definecolor{violeta}{HTML}{6F42C1}
+\definecolor{ocre}{HTML}{8A5A00}
+\definecolor{malla}{HTML}{CBD5E1}
+% PALETA-FIN
+\colorlet{lo}{verde}   % z mínimo
+\colorlet{hi}{naranja}  % z máximo
+\colorlet{fam1}{azul}  % generatrices θ¹ = cte
+\colorlet{fam2}{violeta} % generatrices θ² = cte
 \begin{document}
 \begin{tikzpicture}[x={(0.95cm,-0.34cm)}, y={(0.62cm,0.56cm)}, z={(0cm,0.85cm)}, line join=round, line cap=round]
   \pgfmathsetmacro{\c}{0.55}   % z = c x y, x,y ∈ [-2,2]

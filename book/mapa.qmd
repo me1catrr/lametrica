@@ -1,0 +1,109 @@
+# Mapa del libro {.unnumbered}
+
+*Siete bloques y 36 temas, de la geometría a los elementos finitos.*
+
+<!-- GENERADO por scripts/generar_estructura.jl a partir de temario.toml. No editar a mano. -->
+
+Este es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como *por escribir* aparecerán a medida que avance el libro.
+
+**Estado:** 8 temas publicados, 1 en reescritura y 27 por escribir (de 36).
+
+## Bloque A · Preludio: la forma que resiste {.unnumbered}
+
+::: {.pregunta-guia}
+Por qué una cáscara de pocos centímetros puede cubrir una gran luz, y qué necesitamos saber para calcularla
+:::
+
+| Tema | Título | Estado | Se apoya en |
+|:--|:--|:--|:--|
+| A1 | [Por qué tensores](01-fundamentos/01-motivacion.html) | ● publicado | — |
+| A2 | Los objetos físicos no dependen de las coordenadas | ○ por escribir | A1 |
+
+## Bloque B · Cálculo tensorial {.unnumbered}
+
+::: {.pregunta-guia}
+Cómo se escriben las leyes de la física para que no dependan del sistema de coordenadas
+:::
+
+| Tema | Título | Estado | Se apoya en |
+|:--|:--|:--|:--|
+| B1 | [Transformación de coordenadas y tensores](01-fundamentos/02-transformacion.html) | ● publicado | A1 |
+| B2 | [Bases covariantes y contravariantes](01-fundamentos/03-bases.html) | ◐ en reescritura | B1 |
+| B3 | [Tensor métrico y componentes físicas](01-fundamentos/04-metrica.html) | ● publicado | B2 |
+| B4 | [Símbolos de Christoffel y derivada covariante](01-fundamentos/05-christoffel.html) | ● publicado | B3 |
+| B5 | Álgebra y análisis tensorial en curvilíneas | ○ por escribir | B4 |
+
+## Bloque C · Geometría de superficies {.unnumbered}
+
+::: {.pregunta-guia}
+Qué es una superficie curva y cómo medimos su forma
+:::
+
+| Tema | Título | Estado | Se apoya en |
+|:--|:--|:--|:--|
+| C1 | [Superficies parametrizadas](02-superficies/06-superficies.html) | ● publicado | B3 |
+| C2 | [Formas fundamentales y fórmulas de Gauss–Weingarten](02-superficies/07-formas-fundamentales.html) | ● publicado | C1, B4 |
+| C3 | [Curvaturas de una superficie](02-superficies/08-curvaturas.html) | ● publicado | C2 |
+| C4 | Curvas sobre superficies: geodésicas y compatibilidad | ○ por escribir | C3 |
+| C5 | [El paraboloide hiperbólico](02-superficies/09-paraboloide.html) | ● publicado | C3 |
+| C6 | Bestiario de láminas: cilindro, esfera y placa oblicua | ○ por escribir | C3 |
+
+## Bloque D · Elasticidad: del sólido a la lámina {.unnumbered}
+
+::: {.pregunta-guia}
+Cómo se deforma una lámina y cuánta energía almacena
+:::
+
+| Tema | Título | Estado | Se apoya en |
+|:--|:--|:--|:--|
+| D1 | Deformación y tensión en el sólido | ○ por escribir | B5 |
+| D2 | Ley de Hooke y energía de deformación | ○ por escribir | D1 |
+| D3 | Cinemática de la lámina | ○ por escribir | C3, D1 |
+| D4 | La hipótesis de Kirchhoff–Love | ○ por escribir | D3 |
+| D5 | Reissner–Mindlin: el cortante transversal | ○ por escribir | D4 |
+| D6 | Relaciones deformación–desplazamiento | ○ por escribir | D5 |
+| D7 | Leyes constitutivas de la lámina | ○ por escribir | D2, D6 |
+| D8 | Principios variacionales | ○ por escribir | D7 |
+
+## Bloque E · Elementos finitos de lámina {.unnumbered}
+
+::: {.pregunta-guia}
+Cómo lo calcula un ordenador sin que el elemento se bloquee
+:::
+
+| Tema | Título | Estado | Se apoya en |
+|:--|:--|:--|:--|
+| E1 | El método de elementos finitos en una barra | ○ por escribir | D8 |
+| E2 | El cuadrilátero bilineal en tensión plana | ○ por escribir | E1 |
+| E3 | El elemento lámina de cuatro nodos | ○ por escribir | E2, D6 |
+| E4 | Matrices deformación–desplazamiento | ○ por escribir | E3 |
+| E5 | Bloqueo y modos espurios | ○ por escribir | E4 |
+| E6 | Interpolación de deformaciones | ○ por escribir | E5 |
+| E7 | Hu–Washizu por subdominios | ○ por escribir | E6, D8 |
+| E8 | Cargas y matriz de masa | ○ por escribir | E7 |
+| E9 | Ensamblaje, condiciones de contorno y autovalores | ○ por escribir | E8 |
+
+## Bloque F · Vibraciones y validación {.unnumbered}
+
+::: {.pregunta-guia}
+A qué frecuencias vibra un paraboloide hiperbólico y cuánto podemos fiarnos del cálculo
+:::
+
+| Tema | Título | Estado | Se apoya en |
+|:--|:--|:--|:--|
+| F1 | Vibraciones de láminas | ○ por escribir | E9 |
+| F2 | Validación estática | ○ por escribir | E9 |
+| F3 | El hypar de bordes curvos | ○ por escribir | F1, C5 |
+| F4 | El hypar de bordes rectos | ○ por escribir | F3 |
+| F5 | Implementación reproducible en Julia | ○ por escribir | F4 |
+
+## Bloque G · Cierre {.unnumbered}
+
+::: {.pregunta-guia}
+Qué hemos aprendido, qué límites tiene el modelo y hacia dónde seguir
+:::
+
+| Tema | Título | Estado | Se apoya en |
+|:--|:--|:--|:--|
+| G1 | Conclusiones y futuro | ○ por escribir | F5 |
+

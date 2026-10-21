@@ -5,8 +5,11 @@ const SALIDA = joinpath(@__DIR__, "..", "..", "figures", "svg")
 mkpath(SALIDA)
 
 # Paleta semántica del libro (styles/lametrica.scss)
-const AZUL, VERDE, AMBAR, VIOLETA, GRIS, MALLA =
-    "#1d4ed8", "#15803d", "#b45309", "#6d28d9", "#4b5563", "#cbd5e1"
+# PALETA-INICIO (generado por scripts/sincronizar_paleta.jl; no editar a mano)
+const AZUL, NARANJA, VERDE, VIOLETA, GRIS, MALLA, OCRE =
+    "#1b6ca8", "#d95f02", "#2a9d8f", "#6f42c1", "#6b7280", "#cbd5e1", "#8a5a00"
+const AMBAR = NARANJA   # alias heredado de las primeras figuras
+# PALETA-FIN
 
 f(x) = string(round(x; digits = 2))
 

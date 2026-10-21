@@ -9,6 +9,10 @@ project:
     - web/ojs/*.js
     - web/datos/*.json
 
+# Los capítulos y las partes se generan desde temario.toml (scripts/generar_estructura.jl).
+metadata-files:
+  - _navegacion.yml
+
 book:
   title: "La métrica"
   subtitle: "De la geometría de las superficies a los elementos finitos"
@@ -18,29 +22,30 @@ book:
   search: true
   sidebar:
     style: docked
-  chapters:
-    - index.qmd
-    - part: "Parte I — Fundamentos tensoriales"
-      chapters:
-        - book/01-fundamentos/01-motivacion.qmd
-        - book/01-fundamentos/02-transformacion.qmd
-        - book/01-fundamentos/03-bases.qmd
-        - book/01-fundamentos/04-metrica.qmd
-        - book/01-fundamentos/05-christoffel.qmd
-    - part: "Parte II — Geometría de superficies"
-      chapters:
-        - book/02-superficies/06-superficies.qmd
-        - book/02-superficies/07-formas-fundamentales.qmd
-        - book/02-superficies/08-curvaturas.qmd
-        - book/02-superficies/09-paraboloide.qmd
-    - book/referencias.qmd
-  appendices:
-    - book/apendices/notacion.qmd
+
+# Ejercicios intercalados y lista de referencias por tema (véanse scripts/*.lua).
+filters:
+  - scripts/ejercicios.lua
+  - scripts/referencias.lua
 
 lang: es
 bibliography: bib/lametrica.bib
 citations-hover: true
 link-citations: true
+reference-section-title: "Referencias"
+citation-location: margin
+
+# Nombres en español de los entornos numerados (def-, thm-, prp-, exm-…).
+crossref:
+  fig-title: "Figura"
+  tbl-title: "Tabla"
+  eq-prefix: "ecuación"
+  thm-title: "Teorema"
+  prp-title: "Proposición"
+  def-title: "Definición"
+  exm-title: "Ejemplo"
+  lem-title: "Lema"
+  cor-title: "Corolario"
 
 format:
   html:

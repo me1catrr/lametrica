@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 539.0 528.5" role="img" aria-label="Vista en planta: rectángulo con bordes paralelos a los ejes principales (curvos) o a las generatrices (rectos)">
 <title>Vista en planta: rectángulo con bordes paralelos a los ejes principales (curvos) o a las generatrices (rectos)</title>
 <rect width="100%" height="100%" fill="#ffffff"/>
-<line x1="38.5" y1="238.0" x2="495.25" y2="238.0" stroke="#4b5563" stroke-width="1.2"/>
-<polygon points="495.25,238.0 486.04,241.89 486.04,234.11" fill="#4b5563"/>
-<text x="499.25" y="254.0" fill="#4b5563" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">X</text>
-<line x1="38.5" y1="238.0" x2="38.5" y2="43.75" stroke="#4b5563" stroke-width="1.2"/>
-<polygon points="38.5,43.75 42.39,52.96 34.61,52.96" fill="#4b5563"/>
-<text x="46.5" y="49.75" fill="#4b5563" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">Y</text>
-<polyline points="38.5,238.0 500.5,238.0" fill="none" stroke="#4b5563" stroke-width="1.2" opacity="1.0" stroke-linejoin="round"/>
-<polyline points="269.5,437.5 269.5,38.5" fill="none" stroke="#4b5563" stroke-width="1.2" opacity="1.0" stroke-linejoin="round"/>
-<polygon points="112.0,343.0 427.0,343.0 427.0,133.0 112.0,133.0 112.0,343.0" fill="#1d4ed8" stroke="#1d4ed8" stroke-width="2.6" opacity="0.12" stroke-linejoin="round"/>
-<polygon points="269.5,401.34 432.84,238.0 269.5,74.66 106.16,238.0 269.5,401.34" fill="#15803d" stroke="#15803d" stroke-width="2.6" opacity="0.12" stroke-linejoin="round"/>
-<polyline points="121.01,386.49 417.99,89.51" fill="none" stroke="#15803d" stroke-width="1.2" opacity="1.0" stroke-dasharray="7 4" stroke-linejoin="round"/>
-<polyline points="380.87,349.37 158.13,126.63" fill="none" stroke="#15803d" stroke-width="1.2" opacity="1.0" stroke-dasharray="7 4" stroke-linejoin="round"/>
-<text x="395.5" y="358.75" fill="#1d4ed8" font-size="14" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">bordes curvos</text>
-<text x="282.1" y="67.9" fill="#15803d" font-size="14" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">bordes rectos</text>
-<text x="269.5" y="479.5" fill="#4b5563" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">planta: ejes principales (X, Y) y ejes de las generatrices (a 45°)</text>
+<line x1="38.5" y1="238.0" x2="495.25" y2="238.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="495.25,238.0 486.04,241.89 486.04,234.11" fill="#6b7280"/>
+<text x="499.25" y="254.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">X</text>
+<line x1="38.5" y1="238.0" x2="38.5" y2="43.75" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="38.5,43.75 42.39,52.96 34.61,52.96" fill="#6b7280"/>
+<text x="46.5" y="49.75" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">Y</text>
+<polyline points="38.5,238.0 500.5,238.0" fill="none" stroke="#6b7280" stroke-width="1.2" opacity="1.0" stroke-linejoin="round"/>
+<polyline points="269.5,437.5 269.5,38.5" fill="none" stroke="#6b7280" stroke-width="1.2" opacity="1.0" stroke-linejoin="round"/>
+<polygon points="112.0,343.0 427.0,343.0 427.0,133.0 112.0,133.0 112.0,343.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.6" opacity="0.12" stroke-linejoin="round"/>
+<polygon points="269.5,401.34 432.84,238.0 269.5,74.66 106.16,238.0 269.5,401.34" fill="#2a9d8f" stroke="#2a9d8f" stroke-width="2.6" opacity="0.12" stroke-linejoin="round"/>
+<polyline points="121.01,386.49 417.99,89.51" fill="none" stroke="#2a9d8f" stroke-width="1.2" opacity="1.0" stroke-dasharray="7 4" stroke-linejoin="round"/>
+<polyline points="380.87,349.37 158.13,126.63" fill="none" stroke="#2a9d8f" stroke-width="1.2" opacity="1.0" stroke-dasharray="7 4" stroke-linejoin="round"/>
+<text x="395.5" y="358.75" fill="#1b6ca8" font-size="14" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">bordes curvos</text>
+<text x="282.1" y="67.9" fill="#2a9d8f" font-size="14" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">bordes rectos</text>
+<text x="269.5" y="479.5" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">planta: ejes principales (X, Y) y ejes de las generatrices (a 45°)</text>
 </svg>

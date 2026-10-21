@@ -1,0 +1,11 @@
+# Paleta única del libro (la misma que usa Resonancia). Fuente de verdad:
+# scripts/sincronizar_paleta.jl la copia a styles/lametrica.scss, a
+# julia/scripts/figuras_lib.jl y a las fuentes TikZ (bloques PALETA-INICIO/FIN).
+# Regla de accesibilidad: el color nunca es la única señal (rótulo, trazo o icono).
+azul: "#1b6ca8"      # definiciones, base covariante {gᵢ, aα}
+naranja: "#d95f02"   # base recíproca, énfasis, advertencias
+verde: "#2a9d8f"     # teoremas y proposiciones, resultados, configuración deformada
+gris: "#6b7280"      # demostraciones, observaciones, ejes
+violeta: "#6f42c1"   # idea clave, normal n̂
+ocre: "#8a5a00"      # historia, pistas
+malla: "#cbd5e1"     # mallas y guías de las figuras

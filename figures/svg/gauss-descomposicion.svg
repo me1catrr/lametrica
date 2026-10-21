@@ -197,17 +197,17 @@
 <polygon points="416.2,642.3 395.84,670.7 412.0,682.08 432.37,653.68 416.2,642.3" fill="#e8edf6" stroke="#b8c4d9" stroke-width="0.6" opacity="0.95" stroke-linejoin="round"/>
 <polygon points="395.84,670.7 375.47,700.57 391.63,711.96 412.0,682.08 395.84,670.7" fill="#e8edf6" stroke="#b8c4d9" stroke-width="0.6" opacity="0.95" stroke-linejoin="round"/>
 <polygon points="375.47,700.57 355.1,731.92 371.27,743.31 391.63,711.96 375.47,700.57" fill="#e8edf6" stroke="#b8c4d9" stroke-width="0.6" opacity="0.95" stroke-linejoin="round"/>
-<polygon points="415.41,294.58 272.85,446.81 385.98,593.73 528.55,441.5 415.41,294.58" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.2" opacity="0.75" stroke-linejoin="round"/>
-<line x1="400.7" y1="444.15" x2="385.8" y2="405.53" stroke="#6d28d9" stroke-width="1.6" stroke-dasharray="3 3"/>
-<polygon points="385.8,405.53 392.75,412.72 385.48,415.52" fill="#6d28d9"/>
-<text x="393.8" y="403.53" fill="#6d28d9" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">n</text>
-<polyline points="385.87,516.54 400.7,554.98 415.52,482.59" fill="none" stroke="#4b5563" stroke-width="1" opacity="1.0" stroke-dasharray="4 3" stroke-linejoin="round"/>
-<line x1="400.7" y1="444.15" x2="385.87" y2="516.54" stroke="#1d4ed8" stroke-width="2.6"/>
-<polygon points="385.87,516.54 383.91,506.74 391.54,508.3" fill="#1d4ed8"/>
-<text x="321.87" y="510.54" fill="#1d4ed8" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">Γᵞ₁₁aᵞ</text>
-<line x1="400.7" y1="444.15" x2="415.52" y2="482.59" stroke="#6d28d9" stroke-width="2.6"/>
-<polygon points="415.52,482.59 408.57,475.4 415.84,472.6" fill="#6d28d9"/>
-<text x="423.52" y="496.59" fill="#6d28d9" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">b₁₁ n</text>
+<polygon points="415.41,294.58 272.85,446.81 385.98,593.73 528.55,441.5 415.41,294.58" fill="#ede9fe" stroke="#6f42c1" stroke-width="1.2" opacity="0.75" stroke-linejoin="round"/>
+<line x1="400.7" y1="444.15" x2="385.8" y2="405.53" stroke="#6f42c1" stroke-width="1.6" stroke-dasharray="3 3"/>
+<polygon points="385.8,405.53 392.75,412.72 385.48,415.52" fill="#6f42c1"/>
+<text x="393.8" y="403.53" fill="#6f42c1" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">n</text>
+<polyline points="385.87,516.54 400.7,554.98 415.52,482.59" fill="none" stroke="#6b7280" stroke-width="1" opacity="1.0" stroke-dasharray="4 3" stroke-linejoin="round"/>
+<line x1="400.7" y1="444.15" x2="385.87" y2="516.54" stroke="#1b6ca8" stroke-width="2.6"/>
+<polygon points="385.87,516.54 383.91,506.74 391.54,508.3" fill="#1b6ca8"/>
+<text x="321.87" y="510.54" fill="#1b6ca8" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">Γᵞ₁₁aᵞ</text>
+<line x1="400.7" y1="444.15" x2="415.52" y2="482.59" stroke="#6f42c1" stroke-width="2.6"/>
+<polygon points="415.52,482.59 408.57,475.4 415.84,472.6" fill="#6f42c1"/>
+<text x="423.52" y="496.59" fill="#6f42c1" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">b₁₁ n</text>
 <line x1="400.7" y1="444.15" x2="400.7" y2="554.98" stroke="#1f2937" stroke-width="3.2"/>
 <polygon points="400.7,554.98 396.8,545.77 404.59,545.77" fill="#1f2937"/>
 <text x="408.7" y="558.98" fill="#1f2937" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">a₁,₁</text>

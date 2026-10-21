@@ -1,6 +1,8 @@
-# Estrategia de visualización científica — propuesta (pendiente de aprobación)
+# Estrategia de visualización científica
 
-Estado: **propuesta**. No se ha implementado nada de lo que aquí se propone como nuevo (TikZ, PGFPlots, FigureLabs, CI de figuras). Fecha: 2026-10-20.
+> **Estado (2026-10-21):** parcialmente adoptada en el rediseño (`planning/07-plan-fases.md`): ruta TikZ → SVG versionado, paleta única sincronizada (`styles/paleta.yml`), registro y verificación de figuras (`scripts/verificar_figuras.jl`), FigureLabs solo para portadas conceptuales. PGFPlots, el catálogo completo y la validación de figuras en CI siguen como propuesta.
+
+Estado original: **propuesta**. No se ha implementado nada de lo que aquí se propone como nuevo (TikZ, PGFPlots, FigureLabs, CI de figuras). Fecha: 2026-10-20.
 
 ## 0. Auditoría del estado actual
 
