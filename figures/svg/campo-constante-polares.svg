@@ -1,47 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 452.0 425.0" role="img" aria-label="Un campo vectorial constante visto en polares: sus componentes Vʳ y Vᶿ cambian de un punto a otro">
 <title>Un campo vectorial constante visto en polares: sus componentes Vʳ y Vᶿ cambian de un punto a otro</title>
 <rect width="100%" height="100%" fill="#ffffff"/>
-<line x1="82.0" y1="334.0" x2="419.5" y2="334.0" stroke="#4b5563" stroke-width="1.2"/>
-<polygon points="419.5,334.0 410.29,337.89 410.29,330.11" fill="#4b5563"/>
-<text x="423.5" y="350.0" fill="#4b5563" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">x</text>
-<line x1="82.0" y1="334.0" x2="82.0" y2="32.5" stroke="#4b5563" stroke-width="1.2"/>
-<polygon points="82.0,32.5 85.89,41.71 78.11,41.71" fill="#4b5563"/>
-<text x="90.0" y="38.5" fill="#4b5563" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">y</text>
+<line x1="82.0" y1="334.0" x2="419.5" y2="334.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="419.5,334.0 410.29,337.89 410.29,330.11" fill="#6b7280"/>
+<text x="423.5" y="350.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">x</text>
+<line x1="82.0" y1="334.0" x2="82.0" y2="32.5" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="82.0,32.5 85.89,41.71 78.11,41.71" fill="#6b7280"/>
+<text x="90.0" y="38.5" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">y</text>
 <polyline points="316.0,334.0 315.92,327.77 315.67,321.55 315.25,315.33 314.67,309.13 313.93,302.94 313.02,296.78 311.95,290.64 310.71,284.54 309.31,278.47 307.76,272.43 306.04,266.45 304.16,260.51 302.12,254.62 299.93,248.79 297.59,243.02 295.09,237.31 292.44,231.67 289.64,226.1 286.69,220.62 283.6,215.21 280.37,209.88 277.0,204.64 273.48,199.5 269.83,194.45 266.05,189.5 262.14,184.65 258.1,179.91 253.94,175.28 249.65,170.75 245.25,166.35 240.72,162.06 236.09,157.9 231.35,153.86 226.5,149.95 221.55,146.17 216.5,142.52 211.36,139.0 206.12,135.63 200.79,132.4 195.38,129.31 189.9,126.36 184.33,123.56 178.69,120.91 172.98,118.41 167.21,116.07 161.38,113.88 155.49,111.84 149.55,109.96 143.57,108.24 137.53,106.69 131.46,105.29 125.36,104.05 119.22,102.98 113.06,102.07 106.87,101.33 100.67,100.75 94.45,100.33 88.23,100.08 82.0,100.0" fill="none" stroke="#cbd5e1" stroke-width="1.2" opacity="1.0" stroke-linejoin="round"/>
-<line x1="316.0" y1="334.0" x2="406.0" y2="334.0" stroke="#1d4ed8" stroke-width="2"/>
-<polygon points="406.0,334.0 396.79,337.89 396.79,330.11" fill="#1d4ed8"/>
-<line x1="406.0" y1="334.0" x2="406.0" y2="334.0" stroke="#15803d" stroke-width="2"/>
-<polygon points="406.0,334.0 396.79,337.89 396.79,330.11" fill="#15803d"/>
-<line x1="316.0" y1="334.0" x2="406.0" y2="334.0" stroke="#b45309" stroke-width="3.2"/>
-<polygon points="406.0,334.0 396.79,337.89 396.79,330.11" fill="#b45309"/>
+<line x1="316.0" y1="334.0" x2="406.0" y2="334.0" stroke="#1b6ca8" stroke-width="2"/>
+<polygon points="406.0,334.0 396.79,337.89 396.79,330.11" fill="#1b6ca8"/>
+<line x1="406.0" y1="334.0" x2="406.0" y2="334.0" stroke="#2a9d8f" stroke-width="2"/>
+<polygon points="406.0,334.0 396.79,337.89 396.79,330.11" fill="#2a9d8f"/>
+<line x1="316.0" y1="334.0" x2="406.0" y2="334.0" stroke="#d95f02" stroke-width="3.2"/>
+<polygon points="406.0,334.0 396.79,337.89 396.79,330.11" fill="#d95f02"/>
 <circle cx="316.0" cy="334.0" r="3" fill="#1f2937"/>
-<line x1="297.53" y1="242.88" x2="373.88" y2="210.6" stroke="#1d4ed8" stroke-width="2"/>
-<polygon points="373.88,210.6 366.91,217.77 363.88,210.6" fill="#1d4ed8"/>
-<line x1="373.88" y1="210.6" x2="387.53" y2="242.88" stroke="#15803d" stroke-width="2"/>
-<polygon points="387.53,242.88 380.35,235.91 387.53,232.88" fill="#15803d"/>
-<line x1="297.53" y1="242.88" x2="387.53" y2="242.88" stroke="#b45309" stroke-width="3.2"/>
-<polygon points="387.53,242.88 378.32,246.77 378.32,238.98" fill="#b45309"/>
+<line x1="297.53" y1="242.88" x2="373.88" y2="210.6" stroke="#1b6ca8" stroke-width="2"/>
+<polygon points="373.88,210.6 366.91,217.77 363.88,210.6" fill="#1b6ca8"/>
+<line x1="373.88" y1="210.6" x2="387.53" y2="242.88" stroke="#2a9d8f" stroke-width="2"/>
+<polygon points="387.53,242.88 380.35,235.91 387.53,232.88" fill="#2a9d8f"/>
+<line x1="297.53" y1="242.88" x2="387.53" y2="242.88" stroke="#d95f02" stroke-width="3.2"/>
+<polygon points="387.53,242.88 378.32,246.77 378.32,238.98" fill="#d95f02"/>
 <circle cx="297.53" cy="242.88" r="3" fill="#1f2937"/>
-<line x1="245.03" y1="166.14" x2="288.72" y2="121.16" stroke="#1d4ed8" stroke-width="2"/>
-<polygon points="288.72,121.16 285.09,130.48 279.5,125.05" fill="#1d4ed8"/>
-<line x1="288.72" y1="121.16" x2="335.03" y2="166.14" stroke="#15803d" stroke-width="2"/>
-<polygon points="335.03,166.14 325.71,162.52 331.14,156.93" fill="#15803d"/>
-<line x1="245.03" y1="166.14" x2="335.03" y2="166.14" stroke="#b45309" stroke-width="3.2"/>
-<polygon points="335.03,166.14 325.82,170.03 325.82,162.24" fill="#b45309"/>
+<line x1="245.03" y1="166.14" x2="288.72" y2="121.16" stroke="#1b6ca8" stroke-width="2"/>
+<polygon points="288.72,121.16 285.09,130.48 279.5,125.05" fill="#1b6ca8"/>
+<line x1="288.72" y1="121.16" x2="335.03" y2="166.14" stroke="#2a9d8f" stroke-width="2"/>
+<polygon points="335.03,166.14 325.71,162.52 331.14,156.93" fill="#2a9d8f"/>
+<line x1="245.03" y1="166.14" x2="335.03" y2="166.14" stroke="#d95f02" stroke-width="3.2"/>
+<polygon points="335.03,166.14 325.82,170.03 325.82,162.24" fill="#d95f02"/>
 <circle cx="245.03" cy="166.14" r="3" fill="#1f2937"/>
-<line x1="166.79" y1="115.9" x2="178.61" y2="85.51" stroke="#1d4ed8" stroke-width="2"/>
-<polygon points="178.61,85.51 178.9,95.5 171.64,92.68" fill="#1d4ed8"/>
-<line x1="178.61" y1="85.51" x2="256.79" y2="115.9" stroke="#15803d" stroke-width="2"/>
-<polygon points="256.79,115.9 246.8,116.19 249.62,108.94" fill="#15803d"/>
-<line x1="166.79" y1="115.9" x2="256.79" y2="115.9" stroke="#b45309" stroke-width="3.2"/>
-<polygon points="256.79,115.9 247.58,119.8 247.58,112.01" fill="#b45309"/>
+<line x1="166.79" y1="115.9" x2="178.61" y2="85.51" stroke="#1b6ca8" stroke-width="2"/>
+<polygon points="178.61,85.51 178.9,95.5 171.64,92.68" fill="#1b6ca8"/>
+<line x1="178.61" y1="85.51" x2="256.79" y2="115.9" stroke="#2a9d8f" stroke-width="2"/>
+<polygon points="256.79,115.9 246.8,116.19 249.62,108.94" fill="#2a9d8f"/>
+<line x1="166.79" y1="115.9" x2="256.79" y2="115.9" stroke="#d95f02" stroke-width="3.2"/>
+<polygon points="256.79,115.9 247.58,119.8 247.58,112.01" fill="#d95f02"/>
 <circle cx="166.79" cy="115.9" r="3" fill="#1f2937"/>
-<line x1="98.55" y1="100.59" x2="99.0" y2="94.24" stroke="#1d4ed8" stroke-width="2"/>
-<polygon points="99.0,94.24 102.24,103.7 94.47,103.15" fill="#1d4ed8"/>
-<line x1="99.0" y1="94.24" x2="188.55" y2="100.59" stroke="#15803d" stroke-width="2"/>
-<polygon points="188.55,100.59 179.09,103.82 179.64,96.05" fill="#15803d"/>
-<line x1="98.55" y1="100.59" x2="188.55" y2="100.59" stroke="#b45309" stroke-width="3.2"/>
-<polygon points="188.55,100.59 179.34,104.48 179.34,96.69" fill="#b45309"/>
+<line x1="98.55" y1="100.59" x2="99.0" y2="94.24" stroke="#1b6ca8" stroke-width="2"/>
+<polygon points="99.0,94.24 102.24,103.7 94.47,103.15" fill="#1b6ca8"/>
+<line x1="99.0" y1="94.24" x2="188.55" y2="100.59" stroke="#2a9d8f" stroke-width="2"/>
+<polygon points="188.55,100.59 179.09,103.82 179.64,96.05" fill="#2a9d8f"/>
+<line x1="98.55" y1="100.59" x2="188.55" y2="100.59" stroke="#d95f02" stroke-width="3.2"/>
+<polygon points="188.55,100.59 179.34,104.48 179.34,96.69" fill="#d95f02"/>
 <circle cx="98.55" cy="100.59" r="3" fill="#1f2937"/>
-<text x="226.0" y="383.5" fill="#4b5563" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">V constante (ámbar) = componente radial (azul) + tangencial (verde)</text>
+<text x="226.0" y="383.5" fill="#6b7280" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">V constante (ámbar) = componente radial (azul) + tangencial (verde)</text>
 </svg>
