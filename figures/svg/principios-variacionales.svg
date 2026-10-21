@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672.0 322.0" role="img" aria-label="Tres principios variacionales de la elasticidad: energía potencial (campo u), Hellinger-Reissner (u y sigma) y Hu-Washizu (u, epsilon y sigma)">
+<title>Tres principios variacionales de la elasticidad: energía potencial (campo u), Hellinger-Reissner (u y sigma) y Hu-Washizu (u, epsilon y sigma)</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<polygon points="42.0,133.0 224.0,133.0 224.0,42.0 42.0,42.0 42.0,133.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.4" opacity="0.13" stroke-linejoin="round"/>
+<text x="133.0" y="76.58" fill="#1b6ca8" font-size="14" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">Energía potencial</text>
+<text x="133.0" y="107.52" fill="#1f2937" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">campos: u</text>
+<polygon points="245.0,133.0 427.0,133.0 427.0,42.0 245.0,42.0 245.0,133.0" fill="#2a9d8f" stroke="#2a9d8f" stroke-width="2.4" opacity="0.13" stroke-linejoin="round"/>
+<text x="336.0" y="76.58" fill="#2a9d8f" font-size="14" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">Hellinger–Reissner</text>
+<text x="336.0" y="107.52" fill="#1f2937" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">campos: u, σ</text>
+<polygon points="448.0,133.0 630.0,133.0 630.0,42.0 448.0,42.0 448.0,133.0" fill="#6f42c1" stroke="#6f42c1" stroke-width="2.4" opacity="0.13" stroke-linejoin="round"/>
+<text x="539.0" y="76.58" fill="#6f42c1" font-size="14" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">Hu–Washizu</text>
+<text x="539.0" y="107.52" fill="#1f2937" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">campos: u, ε, σ</text>
+<line x1="224.0" y1="87.5" x2="245.0" y2="87.5" stroke="#6b7280" stroke-width="2"/>
+<polygon points="245.0,87.5 235.79,91.39 235.79,83.61" fill="#6b7280"/>
+<line x1="427.0" y1="87.5" x2="448.0" y2="87.5" stroke="#6b7280" stroke-width="2"/>
+<polygon points="448.0,87.5 438.79,91.39 438.79,83.61" fill="#6b7280"/>
+<text x="42.0" y="175.0" fill="#1f2937" font-size="13" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">Se añaden campos y multiplicadores de Lagrange:</text>
+<text x="42.0" y="203.0" fill="#1f2937" font-size="13" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">ε − ε(u) = 0 (compatibilidad) y σ = ∂W/∂ε (constitutiva).</text>
+<text x="42.0" y="245.0" fill="#6b7280" font-size="12" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">Cada principio se hace estacionario: da equilibrio, compatibilidad y constitutiva.</text>
+</svg>

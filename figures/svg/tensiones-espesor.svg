@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 704.0 317.0" role="img" aria-label="Distribución de la tensión en el espesor: constante para la membrana, lineal para la flexión, y su suma">
+<title>Distribución de la tensión en el espesor: constante para la membrana, lineal para la flexión, y su suma</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<polyline points="109.0,253.0 109.0,73.0" fill="none" stroke="#6b7280" stroke-width="1.8" opacity="1.0" stroke-linejoin="round"/>
+<polygon points="109.0,253.0 190.0,253.0 190.0,73.0 109.0,73.0 109.0,253.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.2" opacity="0.2" stroke-linejoin="round"/>
+<line x1="109.0" y1="235.0" x2="190.0" y2="235.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="190.0,235.0 184.47,237.34 184.47,232.66" fill="#1b6ca8"/>
+<line x1="109.0" y1="199.0" x2="190.0" y2="199.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="190.0,199.0 184.47,201.34 184.47,196.66" fill="#1b6ca8"/>
+<line x1="109.0" y1="163.0" x2="190.0" y2="163.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="190.0,163.0 184.47,165.34 184.47,160.66" fill="#1b6ca8"/>
+<line x1="109.0" y1="127.0" x2="190.0" y2="127.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="190.0,127.0 184.47,129.34 184.47,124.66" fill="#1b6ca8"/>
+<line x1="109.0" y1="91.0" x2="190.0" y2="91.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="190.0,91.0 184.47,93.34 184.47,88.66" fill="#1b6ca8"/>
+<text x="100.0" y="280.0" fill="#1f2937" font-size="12" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">membrana: σ = N/t</text>
+<polyline points="343.0,253.0 343.0,73.0" fill="none" stroke="#6b7280" stroke-width="1.8" opacity="1.0" stroke-linejoin="round"/>
+<polygon points="343.0,253.0 262.0,253.0 424.0,73.0 343.0,73.0 343.0,253.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.2" opacity="0.2" stroke-linejoin="round"/>
+<line x1="343.0" y1="235.0" x2="278.2" y2="235.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="278.2,235.0 283.73,232.66 283.73,237.34" fill="#1b6ca8"/>
+<line x1="343.0" y1="199.0" x2="310.6" y2="199.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="310.6,199.0 316.13,196.66 316.13,201.34" fill="#1b6ca8"/>
+<line x1="343.0" y1="163.0" x2="343.0" y2="163.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="343.0,163.0 337.47,165.34 337.47,160.66" fill="#1b6ca8"/>
+<line x1="343.0" y1="127.0" x2="375.4" y2="127.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="375.4,127.0 369.87,129.34 369.87,124.66" fill="#1b6ca8"/>
+<line x1="343.0" y1="91.0" x2="407.8" y2="91.0" stroke="#1b6ca8" stroke-width="1.4"/>
+<polygon points="407.8,91.0 402.27,93.34 402.27,88.66" fill="#1b6ca8"/>
+<text x="334.0" y="280.0" fill="#1f2937" font-size="12" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">flexión: σ = 12 M θ³ / t³</text>
+<polyline points="550.0,253.0 550.0,73.0" fill="none" stroke="#6b7280" stroke-width="1.8" opacity="1.0" stroke-linejoin="round"/>
+<polygon points="550.0,253.0 586.0,253.0 676.0,73.0 550.0,73.0 550.0,253.0" fill="#2a9d8f" stroke="#2a9d8f" stroke-width="2.2" opacity="0.2" stroke-linejoin="round"/>
+<line x1="550.0" y1="235.0" x2="595.0" y2="235.0" stroke="#2a9d8f" stroke-width="1.4"/>
+<polygon points="595.0,235.0 589.47,237.34 589.47,232.66" fill="#2a9d8f"/>
+<line x1="550.0" y1="199.0" x2="613.0" y2="199.0" stroke="#2a9d8f" stroke-width="1.4"/>
+<polygon points="613.0,199.0 607.47,201.34 607.47,196.66" fill="#2a9d8f"/>
+<line x1="550.0" y1="163.0" x2="631.0" y2="163.0" stroke="#2a9d8f" stroke-width="1.4"/>
+<polygon points="631.0,163.0 625.47,165.34 625.47,160.66" fill="#2a9d8f"/>
+<line x1="550.0" y1="127.0" x2="649.0" y2="127.0" stroke="#2a9d8f" stroke-width="1.4"/>
+<polygon points="649.0,127.0 643.47,129.34 643.47,124.66" fill="#2a9d8f"/>
+<line x1="550.0" y1="91.0" x2="667.0" y2="91.0" stroke="#2a9d8f" stroke-width="1.4"/>
+<polygon points="667.0,91.0 661.47,93.34 661.47,88.66" fill="#2a9d8f"/>
+<text x="541.0" y="280.0" fill="#1f2937" font-size="12" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">suma</text>
+</svg>

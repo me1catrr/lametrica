@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 413.0 413.0" role="img" aria-label="Elemento diferencial con sus tensiones normales sigma11 y sigma22 y tangenciales sigma12 y sigma21 sobre las cuatro caras">
+<title>Elemento diferencial con sus tensiones normales sigma11 y sigma22 y tangenciales sigma12 y sigma21 sobre las cuatro caras</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<polygon points="154.0,259.0 259.0,259.0 259.0,154.0 154.0,154.0 154.0,259.0" fill="#eef5fb" stroke="#6b7280" stroke-width="2" opacity="1.0" stroke-linejoin="round"/>
+<line x1="259.0" y1="206.5" x2="316.75" y2="206.5" stroke="#1b6ca8" stroke-width="3"/>
+<polygon points="316.75,206.5 307.54,210.39 307.54,202.61" fill="#1b6ca8"/>
+<text x="320.75" y="198.5" fill="#1b6ca8" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">σ¹¹</text>
+<line x1="154.0" y1="206.5" x2="96.25" y2="206.5" stroke="#1b6ca8" stroke-width="3"/>
+<polygon points="96.25,206.5 105.46,202.61 105.46,210.39" fill="#1b6ca8"/>
+<line x1="206.5" y1="154.0" x2="206.5" y2="96.25" stroke="#2a9d8f" stroke-width="3"/>
+<polygon points="206.5,96.25 210.39,105.46 202.61,105.46" fill="#2a9d8f"/>
+<text x="214.5" y="100.25" fill="#2a9d8f" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">σ²²</text>
+<line x1="206.5" y1="259.0" x2="206.5" y2="316.75" stroke="#2a9d8f" stroke-width="3"/>
+<polygon points="206.5,316.75 202.61,307.54 210.39,307.54" fill="#2a9d8f"/>
+<line x1="259.0" y1="175.0" x2="259.0" y2="128.8" stroke="#d95f02" stroke-width="2.6"/>
+<polygon points="259.0,128.8 262.89,138.01 255.11,138.01" fill="#d95f02"/>
+<text x="265.0" y="126.8" fill="#d95f02" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">σ¹²</text>
+<line x1="154.0" y1="238.0" x2="154.0" y2="284.2" stroke="#d95f02" stroke-width="2.6"/>
+<polygon points="154.0,284.2 150.11,274.99 157.89,274.99" fill="#d95f02"/>
+<line x1="175.0" y1="154.0" x2="221.2" y2="154.0" stroke="#d95f02" stroke-width="2.6"/>
+<polygon points="221.2,154.0 211.99,157.89 211.99,150.11" fill="#d95f02"/>
+<text x="225.2" y="146.0" fill="#d95f02" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">σ²¹</text>
+<line x1="238.0" y1="259.0" x2="191.8" y2="259.0" stroke="#d95f02" stroke-width="2.6"/>
+<polygon points="191.8,259.0 201.01,255.11 201.01,262.89" fill="#d95f02"/>
+<text x="206.5" y="211.5" fill="#6b7280" font-size="15" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic">dV</text>
+<text x="49.0" y="358.75" fill="#6b7280" font-size="13" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">Equilibrio de momentos: σ¹² = σ²¹</text>
+</svg>

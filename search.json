@@ -34,7 +34,7 @@
     "href": "book/mapa.html",
     "title": "Mapa del libro",
     "section": "",
-    "text": "Bloque A · Preludio: la forma que resiste\nSiete bloques y 36 temas, de la geometría a los elementos finitos.\nEste es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como por escribir aparecerán a medida que avance el libro.\nEstado: 13 temas publicados, 0 en reescritura y 23 por escribir (de 36).",
+    "text": "Bloque A · Preludio: la forma que resiste\nSiete bloques y 36 temas, de la geometría a los elementos finitos.\nEste es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como por escribir aparecerán a medida que avance el libro.\nEstado: 21 temas publicados, 0 en reescritura y 15 por escribir (de 36).",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -74,7 +74,7 @@
     "href": "book/mapa.html#bloque-d-elasticidad-del-sólido-a-la-lámina",
     "title": "Mapa del libro",
     "section": "Bloque D · Elasticidad: del sólido a la lámina",
-    "text": "Bloque D · Elasticidad: del sólido a la lámina\n\nCómo se deforma una lámina y cuánta energía almacena\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nD1\nDeformación y tensión en el sólido\n○ por escribir\nB5\n\n\nD2\nLey de Hooke y energía de deformación\n○ por escribir\nD1\n\n\nD3\nCinemática de la lámina\n○ por escribir\nC3, D1\n\n\nD4\nLa hipótesis de Kirchhoff–Love\n○ por escribir\nD3\n\n\nD5\nReissner–Mindlin: el cortante transversal\n○ por escribir\nD4\n\n\nD6\nRelaciones deformación–desplazamiento\n○ por escribir\nD5\n\n\nD7\nLeyes constitutivas de la lámina\n○ por escribir\nD2, D6\n\n\nD8\nPrincipios variacionales\n○ por escribir\nD7",
+    "text": "Bloque D · Elasticidad: del sólido a la lámina\n\nCómo se deforma una lámina y cuánta energía almacena\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nD1\nDeformación y tensión en el sólido\n● publicado\nB5\n\n\nD2\nLey de Hooke y energía de deformación\n● publicado\nD1\n\n\nD3\nCinemática de la lámina\n● publicado\nC3, D1\n\n\nD4\nLa hipótesis de Kirchhoff–Love\n● publicado\nD3\n\n\nD5\nReissner–Mindlin: el cortante transversal\n● publicado\nD4\n\n\nD6\nRelaciones deformación–desplazamiento\n● publicado\nD5\n\n\nD7\nLeyes constitutivas de la lámina\n● publicado\nD2, D6\n\n\nD8\nPrincipios variacionales\n● publicado\nD7",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -1603,6 +1603,875 @@
     "crumbs": [
       "Bloque C · Geometría de superficies",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Bestiario de láminas: cilindro, esfera, cono y placa oblicua</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Álgebra y análisis tensorial en curvilíneas (divergencia y teorema de la divergencia) y Símbolos de Christoffel.\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#objetivos-y-prerrequisitos",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "",
+    "text": "describir la configuración deformada con la base \\(\\mathbf{G}_i=\\partial\\mathbf{R}/\\partial\\theta^i\\) y el gradiente de deformación;\ncalcular la deformación de Green–Lagrange \\(E_{ij}=\\tfrac12(G_{ij}-g_{ij})\\) y su límite de pequeñas deformaciones \\(\\varepsilon_{ij}\\);\nexplicar por qué un giro rígido no produce deformación;\ndefinir la tensión de Cauchy y escribir el equilibrio \\(\\sigma^{ij}{}_{\\|j}+b^i=0\\) en coordenadas curvilíneas;\ncomprobar todo en Julia con polares.\n\n\n\n\nSección 14.1 · Configuración y desplazamiento · Sección 14.2 · Medidas de deformación\nSección 14.3 · Tensión de Cauchy y equilibrio · Sección 14.4 · Práctica guiada en Julia",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#sec-config-d1",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#sec-config-d1",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "14.1 Configuración y desplazamiento",
+    "text": "14.1 Configuración y desplazamiento\nUn sólido ocupa una región de referencia, descrita con coordenadas materiales \\(\\theta^i\\) que viajan con las partículas. El vector de posición de una partícula es \\(\\mathbf{r}(\\theta)\\) antes de deformarse y \\(\\mathbf{R}(\\theta)=\\mathbf{r}(\\theta)+\\mathbf{u}(\\theta)\\) después, con \\(\\mathbf{u}\\) el desplazamiento. Cada configuración tiene su base natural: \\[\n\\mathbf{g}_i=\\frac{\\partial\\mathbf{r}}{\\partial\\theta^i},\\qquad\n\\mathbf{G}_i=\\frac{\\partial\\mathbf{R}}{\\partial\\theta^i}=\\mathbf{g}_i+\\frac{\\partial\\mathbf{u}}{\\partial\\theta^i},\n\\qquad g_{ij}=\\mathbf{g}_i\\cdot\\mathbf{g}_j,\\quad G_{ij}=\\mathbf{G}_i\\cdot\\mathbf{G}_j .\n\\tag{14.1}\\]\nEl gradiente de deformación \\(\\mathbf{F}=\\mathbf{G}_i\\otimes\\mathbf{g}^i\\) lleva cada vector material \\(\\mathbf{g}_i\\) a su transformado \\(\\mathbf{G}_i\\): \\(\\mathbf{F}\\,\\mathbf{g}_i=\\mathbf{G}_i\\) (Figura 14.1). Un elemento de línea \\(d\\mathbf{r}\\) pasa a \\(d\\mathbf{R}=\\mathbf{F}\\,d\\mathbf{r}\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#sec-medidas-def",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#sec-medidas-def",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "14.2 Medidas de deformación",
+    "text": "14.2 Medidas de deformación\nLa longitud de un elemento de línea cambia de \\(d\\ell^2=g_{ij}\\,d\\theta^id\\theta^j\\) a \\(dL^2=G_{ij}\\,d\\theta^id\\theta^j\\). La diferencia es lo que mide la deformación.\n\nDefinición 14.1 (Deformación de Green–Lagrange) \\[\nE_{ij}=\\tfrac12\\bigl(G_{ij}-g_{ij}\\bigr),\\qquad\n\\frac{dL^2-d\\ell^2}{2\\,d\\ell^2}=E_{ij}\\,\\frac{d\\theta^i}{d\\ell}\\frac{d\\theta^j}{d\\ell} .\n\\tag{14.2}\\] Es un tensor covariante simétrico (seis componentes en 3D). En términos de \\(\\mathbf{F}\\), el tensor de Cauchy–Green derecho es \\(C=F^{\\mathsf T}F\\) y \\(E=\\tfrac12(C-I)\\) en una base cartesiana.\n\n\nProposición 14.1 (Green–Lagrange en función del desplazamiento) Con \\(u_i=\\mathbf{u}\\cdot\\mathbf{g}_i\\) las componentes covariantes del desplazamiento y \\(u_{i\\|j}=\\partial_ju_i-\\Gamma^k_{ij}u_k\\) su derivada covariante, \\[\nE_{ij}=\\tfrac12\\bigl(u_{i\\|j}+u_{j\\|i}+u^k{}_{\\|i}\\,u_{k\\|j}\\bigr),\\qquad u^k{}_{\\|i}=g^{kl}u_{l\\|i} .\n\\tag{14.3}\\]\n\n\n\n\n\n\n\nNotaDemostración de Proposición 14.1\n\n\n\n\n\n\\(\\mathbf{G}_i=\\mathbf{g}_i+\\mathbf{u}_{,i}\\) y \\(\\mathbf{u}_{,i}=u_{k\\|i}\\,\\mathbf{g}^k\\) (derivada de \\(\\mathbf{u}=u_k\\mathbf{g}^k\\) con ecuación 6.1 y \\(\\mathbf{g}^k_{,i}=-\\Gamma^k_{ij}\\mathbf{g}^j\\)). Entonces \\(G_{ij}=g_{ij}+\\mathbf{g}_i\\cdot\\mathbf{u}_{,j}+\\mathbf{g}_j\\cdot\\mathbf{u}_{,i}+\\mathbf{u}_{,i}\\cdot\\mathbf{u}_{,j}=g_{ij}+u_{i\\|j}+u_{j\\|i}+u_{k\\|i}u_{l\\|j}g^{kl}\\). Dividiendo por dos se obtiene ecuación 14.3. \\(\\blacksquare\\)\n\n\n\n\nDefinición 14.2 (Pequeñas deformaciones) Si \\(\\|\\nabla\\mathbf{u}\\|\\ll1\\) se desprecia el término cuadrático: \\[\n\\varepsilon_{ij}=\\tfrac12\\bigl(u_{i\\|j}+u_{j\\|i}\\bigr) .\n\\tag{14.4}\\] \\(\\varepsilon_{ij}\\) es el tensor de deformación lineal. El error de ecuación 14.4 respecto de \\(E_{ij}\\) es de orden \\(\\|\\nabla\\mathbf{u}\\|^2\\).\n\n\nEjemplo 14.1 (Ejemplo resuelto: cizalla simple y giro rígido) Cizalla. \\(\\mathbf{u}=(\\gamma y,0)\\) en cartesianas: \\(F=\\begin{pmatrix}1&\\gamma\\\\0&1\\end{pmatrix}\\), \\(C=F^{\\mathsf T}F=\\begin{pmatrix}1&\\gamma\\\\\\gamma&1+\\gamma^2\\end{pmatrix}\\) y \\[\nE=\\tfrac12(C-I)=\\begin{pmatrix}0&\\gamma/2\\\\\\gamma/2&\\gamma^2/2\\end{pmatrix},\\qquad\n\\varepsilon=\\begin{pmatrix}0&\\gamma/2\\\\\\gamma/2&0\\end{pmatrix}.\n\\] Para \\(\\gamma=0{,}2\\): \\(E_{12}=0{,}1\\) y \\(E_{22}=0{,}02\\) (que \\(\\varepsilon\\) ignora). La deformación angular de ingeniería es \\(\\gamma_{12}=2\\varepsilon_{12}=\\gamma\\) (el cambio del ángulo recto).\nGiro rígido. Con \\(\\mathbf{u}\\) una rotación finita de ángulo \\(\\alpha\\), \\(F=\\begin{pmatrix}\\cos\\alpha&-\\sin\\alpha\\\\\\sin\\alpha&\\cos\\alpha\\end{pmatrix}\\neq I\\) pero \\(C=F^{\\mathsf T}F=I\\) y \\(E=0\\): Green–Lagrange no «ve» los giros rígidos. (La deformación lineal \\(\\varepsilon\\) sí los ve a segundo orden, por eso solo vale para giros pequeños.)\n\n\n\n\n\n\n\nAdvertenciaErrores frecuentes\n\n\n\n\n\\(\\nabla\\mathbf{u}\\neq0\\) no implica deformación: un giro rígido tiene \\(\\nabla\\mathbf{u}\\neq0\\) y \\(E=0\\).\n\\(\\gamma_{12}\\) de ingeniería no es \\(\\varepsilon_{12}\\): \\(\\gamma_{12}=2\\varepsilon_{12}\\) (por eso las matrices de rigidez usan el vector \\((\\varepsilon_{11},\\varepsilon_{22},2\\varepsilon_{12})\\)).\nLas componentes \\(E_{ij}\\) covariantes no son «físicas»: en polares, \\(E_{22}\\) lleva el factor \\(r^2\\).\n\n\n\nPon a prueba lo anterior. Los ejercicios se corrigen en tu navegador y no envían nada a ningún sitio.\n\nCon \\(F=\\begin{pmatrix}1{,}15&0{,}25\\\\0&0{,}95\\end{pmatrix}\\), ¿cuánto vale \\(E_{11}=\\tfrac12(C_{11}-1)\\)?\n\n\\(C_{11}=F_{11}^2+F_{21}^2\\).\n\n\n\\(C_{11}=1{,}15^2=1{,}3225\\) y \\(E_{11}=0{,}16125\\).\n\n\n\nEn una cizalla simple \\(\\mathbf{u}=(\\gamma y,0)\\) con \\(\\gamma=0{,}2\\), ¿cuánto vale \\(E_{12}\\)?\n\n\\(E_{12}=\\gamma/2=0{,}1\\).\n\n\n\nUn giro rígido de cualquier ángulo tiene deformación de Green–Lagrange nula.\n\nVerdadero. \\(C=F^{\\mathsf T}F=I\\) para toda rotación, luego \\(E=\\tfrac12(C-I)=0\\).\n\n\n\n\n\n\n\n\nNotaUn poco de historia: la tensión de Cauchy\n\n\n\nEl concepto moderno de tensión se debe a Augustin-Louis Cauchy, que presentó en 1822 a la Academia de París (publicado en 1823) un trabajo en el que introdujo el vector tracción sobre un elemento de superficie y argumentó, con el razonamiento del tetraedro, que las tracciones sobre cualquier orientación se obtienen de un tensor (el que hoy llamamos tensor de tensiones). En memorias posteriores (1827–1828) desarrolló las ecuaciones de equilibrio. Su teoría del continuo competía entonces con enfoques moleculares como el de Navier.\nFuentes (secundarias): Cauchy, Structurae; Foce (1995), La teoría de la elasticidad entre lo molecular y el continuo; Azadi, arXiv:1706.08518. No se consultó el texto original de 1823. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#sec-cauchy-d1",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#sec-cauchy-d1",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "14.3 Tensión de Cauchy y equilibrio",
+    "text": "14.3 Tensión de Cauchy y equilibrio\nSobre una superficie interior de normal unitaria \\(\\mathbf{n}\\) actúa por unidad de área una tracción \\(\\mathbf{t}\\). Cauchy probó que depende linealmente de \\(\\mathbf{n}\\): \\(\\mathbf{t}=\\boldsymbol{\\sigma}\\,\\mathbf{n}\\), con \\(\\boldsymbol{\\sigma}\\) el tensor de tensiones, de componentes contravariantes \\(\\sigma^{ij}\\) (Figura 14.2 de la sección siguiente).\n\nProposición 14.2 (Ecuación de equilibrio) Para pequeñas deformaciones, si sobre cada elemento actúan fuerzas de volumen \\(\\mathbf{b}\\) por unidad de volumen, el equilibrio de fuerzas y de momentos equivale a \\[\n\\sigma^{ij}{}_{\\|j}+b^i=0,\\qquad \\sigma^{ij}=\\sigma^{ji},\n\\tag{14.5}\\] con la divergencia covariante \\(\\sigma^{ij}{}_{\\|j}=\\dfrac1{\\sqrt g}\\partial_j\\bigl(\\sqrt g\\,\\sigma^{ij}\\bigr)+\\Gamma^i_{jk}\\sigma^{jk}\\).\n\n\n\n\n\n\n\nNotaDemostración de Proposición 14.2\n\n\n\n\n\nEl equilibrio de fuerzas de una porción \\(\\Omega\\) es \\(\\oint_{\\partial\\Omega}\\boldsymbol{\\sigma}\\mathbf{n}\\,dS+\\int_\\Omega\\mathbf{b}\\,dV=\\mathbf{0}\\). Con el teorema de la divergencia (Teorema 7.1) aplicado a cada componente, \\(\\int_\\Omega(\\nabla\\!\\cdot\\!\\boldsymbol{\\sigma}+\\mathbf{b})\\,dV=\\mathbf{0}\\) para todo \\(\\Omega\\), luego \\(\\nabla\\!\\cdot\\!\\boldsymbol{\\sigma}+\\mathbf{b}=\\mathbf{0}\\) punto a punto. La expresión en componentes es la divergencia covariante de un tensor de orden dos. La simetría sale del equilibrio de momentos de un elemento diferencial (sin pares distribuidos). \\(\\blacksquare\\)\n\n\n\n\nEjemplo 14.2 (Ejemplo resuelto: una tensión uniforme está en equilibrio) Sea \\(\\boldsymbol{\\sigma}=\\begin{pmatrix}2&0{,}5\\\\0{,}5&-1\\end{pmatrix}\\) uniforme en cartesianas, sin fuerzas de volumen. Su divergencia es evidentemente nula. Visto en polares, \\(\\sigma^{ij}(r,\\theta)\\) varía de punto a punto (se transforma con \\(J\\)), y aun así ecuación 14.5 da cero: los términos \\(\\partial_j(\\sqrt g\\sigma^{ij})/\\sqrt g\\) y \\(\\Gamma^i_{jk}\\sigma^{jk}\\) se compensan. Es la misma lección del tema de Christoffel: descontar el giro de la base.\n\n\n\n\n\n\n\nFigura 14.2: Elemento diferencial con sus tensiones normales \\(\\sigma^{11}\\) y \\(\\sigma^{22}\\) y tangenciales \\(\\sigma^{12}=\\sigma^{21}\\) sobre las cuatro caras.\n\n\n\nPon a prueba lo anterior.\n\n¿Qué expresa \\(\\sigma^{ij}{}_{\\|j}+b^i=0\\)?\n\n\nLa ley de Hooke\nEl equilibrio de fuerzas de cada elemento\nLa compatibilidad de las deformaciones\nLa conservación de la energía\n\n\n\nEl equilibrio de fuerzas: la divergencia de las tensiones más las fuerzas de volumen es nula. Hooke relaciona tensión y deformación; la compatibilidad, deformaciones y desplazamientos.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#sec-julia-d1",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#sec-julia-d1",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "14.4 Práctica guiada en Julia",
+    "text": "14.4 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se comprueban Green–Lagrange (fórmula con derivadas covariantes frente a la métrica deformada), el giro rígido y el equilibrio de un tensor uniforme en polares.\n\n\n\nusing Geometria, LinearAlgebra\n\nF = [1.15 0.25; 0.0 0.95]\n(C = cauchy_green(F), E = green_lagrange(Matrix(1.0I, 2, 2), cauchy_green(F)))\n\n(C = [1.3224999999999998 0.2875; 0.2875 0.965], E = [0.1612499999999999 0.14375; 0.14375 -0.017500000000000016])\n\n\n\n# Green–Lagrange en polares: fórmula (derivadas covariantes) frente a la métrica deformada\nbase(t) = base_polar(t[1], t[2]); t0 = [1.4, 0.7]\nucart(x) = [0.05 * x[1] * x[2], 0.02 * x[1]^2 - 0.03 * x[2]]\nxcart(t) = [t[1] * cos(t[2]), t[1] * sin(t[2])]\nudn(t) = transpose(base(t)) * ucart(xcart(t))\nR(t) = xcart(t) + ucart(xcart(t))\nG = metrica(jacobiana_numerica(R, t0))\n(directa = green_lagrange(metrica(base(t0)), G), formula = green_lagrange_desde_u(base, udn, t0),\n lineal = deformacion_pequena(base, udn, t0))\n\n(directa = [0.063882871787873 -0.040236672173956045; -0.040236672173956045 -0.0881419436599642], formula = [0.06388287184393909 -0.040236672144850966; -0.040236672144850966 -0.08814194379470423], lineal = [0.06141343278504018 -0.04033598023054991; -0.04033598023054991 -0.09078366154875075])\n\n\n\n# Un tensor uniforme: su divergencia es nula también en componentes polares\nS = [2.0 0.5; 0.5 -1.0]\nσpol(t) = (J = inv(base_polar(t[1], t[2])); J * S * J')\n(σ_en_polares = σpol(t0), divergencia = divergencia_tensor(base, σpol, t0))\n\n(σ_en_polares = [1.247675579344592 -0.9951364453804069; -0.9951364453804069 -0.12636509150234282], divergencia = [9.428949288015076e-11, -9.447775894955157e-11])\n\n\nLas identidades están en julia/test/runtests.jl (conjuntos «Elasticidad del sólido» y «Green–Lagrange en curvilíneas»).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#sec-ejercicios-d1",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#sec-ejercicios-d1",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "14.5 Ejercicios",
+    "text": "14.5 Ejercicios\n\nEstiramiento. Con el gradiente del Ejemplo 14.1, calcula el estiramiento \\(\\lambda=\\sqrt{G_{11}/g_{11}}\\) en la dirección \\(\\mathbf{g}_1\\) para \\(F\\) de la portada.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(G_{11}=1{,}3225\\), \\(g_{11}=1\\): \\(\\lambda=1{,}15\\), y \\(E_{11}=\\tfrac12(\\lambda^2-1)=0{,}161\\) ✓.\n\n\n\nTracción uniaxial. Para \\(\\mathbf{u}=(\\varepsilon x,0)\\) calcula \\(E_{11}\\) y \\(\\varepsilon_{11}\\) y compara.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(E_{11}=\\varepsilon+\\varepsilon^2/2\\), \\(\\varepsilon_{11}=\\varepsilon\\): el término cuadrático es el error de la teoría lineal.\n\n\n\nPolares. Demuestra que para \\(u^r=\\alpha r\\), \\(u^\\theta=0\\) (expansión uniforme) \\(\\varepsilon_{rr}=\\alpha\\) y \\(\\varepsilon_{\\theta\\theta}=\\alpha r^2\\) (componente covariante).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(u_r=\\alpha r\\) y \\(u_\\theta=0\\); \\(\\varepsilon_{rr}=\\partial_ru_r=\\alpha\\); \\(\\varepsilon_{\\theta\\theta}=\\partial_\\theta u_\\theta-\\Gamma^r_{\\theta\\theta}u_r=-(-r)(\\alpha r)=\\alpha r^2\\).\n\n\n\nEquilibrio. Comprueba con divergencia_tensor que \\(\\sigma^{rr}=A/r^2\\), \\(\\sigma^{\\theta\\theta}=-A/r^4\\), \\(\\sigma^{r\\theta}=0\\) está en equilibrio (problema de Lamé sin fuerzas de volumen).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nσ(t) = [A/t[1]^2 0; 0 -A/t[1]^4] y divergencia_tensor(base, σ, t) ≈ [0, 0]: la componente radial vale \\(\\partial_r(r\\sigma^{rr})/r+\\Gamma^r_{\\theta\\theta}\\sigma^{\\theta\\theta}=-A/r^3+(-r)(-A/r^4)=0\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#la-doy-por-superada-si",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo \\(\\mathbf{G}_i=\\mathbf{g}_i+\\mathbf{u}_{,i}\\) y calculo \\(E_{ij}=\\tfrac12(G_{ij}-g_{ij})\\).\nSé que Green–Lagrange no se altera por giros rígidos y que \\(\\varepsilon_{ij}\\) es su límite lineal.\nCalculo \\(u_{i\\|j}\\) y \\(\\varepsilon_{ij}\\) con los símbolos de Christoffel.\nDefino la tensión de Cauchy y escribo \\(\\sigma^{ij}{}_{\\|j}+b^i=0\\).\nDistingo \\(\\gamma_{12}\\) de ingeniería de \\(\\varepsilon_{12}\\).\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo, resultados estándar de mecánica del continuo (Flügge 1972; Romano et al. 2006; Novozhilov 1959). Las identidades se comprueban con Geometria (tests citados).\nQué queda pendiente. El equilibrio se demuestra para pequeñas deformaciones (la distinción entre tensiones de Cauchy y de Piola–Kirchhoff en grandes deformaciones no se trata); notas históricas con fuentes secundarias; figuras con revisión visual pendiente; referencias no leídas línea a línea.\n\n\n\n\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.\n\nRomano, A., R. Lancellota, y A. Marasco. 2006. Continuum Mechanics using Mathematica. Birkhäuser, Boston.\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D1-deformacion-tension.html#referencias-unidad",
+    "href": "book/D-elasticidad/D1-deformacion-tension.html#referencias-unidad",
+    "title": "14  Deformación y tensión en el sólido",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.\n\n\nRomano, A., R. Lancellota, y A. Marasco. 2006. Continuum Mechanics using Mathematica. Birkhäuser, Boston.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deformación y tensión en el sólido</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html",
+    "href": "book/D-elasticidad/D2-hooke-energia.html",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Deformación y tensión en el sólido.\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#objetivos-y-prerrequisitos",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "",
+    "text": "escribir la ley de Hooke generalizada \\(\\sigma^{ij}=C^{ijkl}\\varepsilon_{kl}\\) y razonar por qué tiene 81, 36, 21 o 2 constantes según las simetrías;\nescribir el tensor isótropo con \\(\\lambda\\) y \\(\\mu\\) y pasar a \\(E\\) y \\(\\nu\\);\ncalcular la energía de deformación y justificar por qué \\(E&gt;0\\) y \\(-1&lt;\\nu&lt;\\tfrac12\\);\ndeducir la ley de tensión plana y obtener su matriz \\(3\\times3\\);\ncomprobar en Julia que Hooke es un tensor (vale en polares).\n\n\n\n\nSección 15.1 · La ley de Hooke generalizada · Sección 15.2 · Isotropía\nSección 15.3 · Energía de deformación · Sección 15.4 · Tensión plana · Sección 15.5 · Práctica guiada",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#sec-hooke-general",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#sec-hooke-general",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "15.1 La ley de Hooke generalizada",
+    "text": "15.1 La ley de Hooke generalizada\nUn material elástico lineal tiene una relación lineal entre la tensión y la deformación, que se escribe con un tensor de orden cuatro: \\[\n\\sigma^{ij}=C^{ijkl}\\,\\varepsilon_{kl}.\n\\tag{15.1}\\]\nEl tensor \\(C^{ijkl}\\) tiene \\(3^4=81\\) componentes en 3D. Las simetrías las reducen:\n\n\n\n\n\n\n\n\nSimetría\nRazón\nComponentes independientes\n\n\n\n\nninguna\n—\n81\n\n\n\\(C^{ijkl}=C^{jikl}\\)\n\\(\\sigma^{ij}\\) simétrico\n54\n\n\n\\(C^{ijkl}=C^{ijlk}\\)\n\\(\\varepsilon_{kl}\\) simétrico\n36\n\n\n\\(C^{ijkl}=C^{klij}\\)\nexiste una energía de deformación \\(W(\\varepsilon)\\)\n21 (material anisótropo general)\n\n\nisotropía\nsin direcciones privilegiadas\n2\n\n\n\nCon las dos primeras simetrías, \\(\\sigma\\) y \\(\\varepsilon\\) son vectores de 6 componentes y \\(C\\) una matriz \\(6\\times6\\) (36 coeficientes); la simetría respecto de la energía la hace simétrica (21).\n\n\n\n\n\n\nTipIdea clave\n\n\n\n\\(C^{ijkl}\\) es un tensor: sus componentes cambian al cambiar de coordenadas con la ley de transformación de orden cuatro. Si se escribe con la métrica, como en el caso isótropo, vale en cualquier sistema sin más trabajo (Sección 15.5).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#sec-isotropia",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#sec-isotropia",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "15.2 Isotropía",
+    "text": "15.2 Isotropía\n\nProposición 15.1 (Ley de Hooke isótropa) Un material isótropo y elástico lineal queda caracterizado por dos constantes, las de Lamé \\(\\lambda\\) y \\(\\mu\\): \\[\nC^{ijkl}=\\lambda\\,g^{ij}g^{kl}+\\mu\\bigl(g^{ik}g^{jl}+g^{il}g^{jk}\\bigr),\\qquad\n\\sigma^{ij}=\\lambda\\,(\\varepsilon^k{}_k)\\,g^{ij}+2\\mu\\,\\varepsilon^{ij} .\n\\tag{15.2}\\] En términos del módulo de Young \\(E\\) y el coeficiente de Poisson \\(\\nu\\): \\[\n\\mu=G=\\frac{E}{2(1+\\nu)},\\qquad \\lambda=\\frac{E\\,\\nu}{(1+\\nu)(1-2\\nu)},\\qquad\n\\varepsilon_{ij}=\\frac1E\\Bigl[(1+\\nu)\\,\\sigma_{ij}-\\nu\\,\\sigma^k{}_k\\,g_{ij}\\Bigr] .\n\\tag{15.3}\\]\n\n\n\n\n\n\n\nNotaIdea de la demostración de Proposición 15.1\n\n\n\n\n\nUn tensor de orden cuatro isótropo (invariante por cualquier rotación) se construye solo con la métrica, porque no hay otro tensor invariante que se pueda formar con índices libres; las tres combinaciones posibles \\(g^{ij}g^{kl}\\), \\(g^{ik}g^{jl}\\), \\(g^{il}g^{jk}\\) se reducen a dos por la simetría \\(C^{ijkl}=C^{ijlk}\\). De ahí ecuación 15.2. Para ver la relación con \\(E,\\nu\\): en tracción uniaxial \\(\\sigma^{11}=\\sigma\\) (cartesiano), ecuación 15.2 da \\(\\varepsilon_{11}=\\sigma/E\\) con \\(E=\\mu(3\\lambda+2\\mu)/(\\lambda+\\mu)\\) y \\(\\varepsilon_{22}=-\\nu\\varepsilon_{11}\\) con \\(\\nu=\\lambda/(2(\\lambda+\\mu))\\); invirtiendo se obtienen ecuación 15.3. \\(\\square\\)\n\n\n\n\nEjemplo 15.1 (Ejemplo resuelto: constantes del acero) Con \\(E=210\\,000\\) MPa y \\(\\nu=0{,}3\\): \\[\n\\mu=\\frac{210\\,000}{2\\cdot1{,}3}=80\\,769\\ \\text{MPa},\\qquad\n\\lambda=\\frac{210\\,000\\cdot0{,}3}{1{,}3\\cdot0{,}4}=121\\,154\\ \\text{MPa}.\n\\] En tracción uniaxial de \\(\\sigma=100\\) MPa: \\(\\varepsilon_{11}=100/210\\,000=4{,}76\\cdot10^{-4}\\) y \\(\\varepsilon_{22}=\\varepsilon_{33}=-0{,}3\\cdot4{,}76\\cdot10^{-4}=-1{,}43\\cdot10^{-4}\\).\n\nPon a prueba lo anterior. Los ejercicios se corrigen en tu navegador y no envían nada a ningún sitio.\n\nPara \\(E=210\\,000\\) MPa y \\(\\nu=0{,}3\\), ¿cuánto vale el módulo de cortante \\(\\mu=G\\)?\n\n\\(G=E/(2(1+\\nu))=210\\,000/2{,}6=80\\,769\\) MPa.\n\n\n\n¿Cuántas constantes elásticas independientes tiene un material isótropo elástico lineal?\n\n\n1\n2\n21\n36\n\n\n\nDos (\\(\\lambda,\\mu\\) o, equivalentemente, \\(E,\\nu\\)). 21 es el caso anisótropo general y 36 es el número antes de imponer la simetría de la energía.\n\n\n\n\n\n\n\n\nNotaUn poco de historia: «ut tensio, sic vis»\n\n\n\nRobert Hooke enunció su ley de la elasticidad en forma de anagrama latino en 1676 y publicó la solución en 1678: ut tensio, sic vis («como la extensión, así la fuerza»). En esa obra afirmaba conocer la ley desde 1660. La proporcionalidad entre fuerza y deformación es lo que permite escribir, en el límite de pequeñas deformaciones, la relación lineal ecuación 15.1; su generalización a tensores de orden cuatro vino más de un siglo después, con la teoría del continuo de Cauchy.\nFuentes (secundarias): Hooke’s law, Wikipedia; Hooke’s Law, Princeton MAE. Las fuentes dan fechas distintas para el primer enunciado (1660, 1676); no se verificó la generalización de Cauchy ni la de Green con fuentes específicas. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#sec-energia",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#sec-energia",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "15.3 Energía de deformación",
+    "text": "15.3 Energía de deformación\nLa energía almacenada por unidad de volumen es \\[\nW=\\tfrac12\\,\\sigma^{ij}\\varepsilon_{ij}=\\tfrac12\\,C^{ijkl}\\varepsilon_{ij}\\varepsilon_{kl}.\n\\tag{15.4}\\] Su derivada respecto de la deformación es la tensión: \\(\\sigma^{ij}=\\partial W/\\partial\\varepsilon_{ij}\\). Para que el material sea estable (energía positiva para cualquier deformación no nula) hace falta \\(\\mu&gt;0\\) y \\(3\\lambda+2\\mu&gt;0\\), es decir, \\[\nE&gt;0,\\qquad -1&lt;\\nu&lt;\\tfrac12 .\n\\]\n\n\n\n\n\n\nAdvertenciaErrores frecuentes\n\n\n\n\n\\(\\nu=0{,}5\\) no es «material normal»: es el límite incompresible (\\(\\lambda\\to\\infty\\)), donde la ley de Hooke con \\(E,\\nu\\) deja de ser útil sin una formulación especial.\n\\(W=\\tfrac12\\sigma\\varepsilon\\) solo vale en el régimen lineal: en la curva no lineal del dibujo, la energía es el área bajo la curva, no un triángulo.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#sec-plana",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#sec-plana",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "15.4 Tensión plana",
+    "text": "15.4 Tensión plana\nEn una lámina delgada se supone que la tensión normal a la superficie media es nula, \\(\\sigma^{33}=0\\) (la carga en el espesor es despreciable). Entonces \\(\\varepsilon_{33}\\) ya no es libre: se condensa.\n\nProposición 15.2 (Tensión plana) Con \\(\\sigma^{33}=0\\) la ley de Hooke isótropa se reduce a un problema bidimensional con las constantes \\[\n\\lambda^*=\\frac{E\\nu}{1-\\nu^2},\\qquad \\mu=\\frac{E}{2(1+\\nu)},\\qquad\nC^{\\alpha\\beta\\gamma\\delta}=\\lambda^*a^{\\alpha\\beta}a^{\\gamma\\delta}+\\mu\\bigl(a^{\\alpha\\gamma}a^{\\beta\\delta}+a^{\\alpha\\delta}a^{\\beta\\gamma}\\bigr),\n\\tag{15.5}\\] y en una base ortonormal la matriz en notación de Voigt \\((\\varepsilon_{11},\\varepsilon_{22},2\\varepsilon_{12})\\) es \\[\nD=\\frac{E}{1-\\nu^2}\\begin{pmatrix}1&\\nu&0\\\\\\nu&1&0\\\\0&0&\\tfrac{1-\\nu}2\\end{pmatrix}.\n\\tag{15.6}\\] Equivale a la condensación estática \\(C^{\\alpha\\beta\\gamma\\delta}=E^{\\alpha\\beta\\gamma\\delta}-E^{33\\alpha\\beta}E^{33\\gamma\\delta}/E^{3333}\\) del tensor 3D.\n\n\n\n\n\n\n\nNotaDemostración de Proposición 15.2\n\n\n\n\n\nDe \\(\\sigma^{33}=\\lambda\\,\\mathrm{tr}\\,\\varepsilon+2\\mu\\,\\varepsilon_{33}=0\\) con \\(\\mathrm{tr}\\,\\varepsilon=\\varepsilon^\\alpha{}_\\alpha+\\varepsilon_{33}\\) se despeja \\(\\varepsilon_{33}=-\\dfrac{\\lambda}{\\lambda+2\\mu}\\,\\varepsilon^\\alpha{}_\\alpha\\). Sustituyendo en \\(\\sigma^{\\alpha\\beta}=\\lambda(\\varepsilon^\\gamma{}_\\gamma+\\varepsilon_{33})a^{\\alpha\\beta}+2\\mu\\varepsilon^{\\alpha\\beta}\\) queda \\(\\sigma^{\\alpha\\beta}=\\Bigl(\\lambda-\\dfrac{\\lambda^2}{\\lambda+2\\mu}\\Bigr)\\varepsilon^\\gamma{}_\\gamma a^{\\alpha\\beta}+2\\mu\\varepsilon^{\\alpha\\beta}\\), y \\(\\lambda-\\dfrac{\\lambda^2}{\\lambda+2\\mu}=\\dfrac{2\\lambda\\mu}{\\lambda+2\\mu}=\\dfrac{E\\nu}{1-\\nu^2}=\\lambda^*\\). \\(\\blacksquare\\)\n\n\n\n\nEjemplo 15.2 (Ejemplo resuelto: la matriz de tensión plana del acero) Con \\(E=210\\,000\\) MPa y \\(\\nu=0{,}3\\): \\(E/(1-\\nu^2)=230\\,769\\) MPa y \\[\nD=\\begin{pmatrix}230\\,769&69\\,231&0\\\\69\\,231&230\\,769&0\\\\0&0&80\\,769\\end{pmatrix}\\ \\text{MPa}.\n\\] El término de cortante \\(\\tfrac{1-\\nu}{2}\\cdot230\\,769=80\\,769\\) MPa es el módulo \\(G\\) del material (con \\(2\\varepsilon_{12}\\) en el vector de deformaciones).\n\nPon a prueba lo anterior.\n\nPara \\(E=210\\,000\\) MPa y \\(\\nu=0{,}3\\), ¿cuánto vale \\(D_{11}=E/(1-\\nu^2)\\) de tensión plana?\n\n\\(210\\,000/(1-0{,}09)=230\\,769\\) MPa.\n\n\n\n¿Y \\(D_{12}=\\nu E/(1-\\nu^2)\\)?\n\n\\(0{,}3\\cdot230\\,769=69\\,231\\) MPa.\n\n\n\nEn tensión plana, \\(\\varepsilon_{33}=0\\).\n\nFalso. En tensión plana es \\(\\sigma^{33}=0\\) y \\(\\varepsilon_{33}=-\\nu(\\varepsilon_{11}+\\varepsilon_{22})/(1-\\nu)\\neq0\\) (el espesor cambia por el efecto de Poisson).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#sec-julia-d2",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#sec-julia-d2",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "15.5 Práctica guiada en Julia",
+    "text": "15.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se verifica Hooke isótropo, la energía, la matriz de tensión plana y que el tensor vale en polares sin cambiar nada más que la métrica.\n\n\n\nusing Geometria, LinearAlgebra\n\nE, ν = 210e3, 0.3\nλ, μ = lame(E, ν)\nD = matriz_tension_plana(E, ν)\n(λ = λ, μ = μ, D = round.(D; digits = 0))\n\n(λ = 121153.84615384616, μ = 80769.23076923077, D = [230769.0 69231.0 0.0; 69231.0 230769.0 0.0; 0.0 0.0 80769.0])\n\n\n\n# Hooke en cartesianas y en polares: la energía es la misma\nC = hooke_contravariante(Matrix(1.0I, 3, 3), E, ν)\nε = [1e-3 2e-4 0; 2e-4 -5e-4 1e-4; 0 1e-4 3e-4]\npol(t) = [cos(t[2]) -t[1] * sin(t[2]) 0; sin(t[2]) t[1] * cos(t[2]) 0; 0 0 1]\nB = pol([1.4, 0.7])\nCpol = hooke_contravariante(inv(metrica(B)), E, ν)\nεpol = transpose(B) * ε * B                                   # componentes covariantes en polares\n(W_cartesianas = energia_deformacion(C, ε), W_polares = energia_deformacion(Cpol, εpol))\n\n(W_cartesianas = 0.15507692307692308, W_polares = 0.1550769230769231)\n\n\n\n# Tensión plana como condensación de Hooke 3D\nε3 = [1e-3 3e-4 0; 3e-4 -4e-4 0; 0 0 -ν / (1 - ν) * (1e-3 - 4e-4)]\nσ3 = tension_hooke(C, ε3)\nσvoigt = D * [1e-3, -4e-4, 2 * 3e-4]\n(σ33 = σ3[3, 3], σ11_σ22_σ12 = [σ3[1, 1], σ3[2, 2], σ3[1, 2]], matriz_plana = σvoigt)\n\n(σ33 = -1.4210854715202004e-14, σ11_σ22_σ12 = [203.07692307692307, -23.07692307692308, 48.46153846153845], matriz_plana = [203.07692307692307, -23.07692307692308, 48.461538461538446])",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#sec-ejercicios-d2",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#sec-ejercicios-d2",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "15.6 Ejercicios",
+    "text": "15.6 Ejercicios\n\nCompresibilidad. Calcula el módulo de compresibilidad \\(K=\\lambda+\\tfrac23\\mu\\) del acero y comprueba que es \\(E/(3(1-2\\nu))\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(K=121\\,154+53\\,846=175\\,000\\) MPa \\(=210\\,000/(3\\cdot0{,}4)\\) ✓.\n\n\n\nEnergía. Calcula \\(W\\) para la tracción uniaxial de \\(\\sigma=100\\) MPa del Ejemplo 15.1.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(W=\\tfrac12\\sigma\\varepsilon_{11}=\\tfrac12\\cdot100\\cdot4{,}76\\cdot10^{-4}=0{,}0238\\) MPa (N·mm/mm³).\n\n\n\nIsótropo y base. Demuestra que ecuación 15.2 no depende del sistema de coordenadas.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nEstá construido solo con \\(g^{ij}\\), que es un tensor: sus componentes se transforman con \\(J\\) y el resultado es un tensor de orden cuatro. Se comprueba en la práctica con la energía en polares.\n\n\n\nPoisson. ¿Qué ocurre con \\(\\lambda\\) cuando \\(\\nu\\to0{,}5\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\lambda=E\\nu/((1+\\nu)(1-2\\nu))\\to\\infty\\): el material se vuelve incompresible.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#la-doy-por-superada-si",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nJustifico por qué \\(C^{ijkl}\\) tiene 81, 36, 21 y 2 constantes según las simetrías.\nEscribo la ley de Hooke isótropa con la métrica y paso entre \\((\\lambda,\\mu)\\) y \\((E,\\nu)\\).\nCalculo la energía de deformación y sé las condiciones de estabilidad.\nDeduzco la ley de tensión plana y su matriz \\(3\\times3\\), y sé qué pasa con \\(\\varepsilon_{33}\\).\nSé que Hooke es un tensor y funciona igual en polares.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo, resultados estándar de elasticidad lineal (Flügge 1972; Novozhilov 1959; Romano et al. 2006). Las constantes y la tensión plana se verifican con Geometria (conjunto «Elasticidad del sólido» y «Rigidez de la lámina»).\nQué queda pendiente. La demostración de la isotropía es una idea; materiales anisótropos y ortótropos (laminados) no se tratan; nota histórica con fuentes secundarias; figuras con revisión visual pendiente; referencias no leídas línea a línea.\n\n\n\n\n\n\nRomano, A., R. Lancellota, y A. Marasco. 2006. Continuum Mechanics using Mathematica. Birkhäuser, Boston.\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D2-hooke-energia.html#referencias-unidad",
+    "href": "book/D-elasticidad/D2-hooke-energia.html#referencias-unidad",
+    "title": "15  Ley de Hooke y energía de deformación",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.\n\n\nRomano, A., R. Lancellota, y A. Marasco. 2006. Continuum Mechanics using Mathematica. Birkhäuser, Boston.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ley de Hooke y energía de deformación</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html",
+    "title": "16  Cinemática de la lámina",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Deformación y tensión en el sólido y Curvaturas (la base de la lámina y \\(\\sqrt g\\)).\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#objetivos-y-prerrequisitos",
+    "title": "16  Cinemática de la lámina",
+    "section": "",
+    "text": "escribir el punto del sólido-lámina como \\(\\mathbf{r}+\\theta^3\\hat{\\mathbf{a}}_3\\) y su base \\(\\mathbf{g}_i\\) en función de la curvatura;\nenunciar la hipótesis cinemática \\(\\mathbf{R}=\\mathbf{R}_0+\\theta^3\\mathbf{A}_3\\) y contar los grados de libertad que deja;\ncalcular exactamente la deformación de Green–Lagrange de la lámina y separarla en extensión, flexión y cortante;\nreconocer qué hipótesis se añadirán después (Kirchhoff–Love en Sección 17.1, Reissner–Mindlin en Sección 18.1);\ncomprobar todo con Laminas.jl en un cilindro que se hincha.\n\n\n\n\nSección 16.1 · El sólido-lámina · Sección 16.2 · La hipótesis cinemática\nSección 16.3 · Deformación de Green–Lagrange · Sección 16.4 · Grados de libertad · Sección 16.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\theta^1,\\theta^2\\); \\(\\theta^3\\in[-t/2,t/2]\\)\ncoordenadas sobre la superficie media y en el espesor\n\n\n\\(\\mathbf{r}(\\theta^\\alpha)\\), \\(\\mathbf{a}_\\alpha\\), \\(\\hat{\\mathbf{a}}_3\\)\nsuperficie media, su base tangente y su normal unitaria\n\n\n\\(\\mathbf{g}_i\\), \\(g_{ij}\\)\nbase y métrica del sólido-lámina de referencia\n\n\n\\(\\mathbf{R}_0\\), \\(\\mathbf{A}_3\\)\nsuperficie media y director deformados\n\n\n\\(\\mathbf{G}_i\\), \\(G_{ij}\\)\nbase y métrica del sólido deformado\n\n\n\\(\\gamma_{ij}=\\tfrac12(G_{ij}-g_{ij})\\)\ndeformación de Green–Lagrange (se usa \\(\\gamma\\) en las láminas)\n\n\n\\(b_{\\alpha\\beta}=\\hat{\\mathbf{a}}_3\\cdot\\mathbf{a}_{\\alpha,\\beta}\\)\ncurvatura de la superficie de referencia (convenio del libro)",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#sec-solido-lamina",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#sec-solido-lamina",
+    "title": "16  Cinemática de la lámina",
+    "section": "16.1 El sólido-lámina",
+    "text": "16.1 El sólido-lámina\nUna lámina es un sólido de espesor \\(t\\) muy pequeño frente a sus otras dimensiones y a sus radios de curvatura. Para describirlo se toma una superficie media \\(\\mathbf{r}(\\theta^1,\\theta^2)\\) y se recorre el espesor a lo largo de la normal: \\[\n\\mathbf{R}_{\\rm ref}(\\theta^1,\\theta^2,\\theta^3)=\\mathbf{r}(\\theta^\\alpha)+\\theta^3\\,\\hat{\\mathbf{a}}_3(\\theta^\\alpha),\\qquad -\\tfrac t2\\le\\theta^3\\le\\tfrac t2 .\n\\tag{16.1}\\]\nDerivando y usando Weingarten (ecuación 9.4), la base de este sólido es \\[\n\\mathbf{g}_\\alpha=\\mathbf{a}_\\alpha+\\theta^3\\hat{\\mathbf{a}}_{3,\\alpha}=\\bigl(\\delta_\\alpha^\\beta-\\theta^3 b_\\alpha^\\beta\\bigr)\\mathbf{a}_\\beta,\\qquad\n\\mathbf{g}_3=\\hat{\\mathbf{a}}_3 .\n\\tag{16.2}\\] Es la base de la lámina del tema de curvaturas: los vectores tangentes se acortan o alargan según la curvatura y el signo de \\(\\theta^3\\). Su volumen es \\(\\sqrt g\\,d\\theta^1d\\theta^2d\\theta^3\\) con \\(\\sqrt g=\\sqrt a\\,(1-2H\\theta^3+K\\theta^{3\\,2})\\).\n\nEjemplo 16.1 (Ejemplo resuelto: la base de un cilindro) Cilindro de radio \\(R\\) con \\(\\theta^1=\\varphi\\) (ángulo) y \\(\\theta^2=z\\), y normal exterior. Entonces \\(\\mathbf{a}_\\varphi=R\\,\\mathbf{e}_\\varphi\\), \\(\\mathbf{a}_z=\\mathbf{e}_z\\) y \\(b_{\\varphi\\varphi}=\\hat{\\mathbf{a}}_3\\cdot\\mathbf{a}_{\\varphi,\\varphi}=-R\\), de modo que \\(b^\\varphi_\\varphi=-1/R\\). Por ecuación 16.2, \\[\n\\mathbf{g}_\\varphi=\\Bigl(1+\\frac{\\theta^3}{R}\\Bigr)\\mathbf{a}_\\varphi=(R+\\theta^3)\\,\\mathbf{e}_\\varphi ,\n\\] que es lo correcto: la fibra a distancia \\(\\theta^3\\) de la superficie media es un círculo de radio \\(R+\\theta^3\\). Y \\(\\sqrt g=R+\\theta^3\\), de manera que el volumen de una rebanada crece hacia fuera.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#sec-hipotesis-cin",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#sec-hipotesis-cin",
+    "title": "16  Cinemática de la lámina",
+    "section": "16.2 La hipótesis cinemática",
+    "text": "16.2 La hipótesis cinemática\nSeguir a todos los puntos del sólido sería un problema 3D. La teoría de láminas lo reduce a dos dimensiones con una hipótesis sobre cómo se mueve la fibra del espesor:\n\nDefinición 16.1 (Hipótesis cinemática de la lámina) Cada línea normal \\(\\{\\theta^\\alpha\\ \\text{fijas}\\}\\) de la configuración de referencia sigue siendo una recta tras la deformación, de modo que \\[\n\\mathbf{R}(\\theta^\\alpha,\\theta^3)=\\mathbf{R}_0(\\theta^\\alpha)+\\theta^3\\,\\mathbf{A}_3(\\theta^\\alpha).\n\\tag{16.3}\\] \\(\\mathbf{R}_0\\) es la nueva posición de la superficie media y \\(\\mathbf{A}_3\\) el director deformado; no se exige que sea unitario ni normal a la superficie deformada.\n\nLa base del sólido deformado es entonces \\[\n\\mathbf{G}_\\alpha=\\mathbf{R}_{0,\\alpha}+\\theta^3\\mathbf{A}_{3,\\alpha},\\qquad \\mathbf{G}_3=\\mathbf{A}_3 .\n\\tag{16.4}\\] Observa la diferencia con el sólido general de D1, donde el desplazamiento es un campo arbitrario de tres variables: aquí toda la información del espesor está en \\(\\mathbf{A}_3\\), un vector por punto de la superficie media.\n\n\n\n\n\n\nTipIdea clave\n\n\n\nPasamos de un campo de desplazamientos de tres funciones de tres variables a seis funciones de dos: el desplazamiento \\(\\mathbf{R}_0-\\mathbf{r}\\) y el cambio del director \\(\\mathbf{A}_3-\\hat{\\mathbf{a}}_3\\). Es una reducción de dimensión, no una aproximación de pequeños desplazamientos.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#sec-gl-lamina",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#sec-gl-lamina",
+    "title": "16  Cinemática de la lámina",
+    "section": "16.3 La deformación de Green–Lagrange de la lámina",
+    "text": "16.3 La deformación de Green–Lagrange de la lámina\nCon la definición \\(\\gamma_{ij}=\\tfrac12(G_{ij}-g_{ij})\\) y las bases (ecuación 16.2, ecuación 16.4) se obtiene un resultado exacto:\n\nProposición 16.1 (Deformación exacta de la lámina) \\[\n\\begin{aligned}\n\\gamma_{\\alpha\\beta}&=\\gamma^0_{\\alpha\\beta}+\\theta^3\\gamma^1_{\\alpha\\beta}+(\\theta^3)^2\\gamma^2_{\\alpha\\beta},\\\\\n\\gamma_{\\alpha3}&=\\tfrac12\\bigl(\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{A}_3-\\mathbf{a}_\\alpha\\cdot\\hat{\\mathbf{a}}_3\\bigr)+\\tfrac12\\theta^3\\bigl(\\mathbf{A}_{3,\\alpha}\\cdot\\mathbf{A}_3-\\hat{\\mathbf{a}}_{3,\\alpha}\\cdot\\hat{\\mathbf{a}}_3\\bigr),\\\\\n\\gamma_{33}&=\\tfrac12\\bigl(\\mathbf{A}_3\\cdot\\mathbf{A}_3-1\\bigr),\n\\end{aligned}\n\\tag{16.5}\\] con las tres partes del plano \\[\n\\gamma^0_{\\alpha\\beta}=\\tfrac12\\bigl(\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{R}_{0,\\beta}-a_{\\alpha\\beta}\\bigr),\\quad\n\\gamma^1_{\\alpha\\beta}=\\tfrac12\\bigl(\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{A}_{3,\\beta}+\\mathbf{R}_{0,\\beta}\\cdot\\mathbf{A}_{3,\\alpha}\\bigr)+b_{\\alpha\\beta},\\quad\n\\gamma^2_{\\alpha\\beta}=\\tfrac12\\bigl(\\mathbf{A}_{3,\\alpha}\\cdot\\mathbf{A}_{3,\\beta}-\\hat{\\mathbf{a}}_{3,\\alpha}\\cdot\\hat{\\mathbf{a}}_{3,\\beta}\\bigr).\n\\tag{16.6}\\]\n\n\n\n\n\n\n\nNotaDemostración de Proposición 16.1\n\n\n\n\n\nEs multiplicar bases. De ecuación 16.4, \\(G_{\\alpha\\beta}=\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{R}_{0,\\beta}+\\theta^3(\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{A}_{3,\\beta}+\\mathbf{R}_{0,\\beta}\\cdot\\mathbf{A}_{3,\\alpha})+(\\theta^3)^2\\mathbf{A}_{3,\\alpha}\\cdot\\mathbf{A}_{3,\\beta}\\), y lo mismo para \\(g_{\\alpha\\beta}\\) con \\(\\mathbf{r}\\) y \\(\\hat{\\mathbf{a}}_3\\). Al restar, el término lineal contiene \\(-(\\mathbf{a}_\\alpha\\cdot\\hat{\\mathbf{a}}_{3,\\beta}+\\mathbf{a}_\\beta\\cdot\\hat{\\mathbf{a}}_{3,\\alpha})=2b_{\\alpha\\beta}\\) por Weingarten (ecuación 9.4): de ahí el \\(+b_{\\alpha\\beta}\\) de \\(\\gamma^1\\). Para \\(\\gamma_{\\alpha3}\\) y \\(\\gamma_{33}\\): \\(G_{\\alpha3}=\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{A}_3+\\theta^3\\mathbf{A}_{3,\\alpha}\\cdot\\mathbf{A}_3\\), \\(G_{33}=\\mathbf{A}_3\\cdot\\mathbf{A}_3\\), y en referencia \\(g_{\\alpha3}=\\mathbf{a}_\\alpha\\cdot\\hat{\\mathbf{a}}_3+\\theta^3\\hat{\\mathbf{a}}_{3,\\alpha}\\cdot\\hat{\\mathbf{a}}_3=0\\), \\(g_{33}=1\\). \\(\\blacksquare\\)\n\n\n\nLos tres nombres de las partes dicen su significado físico:\n\n\n\n\n\n\n\n\nParte\nQué mide\nOrigen\n\n\n\n\n\\(\\gamma^0_{\\alpha\\beta}\\)\nextensión (membrana): cambio de métrica de la superficie media\n\\(\\mathbf{R}_0\\)\n\n\n\\(\\gamma^1_{\\alpha\\beta}\\)\nflexión: cambio de curvatura (más el estiramiento de la fibra)\n\\(\\mathbf{R}_0\\) y \\(\\mathbf{A}_3\\)\n\n\n\\(\\gamma_{\\alpha3}\\)\ncortante transversal: giro relativo entre la fibra y la superficie\n\\(\\mathbf{R}_0\\) y \\(\\mathbf{A}_3\\)\n\n\n\\(\\gamma_{33}\\)\nestiramiento del espesor (si \\(|\\mathbf{A}_3|\\neq1\\))\n\\(\\mathbf{A}_3\\)\n\n\n\n\nEjemplo 16.2 (Ejemplo resuelto: un cilindro que se hincha) Se desplaza radialmente la superficie media del cilindro del Ejemplo 16.1 una cantidad \\(u\\) (hacia fuera) y el director sigue siendo la normal: \\(\\mathbf{R}_0=(R+u)\\,(\\cos\\varphi,\\sin\\varphi)\\), \\(\\mathbf{A}_3=\\hat{\\mathbf{a}}_3\\). Entonces \\(\\mathbf{R}_{0,\\varphi}=(R+u)\\mathbf{e}_\\varphi\\) y \\(\\mathbf{A}_{3,\\varphi}=\\mathbf{e}_\\varphi\\), de modo que por ecuación 16.6: \\[\n\\gamma^0_{\\varphi\\varphi}=\\tfrac12\\bigl[(R+u)^2-R^2\\bigr]=Ru+\\tfrac12u^2,\\qquad\n\\gamma^1_{\\varphi\\varphi}=(R+u)-R=u,\\qquad \\gamma^2_{\\varphi\\varphi}=0 .\n\\] Los demás \\(\\gamma\\) valen 0. Por tanto \\(\\gamma_{\\varphi\\varphi}(\\theta^3)=u(R+\\theta^3)+\\tfrac12u^2\\) y la deformación física (sobre la base de longitud \\(R+\\theta^3\\)) es \\[\n\\varepsilon_{\\varphi\\varphi}(\\theta^3)=\\frac{\\gamma_{\\varphi\\varphi}}{(R+\\theta^3)^2}\\approx\\frac{u}{R+\\theta^3},\n\\] que es la deformación de un aro de radio \\(R+\\theta^3\\) cuyo perímetro crece de \\(2\\pi(R+\\theta^3)\\) a \\(2\\pi(R+\\theta^3+u)\\). La fibra exterior se deforma menos que la interior. Con \\(R=2000\\) mm, \\(t=100\\) mm y \\(u=1\\) mm, la cara exterior (\\(\\theta^3=50\\) mm) da \\(\\varepsilon\\approx1/2050=4{,}88\\cdot10^{-4}\\).\n\nPon a prueba lo anterior.\n\nEn el Ejemplo 16.2, ¿cuánto vale la deformación circunferencial de la cara interior (\\(\\theta^3=-50\\) mm) para \\(R=2000\\) mm y \\(u=1\\) mm? Usa \\(\\varepsilon\\approx u/(R+\\theta^3)\\).\n\nLa fibra interior está a \\(R+\\theta^3=1950\\) mm del eje.\n\n\n\\(\\varepsilon=1/1950=5{,}13\\cdot10^{-4}\\), un 5 % mayor que en la cara exterior (\\(4{,}88\\cdot10^{-4}\\)).\n\n\n\nEn la hipótesis cinemática general de la lámina, el director deformado \\(\\mathbf{A}_3\\):\n\n\nes siempre unitario\nes siempre normal a la superficie media deformada\npuede no ser unitario ni normal\ncoincide con \\(\\hat{\\mathbf{a}}_3\\)\n\n\n\nEs un vector libre en cada punto. Si se impone que sea unitario se pierde el estiramiento del espesor (\\(\\gamma_{33}=0\\)); si además es normal, se tiene la teoría de Kirchhoff–Love.\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\n\\(\\mathbf{A}_3\\) no es la «nueva normal»: es lo que la teoría hace de la fibra. En Kirchhoff–Love coincide con la normal de la deformada (Sección 17.1); en Reissner–Mindlin, no.\nHipótesis cinemática \\(\\ne\\) pequeños desplazamientos: ecuación 16.5 es exacta para cualquier \\(\\mathbf{R}_0\\) y \\(\\mathbf{A}_3\\); solo la recta es una hipótesis.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#sec-gdl",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#sec-gdl",
+    "title": "16  Cinemática de la lámina",
+    "section": "16.4 Grados de libertad",
+    "text": "16.4 Grados de libertad\nLa cantidad de funciones independientes que quedan en cada punto distingue las teorías:\n\n\n\n\n\n\n\n\nTeoría\nFunciones por punto\nHipótesis\n\n\n\n\nCinemática general (ecuación 16.3)\n6: \\(\\mathbf{R}_0\\) (3) y \\(\\mathbf{A}_3\\) (3)\nla fibra es recta\n\n\ncon \\(|\\mathbf{A}_3|=1\\)\n5: \\(\\mathbf{R}_0\\) (3) y dos giros\nel espesor no varía\n\n\nReissner–Mindlin (Sección 18.1)\n5\nademás se linealiza\n\n\nKirchhoff–Love (Sección 17.1)\n3: solo \\(\\mathbf{R}_0\\)\n\\(\\mathbf{A}_3\\perp\\) superficie deformada\n\n\n\nEl elemento finito de lámina del libro usa cinco grados de libertad por nodo (tres desplazamientos y dos giros del director).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#sec-julia-d3",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#sec-julia-d3",
+    "title": "16  Cinemática de la lámina",
+    "section": "16.5 Práctica guiada en Julia",
+    "text": "16.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se reproduce el Ejemplo 16.2 con deformacion_lamina_exacta, que deriva numéricamente \\(\\mathbf{R}_0+\\theta^3\\mathbf{A}_3\\) y \\(\\mathbf{r}+\\theta^3\\hat{\\mathbf{a}}_3\\), y se compara con la fórmula cerrada.\n\n\n\nusing Geometria, LinearAlgebra\n\nR, u, t = 2000.0, 1.0, 100.0\nr  = cilindro(R)\nR0 = cilindro(R + u)                                   # la superficie media se hincha u\nA3(θ) = [cos(θ[1]), sin(θ[1]), 0.0]                    # el director sigue siendo la normal\nθ = [0.9, 0.3]\n\nγ_ext = deformacion_lamina_exacta(r, R0, A3, θ,  t / 2)    # cara exterior\nγ_int = deformacion_lamina_exacta(r, R0, A3, θ, -t / 2)    # cara interior\ngφφ(θ3) = (R + θ3)^2\n(γφφ_ext = γ_ext[1, 1], formula_ext = u * (R + t / 2) + u^2 / 2,\n ε_ext = γ_ext[1, 1] / gφφ(t / 2), ε_int = γ_int[1, 1] / gφφ(-t / 2),\n aprox_ext = u / (R + t / 2), aprox_int = u / (R - t / 2))\n\n(γφφ_ext = 2050.570424797479, formula_ext = 2050.5, ε_ext = 0.000487940612682327, ε_int = 0.0005129343910011745, aprox_ext = 0.0004878048780487805, aprox_int = 0.0005128205128205128)\n\n\n\n# El resto de componentes es nulo: no hay cortante ni estiramiento del espesor\n(γ_ext[1, 2], γ_ext[1, 3], γ_ext[3, 3], γ_ext[2, 2])\n\n(0.0, -7.248586882724339e-6, -8.905395920688619e-9, 0.0)",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#sec-ejercicios-d3",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#sec-ejercicios-d3",
+    "title": "16  Cinemática de la lámina",
+    "section": "16.6 Ejercicios",
+    "text": "16.6 Ejercicios\n\nEstiramiento del espesor. Si el director mide \\(|\\mathbf{A}_3|=1{,}05\\), ¿cuánto vale \\(\\gamma_{33}\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\gamma_{33}=\\tfrac12(1{,}05^2-1)=0{,}05125\\): un 5 % de alargamiento da una deformación de Green–Lagrange del 5,1 %.\n\n\n\nEsfera. Una esfera de radio \\(R\\) se infla a radio \\(R+u\\) con director = normal. Calcula \\(\\gamma^0\\) y \\(\\gamma^1\\) (en componentes físicas, divide por \\(a_{\\alpha\\alpha}\\)).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPor simetría, en cualquier dirección del plano \\(\\gamma^0\\to Ru+\\tfrac12u^2\\) (en la base de longitud \\(R\\), \\(\\varepsilon^0=u/R+\\tfrac12u^2/R^2\\)) y \\(\\gamma^1=u\\). Es el cilindro de dos curvaturas iguales.\n\n\n\nGiro rígido. Prueba que si \\(\\mathbf{R}_0\\) y \\(\\mathbf{A}_3\\) son los de referencia girados por la misma rotación \\(Q\\), todas las deformaciones son nulas.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nLos productos escalares \\(\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{R}_{0,\\beta}\\), etc. no cambian con una rotación (ortogonal), así que \\(G_{ij}=g_{ij}\\) y \\(\\gamma_{ij}=0\\). Es la propiedad de invariancia de Green–Lagrange (D1).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#la-doy-por-superada-si",
+    "title": "16  Cinemática de la lámina",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nDescribo el sólido-lámina con \\(\\mathbf{r}+\\theta^3\\hat{\\mathbf{a}}_3\\) y escribo su base con \\(b^\\beta_\\alpha\\).\nEnuncio la hipótesis cinemática y sé que \\(\\mathbf{A}_3\\) no tiene por qué ser unitario ni normal.\nCalculo \\(\\gamma^0\\), \\(\\gamma^1\\), \\(\\gamma_{\\alpha3}\\) y \\(\\gamma_{33}\\) de un movimiento sencillo (cilindro que se hincha).\nCuento los grados de libertad por punto de cada teoría.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; cinemática de láminas con director en la línea de las referencias estándar (Novozhilov 1959; Flügge 1972). Todas las fórmulas de Proposición 16.1 se comprueban con deformacion_lamina_exacta (conjunto «Cinemática de láminas» de los tests).\nCorrecciones. La expresión de \\(\\gamma^1_{\\alpha\\beta}\\) lleva el signo \\(+b_{\\alpha\\beta}\\) con el convenio \\(b_{\\alpha\\beta}=\\hat{\\mathbf{a}}_3\\cdot\\mathbf{a}_{\\alpha,\\beta}\\); con el signo contrario de la curvatura cambia el de ese término (ver notación).\nQué queda pendiente. Sin nota histórica (no se dispone aún de fuente verificada); los convenios de giros del director (por confirmar) se tratan en D5; figuras con revisión visual pendiente; referencias no leídas línea a línea.\n\n\n\n\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D3-cinematica-lamina.html#referencias-unidad",
+    "href": "book/D-elasticidad/D3-cinematica-lamina.html#referencias-unidad",
+    "title": "16  Cinemática de la lámina",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Cinemática de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Cinemática de la lámina y Formas fundamentales.\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#objetivos-y-prerrequisitos",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "",
+    "text": "enunciar las tres hipótesis de Kirchhoff–Love y sus consecuencias en \\(\\gamma_{\\alpha3}\\) y \\(\\gamma_{33}\\);\ndeducir que la flexión es el cambio de la segunda forma fundamental, \\(\\gamma^1_{\\alpha\\beta}=-(B_{\\alpha\\beta}-b_{\\alpha\\beta})\\);\nparticularizar a una placa plana: \\(\\gamma^1_{\\alpha\\beta}=-u_{3,\\alpha\\beta}\\);\nrazonar cuándo es razonable la hipótesis (láminas delgadas) y cuándo no;\ncomprobarlo con Laminas.jl.\n\n\n\n\nSección 17.1 · Las tres hipótesis · Sección 17.2 · La flexión como cambio de curvatura\nSección 17.3 · El caso de la placa · Sección 17.4 · Cuándo falla · Sección 17.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\hat{\\mathbf{A}}_3\\)\nnormal unitaria a la superficie deformada \\(\\mathbf{R}_0\\)\n\n\n\\(B_{\\alpha\\beta}=\\hat{\\mathbf{A}}_3\\cdot\\mathbf{R}_{0,\\alpha\\beta}\\)\nsegunda forma fundamental de la superficie deformada\n\n\n\\(u_3\\)\ndesplazamiento normal de la superficie media\n\n\n\\(\\kappa_{\\alpha\\beta}=-\\gamma^1_{\\alpha\\beta}\\)\ncambio de curvatura (flexión)",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#sec-kl-d4",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#sec-kl-d4",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "17.1 Las tres hipótesis",
+    "text": "17.1 Las tres hipótesis\nLa teoría de Kirchhoff–Love (KL) añade tres hipótesis a la cinemática de D3:\n\nlas líneas normales siguen siendo rectas (ya incluida en ecuación 16.3);\npermanecen inextensibles: \\(|\\mathbf{A}_3|=1\\);\npermanecen normales a la superficie media deformada: \\(\\mathbf{A}_3=\\hat{\\mathbf{A}}_3=\\dfrac{\\mathbf{R}_{0,1}\\times\\mathbf{R}_{0,2}}{|\\mathbf{R}_{0,1}\\times\\mathbf{R}_{0,2}|}\\).\n\n\nProposición 17.1 (Deformaciones nulas en KL) Con las tres hipótesis, \\(\\gamma_{33}=\\tfrac12(|\\mathbf{A}_3|^2-1)=0\\) (por 2) y, en ecuación 16.5, \\(\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{A}_3=0\\) (por 3: \\(\\mathbf{R}_{0,\\alpha}\\) es tangente a la superficie deformada y \\(\\mathbf{A}_3\\) perpendicular a ella), \\(\\mathbf{a}_\\alpha\\cdot\\hat{\\mathbf{a}}_3=0\\), y \\(\\mathbf{A}_{3,\\alpha}\\cdot\\mathbf{A}_3=0=\\hat{\\mathbf{a}}_{3,\\alpha}\\cdot\\hat{\\mathbf{a}}_3\\) por ser vectores unitarios; luego \\(\\gamma_{\\alpha3}=0\\). No hay ni cortante transversal ni estiramiento del espesor.\n\nSolo quedan las deformaciones del plano, \\(\\gamma_{\\alpha\\beta}=\\gamma^0_{\\alpha\\beta}+\\theta^3\\gamma^1_{\\alpha\\beta}+(\\theta^3)^2\\gamma^2_{\\alpha\\beta}\\), que dependen únicamente de \\(\\mathbf{R}_0\\): la lámina KL tiene tres grados de libertad por punto.\n\n\n\n\n\n\nTipIdea clave\n\n\n\nKL dice: el giro de la fibra no es una incógnita, lo determina la superficie. El director es la normal, y la normal depende de la derivada de \\(\\mathbf{R}_0\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#sec-flexion-kl",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#sec-flexion-kl",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "17.2 La flexión como cambio de curvatura",
+    "text": "17.2 La flexión como cambio de curvatura\n\nProposición 17.2 (Flexión de Kirchhoff–Love) Si \\(\\mathbf{A}_3=\\hat{\\mathbf{A}}_3\\) es la normal de la superficie deformada, la parte lineal en \\(\\theta^3\\) de la deformación es \\[\n\\gamma^1_{\\alpha\\beta}=-\\bigl(B_{\\alpha\\beta}-b_{\\alpha\\beta}\\bigr),\n\\tag{17.1}\\] con \\(b_{\\alpha\\beta}\\) y \\(B_{\\alpha\\beta}\\) las segundas formas fundamentales antes y después. La flexión es el cambio de curvatura.\n\n\n\n\n\n\n\nNotaDemostración de Proposición 17.2\n\n\n\n\n\nDe ecuación 16.6, \\(\\gamma^1_{\\alpha\\beta}=\\tfrac12(\\mathbf{R}_{0,\\alpha}\\cdot\\hat{\\mathbf{A}}_{3,\\beta}+\\mathbf{R}_{0,\\beta}\\cdot\\hat{\\mathbf{A}}_{3,\\alpha})+b_{\\alpha\\beta}\\). Como \\(\\hat{\\mathbf{A}}_3\\perp\\mathbf{R}_{0,\\alpha}\\), derivando \\(\\mathbf{R}_{0,\\alpha}\\cdot\\hat{\\mathbf{A}}_3=0\\) respecto de \\(\\theta^\\beta\\) resulta \\(\\mathbf{R}_{0,\\alpha}\\cdot\\hat{\\mathbf{A}}_{3,\\beta}=-\\mathbf{R}_{0,\\alpha\\beta}\\cdot\\hat{\\mathbf{A}}_3=-B_{\\alpha\\beta}\\) (que es simétrico). Sustituyendo, \\(\\gamma^1_{\\alpha\\beta}=-B_{\\alpha\\beta}+b_{\\alpha\\beta}\\). \\(\\blacksquare\\)\n\n\n\nVerificado en Julia con campos de desplazamiento arbitrarios sobre el paraboloide: Laminas.jl y la comparación exacta coinciden con \\(b-B\\) hasta \\(2\\cdot10^{-6}\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#sec-placa-kl",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#sec-placa-kl",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "17.3 El caso de la placa",
+    "text": "17.3 El caso de la placa\nEn una placa plana inicialmente (\\(b_{\\alpha\\beta}=0\\)) con desplazamiento transversal \\(w=u_3(\\theta^1,\\theta^2)\\) y sin desplazamientos en el plano, a orden lineal \\(B_{\\alpha\\beta}=w_{,\\alpha\\beta}\\) y \\[\n\\gamma^1_{\\alpha\\beta}=-w_{,\\alpha\\beta},\\qquad \\gamma_{\\alpha\\beta}\\approx-\\theta^3\\,w_{,\\alpha\\beta},\n\\tag{17.2}\\] es decir, la deformación varía linealmente en el espesor y es nula en la superficie media: la clásica «las fibras exteriores se estiran y las interiores se acortan».\n\nEjemplo 17.1 (Ejemplo resuelto: una tira flexada) Una tira de placa de \\(L=1000\\) mm de luz y espesor \\(t=20\\) mm se flexa con \\(w(x)=w_0\\sin(\\pi x/L)\\), \\(w_0=5\\) mm. La curvatura es \\(-w''=w_0(\\pi/L)^2\\sin(\\pi x/L)\\), máxima en el centro: \\(\\kappa_{\\max}=5\\,(\\pi/1000)^2=4{,}93\\cdot10^{-5}\\ \\text{mm}^{-1}\\). La deformación en la fibra extrema (\\(\\theta^3=t/2=10\\) mm) es \\[\n\\varepsilon_{\\max}=\\kappa_{\\max}\\,\\frac t2=4{,}93\\cdot10^{-4}.\n\\] (Pequeña frente a la deformación de fluencia del acero, \\(\\sim10^{-3}\\): la flecha de 5 mm en 1 m se ha elegido moderada.)\n\nPon a prueba lo anterior.\n\nEn el Ejemplo 17.1, ¿cuál es la deformación de la fibra extrema (\\(\\theta^3=10\\) mm) en el centro de la luz?\n\n\\(\\varepsilon=\\kappa\\,\\theta^3\\) con \\(\\kappa=w_0(\\pi/L)^2\\).\n\n\n\\(\\varepsilon=5\\,(\\pi/1000)^2\\cdot10=4{,}93\\cdot10^{-4}\\). Si el espesor se duplicase (misma flecha y luz), la fibra extrema pasaría a \\(9{,}87\\cdot10^{-4}\\), porque \\(\\kappa\\) no depende del espesor.\n\n\n\nEn Kirchhoff–Love las deformaciones de cortante transversal \\(\\gamma_{\\alpha3}\\) son nulas.\n\nVerdadero, por construcción: el director es perpendicular a la superficie y por tanto a \\(\\mathbf{R}_{0,\\alpha}\\). (Eso no significa que el esfuerzo cortante sea nulo: se obtiene por equilibrio.)\n\n\n\n\n\n\n\n\nAdvertenciaErrores frecuentes\n\n\n\n\n«Cortante nulo» no es «esfuerzo cortante nulo»: en KL, \\(\\gamma_{\\alpha3}=0\\) pero \\(Q^\\alpha\\neq0\\); se recupera del equilibrio de momentos (su valor «reactivo», no constitutivo).\n\\(w_{,\\alpha\\beta}\\) es un tensor sólo en cartesianas: en curvilíneas hay que usar la derivada covariante \\(w_{\\|\\alpha\\beta}\\) (Christoffel).\n\n\n\n\n\n\n\n\n\nNotaUn poco de historia: de la placa a la lámina\n\n\n\nLa teoría clásica de placas delgadas se atribuye a Gustav Kirchhoff (cuyas hipótesis se citan desde su trabajo de 1850 sobre el equilibrio y el movimiento de un disco elástico) y la de láminas a Augustus Love, que en 1888 publicó «The small free vibrations and deformation of a thin elastic shell» usando las hipótesis de Kirchhoff. Las tres hipótesis de arriba son las que se conocen hoy como de Kirchhoff–Love; el trabajo de Love provocó una controversia científica con Lord Rayleigh y otros.\nFuentes (secundarias): Kirchhoff–Love plate theory, Wikipedia; Augustus Love, Structurae. No se ha leído el artículo de Kirchhoff de 1850 ni el de Love. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#sec-limites-kl",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#sec-limites-kl",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "17.4 Cuándo falla",
+    "text": "17.4 Cuándo falla\nLa hipótesis ignora la deformación por cortante, cuyo efecto relativo crece con \\((t/L)^2\\) (donde \\(L\\) es la longitud de onda característica de la deformación). Por eso KL es excelente para láminas delgadas (\\(t/L\\lesssim1/20\\)), imprecisa para láminas gruesas, modos de alta frecuencia o materiales con baja rigidez a cortante (sándwich, laminados). Para esos casos se relaja la hipótesis 3: Reissner–Mindlin (Sección 18.1).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#sec-julia-d4",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#sec-julia-d4",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "17.5 Práctica guiada en Julia",
+    "text": "17.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se evalúa la flexión de la tira del Ejemplo 17.1 con deformacion_lamina_lineal y se comprueba que el cortante es nulo cuando el giro es el de Kirchhoff.\n\n\n\nusing Geometria, LinearAlgebra\n\nL, t, w0 = 1000.0, 20.0, 5.0\nplana = placa_oblicua(π / 2)                            # plano cartesiano\nw(θ)  = w0 * sin(π * θ[1] / L)\nφ(θ)  = [-w0 * π / L * cos(π * θ[1] / L), 0.0]          # φ = −∇w  (Kirchhoff)\nθ0 = [L / 2, 0.0]\nγ0, γ1, γS = deformacion_lamina_lineal(plana, θ -&gt; [0.0, 0.0], w, φ, θ0)\n(γ1_11 = γ1[1, 1], formula = w0 * (π / L)^2, ε_extrema = γ1[1, 1] * t / 2, γS = γS)\n\n(γ1_11 = 4.934802164251007e-5, formula = 4.93480220054468e-5, ε_extrema = 0.0004934802164251007, γS = [-9.618353468608951e-19, 0.0])\n\n\n\n# Sobre un paraboloide, con el giro de Kirchhoff φα = −(u₃,α + bᵅρ uρ), el cortante se anula\nr = paraboloide_curvo(3.0, -2.0); θ = [0.7, -0.4]\nudn(t) = [0.30 * sin(t[1]) + 0.1 * t[2], 0.20 * cos(t[2]) - 0.05 * t[1]]\nu3(t)  = 0.25 * t[1] * t[2] + 0.1 * cos(t[1])\nfunction φkl(t)\n    h = 1e-5; bm = tensor_curvatura_mixto(metrica_superficie(r, t), segunda_forma(r, t))\n    du3 = [(u3(t .+ h .* (1:2 .== α)) - u3(t .- h .* (1:2 .== α))) / 2h for α in 1:2]\n    -(du3 .+ [sum(bm[ρ, α] * udn(t)[ρ] for ρ in 1:2) for α in 1:2])\nend\n_, _, γS = deformacion_lamina_lineal(r, udn, u3, φkl, θ)\nγS\n\n2-element Vector{Float64}:\n 6.938893903907228e-18\n 0.0",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#sec-ejercicios-d4",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#sec-ejercicios-d4",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "17.6 Ejercicios",
+    "text": "17.6 Ejercicios\n\nContar grados de libertad. ¿Cuántos tiene una lámina KL por punto de la superficie media? ¿Y qué problema práctico trae para los elementos finitos?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nTres (\\(u_1,u_2,u_3\\)). Pero \\(B_{\\alpha\\beta}\\) contiene segundas derivadas de \\(u_3\\), así que la formulación débil necesita funciones de forma \\(C^1\\) (continuidad de la derivada), que son difíciles de construir en 2D; Reissner–Mindlin sólo pide \\(C^0\\).\n\n\n\nSigno de la flexión. En una placa con \\(w=-a(x^2)/2\\) (con \\(a&gt;0\\)), ¿en qué cara hay tracción?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\gamma^1_{11}=-w''=a&gt;0\\): \\(\\gamma_{11}=a\\theta^3\\) es positivo para \\(\\theta^3&gt;0\\), es decir, tracción en la cara de \\(\\theta^3&gt;0\\) (la que mira hacia \\(+\\hat{\\mathbf{a}}_3\\)).\n\n\n\nCilindro. Con la deformación del cilindro que se hincha de D3, ¿se cumple ecuación 17.1?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSí: allí el director es la normal de la superficie deformada y \\(\\gamma^1_{\\varphi\\varphi}=(R+u)-R=u\\); con \\(b_{\\varphi\\varphi}=-R\\) y \\(B_{\\varphi\\varphi}=-(R+u)\\) resulta \\(-(B-b)=u\\) ✓.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#la-doy-por-superada-si",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEnuncio las tres hipótesis de KL y sé que anulan \\(\\gamma_{\\alpha3}\\) y \\(\\gamma_{33}\\).\nExpreso la flexión como cambio de la segunda forma fundamental y demuestro ecuación 17.1.\nCalculo la deformación en la fibra extrema de una placa con \\(-\\theta^3 w''\\).\nExplico por qué KL pide elementos \\(C^1\\) y cuándo deja de ser válida.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo, resultados estándar de la teoría clásica de láminas (Novozhilov 1959; Flügge 1972). ecuación 17.1 y el cortante nulo se comprueban numéricamente en el conjunto «Cinemática de láminas» de los tests de Julia.\nCorrecciones. El signo de \\(\\gamma^1\\) (flexión \\(=-(B-b)\\)) depende del convenio de \\(b_{\\alpha\\beta}\\); con \\(b_{\\alpha\\beta}=\\hat{\\mathbf{a}}_3\\cdot\\mathbf{a}_{\\alpha,\\beta}\\) es el de arriba. Una discrepancia de signo en una fuente de partida se considera error de transcripción de la fuente.\nQué queda pendiente. El giro de la normal en componentes físicas (convenio por confirmar); la historia se apoya en fuentes secundarias; figuras con revisión visual pendiente.\n\n\n\n\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D4-kirchhoff-love.html#referencias-unidad",
+    "href": "book/D-elasticidad/D4-kirchhoff-love.html#referencias-unidad",
+    "title": "17  La hipótesis de Kirchhoff–Love",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>La hipótesis de Kirchhoff–Love</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. La hipótesis de Kirchhoff–Love.\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#objetivos-y-prerrequisitos",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "",
+    "text": "enunciar la hipótesis de Reissner–Mindlin (RM) y los cinco grados de libertad por punto;\nescribir el cortante transversal \\(\\gamma_\\alpha=\\varphi_\\alpha+u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho\\) y reconocer el límite de Kirchhoff como \\(\\gamma_\\alpha\\to0\\);\ncomparar KL y RM en una tabla (grados de libertad, continuidad, validez);\nestimar con un modelo de viga cuánto pesa el cortante frente a la flexión;\nexplicar de forma cualitativa el bloqueo por cortante de las láminas delgadas.\n\n\n\n\nSección 18.1 · La hipótesis · Sección 18.2 · El cortante transversal\nSección 18.3 · Kirchhoff–Love frente a Reissner–Mindlin · Sección 18.4 · El precio · Sección 18.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\varphi_\\alpha\\)\ncomponentes covariantes del giro del director: \\(\\mathbf{A}_3=\\hat{\\mathbf{a}}_3+\\varphi_\\beta\\mathbf{a}^\\beta\\) (a orden lineal)\n\n\n\\(u_\\alpha,\\ u_3\\)\ndesplazamiento de la superficie media: \\(\\mathbf{u}=u_\\alpha\\mathbf{a}^\\alpha+u_3\\hat{\\mathbf{a}}_3\\)\n\n\n\\(\\gamma_\\alpha=2\\gamma_{\\alpha3}\\)\ncortante transversal de ingeniería (el doble de la componente tensorial)\n\n\n\\(\\mu=G\\)\nmódulo de cortante\n\n\n\n\n\n\n\n\n\n\n\nAdvertenciaConvenios por confirmar\n\n\n\nSe adopta \\(\\varphi_\\alpha\\) = componentes covariantes del incremento del director sobre la base recíproca. Está pendiente de confirmación por el autor si los grados de libertad del elemento finito son estas componentes o los giros físicos (en bases no ortogonales). Hasta entonces, las fórmulas de este tema son las de \\(\\varphi_\\alpha\\) covariantes.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#sec-rm-d5",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#sec-rm-d5",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "18.1 La hipótesis",
+    "text": "18.1 La hipótesis\nReissner–Mindlin mantiene las hipótesis 1 y 2 de KL (la fibra es recta e inextensible, \\(|\\mathbf{A}_3|=1\\)) y abandona la 3: el director no tiene que ser normal a la superficie deformada. A orden lineal, el director gira un vector \\(\\varphi_\\beta\\mathbf{a}^\\beta\\) tangente (dos incógnitas), y con el desplazamiento de la superficie media quedan \\[\n\\underbrace{u_1,\\ u_2,\\ u_3}_{\\text{superficie media}}\\quad+\\quad\\underbrace{\\varphi_1,\\ \\varphi_2}_{\\text{giro del director}}\\qquad\\Longrightarrow\\qquad 5\\ \\text{grados de libertad por punto}.\n\\tag{18.1}\\]",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#sec-cortante-rm",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#sec-cortante-rm",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "18.2 El cortante transversal",
+    "text": "18.2 El cortante transversal\n\nProposición 18.1 (Cortante en Reissner–Mindlin) A orden lineal en los desplazamientos y los giros, el cortante transversal (de ingeniería) es \\[\n\\gamma_\\alpha=2\\gamma_{\\alpha3}=\\varphi_\\alpha+u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho ,\n\\tag{18.2}\\] independiente de \\(\\theta^3\\). La flexión \\(\\gamma^1_{\\alpha\\beta}\\) depende de \\(\\varphi_\\alpha\\) (D6) y la extensión \\(\\gamma^0_{\\alpha\\beta}\\) no.\n\n\n\n\n\n\n\nNotaIdea de la demostración de Proposición 18.1\n\n\n\n\n\nDe ecuación 16.5, \\(2\\gamma_{\\alpha3}=\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{A}_3-\\mathbf{a}_\\alpha\\cdot\\hat{\\mathbf{a}}_3+\\theta^3(\\ldots)\\). Con \\(\\mathbf{R}_0=\\mathbf{r}+\\mathbf{u}\\) y \\(\\mathbf{A}_3=\\hat{\\mathbf{a}}_3+\\varphi_\\beta\\mathbf{a}^\\beta\\), a orden lineal \\(\\mathbf{R}_{0,\\alpha}\\cdot\\mathbf{A}_3=\\mathbf{a}_\\alpha\\cdot\\varphi_\\beta\\mathbf{a}^\\beta+\\mathbf{u}_{,\\alpha}\\cdot\\hat{\\mathbf{a}}_3=\\varphi_\\alpha+(u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho)\\), donde \\(\\mathbf{u}_{,\\alpha}\\cdot\\hat{\\mathbf{a}}_3\\) se evalúa con Gauss–Weingarten (ecuación 9.3, ecuación 9.4). Los términos en \\(\\theta^3\\) son de segundo orden. La fórmula se comprueba numéricamente (tests «Cinemática de láminas»): la deformación exacta con \\(\\varphi_\\alpha\\) dados coincide con ecuación 18.2. \\(\\square\\)\n\n\n\n\n\n\n\n\n\nTipIdea clave\n\n\n\nEn KL el giro es \\(\\varphi_\\alpha=-(u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho)\\) y entonces \\(\\gamma_\\alpha=0\\). En RM el giro es una incógnita más y \\(\\gamma_\\alpha\\) mide cuánto se aparta de esa relación: \\(\\gamma_\\alpha\\to0\\) recupera KL.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#sec-comparacion",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#sec-comparacion",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "18.3 Kirchhoff–Love frente a Reissner–Mindlin",
+    "text": "18.3 Kirchhoff–Love frente a Reissner–Mindlin\n\n\n\n\n\n\n\n\n\nKirchhoff–Love\nReissner–Mindlin\n\n\n\n\nDirector\nnormal a \\(\\mathbf{R}_0\\)\nrecta cualquiera, \\(|\\mathbf{A}_3|=1\\)\n\n\nGrados de libertad\n3\n5\n\n\nCortante transversal \\(\\gamma_\\alpha\\)\n\\(0\\) (hipótesis)\n\\(\\varphi_\\alpha+u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho\\)\n\n\nFlexión depende de\n\\(u_{3,\\alpha\\beta}\\) (2.ª derivada)\n\\(\\varphi_{\\alpha\\|\\beta}\\) (1.ª derivada)\n\n\nContinuidad en EF\n\\(C^1\\)\n\\(C^0\\)\n\n\nVálida para\nláminas delgadas\ndelgadas y moderadamente gruesas\n\n\nRiesgo numérico\n—\nbloqueo por cortante\n\n\n\n\nEjemplo 18.1 (Ejemplo resuelto: cuánto pesa el cortante en una tira) Una tira (de ancho unidad) apoyada y con carga uniforme, de luz \\(L\\) y espesor \\(t\\), se modela como viga de Timoshenko (la versión unidimensional de RM) sin factor de corrección. La flecha en el centro es la suma de dos contribuciones: flexión \\(w_f=5qL^4/(384EI)\\) y cortante \\(w_s=qL^2/(8GA)\\). Con \\(I=t^3/12\\), \\(A=t\\) y \\(E/G=2(1+\\nu)\\): \\[\n\\frac{w_s}{w_f}=\\frac{48\\,EI}{5\\,GA\\,L^2}=\\frac{8(1+\\nu)}{5}\\Bigl(\\frac tL\\Bigr)^2 .\n\\] Para \\(\\nu=0{,}3\\) y \\(t/L=1/10\\): \\(\\dfrac{8\\cdot1{,}3}{5}\\cdot0{,}01=0{,}0208\\), es decir, el cortante añade un 2 % a la flecha. Para \\(t/L=1/5\\) el exceso es del 8,3 %: aquí KL ya es claramente optimista.\n\nPon a prueba lo anterior.\n\nEn el Ejemplo 18.1, ¿cuánto vale \\(w_s/w_f\\) para \\(\\nu=0{,}3\\) y \\(t/L=1/10\\)?\n\n\\(\\dfrac{w_s}{w_f}=\\dfrac{8(1+\\nu)}{5}(t/L)^2\\).\n\n\n\\(1{,}6\\cdot1{,}3\\cdot0{,}01=0{,}0208\\).\n\n\n\n¿Cuántos grados de libertad por punto tiene una lámina de Reissner–Mindlin?\n\n\n3\n4\n5\n6\n\n\n\nCinco: tres desplazamientos de la superficie media y dos giros del director. Si se permitiera que el director cambiara de longitud serían seis (D3).\n\n\n\nLos elementos finitos de Reissner–Mindlin solo necesitan funciones de forma \\(C^0\\) (continuas), mientras que los de Kirchhoff–Love necesitan \\(C^1\\).\n\nVerdadero. En RM las energías contienen solo primeras derivadas de \\(u_i\\) y \\(\\varphi_\\alpha\\); en KL aparecen segundas derivadas de \\(u_3\\).\n\n\n\n\n\n\n\n\nNotaUn poco de historia: la teoría de las dos nacionalidades\n\n\n\nEric Reissner propuso en 1945 una teoría de placas con deformación por cortante, formulada en estática. Hencky y Bolle (1947) desarrollaron de forma casi simultánea la versión cinemática, y Uflyand (1948) y Mindlin (1951) la generalizaron a la dinámica. La forma de uso más común en ingeniería se debe a Mindlin, por lo que a veces se la llama «teoría de Mindlin». Las raíces del enfoque están en la viga de Timoshenko (primeras décadas del siglo XX), que incluye la deformación por cortante con un factor de corrección.\nFuentes (secundarias): Reissner–Mindlin plate theory, Wikipedia; A brief history of first-order shear-deformable beam and plate models, Challamel y Elishakoff (resumen). Las fuentes difieren en la prioridad; no se leyeron los artículos originales. Consultado el 21-10-2026.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#sec-bloqueo-cortante",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#sec-bloqueo-cortante",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "18.4 El precio: el bloqueo por cortante",
+    "text": "18.4 El precio: el bloqueo por cortante\nCuando \\(t\\to0\\), la energía de cortante \\(\\tfrac12t\\mu\\,\\gamma_\\alpha\\gamma^\\alpha\\) pesa \\(t\\), y la de flexión pesa \\(t^3\\): el cociente crece como \\(1/t^2\\). Un elemento que no puede representar \\(\\gamma_\\alpha\\approx0\\) con sus funciones de forma queda excesivamente rígido («bloqueo por cortante», shear locking). Se trata en el bloque de elementos finitos (tema E5, pendiente de escribir); no cambia la teoría, sólo cómo se discretiza.\n\n\n\n\n\n\nAdvertenciaErrores frecuentes\n\n\n\n\n«RM es mejor que KL siempre»: en láminas muy delgadas, un elemento RM ingenuo bloquea y da peores resultados que uno KL.\nFactor de corrección de cortante: el modelo del libro no lo aplica (\\(K_s=1\\); ver D7). En la literatura se usa \\(K_s\\ne1\\) para materiales homogéneos o laminados; su elección queda por confirmar para este libro.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#sec-julia-d5",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#sec-julia-d5",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "18.5 Práctica guiada en Julia",
+    "text": "18.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se calcula \\(\\gamma_\\alpha\\) para un giro arbitrario y se comprueba que coincide con la deformación exacta \\(2\\gamma_{\\alpha3}\\) en el paraboloide, independiente de \\(\\theta^3\\).\n\n\n\nusing Geometria, LinearAlgebra\n\nr = paraboloide_curvo(3.0, -2.0); θ = [0.7, -0.4]\nudn(t) = [0.30 * sin(t[1]) + 0.1 * t[2], 0.20 * cos(t[2]) - 0.05 * t[1]]\nu3(t)  = 0.25 * t[1] * t[2] + 0.1 * cos(t[1])\nφdn(t) = [0.12 * t[2] - 0.05, -0.08 * t[1] + 0.03 * sin(t[2])]\n\nγ0, γ1, γS = deformacion_lamina_lineal(r, udn, u3, φdn, θ)\ns = 1e-6                                              # desplazamientos pequeños para linealizar\nR0, A3 = campos_lamina(r, udn, u3, φdn, s)\nex(θ3) = 2 .* [deformacion_lamina_exacta(r, R0, A3, θ, θ3)[α, 3] for α in 1:2] ./ s\n(lineal = γS, exacta_θ3_0 = ex(0.0), exacta_θ3_0p05 = ex(0.05))\n\n(lineal = [-0.30679961868805267, 0.17290205561200878], exacta_θ3_0 = [-0.30680012391703926, 0.1729034662112383], exacta_θ3_0p05 = [-0.30680022114482064, 0.17290475282094597])",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#sec-ejercicios-d5",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#sec-ejercicios-d5",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "18.6 Ejercicios",
+    "text": "18.6 Ejercicios\n\nLímite de Kirchhoff. Si \\(\\varphi_\\alpha=-(u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho)\\), ¿cuánto vale el cortante?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nCero por ecuación 18.2; el director coincide con la normal de la deformada y se recupera KL (verificado con el test «límite de Kirchhoff»).\n\n\n\nCuánto cortante. Estima \\(w_s/w_f\\) para \\(t/L=1/20\\) y \\(\\nu=0{,}3\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(1{,}6\\cdot1{,}3\\cdot(0{,}05)^2=0{,}0052\\): medio por ciento; KL es suficiente.\n\n\n\nPlaca plana. En una placa plana (\\(b_{\\alpha\\beta}=0\\)) con \\(u_\\alpha=0\\), ¿qué valor tiene \\(\\gamma_\\alpha\\) y qué significa que sea \\(0\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\gamma_\\alpha=\\varphi_\\alpha+w_{,\\alpha}\\): si es cero, el giro de la fibra es \\(-\\nabla w\\), es decir, la fibra es perpendicular a la superficie (Kirchhoff).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#la-doy-por-superada-si",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEnuncio la hipótesis de RM y cuento sus cinco grados de libertad.\nEscribo \\(\\gamma_\\alpha=\\varphi_\\alpha+u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho\\) y reconozco KL como \\(\\gamma_\\alpha\\to0\\).\nEstimo el peso del cortante frente a la flexión con \\((t/L)^2\\).\nExplico por qué RM admite elementos \\(C^0\\) y qué es el bloqueo por cortante.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo, resultados estándar (Novozhilov 1959; Flügge 1972). ecuación 18.2 se comprueba con deformacion_lamina_exacta (tests «Cinemática de láminas»). El ejemplo de la viga es el resultado analítico de la viga de Timoshenko sin factor de corrección (analítico).\nCorrecciones. En una fuente de partida el factor 2 del cortante no es coherente con la definición de \\(\\gamma_\\alpha\\) como componente de ingeniería; aquí \\(\\gamma_\\alpha=2\\gamma_{\\alpha3}\\).\nQué queda pendiente. Convenios de giros y de grados de libertad (por confirmar); el bloqueo se desarrolla en el bloque de elementos finitos (aún no escrito); historia con fuentes secundarias; figuras con revisión visual pendiente.\n\n\n\n\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D5-reissner-mindlin.html#referencias-unidad",
+    "href": "book/D-elasticidad/D5-reissner-mindlin.html#referencias-unidad",
+    "title": "18  Reissner–Mindlin: el cortante transversal",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Reissner–Mindlin: el cortante transversal</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Reissner–Mindlin y Símbolos de Christoffel.\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#objetivos-y-prerrequisitos",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "",
+    "text": "escribir las tres relaciones deformación–desplazamiento de pequeñas deformaciones y rotaciones moderadas;\nidentificar el papel de la curvatura \\(b_{\\alpha\\beta}\\) en cada una (acoplamiento membrana–flexión);\npasar a componentes físicas en bases ortogonales;\ncalcular las deformaciones de un cilindro que se hincha y de una placa que se flexa;\ncomprobar las fórmulas contra la deformación exacta con Laminas.jl.\n\n\n\n\nSección 19.1 · Las tres relaciones · Sección 19.2 · Cómo actúa la curvatura\nSección 19.3 · Componentes físicas · Sección 19.4 · Ejemplos · Sección 19.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(u_\\alpha,\\ u_3\\)\ncomponentes del desplazamiento de la superficie media: \\(\\mathbf{u}=u_\\alpha\\mathbf{a}^\\alpha+u_3\\hat{\\mathbf{a}}_3\\)\n\n\n\\(\\varphi_\\alpha\\)\ngiro del director (covariante)\n\n\n\\((\\ )_{\\|\\beta}\\)\nderivada covariante en la superficie (símbolos \\(\\bar\\Gamma\\))\n\n\n\\(b_{\\alpha\\beta}\\), \\(b^\\alpha_\\beta\\)\ncurvatura, convenio \\(b_{\\alpha\\beta}=\\hat{\\mathbf{a}}_3\\cdot\\mathbf{a}_{\\alpha,\\beta}\\)\n\n\n\\(\\gamma^0,\\gamma^1,\\gamma_\\alpha\\)\nextensión, flexión y cortante (de ingeniería)\n\n\n\n\n\n\n\n\n\n\n\nAdvertenciaConvenios por confirmar\n\n\n\nLas componentes físicas solo se definen aquí en bases ortogonales (\\(a_{12}=0\\)). Para bases no ortogonales (p. ej. la placa oblicua) y para los giros físicos del director no hay convenio fijado por el autor: se marcan «por confirmar» y no se usan en los ejemplos.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-relaciones-d6",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-relaciones-d6",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "19.1 Las tres relaciones",
+    "text": "19.1 Las tres relaciones\n\nProposición 19.1 (Deformaciones de la lámina (pequeñas deformaciones, giros moderados)) Linealizando ecuación 16.6 y ecuación 18.2 para desplazamientos y giros pequeños: \\[\n\\begin{aligned}\n\\gamma^0_{\\alpha\\beta}&=\\tfrac12\\bigl(u_{\\alpha\\|\\beta}+u_{\\beta\\|\\alpha}\\bigr)-b_{\\alpha\\beta}\\,u_3,\\\\[2pt]\n\\gamma^1_{\\alpha\\beta}&=\\tfrac12\\bigl(\\varphi_{\\alpha\\|\\beta}+\\varphi_{\\beta\\|\\alpha}-b^\\mu_\\alpha u_{\\mu\\|\\beta}-b^\\mu_\\beta u_{\\mu\\|\\alpha}\\bigr)+b^\\mu_\\alpha b_{\\mu\\beta}\\,u_3,\\\\[2pt]\n\\gamma_\\alpha&=\\varphi_\\alpha+u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho .\n\\end{aligned}\n\\tag{19.1}\\] La deformación en el punto \\(\\theta^3\\) del espesor es \\(\\gamma_{\\alpha\\beta}\\approx\\gamma^0_{\\alpha\\beta}+\\theta^3\\gamma^1_{\\alpha\\beta}\\).\n\n\n\n\n\n\n\nNotaIdea de la demostración de Proposición 19.1\n\n\n\n\n\nSe parte de \\(\\mathbf{R}_0=\\mathbf{r}+\\mathbf{u}\\), \\(\\mathbf{A}_3=\\hat{\\mathbf{a}}_3+\\varphi_\\beta\\mathbf{a}^\\beta\\) y se linealiza ecuación 16.6. Con Gauss–Weingarten (ecuación 9.3, ecuación 9.4), \\(\\mathbf{u}_{,\\beta}=(u_{\\alpha\\|\\beta}-b_{\\alpha\\beta}u_3)\\mathbf{a}^\\alpha+(u_{3,\\beta}+b^\\rho_\\beta u_\\rho)\\hat{\\mathbf{a}}_3\\): la parte tangente da la extensión \\(\\gamma^0\\) y la normal alimenta el cortante. El mismo cálculo con \\(\\hat{\\mathbf{a}}_{3,\\alpha}=-b^\\mu_\\alpha\\mathbf{a}_\\mu\\) produce los términos de curvatura de \\(\\gamma^1\\). La verificación definitiva es numérica: el test «Cinemática de láminas» compara ecuación 19.1 con la deformación exacta de un cuerpo con \\(s=10^{-6}\\) y coincide a \\(2\\cdot10^{-4}\\) (extensión, cortante) y \\(2\\cdot10^{-3}\\) (flexión). \\(\\square\\)\n\n\n\n\n\n\n\n\n\nTipIdea clave\n\n\n\nEn una placa (\\(b_{\\alpha\\beta}=0\\)) las tres relaciones se desacoplan: la extensión solo depende de \\(u_\\alpha\\) (problema plano), la flexión de \\(\\varphi_\\alpha\\) y el cortante de \\(\\varphi_\\alpha+w_{,\\alpha}\\). En una lámina curva, \\(b_{\\alpha\\beta}\\neq0\\) mezcla membrana y flexión: empujar la superficie normalmente (\\(u_3\\)) la estira, y estirarla (\\(u_\\alpha\\)) la flexa.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-curv-acopla",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-curv-acopla",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "19.2 Cómo actúa la curvatura",
+    "text": "19.2 Cómo actúa la curvatura\nObserva en ecuación 19.1 dónde aparece \\(b\\):\n\n\n\n\n\n\n\nTérmino\nEfecto físico\n\n\n\n\n\\(-b_{\\alpha\\beta}u_3\\) en \\(\\gamma^0\\)\nun desplazamiento normal estira la superficie curva (el cilindro que se hincha)\n\n\n\\(-b^\\mu_\\alpha u_{\\mu\\|\\beta}\\) en \\(\\gamma^1\\)\nun estiramiento tangencial cambia la curvatura\n\n\n\\(b^\\mu_\\alpha b_{\\mu\\beta}u_3\\) en \\(\\gamma^1\\)\nun desplazamiento normal cambia la curvatura aunque no gire el director\n\n\n\\(b^\\rho_\\alpha u_\\rho\\) en \\(\\gamma_\\alpha\\)\nel movimiento tangencial inclina la normal de la superficie curva\n\n\n\nPor eso una lámina curva resiste mucho mejor las cargas normales que una placa plana: parte de la carga se resiste «por membrana», sin flexión (el argumento del primer tema del libro).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-fisicas-d6",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-fisicas-d6",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "19.3 Componentes físicas",
+    "text": "19.3 Componentes físicas\nEn una base ortogonal (\\(a_{12}=0\\)), las deformaciones físicas son \\[\n\\varepsilon^{\\,0}_{(\\alpha\\alpha)}=\\frac{\\gamma^0_{\\alpha\\alpha}}{a_{\\alpha\\alpha}},\\qquad\n\\varepsilon^{\\,0}_{(12)}=\\frac{\\gamma^0_{12}}{\\sqrt{a_{11}a_{22}}},\n\\tag{19.2}\\] y análogamente la flexión y los cortantes (\\(\\gamma_{(\\alpha)}=\\gamma_\\alpha/\\sqrt{a_{\\alpha\\alpha}}\\)). Las unidades son las naturales: la extensión es adimensional, la flexión es \\(1/\\text{longitud}\\) y el cortante es adimensional.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-ejemplos-d6",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-ejemplos-d6",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "19.4 Ejemplos",
+    "text": "19.4 Ejemplos\n\nEjemplo 19.1 (Ejemplo resuelto: el cilindro que se hincha, con las fórmulas) Cilindro de radio \\(R\\) (D3), \\(\\theta^1=\\varphi\\), desplazamiento solo normal \\(u_3=\\text{const}\\), sin giro del director (\\(\\varphi_\\alpha=0\\)). Con \\(b_{\\varphi\\varphi}=-R\\), \\(b^\\varphi_\\varphi=-1/R\\) y \\(\\bar\\Gamma^\\varphi_{\\varphi\\varphi}=0\\) (la base no gira en intensidad), ecuación 19.1 da: \\[\n\\gamma^0_{\\varphi\\varphi}=-b_{\\varphi\\varphi}u_3=R\\,u_3,\\qquad\n\\gamma^1_{\\varphi\\varphi}=b^\\varphi_\\varphi b_{\\varphi\\varphi}u_3=u_3,\\qquad \\gamma_\\varphi=0 .\n\\] En componentes físicas (\\(a_{\\varphi\\varphi}=R^2\\)): \\(\\varepsilon^0=u_3/R\\) (el aro se alarga) y \\(\\gamma^1/a_{\\varphi\\varphi}=u_3/R^2\\) (la curvatura del aro cambia, porque \\(1/(R+u_3)\\approx1/R-u_3/R^2\\)). Con \\(R=2000\\) mm y \\(u_3=1\\) mm: \\(\\varepsilon^0=5\\cdot10^{-4}\\) y \\(\\kappa=2{,}5\\cdot10^{-7}\\ \\text{mm}^{-1}\\). Coincide con el cilindro de D3.\n\nPon a prueba lo anterior.\n\nCilindro de \\(R=2000\\) mm con \\(u_3=1\\) mm uniforme y \\(\\varphi_\\alpha=0\\): ¿cuánto vale la deformación de membrana física \\(\\varepsilon^0=\\gamma^0_{\\varphi\\varphi}/a_{\\varphi\\varphi}\\)?\n\n\\(\\gamma^0=-b\\,u_3=R\\,u_3\\) y \\(a_{\\varphi\\varphi}=R^2\\).\n\n\n\\(\\varepsilon^0=u_3/R=1/2000=5\\cdot10^{-4}\\).\n\n\n\nCon los mismos datos, ¿cuánto vale \\(\\gamma^1_{\\varphi\\varphi}/a_{\\varphi\\varphi}\\) (en mm\\(^{-1}\\))?\n\n\\(\\gamma^1_{\\varphi\\varphi}=b^\\varphi_\\varphi b_{\\varphi\\varphi}u_3=u_3\\).\n\n\n\\(1/R^2=1/(2000)^2=2{,}5\\cdot10^{-7}\\ \\text{mm}^{-1}\\).\n\n\n\nEn una placa plana (\\(b_{\\alpha\\beta}=0\\)), el desplazamiento transversal \\(u_3\\) no produce extensión de la superficie media (a orden lineal).\n\nVerdadero. El único término con \\(u_3\\) en \\(\\gamma^0\\) es \\(-b_{\\alpha\\beta}u_3\\), que se anula. Por eso la placa plana trata aparte membrana y flexión; en una lámina curva ambas se acoplan.\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nDerivada covariante, no parcial: en \\(u_{\\alpha\\|\\beta}\\) aparecen los Christoffel de la superficie. En un cilindro con \\(\\varphi\\) y \\(z\\) vale \\(\\bar\\Gamma=0\\) casi todo, pero en polares o esfera, no.\nCortante de ingeniería: \\(\\gamma_\\alpha=2\\gamma_{\\alpha3}\\); al pasar a la energía el factor se compensa (D7).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-julia-d6",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-julia-d6",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "19.5 Práctica guiada en Julia",
+    "text": "19.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se evalúan las tres relaciones con deformacion_lamina_lineal en el cilindro y en el paraboloide, y se comprueban contra la deformación exacta.\n\n\n\nusing Geometria, LinearAlgebra\n\nR = 2000.0; r = cilindro(R)\nθ = [0.9, 0.3]\nγ0, γ1, γS = deformacion_lamina_lineal(r, t -&gt; [0.0, 0.0], t -&gt; 1.0, t -&gt; [0.0, 0.0], θ)\na = metrica_superficie(r, θ)\n(ε0 = γ0[1, 1] / a[1, 1], κ = γ1[1, 1] / a[1, 1], γS = γS)\n\n(ε0 = 0.0004999999854643305, κ = 2.4999998546433064e-7, γS = [0.0, 0.0])\n\n\n\n# Paraboloide: extensión y flexión lineales frente a la deformación exacta (ver tests)\nrp = paraboloide_curvo(3.0, -2.0); θp = [0.7, -0.4]\nudn(t) = [0.30 * sin(t[1]) + 0.1 * t[2], 0.20 * cos(t[2]) - 0.05 * t[1]]\nu3(t)  = 0.25 * t[1] * t[2] + 0.1 * cos(t[1])\nφdn(t) = [0.12 * t[2] - 0.05, -0.08 * t[1] + 0.03 * sin(t[2])]\ns = 1e-6\nγ0, γ1, γS = deformacion_lamina_lineal(rp, udn, u3, φdn, θp)\nR0, A3 = campos_lamina(rp, udn, u3, φdn, s)\nex(θ3) = deformacion_lamina_exacta(rp, R0, A3, θp, θ3) ./ s\n(max_dif_γ0 = maximum(abs.(ex(0.0)[1:2, 1:2] .- γ0)),\n max_dif_γS = maximum(abs.(2 .* ex(0.0)[1:2, 3] .- γS)))\n\n(max_dif_γ0 = 1.3504576386325073e-6, max_dif_γS = 1.4105992295343484e-6)",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-ejercicios-d6",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#sec-ejercicios-d6",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "19.6 Ejercicios",
+    "text": "19.6 Ejercicios\n\nTraslación rígida. Una lámina cilíndrica se desplaza una distancia \\(c\\) en la dirección \\(z\\) (el eje): \\(u_z=c\\). ¿Qué deformaciones produce?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nNinguna: \\(u_{\\alpha\\|\\beta}=0\\) (campo constante en la base cartesiana) y \\(b_{zz}=0\\). Los movimientos rígidos no deforman.\n\n\n\nAcople. Explica por qué un cilindro con \\(u_3=1\\) mm uniforme tiene deformación de membrana, aunque no haya fuerzas en el plano.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPorque \\(\\gamma^0_{\\varphi\\varphi}=-b_{\\varphi\\varphi}u_3=Ru_3\\neq0\\): ensanchar un aro alarga su perímetro. Ese es el origen del efecto membrana.\n\n\n\nOrden. ¿Qué relación de ecuación 19.1 contiene la derivada más alta de los desplazamientos? ¿Y de \\(u_3\\) en KL?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nEn RM, \\(\\gamma^1\\) contiene primeras derivadas de \\(\\varphi\\) y \\(u_\\mu\\) y \\(\\gamma^0\\) primeras derivadas de \\(u_\\alpha\\): todo de orden uno. En KL, \\(\\varphi_\\alpha\\) se sustituye por \\(-(u_{3,\\alpha}+b^\\rho_\\alpha u_\\rho)\\) y aparecen segundas derivadas de \\(u_3\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#la-doy-por-superada-si",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo de memoria la estructura de \\(\\gamma^0,\\gamma^1,\\gamma_\\alpha\\) y sé dónde entra \\(b\\).\nCalculo la deformación de membrana y la curvatura del cilindro con \\(u_3\\) uniforme.\nDistingo componentes de la deformación y componentes físicas en bases ortogonales.\nSé que las bases no ortogonales y los giros físicos tienen convenios por confirmar.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo (Novozhilov 1959; Flügge 1972). ecuación 19.1 se comprueba con deformacion_lamina_lineal frente a deformacion_lamina_exacta; los ejemplos del cilindro, con los mismos tests.\nCorrecciones. Con el convenio del libro (\\(b_{\\alpha\\beta}=\\hat{\\mathbf{a}}_3\\cdot\\mathbf{a}_{\\alpha,\\beta}\\)) los signos de \\(\\gamma^0\\) y del acople \\(b^\\mu_\\alpha u_{\\mu\\|\\beta}\\) en \\(\\gamma^1\\) son los de ecuación 19.1; una fuente de partida imprime el signo de \\(\\gamma^1\\) de forma incoherente con el de \\(b\\), y se considera error de la fuente (el signo exacto de \\(\\gamma^1\\) en KL es \\(-(B-b)\\), D4).\nQué queda pendiente. Componentes físicas en bases no ortogonales y giros físicos (por confirmar); la demostración es un esquema; figuras con revisión visual pendiente; referencias no leídas línea a línea.\n\n\n\n\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#referencias-unidad",
+    "href": "book/D-elasticidad/D6-deformaciones-desplazamientos.html#referencias-unidad",
+    "title": "19  Relaciones deformación–desplazamiento",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Relaciones deformación–desplazamiento</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Ley de Hooke y tensión plana y Relaciones deformación–desplazamiento.\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#objetivos-y-prerrequisitos",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "",
+    "text": "definir los esfuerzos de membrana \\(N^{\\alpha\\beta}\\), de flexión \\(M^{\\alpha\\beta}\\) y cortantes \\(Q^\\alpha\\) integrando en el espesor;\nobtener las leyes constitutivas \\(N=C^E\\gamma^0\\), \\(M=C^B\\gamma^1\\), \\(Q=C^S\\gamma\\) con \\(K_1=t\\), \\(K_2=t^3/12\\);\nescribirlas en forma matricial (Voigt) y en una base no ortogonal;\ncalcular la energía de la lámina como suma de tres partes;\nverificar las rigideces con rigidez_lamina.\n\n\n\n\nSección 20.1 · Los esfuerzos · Sección 20.2 · Las rigideces · Sección 20.3 · Forma matricial y energía\nSección 20.4 · Ejemplo · Sección 20.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(N^{\\alpha\\beta}\\)\nesfuerzo de membrana (fuerza por unidad de longitud)\n\n\n\\(M^{\\alpha\\beta}\\)\nmomento flector/torsor por unidad de longitud\n\n\n\\(Q^\\alpha\\)\nesfuerzo cortante transversal por unidad de longitud\n\n\n\\(C^{\\alpha\\beta\\gamma\\delta}\\)\ntensor de tensión plana de D2 con la métrica \\(a^{\\alpha\\beta}\\)\n\n\n\\(K_1=t,\\ K_2=t^3/12\\)\nfactores de espesor de membrana y de flexión",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-esfuerzos",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-esfuerzos",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "20.1 Los esfuerzos",
+    "text": "20.1 Los esfuerzos\nIntegrando las tensiones en el espesor se obtienen resultantes por unidad de longitud: \\[\nN^{\\alpha\\beta}=\\int_{-t/2}^{t/2}\\sigma^{\\alpha\\beta}\\,d\\theta^3,\\qquad\nM^{\\alpha\\beta}=\\int_{-t/2}^{t/2}\\theta^3\\sigma^{\\alpha\\beta}\\,d\\theta^3,\\qquad\nQ^\\alpha=\\int_{-t/2}^{t/2}\\sigma^{\\alpha3}\\,d\\theta^3 .\n\\tag{20.1}\\] En una lámina delgada el factor de área \\(\\sqrt g/\\sqrt a=1-2H\\theta^3+K(\\theta^3)^2\\) y la diferencia entre componentes contravariantes del sólido y de la superficie se desprecian frente a 1 (error relativo del orden de \\(t/R\\)). Es la misma aproximación que justifica usar solo \\(\\gamma^0+\\theta^3\\gamma^1\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-rigideces",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-rigideces",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "20.2 Las rigideces",
+    "text": "20.2 Las rigideces\n\nProposición 20.1 (Leyes constitutivas de la lámina) Con la tensión plana de ecuación 15.5 en cada capa y la deformación \\(\\gamma_{\\alpha\\beta}=\\gamma^0_{\\alpha\\beta}+\\theta^3\\gamma^1_{\\alpha\\beta}\\), la integración de ecuación 20.1 da \\[\nN^{\\alpha\\beta}=t\\,C^{\\alpha\\beta\\gamma\\delta}\\gamma^0_{\\gamma\\delta},\\qquad\nM^{\\alpha\\beta}=\\frac{t^3}{12}\\,C^{\\alpha\\beta\\gamma\\delta}\\gamma^1_{\\gamma\\delta},\\qquad\nQ^\\alpha=t\\,\\mu\\,a^{\\alpha\\beta}\\gamma_\\beta,\n\\tag{20.2}\\] con \\(C^{\\alpha\\beta\\gamma\\delta}=\\lambda^*a^{\\alpha\\beta}a^{\\gamma\\delta}+\\mu(a^{\\alpha\\gamma}a^{\\beta\\delta}+a^{\\alpha\\delta}a^{\\beta\\gamma})\\), \\(\\lambda^*=\\dfrac{E\\nu}{1-\\nu^2}\\) y \\(\\mu=\\dfrac{E}{2(1+\\nu)}\\).\n\n\n\n\n\n\n\nNotaDemostración de Proposición 20.1\n\n\n\n\n\nMembrana y flexión: \\(\\int_{-t/2}^{t/2}d\\theta^3=t\\), \\(\\int\\theta^3d\\theta^3=0\\) y \\(\\int(\\theta^3)^2d\\theta^3=t^3/12\\). Al sustituir \\(\\sigma^{\\alpha\\beta}=C^{\\alpha\\beta\\gamma\\delta}(\\gamma^0_{\\gamma\\delta}+\\theta^3\\gamma^1_{\\gamma\\delta})\\) en ecuación 20.1, el término cruzado desaparece (integral de una función impar) y quedan \\(tC\\gamma^0\\) y \\(\\tfrac{t^3}{12}C\\gamma^1\\): membrana y flexión no se acoplan a nivel constitutivo (se acoplan por geometría, D6). Cortante: \\(\\sigma^{\\alpha3}=E^{\\alpha3\\beta3}\\cdot2\\gamma_{\\beta3}=\\mu a^{\\alpha\\beta}\\gamma_\\beta\\) (con \\(\\gamma_\\beta=2\\gamma_{\\beta3}\\) y \\(E^{\\alpha3\\beta3}=\\tfrac12\\mu a^{\\alpha\\beta}\\) para el material isótropo); integrando en el espesor, \\(Q^\\alpha=t\\mu a^{\\alpha\\beta}\\gamma_\\beta\\). \\(\\blacksquare\\)\n\n\n\n\n\n\n\n\n\nTipIdea clave\n\n\n\nLa rigidez de flexión es \\(t^2/12\\) veces la de membrana. Para una deformación que varíe en una longitud \\(L\\), la relación entre las rigideces de membrana y de flexión es del orden de \\((L/t)^2\\): una lámina delgada se resiste mucho mejor por membrana que por flexión, y los efectos de flexión quedan concentrados donde la membrana no basta (bordes, cargas concentradas).\n\n\n\n\n\n\n\n\nAdvertenciaSin factor de corrección de cortante\n\n\n\nEn la literatura se multiplica la rigidez a cortante por un factor \\(K_s\\) (p. ej. \\(5/6\\) para una placa homogénea con tensión parabólica). El modelo del libro toma \\(K_s=1\\), es decir, no lo aplica: es el cortante constante en el espesor de la hipótesis cinemática. Es una decisión del modelo de partida, por confirmar si se mantiene.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-matricial",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-matricial",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "20.3 Forma matricial y energía",
+    "text": "20.3 Forma matricial y energía\nEn notación de Voigt, con \\(\\gamma^0=(\\gamma^0_{11},\\gamma^0_{22},2\\gamma^0_{12})\\) (y análogo \\(\\gamma^1\\)) y \\(\\gamma_S=(\\gamma_1,\\gamma_2)\\): \\[\n\\mathbf{N}=\\mathbf{C}^E\\boldsymbol{\\gamma}^0,\\quad\n\\mathbf{M}=\\mathbf{C}^B\\boldsymbol{\\gamma}^1,\\quad\n\\mathbf{Q}=\\mathbf{C}^S\\boldsymbol{\\gamma}_S,\\qquad\n\\mathbf{C}^E=t\\,\\mathbf{D},\\ \\ \\mathbf{C}^B=\\tfrac{t^3}{12}\\mathbf{D},\\ \\ \\mathbf{C}^S=t\\mu\\,a^{\\alpha\\beta},\n\\tag{20.3}\\] donde \\(\\mathbf{D}\\) es la matriz \\(3\\times3\\) de tensión plana en la base (con métrica \\(a^{\\alpha\\beta}\\); si la base es ortonormal es la matriz de ecuación 15.6). La energía de deformación por unidad de superficie es la suma de tres partes \\[\nU=\\tfrac12\\bigl[\\boldsymbol{\\gamma}^{0\\,\\mathsf T}\\mathbf{C}^E\\boldsymbol{\\gamma}^0+\\boldsymbol{\\gamma}^{1\\,\\mathsf T}\\mathbf{C}^B\\boldsymbol{\\gamma}^1+\\boldsymbol{\\gamma}_S^{\\mathsf T}\\mathbf{C}^S\\boldsymbol{\\gamma}_S\\bigr],\n\\tag{20.4}\\] extensión + flexión + cortante, sin términos cruzados.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-ejemplo-d7",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-ejemplo-d7",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "20.4 Ejemplo",
+    "text": "20.4 Ejemplo\n\nEjemplo 20.1 (Ejemplo resuelto: flexión pura de una banda de acero) Placa de acero (\\(E=210\\,000\\) MPa, \\(\\nu=0{,}3\\)) de \\(t=10\\) mm, con curvatura uniforme \\(\\kappa=\\gamma^1_{11}=10^{-5}\\ \\text{mm}^{-1}\\) y \\(\\gamma^1_{22}=\\gamma^1_{12}=0\\). Con \\(\\mathbf{D}\\) del Ejemplo 15.2 (ortonormal), \\(\\mathbf{C}^B_{11}=\\tfrac{t^3}{12}D_{11}=\\tfrac{1000}{12}\\cdot230\\,769=1{,}923\\cdot10^7\\ \\text{N·mm}\\). El momento por unidad de longitud es \\(M^{11}=C^B_{11}\\kappa=192{,}3\\ \\text{N·mm/mm}\\). Comprobación con la tensión: \\(\\sigma^{11}(\\theta^3)=D_{11}\\kappa\\theta^3\\), en la cara extrema \\(=230\\,769\\cdot10^{-5}\\cdot5=11{,}54\\) MPa, y \\(M=\\sigma_{\\max}\\,t^2/6=11{,}54\\cdot100/6=192{,}3\\) ✓.\n\nPon a prueba lo anterior.\n\nPara \\(E=210\\,000\\) MPa, \\(\\nu=0{,}3\\) y \\(t=10\\) mm, ¿cuánto vale la rigidez de membrana \\(C^E_{11}=t\\,E/(1-\\nu^2)\\) en N/mm?\n\n\\(D_{11}=230\\,769\\) MPa (Ejemplo 15.2).\n\n\n\\(10\\cdot230\\,769=2{,}308\\cdot10^6\\) N/mm.\n\n\n\nCon los mismos datos, ¿cuánto vale la rigidez de flexión \\(C^B_{11}=\\tfrac{t^3}{12}D_{11}\\) en N·mm?\n\n\\(\\tfrac{1000}{12}\\cdot230\\,769=1{,}923\\cdot10^7\\) N·mm.\n\n\n\n¿Cuánto vale el cociente entre las rigideces de flexión y de membrana, \\(C^B_{11}/C^E_{11}\\)?\n\n\n\\(t/12\\)\n\\(t^2/12\\)\n\\(t^3/12\\)\n1\n\n\n\n\\(\\dfrac{t^3/12}{t}=t^2/12\\) (con unidades de longitud al cuadrado). Para \\(t=10\\) mm: \\(8{,}33\\) mm\\(^2\\).\n\n\n\n\n\n\n\n\nAdvertenciaErrores frecuentes\n\n\n\n\nMezclar \\(\\gamma_{\\alpha3}\\) y \\(\\gamma_\\alpha\\): en el cortante entra \\(\\gamma_\\alpha=2\\gamma_{\\alpha3}\\) y la rigidez es \\(t\\mu a^{\\alpha\\beta}\\) (no \\(2t\\mu\\)); una fuente de partida imprime un factor 2 distinto.\nUsar \\(E\\) en lugar de \\(E/(1-\\nu^2)\\) en membrana y flexión: la tensión plana rigidiza un \\(1/(1-\\nu^2)\\approx1{,}1\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-julia-d7",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-julia-d7",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "20.5 Práctica guiada en Julia",
+    "text": "20.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado rigidez_lamina devuelve \\((\\mathbf{C}^E,\\mathbf{C}^B,\\mathbf{C}^S)\\) en cualquier base, ortonormal u oblicua; se comprueba contra la condensación estática de Hooke 3D.\n\n\n\nusing Geometria, LinearAlgebra\n\nE, ν, t = 210e3, 0.3, 10.0\nCE, CB, CS = rigidez_lamina(Matrix(1.0I, 2, 2), E, ν, t)\n(CE11 = CE[1, 1], CB11 = CB[1, 1], CS11 = CS[1, 1], razón_CB_CE = CB[1, 1] / CE[1, 1], t²_12 = t^2 / 12)\n\n(CE11 = 2.3076923076923075e6, CB11 = 1.923076923076923e7, CS11 = 807692.3076923076, razón_CB_CE = 8.333333333333332, t²_12 = 8.333333333333334)\n\n\n\n# Flexión pura: M = CB·γ¹  frente a  σ_max · t²/6\nκ = 1e-5\nM11 = (CB * [κ, 0, 0])[1]\nσmax = matriz_tension_plana(E, ν)[1, 1] * κ * t / 2\n(M11 = M11, σmax = σmax, M_desde_σ = σmax * t^2 / 6)\n\n(M11 = 192.3076923076923, σmax = 11.538461538461537, M_desde_σ = 192.30769230769226)\n\n\n\n# Base oblicua (60°): la rigidez de membrana cambia de forma, la energía de una deformación física no\nφ = π / 3; a = [1 cos(φ); cos(φ) 1]\nCEo, CBo, CSo = rigidez_lamina(a, E, ν, t)\nγ = [2e-3, -1e-3, 2 * 5e-4]\n(U_membrana = 0.5 * γ' * CEo * γ, CS_oblicua = CSo)\n\n(U_membrana = 5.358974358974361, CS_oblicua = [1.076923076923077e6 -538461.5384615386; -538461.5384615386 1.076923076923077e6])",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-ejercicios-d7",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#sec-ejercicios-d7",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "20.6 Ejercicios",
+    "text": "20.6 Ejercicios\n\nCortante. Para el acero con \\(t=10\\) mm, calcula \\(C^S_{11}=t\\mu\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(10\\cdot80\\,769=8{,}08\\cdot10^5\\) N/mm.\n\n\n\nEnergía de flexión pura. En flexión pura la fibra extrema se deforma \\(\\varepsilon_{\\max}=\\kappa t/2\\). Compara \\(U_B\\) con la energía \\(U_E\\) que almacenaría una membrana con esa misma deformación en todo el espesor.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(U_E=\\tfrac12tD\\varepsilon_{\\max}^2=\\tfrac18t^3D\\kappa^2\\) y \\(U_B=\\tfrac12\\tfrac{t^3}{12}D\\kappa^2\\), de modo que \\(U_B/U_E=\\tfrac13\\).\n\n\n\nAcople. ¿Por qué no hay término cruzado membrana–flexión en ecuación 20.4?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPorque la deformación varía simétricamente en el espesor y la integral \\(\\int\\theta^3d\\theta^3=0\\) (material homogéneo, referencia en la superficie media). En un laminado o en un material con propiedades no simétricas en el espesor aparecería un término cruzado.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#la-doy-por-superada-si",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nDefino \\(N\\), \\(M\\) y \\(Q\\) y sé integrar \\(1,\\theta^3,(\\theta^3)^2\\) en el espesor.\nEscribo ecuación 20.2 y justifico \\(K_1=t\\), \\(K_2=t^3/12\\).\nCalculo las rigideces de un acero y su cociente \\(t^2/12\\).\nSé por qué no se acoplan membrana y flexión constitutivamente y qué decisión se tomó sobre el cortante.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo, teoría clásica de placas y láminas (Flügge 1972; Novozhilov 1959). Las rigideces se verifican con rigidez_lamina (tests «Rigidez de la lámina»), incluida la base oblicua frente a la condensación estática de Hooke 3D.\nCorrecciones. En una fuente de partida el tensor 3D aparece con el factor \\(2\\nu/(1-2\\nu)\\) en lugar del de tensión plana \\(2\\nu/(1-\\nu)\\) del material con \\(\\sigma^{33}=0\\): aquí se usa la condensación estática, que es coherente. El factor 2 del cortante de la fuente de partida no se mantiene (ver errores frecuentes).\nQué queda pendiente. El factor de corrección de cortante (por confirmar); materiales laminados/anisótropos; la aproximación de lámina delgada (\\(\\sqrt g/\\sqrt a\\approx1\\)) se enuncia, no se acota; figuras con revisión visual pendiente.\n\n\n\n\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D7-leyes-constitutivas.html#referencias-unidad",
+    "href": "book/D-elasticidad/D7-leyes-constitutivas.html#referencias-unidad",
+    "title": "20  Leyes constitutivas de la lámina",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Leyes constitutivas de la lámina</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html",
+    "title": "21  Principios variacionales",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Leyes constitutivas de la lámina y Deformación y tensión.\nSecciones del tema",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#objetivos-y-prerrequisitos",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#objetivos-y-prerrequisitos",
+    "title": "21  Principios variacionales",
+    "section": "",
+    "text": "enunciar el principio de los trabajos virtuales y la energía potencial total \\(\\Pi(\\mathbf{u})\\);\nescribir los funcionales de Hellinger–Reissner y de Hu–Washizu (versión genérica);\nver qué ecuación sale de variar cada campo (equilibrio, compatibilidad, ley constitutiva);\nresolver una barra con los tres principios y comprobar que dan lo mismo;\nexplicar para qué sirven los principios mixtos en elementos finitos de lámina.\n\n\n\n\nSección 21.1 · Trabajos virtuales · Sección 21.2 · Energía potencial\nSección 21.3 · Principios mixtos · Sección 21.4 · Una barra con los tres principios · Sección 21.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\mathbf{u},\\ \\boldsymbol\\varepsilon,\\ \\boldsymbol\\sigma\\)\ndesplazamiento, deformación y tensión (campos independientes en los principios mixtos)\n\n\n\\(W(\\boldsymbol\\varepsilon)\\), \\(W^*(\\boldsymbol\\sigma)\\)\nenergía de deformación y energía complementaria\n\n\n\\(\\varepsilon(\\mathbf{u})\\)\ndeformación compatible, \\(\\tfrac12(\\nabla\\mathbf{u}+\\nabla\\mathbf{u}^{\\mathsf T})\\)\n\n\n\\(\\mathbf{b},\\ \\bar{\\mathbf{t}}\\)\nfuerzas de volumen y tracciones aplicadas en el contorno \\(\\Gamma_t\\)\n\n\n\\(\\delta\\)\nvariación (virtual)",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#sec-trabajos-virtuales",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#sec-trabajos-virtuales",
+    "title": "21  Principios variacionales",
+    "section": "21.1 Los trabajos virtuales",
+    "text": "21.1 Los trabajos virtuales\n\nDefinición 21.1 (Principio de los trabajos virtuales) Un campo de tensiones \\(\\boldsymbol\\sigma\\) está en equilibrio con las fuerzas \\(\\mathbf{b},\\bar{\\mathbf{t}}\\) si y solo si, para todo desplazamiento virtual \\(\\delta\\mathbf{u}\\) (compatible y nulo donde está impuesto), \\[\n\\int_V\\boldsymbol\\sigma:\\varepsilon(\\delta\\mathbf{u})\\,dV=\\int_V\\mathbf{b}\\cdot\\delta\\mathbf{u}\\,dV+\\int_{\\Gamma_t}\\bar{\\mathbf{t}}\\cdot\\delta\\mathbf{u}\\,dS .\n\\tag{21.1}\\] El primer miembro es el trabajo virtual interno, el segundo el externo.\n\n\n\n\n\n\n\nNotaIdea de la demostración de Definición 21.1\n\n\n\n\n\nCon el teorema de la divergencia (B5), \\(\\int\\sigma^{ij}\\delta u_{i\\|j}dV=\\int_{\\Gamma}\\sigma^{ij}n_j\\delta u_i\\,dS-\\int\\sigma^{ij}{}_{\\|j}\\delta u_i\\,dV\\). Si se cumple el equilibrio \\(\\sigma^{ij}{}_{\\|j}+b^i=0\\) (D1) y \\(\\sigma n=\\bar{\\mathbf{t}}\\) en \\(\\Gamma_t\\), se obtiene ecuación 21.1. Recíprocamente, si ecuación 21.1 vale para todo \\(\\delta\\mathbf{u}\\), el lema fundamental del cálculo de variaciones da el equilibrio y la condición de contorno. \\(\\square\\)\n\n\n\necuación 21.1 no usa ninguna ley constitutiva: vale para cualquier material. Es la forma débil del equilibrio, y el punto de partida de los elementos finitos.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#sec-energia-potencial",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#sec-energia-potencial",
+    "title": "21  Principios variacionales",
+    "section": "21.2 Energía potencial total",
+    "text": "21.2 Energía potencial total\nCon un material elástico, \\(\\boldsymbol\\sigma=\\partial W/\\partial\\boldsymbol\\varepsilon\\) (D2), y ecuación 21.1 se vuelve la condición de estacionariedad de \\[\n\\Pi(\\mathbf{u})=\\int_VW\\bigl(\\varepsilon(\\mathbf{u})\\bigr)\\,dV-\\int_V\\mathbf{b}\\cdot\\mathbf{u}\\,dV-\\int_{\\Gamma_t}\\bar{\\mathbf{t}}\\cdot\\mathbf{u}\\,dS .\n\\tag{21.2}\\]\n\nProposición 21.1 (Mínimo de la energía potencial) La solución del problema elástico lineal con \\(W&gt;0\\) minimiza \\(\\Pi\\) entre los desplazamientos admisibles. Variar \\(\\mathbf{u}\\) en ecuación 21.2 recupera ecuación 21.1.\n\nPara una lámina (D7), \\(W\\) se sustituye por la energía por unidad de superficie ecuación 20.4: \\[\n\\Pi(\\mathbf{u},\\boldsymbol\\varphi)=\\int_A U\\bigl(\\gamma^0(\\mathbf{u}),\\gamma^1(\\mathbf{u},\\boldsymbol\\varphi),\\gamma_S(\\mathbf{u},\\boldsymbol\\varphi)\\bigr)\\,dA-\\text{(trabajo de las cargas)},\n\\tag{21.3}\\] con \\(\\gamma\\) dadas por ecuación 19.1. Es el funcional que discretizan los elementos de desplazamientos puros; sus limitaciones (bloqueo, D5) motivan los principios mixtos.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#sec-mixtos",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#sec-mixtos",
+    "title": "21  Principios variacionales",
+    "section": "21.3 Principios mixtos",
+    "text": "21.3 Principios mixtos\nEn un principio mixto se tratan varios campos como independientes y se imponen algunas ecuaciones de forma débil en lugar de por construcción.\n\nDefinición 21.2 (Hellinger–Reissner (dos campos: \\(\\mathbf{u}\\), \\(\\boldsymbol\\sigma\\))) \\[\n\\Pi_{HR}(\\mathbf{u},\\boldsymbol\\sigma)=\\int_V\\bigl[\\boldsymbol\\sigma:\\varepsilon(\\mathbf{u})-W^*(\\boldsymbol\\sigma)\\bigr]dV-\\int_V\\mathbf{b}\\cdot\\mathbf{u}\\,dV-\\int_{\\Gamma_t}\\bar{\\mathbf{t}}\\cdot\\mathbf{u}\\,dS .\n\\tag{21.4}\\] Variar \\(\\boldsymbol\\sigma\\) da la ley constitutiva (\\(\\varepsilon(\\mathbf{u})=\\partial W^*/\\partial\\boldsymbol\\sigma\\)) y variar \\(\\mathbf{u}\\) da el equilibrio.\n\n\nDefinición 21.3 (Hu–Washizu, versión genérica (tres campos: \\(\\mathbf{u}\\), \\(\\boldsymbol\\varepsilon\\), \\(\\boldsymbol\\sigma\\))) \\[\n\\Pi_{HW}(\\mathbf{u},\\boldsymbol\\varepsilon,\\boldsymbol\\sigma)=\\int_V\\bigl[W(\\boldsymbol\\varepsilon)+\\boldsymbol\\sigma:\\bigl(\\varepsilon(\\mathbf{u})-\\boldsymbol\\varepsilon\\bigr)\\bigr]dV-\\int_V\\mathbf{b}\\cdot\\mathbf{u}\\,dV-\\int_{\\Gamma_t}\\bar{\\mathbf{t}}\\cdot\\mathbf{u}\\,dS .\n\\tag{21.5}\\] Las tres variaciones dan las tres ecuaciones del problema elástico:\n\n\n\n\n\n\n\nSe varía\nEcuación que se obtiene\n\n\n\n\n\\(\\delta\\boldsymbol\\sigma\\)\ncompatibilidad: \\(\\boldsymbol\\varepsilon=\\varepsilon(\\mathbf{u})\\)\n\n\n\\(\\delta\\boldsymbol\\varepsilon\\)\nconstitutiva: \\(\\boldsymbol\\sigma=\\partial W/\\partial\\boldsymbol\\varepsilon\\)\n\n\n\\(\\delta\\mathbf{u}\\)\nequilibrio (ecuación 21.1)\n\n\n\n\n\n\n\n\n\n\nTipIdea clave\n\n\n\nCada campo independiente «lleva» una ecuación: en energía potencial, compatibilidad y constitutiva se imponen; en Hu–Washizu las tres se obtienen. Eso permite discretizar \\(\\boldsymbol\\varepsilon\\) con un espacio distinto del de \\(\\mathbf{u}\\), que es lo que hace que un elemento no bloquee.\n\n\n\n\n\n\n\n\nAdvertenciaEsta es la versión genérica\n\n\n\necuación 21.5 es el funcional general. El libro desarrolla después una versión específica de Hu–Washizu para el elemento de lámina, con la deformación interpolada por subdominios; se tratará en el bloque de elementos finitos (tema E7) y se contrastará con esta. Aquí solo se asegura que el punto de partida es correcto.\n\n\n\n\n\n\n\n\nNotaUn poco de historia: de Hellinger a Hu y Washizu\n\n\n\nEl funcional de Hellinger–Reissner fue propuesto por Hellinger en 1914; Reissner fijó su energía externa y sus condiciones de contorno en 1953. El principio de tres campos se asocia con los nombres de Hu Haichang (1954–1955) y Kyūichirō Washizu (1955), que lo publicaron de forma independiente. Una nota señala que el funcional canónico general ya había sido deducido por Fraeijs de Veubeke en un informe técnico de 1951, por lo que la prioridad es discutida.\nFuentes (secundarias): Hu–Washizu principle, Wikipedia; Eighty Years of the Finite Element Method (arXiv:2107.04960); On the Original Publication of the General Canonical Functional of Linear Elasticity. Los años de Hu varían según la publicación citada (1954 o 1955); no se leyeron los artículos originales. Consultado el 21-10-2026.\n\n\nPon a prueba lo anterior.\n\n¿Qué ecuación se obtiene al variar \\(\\boldsymbol\\sigma\\) en el funcional de Hu–Washizu?\n\n\nla compatibilidad \\(\\boldsymbol\\varepsilon=\\varepsilon(\\mathbf{u})\\)\nel equilibrio\nla ley constitutiva\nla condición de contorno natural\n\n\n\nEl único término con \\(\\delta\\boldsymbol\\sigma\\) es \\(\\delta\\boldsymbol\\sigma:(\\varepsilon(\\mathbf{u})-\\boldsymbol\\varepsilon)\\), cuya anulación para todo \\(\\delta\\boldsymbol\\sigma\\) es la compatibilidad.\n\n\n\nEl principio de los trabajos virtuales ecuación 21.1 es válido para cualquier ley constitutiva.\n\nVerdadero. Solo expresa equilibrio; la ley constitutiva interviene al evaluar \\(\\boldsymbol\\sigma\\).",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#sec-barra-d8",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#sec-barra-d8",
+    "title": "21  Principios variacionales",
+    "section": "21.4 Una barra con los tres principios",
+    "text": "21.4 Una barra con los tres principios\n\nEjemplo 21.1 (Ejemplo resuelto: barra traccionada) Barra de longitud \\(L\\), rigidez axial \\(EA\\) y fuerza \\(P\\) en el extremo libre (empotrada en \\(x=0\\)). Con el campo lineal \\(u=a\\,x\\) (el único admisible con una función de forma lineal), \\(\\varepsilon=a\\).\nEnergía potencial. \\(\\Pi(a)=\\tfrac12EA\\,a^2L-P\\,aL\\). Estacionariedad: \\(EA\\,a\\,L-PL=0\\Rightarrow a=P/(EA)\\) y \\(u(L)=PL/(EA)\\).\nHu–Washizu con \\(\\varepsilon=e\\) y \\(\\sigma=s\\) constantes: \\(\\Pi_{HW}=A L\\bigl[\\tfrac12Ee^2+s(a-e)\\bigr]-P\\,aL\\). Las tres derivadas dan: \\(\\partial_s\\): \\(a=e\\); \\(\\partial_e\\): \\(s=Ee\\); \\(\\partial_a\\): \\(AL\\,s-PL=0\\Rightarrow s=P/A\\). Luego \\(e=P/(EA)\\) y se recupera lo mismo. Con \\(P=10\\,000\\) N, \\(L=2000\\) mm y \\(EA=2{,}1\\cdot10^7\\) N: \\(u(L)=0{,}952\\) mm.\n\n\nEn el Ejemplo 21.1, ¿cuánto vale el alargamiento \\(u(L)=PL/(EA)\\) para \\(P=10\\,000\\) N, \\(L=2000\\) mm y \\(EA=2{,}1\\cdot10^7\\) N?\n\n\\(10\\,000\\cdot2000/2{,}1\\cdot10^7=0{,}9524\\) mm.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#sec-julia-d8",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#sec-julia-d8",
+    "title": "21  Principios variacionales",
+    "section": "21.5 Práctica guiada en Julia",
+    "text": "21.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado Se resuelve la barra como punto estacionario de \\(\\Pi\\) y de \\(\\Pi_{HW}\\) (el sistema lineal de las tres derivadas), y se comprueba que dan el mismo desplazamiento.\n\n\n\nusing LinearAlgebra\n\nE, A, L, P = 210e3, 100.0, 2000.0, 10_000.0\n\n# Energía potencial: Π(a) = ½ EA a² L − P a L  →  dΠ/da = 0\na_pot = P / (E * A)\n\n# Hu–Washizu con (a, e, s) constantes: Π = A L [½ E e² + s (a − e)] − P a L\n# Derivadas = 0:  ∂a: A L s − P L = 0 ;  ∂e: A L (E e − s) = 0 ;  ∂s: A L (a − e) = 0\nK = [0 0 A*L; 0 A*L*E -A*L; A*L -A*L 0]\nf = [P * L, 0.0, 0.0]\na_hw, e_hw, s_hw = K \\ f\n(u_L_potencial = a_pot * L, u_L_HW = a_hw * L, e = e_hw, s = s_hw, P_sobre_A = P / A)\n\n(u_L_potencial = 0.9523809523809523, u_L_HW = 0.9523809523809523, e = 0.0004761904761904762, s = 100.0, P_sobre_A = 100.0)",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#sec-ejercicios-d8",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#sec-ejercicios-d8",
+    "title": "21  Principios variacionales",
+    "section": "21.6 Ejercicios",
+    "text": "21.6 Ejercicios\n\nEnergía complementaria. Para \\(\\sigma=Ee\\) en 1D, calcula \\(W^*(\\sigma)\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(W^*(\\sigma)=\\sigma^2/(2E)\\); coincide numéricamente con \\(W\\) en el régimen lineal.\n\n\n\nHellinger–Reissner en la barra. Escribe ecuación 21.4 con \\(u=ax\\), \\(\\sigma=s\\) constante y obtén \\(a\\) y \\(s\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\Pi_{HR}=AL[s\\,a-s^2/(2E)]-PaL\\). \\(\\partial_s\\): \\(a=s/E\\); \\(\\partial_a\\): \\(s=P/A\\). Luego \\(a=P/(EA)\\).\n\n\n\nUn campo menos. ¿Qué ecuación deja de obtenerse si en Hu–Washizu se elimina \\(\\boldsymbol\\sigma\\) imponiendo \\(\\boldsymbol\\varepsilon=\\varepsilon(\\mathbf{u})\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nQueda la energía potencial: la compatibilidad se impone fuertemente y \\(\\boldsymbol\\sigma\\) se calcula de la constitutiva. Es la reducción a un campo de ecuación 21.2.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#la-doy-por-superada-si",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#la-doy-por-superada-si",
+    "title": "21  Principios variacionales",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nEscribo el principio de los trabajos virtuales y sé que no depende del material.\nDeduzco el equilibrio de la estacionariedad de \\(\\Pi(\\mathbf{u})\\).\nDistingo Hellinger–Reissner y Hu–Washizu por los campos independientes y las ecuaciones que cada variación aporta.\nResuelvo una barra por los tres caminos.\nSé que la versión del libro para el elemento de lámina es una Hu–Washizu específica, distinta de la genérica.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; principios variacionales estándar de la elasticidad (Lebedev y Cloud 2003; Romano et al. 2006). El ejemplo de la barra es analítico y se comprueba en Julia.\nQué queda pendiente. La versión de Hu–Washizu específica por subdominios (E7) y su contraste con ecuación 21.5; la demostración de la mínima energía es un enunciado, no una prueba completa; nota histórica con fuentes secundarias (años de Hu en discusión); figuras con revisión visual pendiente; referencias no leídas línea a línea.\n\n\n\n\n\n\nRomano, A., R. Lancellota, y A. Marasco. 2006. Continuum Mechanics using Mathematica. Birkhäuser, Boston.\n\nLebedev, L. P., y M. J. Cloud. 2003. Tensor Analysis. World Scientific.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
+    ]
+  },
+  {
+    "objectID": "book/D-elasticidad/D8-principios-variacionales.html#referencias-unidad",
+    "href": "book/D-elasticidad/D8-principios-variacionales.html#referencias-unidad",
+    "title": "21  Principios variacionales",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nLebedev, L. P., y M. J. Cloud. 2003. Tensor Analysis. World Scientific.\n\n\nRomano, A., R. Lancellota, y A. Marasco. 2006. Continuum Mechanics using Mathematica. Birkhäuser, Boston.",
+    "crumbs": [
+      "Bloque D · Elasticidad: del sólido a la lámina",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Principios variacionales</span>"
     ]
   },
   {
