@@ -1,6 +1,22 @@
 # Documentación científica original: no se versiona en el repositorio
 docs/
 
+# Material ajeno o de terceros: nunca al repositorio (la tesis y los apuntes viven en docs/)
+# Si algún día hace falta versionar uno de estos formatos, añadirlo a mano con `git add -f`
+# y justificar su origen en figures/figures.yml.
+*.pdf
+*.eps
+*.ai
+*.ps
+*.dvi
+*.tex
+*.docx
+*.pptx
+*.zip
+
+# Configuración local de Claude Code
+.claude/
+
 # Salidas de Quarto
 _book/
 _site/

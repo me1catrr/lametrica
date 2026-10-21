@@ -27,3 +27,23 @@ Introducción (cap. 1) · Nomenclatura · Estado actual (2) · Elemento (3) · S
 - Los `.tex` usan `\sideset{_{0}}{}` y `notebook2e`/`esvect` (Mathematica): no renderiza MathJax directamente.
 - El Anexo C está en Mathematica; se reescribirá en Julia y se contrastará.
 - La tesis tiene © 2008: no se publica `docs/` ni texto literal.
+
+## Añadidos el 2026-10-21: apuntes del autor (`docs/Ejemplos/`, `Hu_Washizu_resume.pdf`)
+
+Todos son **escaneos manuscritos sin capa de texto** (`pdftotext` → 0 palabras); se leen como imagen. Son apuntes del propio autor (algunos con membrete de la Univ. de Córdoba, fechados 2007 y 2010), **no la tesis**: su trazabilidad no es con `.tex`. Solo se han abierto las páginas indicadas; el resto está sin leer.
+
+| Archivo | Págs. | Contenido visto | Uso previsto | Estado |
+|---|---|---|---|---|
+| `Hu_Washizu_resume.pdf` | 1 | Requisitos del elemento C⁰ y aproximaciones bilineales de `w, α, β` | Cap. 16 | pág. 1 leída |
+| `Ejemplos/hypar.pdf` | 16 | Geometría diferencial del paraboloide `(aθ¹, bθ², c(θ1²−θ2²))` | Cap. 9 | págs. 1–3 **verificadas** con `Geometria` (15/15) |
+| `Ejemplos/sphere.pdf` | 7 | Geometría de la esfera (SPHG-01, 01-05-07) | Caps. 6–8 | pág. 1 **verificada** |
+| `Ejemplos/cylindrical.pdf` | 13 | Elemento de lámina cilíndrica: geometría, DOF `u,v,w,φ₁,φ₂` | Caps. 14–15 | pág. 1 leída |
+| `Ejemplos/cylindrical_2.pdf` | 26 | Sin abrir | Caps. 14–15 | pendiente |
+| `Ejemplos/flat_shell.pdf` | 19 | Elemento de lámina plana (GEOM-1, 12-04-2010) | Cap. 14 | pág. 1 leída |
+| `Ejemplos/skew_plate.pdf` | 16 | Placa oblicua: parámetros (`E, ν, ρ, h`, `K_s=6/5`), 6 casos de contorno | Caps. 18–19 | pág. 1 leída |
+| `Ejemplos/skew_plate_2.pdf` | 8 | Sin abrir | Caps. 18–19 | pendiente |
+| `Ejemplos/pinched_cylinder.pdf` | 18 | Sin abrir | Caps. 18–19 | pendiente |
+| `Ejemplos/plane_stress.pdf` | 16 | Portada «Plane stress problem» | Cap. 12 | pendiente |
+| `Ejemplos/body_forces.pdf` | 6 | Fuerzas de volumen (SD-12), **marcado «Wrong! See BF-1÷8»** | Cap. 17/18 | **verificado**: ver `09-verificacion-fuerzas-volumen.md`; BF-1÷8 no está en `docs/` |
+
+Herramientas: `pdftotext`/`pdfinfo`/`pdftoppm` (poppler 26.10.0, ya instalado).

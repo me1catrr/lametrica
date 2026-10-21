@@ -4,4 +4,4 @@
 - **JavaScript**: simulaciones iniciales 100 % cliente (Observable JS + módulos ES propios; Plotly.js para 2D/superficies, Three.js para 3D y modos animados). La geometría se reimplementa en JS y se **verifica contra JSON de referencia generado por Julia** (test en Node).
 - **Puente**: Julia escribe `web/datos/*.json` con metadatos (`calculado | analítico | ilustrativo`, versión, semilla). JS solo visualiza. Cada figura/simulación muestra su etiqueta.
 - **Estilo**: SCSS con callouts definición (azul), teorema (verde), advertencia (ámbar), laboratorio (violeta), demostración/observación (neutro, desplegable). Ecuaciones `#eq-`, figuras `#fig-`, MathJax con macros propias para `\sideset`, citas con popover.
-- **Requisito previo**: Quarto no está instalado (Julia 1.12.3, Node 24.10, git, gh sí). Instalar requiere autorización; fijar 1.10.x como en resonancia.
+- **Requisito previo** (resuelto): Quarto 1.10.19 instalado y fijado en `publish.yml`. Julia 1.12.3. Node: el de Homebrew está roto desde 2026-10-21 (ver `07-plan-fases.md`).

@@ -3,7 +3,7 @@
 Referencia: `me1catrr/resonancia` (Quarto + Julia, `temario.yml` como fuente de verdad, `freeze: auto`, `publish.yml`). Añadimos SCSS, JavaScript, tests y figuras con procedencia.
 
 ```
-lametrica/                      # hoy: carpeta local "geometry" (no se renombra sin orden)
+lametrica/
 ├─ docs/                        # INTACTO; fuera de render y de git público
 ├─ planning/                    # estos documentos
 ├─ _quarto.yml  temario.yml  CLAUDE.md  README.md  CITATION.cff  LICENSE*
