@@ -192,5 +192,84 @@ function fig_bordes()
             ancho(v), alto(v), s)
 end
 
+# 8. Geodésicas y curvatura de curvas sobre la esfera (tema C4) ---------------------
+function fig_geodesicas()
+    ρ = 1.0
+    camg = Camara(0.9, 0.35)
+    S = esfera(ρ)
+    pos(θ, φ) = S([θ, φ])
+    v = Vista(-1.25, 1.9, -1.25, 1.25; s = 150)
+    s = "<circle cx=\"$(f(X(v, (0, 0))))\" cy=\"$(f(Y(v, (0, 0))))\" r=\"150\" fill=\"#f8fafc\" stroke=\"$GRIS\" stroke-width=\"1.5\"/>\n"
+    d = dirvista(camg)
+    function trazo(curva, color, w, dash = "")
+        seg = Tuple{Float64,Float64}[]; out = ""
+        for p in curva
+            if dot(p, d) > 0
+                push!(seg, proy(camg, p))
+            elseif !isempty(seg)
+                out *= linea(v, seg; color, w, dash); seg = Tuple{Float64,Float64}[]
+            end
+        end
+        isempty(seg) || (out *= linea(v, seg; color, w, dash))
+        out
+    end
+    for θ in range(π / 6, 5π / 6; length = 5)
+        s *= trazo([pos(θ, φ) for φ in range(0, 2π; length = 120)], MALLA, 0.9)
+    end
+    for φ in range(0, 2π; length = 13)[1:12]
+        s *= trazo([pos(θ, φ) for θ in range(0, π; length = 80)], MALLA, 0.9)
+    end
+    θ0 = 1.0
+    s *= trazo([pos(θ0, φ) for φ in range(0, 2π; length = 200)], NARANJA, 2.6)         # paralelo (no geodésica)
+    θs, _ = geodesica(S, [π / 2, 0.0], [0.45, 0.8]; T = 7.0, n = 400)                  # gran círculo oblicuo
+    s *= trazo([pos(θs[1, k], θs[2, k]) for k in 1:size(θs, 2)], VERDE, 3.0)
+    # κn y κg en un punto del paralelo
+    t0 = 0.9
+    κ, κn, κg = curvaturas_curva(S, t -> [θ0, t], t0)
+    @assert κ^2 ≈ κn^2 + κg^2 atol = 1e-6
+    @assert abs(curvaturas_curva(S, t -> [π / 2, t], 0.4)[3]) < 1e-6                    # el ecuador es geodésica
+    P = pos(θ0, t0); n = P ./ ρ
+    x1 = S([θ0, t0 + 1e-4]) - S([θ0, t0 - 1e-4]); T = x1 / norm(x1)
+    kn_vec = κn .* n                       # componente normal del vector de curvatura
+    kg_vec = κg .* cross(n, T)             # componente geodésica (tangente a la superficie, ⟂ a la curva)
+    @assert norm(kn_vec + kg_vec) ≈ κ atol = 1e-5
+    s *= flecha(v, proy(camg, P), proy(camg, P .+ 0.5 .* kn_vec ./ norm(kn_vec) .* min(1.0, norm(kn_vec) + 0.2)); color = VIOLETA, w = 3, etiqueta = "κ$(SUB("n")) n", dx = 6, dy = 16)
+    s *= flecha(v, proy(camg, P), proy(camg, P .+ 0.5 .* kg_vec ./ norm(kg_vec) .* min(1.0, norm(kg_vec) + 0.2)); color = AZUL, w = 3, etiqueta = "κ$(SUB("g"))", dx = -22, dy = -8)
+    s *= punto(v, proy(camg, P))
+    s *= textov(v, (0.5, -1.15), "geodésica (círculo máximo)"; color = VERDE, tam = 13, cursiva = false)
+    s *= textov(v, (0.5, -1.02), "paralelo: no es geodésica"; color = NARANJA, tam = 13, cursiva = false)
+    guardar("geodesicas-esfera", "Esfera con una geodésica (círculo máximo, verde) y un paralelo (naranja) en el que el vector de curvatura se descompone en una parte normal y otra geodésica",
+            ancho(v), alto(v), s)
+end
+
+# 9. Bestiario de superficies tipo (tema C6) --------------------------------------------
+function fig_bestiario()
+    cm = Camara(0.9, 0.5)
+    casos = [
+        ("placa oblicua", "K = 0", placa_oblicua(π / 3), (0.0, 1.6), (0.0, 1.6), "#e8edf6"),
+        ("cilindro", "K = 0", cilindro(1.0), (0.0, π), (0.0, 1.6), "#e8edf6"),
+        ("esfera", "K > 0", esfera(1.0), (0.45, 2.1), (0.0, 2.3), "#e8edf6"),
+        ("cono", "K = 0", cono(0.55), (0.0, π), (0.3, 1.7), "#e8edf6"),
+        ("paraboloide hiperbólico", "K < 0", paraboloide_recto(0.6), (-1.0, 1.0), (-1.0, 1.0), "#e8edf6"),
+    ]
+    paneles = Tuple{Any,String}[]
+    for (nombre, kk, surf, ur, vr, col) in casos
+        rr(u, w) = surf([u, w])
+        pts = [proy(cm, rr(u, w)) for u in range(ur...; length = 6) for w in range(vr...; length = 6)]
+        v = ventana(pts; s = 62, margen = 0.55)
+        sv = parches(v, cm, rr, ur, vr; n = 12, relleno = col)
+        sv *= textov(v, (minimum(first.(pts)) + (maximum(first.(pts)) - minimum(first.(pts))) / 2, minimum(last.(pts)) - 0.3), nombre; ancla = "middle", cursiva = false, color = "#1f2937", tam = 13)
+        sv *= textov(v, (minimum(first.(pts)) + (maximum(first.(pts)) - minimum(first.(pts))) / 2, minimum(last.(pts)) - 0.52), replace(kk, "<" => "&lt;", ">" => "&gt;"); ancla = "middle", cursiva = false, color = (kk == "K > 0" ? AZUL : kk == "K < 0" ? NARANJA : GRIS), tam = 13)
+        push!(paneles, (v, sv))
+    end
+    H = maximum(alto(p[1]) for p in paneles)
+    cuerpo = ""; x = 0.0
+    for (vv, ss) in paneles
+        cuerpo *= "<g transform=\"translate($(f(x)),$(f(H - alto(vv))))\">\n$ss</g>\n"
+        x += ancho(vv) + 6
+    end
+    guardar("bestiario-superficies", "Cinco superficies tipo: placa oblicua, cilindro, esfera, cono y paraboloide hiperbólico, con el signo de su curvatura de Gauss", x, H, cuerpo)
+end
+
 println("Generando figuras de superficies:")
-fig_triada(); fig_plano_tangente(); fig_gauss(); fig_secciones(); fig_euler(); fig_generatrices(); fig_bordes()
+fig_triada(); fig_plano_tangente(); fig_gauss(); fig_secciones(); fig_euler(); fig_generatrices(); fig_bordes(); fig_geodesicas(); fig_bestiario()

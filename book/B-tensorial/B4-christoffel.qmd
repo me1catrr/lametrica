@@ -1,0 +1,313 @@
+---
+title: "Símbolos de Christoffel y derivada covariante"
+subtitle: "Derivar cuando la base cambia de un punto a otro"
+engine: julia
+---
+
+![El campo constante $\mathbf{V}=(1,0)$ (ámbar) se descompone en cada punto en una parte radial (azul) y una tangencial (verde). Las componentes $V^r=\cos\theta$ y $V^\theta=-\sin\theta/r$ cambian aunque el vector no.](../../figures/svg/campo-constante-polares.svg){#fig-campo-constante .portada fig-alt="Un campo vectorial constante y sus componentes polares en cinco puntos" }
+
+::: {.pregunta-guia}
+Si la base cambia de un punto a otro, cómo derivamos un campo vectorial sin confundir el cambio del vector con el giro de la base
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- explicar por qué derivar las componentes de un vector **no basta** cuando la base varía de punto a punto;
+- definir los **símbolos de Christoffel** como las componentes de $\partial\mathbf{g}_i/\partial\theta^j$ sobre la base y calcularlos a partir de la métrica;
+- definir la **derivada covariante** de componentes contravariantes y covariantes;
+- demostrar que la métrica es «constante» para la derivada covariante;
+- comprobar en Julia que un campo constante tiene derivada covariante nula aunque sus componentes polares varíen.
+
+**Prerrequisitos.** [Tensor métrico y componentes físicas](B3-metrica.qmd) y [Bases covariantes y contravariantes](B2-bases.qmd).
+
+**Secciones del tema**
+
+- **@sec-motivacion-5** · Motivación · **@sec-christoffel** · Símbolos de Christoffel · **@sec-derivada-cov** · Derivada covariante
+- **@sec-hacia-superficies** · Del plano a la superficie
+- **@sec-lab-christoffel** · Laboratorio interactivo · **@sec-julia-christoffel** · Práctica guiada en Julia
+
+## Motivación {#sec-motivacion-5}
+
+En cartesianas, la base $\{\mathbf{e}_x,\mathbf{e}_y\}$ es la misma en todos los puntos, y derivar un campo vectorial es derivar sus componentes. En polares la base **gira y se estira** de un punto a otro (@fig-christoffel). Si $\mathbf{V}$ es un campo constante, sus componentes polares no lo son (@fig-campo-constante), y derivarlas por separado daría una derivada «distinta de cero» para un campo que no cambia.
+
+![Base polar a lo largo de la circunferencia $r=2{,}4$. La derivada de la base respecto de $\theta$ no es nula: $\partial\mathbf{g}_1/\partial\theta=\mathbf{g}_2/r$ (ámbar) y $\partial\mathbf{g}_2/\partial\theta=-r\,\mathbf{g}_1$ (violeta, dibujado a mitad de escala). Los coeficientes $1/r$ y $-r$ son símbolos de Christoffel.](../../figures/svg/christoffel-polares.svg){#fig-christoffel fig-alt="Base polar en tres puntos de una circunferencia y las derivadas de la base respecto de theta" width="100%"}
+
+
+::: {.callout-important title="Idea clave"}
+La derivada de $\mathbf{V}=V^i\mathbf{g}_i$ tiene dos contribuciones: cómo cambian las componentes $V^i$ y cómo cambia la base $\mathbf{g}_i$. Los símbolos de Christoffel recogen la segunda.
+:::
+
+## Símbolos de Christoffel {#sec-christoffel}
+
+::: {#def-christoffel}
+## Símbolos de Christoffel
+Para unas coordenadas $\theta^i$ en el espacio euclídeo, las derivadas de los vectores de la base se descomponen sobre la propia base:
+$$
+\frac{\partial\mathbf{g}_i}{\partial\theta^j}=\Gamma^{k}_{ij}\,\mathbf{g}_k ,
+\qquad\text{es decir,}\qquad
+\Gamma^{k}_{ij}=\mathbf{g}^k\cdot\frac{\partial\mathbf{g}_i}{\partial\theta^j} .
+$$ {#eq-christoffel-def}
+Los $\Gamma^k_{ij}$ son los **símbolos de Christoffel de segunda especie**. Los de primera especie son $\Gamma_{ij,k}=\mathbf{g}_k\cdot\partial_j\mathbf{g}_i=g_{kl}\Gamma^l_{ij}$.
+:::
+
+::: {.callout-warning title="Convenio de índices"}
+En @eq-christoffel-def el primer índice inferior $i$ es el del vector derivado y el segundo, $j$, el de la coordenada respecto de la que se deriva. Como $\partial_j\mathbf{g}_i=\partial_j\partial_i\mathbf{r}=\partial_i\mathbf{g}_j$, los símbolos son **simétricos** en $i,j$ en espacios sin torsión (como los considerados aquí). Otros textos usan órdenes de índices o notaciones distintas ($\left\{{k\atop ij}\right\}$); en este libro, la posición de los índices de $\Gamma$ en superficies está pendiente de confirmar en el apéndice de notación (@sec-notacion).
+:::
+
+::: {#prp-christoffel-metrica}
+## Los símbolos de Christoffel dependen solo de la métrica
+$$
+\Gamma^{k}_{ij}=\tfrac12\,g^{kl}\left(\frac{\partial g_{lj}}{\partial\theta^i}+\frac{\partial g_{li}}{\partial\theta^j}-\frac{\partial g_{ij}}{\partial\theta^l}\right)
+$$ {#eq-christoffel-metrica}
+y son simétricos: $\Gamma^k_{ij}=\Gamma^k_{ji}$.
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-christoffel-metrica
+La simetría viene de $\partial_j\mathbf{g}_i=\partial_i\mathbf{g}_j$. Para la fórmula, derivando $g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j$:
+$$
+\partial_k g_{ij}=\Gamma_{ik,j}+\Gamma_{jk,i}.
+$$
+Escribiendo esta igualdad con los índices permutados cíclicamente, sumando dos de ellas y restando la tercera, y usando la simetría $\Gamma_{ij,k}=\Gamma_{ji,k}$, queda
+$\Gamma_{ij,l}=\tfrac12(\partial_i g_{lj}+\partial_j g_{li}-\partial_l g_{ij})$. Subiendo el índice con $g^{kl}$ se obtiene @eq-christoffel-metrica. $\blacksquare$
+:::
+
+::: {.callout-warning title="Los $\Gamma^k_{ij}$ no son un tensor"}
+En cartesianas, $\mathbf{g}_i$ es constante y todos los símbolos son nulos; en polares no. Un tensor nulo en un sistema es nulo en todos, así que $\Gamma^k_{ij}$ **no es un tensor**: su ley de transformación incluye un término con segundas derivadas,
+$$
+\Gamma'^{\,k}_{ij}=\frac{\partial\theta'^{\,k}}{\partial\theta^{\,p}}\left(\frac{\partial\theta^{\,q}}{\partial\theta'^{\,i}}\frac{\partial\theta^{\,r}}{\partial\theta'^{\,j}}\,\Gamma^p_{qr}+\frac{\partial^2\theta^{\,p}}{\partial\theta'^{\,i}\partial\theta'^{\,j}}\right).
+$$ {#eq-christoffel-transf}
+:::
+
+### Ejemplos
+
+::: {.callout-tip title="Polares y esféricas"}
+<span class="etiqueta-resultado analitico">analítico</span> Los únicos símbolos no nulos son:
+
+| Sistema | Símbolos no nulos |
+|---|---|
+| Polares $(r,\theta)$ | $\Gamma^1_{22}=-r$, $\;\Gamma^2_{12}=\Gamma^2_{21}=1/r$ |
+| Esféricas $(r,\theta,\varphi)$ | $\Gamma^1_{22}=-r$, $\;\Gamma^1_{33}=-r\sin^2\theta$, $\;\Gamma^2_{12}=\Gamma^2_{21}=1/r$, $\;\Gamma^2_{33}=-\sin\theta\cos\theta$, $\;\Gamma^3_{13}=\Gamma^3_{31}=1/r$, $\;\Gamma^3_{23}=\Gamma^3_{32}=\cot\theta$ |
+
+En polares coinciden con los coeficientes de la @fig-christoffel: $\partial_\theta\mathbf{g}_1=\Gamma^2_{12}\mathbf{g}_2=\mathbf{g}_2/r$ y $\partial_\theta\mathbf{g}_2=\Gamma^1_{22}\mathbf{g}_1=-r\,\mathbf{g}_1$.
+:::
+
+::: {#exm-christoffel-polar}
+## Ejemplo resuelto: los símbolos de las polares «con las manos»
+Se derivan las bases $\mathbf{g}_1=(\cos\theta,\sin\theta)$ y $\mathbf{g}_2=r(-\sin\theta,\cos\theta)$ y se descomponen sobre ellas:
+
+- $\partial_\theta\mathbf{g}_1=(-\sin\theta,\cos\theta)=\dfrac1r\mathbf{g}_2\ \Rightarrow\ \Gamma^2_{12}=\dfrac1r$ (y $\Gamma^1_{12}=0$);
+- $\partial_r\mathbf{g}_2=(-\sin\theta,\cos\theta)=\dfrac1r\mathbf{g}_2\ \Rightarrow\ \Gamma^2_{21}=\dfrac1r$ (simetría ✓);
+- $\partial_\theta\mathbf{g}_2=-r(\cos\theta,\sin\theta)=-r\,\mathbf{g}_1\ \Rightarrow\ \Gamma^1_{22}=-r$;
+- $\partial_r\mathbf{g}_1=\mathbf{0}$, luego $\Gamma^k_{11}=0$.
+
+En $r=2$: $\Gamma^2_{12}=0{,}5$ y $\Gamma^1_{22}=-2$.
+:::
+
+::: {#exm-campo-constante}
+## Ejemplo resuelto: un campo constante tiene derivada covariante nula
+Sea $\mathbf{V}=(1,0)$ constante: $V^1=\cos\theta$, $V^2=-\sin\theta/r$. Las derivadas parciales **no** son nulas, por ejemplo $\partial_\theta V^1=-\sin\theta$. Pero la derivada covariante sí:
+$$
+V^1{}_{\|2}=\partial_\theta V^1+\Gamma^1_{22}V^2=-\sin\theta+(-r)\Bigl(-\frac{\sin\theta}{r}\Bigr)=0,
+\qquad
+V^2{}_{\|1}=\partial_rV^2+\Gamma^2_{21}V^2=\frac{\sin\theta}{r^2}+\frac1r\Bigl(-\frac{\sin\theta}{r}\Bigr)=0 .
+$$
+Descontar el giro de la base ($\Gamma$) deja justo lo que cambia el **vector**: nada.
+:::
+
+**Pon a prueba lo anterior.** Los ejercicios se corrigen en tu navegador y no envían nada a ningún sitio.
+
+::: {.ejercicio tipo="numerico" id="b4-g122" respuesta="-2" tol="abs:0.01"}
+En polares, ¿cuánto vale $\Gamma^1_{22}$ en el punto $r=2$?
+
+::: {.solucion}
+$\Gamma^1_{22}=-r=-2$.
+:::
+:::
+
+::: {.ejercicio tipo="numerico" id="b4-dparcial" respuesta="-0.5" tol="abs:0.01"}
+Para el campo constante $\mathbf{V}=(1,0)$, ¿cuánto vale la derivada **parcial** $\partial_\theta V^1$ en $\theta=\pi/6$?
+
+::: {.solucion}
+$V^1=\cos\theta$, luego $\partial_\theta V^1=-\sin\theta=-0{,}5$. Distinta de cero, aunque el campo es constante.
+:::
+:::
+
+::: {.ejercicio tipo="vf" id="b4-tensor" respuesta="falso"}
+Los símbolos de Christoffel $\Gamma^k_{ij}$ forman un tensor de orden tres.
+
+::: {.solucion}
+**Falso.** Son nulos en cartesianas y no nulos en polares; un tensor nulo en un sistema es nulo en todos. Su ley de transformación incluye un término con segundas derivadas (@eq-christoffel-transf).
+:::
+:::
+
+## Derivada covariante {#sec-derivada-cov}
+
+::: {#def-derivada-cov}
+## Derivada covariante de un vector
+Si $\mathbf{V}=V^i\mathbf{g}_i=V_i\mathbf{g}^i$, la derivada $\partial_j\mathbf{V}$ se descompone como $\partial_j\mathbf{V}=V^i{}_{\|j}\,\mathbf{g}_i=V_{i\|j}\,\mathbf{g}^i$. Las **derivadas covariantes** de las componentes son
+$$
+V^{i}{}_{\|j}=\frac{\partial V^i}{\partial\theta^j}+\Gamma^{i}_{kj}\,V^k,
+\qquad
+V_{i\|j}=\frac{\partial V_i}{\partial\theta^j}-\Gamma^{k}_{ij}\,V_k .
+$$ {#eq-derivada-cov}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Deducción de @eq-derivada-cov
+Por la regla del producto y @eq-christoffel-def,
+$\partial_j\mathbf{V}=\partial_jV^i\,\mathbf{g}_i+V^i\,\Gamma^k_{ij}\,\mathbf{g}_k=\bigl(\partial_jV^k+\Gamma^k_{ij}V^i\bigr)\mathbf{g}_k$, que es la primera fórmula tras renombrar índices. Para la segunda, derivando $\mathbf{g}^i\cdot\mathbf{g}_k=\delta^i_k$ se obtiene $\partial_j\mathbf{g}^i=-\Gamma^i_{kj}\,\mathbf{g}^k$, de donde $\partial_j\mathbf{V}=\partial_jV_i\,\mathbf{g}^i-V_i\Gamma^i_{kj}\mathbf{g}^k=\bigl(\partial_jV_k-\Gamma^i_{kj}V_i\bigr)\mathbf{g}^k$. $\blacksquare$
+:::
+
+::: {#prp-compatibilidad}
+## Compatibilidad con la métrica
+$$
+g_{ij\|k}=\frac{\partial g_{ij}}{\partial\theta^k}-\Gamma^l_{ik}\,g_{lj}-\Gamma^l_{jk}\,g_{il}=0 ,
+$$ {#eq-compatibilidad}
+y por tanto subir y bajar índices **conmuta** con la derivada covariante.
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-compatibilidad
+Con @eq-christoffel-def, $\Gamma^l_{ik}g_{lj}=\Gamma_{ik,j}=\mathbf{g}_j\cdot\partial_k\mathbf{g}_i$ y $\Gamma^l_{jk}g_{il}=\mathbf{g}_i\cdot\partial_k\mathbf{g}_j$. Su suma es $\partial_k(\mathbf{g}_i\cdot\mathbf{g}_j)=\partial_kg_{ij}$, luego la diferencia es cero. $\blacksquare$
+:::
+
+::: {.callout-important title="Idea clave"}
+La derivada covariante es la derivada «que se le puede preguntar al vector»: mide cuánto cambia $\mathbf{V}$ **descontando** el giro de la base. Un campo constante tiene derivada covariante nula; la derivada parcial de sus componentes, no.
+:::
+
+::: {.callout-note .historia icon=false title="Un poco de historia: Christoffel y los símbolos que llevan su nombre"}
+En 1869, Elwin Bruno Christoffel publicó en el *Journal für die reine und angewandte Mathematik* (vol. 70, pp. 46–70) un artículo sobre la **transformación de las formas diferenciales cuadráticas**: ¿cuándo dos expresiones $g_{ij}\,d\theta^i d\theta^j$ se pueden transformar la una en la otra con un cambio de coordenadas? Para responderlo introdujo las combinaciones de derivadas de la métrica que hoy llevan su nombre (en el artículo, solo para dos variables). Su cálculo lo recogió más tarde Gregorio Ricci-Curbastro, a partir de finales de los años 1880, en el cálculo diferencial absoluto; y el nombre «símbolos de Christoffel de tres índices» lo popularizó Marcel Grossmann hacia 1912, cuando Einstein aprendió de él esta herramienta.
+
+<span class="fuentes-caja">Fuentes (secundarias): [Christoffel, MacTutor](https://mathshistory.st-andrews.ac.uk/DSB/Christoffel.pdf); [Pascual Jordan's «Erweiterte Gravitationstheorie»: a historical analysis, arXiv:2507.23758](https://arxiv.org/pdf/2507.23758); [From Euclid to Riemann and Beyond, arXiv:1904.01845](https://arxiv.org/pdf/1904.01845). Consultado el 21-10-2026.</span>
+:::
+
+## Del plano a la superficie {#sec-hacia-superficies}
+
+Sobre una superficie curva, como la esfera de la @fig-esfera, la base tangente $\{\mathbf{g}_\theta,\mathbf{g}_\varphi\}$ también varía, pero la derivada $\partial_j\mathbf{g}_i$ ya no queda contenida en el plano tangente: tiene además una componente **normal**. Los símbolos de Christoffel de la superficie son sus componentes tangentes, y las normales dan lugar a la curvatura (bloque C). Para la esfera de radio $r$ fijo, los símbolos $\Gamma^2_{33}=-\sin\theta\cos\theta$ y $\Gamma^3_{23}=\cot\theta$ de la tabla anterior son los de la superficie.
+
+![Coordenadas esféricas sobre la esfera. En el punto marcado se muestran los vectores tangentes normalizados (azul: $\theta$, verde: $\varphi$) y la normal unitaria $\mathbf{n}$ (violeta). Los vectores base se han calculado con `base_esferica`; $\mathbf{n}$ es ortogonal a ambos.](../../figures/svg/esfera-coordenadas.svg){#fig-esfera fig-alt="Esfera con meridianos y paralelos, vectores tangentes y normal en un punto" width="75%"}
+
+## Laboratorio interactivo {#sec-lab-christoffel}
+
+::: {.laboratorio}
+<div class="laboratorio-titulo">Laboratorio · Un campo constante visto en polares</div>
+<span class="etiqueta-resultado calculado">calculado en el navegador</span> Verificado frente a Julia (`web/tests/laboratorios.test.mjs`).
+
+El campo constante $\mathbf{V}=(V_x,V_y)$ se dibuja en el punto $(r,\theta)$ junto con la base polar. **Qué observar:**
+
+1. Aunque $\mathbf{V}$ es el mismo en todos los puntos, $V^r$ y $V^\theta$ **cambian** al mover $r$ y $\theta$.
+2. Los símbolos $\Gamma^1_{22}=-r$ y $\Gamma^2_{12}=1/r$ crecen en valor absoluto cerca del origen: allí la base gira más deprisa.
+3. La derivada covariante $V^r{}_{\|\theta}=\partial_\theta V^r+\Gamma^1_{22}V^\theta$ sale **cero** para $\mathbf{V}=(1,0)$ (compruébalo con los valores de la tabla).
+:::
+
+```{ojs}
+//| echo: false
+labc = import(new URL("../../web/ojs/laboratorios.js", document.baseURI))
+```
+
+```{ojs}
+//| echo: false
+viewof cr = Inputs.range([0.3, 4], {value: 2, step: 0.05, label: "r"})
+viewof ct = Inputs.range([0, 1.55], {value: 0.52, step: 0.01, label: "θ (rad)"})
+viewof cvx = Inputs.range([-2, 2], {value: 1, step: 0.05, label: "Vₓ"})
+viewof cvy = Inputs.range([-2, 2], {value: 0, step: 0.05, label: "V_y"})
+```
+
+```{ojs}
+//| echo: false
+cc = labc.polarComps(cr, ct, [cvx, cvy])
+cg = labc.christoffelPolar(cr)
+// V^r = Vx cosθ + Vy sinθ ; V^θ = (−Vx sinθ + Vy cosθ)/r  ⇒  ∂θ V^r = −Vx sinθ + Vy cosθ
+dVr_dtheta = -cvx * Math.sin(ct) + cvy * Math.cos(ct)
+html`<div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center">
+<div style="flex:1 1 320px;max-width:480px">${(() => { const d = document.createElement("div"); d.innerHTML = labc.dibujarPolar(cr, ct, [cvx, cvy]); return d; })()}</div>
+<table class="table table-sm" style="max-width:24rem">
+<tr><td>V<sup>r</sup>, V<sup>θ</sup></td><td>${labc.fmt(cc.up[0])}, ${labc.fmt(cc.up[1])}</td></tr>
+<tr><td>Γ¹₂₂ = −r</td><td>${labc.fmt(cg.G122)}</td></tr>
+<tr><td>Γ²₁₂ = 1/r</td><td>${labc.fmt(cg.G212)}</td></tr>
+<tr><td>∂<sub>θ</sub>V<sup>r</sup> (parcial)</td><td>${labc.fmt(dVr_dtheta)}</td></tr>
+<tr><td>V<sup>r</sup>‖<sub>θ</sub> = ∂<sub>θ</sub>V<sup>r</sup> + Γ¹₂₂V<sup>θ</sup></td><td>${labc.fmt(dVr_dtheta + cg.G122 * cc.up[1])}</td></tr>
+</table></div>`
+```
+
+## Ejemplo computacional en Julia {#sec-julia-christoffel}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Se calculan los $\Gamma^k_{ij}$ de las polares de dos formas independientes (con la base, @eq-christoffel-def; y solo con la métrica, @eq-christoffel-metrica) y se compara con los valores analíticos.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+r, θ = 1.6, 0.9
+polar(t) = base_polar(t[1], t[2])
+Γ_base = cristoffel(polar, [r, θ])
+Γ_met  = cristoffel_desde_metrica(t -> metrica(polar(t)), [r, θ])
+
+esperado = zeros(2, 2, 2)
+esperado[1, 2, 2] = -r
+esperado[2, 1, 2] = esperado[2, 2, 1] = 1 / r
+(Γ¹₂₂ = Γ_base[1, 2, 2], menos_r = -r,
+ Γ²₁₂ = Γ_base[2, 1, 2], uno_entre_r = 1 / r,
+ coinciden = Γ_base ≈ Γ_met ≈ esperado)
+```
+
+```{julia}
+# Campo constante V = (1,0): componentes polares variables, derivada covariante nula
+V(t) = [cos(t[2]), -sin(t[2]) / t[1]]
+t0 = [r, θ]
+dV = jacobiana_numerica(V, t0)                         # ∂ⱼVⁱ  (derivada parcial)
+Vcov = derivada_cov_contra(Γ_base, V(t0), dV)          # Vⁱ‖ⱼ
+(parcial = round.(dV; digits = 4), covariante = round.(Vcov; digits = 8))
+```
+
+Las identidades (incluida @eq-compatibilidad y las esféricas) se comprueban en `julia/test/runtests.jl`, conjunto «Símbolos de Christoffel y derivada covariante».
+
+## Ejercicios {#sec-ejercicios-5}
+
+1. **Cilíndricas.** Calcula a mano $\Gamma^k_{ij}$ de las cilíndricas $(\rho,\varphi,z)$ con @eq-christoffel-metrica.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Coinciden con las de polares: $\Gamma^1_{22}=-\rho$ y $\Gamma^2_{12}=\Gamma^2_{21}=1/\rho$; los demás son nulos.
+   :::
+
+2. **Derivando la base.** Comprueba que, en polares, $\partial_\theta\mathbf{g}_2=-r\,\mathbf{g}_1$ derivando $\mathbf{g}_2=r(-\sin\theta,\cos\theta)$.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $\partial_\theta\mathbf{g}_2=r(-\cos\theta,-\sin\theta)=-r\,\mathbf{g}_1$.
+   :::
+
+3. **Ley de transformación.** Usa @eq-christoffel-transf para pasar de cartesianas (donde $\Gamma=0$) a polares y recupera $\Gamma^1_{22}=-r$.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Con $\Gamma=0$ queda $\Gamma'^1_{22}=\dfrac{\partial r}{\partial x^p}\dfrac{\partial^2x^p}{\partial\theta^2}=\cos\theta(-r\cos\theta)+\sin\theta(-r\sin\theta)=-r$.
+   :::
+
+4. **Divergencia.** Demuestra que $V^i{}_{\|i}=\dfrac1{\sqrt g}\partial_i\bigl(\sqrt g\,V^i\bigr)$ (pista: $\Gamma^k_{ik}=\partial_i\ln\sqrt g$).
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $V^i{}_{\|i}=\partial_iV^i+\Gamma^i_{ki}V^k=\partial_iV^i+V^k\partial_k\ln\sqrt g=\dfrac1{\sqrt g}\partial_i(\sqrt g\,V^i)$.
+   :::
+
+5. **Esfera.** Con `cristoffel`, calcula los símbolos de la esfera en $(\theta,\varphi)=(0{,}8;\,0{,}5)$ y verifica $\Gamma^3_{23}=\cot\theta$.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   `cristoffel(t -> base_esferica(t...), [1.0, 0.8, 0.5])[3, 2, 3]` $\approx\cot0{,}8=0{,}9712$.
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- Explico por qué la derivada parcial de las componentes engaña cuando la base cambia.
+- Defino $\Gamma^k_{ij}$ como $\mathbf{g}^k\cdot\partial_j\mathbf{g}_i$ y los calculo para polares y esféricas.
+- Sé que dependen solo de la métrica y que **no son un tensor**.
+- Calculo $V^i{}_{\|j}$ y $V_{i\|j}$ y compruebo que un campo constante da cero.
+- Sé que $g_{ij\|k}=0$ y qué consecuencia tiene para subir y bajar índices.
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo, resultados estándar [@Heinbockel; @Lebedev; @Flugge; @DoCarmo; @Struik]. Las identidades se han comprobado con `Geometria` (tests «Símbolos de Christoffel y derivada covariante»). **Convenio:** aquí $\|$ denota la derivada covariante genérica de $n$ coordenadas; en las superficies (bloque C) se reserva para la derivada respecto de la superficie.
+
+**Qué queda pendiente.** Revisión visual de las figuras; notas históricas con fuentes secundarias; referencias no leídas línea a línea.
+:::

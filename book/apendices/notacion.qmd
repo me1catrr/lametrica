@@ -30,4 +30,4 @@ Este apéndice crecerá con el libro. Recoge los símbolos del libro y su signif
 ## Convenios pendientes de fijar
 
 - Definición de componentes físicas para bases **no** ortogonales (necesaria en láminas con coordenadas no ortogonales).
-- Convenio de signo y orientación de los giros de la normal en la cinemática de lámina (Parte III).
+- Convenio de signo y orientación de los giros de la normal en la cinemática de lámina (bloque D).

@@ -270,6 +270,102 @@ function fig_arcos()
             ancho(v), alto(v), s)
 end
 
+# 0a. Ejes cartesianos girados: el mismo vector, otras componentes (tema A2)
+function fig_ejes_girados()
+    v = Vista(-2.6, 5.6, -0.9, 4.9; s = 70)
+    α = π / 6
+    e1 = (cos(α), sin(α)); e2 = (-sin(α), cos(α))
+    V = (3.0, 4.0)
+    Vp = (V[1] * e1[1] + V[2] * e1[2], V[1] * e2[1] + V[2] * e2[2])       # componentes en los ejes girados
+    @assert hypot(Vp...) ≈ hypot(V...) atol = 1e-12                        # la norma no cambia
+    @assert all(isapprox.((Vp[1] * e1[1] + Vp[2] * e2[1], Vp[1] * e1[2] + Vp[2] * e2[2]), V; atol = 1e-12))
+    s = ""
+    s *= flecha(v, (0, 0), (5.3, 0); color = GRIS, w = 1.6, etiqueta = "x", dx = 4, dy = 16)
+    s *= flecha(v, (0, 0), (0, 4.6); color = GRIS, w = 1.6, etiqueta = "y", dx = 8, dy = 6)
+    s *= flecha(v, (0, 0), 5.2 .* e1; color = NARANJA, w = 1.6, dash = "6 4", etiqueta = "x′", dx = 4, dy = -8)
+    s *= flecha(v, (0, 0), 4.0 .* e2; color = NARANJA, w = 1.6, dash = "6 4", etiqueta = "y′", dx = -22, dy = -4)
+    s *= linea(v, [V, (V[1], 0.0)]; color = GRIS, w = 1.2, dash = "2 4")
+    s *= linea(v, [V, (0.0, V[2])]; color = GRIS, w = 1.2, dash = "2 4")
+    s *= linea(v, [V, Vp[1] .* e1]; color = NARANJA, w = 1.2, dash = "2 4")
+    s *= linea(v, [V, Vp[2] .* e2]; color = NARANJA, w = 1.2, dash = "2 4")
+    s *= flecha(v, (0, 0), V; color = VIOLETA, w = 3.4, etiqueta = "V", dx = 8, dy = -2)
+    s *= textov(v, (3.15, -0.55), "V = (3, 4)  en  (x, y)"; color = GRIS, tam = 13, cursiva = false)
+    s *= textov(v, (1.2, 4.55), "V = ($(round(Vp[1]; digits = 2)); $(round(Vp[2]; digits = 2)))  en  (x′, y′)"; color = NARANJA, tam = 13, cursiva = false)
+    s *= punto(v, (0, 0))
+    guardar("ejes-girados", "El mismo vector V en dos sistemas cartesianos girados 30 grados: cambian las componentes, no el vector ni su longitud",
+            ancho(v), alto(v), s)
+end
+
+# 0b. Celda curvilínea y flujo: divergencia (tema B5)
+function fig_celda_divergencia()
+    v = Vista(-0.2, 4.4, -0.2, 3.6; s = 100)
+    r1, r2, t1, t2 = 1.7, 2.9, 0.35, 0.95
+    s = ejes(v; ox = 0.0, oy = 0.0, ex = 4.3, ey = 3.5)
+    for k in 1:4
+        s *= linea(v, arco(float(k) * 0.9, 0, π / 2); color = MALLA, w = 1)
+    end
+    for a in range(0, π / 2; length = 8)
+        s *= linea(v, rayo(a, 0, 4.3); color = MALLA, w = 1)
+    end
+    celda = vcat(arco(r1, t1, t2; n = 30), reverse(arco(r2, t1, t2; n = 30)))
+    s *= linea(v, vcat(celda, [celda[1]]); color = AZUL, w = 2.4, fill = AZUL, op = 0.18)
+    P(r, t) = (r * cos(t), r * sin(t))
+    tm, rm = (t1 + t2) / 2, (r1 + r2) / 2
+    # normales salientes en el punto medio de cada cara
+    for (p, dir, et, dx, dy) in ((P(r2, tm), P(1, tm), "r₂ dθ", 8, -6),
+                                 (P(r1, tm), (-cos(tm), -sin(tm)), "r₁ dθ", -62, 14),
+                                 (P(rm, t2), (-sin(t2), cos(t2)), "dr", -34, -8),
+                                 (P(rm, t1), (sin(t1), -cos(t1)), "dr", 6, 16))
+        s *= flecha(v, p, (p[1] + 0.5 * dir[1], p[2] + 0.5 * dir[2]); color = VIOLETA, w = 2.4, etiqueta = et, dx = dx, dy = dy)
+    end
+    s *= textov(v, (0.3, 3.3), "flujo neto por las 4 caras = div V · (r dr dθ)"; color = GRIS, tam = 13, cursiva = false)
+    guardar("celda-divergencia", "Celda polar dr por d theta con las normales salientes de sus cuatro caras: el flujo neto de V a través de ellas es la divergencia por el área",
+            ancho(v), alto(v), s)
+end
+
+# 0c. Deformación de un cuadrado unidad (tema D1) -----------------------------------------
+function fig_deformacion()
+    F = [1.15 0.25; 0.0 0.95]
+    E = green_lagrange(Matrix(1.0I, 2, 2), cauchy_green(F))
+    @assert E ≈ [0.16125 0.14375; 0.14375 -0.0175] atol = 1e-12
+    v = Vista(-0.5, 2.3, -0.4, 1.6; s = 120)
+    C = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
+    D = [Tuple(F * [p...]) for p in C]
+    s = ejes(v; ox = 0.0, oy = 0.0, ex = 2.2, ey = 1.55)
+    s *= linea(v, vcat(C, [C[1]]); color = GRIS, w = 1.6, dash = "6 4", fill = "#f3f4f6")
+    s *= linea(v, vcat(D, [D[1]]); color = AZUL, w = 2.6, fill = AZUL, op = 0.18)
+    for k in 2:4
+        s *= flecha(v, C[k], D[k]; color = NARANJA, w = 1.8)
+    end
+    s *= flecha(v, (0.0, 0.0), (1.0, 0.0); color = GRIS, w = 2.2, etiqueta = "g₁", dx = 4, dy = 16)
+    s *= flecha(v, (0.0, 0.0), (0.0, 1.0); color = GRIS, w = 2.2, etiqueta = "g₂", dx = -26, dy = 4)
+    s *= flecha(v, (0.0, 0.0), D[2]; color = AZUL, w = 3, etiqueta = "G₁", dx = 20, dy = -8)
+    s *= flecha(v, (0.0, 0.0), D[4]; color = AZUL, w = 3, etiqueta = "G₂", dx = 6, dy = -4)
+    guardar("deformacion-cuadrado", "Un cuadrado de referencia (gris discontinuo) se deforma en un paralelogramo (azul) con el gradiente F; las bases g1, g2 pasan a G1, G2",
+            ancho(v), alto(v), s)
+end
+
+# 0d. Elemento con tensiones (tema D2) --------------------------------------------------
+function fig_elemento_tensiones()
+    v = Vista(-1.2, 2.2, -1.2, 2.2; s = 105)
+    s = linea(v, [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0), (0.0, 0.0)]; color = GRIS, w = 2, fill = "#eef5fb")
+    a = 0.55
+    # tensiones normales (salientes en cada cara con σ > 0)
+    s *= flecha(v, (1.0, 0.5), (1.0 + a, 0.5); color = AZUL, w = 3, etiqueta = "σ¹¹", dx = 4, dy = -8)
+    s *= flecha(v, (0.0, 0.5), (-a, 0.5); color = AZUL, w = 3)
+    s *= flecha(v, (0.5, 1.0), (0.5, 1.0 + a); color = VERDE, w = 3, etiqueta = "σ²²", dx = 8, dy = 4)
+    s *= flecha(v, (0.5, 0.0), (0.5, -a); color = VERDE, w = 3)
+    # tensiones tangenciales σ¹² = σ²¹
+    s *= flecha(v, (1.0, 0.8), (1.0, 0.8 + a * 0.8); color = NARANJA, w = 2.6, etiqueta = "σ¹²", dx = 6, dy = -2)
+    s *= flecha(v, (0.0, 0.2), (0.0, 0.2 - a * 0.8); color = NARANJA, w = 2.6)
+    s *= flecha(v, (0.2, 1.0), (0.2 + a * 0.8, 1.0); color = NARANJA, w = 2.6, etiqueta = "σ²¹", dx = 4, dy = -8)
+    s *= flecha(v, (0.8, 0.0), (0.8 - a * 0.8, 0.0); color = NARANJA, w = 2.6)
+    s *= texto(X(v, (0.5, 0.5)), Y(v, (0.5, 0.5)) + 5, "dV"; ancla = "middle", color = GRIS, tam = 15)
+    s *= textov(v, (-1.0, -0.95), "Equilibrio de momentos: σ¹² = σ²¹"; color = GRIS, tam = 13, cursiva = false)
+    guardar("elemento-tensiones", "Elemento diferencial con sus tensiones normales sigma11 y sigma22 y tangenciales sigma12 y sigma21 sobre las cuatro caras",
+            ancho(v), alto(v), s)
+end
+
 println("Generando figuras:")
 fig_vector_dos_bases(); fig_jacobiano(); fig_galeria(); fig_fisicas()
-fig_arcos(); fig_christoffel(); fig_campo_constante(); fig_esfera()
+fig_ejes_girados(); fig_celda_divergencia(); fig_deformacion(); fig_elemento_tensiones(); fig_arcos(); fig_christoffel(); fig_campo_constante(); fig_esfera()

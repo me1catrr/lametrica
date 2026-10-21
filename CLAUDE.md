@@ -78,19 +78,10 @@ Flujo para cambiar algo de geometría: Julia (código + test) → regenerar JSON
 - El Anexo C de la tesis es código Mathematica; su reescritura en Julia debe contrastarse con resultados de la tesis.
 
 ## Estado
-Fase 2 (prototipo) hecha. Fase 3 en curso: Partes I (caps. 1–5) y II (caps. 6–9) escritas, con 15 SVG generados por Julia y dos aperturas TikZ en los capítulos 1 y 9 (procedencia en `figures/figures.yml`), y laboratorio de bases (Cap. 3). Partes III–V pendientes. Publicación inicial activa; licencia y publicación definitiva del libro pendientes. Plan completo en `planning/`.
+Fase 2 (prototipo) hecha. Rediseño en 5 fases (`planning/07-plan-fases.md`): **Fases 1 y 2 hechas** (estética de Resonancia, índice de 36 temas en `temario.toml`, bloques A–C completos: 13 temas), Fase 3 (bloque D: elasticidad y láminas, `Laminas.jl`) siguiente. Figuras: SVG generados por Julia (`julia/scripts/generar_figuras*.jl`), TikZ (`figures/fuentes/tikz`) y una ilustración FigureLabs; procedencia en `figures/figures.yml`; revisión visual humana pendiente en todas. Licencia y publicación definitiva pendientes.
 
-## Punto de continuación — 2026-10-21
-- Base verificada: `main` en `ebe70d7` (continuidad posterior a `5185908`); PR #1 fusionada y rama `docs/resumen-publicacion` eliminada localmente y en GitHub. No recrear esa PR ni repetir el cambio de visibilidad.
-- GitHub Actions: `Pruebas` y `Publicar` completados correctamente para `ebe70d7`. El repositorio es público y GitHub Pages está operativo.
-- Última comprobación local: `quarto render` generó las 12 páginas sin errores ni avisos SCSS; sin recursos/enlaces locales inexistentes, anclas rotas ni referencias Quarto sin resolver. Las 12 páginas publicadas y los dos SVG nuevos respondieron HTTP 200.
-- Las aperturas ya tienen pies y texto alternativo. El HTML se comprobó estructuralmente, **no mediante revisión visual ni de interactividad en navegador**. Las figuras siguen con revisión visual humana pendiente.
-- `.gitignore` y `scripts/comprobar_publicable.sh` permiten únicamente `figures/fuentes/tikz/apertura-cap01-bases.tex` y `figures/fuentes/tikz/apertura-cap09-hypar.tex`; otros `.tex`, PDF y `docs/` siguen bloqueados. No ampliar las excepciones a todo el directorio.
-- Esta preparación de continuidad solo actualiza `CLAUDE.md` y `planning/07-plan-fases.md`; no modifica el contenido científico. Revisar el historial y cualquier diff local al retomar.
-
-### Cómo retomar
-1. Leer este archivo, `planning/07-plan-fases.md`, `planning/09-verificacion-fuerzas-volumen.md` y el apéndice de notación; revisar `git status --short --branch` y `git diff` antes de modificar nada.
-2. Siguiente trabajo seguro: revisión visual de los 17 SVG en el libro y comprobación del laboratorio de bases en navegador. Registrar solo lo realmente comprobado en `figures/figures.yml`; no marcarlo como revisado por el mero hecho de compilar.
-3. Continuar el inventario de materiales y la trazabilidad según el plan, sin modificar ni publicar `docs/`.
-4. Antes de desarrollar la Parte III o `Laminas.jl`, confirmar con el autor los convenios pendientes de componentes físicas en bases no ortogonales y de giros de la normal. No deducir autorización de estas notas.
-5. Tras cambios de contenido: renderizar, revisar `_freeze/` y ejecutar las pruebas pertinentes. Antes de cualquier commit autorizado: comprobar publicación y lista preparada; no publicar sin nueva autorización expresa.
+## Punto de continuación — 2026-10-21 (tras la Fase 2)
+- Ejecución autorizada: Fases 1–3 con commit y push a `main` al cerrar cada fase (ver «Reglas inviolables»). Fases 4–5 requieren nueva orden.
+- Antes de la Fase 3, convenios pendientes del autor (apéndice A): componentes físicas en bases **no** ortogonales; giros de la normal; si los g.d.l. son componentes físicas. Se adoptarán propuestas razonables marcadas como «por confirmar» sin bloquear.
+- Cómo retomar: leer este archivo, `planning/07-plan-fases.md`, `planning/01-indice-libro.md` y `temario.toml`; `git status`; `bash scripts/comprobar_publicable.sh`. Antes de publicar: render sin avisos, tests Julia/JS, `julia scripts/{sincronizar_paleta,generar_estructura}.jl --check`, `julia scripts/verificar_figuras.jl`, `julia --project=. scripts/verificar_ejercicios.jl`.
+- Nota operativa: si los webhooks de GitHub fallan y no arrancan los workflows, `gh workflow run publish.yml` los lanza a mano (ocurrió en la Fase 1).

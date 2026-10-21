@@ -1,14 +1,14 @@
 # 07 · Plan de desarrollo (5 fases)
 
-**Última actualización: 2026-10-21 (Fase 1 del rediseño cerrada en local; pendiente de commit/push).** Libro: 9 de 36 temas escritos; el tema piloto (B2) ya está en el nuevo estilo. Árbol de trabajo con los cambios de la Fase 1. Punto de continuación operativo en `CLAUDE.md`.
+**Última actualización: 2026-10-21 (Fase 2 del rediseño cerrada en local; commit/push al cerrar).** Libro: 13 de 36 temas publicados (bloques A, B y C completos) en el nuevo estilo; Fase 1 publicada en `f2c51f8`. Punto de continuación operativo en `CLAUDE.md`.
 
 ## Plan de rediseño: estética de Resonancia + índice de 36 temas (5 fases)
 Índice: `planning/01-indice-libro.md` y `temario.toml` (fuente de verdad). Plantilla: `planning/plantilla-tema.qmd`. Autorizado por el autor: ejecutar las Fases 1–3, con **commit y push a `main` al cerrar cada fase**; las Fases 4–5 se ejecutan con orden posterior.
 
 | Fase | Contenido | Estado |
 |---|---|---|
-| **1 · Cimientos y piloto** | Paleta única (`styles/paleta.yml` + sincronización a SCSS/Julia/TikZ); cajas e infraestructura de Resonancia (ejercicios interactivos, referencias al margen, historia); `temario.toml` → navegación y «Mapa del libro»; scripts de verificación (figuras, ejercicios, estructura) y job de CI; tema piloto B2 reescrito (3 figuras TikZ, 10 ejercicios, 2 notas históricas con fuente, laboratorio, práctica Julia, cierre) | **Hecha en local; commit/push al cerrar** |
-| **2 · Bloques A–C al nuevo estilo** | Reescribir B1, B3–B4, C1–C3, C5 y A1; escribir A2, B5, C4, C6; paleta nueva y revisión visual de las figuras; nuevas funciones y tests en `Geometria.jl`; ≥ 3 laboratorios JS | Pendiente |
+| **1 · Cimientos y piloto** (publicada, `f2c51f8`) | Paleta única (`styles/paleta.yml` + sincronización a SCSS/Julia/TikZ); cajas e infraestructura de Resonancia (ejercicios interactivos, referencias al margen, historia); `temario.toml` → navegación y «Mapa del libro»; scripts de verificación (figuras, ejercicios, estructura) y job de CI; tema piloto B2 reescrito (3 figuras TikZ, 10 ejercicios, 2 notas históricas con fuente, laboratorio, práctica Julia, cierre) | **Hecha y publicada** |
+| **2 · Bloques A–C al nuevo estilo** | Reescritos A1, B1, B3, B4, C1, C2, C3, C5; nuevos A2, B5, C4, C6; 13 temas con portada, pregunta guía, ejemplos resueltos, ejercicios interactivos (29 numéricos verificados con Julia), historia con fuentes y cierre; `Geometria.jl` ampliado (operadores tensoriales, geodésicas, Brioschi/Egregium, Codazzi, superficies tipo) con 40 tests nuevos; 4 laboratorios JS verificados contra Julia (polares, Christoffel, Euler, hypar); portada FigureLabs de A1 | **Hecha en local; commit/push al cerrar** |
 | **3 · Bloque D: elasticidad y láminas** | D1–D8 con `Laminas.jl` (cinemática, KL frente a RM, deformaciones, constitutivas) y tests; convenios pendientes (componentes físicas no ortogonales, giros de la normal, g.d.l. físicos) | Pendiente |
 | 4 · Bloque E: elementos finitos | E1–E9 hasta Hu–Washizu por subdominios, masa, ensamblaje | Planificada (orden posterior) |
 | 5 · Bloques F–G, apéndices, validación | Hypar (curvos/rectos), validación, glosario, chuletas, solucionarios, PDF | Planificada (orden posterior) |

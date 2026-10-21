@@ -1,43 +1,58 @@
 # Presentación {.unnumbered}
 
-**La métrica** es un libro interactivo sobre tres ideas que se necesitan unas a otras: la *geometría diferencial de superficies*, el *cálculo tensorial* y la *mecánica de láminas*. Recorre el camino que va de un cambio de coordenadas sobre una superficie hasta el cálculo de las frecuencias propias de una lámina con forma de paraboloide hiperbólico mediante elementos finitos.
+**La métrica** es un libro interactivo que lleva, paso a paso, de la **geometría de las superficies** al **cálculo de láminas con elementos finitos**. Se apoya en tres ideas que se necesitan unas a otras: la *geometría diferencial de superficies*, el *cálculo tensorial* y la *mecánica de láminas*.
 
-El libro sigue una secuencia didáctica propia, con demostraciones, simulaciones y código ejecutable.
+::: {.pregunta-guia}
+Cómo puede una cáscara de hormigón de pocos centímetros cubrir un edificio entero, y qué matemáticas necesitamos para calcularla
+:::
+
+Cada tema cuenta una pequeña historia: parte de una pregunta, la responde con **ejemplos resueltos**, demuestra lo importante (las demostraciones están plegadas), te hace **preguntas intercaladas** que se corrigen en tu navegador, verifica los resultados con **código en Julia** y, cuando ayuda, deja que **experimentes** con un laboratorio interactivo. El recorrido completo está en el [Mapa del libro](book/mapa.qmd).
 
 ::: {.callout-warning title="Estado del libro: en desarrollo"}
-Están desarrolladas la Parte I (capítulos 1 a 5) y la Parte II (capítulos 6 a 9), con un laboratorio interactivo en el capítulo 3. Las Partes III a V (láminas, elementos finitos y vibraciones) están por escribir. El resto de la estructura es provisional.
+Están publicados los bloques **A** (preludio), **B** (cálculo tensorial) y **C** (geometría de superficies). Los bloques **D** (elasticidad y teoría de láminas), **E** (elementos finitos), **F** (vibraciones y validación) y **G** (cierre) están por escribir; el [Mapa del libro](book/mapa.qmd) muestra el estado de cada tema. Las figuras y las notas históricas tienen **revisión humana pendiente**.
 :::
 
 ## Cómo está hecho
 
 - **Matemáticas**: MathJax; ecuaciones, definiciones y teoremas numerados y referenciables.
-- **Julia**: el módulo `Geometria` calcula bases, métricas y componentes, con pruebas automáticas de las identidades.
-- **JavaScript**: laboratorios que funcionan en el navegador, sin servidor. Cada resultado se etiqueta como <span class="etiqueta-resultado calculado">calculado</span>, <span class="etiqueta-resultado analitico">analítico</span> o <span class="etiqueta-resultado ilustrativo">ilustrativo</span>.
+- **Julia**: el módulo `Geometria` calcula bases, métricas, curvaturas y geodésicas, con pruebas automáticas de las identidades.
+- **JavaScript**: laboratorios que funcionan en el navegador, sin servidor, verificados contra Julia. Cada resultado se etiqueta como <span class="etiqueta-resultado calculado">calculado</span>, <span class="etiqueta-resultado analitico">analítico</span> o <span class="etiqueta-resultado ilustrativo">ilustrativo</span>.
+- **Figuras**: la geometría exacta se genera por código (Julia o TikZ); las ilustraciones conceptuales de portada se hacen con FigureLabs y se marcan como *ilustrativas*.
+- **Historia**: las cajas «Un poco de historia» citan sus fuentes y la fecha de consulta; cuando solo hay fuentes secundarias, se dice.
 
 ## Código de colores
 
+Cada caja lleva además un rótulo escrito: el color nunca es la única señal.
+
 ::: {#def-codigo}
-## Bloque azul
+## Definición (azul)
 Los conceptos que se definen aparecen en bloques azules.
 :::
 
 ::: {#thm-codigo}
-## Bloque verde
-Los resultados demostrables aparecen en bloques verdes.
+## Resultado (verde azulado)
+Los resultados demostrables (proposiciones y teoremas) aparecen en bloques verde azulado.
 :::
 
-::: {.callout-important title="Idea clave (verde azulado)"}
+::: {#exm-codigo}
+## Ejemplo resuelto (ámbar)
+Los ejemplos con números, paso a paso, aparecen en ámbar.
+:::
+
+::: {.callout-tip .idea-clave title="Idea clave (violeta)"}
 La idea central de cada sección se destaca en este color.
 :::
 
-::: {.callout-warning title="Advertencia (ámbar)"}
-Las trampas habituales de notación y de convenios de signo aparecen en ámbar.
+::: {.callout-warning title="Advertencia (naranja)"}
+Las trampas habituales de notación y de convenios de signo aparecen en naranja.
 :::
 
-::: {.callout-tip title="Laboratorio (violeta)"}
-Los ejemplos computacionales y laboratorios aparecen en violeta.
+::: {.callout-note .historia icon=false title="Un poco de historia (ocre)"}
+Cada tema incluye notas históricas con su fuente.
 :::
 
 ::: {.callout-note .demostracion collapse="true" title="Demostración (gris, desplegable)"}
 Las demostraciones y observaciones son neutras y están plegadas por defecto.
 :::
+
+**Pon a prueba lo anterior.** Los ejercicios intercalados se corrigen en tu navegador y no envían nada a ningún sitio.

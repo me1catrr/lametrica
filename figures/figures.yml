@@ -118,3 +118,33 @@
   herramienta: FigureLabs (prompt y parámetros en figures/fuentes/figurelabs/portada-a1-hypar.md)
   etiqueta: ilustrativa (no es geometría exacta)
   revision: visual pendiente
+- id: fig-ejes-girados
+  archivo: figures/svg/ejes-girados.svg
+  capitulo: book/A-preludio/A2-vectores-y-coordenadas.qmd
+  herramienta: Julia (julia/scripts/generar_figuras.jl); verifica norma invariante y reconstrucción de V
+  revision: automática · visual pendiente
+- id: fig-celda-divergencia
+  archivo: figures/svg/celda-divergencia.svg
+  capitulo: book/B-tensorial/B5-analisis-tensorial.qmd
+  herramienta: Julia (julia/scripts/generar_figuras.jl)
+  revision: ilustrativa (esquema) · visual pendiente
+- id: fig-geodesicas
+  archivo: figures/svg/geodesicas-esfera.svg
+  capitulo: book/C-superficies/C4-geodesicas.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_superficies.jl); verifica κ² = κn² + κg² y que el ecuador es geodésica
+  revision: automática · visual pendiente
+- id: fig-bestiario
+  archivo: figures/svg/bestiario-superficies.svg
+  capitulo: book/C-superficies/C6-bestiario.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_superficies.jl) con Geometria.cilindro/esfera/cono/placa_oblicua/paraboloide_recto
+  revision: ilustrativa (esquemas) · visual pendiente
+- id: fig-deformacion
+  archivo: figures/svg/deformacion-cuadrado.svg
+  capitulo: book/D-elasticidad/D1-deformacion-tension.qmd
+  herramienta: Julia (julia/scripts/generar_figuras.jl); verifica Green–Lagrange con Geometria.green_lagrange
+  revision: automática · visual pendiente
+- id: fig-elemento-tensiones
+  archivo: figures/svg/elemento-tensiones.svg
+  capitulo: book/D-elasticidad/D2-hooke-energia.qmd
+  herramienta: Julia (julia/scripts/generar_figuras.jl)
+  revision: ilustrativa (esquema) · visual pendiente

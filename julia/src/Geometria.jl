@@ -22,7 +22,13 @@ export metrica, base_reciproca, comps_contravariantes, comps_covariantes,
        cristoffel, cristoffel_desde_metrica, derivada_cov_contra, derivada_cov_cov,
        paraboloide_curvo, paraboloide_recto, base_superficie, normal_unitaria,
        derivadas_segundas, segunda_forma, tensor_curvatura_mixto, curvaturas_principales,
-       curvatura_normal, base_lamina, cristoffel_superficie, area_relativa
+       curvatura_normal, base_lamina, cristoffel_superficie, area_relativa,
+       raiz_g, levi_civita, gradiente, divergencia, laplaciano, rotacional,
+       cilindro, esfera, cono, placa_oblicua, metrica_superficie,
+       curvatura_gauss_brioschi, curvaturas_curva, geodesica, codazzi,
+       lame, hooke_contravariante, tension_hooke, energia_deformacion, matriz_tension_plana,
+       deformacion_pequena, gradiente_desplazamiento, green_lagrange_desde_u, green_lagrange,
+       cauchy_green, divergencia_tensor
 
 """
     metrica(B)
@@ -341,5 +347,174 @@ Cociente `√g/√a = 1 − 2H θ³ + K (θ³)²` entre el elemento de área a d
 `θ³` de la superficie media y el de la propia superficie.
 """
 area_relativa(H, K, θ3) = 1 - 2H * θ3 + K * θ3^2
+
+# ---------------------------------------------------------------------------
+# Análisis tensorial en coordenadas curvilíneas (Bloque B, tema B5)
+#
+# `base(θ)` devuelve la matriz de columnas gᵢ = ∂r/∂θⁱ (en cartesianas). Los campos se
+# dan como funciones de θ: escalares `f(θ)`, contravariantes `Vup(θ)` o covariantes `Vdn(θ)`.
+
+"√g = √det(gᵢⱼ) = |det B|."
+raiz_g(base, θ) = sqrt(det(metrica(base(θ))))
+
+"""
+    levi_civita(n)
+
+Símbolo de permutación `[i j k]` (array `n×n×n`, solo `n = 3`): `+1` para permutaciones
+pares de `(1,2,3)`, `−1` para impares y `0` si hay índices repetidos. El tensor de
+Levi-Civita covariante es `εᵢⱼₖ = √g [ijk]` y `gᵢ × gⱼ = εᵢⱼₖ gᵏ`.
+"""
+function levi_civita(n::Integer = 3)
+    n == 3 || throw(ArgumentError("solo n = 3"))
+    e = zeros(3, 3, 3)
+    for (i, j, k) in ((1, 2, 3), (2, 3, 1), (3, 1, 2)); e[i, j, k] = 1; end
+    for (i, j, k) in ((1, 3, 2), (3, 2, 1), (2, 1, 3)); e[i, j, k] = -1; end
+    e
+end
+
+"""
+    gradiente(base, f, θ; h = 1e-6)
+
+Componentes contravariantes del gradiente de un escalar, `(∇f)ⁱ = gⁱʲ ∂ⱼf`.
+"""
+function gradiente(base, f, θ::AbstractVector; h = 1e-6)
+    n = length(θ)
+    df = [(f(θ .+ h .* (1:n .== j)) - f(θ .- h .* (1:n .== j))) / 2h for j in 1:n]
+    inv(metrica(base(θ))) * df
+end
+
+"""
+    divergencia(base, Vup, θ; h = 1e-5)
+
+Divergencia `∇·V = (1/√g) ∂ᵢ(√g Vⁱ)` de un campo con componentes contravariantes `Vup(θ)`.
+"""
+function divergencia(base, Vup, θ::AbstractVector; h = 1e-5)
+    n = length(θ)
+    F(t) = raiz_g(base, t) .* Vup(t)
+    suma = sum((F(θ .+ h .* (1:n .== i))[i] - F(θ .- h .* (1:n .== i))[i]) / 2h for i in 1:n)
+    suma / raiz_g(base, θ)
+end
+
+"""
+    laplaciano(base, f, θ; h = 1e-4)
+
+`Δf = (1/√g) ∂ᵢ(√g gⁱʲ ∂ⱼf)`.
+"""
+laplaciano(base, f, θ::AbstractVector; h = 1e-4) =
+    divergencia(base, t -> gradiente(base, f, t), θ; h)
+
+"""
+    rotacional(base, Vdn, θ; h = 1e-5)
+
+Componentes contravariantes del rotacional (solo 3D) de un campo con componentes
+covariantes `Vdn(θ)`: `(∇×V)ⁱ = (1/√g) [ijk] ∂ⱼVₖ`.
+"""
+function rotacional(base, Vdn, θ::AbstractVector; h = 1e-5)
+    e = levi_civita(3)
+    d = [(Vdn(θ .+ h .* (1:3 .== j)) - Vdn(θ .- h .* (1:3 .== j))) / 2h for j in 1:3]  # d[j][k] = ∂ⱼVₖ
+    [sum(e[i, j, k] * d[j][k] for j in 1:3, k in 1:3) for i in 1:3] / raiz_g(base, θ)
+end
+
+# ---------------------------------------------------------------------------
+# Superficies tipo (tema C6) y herramientas de curvas (tema C4)
+
+"Cilindro de radio `R`: `r(θ¹,θ²) = (R cos θ¹, R sen θ¹, θ²)`."
+cilindro(R) = θ -> [R * cos(θ[1]), R * sin(θ[1]), θ[2]]
+
+"Esfera de radio `R`: `r(θ¹,θ²) = R(sen θ¹ cos θ², sen θ¹ sen θ², cos θ¹)` (`θ¹` colatitud)."
+esfera(R) = θ -> R .* [sin(θ[1]) * cos(θ[2]), sin(θ[1]) * sin(θ[2]), cos(θ[1])]
+
+"Cono de semiángulo `α` (respecto al eje): `r(θ¹,θ²) = (θ² sen α cos θ¹, θ² sen α sen θ¹, θ² cos α)`."
+cono(α) = θ -> [θ[2] * sin(α) * cos(θ[1]), θ[2] * sin(α) * sin(θ[1]), θ[2] * cos(α)]
+
+"Placa plana oblicua: `r = (θ¹ + θ² cos φ, θ² sen φ, 0)` con ángulo `φ` entre las coordenadas."
+placa_oblicua(φ) = θ -> [θ[1] + θ[2] * cos(φ), θ[2] * sin(φ), 0.0]
+
+"Matriz métrica `aαβ` de la superficie `r` en `θ` (función de `θ`, para derivar numéricamente)."
+metrica_superficie(r, θ::AbstractVector) = metrica(base_superficie(r, θ))
+
+"""
+    curvatura_gauss_brioschi(r, θ; h = 1e-3)
+
+Curvatura de Gauss calculada **solo con la métrica** `E=a₁₁, F=a₁₂, G=a₂₂` y sus derivadas
+(fórmula de Brioschi). Es el contenido del *Theorema Egregium*: coincide con `det(bαβ)/a`.
+"""
+function curvatura_gauss_brioschi(r, θ::AbstractVector; h = 1e-3)
+    a(t) = metrica_superficie(r, t)
+    e1, e2 = [h, 0.0], [0.0, h]
+    a0 = a(θ)
+    d(k) = (a(θ .+ (k == 1 ? e1 : e2)) - a(θ .- (k == 1 ? e1 : e2))) / 2h          # ∂ₖa
+    dd(k, l) = k == l ? (a(θ .+ (k == 1 ? e1 : e2)) - 2a0 + a(θ .- (k == 1 ? e1 : e2))) / h^2 :
+        (a(θ .+ e1 .+ e2) - a(θ .+ e1 .- e2) - a(θ .- e1 .+ e2) + a(θ .- e1 .- e2)) / (4h^2)
+    E, F, G = a0[1, 1], a0[1, 2], a0[2, 2]
+    Eu, Ev = d(1)[1, 1], d(2)[1, 1]
+    Fu, Fv = d(1)[1, 2], d(2)[1, 2]
+    Gu, Gv = d(1)[2, 2], d(2)[2, 2]
+    Evv, Guu, Fuv = dd(2, 2)[1, 1], dd(1, 1)[2, 2], dd(1, 2)[1, 2]
+    A = [-Evv/2 + Fuv - Guu/2   Eu/2   Fu - Ev/2;
+          Fv - Gu/2             E      F;
+          Gv/2                  F      G]
+    B = [0     Ev/2   Gu/2;
+         Ev/2  E      F;
+         Gu/2  F      G]
+    (det(A) - det(B)) / (E * G - F^2)^2
+end
+
+"""
+    curvaturas_curva(r, c, t; h = 1e-4)
+
+Para la curva `θ = c(t)` sobre la superficie `r`, devuelve `(κ, κn, κg)`: curvatura de la curva
+en el espacio, curvatura normal y curvatura geodésica (con signo respecto a `n̂`):
+`κn = n̂·r″/|r′|²`, `κg = n̂·(r′×r″)/|r′|³`, y `κ² = κn² + κg²`.
+"""
+function curvaturas_curva(r, c, t; h = 1e-4)
+    X(s) = r(c(s))
+    x1 = (X(t + h) - X(t - h)) / 2h
+    x2 = (X(t + h) - 2X(t) + X(t - h)) / h^2
+    n = normal_unitaria(base_superficie(r, c(t)))
+    v = norm(x1)
+    κ = norm(cross(x1, x2)) / v^3
+    (κ, dot(n, x2) / v^2, dot(n, cross(x1, x2)) / v^3)
+end
+
+"""
+    geodesica(r, θ0, v0; T = 1.0, n = 400)
+
+Integra con RK4 la ecuación de las geodésicas `θ̈ᵞ = −Γᵞαβ θ̇ᵅ θ̇ᵝ` desde `θ0` con velocidad
+(contravariante) `v0`. Devuelve la matriz `2×(n+1)` de posiciones `θ(t)` y la de velocidades.
+"""
+function geodesica(r, θ0::AbstractVector, v0::AbstractVector; T = 1.0, n = 400)
+    f(y) = begin
+        θ, v = y[1:2], y[3:4]
+        Γ = cristoffel_superficie(r, θ)
+        a = [-sum(Γ[γ, α, β] * v[α] * v[β] for α in 1:2, β in 1:2) for γ in 1:2]
+        vcat(v, a)
+    end
+    y = vcat(θ0, v0); dt = T / n
+    Y = zeros(4, n + 1); Y[:, 1] = y
+    for k in 1:n
+        k1 = f(y); k2 = f(y + dt / 2 * k1); k3 = f(y + dt / 2 * k2); k4 = f(y + dt * k3)
+        y = y + dt / 6 * (k1 + 2k2 + 2k3 + k4)
+        Y[:, k + 1] = y
+    end
+    (Y[1:2, :], Y[3:4, :])
+end
+
+"""
+    codazzi(r, θ; h = 1e-4)
+
+Desviaciones de las ecuaciones de Codazzi–Mainardi `bαβ‖γ − bαγ‖β = 0` para `(α,β,γ) = (1,1,2)`
+y `(2,2,1)` (derivada covariante en la superficie). Devuelve el par de residuos.
+"""
+function codazzi(r, θ::AbstractVector; h = 1e-4)
+    b(t) = segunda_forma(r, t)
+    Γ = cristoffel_superficie(r, θ)
+    db(k) = (b(θ .+ (k == 1 ? [h, 0.0] : [0.0, h])) - b(θ .- (k == 1 ? [h, 0.0] : [0.0, h]))) / 2h
+    b0 = b(θ)
+    cov(α, β, γ) = db(γ)[α, β] - sum(Γ[μ, α, γ] * b0[μ, β] + Γ[μ, β, γ] * b0[α, μ] for μ in 1:2)
+    (cov(1, 1, 2) - cov(1, 2, 1), cov(2, 2, 1) - cov(2, 1, 2))
+end
+
+include("Laminas.jl")
 
 end # module

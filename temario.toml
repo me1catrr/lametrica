@@ -20,15 +20,16 @@ titulo = "Preludio: la forma que resiste"
 pregunta = "¿Por qué una cáscara de pocos centímetros puede cubrir una gran luz, y qué necesitamos saber para calcularla?"
   [[bloque.tema]]
   id = "A1"
-  titulo = "Por qué tensores"
+  titulo = "La cáscara y el paraboloide hiperbólico"
   estado = "publicado"
-  archivo = "book/01-fundamentos/01-motivacion.qmd"
+  archivo = "book/A-preludio/A1-caparazon-hypar.qmd"
   requiere = []
   fuente_interna = "Introduccion.tex (historia de Candela)"
   [[bloque.tema]]
   id = "A2"
   titulo = "Los objetos físicos no dependen de las coordenadas"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/A-preludio/A2-vectores-y-coordenadas.qmd"
   requiere = ["A1"]
 
 # ---------------------------------------------------------------- Bloque B
@@ -40,31 +41,32 @@ pregunta = "¿Cómo se escriben las leyes de la física para que no dependan del
   id = "B1"
   titulo = "Transformación de coordenadas y tensores"
   estado = "publicado"
-  archivo = "book/01-fundamentos/02-transformacion.qmd"
+  archivo = "book/B-tensorial/B1-transformacion.qmd"
   requiere = ["A1"]
   [[bloque.tema]]
   id = "B2"
   titulo = "Bases covariantes y contravariantes"
-  estado = "borrador"
-  archivo = "book/01-fundamentos/03-bases.qmd"
+  estado = "publicado"
+  archivo = "book/B-tensorial/B2-bases.qmd"
   requiere = ["B1"]
   fuente_interna = "skew_plate_2.pdf (placa oblicua)"
   [[bloque.tema]]
   id = "B3"
   titulo = "Tensor métrico y componentes físicas"
   estado = "publicado"
-  archivo = "book/01-fundamentos/04-metrica.qmd"
+  archivo = "book/B-tensorial/B3-metrica.qmd"
   requiere = ["B2"]
   [[bloque.tema]]
   id = "B4"
   titulo = "Símbolos de Christoffel y derivada covariante"
   estado = "publicado"
-  archivo = "book/01-fundamentos/05-christoffel.qmd"
+  archivo = "book/B-tensorial/B4-christoffel.qmd"
   requiere = ["B3"]
   [[bloque.tema]]
   id = "B5"
   titulo = "Álgebra y análisis tensorial en curvilíneas"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/B-tensorial/B5-analisis-tensorial.qmd"
   requiere = ["B4"]
 
 # ---------------------------------------------------------------- Bloque C
@@ -76,35 +78,37 @@ pregunta = "¿Qué es una superficie curva y cómo medimos su forma?"
   id = "C1"
   titulo = "Superficies parametrizadas"
   estado = "publicado"
-  archivo = "book/02-superficies/06-superficies.qmd"
+  archivo = "book/C-superficies/C1-superficies.qmd"
   requiere = ["B3"]
   [[bloque.tema]]
   id = "C2"
   titulo = "Formas fundamentales y fórmulas de Gauss–Weingarten"
   estado = "publicado"
-  archivo = "book/02-superficies/07-formas-fundamentales.qmd"
+  archivo = "book/C-superficies/C2-formas-fundamentales.qmd"
   requiere = ["C1", "B4"]
   [[bloque.tema]]
   id = "C3"
   titulo = "Curvaturas de una superficie"
   estado = "publicado"
-  archivo = "book/02-superficies/08-curvaturas.qmd"
+  archivo = "book/C-superficies/C3-curvaturas.qmd"
   requiere = ["C2"]
   [[bloque.tema]]
   id = "C4"
   titulo = "Curvas sobre superficies: geodésicas y compatibilidad"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/C-superficies/C4-geodesicas.qmd"
   requiere = ["C3"]
   [[bloque.tema]]
   id = "C5"
   titulo = "El paraboloide hiperbólico"
   estado = "publicado"
-  archivo = "book/02-superficies/09-paraboloide.qmd"
+  archivo = "book/C-superficies/C5-paraboloide.qmd"
   requiere = ["C3"]
   [[bloque.tema]]
   id = "C6"
-  titulo = "Bestiario de láminas: cilindro, esfera y placa oblicua"
-  estado = "pendiente"
+  titulo = "Bestiario de láminas: cilindro, esfera, cono y placa oblicua"
+  estado = "publicado"
+  archivo = "book/C-superficies/C6-bestiario.qmd"
   requiere = ["C3"]
 
 # ---------------------------------------------------------------- Bloque D

@@ -1,0 +1,384 @@
+---
+title: "Transformación de coordenadas y tensores"
+subtitle: "Cómo cambian los números cuando cambia el sistema de referencia"
+engine: julia
+---
+
+![](../../figures/svg/galeria-coordenadas.svg){.portada fig-alt="Tres mallas de coordenadas del plano: oblicuas lineales, polares con el origen marcado como punto singular y elípticas confocales"}
+
+::: {.pregunta-guia}
+Cuando cambiamos de sistema de coordenadas, los números de un vector cambian pero el vector no: qué regla exacta relaciona unos con otros
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- definir un cambio de coordenadas **admisible** y calcular su matriz jacobiana y la de su inversa;
+- interpretar el determinante jacobiano como **razón de áreas o volúmenes**;
+- enunciar las leyes de transformación de componentes contravariantes y covariantes y **definir un tensor** por cómo se transforman sus componentes;
+- reconocer los **invariantes** y usarlos como criterio de corrección de una fórmula;
+- comprobar todo en Julia con el cambio cartesianas → polares.
+
+**Prerrequisitos.** [La cáscara y el paraboloide hiperbólico](../A-preludio/A1-caparazon-hypar.qmd) y derivadas parciales con la regla de la cadena.
+
+**Secciones del tema**
+
+- **@sec-motivacion-2** · Motivación · **@sec-admisibles** · Cambios de coordenadas admisibles · **@sec-factor-area** · El jacobiano como factor de área
+- **@sec-transformacion-comps** · Transformación de componentes y tensores · **@sec-invariantes** · Invariantes
+- **@sec-lab-polar** · Laboratorio interactivo · **@sec-julia-transf** · Práctica guiada en Julia
+
+## Motivación {#sec-motivacion-2}
+
+En el @sec-motivacion se insistió en que un vector $\mathbf{V}$ es un objeto geométrico y que sus componentes dependen de la base. La @fig-vector-dos-bases lo muestra con un ejemplo: en el punto $P$ del plano, el mismo vector se descompone sobre la base cartesiana $\{\mathbf{e}_x,\mathbf{e}_y\}$ o sobre la base polar $\{\mathbf{g}_1,\mathbf{g}_2\}$, con listas de números diferentes.
+
+![Un mismo vector $\mathbf{V}$ (ámbar) en el punto $P$, con la base cartesiana (gris discontinuo) y la base polar natural (azul y verde). $\mathbf{g}_2$ se ha dibujado a mitad de longitud, porque $\|\mathbf{g}_2\|=r$.](../../figures/svg/vector-dos-bases.svg){#fig-vector-dos-bases fig-alt="Base cartesiana y base polar en un punto del plano con un vector" width="85%"}
+
+La pregunta de este capítulo es: **¿qué regla relaciona las dos listas de números?** La respuesta es la ley de transformación, y es lo que define, en sentido estricto, a un tensor.
+
+::: {.callout-important title="Idea clave"}
+Un tensor no es «una matriz de números». Es un objeto geométrico cuyas componentes, en cualquier sistema de coordenadas, **se transforman de una manera precisa**. Esa regla es la que garantiza que las ecuaciones de la física valgan en cualquier sistema.
+:::
+
+## Cambios de coordenadas admisibles {#sec-admisibles}
+
+::: {#def-cambio-coordenadas}
+## Cambio de coordenadas admisible
+Sean $\theta^1,\dots,\theta^n$ unas coordenadas en una región $\Omega$. Un **cambio de coordenadas** es un conjunto de funciones
+$$
+\theta'^{\,i}=\theta'^{\,i}(\theta^1,\dots,\theta^n),\qquad i=1,\dots,n,
+$$ {#eq-cambio}
+de clase $C^1$ con inversa $\theta^i=\theta^i(\theta'^1,\dots,\theta'^n)$ también de clase $C^1$. Es **admisible** en $\Omega$ si el determinante de su jacobiana no se anula en ningún punto de $\Omega$.
+:::
+
+::: {#def-jacobiana}
+## Matrices jacobianas
+La **jacobiana** del cambio @eq-cambio y la de su inversa son
+$$
+J^i{}_j=\frac{\partial\theta'^{\,i}}{\partial\theta^{\,j}},
+\qquad
+\tilde J^i{}_j=\frac{\partial\theta^{\,i}}{\partial\theta'^{\,j}} .
+$$ {#eq-jacobianas}
+El primer índice numera la fila y el segundo la columna.
+:::
+
+::: {#prp-jacobianas-inversas}
+## Las jacobianas son inversas
+Si el cambio es admisible, $\tilde J=J^{-1}$, es decir
+$$
+\frac{\partial\theta'^{\,i}}{\partial\theta^{\,k}}\,\frac{\partial\theta^{\,k}}{\partial\theta'^{\,j}}=\delta^i_j .
+$$ {#eq-jacobianas-inversas}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-jacobianas-inversas
+Derivando la identidad $\theta'^{\,i}(\theta(\theta'))=\theta'^{\,i}$ respecto de $\theta'^{\,j}$ con la regla de la cadena se obtiene $\dfrac{\partial\theta'^{\,i}}{\partial\theta^{\,k}}\dfrac{\partial\theta^{\,k}}{\partial\theta'^{\,j}}=\dfrac{\partial\theta'^{\,i}}{\partial\theta'^{\,j}}=\delta^i_j$. En forma matricial, $J\tilde J=I$. $\blacksquare$
+:::
+
+::: {.callout-warning title="Dónde falla un cambio de coordenadas"}
+Las coordenadas polares son admisibles en $r>0$, pero no en el origen: allí $\det J$ se anula (o no está definido), la base $\{\mathbf{g}_1,\mathbf{g}_2\}$ degenera ($\mathbf{g}_2=\mathbf{0}$) y $\theta$ carece de valor. Es el **punto singular** que muestra la @fig-galeria. Lo mismo ocurre en los polos de las coordenadas esféricas. Los resultados de este libro valen **fuera** de esos puntos.
+:::
+
+![Tres sistemas de coordenadas del plano. Las curvas azules son $\theta^1=\text{cte}$ y las verdes $\theta^2=\text{cte}$. En las polares, el origen (punto ámbar) es singular.](../../figures/svg/galeria-coordenadas.svg){#fig-galeria fig-alt="Mallas de coordenadas lineales oblicuas, polares y elípticas" width="100%"}
+
+::: {#exm-jacobiana-polar}
+## Ejemplo resuelto: la jacobiana cartesianas → polares
+Con $r=\sqrt{x^2+y^2}$ y $\theta=\operatorname{atan2}(y,x)$, las derivadas son $\partial r/\partial x=\cos\theta$, $\partial r/\partial y=\sin\theta$, $\partial\theta/\partial x=-\sin\theta/r$, $\partial\theta/\partial y=\cos\theta/r$, de modo que
+$$
+J=\frac{\partial(r,\theta)}{\partial(x,y)}=\begin{pmatrix}\cos\theta&\sin\theta\\[2pt]-\dfrac{\sin\theta}{r}&\dfrac{\cos\theta}{r}\end{pmatrix},\qquad \det J=\frac1r .
+$$
+En el punto $(r,\theta)=(2,\pi/6)$: $J=\begin{pmatrix}0{,}866&0{,}5\\-0{,}25&0{,}433\end{pmatrix}$ y $\det J=0{,}5$. Su inversa es
+$\tilde J=\dfrac{\partial(x,y)}{\partial(r,\theta)}=\begin{pmatrix}\cos\theta&-r\sin\theta\\ \sin\theta&r\cos\theta\end{pmatrix}=\begin{pmatrix}0{,}866&-1\\0{,}5&1{,}732\end{pmatrix}$ (las columnas son $\mathbf{g}_1,\mathbf{g}_2$ del tema anterior), y se comprueba $J\tilde J=I$: por ejemplo $0{,}866\cdot0{,}866+0{,}5\cdot0{,}5=1$ y $0{,}866\cdot(-1)+0{,}5\cdot1{,}732=0$.
+:::
+
+**Pon a prueba lo anterior.** Los ejercicios se corrigen en tu navegador y no envían nada a ningún sitio.
+
+::: {.ejercicio tipo="numerico" id="b1-detj" respuesta="0.5" tol="abs:0.005"}
+Para el cambio cartesianas → polares, ¿cuánto vale $\det J$ en el punto $r=2$?
+
+::: {.solucion}
+$\det J=1/r=0{,}5$.
+:::
+:::
+
+::: {.ejercicio tipo="opcion" id="b1-singular" respuesta="c"}
+¿En qué punto **no** es admisible el cambio a coordenadas polares?
+
+::: {.opciones}
+- En $\theta=\pi/2$
+- En cualquier punto con $r>1$
+- En el origen $r=0$
+- En ningún punto
+:::
+
+::: {.solucion}
+En $r=0$: allí $\det J=1/r$ no está definido, $\mathbf{g}_2=\mathbf{0}$ y $\theta$ no tiene valor.
+:::
+:::
+
+## El jacobiano como factor de área {#sec-factor-area}
+
+::: {#prp-jacobiano-area}
+## Elemento de área y de volumen
+Sea $j=\det(\partial\theta'/\partial\theta)$ el determinante jacobiano. Los elementos de volumen ($n$-dimensional) en ambos sistemas se relacionan por
+$$
+d\theta'^1\cdots d\theta'^n=|j|\,d\theta^1\cdots d\theta^n,\qquad
+|j|=\left|\det\frac{\partial\theta'}{\partial\theta}\right| .
+$$ {#eq-jacobiano-volumen}
+En particular, al pasar de polares $(\theta^1,\theta^2)=(r,\theta)$ a cartesianas, $dx\,dy=r\,dr\,d\theta$.
+:::
+
+La @fig-jacobiano muestra la idea: la celda $dr\,d\theta$ del plano paramétrico se convierte en un trozo de corona circular cuyos lados son $\mathbf{g}_1\,dr$ y $\mathbf{g}_2\,d\theta$. Su área es el área del paralelogramo que forman, $\|\mathbf{g}_1\times\mathbf{g}_2\|\,dr\,d\theta=r\,dr\,d\theta$.
+
+![El plano paramétrico $(r,\theta)$ (izquierda) y el plano físico $(x,y)$ (derecha). El rectángulo ámbar $dr\,d\theta$ se transforma en un elemento de área $r\,dr\,d\theta$, de lados $\mathbf{g}_1\,dr$ y $\mathbf{g}_2\,d\theta$.](../../figures/svg/jacobiano-area.svg){#fig-jacobiano fig-alt="Celda del plano paramétrico y su imagen en el plano físico como sector de corona" width="100%"}
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-jacobiano-area (caso polar)
+Es el teorema del cambio de variable en integrales múltiples, que damos por conocido. Para polares, $\partial(x,y)/\partial(r,\theta)=\begin{pmatrix}\cos\theta&-r\sin\theta\\ \sin\theta&r\cos\theta\end{pmatrix}$, cuyo determinante es $r(\cos^2\theta+\sin^2\theta)=r$. Como $\det J=1/\det\tilde J$ por @prp-jacobianas-inversas, la jacobiana inversa tiene determinante $1/r$. $\blacksquare$
+:::
+
+::: {.callout-note .historia icon=false title="Un poco de historia: el determinante de Jacobi"}
+El determinante de las derivadas parciales de $n$ funciones de $n$ variables lleva el nombre de **Carl Gustav Jacob Jacobi**, que le dedicó en 1841 una memoria, *De determinantibus functionalibus*, publicada en el *Journal für die reine und angewandte Mathematik* (Crelle, vol. 22). Entre otros resultados, Jacobi probó que ese determinante se anula de forma idéntica si y solo si las funciones son dependientes entre sí. Los «determinantes funcionales» se habían usado antes, pero Jacobi desarrolló sus propiedades con tanta amplitud que llevan su nombre. La propia palabra *determinante* la había introducido Gauss en 1801 (con otro sentido) y su significado moderno se fijó en un trabajo de Cauchy de 1815.
+
+<span class="fuentes-caja">Fuentes (secundarias): [Carl Jacobi, Encyclopaedia Britannica](https://www.britannica.com/biography/Carl-Jacobi); [Introducing «determinants» and «Jacobians», Lynge & Søn](https://lynge.com/product/40627); [Jacobi, MAA](https://old.maa.org/node/915203). No se consultó el texto original de 1841 ni un estudio específico sobre la prioridad. Consultado el 21-10-2026.</span>
+:::
+
+## Transformación de componentes {#sec-transformacion-comps}
+
+Fijado el cambio @eq-cambio, las componentes de un vector $\mathbf{V}$ en ambas bases se relacionan así.
+
+::: {#prp-transf-vectores}
+## Componentes contravariantes y covariantes
+$$
+V'^{\,i}=\frac{\partial\theta'^{\,i}}{\partial\theta^{\,j}}\,V^{\,j}=J^i{}_j\,V^j,
+\qquad
+V'_{\,i}=\frac{\partial\theta^{\,j}}{\partial\theta'^{\,i}}\,V_{\,j}=\tilde J^j{}_i\,V_j .
+$$ {#eq-transf-vectores}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-transf-vectores
+La primera relación es la última de @eq-transformacion (se demuestra en @prp-transformacion-bases a partir de las bases). Para la segunda, $V'_i=\mathbf{V}\cdot\mathbf{g}'_i=\mathbf{V}\cdot\tilde J^j{}_i\,\mathbf{g}_j=\tilde J^j{}_i\,V_j$, porque $\mathbf{g}'_i=\tilde J^j{}_i\,\mathbf{g}_j$. $\blacksquare$
+:::
+
+::: {#exm-transf-vector}
+## Ejemplo resuelto: transformar un vector del plano a polares
+Sea $\mathbf{V}=(0,1)$ (cartesiano) en el punto $(r,\theta)=(2,\pi/6)$. Con @eq-transf-vectores y la $J$ del @exm-jacobiana-polar:
+$$
+V'^{\,r}=J^r{}_xV^x+J^r{}_yV^y=0{,}866\cdot0+0{,}5\cdot1=0{,}5,\qquad
+V'^{\,\theta}=-0{,}25\cdot0+0{,}433\cdot1=0{,}433 .
+$$
+Es decir, $\mathbf{V}=0{,}5\,\mathbf{g}_1+0{,}433\,\mathbf{g}_2$. Comprobación: $0{,}5(0{,}866;\,0{,}5)+0{,}433(-1;\,1{,}732)=(0;\,1)$ ✓.
+:::
+
+**Pon a prueba lo anterior.**
+
+::: {.ejercicio tipo="numerico" id="b1-vth" respuesta="0.433" tol="0.5%"}
+Con los datos del @exm-transf-vector, ¿cuánto vale la componente contravariante $V'^{\theta}$?
+
+::: {.pista}
+Es $\cos\theta/r$ con $\theta=\pi/6$ y $r=2$.
+:::
+
+::: {.solucion}
+$V'^{\theta}=\cos(\pi/6)/2=0{,}433$.
+:::
+:::
+
+::: {.ejercicio tipo="opcion" id="b1-indices" respuesta="b"}
+¿Cuál de estas expresiones es **correcta como fórmula tensorial** (índices bien colocados)?
+
+::: {.opciones}
+- $V^iW^i$
+- $V^iW_i$
+- $V_iW_i$
+- $V^i=W_i$
+:::
+
+::: {.solucion}
+$V^iW_i$: un índice repetido debe aparecer **una vez arriba y otra abajo**; solo así se obtiene un invariante. $V^iW^i$ y $V_iW_i$ no son invariantes en una base no ortonormal, y $V^i=W_i$ iguala objetos de distinto tipo.
+:::
+:::
+
+Las dos leyes difieren en **qué matriz** actúa: $J$ para los índices altos, $\tilde J=J^{-1}$ (trasladada) para los bajos. Un truco mnemotécnico: un índice alto se transforma como la diferencial $d\theta^i$ y uno bajo como la derivada parcial $\partial/\partial\theta^i$.
+
+### Tensores de orden dos
+
+::: {#def-tensor-2}
+## Tensor de orden dos
+Un conjunto de $n^2$ números que, en cada sistema de coordenadas, forman la tabla $T^{ij}$, $T^i{}_j$ o $T_{ij}$ es un **tensor de orden dos** (contravariante, mixto o covariante) si al cambiar de coordenadas se transforma según
+$$
+\begin{aligned}
+T'^{\,ij}&=J^i{}_k\,J^j{}_l\,T^{kl},\\
+T'^{\,i}{}_{j}&=J^i{}_k\,\tilde J^l{}_j\,T^{k}{}_{l},\\
+T'_{\,ij}&=\tilde J^k{}_i\,\tilde J^l{}_j\,T_{kl}.
+\end{aligned}
+$$ {#eq-transf-tensor2}
+Un vector es un tensor de orden uno, y un escalar es un tensor de orden cero (no cambia). Esta forma de definir el tensor por su ley de transformación es la clásica [@Heinbockel; @Lebedev].
+:::
+
+La definición se extiende a órdenes mayores: **un factor $J$ por cada índice alto y un factor $\tilde J$ por cada índice bajo**.
+
+::: {.callout-warning title="Un array no es un tensor"}
+Que $T^{ij}$ sea una tabla $2\times2$ no basta: hay que saber cómo se transforma. El ejemplo más importante lo veremos en el tema de Christoffel (@sec-christoffel): los símbolos de Christoffel $\Gamma^k_{ij}$ se escriben como un array de tres índices, pero **no son un tensor**, porque son nulos en cartesianas y no nulos en polares, y un tensor nulo en un sistema es nulo en todos. La prueba de que un objeto es tensorial es siempre la ley @eq-transf-tensor2.
+:::
+
+::: {#prp-metrica-tensor}
+## El tensor métrico es un tensor
+Las componentes $g_{ij}=\mathbf{g}_i\cdot\mathbf{g}_j$ se transforman como un tensor covariante de orden dos, y los $g^{ij}$ como uno contravariante.
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-metrica-tensor
+Como $\mathbf{g}'_i=\tilde J^k{}_i\,\mathbf{g}_k$,
+$g'_{ij}=\mathbf{g}'_i\cdot\mathbf{g}'_j=\tilde J^k{}_i\tilde J^l{}_j\,\mathbf{g}_k\cdot\mathbf{g}_l=\tilde J^k{}_i\tilde J^l{}_j\,g_{kl}$, que es la tercera fila de @eq-transf-tensor2. La versión contravariante es la matriz inversa: $g'^{ij}=J^i{}_kJ^j{}_l\,g^{kl}$. $\blacksquare$
+:::
+
+## Invariantes {#sec-invariantes}
+
+Los tensores son útiles porque permiten construir cantidades que **no** dependen de las coordenadas.
+
+::: {#prp-invariantes}
+## Contracciones invariantes
+Si $V^i,W_i$ son las componentes de dos vectores y $T^i{}_j$ las de un tensor mixto, son invariantes (idénticos en cualquier sistema):
+$$
+V^iW_i,\qquad T^i{}_i,\qquad g_{ij}V^iV^j=\|\mathbf{V}\|^2 .
+$$ {#eq-invariantes}
+:::
+
+::: {.callout-note .demostracion collapse="true"}
+## Demostración de @prp-invariantes
+Con @eq-transf-vectores y @eq-jacobianas-inversas, $V'^iW'_i=J^i{}_j\,\tilde J^k{}_i\,V^jW_k=\delta^k_j\,V^jW_k=V^jW_j$. Del mismo modo, $T'^i{}_i=J^i{}_k\tilde J^l{}_i\,T^k{}_l=\delta^l_k\,T^k{}_l=T^k{}_k$. $\blacksquare$
+:::
+
+::: {.callout-important title="Idea clave"}
+**Criterio de corrección.** En una fórmula con índices, cada índice libre debe aparecer en los dos miembros en la misma posición (alto o bajo) y cada índice repetido debe aparecer una vez arriba y otra abajo. Si es así, la ecuación se conserva al cambiar de coordenadas. Si no, hay un error (o un objeto que no es tensor).
+:::
+
+## Laboratorio interactivo {#sec-lab-polar}
+
+::: {.laboratorio}
+<div class="laboratorio-titulo">Laboratorio · Un vector en cartesianas y en polares</div>
+<span class="etiqueta-resultado calculado">calculado en el navegador</span> Verificado frente a Julia (`web/tests/laboratorios.test.mjs`).
+
+Elige un punto $(r,\theta)$ y un vector $\mathbf{V}=(V_x,V_y)$ (cartesiano). Se dibujan la base polar natural y el vector, y se calculan las componentes polares con la ley de transformación. **Qué observar:**
+
+1. $\det J=1/r$: al alejarte del origen, un mismo $d\theta$ barre más área.
+2. $V^\theta=V\cdot\mathbf{g}^2$ **disminuye** con $r$ aunque $\mathbf{V}$ no cambie (porque $\mathbf{g}_2$ crece con $r$).
+3. Con $\mathbf{V}=(1,0)$ y $\theta=0$, $V^r=1$ y $V^\theta=0$; gira $\theta$ y las componentes se reparten.
+4. Para cualquier punto, $V^iV_i$ es igual a $V_x^2+V_y^2$ (invariante).
+:::
+
+```{ojs}
+//| echo: false
+labp = import(new URL("../../web/ojs/laboratorios.js", document.baseURI))
+```
+
+```{ojs}
+//| echo: false
+viewof pr = Inputs.range([0.3, 4], {value: 2, step: 0.05, label: "r"})
+viewof pt = Inputs.range([0, 1.55], {value: 0.52, step: 0.01, label: "θ (rad)"})
+viewof pvx = Inputs.range([-2, 2], {value: 0, step: 0.05, label: "Vₓ"})
+viewof pvy = Inputs.range([-2, 2], {value: 1, step: 0.05, label: "V_y"})
+```
+
+```{ojs}
+//| echo: false
+pb = labp.polarBase(pr, pt)
+pcmp = labp.polarComps(pr, pt, [pvx, pvy])
+html`<div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center">
+<div style="flex:1 1 320px;max-width:480px">${(() => { const d = document.createElement("div"); d.innerHTML = labp.dibujarPolar(pr, pt, [pvx, pvy]); return d; })()}</div>
+<table class="table table-sm" style="max-width:22rem">
+<tr><td>det J = 1/r</td><td>${labp.fmt(1 / pr)}</td></tr>
+<tr><td>V<sup>r</sup>, V<sup>θ</sup> (contravariantes)</td><td>${labp.fmt(pcmp.up[0])}, ${labp.fmt(pcmp.up[1])}</td></tr>
+<tr><td>V<sub>r</sub>, V<sub>θ</sub> (covariantes)</td><td>${labp.fmt(pcmp.dn[0])}, ${labp.fmt(pcmp.dn[1])}</td></tr>
+<tr><td>VⁱVᵢ</td><td>${labp.fmt(pcmp.up[0] * pcmp.dn[0] + pcmp.up[1] * pcmp.dn[1])}</td></tr>
+<tr><td>Vₓ² + V_y²</td><td>${labp.fmt(pvx * pvx + pvy * pvy)}</td></tr>
+</table></div>`
+```
+
+## Ejemplo computacional en Julia {#sec-julia-transf}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> Cartesianas → polares en el punto $(r,\theta)=(2,\pi/6)$. La jacobiana $\partial(r,\theta)/\partial(x,y)$ se obtiene por diferencias finitas y se compara con la inversa de la base polar.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+a_polar(x) = [hypot(x[1], x[2]), atan(x[2], x[1])]   # (x,y) ↦ (r,θ)
+r, θ = 2.0, π / 6
+x0 = [r * cos(θ), r * sin(θ)]
+
+J = jacobiana_numerica(a_polar, x0)        # ∂(r,θ)/∂(x,y)
+B = base_polar(r, θ)                       # ∂(x,y)/∂(r,θ)
+(J_por_B = round.(J * B; digits = 8), det_J = det(J), uno_entre_r = 1 / r)
+```
+
+```{julia}
+V = [0.4, -1.3]                            # componentes cartesianas
+W = [-0.9, 0.5]
+Vup = transformar_contra(J, V)             # Vʳ, Vᶿ
+Wdn = transformar_cov(J, W)                # Wᵣ, Wᶿ
+(contravariantes_V = Vup,
+ comprobacion = Vup ≈ comps_contravariantes(B, V),
+ invariante_polar = dot(Vup, Wdn),
+ invariante_cartesiano = dot(V, W))
+```
+
+```{julia}
+# La métrica cartesiana δ se transforma en el tensor métrico de las polares (@prp-metrica-tensor)
+(transformar_tensor_cov(J, Matrix(1.0I, 2, 2)), metrica(B))
+```
+
+Estas identidades se verifican de forma automática en `julia/test/runtests.jl` (conjunto «Transformación de coordenadas»).
+
+## Ejercicios {#sec-ejercicios-2}
+
+1. **Cilíndricas.** Calcula $J$ y $\det J$ para el paso de cartesianas $(x,y,z)$ a cilíndricas $(\rho,\varphi,z)$ y comprueba que $dV=\rho\,d\rho\,d\varphi\,dz$.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Es el caso polar más $z'=z$: $\det J=1/\rho$ y el factor inverso es $\rho$, luego $dV=\rho\,d\rho\,d\varphi\,dz$.
+   :::
+
+2. **Delta de Kronecker.** Demuestra que $\delta^i_j$ es un tensor mixto invariante: $\delta'^i{}_j=\delta^i{}_j$.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Con @eq-transf-tensor2: $\delta'^i{}_j=J^i{}_k\tilde J^l{}_j\delta^k{}_l=J^i{}_k\tilde J^k{}_j=\delta^i{}_j$ por @eq-jacobianas-inversas.
+   :::
+
+3. **Simetría.** Un tensor covariante es **simétrico** si $T_{ij}=T_{ji}$. Prueba que esta propiedad se conserva al cambiar de coordenadas.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $T'_{ij}=\tilde J^k_i\tilde J^l_jT_{kl}=\tilde J^k_i\tilde J^l_jT_{lk}=\tilde J^l_j\tilde J^k_iT_{lk}=T'_{ji}$ (se renombran los índices mudos).
+   :::
+
+4. **Con Julia.** Transforma el tensor covariante $T=\begin{pmatrix}2&1\\1&3\end{pmatrix}$ de cartesianas a polares en $(r,\theta)=(1{,}5;\,0{,}8)$ y verifica que $T_{ij}V^iV^j$ no cambia.
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Con `J = jacobiana_numerica(...)` como en la práctica, `Tp = transformar_tensor_cov(J, T)`, `Vp = transformar_contra(J, V)`; entonces `Vp' * Tp * Vp ≈ V' * T * V`.
+   :::
+
+5. **Cambio lineal.** ¿Para qué cambios lineales $\theta'=A\theta$ coinciden las leyes de $V^i$ y $V_i$?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Cuando $A^{-\mathsf T}=A$, es decir, $A$ ortogonal ($A^{\mathsf T}A=I$): giros y reflexiones.
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- Calculo la jacobiana de un cambio de coordenadas y la de su inversa, y compruebo que son inversas.
+- Interpreto $|\det J|$ como factor de área o de volumen, y sé dónde falla (puntos singulares).
+- Enuncio las leyes de transformación de $V^i$ y $V_i$ y las aplico en un ejemplo numérico.
+- Defino un tensor de orden dos por su ley de transformación y distingo contravariante, mixto y covariante.
+- Uso la regla de los índices (arriba/abajo) para detectar fórmulas incorrectas.
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo, resultados estándar de cálculo tensorial [@Heinbockel; @Lebedev; @Spiegel; @Flugge; @Lipschultz]. Los ejemplos numéricos con polares se han calculado y comprobado con `Geometria`.
+
+**Qué queda pendiente.**
+
+1. Las figuras (Julia y portada) tienen **revisión visual humana pendiente**.
+2. Las notas históricas se basan en fuentes secundarias.
+3. Referencias **no leídas línea a línea** para este tema.
+:::

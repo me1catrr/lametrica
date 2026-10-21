@@ -5,19 +5,23 @@ book:
     - book/mapa.qmd
     - part: "Bloque A · Preludio: la forma que resiste"
       chapters:
-        - book/01-fundamentos/01-motivacion.qmd
+        - book/A-preludio/A1-caparazon-hypar.qmd
+        - book/A-preludio/A2-vectores-y-coordenadas.qmd
     - part: "Bloque B · Cálculo tensorial"
       chapters:
-        - book/01-fundamentos/02-transformacion.qmd
-        - book/01-fundamentos/03-bases.qmd
-        - book/01-fundamentos/04-metrica.qmd
-        - book/01-fundamentos/05-christoffel.qmd
+        - book/B-tensorial/B1-transformacion.qmd
+        - book/B-tensorial/B2-bases.qmd
+        - book/B-tensorial/B3-metrica.qmd
+        - book/B-tensorial/B4-christoffel.qmd
+        - book/B-tensorial/B5-analisis-tensorial.qmd
     - part: "Bloque C · Geometría de superficies"
       chapters:
-        - book/02-superficies/06-superficies.qmd
-        - book/02-superficies/07-formas-fundamentales.qmd
-        - book/02-superficies/08-curvaturas.qmd
-        - book/02-superficies/09-paraboloide.qmd
+        - book/C-superficies/C1-superficies.qmd
+        - book/C-superficies/C2-formas-fundamentales.qmd
+        - book/C-superficies/C3-curvaturas.qmd
+        - book/C-superficies/C4-geodesicas.qmd
+        - book/C-superficies/C5-paraboloide.qmd
+        - book/C-superficies/C6-bestiario.qmd
     - book/referencias.qmd
   appendices:
     - book/apendices/notacion.qmd

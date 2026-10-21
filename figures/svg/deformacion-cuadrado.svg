@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 392.0 296.0" role="img" aria-label="Un cuadrado de referencia (gris discontinuo) se deforma en un paralelogramo (azul) con el gradiente F; las bases g1, g2 pasan a G1, G2">
+<title>Un cuadrado de referencia (gris discontinuo) se deforma en un paralelogramo (azul) con el gradiente F; las bases g1, g2 pasan a G1, G2</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<line x1="88.0" y1="220.0" x2="346.0" y2="220.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="346.0,220.0 336.79,223.89 336.79,216.11" fill="#6b7280"/>
+<text x="350.0" y="236.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">x</text>
+<line x1="88.0" y1="220.0" x2="88.0" y2="40.0" stroke="#6b7280" stroke-width="1.2"/>
+<polygon points="88.0,40.0 91.89,49.21 84.11,49.21" fill="#6b7280"/>
+<text x="96.0" y="46.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">y</text>
+<polygon points="88.0,220.0 208.0,220.0 208.0,100.0 88.0,100.0 88.0,220.0" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" opacity="1.0" stroke-dasharray="6 4" stroke-linejoin="round"/>
+<polygon points="88.0,220.0 226.0,220.0 256.0,106.0 118.0,106.0 88.0,220.0" fill="#1b6ca8" stroke="#1b6ca8" stroke-width="2.6" opacity="0.18" stroke-linejoin="round"/>
+<line x1="208.0" y1="220.0" x2="226.0" y2="220.0" stroke="#d95f02" stroke-width="1.8"/>
+<polygon points="226.0,220.0 216.79,223.89 216.79,216.11" fill="#d95f02"/>
+<line x1="208.0" y1="100.0" x2="256.0" y2="106.0" stroke="#d95f02" stroke-width="1.8"/>
+<polygon points="256.0,106.0 246.38,108.72 247.34,100.99" fill="#d95f02"/>
+<line x1="88.0" y1="100.0" x2="118.0" y2="106.0" stroke="#d95f02" stroke-width="1.8"/>
+<polygon points="118.0,106.0 108.2,108.01 109.73,100.38" fill="#d95f02"/>
+<line x1="88.0" y1="220.0" x2="208.0" y2="220.0" stroke="#6b7280" stroke-width="2.2"/>
+<polygon points="208.0,220.0 198.79,223.89 198.79,216.11" fill="#6b7280"/>
+<text x="212.0" y="236.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">g₁</text>
+<line x1="88.0" y1="220.0" x2="88.0" y2="100.0" stroke="#6b7280" stroke-width="2.2"/>
+<polygon points="88.0,100.0 91.89,109.21 84.11,109.21" fill="#6b7280"/>
+<text x="62.0" y="104.0" fill="#6b7280" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">g₂</text>
+<line x1="88.0" y1="220.0" x2="226.0" y2="220.0" stroke="#1b6ca8" stroke-width="3"/>
+<polygon points="226.0,220.0 216.79,223.89 216.79,216.11" fill="#1b6ca8"/>
+<text x="246.0" y="212.0" fill="#1b6ca8" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">G₁</text>
+<line x1="88.0" y1="220.0" x2="118.0" y2="106.0" stroke="#1b6ca8" stroke-width="3"/>
+<polygon points="118.0,106.0 119.42,115.9 111.89,113.92" fill="#1b6ca8"/>
+<text x="124.0" y="102.0" fill="#1b6ca8" font-size="15" text-anchor="start" font-family="Georgia, 'Times New Roman', serif" font-style="italic">G₂</text>
+</svg>

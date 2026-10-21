@@ -6,7 +6,7 @@
 
 Este es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como *por escribir* aparecerán a medida que avance el libro.
 
-**Estado:** 8 temas publicados, 1 en reescritura y 27 por escribir (de 36).
+**Estado:** 13 temas publicados, 0 en reescritura y 23 por escribir (de 36).
 
 ## Bloque A · Preludio: la forma que resiste {.unnumbered}
 
@@ -16,8 +16,8 @@ Por qué una cáscara de pocos centímetros puede cubrir una gran luz, y qué ne
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| A1 | [Por qué tensores](01-fundamentos/01-motivacion.html) | ● publicado | — |
-| A2 | Los objetos físicos no dependen de las coordenadas | ○ por escribir | A1 |
+| A1 | [La cáscara y el paraboloide hiperbólico](A-preludio/A1-caparazon-hypar.html) | ● publicado | — |
+| A2 | [Los objetos físicos no dependen de las coordenadas](A-preludio/A2-vectores-y-coordenadas.html) | ● publicado | A1 |
 
 ## Bloque B · Cálculo tensorial {.unnumbered}
 
@@ -27,11 +27,11 @@ Cómo se escriben las leyes de la física para que no dependan del sistema de co
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| B1 | [Transformación de coordenadas y tensores](01-fundamentos/02-transformacion.html) | ● publicado | A1 |
-| B2 | [Bases covariantes y contravariantes](01-fundamentos/03-bases.html) | ◐ en reescritura | B1 |
-| B3 | [Tensor métrico y componentes físicas](01-fundamentos/04-metrica.html) | ● publicado | B2 |
-| B4 | [Símbolos de Christoffel y derivada covariante](01-fundamentos/05-christoffel.html) | ● publicado | B3 |
-| B5 | Álgebra y análisis tensorial en curvilíneas | ○ por escribir | B4 |
+| B1 | [Transformación de coordenadas y tensores](B-tensorial/B1-transformacion.html) | ● publicado | A1 |
+| B2 | [Bases covariantes y contravariantes](B-tensorial/B2-bases.html) | ● publicado | B1 |
+| B3 | [Tensor métrico y componentes físicas](B-tensorial/B3-metrica.html) | ● publicado | B2 |
+| B4 | [Símbolos de Christoffel y derivada covariante](B-tensorial/B4-christoffel.html) | ● publicado | B3 |
+| B5 | [Álgebra y análisis tensorial en curvilíneas](B-tensorial/B5-analisis-tensorial.html) | ● publicado | B4 |
 
 ## Bloque C · Geometría de superficies {.unnumbered}
 
@@ -41,12 +41,12 @@ Qué es una superficie curva y cómo medimos su forma
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| C1 | [Superficies parametrizadas](02-superficies/06-superficies.html) | ● publicado | B3 |
-| C2 | [Formas fundamentales y fórmulas de Gauss–Weingarten](02-superficies/07-formas-fundamentales.html) | ● publicado | C1, B4 |
-| C3 | [Curvaturas de una superficie](02-superficies/08-curvaturas.html) | ● publicado | C2 |
-| C4 | Curvas sobre superficies: geodésicas y compatibilidad | ○ por escribir | C3 |
-| C5 | [El paraboloide hiperbólico](02-superficies/09-paraboloide.html) | ● publicado | C3 |
-| C6 | Bestiario de láminas: cilindro, esfera y placa oblicua | ○ por escribir | C3 |
+| C1 | [Superficies parametrizadas](C-superficies/C1-superficies.html) | ● publicado | B3 |
+| C2 | [Formas fundamentales y fórmulas de Gauss–Weingarten](C-superficies/C2-formas-fundamentales.html) | ● publicado | C1, B4 |
+| C3 | [Curvaturas de una superficie](C-superficies/C3-curvaturas.html) | ● publicado | C2 |
+| C4 | [Curvas sobre superficies: geodésicas y compatibilidad](C-superficies/C4-geodesicas.html) | ● publicado | C3 |
+| C5 | [El paraboloide hiperbólico](C-superficies/C5-paraboloide.html) | ● publicado | C3 |
+| C6 | [Bestiario de láminas: cilindro, esfera, cono y placa oblicua](C-superficies/C6-bestiario.html) | ● publicado | C3 |
 
 ## Bloque D · Elasticidad: del sólido a la lámina {.unnumbered}
 

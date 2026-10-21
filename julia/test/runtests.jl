@@ -291,3 +291,181 @@ end
     @test desde_contravariantes(B, Vup) ≈ V atol = 1e-12
     @test dot(Vup, Vdn) ≈ dot(V, V) atol = 1e-12
 end
+
+@testset "Análisis tensorial en curvilíneas (tema B5)" begin
+    polar(t) = base_polar(t[1], t[2])
+    esf(t) = base_esferica(t[1], t[2], t[3])
+    t0 = [1.7, 0.6]
+    @test raiz_g(polar, t0) ≈ 1.7 atol = 1e-9
+    # Divergencia: campo posición (x,y) = r ĝ₁ → Vʳ = r, Vᶿ = 0 → div = 2
+    @test divergencia(polar, t -> [t[1], 0.0], t0) ≈ 2 atol = 1e-6
+    # Campo constante (1,0): Vʳ = cos θ, Vᶿ = −sen θ / r → div = 0
+    @test divergencia(polar, t -> [cos(t[2]), -sin(t[2]) / t[1]], t0) ≈ 0 atol = 1e-6
+    # Esféricas: div(r ĝ_r) = 3 (campo posición)
+    @test divergencia(esf, t -> [t[1], 0.0, 0.0], [1.3, 0.8, 0.5]) ≈ 3 atol = 1e-6
+    # Gradiente de f = x² + y² = r²: ∇f = 2r ĝ_r → componentes contravariantes (2r, 0)
+    @test gradiente(polar, t -> t[1]^2, t0) ≈ [2 * 1.7, 0.0] atol = 1e-6
+    # Gradiente de una función de θ: f = θ → (∇f)ᶿ = 1/r²
+    @test gradiente(polar, t -> t[2], t0) ≈ [0.0, 1 / 1.7^2] atol = 1e-6
+    # Laplaciano: Δ(r²) = 4 y Δ(ln r) = 0 (armónica); Δ(x) con f = r cosθ = x → 0
+    @test laplaciano(polar, t -> t[1]^2, t0) ≈ 4 atol = 1e-4
+    @test laplaciano(polar, t -> log(t[1]), t0) ≈ 0 atol = 1e-4
+    @test laplaciano(polar, t -> t[1] * cos(t[2]), t0) ≈ 0 atol = 1e-4
+    # Teorema de la divergencia en el disco: ∫ div(x,y) dA = 2πR² = ∮ V·n ds
+    R = 2.0; N = 400
+    integral = sum(divergencia(polar, t -> [t[1], 0.0], [(i - 0.5) * R / N, 0.3]) * (i - 0.5) * R / N * (R / N) * 2π for i in 1:N)
+    @test integral ≈ 2π * R^2 atol = 1e-3
+    # Símbolo de permutación y producto vectorial: gᵢ × gⱼ = εᵢⱼₖ gᵏ con εᵢⱼₖ = √g [ijk]
+    e = levi_civita(3); B = esf([1.3, 0.8, 0.5]); Br = base_reciproca(B); sg = raiz_g(esf, [1.3, 0.8, 0.5])
+    for i in 1:3, j in 1:3
+        @test cross(B[:, i], B[:, j]) ≈ sum(sg * e[i, j, k] * Br[:, k] for k in 1:3) atol = 1e-9
+    end
+    # Rotacional de V = (−y, x, 0) = rotación rígida: curl = (0,0,2). Componentes covariantes en cilíndricas
+    cilindricas(t) = [cos(t[2]) -t[1] * sin(t[2]) 0.0; sin(t[2]) t[1] * cos(t[2]) 0.0; 0.0 0.0 1.0]
+    campo_dn(t) = transpose(cilindricas(t)) * [-t[1] * sin(t[2]), t[1] * cos(t[2]), 0.0]   # Vᵢ = V·gᵢ
+    curlup = rotacional(cilindricas, campo_dn, [1.4, 0.9, 0.3])
+    @test curlup ≈ [0.0, 0.0, 2.0] atol = 1e-5      # (∇×V)ᶻ = 2 (con g_z unitario)
+end
+
+@testset "Superficies tipo, curvas y Theorema Egregium (tema C4 y C6)" begin
+    # Tabla de superficies tipo: aαβ, K y H
+    R = 1.8
+    for (r, t, a_esp, K_esp, H_esp) in (
+            (cilindro(R), [0.7, 0.4], [R^2 0; 0 1], 0.0, -1 / (2R)),
+            (esfera(R), [1.0, 0.4], [R^2 0; 0 R^2 * sin(1.0)^2], 1 / R^2, -1 / R),
+            (cono(0.6), [0.5, 1.3], [(1.3 * sin(0.6))^2 0; 0 1], 0.0, nothing))
+        A = base_superficie(r, t); a = metrica(A); b = segunda_forma(r, t)
+        @test a ≈ a_esp atol = 1e-6
+        pc = curvaturas_principales(a, b)
+        @test pc.K ≈ K_esp atol = 1e-5
+        H_esp === nothing || @test pc.H ≈ H_esp atol = 1e-5
+    end
+    # Placa oblicua: plana, no ortogonal
+    φ = π / 3; po = placa_oblicua(φ); A = base_superficie(po, [0.2, 0.3]); a = metrica(A)
+    @test a ≈ [1 cos(φ); cos(φ) 1] atol = 1e-8
+    @test segunda_forma(po, [0.2, 0.3]) ≈ zeros(2, 2) atol = 1e-8
+    # Theorema Egregium: K desde la métrica (Brioschi) = det(b)/det(a)
+    for (r, t) in ((esfera(1.5), [1.1, 0.4]), (cilindro(1.5), [0.3, 0.2]),
+                   (paraboloide_curvo(3.0, -2.0), [0.7, -0.4]), (paraboloide_recto(0.8), [0.5, -0.7]))
+        a = metrica_superficie(r, t); b = segunda_forma(r, t)
+        @test curvatura_gauss_brioschi(r, t) ≈ det(b) / det(a) atol = 1e-4
+    end
+    # Curvaturas de una curva: paralelo de la esfera de colatitud θ₀ = 1,0, radio ρ
+    ρ = 2.0; θ0 = 1.0
+    paralelo(t) = [θ0, t]
+    κ, κn, κg = curvaturas_curva(esfera(ρ), paralelo, 0.7)
+    @test κ ≈ 1 / (ρ * sin(θ0)) atol = 1e-5
+    @test κn ≈ -1 / ρ atol = 1e-5                          # normal saliente → κn < 0
+    @test abs(κg) ≈ cos(θ0) / (ρ * sin(θ0)) atol = 1e-5    # cot θ₀ / ρ
+    @test κ^2 ≈ κn^2 + κg^2 atol = 1e-8
+    # El ecuador es geodésica: κg = 0; un meridiano también
+    @test curvaturas_curva(esfera(ρ), t -> [π / 2, t], 0.4)[3] ≈ 0 atol = 1e-5
+    @test curvaturas_curva(esfera(ρ), t -> [t, 0.3], 0.9)[3] ≈ 0 atol = 1e-5
+    # Geodésica integrada: gran círculo oblicuo; velocidad constante y κg ≈ 0
+    θs, vs = geodesica(esfera(1.0), [π / 2, 0.0], [0.3, 0.7]; T = 2.0, n = 200)
+    rapidez(θ, v) = sqrt(v' * metrica_superficie(esfera(1.0), θ) * v)
+    @test rapidez(θs[:, 1], vs[:, 1]) ≈ rapidez(θs[:, end], vs[:, end]) atol = 1e-6
+    P = hcat([esfera(1.0)(θs[:, k]) for k in 1:size(θs, 2)]...)
+    # un gran círculo está en un plano que pasa por el origen: det de tres puntos ≈ 0
+    @test abs(det(hcat(P[:, 1], P[:, 80], P[:, 170]))) < 1e-5
+    # Codazzi
+    for (r, t) in ((esfera(1.5), [1.1, 0.4]), (paraboloide_curvo(3.0, -2.0), [0.7, -0.4]), (cilindro(1.5), [0.3, 0.2]))
+        c = codazzi(r, t)
+        @test abs(c[1]) < 1e-4 && abs(c[2]) < 1e-4
+    end
+end
+
+@testset "Bestiario de láminas (tema C6)" begin
+    # Placa oblicua: base recíproca a¹ = (1, −cot φ), a² = (0, 1/sen φ); a¹² = −cos φ / sen² φ
+    φ = π / 3; po = placa_oblicua(φ); A = base_superficie(po, [0.4, 0.2])[1:2, :]; a = metrica(A)
+    Ar = base_reciproca(A)
+    @test Ar[:, 1] ≈ [1, -cos(φ) / sin(φ)] atol = 1e-8
+    @test Ar[:, 2] ≈ [0, 1 / sin(φ)] atol = 1e-8
+    @test inv(a)[1, 2] ≈ -cos(φ) / sin(φ)^2 atol = 1e-8
+    @test det(a) ≈ sin(φ)^2 atol = 1e-8
+    # Cilindro: Γ = 0, b = diag(−R,0), H = −1/(2R)
+    R = 1.8; t = [0.7, 0.4]
+    @test cristoffel_superficie(cilindro(R), t) ≈ zeros(2, 2, 2) atol = 1e-6
+    @test segunda_forma(cilindro(R), t) ≈ [-R 0; 0 0] atol = 1e-5
+    # Esfera (θ¹ colatitud, θ² azimut): Γ¹₂₂ = −senθ cosθ, Γ²₁₂ = cot θ; b = −a/R
+    θ = 1.0; te = [θ, 0.4]; Γ = cristoffel_superficie(esfera(R), te)
+    @test Γ[1, 2, 2] ≈ -sin(θ) * cos(θ) atol = 1e-6
+    @test Γ[2, 1, 2] ≈ cos(θ) / sin(θ) atol = 1e-6
+    @test segunda_forma(esfera(R), te) ≈ -metrica_superficie(esfera(R), te) / R atol = 1e-5
+    # Cono de semiángulo α con (θ¹, θ²) = (φ, t): a = diag(t² sen²α, 1); Γ¹₁₂ = 1/t, Γ²₁₁ = −t sen²α; b₁₁ = −t senα cosα
+    α = 0.6; tc = [0.5, 2.0]; K = cono(α)
+    ac = metrica_superficie(K, tc)
+    @test ac ≈ [tc[2]^2 * sin(α)^2 0; 0 1] atol = 1e-6
+    Γc = cristoffel_superficie(K, tc)
+    @test Γc[1, 1, 2] ≈ 1 / tc[2] atol = 1e-5
+    @test Γc[2, 1, 1] ≈ -tc[2] * sin(α)^2 atol = 1e-5
+    bc = segunda_forma(K, tc)
+    @test bc[1, 1] ≈ -tc[2] * sin(α) * cos(α) atol = 1e-5
+    @test abs(bc[1, 2]) + abs(bc[2, 2]) < 1e-5
+    pc = curvaturas_principales(ac, bc)
+    @test pc.K ≈ 0 atol = 1e-6
+    @test pc.H ≈ -cos(α) / (2 * tc[2] * sin(α)) atol = 1e-5
+end
+
+@testset "Elasticidad del sólido (tema D1 y D2)" begin
+    E, ν = 210e3, 0.3
+    λ, μ = lame(E, ν)
+    @test μ ≈ E / (2 * (1 + ν))
+    @test λ ≈ E * ν / ((1 + ν) * (1 - 2ν))
+    # Hooke cartesiano: σ = λ tr(ε) I + 2μ ε
+    C = hooke_contravariante(Matrix(1.0I, 3, 3), E, ν)
+    ε = [1e-3 2e-4 0; 2e-4 -5e-4 1e-4; 0 1e-4 3e-4]
+    σ = tension_hooke(C, ε)
+    @test σ ≈ λ * tr(ε) * I(3) + 2μ * ε atol = 1e-8
+    @test energia_deformacion(C, ε) ≈ sum(σ .* ε) / 2
+    # Tensión plana (Voigt): coincide con la reducción de Hooke con σ₃₃ = 0
+    D = matriz_tension_plana(E, ν)
+    εp = [1e-3, -4e-4, 2 * 3e-4]
+    σp = D * εp
+    ε3 = [1e-3 3e-4 0; 3e-4 -4e-4 0; 0 0 -ν / (1 - ν) * (1e-3 - 4e-4)]
+    @test tension_hooke(C, ε3)[3, 3] ≈ 0 atol = 1e-8                 # εzz libre ⇒ σzz = 0
+    @test [tension_hooke(C, ε3)[1, 1], tension_hooke(C, ε3)[2, 2], tension_hooke(C, ε3)[1, 2]] ≈ [σp[1], σp[2], σp[3]] atol = 1e-6
+    # Hooke es un tensor: la energía es invariante al pasar a polares
+    pol(t) = [cos(t[2]) -t[1] * sin(t[2]) 0; sin(t[2]) t[1] * cos(t[2]) 0; 0 0 1]
+    t0 = [1.4, 0.7]; B = pol(t0)
+    Cpol = hooke_contravariante(inv(metrica(B)), E, ν)
+    εpol = transpose(B) * ε * B                                     # componentes covariantes εᵢⱼ en polares
+    @test energia_deformacion(Cpol, εpol) ≈ energia_deformacion(C, ε) atol = 1e-8
+    # Deformación pequeña en curvilíneas: expansión uniforme u = x ⇒ ε = g
+    uexp(t) = transpose(base_polar(t[1], t[2])) * [t[1] * cos(t[2]), t[1] * sin(t[2])]
+    @test deformacion_pequena(t -> base_polar(t[1], t[2]), uexp, t0) ≈ metrica(base_polar(t0...)) atol = 1e-6
+    # Giro rígido infinitesimal u = ω×x en el plano: ε = 0
+    urot(t) = transpose(base_polar(t[1], t[2])) * [-t[1] * sin(t[2]), t[1] * cos(t[2])]
+    @test deformacion_pequena(t -> base_polar(t[1], t[2]), urot, t0) ≈ zeros(2, 2) atol = 1e-6
+    # Cauchy–Green y Green–Lagrange
+    F = [1.1 0.2; 0.0 0.9]
+    @test cauchy_green(F) ≈ F' * F
+    @test green_lagrange(Matrix(1.0I, 2, 2), cauchy_green(F)) ≈ (F' * F - I) / 2
+    Fs = I(2) + 1e-6 * [0.3 0.1; -0.2 0.5]
+    @test green_lagrange(Matrix(1.0I, 2, 2), cauchy_green(Fs)) ≈ 1e-6 * [0.3 -0.05; -0.05 0.5] atol = 1e-11   # ≈ ε pequeña
+    # Equilibrio: un tensor cartesiano uniforme tiene divergencia nula, también en componentes polares
+    S = [2.0 0.5; 0.5 -1.0]
+    σpol(t) = (J = inv(base_polar(t[1], t[2])); J * S * J')
+    @test divergencia_tensor(t -> base_polar(t[1], t[2]), σpol, t0) ≈ zeros(2) atol = 1e-6
+end
+
+@testset "Green–Lagrange en curvilíneas (tema D1)" begin
+    base(t) = base_polar(t[1], t[2])
+    t0 = [1.4, 0.7]
+    # Desplazamiento cartesiano no lineal u(x,y); componentes covariantes uᵢ = u·gᵢ
+    ucart(x) = [0.05 * x[1] * x[2], 0.02 * x[1]^2 - 0.03 * x[2]]
+    xcart(t) = [t[1] * cos(t[2]), t[1] * sin(t[2])]
+    udn(t) = transpose(base(t)) * ucart(xcart(t))
+    # Deformada directa: R(θ) = x(θ) + u(x(θ)); G = métrica de ∂R/∂θ
+    R(t) = xcart(t) + ucart(xcart(t))
+    G = metrica(jacobiana_numerica(R, t0; h = 1e-6))
+    E_directa = green_lagrange(metrica(base(t0)), G)
+    @test green_lagrange_desde_u(base, udn, t0) ≈ E_directa atol = 1e-6
+    # La parte lineal es la deformación pequeña y el término cuadrático es de orden |∇u|²
+    @test norm(green_lagrange_desde_u(base, udn, t0) - deformacion_pequena(base, udn, t0)) < 0.02
+    # Giro rígido finito (rotación de ángulo α): Eᵢⱼ = 0 aunque F ≠ I
+    α = 0.4
+    Rg(t) = [cos(α) -sin(α); sin(α) cos(α)] * xcart(t)
+    Grot = metrica(jacobiana_numerica(Rg, t0; h = 1e-6))
+    @test green_lagrange(metrica(base(t0)), Grot) ≈ zeros(2, 2) atol = 1e-8
+end
