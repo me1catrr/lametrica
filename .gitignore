@@ -10,6 +10,9 @@ docs/
 *.ps
 *.dvi
 *.tex
+# Excepciones: fuentes TikZ originales documentadas en figures/figures.yml.
+!/figures/fuentes/tikz/apertura-cap01-bases.tex
+!/figures/fuentes/tikz/apertura-cap09-hypar.tex
 *.docx
 *.pptx
 *.zip

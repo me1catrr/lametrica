@@ -4,6 +4,8 @@ subtitle: "Superficie reglada de bordes rectos y de bordes curvos"
 engine: julia
 ---
 
+![Paraboloide hiperbólico ilustrativo $z=c\,x\,y$ con sus dos familias de generatrices rectas (azul y verde).](../../figures/svg/apertura-cap09-hypar.svg){#fig-apertura-cap09 .apertura fig-alt="Superficie en forma de silla con dos familias de rectas y cuatro bordes rectos" width="100%"}
+
 ::: {.callout-note title="Objetivos de aprendizaje"}
 Al terminar el capítulo sabrás:
 

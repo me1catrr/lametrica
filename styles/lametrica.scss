@@ -3,10 +3,12 @@
 // Paleta semántica del libro (ver planning/03-arquitectura.md)
 $c-definicion: #1d4ed8;   // azul
 $c-teorema:    #15803d;   // verde
-$c-advertencia:#b45309;   // ámbar
-$c-laboratorio:#6d28d9;   // violeta
+$c-advertencia: #b45309;  // ámbar
+$c-laboratorio: #6d28d9;  // violeta
 $c-neutro:     #4b5563;   // gris (demostraciones y observaciones)
 $c-idea:       #0e7490;   // verde azulado (idea clave)
+$c-historia:   #8a5a2b;   // ocre (cuadros históricos)
+$c-noticia:    #be123c;   // carmín (enlaces a noticias)
 
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -51,6 +53,22 @@ div.proof { background: transparent; font-size: 0.97rem; }
   .callout-header { background: rgba($c-neutro, 0.08); }
 }
 
+// Cuadros históricos y de noticias: callout "note" con clase .historia / .noticia
+.callout.historia, .callout.noticia { margin: 1.4rem 0; }
+.callout.historia {
+  border-left-color: $c-historia !important;
+  .callout-header { background: rgba($c-historia, 0.10); }
+  .callout-title-container { color: $c-historia; }
+}
+.callout.noticia {
+  border-left-color: $c-noticia !important;
+  .callout-header { background: rgba($c-noticia, 0.07); }
+  .callout-title-container { color: $c-noticia; }
+}
+
+// Imagen de apertura de capítulo (TikZ o ilustración): ocupa todo el ancho de la página
+.apertura, img.apertura { width: 100%; max-width: 100%; border-radius: 10px; margin: 0.2rem 0 1.2rem; }
+
 // Laboratorio interactivo
 .laboratorio {
   border: 1px solid rgba($c-laboratorio, 0.4);
@@ -77,6 +95,7 @@ div.proof { background: transparent; font-size: 0.97rem; }
   .sidebar, .nav-footer, #quarto-sidebar, .quarto-search { display: none !important; }
   div.definition, div.theorem, div.proposition, div.lemma, div.corollary,
   div.example, div.remark, .laboratorio, .callout { break-inside: avoid; }
+  .apertura { max-height: 6cm; }
   .laboratorio input, .laboratorio form { display: none; }
   details { display: block; }
 }
