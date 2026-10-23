@@ -54,6 +54,14 @@ $$ {#eq-base-lamina-d3}
 Es la base de la lámina del tema de curvaturas: los vectores tangentes **se acortan o alargan** según la curvatura y el signo de $\theta^3$. Su volumen es $\sqrt g\,d\theta^1d\theta^2d\theta^3$ con $\sqrt g=\sqrt a\,(1-2H\theta^3+K\theta^{3\,2})$.
 
 ::: {#exm-cilindro-ref}
+::: {.callout-note .noticia icon=false title="En las noticias: una lámina de hormigón de doble curvatura"}
+El 28 de octubre de 2020, ETH Zúrich anunció que el techo de hormigón de doble curvatura de la unidad **HiLo** del edificio NEST (Dübendorf, Suiza) estaba terminado y, por primera vez, a la intemperie. Lo diseñó el Block Research Group de ETH con socios de la construcción; ETH lo presenta como una «estructura de lámina expresiva» que combina estructuras de hormigón eficientes con nuevos métodos de fabricación, y el nombre HiLo alude a alto rendimiento (*high*) con bajas emisiones incorporadas (*low*). La noticia remite a otra de 2017 sobre un prototipo de cubierta de hormigón ultrafina.
+
+Es, literalmente, el **sólido-lámina** de este tema: un espesor pequeñísimo frente a la luz y a los radios de curvatura de la superficie media.
+
+<span class="fuentes-caja">Enlaces: [Doubly curved concrete roof complete, ETH Zúrich, 28-10-2020](https://ethz.ch/en/news-and-events/eth-news/news/2020/10/doubly-curved-concrete-roof-complete.html); [Construction prototype for ultra-thin concrete roof, ETH Zúrich, 2017](https://ethz.ch/en/news-and-events/eth-news/news/2017/10/innovative-construction.html) (solo se verificó el título y la fecha en la dirección). La página de 2020 no indica espesor ni superficie, por eso aquí no se dan. Consultado el 22-10-2026.</span>
+:::
+
 ## Ejemplo resuelto: la base de un cilindro
 Cilindro de radio $R$ con $\theta^1=\varphi$ (ángulo) y $\theta^2=z$, y normal exterior. Entonces $\mathbf{a}_\varphi=R\,\mathbf{e}_\varphi$, $\mathbf{a}_z=\mathbf{e}_z$ y $b_{\varphi\varphi}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\varphi,\varphi}=-R$, de modo que $b^\varphi_\varphi=-1/R$. Por @eq-base-lamina-d3,
 $$

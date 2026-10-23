@@ -65,6 +65,12 @@ Se parte de $\mathbf{R}_0=\mathbf{r}+\mathbf{u}$, $\mathbf{A}_3=\hat{\mathbf{a}}
 En una placa ($b_{\alpha\beta}=0$) las tres relaciones se **desacoplan**: la extensión solo depende de $u_\alpha$ (problema plano), la flexión de $\varphi_\alpha$ y el cortante de $\varphi_\alpha+w_{,\alpha}$. En una lámina curva, $b_{\alpha\beta}\neq0$ **mezcla** membrana y flexión: empujar la superficie normalmente ($u_3$) la estira, y estirarla ($u_\alpha$) la flexa.
 :::
 
+::: {.callout-note .historia icon=false title="Un poco de historia: una «primera aproximación consistente»"}
+En agosto de 1959 se celebró en Delft un simposio sobre la teoría de láminas elásticas delgadas (24–28 de agosto). Allí presentó W. T. Koiter «A consistent first approximation in the general theory of thin elastic shells», publicado en las actas de 1960 (editadas por el propio Koiter y publicadas por North-Holland; las citas dan las páginas 12–33). Según una fuente secundaria, J. L. Sanders y B. Budiansky desarrollaron de forma independiente, en la misma época, esencialmente la misma teoría lineal. El título resume una idea que este tema aplica a su escala: al linealizar con giros moderados se conservan solo los términos de un mismo orden de magnitud.
+
+<span class="fuentes-caja">Fuentes (secundarias): [Proceedings of the Symposium on the Theory of Thin Elastic Shells, Delft, 1959 (registro de catálogo)](https://katalog.lib.cas.cz/Record/001122510); [artículo de SAGE sobre el modelo de Koiter (solo resumen de búsqueda)](https://journals.sagepub.com/doi/10.1177/10812865241269725); [Koiter, modelo de láminas (arXiv:2410.16837)](https://arxiv.org/abs/2410.16837) (se abrió la página, pero no trata la historia). No se leyó el artículo de Koiter; la atribución a Sanders y Budiansky proviene de un resumen, sin contrastar. Consultado el 22-10-2026.</span>
+:::
+
 ## Cómo actúa la curvatura {#sec-curv-acopla}
 
 Observa en @eq-relaciones dónde aparece $b$:

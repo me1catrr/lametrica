@@ -55,6 +55,12 @@ La última gran obra asociada a su nombre es la cubierta del restaurante del **O
 <span class="fuentes-caja">Fuentes (secundarias): [AD Classics: Los Manantiales, ArchDaily](https://www.archdaily.com/496202/ad-classics-los-manantiales-felix-candela/); [Félix Candela, EBSCO Research Starters](https://www.ebsco.com/research-starters/history/felix-candela/); [CivilFEM: Los Manantiales Hyperboloid Roof](https://www.civilfem.com/web_download/project_showcase/CivilFEM.Marc_Los_Manatiales_Hyperboloid_Roof.pdf); [Structure Magazine, Félix Candela](https://www.structuremag.org/wp-content/uploads/2014/09/D-GA-Felix-Candela1.pdf); [L'Oceanogràfic – Félix Candela, Chalmers](https://research.chalmers.se/publication/508102); [Candela o Calatrava, Valencia Plaza](https://valenciaplaza.com/arquitectura-patrimonio-valencia-comunitat-valenciana/candela-o-calatrava-el-merito-oculto-detras-del-oceanografic-de-valencia). Los datos de espesor y de autoría **no se han contrastado con fuentes primarias**. Consultado el 21-10-2026.</span>
 :::
 
+::: {.callout-note .noticia icon=false title="En las noticias: ¿qué ha sido de Los Manantiales?"}
+Tras los daños atribuidos al sismo de 2017, **Los Manantiales** ha vuelto a ser noticia, pero las fuentes consultadas **no coinciden** sobre su estado actual. Una nota de *México Desconocido* cuenta que la estructura fue restaurada y vuelve a ser un espacio de reunión pública, con especialistas de la Facultad de Arquitectura de la UNAM, la alcaldía de Xochimilco, la Secretaría de Cultura y el Instituto de Ingeniería dentro del Programa de Reconstrucción 2019 (el propio texto se contradice sobre si el sismo llegó a dañarla). La ficha de turismo del Gobierno de la Ciudad de México la describe, en cambio, como una **ruina**: un plan de restauración de 2020 quedó interrumpido por la pandemia y se espera que se vuelva a anunciar.
+
+<span class="fuentes-caja">Enlaces: [Restauran Los Manantiales, la obra de Félix Candela en Xochimilco, México Desconocido](https://www.mexicodesconocido.com.mx/los-manantiales-xochimilco.html); [Los Manantiales, ficha de turismo de la Ciudad de México (en inglés)](https://mexicocity.cdmx.gob.mx/venues/manantieles-xochimilco-ruin/?lang=en). Ninguna de las dos páginas muestra fecha de publicación: **comprueba el estado actual antes de citarlo**. Consultado el 22-10-2026.</span>
+:::
+
 **Pon a prueba lo anterior.** Los ejercicios se corrigen en tu navegador y no envían nada a ningún sitio.
 
 ::: {.ejercicio tipo="numerico" id="a1-esbeltez" respuesta="800" tol="2%"}

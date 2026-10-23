@@ -163,6 +163,14 @@ La cualidad de superficie reglada fue decisiva para el éxito del paraboloide hi
 <span class="fuentes-caja">Fuentes (secundarias): [Ruled-based construction and the materialization of a line in motion, ACSA](https://acsa-arch.org/chapter/ruled-based-construction-and-thematerialization-of-a-line-in-motion); [CS brochure, Gallery 400 (UIC)](https://gallery400.uic.edu/wp-content/uploads/2020/04/CS_brochure_final.pdf); [Félix Candela, Structure Magazine](https://www.structuremag.org/wp-content/uploads/2014/09/D-GA-Felix-Candela1.pdf). No se hallaron comparaciones cuantitativas de costes. Consultado el 21-10-2026.</span>
 :::
 
+::: {.callout-note .noticia icon=false title="En las noticias: Gaudí, un centenario y las superficies regladas"}
+El 10 de junio de 2026, centenario de la muerte de Antoni Gaudí, el papa León XIV inauguró y bendijo la **Torre de Jesucristo** de la Sagrada Família (172,5 m de altura; terminada estructuralmente el 20 de febrero de 2026, según Wikipedia). Gaudí recurrió a las **superficies regladas** (las que se generan moviendo una recta, como el paraboloide hiperbólico de este tema): según Wikipedia, en sus diseños tardíos hay hiperboloides y superficies regladas en las bóvedas y ventanas de la nave.
+
+El artículo de Wikipedia **no menciona el paraboloide hiperbólico** en esta obra; fuentes divulgativas sí lo asocian a Gaudí, pero no se han contrastado aquí.
+
+<span class="fuentes-caja">Enlaces: [Sagrada Família, Wikipedia (en inglés)](https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia); [Bendición e inauguración de la torre de Jesucristo, sagradafamilia.org](https://sagradafamilia.org/es/-/benediccio-i-inauguracio-de-la-torre-de-jesucrist) (anuncio previo al acto: confirma la fecha y la presidencia, no el desarrollo). La inauguración consta como celebrada solo en Wikipedia y en un diario, no en la página oficial. Consultado el 22-10-2026.</span>
+:::
+
 ## Láminas muy planas {#sec-planas}
 
 Se dice que una lámina de este tipo es **muy plana** (*shallow*) si la pendiente de la superficie es pequeña, $|\partial z/\partial x|,|\partial z/\partial y|\ll1$. En un paraboloide con planta $a\times b$ y radios $R_x,R_y$, las pendientes máximas son $a/(2|R_x|)$ y $b/(2|R_y|)$. Entonces $a_{\alpha\beta}\approx\delta_{\alpha\beta}$, $\hat{\mathbf{a}}_3\approx\mathbf{e}_z$ y $b_{\alpha\beta}\approx\operatorname{diag}(-1/R_x,-1/R_y)$ son aproximadamente constantes. La @tbl-shallow cuantifica la desviación de la métrica.

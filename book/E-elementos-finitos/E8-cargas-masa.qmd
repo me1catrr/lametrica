@@ -120,6 +120,12 @@ $$ {#eq-masa-e8}
 Tres bloques: **traslación** ($\rho t$ por la métrica inversa en $u_1,u_2$ y por 1 en $u_3$), **rotatoria** ($\rho t^3/12$ en los giros) y **acoplamiento** (proporcional a $H$, pequeño). Con la integración $2\times2$ el programa la forma exactamente y **es la misma energía** de la que sale la matriz de rigidez en @eq-hw-e7: $\mathbf M$ es simétrica y semidefinida positiva.
 
 ::: {#exm-masa-e8}
+::: {.callout-note .historia icon=false title="Un poco de historia: la masa «consistente»"}
+Hasta comienzos de los años sesenta era habitual repartir la masa de un elemento entre sus nodos de forma más o menos arbitraria. La alternativa **consistente** (construir la matriz de masa con las mismas funciones de forma que la de rigidez) se atribuye a John S. Archer, que la presentó en 1963 en el *Journal of the Structural Division* de la ASCE y la extendió a estructuras de elementos finitos en un artículo de 1965 del *AIAA Journal*. Un informe de la NASA lo describe como el que quitó la arbitrariedad al reparto de la masa en los elementos finitos.
+
+<span class="fuentes-caja">Fuentes (secundarias): [Construction of Customized Mass-Stiffness Pairs Using Templates, J. Aerosp. Eng. 2006](https://ascelibrary.com/doi/10.1061/%28ASCE%290893-1321%282006%2919%3A4%28241%29) (cita Archer 1963, vol. 89, pp. 161–178; Archer 1965, *AIAA J.* 3, 1910–1918); [informe de la NASA, 1987](https://ntrs.nasa.gov/api/citations/19870017808/downloads/19870017808.pdf) (solo resumen de búsqueda). Un índice de ASCE sitúa el artículo (agosto de 1963) en un fichero del volumen 90: **comprueba el volumen antes de citarlo**. No se leyó el original. Consultado el 22-10-2026.</span>
+:::
+
 ## Ejemplo resuelto: la masa de un elemento
 Elemento de acero sobre un cilindro de $R=0{,}5$ m, de $0{,}1$ m de longitud axial y $0{,}1$ rad de abertura, con $t=5$ mm y $\rho=7850$ kg/m³. Una **traslación axial rígida** unidad ($u_1=1$ en los cuatro nodos) debe dar $\boldsymbol\delta^{\mathsf T}\mathbf M\boldsymbol\delta=m$ (la masa total). Como $K=0$ en el cilindro, $m=\rho\,t\,A=7850\cdot0{,}005\cdot(0{,}1\cdot0{,}5\cdot0{,}1)=\mathbf{0{,}19625}$ kg, con $A=0{,}005$ m². Resultado *analítico*; la práctica lo obtiene con `masa_elemento`.
 :::

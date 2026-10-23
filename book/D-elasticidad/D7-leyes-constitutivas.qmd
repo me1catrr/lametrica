@@ -73,6 +73,12 @@ La rigidez de **flexión** es $t^2/12$ veces la de **membrana**. Para una deform
 En la literatura se multiplica la rigidez a cortante por un factor $K_s$ (p. ej. $5/6$ para una placa homogénea con tensión parabólica). El modelo del libro toma $K_s=1$, es decir, **no lo aplica**: es el cortante constante en el espesor de la hipótesis cinemática. Es una decisión del modelo de partida, **por confirmar** si se mantiene.
 :::
 
+::: {.callout-note .historia icon=false title="Un poco de historia: la ecuación de las placas nació de un concurso"}
+La rigidez a flexión que aparece entre las rigideces de la lámina es el coeficiente del operador biarmónico en la ecuación de las placas, y esa ecuación tiene un origen curioso. En 1808, el físico Ernst Chladni mostró en la Academia de Ciencias de París las figuras que forma la arena sobre una placa vibrante, y Napoleón propuso un premio a quien las explicara matemáticamente. Sophie Germain fue la única concursante de la primera convocatoria, se presentó en total tres veces y ganó en 1816 el Gran Premio de Matemáticas de la Academia, la primera mujer en conseguirlo. Según una de las fuentes, no llegó a una solución completa del problema, aunque abrió nuevas formas de explicar las vibraciones elásticas de las placas.
+
+<span class="fuentes-caja">Fuentes (secundarias): [The «extraordinary talent and superior genius» of Sophie Germain, That's Maths](https://thatsmaths.com/2020/01/16/the-extraordinary-talent-and-superior-genius-of-sophie-germain/); [The «extraordinary talent and superior genius» of Sophie Germain, The Irish Times](https://www.irishtimes.com/news/science/the-extraordinary-talent-and-superior-genius-of-sophie-germain-1.4130947) (solo resumen de búsqueda). Las fechas de la convocatoria varían entre fuentes (1808, 1809). Ninguna fuente consultada deduce aquí la constante de rigidez; esa relación con el operador biarmónico es la ecuación clásica de placas y no se apoya en estas páginas. Consultado el 22-10-2026.</span>
+:::
+
 ## Forma matricial y energía {#sec-matricial}
 
 En notación de Voigt, con $\gamma^0=(\gamma^0_{11},\gamma^0_{22},2\gamma^0_{12})$ (y análogo $\gamma^1$) y $\gamma_S=(\gamma_1,\gamma_2)$:

@@ -78,6 +78,12 @@ Solo hechos con fuente verificable (búsqueda web); si la fuente es secundaria, 
 <span class="fuentes-caja">Fuentes: [título](https://…). Consultado el AAAA-MM-DD.</span>
 :::
 
+::: {.callout-note .noticia icon=false title="En las noticias: título"}
+Opcional. Solo una noticia **real y abierta** (leída con WebFetch, no solo el titular de una búsqueda) con relación directa con el tema. Decir qué tiene que ver. Si las fuentes discrepan o no tienen fecha, decirlo. Sin noticias inventadas ni enlaces sin abrir.
+
+<span class="fuentes-caja">Enlaces: [título, medio, fecha](https://…). Consultado el AAAA-MM-DD.</span>
+:::
+
 **Pon a prueba lo anterior.**
 
 ::: {.ejercicio tipo="opcion" id="tema-n-opcion" respuesta="b"}

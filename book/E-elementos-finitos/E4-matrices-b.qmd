@@ -65,6 +65,12 @@ $$ {#eq-h-e4}
 donde las entradas dependen de $N_k$, $N_{k,\beta}$ y de la geometría $(\Gamma^\gamma_{\alpha\beta},b_{\alpha\beta},b^\rho_\alpha)$ **en ese punto**.
 :::
 
+::: {.callout-note .historia icon=false title="Un poco de historia: el elemento «isoparamétrico»"}
+Las matrices de este tema se evalúan punto a punto en el elemento de referencia $(\xi,\eta)$, que se proyecta sobre la geometría real. Cuando la misma interpolación sirve para la geometría y para los desplazamientos se habla de elemento **isoparamétrico**, nombre que se asocia al artículo de I. Ergatoudis, B. M. Irons y O. C. Zienkiewicz «Curved isoparametric, "quadrilateral" elements for finite element analysis» (*International Journal of Solids and Structures*, 4, 31–42, 1968). El elemento de lámina «degenerado» de Ahmad, Irons y Zienkiewicz (1968, 1970) fue su aplicación a láminas (véase E3). Un capítulo de Springer, al que no se pudo acceder, atribuye además la idea de origen a un informe de Ian Taig de 1962.
+
+<span class="fuentes-caja">Fuentes (secundarias): [Historia del Zienkiewicz Institute, Swansea (lista de referencias)](https://www.swansea.ac.uk/science-and-engineering/research/zienkiewicz-institute-for-modelling-data-ai/about/history/) (da la referencia de 1968 y las de Ahmad–Irons–Zienkiewicz); [capítulo de Springer 10.1007/978-1-4939-7423-8_5](https://link.springer.com/chapter/10.1007/978-1-4939-7423-8_5) (solo resumen de búsqueda; acceso restringido). La atribución a Taig **no está verificada**. No se leyeron los originales. Consultado el 22-10-2026.</span>
+:::
+
 ## Extensión {#sec-extension-e4}
 
 Las columnas de $\mathbf H_E$ son, para el nodo $k$:

@@ -2,6 +2,14 @@
 
 **Última actualización: 2026-10-21 (Fase 3 del rediseño cerrada en local; commit/push al cerrar).** Libro: 21 de 36 temas publicados (bloques A–D completos) en el nuevo estilo; Fase 1 publicada en `f2c51f8`, Fase 2 en `4dac20a`. Punto de continuación operativo en `CLAUDE.md`.
 
+## Actualización 2026-10-22: cajas «En las noticias» y notas históricas que faltaban
+Pedido del autor: cuadros con historia, enlaces a **noticias reales**, imagen de apertura por tema y referencias al final además de en el texto. Estado tras la auditoría de los 29 temas publicados:
+- **Imagen de apertura** (portada TikZ o FigureLabs) y **referencias** (margen + lista final con `scripts/referencias.lua`): ya estaban en el rediseño.
+- **Notas históricas** (`.historia`): faltaban en D3, D6, D7, E4 y E8. Añadidas **D6** (Koiter, 1959–60), **D7** (Sophie Germain y las figuras de Chladni), **E4** (elemento isoparamétrico, 1968) y **E8** (masa consistente de Archer, 1963/1965), cada una con fuentes secundarias enlazadas y cautelas explícitas. **D3 sigue sin nota histórica**: las búsquedas no dieron una fuente sólida sobre el origen del tensor de Green–Lagrange (la atribución a Lagrange no se pudo documentar).
+- **Noticias** (`.noticia`, nueva caja ya con estilo en la SCSS): añadidas en **A1** (estado de Los Manantiales: dos fuentes sin fecha que **se contradicen**), **B4** (GW250114, LIGO–Virgo–KAGRA, APS, 10-09-2025), **C5** (Torre de Jesucristo, 10-06-2026, y superficies regladas de Gaudí; Wikipedia no menciona el paraboloide hiperbólico) y **D3** (techo HiLo de ETH, 28-10-2020). Solo se incluyen noticias cuya página se abrió con WebFetch (salvo el enlace secundario de ETH de 2017 en D3, verificado solo por su título y su fecha en la dirección, y así declarado en la caja). **Resto de temas (25): sin noticia**; se añadirán solo cuando haya un enlace real y relacionado. Plantilla actualizada (`planning/plantilla-tema.qmd`).
+- Las 8 páginas se renderizaron sin avisos y su `_freeze/` está actualizado. El render de páginas con Julia necesita escribir en `~/Library/Caches/quarto/julia`, que el sandbox de Claude Code no permite; se ejecutó fuera del sandbox con aprobación.
+- Pendiente de revisión humana: **todas** las cajas nuevas (fuentes secundarias y resúmenes de búsqueda; las atribuciones marcadas «sin verificar» no deben leerse como confirmadas).
+
 ## Plan de rediseño: estética de Resonancia + índice de 36 temas (5 fases)
 Índice: `planning/01-indice-libro.md` y `temario.toml` (fuente de verdad). Plantilla: `planning/plantilla-tema.qmd`. Autorizado por el autor: ejecutar las Fases 1–3, con **commit y push a `main` al cerrar cada fase**; las Fases 4–5 se ejecutan con orden posterior.
 

@@ -184,6 +184,14 @@ En 1869, Elwin Bruno Christoffel publicó en el *Journal für die reine und ange
 <span class="fuentes-caja">Fuentes (secundarias): [Christoffel, MacTutor](https://mathshistory.st-andrews.ac.uk/DSB/Christoffel.pdf); [Pascual Jordan's «Erweiterte Gravitationstheorie»: a historical analysis, arXiv:2507.23758](https://arxiv.org/pdf/2507.23758); [From Euclid to Riemann and Beyond, arXiv:1904.01845](https://arxiv.org/pdf/1904.01845). Consultado el 21-10-2026.</span>
 :::
 
+::: {.callout-note .noticia icon=false title="En las noticias: ondas gravitacionales y relatividad general"}
+El 10 de septiembre de 2025, la colaboración LIGO–Virgo–KAGRA presentó el análisis de **GW250114**, una señal de ondas gravitacionales captada por LIGO a comienzos de 2025 y procedente de la fusión de dos agujeros negros de unas 30 masas solares. Con ella se comprobó con gran precisión el teorema del área de Hawking y que el agujero resultante es compatible con la métrica de Kerr; el resultado se publicó en *Physical Review Letters*.
+
+**Qué tiene que ver con este tema.** La relatividad general describe la gravedad como geometría del espacio-tiempo y se escribe en el cálculo tensorial de Ricci y Levi-Civita; en ese lenguaje, los símbolos de Christoffel de la métrica intervienen en las ecuaciones de las trayectorias (geodésicas) que siguen partículas y luz. Es el mismo aparato que aquí aprendes sobre un plano y una superficie.
+
+<span class="fuentes-caja">Enlaces: [Clearest signal yet from colliding black holes yields most precise confirmation of Hawking's area theorem, American Physical Society, 10-09-2025](https://www.aps.org/about/news/2025/09/clearest-signal-hawkings-area-theorem); [Gregorio Ricci-Curbastro, MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Ricci-Curbastro/) (el cálculo diferencial absoluto «was used by Einstein in his theory of general relativity»). La frase sobre las geodésicas es conocimiento estándar de relatividad general y no se apoya en estas dos páginas. Consultado el 22-10-2026.</span>
+:::
+
 ## Del plano a la superficie {#sec-hacia-superficies}
 
 Sobre una superficie curva, como la esfera de la @fig-esfera, la base tangente $\{\mathbf{g}_\theta,\mathbf{g}_\varphi\}$ también varía, pero la derivada $\partial_j\mathbf{g}_i$ ya no queda contenida en el plano tangente: tiene además una componente **normal**. Los símbolos de Christoffel de la superficie son sus componentes tangentes, y las normales dan lugar a la curvatura (bloque C). Para la esfera de radio $r$ fijo, los símbolos $\Gamma^2_{33}=-\sin\theta\cos\theta$ y $\Gamma^3_{23}=\cot\theta$ de la tabla anterior son los de la superficie.
