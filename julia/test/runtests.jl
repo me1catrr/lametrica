@@ -640,3 +640,29 @@ end
     @test F[[3, 8, 13, 18]] ≈ fill(-0.01 * 5000 / 4, 4) rtol = 1e-6   # presión uniforme: A p / 4 por nodo
     @test norm(F[[1, 2, 4, 5]]) < 1e-9
 end
+
+@testset "Patch test de la formulación por subdominios (tema F1)" begin
+    function residuo_patch(geom, modo)
+        L = 1.0; E, ν, t = 1.0e4, 0.3, 0.01
+        xs = [0, 0.18, 0.5, 0.62, 1.0]; ys = [0, 0.3, 0.41, 0.8, 1.0]       # malla no uniforme (rectángulos paramétricos)
+        nodos = hcat([[x, y] for y in ys for x in xs]...); id(i, j) = (j - 1) * 5 + i
+        conn = hcat([[id(i, j), id(i + 1, j), id(i + 1, j + 1), id(i, j + 1)] for j in 1:4 for i in 1:4]...)
+        K, _, _ = ensamblar(geom, nodos, conn, E, ν, t; modo)
+        ufun(p) = [1e-3 * p[1] + 5e-4 * p[2], -3e-4 * p[1] + 8e-4 * p[2], 0.0]       # membrana: deformación constante
+        wf(p) = 0.5 * (p[1]^2 + 0.5 * p[1] * p[2] + 0.8 * p[2]^2)                    # flexión: curvatura constante
+        gw(p) = [p[1] + 0.25 * p[2], 0.25 * p[1] + 0.8 * p[2], 0.0]
+        nn = size(nodos, 2); d = zeros(5nn); fij = Int[]
+        for k in 1:nn
+            θ = nodos[:, k]; g = geometria_punto(geom, θ); p = geom(θ)
+            d[gdl(k, 1):gdl(k, 2)] = g.A' * ufun(p); d[gdl(k, 3)] = wf(p); d[gdl(k, 4):gdl(k, 5)] = -(g.A' * gw(p))
+            x, y = θ
+            (x ≈ 0 || x ≈ L || y ≈ 0 || y ≈ L) && append!(fij, gdl(k, 1):gdl(k, 5))
+        end
+        lib = setdiff(1:5nn, fij); res = K * d
+        norm(res[lib]) / norm(res[fij])
+    end
+    for geom in (placa_oblicua(π / 2), placa_oblicua(π / 3))
+        @test residuo_patch(geom, :subdominios) < 1e-6
+        @test residuo_patch(geom, :desplazamientos) > 0.1          # el elemento de desplazamientos no lo pasa
+    end
+end

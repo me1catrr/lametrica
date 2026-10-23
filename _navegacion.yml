@@ -42,6 +42,15 @@ book:
         - book/E-elementos-finitos/E6-interpolacion-deformaciones.qmd
         - book/E-elementos-finitos/E7-hu-washizu-subdominios.qmd
         - book/E-elementos-finitos/E8-cargas-masa.qmd
+        - book/E-elementos-finitos/E9-ensamblaje-autovalores.qmd
+    - part: "Bloque F · Validación y vibraciones"
+      chapters:
+        - book/F-validacion-vibraciones/F1-validacion-placa.qmd
+        - book/F-validacion-vibraciones/F2-validacion-cilindro.qmd
+        - book/F-validacion-vibraciones/F3-hypar-estatico.qmd
+        - book/F-validacion-vibraciones/F4-vibraciones-laminas.qmd
+        - book/F-validacion-vibraciones/F5-frecuencias-hypar.qmd
+        - book/F-validacion-vibraciones/F6-implementacion-julia.qmd
     - book/referencias.qmd
   appendices:
     - book/apendices/notacion.qmd

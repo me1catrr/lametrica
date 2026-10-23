@@ -1,0 +1,212 @@
+---
+title: "Vibraciones de láminas"
+subtitle: "De un grado de libertad a una placa: frecuencias, modos y parámetros adimensionales"
+engine: julia
+---
+
+![Cuatro modos de vibración de una placa cuadrada simplemente apoyada (malla de $14\times14$): el fundamental, el segundo y los de la cuarta y quinta frecuencias. Naranja: la placa sube; azul: baja. Los $\lambda$ son los parámetros adimensionales de frecuencia. Cálculo *calculado*.](../../figures/svg/modos-placa.svg){#fig-modos-placa .portada fig-alt="Cuatro placas vistas en perspectiva con formas onduladas: una joroba, una mitad arriba y otra abajo, cuatro lóbulos alternos y otro modo con cinco zonas"}
+
+::: {.pregunta-guia}
+A qué frecuencias vibra una lámina cuando se la golpea y se la deja libre, y de qué depende cada una
+:::
+
+## Objetivos y prerrequisitos {.unnumbered}
+
+**Objetivos.** Al terminar el tema sabrás:
+
+- pasar del oscilador de **un grado de libertad** a una lámina con **infinitas frecuencias propias**;
+- escribir el **parámetro adimensional** $\lambda=\omega a^2\sqrt{\rho t/D}$ y usarlo para comparar placas de distinto tamaño y material;
+- calcular las frecuencias de una **placa simplemente apoyada** y comprobar los resultados de elementos finitos;
+- explicar cómo cambian las frecuencias con el **espesor** (cortante, inercia de giro) y con la **curvatura**;
+- leer los **modos** como patrones de líneas nodales.
+
+**Prerrequisitos.** [E9](../E-elementos-finitos/E9-ensamblaje-autovalores.qmd) (problema de autovalores) y [F1](F1-validacion-placa.qmd). Para el oscilador de un grado de libertad, véanse las unidades de vibraciones de [Resonancia](https://me1catrr.github.io/resonancia/mse/m05-vibraciones-i/).
+
+**Secciones del tema**
+
+- **@sec-un-gdl-f4** · Del oscilador a la lámina · **@sec-placa-f4** · La placa simplemente apoyada · **@sec-fe-f4** · Resultado de elementos finitos
+- **@sec-espesor-f4** · Efecto del espesor · **@sec-curvatura-f4** · Efecto de la curvatura · **@sec-julia-f4** · Práctica guiada
+
+::: {.callout-note title="Notación y convenciones de este tema"}
+| Símbolo | Significado |
+|---|---|
+| $\omega,\ f=\omega/2\pi$ | frecuencia propia (rad/s y Hz) |
+| $\lambda=\omega\,a^2\sqrt{\rho t/D}$ | parámetro adimensional de frecuencia (lado $a$) |
+| $D=Et^3/\bigl(12(1-\nu^2)\bigr)$ | rigidez a flexión |
+| $\rho t$ | masa por unidad de superficie |
+| $(m,n)$ | número de semiondas en $x$ y en $y$ |
+:::
+
+::: {.callout-note .ingenieros title="Explicación para ingenieros: la regla en el borde de la mesa"}
+Una regla sujeta con la mano al borde de una mesa vibra con un **tono grave** si sobresale mucho y **más agudo** si sobresale poco: la frecuencia sube con la **rigidez** y baja con la **masa**, $\omega\sim\sqrt{\text{rigidez}/\text{masa}}$. Una lámina es como una regla en dos dimensiones, y no tiene un tono sino **muchos** (un «instrumento»): el más grave (modo fundamental) es una joroba única; los siguientes tienen **líneas nodales** (zonas que no se mueven) que dividen la placa en regiones que suben y bajan alternadas, como los dibujos de arena de una placa que suena. Una placa **curva** es más rígida que una plana de la misma masa y suena más aguda.
+:::
+
+## Del oscilador a la lámina {#sec-un-gdl-f4}
+
+Un oscilador de un grado de libertad ($m\ddot x+kx=0$) tiene una frecuencia $\omega=\sqrt{k/m}$. Una estructura discretizada con $N$ g.d.l. tiene un sistema $\mathbf M\ddot{\mathbf d}+\mathbf K\mathbf d=\mathbf 0$ y $N$ frecuencias, cada una asociada a un **modo** $\boldsymbol\phi_i$ (@eq-autovalores-e9). Una lámina continua tiene **infinitas**; el elemento finito aproxima las más graves y las altas pierden precisión (el modo $i$ está bien resuelto sólo si cabe con holgura en la malla). Cada modo se comporta como un oscilador de un grado de libertad: con $\mathbf d=\sum q_i\boldsymbol\phi_i$ las ecuaciones se **desacoplan** en $\ddot q_i+\omega_i^2q_i=0$.
+
+## La placa simplemente apoyada {#sec-placa-f4}
+
+Para una placa rectangular $a\times b$ **simplemente apoyada** (Kirchhoff) las frecuencias se obtienen con senos, como en la solución de Navier de F1:
+
+$$
+\omega_{mn}=\pi^2\Bigl(\frac{m^2}{a^2}+\frac{n^2}{b^2}\Bigr)\sqrt{\frac{D}{\rho\,t}},\qquad w_{mn}=\sin\frac{m\pi x}a\,\sin\frac{n\pi y}b .
+$$ {#eq-placa-vib-f4}
+
+Para la placa **cuadrada** el parámetro adimensional es $\lambda_{mn}=\pi^2(m^2+n^2)$: $2\pi^2=19{,}74$ ($m=n=1$), $5\pi^2=49{,}35$ (doble: $(1,2)$ y $(2,1)$), $8\pi^2=78{,}96$ y $10\pi^2=98{,}70$ (doble).
+
+::: {#exm-placa-acero-f4}
+## Ejemplo resuelto: una placa de acero
+Placa cuadrada de acero de $1\times1$ m, $t=10$ mm ($E=210$ GPa, $\nu=0{,}3$, $\rho=7850$ kg/m³), simplemente apoyada. Entonces $D=210\cdot10^9\cdot(0{,}01)^3/(12\cdot0{,}91)=19\,231$ N·m, $\rho t=78{,}5$ kg/m² y
+$$
+\omega_{11}=2\pi^2\sqrt{\frac{D}{\rho t}}\,\frac1{a^2}=19{,}74\cdot\sqrt{244{,}98}=\mathbf{308{,}95}\ \text{rad/s}\qquad f_{11}=\mathbf{49{,}17}\ \text{Hz}.
+$$
+Un modo propio de unos 50 Hz: la fundamental de una placa de ese tamaño y espesor. Resultado *analítico*.
+:::
+
+::: {.ejercicio tipo="numerico" id="f4-frecuencia" respuesta="49.17" tol="0.5%" unidad="Hz"}
+En el @exm-placa-acero-f4, ¿cuánto vale la frecuencia fundamental $f_{11}$ de la placa de acero de $1\times1$ m y $10$ mm?
+
+::: {.pista}
+$f=\omega/(2\pi)$ con $\omega=2\pi^2\sqrt{D/(\rho t)}/a^2$ y $D=Et^3/(12(1-\nu^2))$.
+:::
+
+::: {.solucion}
+$D=19\,231$ N·m, $D/(\rho t)=244{,}98$, $\omega=19{,}739\cdot15{,}652=308{,}95$ rad/s, $f=49{,}17$ Hz.
+:::
+:::
+
+::: {.ejercicio tipo="opcion" id="f4-escala" respuesta="b"}
+Si se **duplica el lado** de una placa (mismo espesor y material), ¿cómo cambia la frecuencia fundamental?
+
+::: {.opciones}
+- Se duplica
+- Se divide por 4
+- Se divide por 2
+- No cambia
+:::
+
+::: {.solucion}
+$\omega\propto1/a^2$: con $a\to2a$, $\omega\to\omega/4$. Las placas grandes y delgadas suenan mucho más graves.
+:::
+:::
+
+## Resultado de elementos finitos {#sec-fe-f4}
+
+El elemento da los valores de la @fig-lambda-conv con $\mathbf M$ consistente (cota **superior**, tema E8): con una placa delgada ($t/a=0{,}001$), el error del modo fundamental es del 6 % con $4\times4$ elementos, del 1,6 % con $8\times8$ y del 0,4 % con $16\times16$; los modos superiores (el segundo y el cuarto) convergen más despacio (30 % con $4\times4$, 1,5 % con $16\times16$), porque necesitan más elementos por semionda.
+
+![Parámetros de frecuencia de la placa cuadrada simplemente apoyada, cociente entre el valor del elemento y el exacto, frente al número de elementos por lado ($t/a=0{,}001$). Siempre por encima de 1 (masa consistente); los modos con más semiondas convergen más despacio. *Calculado*.](../../figures/svg/lambda-convergencia.svg){#fig-lambda-conv fig-alt="Tres curvas decrecientes hacia uno desde valores superiores; la del modo fundamental está más cerca de uno que las de los modos segundo y cuarto"}
+
+::: {.callout-warning title="Dos puntos que suelen confundir"}
+- **Frecuencias dobles.** En la placa cuadrada, $(1,2)$ y $(2,1)$ tienen la **misma** frecuencia, y cualquier combinación de ambos es también un modo: el programa puede devolver una mezcla arbitraria de los dos. En una malla imperfecta, la degeneración se rompe ligeramente.
+- **«Más malla» no mejora los modos altos al mismo ritmo.** Para fiarse del modo $k$ conviene comprobar su convergencia, no la del fundamental.
+:::
+
+## Efecto del espesor {#sec-espesor-f4}
+
+La teoría de Kirchhoff (@eq-placa-vib-f4) desprecia el **cortante** y la **inercia de giro**; ambos **bajan** las frecuencias de una placa gruesa. Con $t/a=0{,}1$ la placa simplemente apoyada da $\lambda_1\approx19{,}2$ con $16\times16$ elementos, un 3 % por debajo del valor de Kirchhoff de $19{,}74$ (el elemento sobreestima además ~0,4 % por la malla). Es la razón de usar un elemento de **Reissner–Mindlin** en láminas de espesor moderado.
+
+## Efecto de la curvatura {#sec-curvatura-f4}
+
+Una lámina curva tiene **rigidez de membrana frente a la flexión**: para abombarse debe estirarse, lo que cuesta mucho más que flexarse, y las frecuencias **suben**. La @fig-panel-curv muestra la primera frecuencia de un **panel cilíndrico** de lado $a=1$ simplemente apoyado (con diafragmas) para curvaturas crecientes.
+
+![Parámetro de frecuencia $\lambda_1$ de un panel cilíndrico de lado $a$ y radio $R$ frente a $a/R$, con $t/a=0{,}01$. Con $a/R=0$ se recupera la placa plana ($2\pi^2$, gris); la curvatura la **cuadruplica** con $a/R=1$. *Calculado* con $12\times12$ elementos.](../../figures/svg/panel-curvatura.svg){#fig-panel-curv fig-alt="Curva creciente de la frecuencia fundamental adimensional de un panel cilíndrico frente a su curvatura, que parte del valor de la placa plana"}
+
+::: {.callout-important title="Idea clave: la curvatura es rigidez"}
+Con la **misma masa** y el mismo espesor, una lámina curva suena más aguda que una plana: la curvatura convierte parte de la flexión (barata) en esfuerzo de membrana (caro). Es la misma razón por la que una cubierta curva soporta una carga con muy poco espesor (F3), y por la que el hypar del tema siguiente tiene frecuencias distintas de las de una placa.
+:::
+
+::: {.callout-tip .aplicacion title="Aplicación real: forjados, cubiertas y membrana del tímpano"}
+<span class="etiqueta-resultado ilustrativo">ilustrativo</span> **Obra civil.** En forjados y pasarelas la frecuencia fundamental debe quedar lejos de la del paso de las personas; en cubiertas y torres de lámina se compara con la excitación del viento o del sismo. **Biomecánica.** Estructuras laminares del cuerpo como la membrana timpánica o la calota craneal se estudian mediante sus modos propios. *Idea de aplicación sin fuente verificada: es una orientación, no una cita.*
+:::
+
+## Práctica guiada en Julia {#sec-julia-f4}
+
+::: {.callout-tip title="Ejemplo computacional"}
+<span class="etiqueta-resultado calculado">calculado</span> (1) Las frecuencias analíticas de @eq-placa-vib-f4 y las del elemento, para $t/a=0{,}01$ y $0{,}1$. (2) La placa de acero del @exm-placa-acero-f4. (3) El panel cilíndrico: $\lambda_1$ frente a la curvatura.
+:::
+
+```{julia}
+using Geometria, LinearAlgebra
+
+cil_x(R) = θ -> [θ[1], R * sin(θ[2]), R * cos(θ[2])]
+
+# Placa cuadrada simplemente apoyada (lado 1): primeros λ = ω a² √(ρt/D)
+function lambdas_placa(n, t; E = 1.0e4, ν = 0.3, ρ = 1.0, k = 5)
+    nodos, conn = malla_rectangular((0, 1.0), (0, 1.0), n, n)
+    K, M, _ = ensamblar(placa_oblicua(π / 2), nodos, conn, E, ν, t; ρ)
+    fij = Int[]
+    for j in 1:size(nodos, 2)
+        x, y = nodos[:, j]; append!(fij, [gdl(j, 1), gdl(j, 2)])
+        (x ≈ 0 || x ≈ 1 || y ≈ 0 || y ≈ 1) && push!(fij, gdl(j, 3))
+        (x ≈ 0 || x ≈ 1) && push!(fij, gdl(j, 5)); (y ≈ 0 || y ≈ 1) && push!(fij, gdl(j, 4))
+    end
+    ω, _ = frecuencias(K, M, unique(fij); n = k)
+    D = E * t^3 / (12 * (1 - ν^2))
+    ω .* sqrt(ρ * t / D)
+end
+
+exactas = [π^2 * (m^2 + k^2) for (m, k) in ((1, 1), (1, 2), (2, 1), (2, 2), (1, 3))]
+(exactas_Kirchhoff = round.(exactas, digits = 2),
+ delgada_t001 = round.(lambdas_placa(16, 0.01), digits = 2),
+ gruesa_t01 = round.(lambdas_placa(16, 0.1), digits = 2))
+```
+
+```{julia}
+# (2) Placa de acero 1×1 m, t = 10 mm
+E, ν, ρ, t, a = 210e9, 0.3, 7850.0, 0.01, 1.0
+D = E * t^3 / (12 * (1 - ν^2))
+ω = 2π^2 * sqrt(D / (ρ * t)) / a^2
+(D = D, ω = ω, f_Hz = ω / 2π)
+```
+
+```{julia}
+# (3) Panel cilíndrico con diafragmas: λ₁ frente a la curvatura a/R
+function lambda_panel(R; n = 10, t = 0.01, E = 1.0e4, ν = 0.3, ρ = 1.0)
+    r = cil_x(R); nodos, conn = malla_rectangular((0, 1.0), (0, 1.0 / R), n, n)
+    K, M, _ = ensamblar(r, nodos, conn, E, ν, t; ρ)
+    fij = Int[]
+    for j in 1:size(nodos, 2)
+        x, φ = nodos[:, j]
+        (x ≈ 0 || x ≈ 1) && append!(fij, [gdl(j, 2), gdl(j, 3), gdl(j, 5)])           # extremos: diafragma + giro tangente
+        (φ ≈ 0 || φ ≈ 1 / R) && append!(fij, [gdl(j, 1), gdl(j, 3), gdl(j, 4)])
+    end
+    D = E * t^3 / (12 * (1 - ν^2))
+    frecuencias(K, M, unique(fij); n = 1)[1][1] * sqrt(ρ * t / D)
+end
+[(curvatura_a_sobre_R = c, λ₁ = round(lambda_panel(1 / c), digits = 2)) for c in (0.05, 0.2, 0.5, 1.0)]
+```
+
+## Ejercicios {#sec-ejercicios-f4}
+
+1. **Cambio de material.** Si la placa de acero se sustituye por aluminio ($E=70$ GPa, $\rho=2700$ kg/m³, $\nu=0{,}33$), ¿sube o baja la frecuencia?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   $\omega\propto\sqrt{E/\bigl(\rho(1-\nu^2)\bigr)}$: acero $\sqrt{210\cdot10^9/(7850\cdot0{,}91)}=5422$ y aluminio $\sqrt{70\cdot10^9/(2700\cdot0{,}891)}=5394$ (1/s·m): la frecuencia es **casi igual** (un 0,5 % menor en aluminio), porque $E/\rho$ de ambos materiales es muy parecido; el aluminio sólo gana si se aumenta el espesor sin aumentar el peso.
+   :::
+
+2. **Líneas nodales.** ¿Qué forma tiene el modo $(2,2)$ de una placa cuadrada simplemente apoyada?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Cuatro lóbulos alternos separados por dos líneas nodales (la mediana vertical y la horizontal): el modo 4 de la @fig-modos-placa.
+   :::
+
+3. **Frecuencias dobles.** ¿Cuántos modos tienen $\lambda=5\pi^2$ en una placa cuadrada? ¿Y en una rectangular $a\times1{,}2a$?
+
+   ::: {.callout-note collapse="true" title="Solución"}
+   Dos $(1,2)$ y $(2,1)$ en la cuadrada. En la rectangular, $\lambda_{12}\ne\lambda_{21}$ y la degeneración desaparece.
+   :::
+
+## La doy por superada si… {.unnumbered}
+
+- Explico qué es un modo propio y por qué una lámina tiene infinitos.
+- Calculo $\lambda_{mn}$ y $f$ de una placa simplemente apoyada.
+- Sé que la masa consistente da cota superior y que los modos altos convergen más despacio.
+- Digo por qué el espesor baja las frecuencias y la curvatura las sube.
+- Leo un modo por sus líneas nodales.
+
+::: {.callout-note collapse="true" title="Fuentes, correcciones y qué queda pendiente"}
+**Fuentes.** Texto autónomo; las frecuencias de una placa simplemente apoyada son un resultado clásico (Kirchhoff) [@TimoshenkoWK] (datos editoriales sin verificar) y aquí se *calculan*; vibraciones de láminas, en [@Narita] para láminas rasantes con apoyos en esquina. Los efectos del espesor y de la curvatura se muestran con *cálculo* propio, sin comparar con fuente externa.
+
+**Qué queda pendiente.** No se ha verificado el efecto del espesor frente a una solución de Reissner–Mindlin (con factor de cortante): el elemento usa $\kappa=1$ (por confirmar); no hay nota histórica por falta de fuente verificada (véase la de Chladni en D7); la «Aplicación real» es una orientación sin fuente; revisión visual de las figuras.
+:::

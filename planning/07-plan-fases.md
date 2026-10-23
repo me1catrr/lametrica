@@ -1,6 +1,14 @@
 # 07 · Plan de desarrollo (5 fases)
 
-**Última actualización: 2026-10-21 (Fase 3 del rediseño cerrada en local; commit/push al cerrar).** Libro: 21 de 36 temas publicados (bloques A–D completos) en el nuevo estilo; Fase 1 publicada en `f2c51f8`, Fase 2 en `4dac20a`. Punto de continuación operativo en `CLAUDE.md`.
+**Última actualización: 2026-10-23 (Fase 4 y F1–F6 de la Fase 5 hechas; pendientes G1, apéndices y validación global).** Libro: 36 de 37 temas disponibles (bloques A–F). `temario.toml` es la fuente de verdad.
+
+## Actualización 2026-10-23: bloque E completo y bloque F (validación y vibraciones)
+Orden del autor: seguir con el bloque E y con el F, primero las comprobaciones estáticas (placa, cilindro, hypar) y luego las vibraciones; añadir cuadros «explicación para ingenieros» y referencias de aplicación (biomecánica / obra civil).
+- **E1–E9 escritos** (E9 ensamblaje y autovalores). `ElementoLamina.jl`: funciones de forma, `matrices_H` (= relaciones de D6, test automático), rigidez (`:desplazamientos`, `:reducida_selectiva`, `:subdominios`), masa consistente, cargas, ensamblaje, estática y autovalores; 6 conjuntos de tests nuevos.
+- **Bloque F reordenado** (37 temas): F1 placa (patch test, Navier, empotrada, oblicua), F2 cilindro (presión, Scordelis–Lo 0,3006 frente a 0,3024 con 32×32; pinzado 1,833·10⁻⁵ frente a 1,8248·10⁻⁵), F3 hypar bajo carga (N¹² = p/2c), F4 vibraciones de láminas, F5 frecuencias del hypar (curvo y recto, SSSS y CCCC, Richardson), F6 implementación reproducible.
+- Cajas nuevas `.ingenieros` y `.aplicacion` en todos los temas E y F. Aplicaciones con fuente solo donde la hay (torres de refrigeración, Oceanogràfic, aneurismas, cráneo, tejidos blandos); el resto, marcadas «ilustrativo, sin fuente».
+- Hallazgos honestos: bloqueo de la formulación de desplazamientos (12 % en Scordelis–Lo con 8×8); la subdominios es algo blanda en flexión de membrana con un solo elemento en el canto (E2); no hay referencia externa para la placa oblicua ni para el hypar estático/vibraciones (sin verificar).
+- Pendiente: G1, apéndices B–F, validación global, revisión visual humana de todas las figuras y notas históricas, y los convenios por confirmar.
 
 ## Actualización 2026-10-22: cajas «En las noticias» y notas históricas que faltaban
 Pedido del autor: cuadros con historia, enlaces a **noticias reales**, imagen de apertura por tema y referencias al final además de en el texto. Estado tras la auditoría de los 29 temas publicados:

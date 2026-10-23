@@ -221,7 +221,8 @@ pregunta = "¿Cómo lo calcula un ordenador sin que el elemento se bloquee?"
   [[bloque.tema]]
   id = "E9"
   titulo = "Ensamblaje, condiciones de contorno y autovalores"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/E-elementos-finitos/E9-ensamblaje-autovalores.qmd"
   requiere = ["E8"]
 
 # ---------------------------------------------------------------- Bloque F
@@ -232,32 +233,38 @@ pregunta = "¿Cuánto podemos fiarnos del cálculo y a qué frecuencias vibra un
   [[bloque.tema]]
   id = "F1"
   titulo = "Validación estática (I): la placa"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/F-validacion-vibraciones/F1-validacion-placa.qmd"
   requiere = ["E9"]
   [[bloque.tema]]
   id = "F2"
   titulo = "Validación estática (II): el cilindro"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/F-validacion-vibraciones/F2-validacion-cilindro.qmd"
   requiere = ["F1"]
   [[bloque.tema]]
   id = "F3"
   titulo = "El paraboloide hiperbólico bajo carga"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/F-validacion-vibraciones/F3-hypar-estatico.qmd"
   requiere = ["F2", "C5"]
   [[bloque.tema]]
   id = "F4"
   titulo = "Vibraciones de láminas"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/F-validacion-vibraciones/F4-vibraciones-laminas.qmd"
   requiere = ["F3"]
   [[bloque.tema]]
   id = "F5"
   titulo = "Frecuencias del paraboloide hiperbólico"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/F-validacion-vibraciones/F5-frecuencias-hypar.qmd"
   requiere = ["F4"]
   [[bloque.tema]]
   id = "F6"
   titulo = "Implementación reproducible en Julia"
-  estado = "pendiente"
+  estado = "publicado"
+  archivo = "book/F-validacion-vibraciones/F6-implementacion-julia.qmd"
   requiere = ["F5"]
 
 # ---------------------------------------------------------------- Bloque G

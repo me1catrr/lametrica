@@ -27,11 +27,11 @@ Gráfica de líneas con marcadores en SVG. `series` es una lista de `(etiqueta, 
 `(y, texto, color)`.
 """
 function grafica(nombre, titulo; series, xt, yt, xlim, ylim, lx = "", ly = "", horizontales = [],
-                 ancho = 560, alto = 340, leyenda = :derecha, aria = titulo, xlog = false)
+                 ancho = 560, alto = 340, leyenda = :derecha, aria = titulo, xlog = false, ylog = false)
     mI, mD, mS, mB = 62.0, 24.0, 18.0, 52.0
     wpx, hpx = ancho - mI - mD, alto - mS - mB
     fx(x) = mI + (xlog ? (log10(x) - log10(xlim[1])) / (log10(xlim[2]) - log10(xlim[1])) : (x - xlim[1]) / (xlim[2] - xlim[1])) * wpx
-    fy(y) = mS + (1 - (y - ylim[1]) / (ylim[2] - ylim[1])) * hpx
+    fy(y) = mS + (1 - (ylog ? (log10(y) - log10(ylim[1])) / (log10(ylim[2]) - log10(ylim[1])) : (y - ylim[1]) / (ylim[2] - ylim[1]))) * hpx
     s = "<rect x=\"$mI\" y=\"$mS\" width=\"$wpx\" height=\"$hpx\" fill=\"#fcfcfd\" stroke=\"$GRIS\" stroke-width=\"1.2\"/>\n"
     for (x, e) in xt
         s *= "<line x1=\"$(f(fx(x)))\" y1=\"$mS\" x2=\"$(f(fx(x)))\" y2=\"$(f(mS + hpx))\" stroke=\"$MALLA\" stroke-width=\"0.7\"/>\n"
@@ -130,3 +130,112 @@ end
 
 "Nodo más cercano al punto paramétrico `p`."
 nodo_en(nodos, p) = argmin([norm(nodos[:, k] .- p) for k in 1:size(nodos, 2)])
+
+"""
+    scordelis(n; modo)
+
+Techo cilíndrico de Scordelis–Lo (R = 25, L = 50, t = 0.25, E = 4.32e8, ν = 0, peso 90 por unidad de superficie),
+un cuarto del modelo con `n×n` elementos: `θ¹ = x ∈ [0, L/2]`, `θ² = φ ∈ [0, 40°]`. Extremo con diafragma
+(`u₂ = u₃ = 0`), simetrías en `x = L/2` (`u₁ = φ₁ = 0`) y `φ = 0` (`u₂ = φ₂ = 0`). Devuelve `(r, nodos, conn, u, w)`
+con `w` el desplazamiento vertical del punto medio del borde libre.
+"""
+function scordelis(n; modo = :subdominios)
+    R, L, t, E, ν = 25.0, 50.0, 0.25, 4.32e8, 0.0
+    φm = deg2rad(40); r = cil_x(R)
+    nodos, conn = malla_rectangular((0, L / 2), (0, φm), n, n)
+    K, _, F = ensamblar(r, nodos, conn, E, ν, t; modo, f = θ -> [0, 0, -90.0])
+    fij = Int[]
+    for k in 1:size(nodos, 2)
+        x, φ = nodos[:, k]
+        x ≈ 0 && append!(fij, [gdl(k, 2), gdl(k, 3)])
+        x ≈ L / 2 && append!(fij, [gdl(k, 1), gdl(k, 4)])
+        φ ≈ 0 && append!(fij, [gdl(k, 2), gdl(k, 5)])
+    end
+    u = resolver_estatica(K, F, unique(fij))
+    c = nodo_en(nodos, [L / 2, φm])
+    (r, nodos, conn, u, desplazamiento_cartesiano(r, nodos, u, c)[3])
+end
+
+"""
+    pinzado(n; modo)
+
+Cilindro pinzado con diafragmas (R = 300, L = 600, t = 3, E = 3e6, ν = 0.3), un octavo del modelo con `n×n`
+elementos y carga `P/4 = 0.25` radial en el vértice `(x = L/2, φ = 0)` (P = 1 en el cilindro completo).
+Devuelve `(r, nodos, conn, u, w)` con `w` el desplazamiento radial bajo la carga.
+"""
+function pinzado(n; modo = :subdominios)
+    R, L, t, E, ν = 300.0, 600.0, 3.0, 3.0e6, 0.3
+    r = cil_x(R)
+    nodos, conn = malla_rectangular((0, L / 2), (0, π / 2), n, n)
+    K, _, _ = ensamblar(r, nodos, conn, E, ν, t; modo)
+    nn = size(nodos, 2); F = zeros(5nn)
+    c = nodo_en(nodos, [L / 2, 0.0]); F[gdl(c, 3)] = -0.25
+    fij = Int[]
+    for k in 1:nn
+        x, φ = nodos[:, k]
+        x ≈ 0 && append!(fij, [gdl(k, 2), gdl(k, 3)])
+        x ≈ L / 2 && append!(fij, [gdl(k, 1), gdl(k, 4)])
+        (φ ≈ 0 || φ ≈ π / 2) && append!(fij, [gdl(k, 2), gdl(k, 5)])
+    end
+    u = resolver_estatica(K, F, unique(fij))
+    (r, nodos, conn, u, u[gdl(c, 3)])
+end
+
+"""
+    hypar_estatico(n, c; t, E, ν, p, a, apoyo)
+
+Paraboloide hiperbólico `z = c x y` en `[−a, a]²` con carga vertical `p` por unidad de **planta** y los cuatro bordes
+apoyados (`:articulado`: `u₁ = u₂ = u₃ = 0`; `:empotrado`: además `φ₁ = φ₂ = 0`). Devuelve `(r, nodos, conn, u)`.
+"""
+function hypar_estatico(n, c; t = 0.01, E = 1.0e4, ν = 0.3, p = 1.0, a = 1.0, apoyo = :articulado)
+    r = paraboloide_recto(c)
+    nodos, conn = malla_rectangular((-a, a), (-a, a), n, n)
+    f = θ -> [0.0, 0.0, -p / geometria_punto(r, θ).sa]
+    K, _, F = ensamblar(r, nodos, conn, E, ν, t; f)
+    fij = Int[]
+    for k in 1:size(nodos, 2)
+        x, y = nodos[:, k]
+        if abs(x) ≈ a || abs(y) ≈ a
+            append!(fij, [gdl(k, 1), gdl(k, 2), gdl(k, 3)])
+            apoyo == :empotrado && append!(fij, [gdl(k, 4), gdl(k, 5)])
+        end
+    end
+    (r, nodos, conn, resolver_estatica(K, F, unique(fij)))
+end
+
+"Resultante `N¹²` de los elementos de la fila central (`y ≈ 0`), como lista ordenada `(x_centro, N¹²)`."
+function n12_fila_central(r, nodos, conn, u, E, ν, t)
+    out = Tuple{Float64,Float64}[]
+    h = nodos[2, conn[4, 1]] - nodos[2, conn[1, 1]]
+    for e in axes(conn, 2)
+        X = nodos[:, conn[:, e]]
+        yc = (X[2, 1] + X[2, 4]) / 2
+        abs(yc) <= h * 1.001 / 2 + 1e-12 || continue
+        push!(out, ((X[1, 1] + X[1, 2]) / 2, deformaciones_medias(r, nodos, conn, e, u, E, ν, t).N[3]))
+    end
+    sort(out)
+end
+
+"""
+    hypar_frecuencias(r, n, t, bc; k, a, E, ν, ρ)
+
+Primeras `k` frecuencias de un hypar sobre `[−a,a]²` con `n×n` elementos. `bc = :SSSS` (diafragma de corte: sin desplazamiento
+tangencial ni normal y sin giro tangente) o `:CCCC` (empotrado). Devuelve `(λ, ω, nodos, conn, V)` con `λ = ω L² √(ρt/D)`, `L = 2a`.
+"""
+function hypar_frecuencias(r, n, t, bc; k = 6, a = 1.0, E = 1.0e4, ν = 0.3, ρ = 1.0)
+    nodos, conn = malla_rectangular((-a, a), (-a, a), n, n)
+    K, M, _ = ensamblar(r, nodos, conn, E, ν, t; ρ)
+    fij = Int[]
+    for j in 1:size(nodos, 2)
+        x, y = nodos[:, j]; e1 = abs(x) ≈ a; e2 = abs(y) ≈ a
+        if bc == :SSSS
+            e1 && append!(fij, [gdl(j, 2), gdl(j, 3), gdl(j, 5)])
+            e2 && append!(fij, [gdl(j, 1), gdl(j, 3), gdl(j, 4)])
+        else
+            (e1 || e2) && append!(fij, gdl(j, 1):gdl(j, 5))
+        end
+    end
+    ω, V = frecuencias(K, M, unique(fij); n = k)
+    D = E * t^3 / (12 * (1 - ν^2))
+    (ω .* (2a)^2 .* sqrt(ρ * t / D), ω, nodos, conn, V)
+end

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.0 340.0" role="img" aria-label="La resultante de cortante N12 es casi constante e igual a p dividido por dos c en el interior del paraboloide, y se aparta de ese valor cerca de los bordes">
+<title>La resultante de cortante N12 es casi constante e igual a p dividido por dos c en el interior del paraboloide, y se aparta de ese valor cerca de los bordes</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="62.0" y="18.0" width="514.0" height="270.0" fill="#fcfcfd" stroke="#6b7280" stroke-width="1.2"/>
+<line x1="74.24" y1="18.0" x2="74.24" y2="288.0" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="74.24" y="306.0" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">-1.0</text>
+<line x1="196.62" y1="18.0" x2="196.62" y2="288.0" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="196.62" y="306.0" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">-0.5</text>
+<line x1="319.0" y1="18.0" x2="319.0" y2="288.0" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="319.0" y="306.0" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">0.0</text>
+<line x1="441.38" y1="18.0" x2="441.38" y2="288.0" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="441.38" y="306.0" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">0.5</text>
+<line x1="563.76" y1="18.0" x2="563.76" y2="288.0" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="563.76" y="306.0" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">1.0</text>
+<line x1="62.0" y1="288.0" x2="576.0" y2="288.0" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="54.0" y="292.0" fill="#6b7280" font-size="12" text-anchor="end" font-family="Georgia, 'Times New Roman', serif">0.0</text>
+<line x1="62.0" y1="236.08" x2="576.0" y2="236.08" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="54.0" y="240.08" fill="#6b7280" font-size="12" text-anchor="end" font-family="Georgia, 'Times New Roman', serif">0.5</text>
+<line x1="62.0" y1="184.15" x2="576.0" y2="184.15" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="54.0" y="188.15" fill="#6b7280" font-size="12" text-anchor="end" font-family="Georgia, 'Times New Roman', serif">1.0</text>
+<line x1="62.0" y1="132.23" x2="576.0" y2="132.23" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="54.0" y="136.23" fill="#6b7280" font-size="12" text-anchor="end" font-family="Georgia, 'Times New Roman', serif">1.5</text>
+<line x1="62.0" y1="80.31" x2="576.0" y2="80.31" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="54.0" y="84.31" fill="#6b7280" font-size="12" text-anchor="end" font-family="Georgia, 'Times New Roman', serif">2.0</text>
+<line x1="62.0" y1="28.38" x2="576.0" y2="28.38" stroke="#cbd5e1" stroke-width="0.7"/>
+<text x="54.0" y="32.38" fill="#6b7280" font-size="12" text-anchor="end" font-family="Georgia, 'Times New Roman', serif">2.5</text>
+<line x1="62.0" y1="80.31" x2="576.0" y2="80.31" stroke="#2a9d8f" stroke-width="1.6" stroke-dasharray="7 4"/>
+<text x="572.0" y="74.31" fill="#2a9d8f" font-size="12" text-anchor="end" font-family="Georgia, 'Times New Roman', serif">membrana p/(2c) = 2</text>
+<polyline points="84.44,98.07 104.83,98.33 125.23,96.15 145.63,92.09 166.02,87.22 186.42,82.72 206.82,79.44 227.21,77.69 247.61,77.31 268.01,77.8 288.4,78.55 308.8,79.07 329.2,79.07 349.6,78.55 369.99,77.8 390.39,77.31 410.79,77.69 431.18,79.44 451.58,82.72 471.98,87.22 492.37,92.09 512.77,96.15 533.17,98.33 553.56,98.07" fill="none" stroke="#1b6ca8" stroke-width="2.4" stroke-linejoin="round"/>
+<circle cx="84.44" cy="98.07" r="3.8" fill="#1b6ca8"/>
+<circle cx="104.83" cy="98.33" r="3.8" fill="#1b6ca8"/>
+<circle cx="125.23" cy="96.15" r="3.8" fill="#1b6ca8"/>
+<circle cx="145.63" cy="92.09" r="3.8" fill="#1b6ca8"/>
+<circle cx="166.02" cy="87.22" r="3.8" fill="#1b6ca8"/>
+<circle cx="186.42" cy="82.72" r="3.8" fill="#1b6ca8"/>
+<circle cx="206.82" cy="79.44" r="3.8" fill="#1b6ca8"/>
+<circle cx="227.21" cy="77.69" r="3.8" fill="#1b6ca8"/>
+<circle cx="247.61" cy="77.31" r="3.8" fill="#1b6ca8"/>
+<circle cx="268.01" cy="77.8" r="3.8" fill="#1b6ca8"/>
+<circle cx="288.4" cy="78.55" r="3.8" fill="#1b6ca8"/>
+<circle cx="308.8" cy="79.07" r="3.8" fill="#1b6ca8"/>
+<circle cx="329.2" cy="79.07" r="3.8" fill="#1b6ca8"/>
+<circle cx="349.6" cy="78.55" r="3.8" fill="#1b6ca8"/>
+<circle cx="369.99" cy="77.8" r="3.8" fill="#1b6ca8"/>
+<circle cx="390.39" cy="77.31" r="3.8" fill="#1b6ca8"/>
+<circle cx="410.79" cy="77.69" r="3.8" fill="#1b6ca8"/>
+<circle cx="431.18" cy="79.44" r="3.8" fill="#1b6ca8"/>
+<circle cx="451.58" cy="82.72" r="3.8" fill="#1b6ca8"/>
+<circle cx="471.98" cy="87.22" r="3.8" fill="#1b6ca8"/>
+<circle cx="492.37" cy="92.09" r="3.8" fill="#1b6ca8"/>
+<circle cx="512.77" cy="96.15" r="3.8" fill="#1b6ca8"/>
+<circle cx="533.17" cy="98.33" r="3.8" fill="#1b6ca8"/>
+<circle cx="553.56" cy="98.07" r="3.8" fill="#1b6ca8"/>
+<polyline points="84.44,118.07 104.83,116.2 125.23,111.42 145.63,104.44 166.02,96.21 186.42,88.06 206.82,81.28 227.21,76.63 247.61,74.18 268.01,73.42 288.4,73.55 308.8,73.83 329.2,73.83 349.6,73.55 369.99,73.42 390.39,74.18 410.79,76.63 431.18,81.28 451.58,88.06 471.98,96.21 492.37,104.44 512.77,111.42 533.17,116.2 553.56,118.07" fill="none" stroke="#d95f02" stroke-width="2.4" stroke-dasharray="7 4" stroke-linejoin="round"/>
+<rect x="80.84" y="114.47" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="101.23" y="112.6" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="121.63" y="107.82" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="142.03" y="100.84" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="162.42" y="92.61" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="182.82" y="84.46" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="203.22" y="77.68" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="223.61" y="73.03" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="244.01" y="70.58" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="264.41" y="69.82" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="284.8" y="69.95" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="305.2" y="70.23" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="325.6" y="70.23" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="346.0" y="69.95" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="366.39" y="69.82" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="386.79" y="70.58" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="407.19" y="73.03" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="427.58" y="77.68" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="447.98" y="84.46" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="468.38" y="92.61" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="488.77" y="100.84" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="509.17" y="107.82" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="529.57" y="112.6" width="7.2" height="7.2" fill="#d95f02"/>
+<rect x="549.96" y="114.47" width="7.2" height="7.2" fill="#d95f02"/>
+<line x1="74.0" y1="36.0" x2="100.0" y2="36.0" stroke="#1b6ca8" stroke-width="2.4"/>
+<text x="106.0" y="40.0" fill="#1f2937" font-size="12.5" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">bordes articulados</text>
+<line x1="74.0" y1="58.0" x2="100.0" y2="58.0" stroke="#d95f02" stroke-width="2.4" stroke-dasharray="7 4"/>
+<text x="106.0" y="62.0" fill="#1f2937" font-size="12.5" text-anchor="start" font-family="Georgia, 'Times New Roman', serif">bordes empotrados</text>
+<text x="319.0" y="330.0" fill="#1f2937" font-size="14" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic">x / a</text>
+<text transform="translate(16,153.0) rotate(-90)" fill="#1f2937" font-size="14" text-anchor="middle" font-family="Georgia, serif" font-style="italic">N¹² (p = 1)</text>
+</svg>

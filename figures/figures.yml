@@ -259,9 +259,94 @@
   herramienta: Julia (autovalores de matrices de barra)
   etiqueta: calculada
   revision: visual pendiente
-- id: fig-malla-ensamblaje
+- id: fig-malla-ens
+  capitulo: book/E-elementos-finitos/E9-ensamblaje-autovalores.qmd
   archivo: figures/svg/malla-ensamblaje.svg
   generador: julia/scripts/generar_figuras_fem.jl
   herramienta: Julia + Geometria.malla_rectangular
-  etiqueta: ilustrativa (reservada para E9, pendiente)
+  etiqueta: ilustrativa (esquema de numeración)
+  revision: visual pendiente
+- id: fig-placa-flecha
+  archivo: figures/svg/placa-flecha.svg
+  capitulo: book/F-validacion-vibraciones/F1-validacion-placa.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada (deformada exagerada)
+  revision: visual pendiente
+- id: fig-placa-conv
+  archivo: figures/svg/placa-convergencia.svg
+  capitulo: book/F-validacion-vibraciones/F1-validacion-placa.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-placa-oblicua
+  archivo: figures/svg/placa-oblicua.svg
+  capitulo: book/F-validacion-vibraciones/F1-validacion-placa.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada (deformada exagerada)
+  revision: visual pendiente
+- id: fig-scordelis
+  archivo: figures/svg/scordelis-lo.svg
+  capitulo: book/F-validacion-vibraciones/F2-validacion-cilindro.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada (deformada exagerada)
+  revision: visual pendiente
+- id: fig-pinzado
+  archivo: figures/svg/cilindro-pinzado.svg
+  capitulo: book/F-validacion-vibraciones/F2-validacion-cilindro.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada (deformada exagerada)
+  revision: visual pendiente
+- id: fig-cil-conv
+  archivo: figures/svg/cilindros-convergencia.svg
+  capitulo: book/F-validacion-vibraciones/F2-validacion-cilindro.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-hypar-def
+  archivo: figures/svg/hypar-deformada.svg
+  capitulo: book/F-validacion-vibraciones/F3-hypar-estatico.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada (deformada exagerada)
+  revision: visual pendiente
+- id: fig-hypar-n12
+  archivo: figures/svg/hypar-n12.svg
+  capitulo: book/F-validacion-vibraciones/F3-hypar-estatico.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-modos-placa
+  archivo: figures/svg/modos-placa.svg
+  capitulo: book/F-validacion-vibraciones/F4-vibraciones-laminas.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-lambda-conv
+  archivo: figures/svg/lambda-convergencia.svg
+  capitulo: book/F-validacion-vibraciones/F4-vibraciones-laminas.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-panel-curv
+  archivo: figures/svg/panel-curvatura.svg
+  capitulo: book/F-validacion-vibraciones/F4-vibraciones-laminas.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-modos-hypar
+  archivo: figures/svg/modos-hypar.svg
+  capitulo: book/F-validacion-vibraciones/F5-frecuencias-hypar.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada
+  revision: visual pendiente
+- id: fig-hypar-conv
+  archivo: figures/svg/hypar-convergencia.svg
+  capitulo: book/F-validacion-vibraciones/F5-frecuencias-hypar.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: calculada (extrapolación: estimación)
+  revision: visual pendiente
+- id: fig-piramide
+  archivo: figures/svg/piramide-pruebas.svg
+  capitulo: book/F-validacion-vibraciones/F6-implementacion-julia.qmd
+  herramienta: Julia (julia/scripts/generar_figuras_validacion.jl)
+  etiqueta: ilustrativa (esquema)
   revision: visual pendiente

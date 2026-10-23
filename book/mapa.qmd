@@ -6,7 +6,7 @@
 
 Este es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como *por escribir* aparecerán a medida que avance el libro.
 
-**Estado:** 29 temas publicados, 0 en reescritura y 8 por escribir (de 37).
+**Estado:** 36 temas publicados, 0 en reescritura y 1 por escribir (de 37).
 
 ## Bloque A · Preludio: la forma que resiste {.unnumbered}
 
@@ -81,7 +81,7 @@ Cómo lo calcula un ordenador sin que el elemento se bloquee
 | E6 | [Interpolación de deformaciones](E-elementos-finitos/E6-interpolacion-deformaciones.html) | ● publicado | E5 |
 | E7 | [Hu–Washizu por subdominios](E-elementos-finitos/E7-hu-washizu-subdominios.html) | ● publicado | E6, D8 |
 | E8 | [Cargas y matriz de masa](E-elementos-finitos/E8-cargas-masa.html) | ● publicado | E7 |
-| E9 | Ensamblaje, condiciones de contorno y autovalores | ○ por escribir | E8 |
+| E9 | [Ensamblaje, condiciones de contorno y autovalores](E-elementos-finitos/E9-ensamblaje-autovalores.html) | ● publicado | E8 |
 
 ## Bloque F · Validación y vibraciones {.unnumbered}
 
@@ -91,12 +91,12 @@ Cuánto podemos fiarnos del cálculo y a qué frecuencias vibra un paraboloide h
 
 | Tema | Título | Estado | Se apoya en |
 |:--|:--|:--|:--|
-| F1 | Validación estática (I): la placa | ○ por escribir | E9 |
-| F2 | Validación estática (II): el cilindro | ○ por escribir | F1 |
-| F3 | El paraboloide hiperbólico bajo carga | ○ por escribir | F2, C5 |
-| F4 | Vibraciones de láminas | ○ por escribir | F3 |
-| F5 | Frecuencias del paraboloide hiperbólico | ○ por escribir | F4 |
-| F6 | Implementación reproducible en Julia | ○ por escribir | F5 |
+| F1 | [Validación estática (I): la placa](F-validacion-vibraciones/F1-validacion-placa.html) | ● publicado | E9 |
+| F2 | [Validación estática (II): el cilindro](F-validacion-vibraciones/F2-validacion-cilindro.html) | ● publicado | F1 |
+| F3 | [El paraboloide hiperbólico bajo carga](F-validacion-vibraciones/F3-hypar-estatico.html) | ● publicado | F2, C5 |
+| F4 | [Vibraciones de láminas](F-validacion-vibraciones/F4-vibraciones-laminas.html) | ● publicado | F3 |
+| F5 | [Frecuencias del paraboloide hiperbólico](F-validacion-vibraciones/F5-frecuencias-hypar.html) | ● publicado | F4 |
+| F6 | [Implementación reproducible en Julia](F-validacion-vibraciones/F6-implementacion-julia.html) | ● publicado | F5 |
 
 ## Bloque G · Cierre {.unnumbered}
 
