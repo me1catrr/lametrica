@@ -34,7 +34,7 @@
     "href": "book/mapa.html",
     "title": "Mapa del libro",
     "section": "",
-    "text": "Bloque A · Preludio: la forma que resiste\nSiete bloques y 36 temas, de la geometría a los elementos finitos.\nEste es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como por escribir aparecerán a medida que avance el libro.\nEstado: 29 temas publicados, 0 en reescritura y 8 por escribir (de 37).",
+    "text": "Bloque A · Preludio: la forma que resiste\nSiete bloques y 36 temas, de la geometría a los elementos finitos.\nEste es el recorrido completo del libro. Cada bloque responde a una pregunta y cada tema se apoya en los anteriores. Los temas marcados como por escribir aparecerán a medida que avance el libro.\nEstado: 36 temas publicados, 0 en reescritura y 1 por escribir (de 37).",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -84,7 +84,7 @@
     "href": "book/mapa.html#bloque-e-elementos-finitos-de-lámina",
     "title": "Mapa del libro",
     "section": "Bloque E · Elementos finitos de lámina",
-    "text": "Bloque E · Elementos finitos de lámina\n\nCómo lo calcula un ordenador sin que el elemento se bloquee\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nE1\nEl método de elementos finitos en una barra\n● publicado\nD8\n\n\nE2\nEl cuadrilátero bilineal en tensión plana\n● publicado\nE1\n\n\nE3\nEl elemento lámina de cuatro nodos\n● publicado\nE2, D6\n\n\nE4\nMatrices deformación–desplazamiento\n● publicado\nE3\n\n\nE5\nBloqueo y modos espurios\n● publicado\nE4\n\n\nE6\nInterpolación de deformaciones\n● publicado\nE5\n\n\nE7\nHu–Washizu por subdominios\n● publicado\nE6, D8\n\n\nE8\nCargas y matriz de masa\n● publicado\nE7\n\n\nE9\nEnsamblaje, condiciones de contorno y autovalores\n○ por escribir\nE8",
+    "text": "Bloque E · Elementos finitos de lámina\n\nCómo lo calcula un ordenador sin que el elemento se bloquee\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nE1\nEl método de elementos finitos en una barra\n● publicado\nD8\n\n\nE2\nEl cuadrilátero bilineal en tensión plana\n● publicado\nE1\n\n\nE3\nEl elemento lámina de cuatro nodos\n● publicado\nE2, D6\n\n\nE4\nMatrices deformación–desplazamiento\n● publicado\nE3\n\n\nE5\nBloqueo y modos espurios\n● publicado\nE4\n\n\nE6\nInterpolación de deformaciones\n● publicado\nE5\n\n\nE7\nHu–Washizu por subdominios\n● publicado\nE6, D8\n\n\nE8\nCargas y matriz de masa\n● publicado\nE7\n\n\nE9\nEnsamblaje, condiciones de contorno y autovalores\n● publicado\nE8",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -94,7 +94,7 @@
     "href": "book/mapa.html#bloque-f-validación-y-vibraciones",
     "title": "Mapa del libro",
     "section": "Bloque F · Validación y vibraciones",
-    "text": "Bloque F · Validación y vibraciones\n\nCuánto podemos fiarnos del cálculo y a qué frecuencias vibra un paraboloide hiperbólico\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nF1\nValidación estática (I): la placa\n○ por escribir\nE9\n\n\nF2\nValidación estática (II): el cilindro\n○ por escribir\nF1\n\n\nF3\nEl paraboloide hiperbólico bajo carga\n○ por escribir\nF2, C5\n\n\nF4\nVibraciones de láminas\n○ por escribir\nF3\n\n\nF5\nFrecuencias del paraboloide hiperbólico\n○ por escribir\nF4\n\n\nF6\nImplementación reproducible en Julia\n○ por escribir\nF5",
+    "text": "Bloque F · Validación y vibraciones\n\nCuánto podemos fiarnos del cálculo y a qué frecuencias vibra un paraboloide hiperbólico\n\n\n\n\nTema\nTítulo\nEstado\nSe apoya en\n\n\n\n\nF1\nValidación estática (I): la placa\n● publicado\nE9\n\n\nF2\nValidación estática (II): el cilindro\n● publicado\nF1\n\n\nF3\nEl paraboloide hiperbólico bajo carga\n● publicado\nF2, C5\n\n\nF4\nVibraciones de láminas\n● publicado\nF3\n\n\nF5\nFrecuencias del paraboloide hiperbólico\n● publicado\nF4\n\n\nF6\nImplementación reproducible en Julia\n● publicado\nF5",
     "crumbs": [
       "Mapa del libro"
     ]
@@ -3487,11 +3487,847 @@
     ]
   },
   {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E8 y E1 (ensamblaje en una barra).\nSecciones del tema",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#objetivos-y-prerrequisitos",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#objetivos-y-prerrequisitos",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "",
+    "text": "calcular la lista de g.d.l. globales de un elemento a partir de su conectividad;\nensamblar \\(\\mathbf K\\), \\(\\mathbf M\\) y \\(\\mathbf F\\) y aplicar condiciones de contorno eliminando g.d.l.;\ntraducir apoyos habituales (simple, empotrado, simetría, diafragma) a g.d.l. fijos;\nresolver el problema estático \\(\\mathbf K\\mathbf d=\\mathbf F\\) y el de autovalores \\((\\mathbf K-\\omega^2\\mathbf M)\\mathbf d=\\mathbf 0\\);\ncomprobar el resultado con una solución conocida.\n\n\n\n\nSección 30.1 · Conectividad y ensamblaje · Sección 30.2 · Condiciones de contorno · Sección 30.3 · Problema estático\nSección 30.4 · Problema de autovalores · Sección 30.5 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(n\\), \\(e\\)\nnúmero de nodo y de elemento\n\n\nconn[:,e]\nlos 4 nodos del elemento \\(e\\) (antihorario)\n\n\n\\(5(n-1)+c\\)\ng.d.l. global del componente \\(c\\) (\\(1\\ldots5\\)) del nodo \\(n\\)\n\n\n\\(\\mathbf K,\\mathbf M,\\mathbf F\\)\nrigidez, masa y cargas globales\n\n\n\\(\\mathbf d\\), \\(\\omega\\)\ndesplazamientos nodales y frecuencia angular (rad/s)\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: poner un apoyo es borrar filas; calcular frecuencias es tocar la campana\n\n\n\nUn apoyo no «añade» nada: elimina incógnitas. Si un nodo no puede moverse en \\(u_3\\), esa incógnita vale cero y desaparece del sistema (se borran su fila y su columna). Lo que queda es la estructura ya sujeta: sin apoyos la matriz es singular (la estructura podría flotar). Las frecuencias propias son los «tonos» a los que la estructura vibra si se la golpea y se la deja libre: la campana de la torre es la misma estructura sin carga. El problema de autovalores las encuentra todas de golpe.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-conectividad-e9",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-conectividad-e9",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "30.1 Conectividad y ensamblaje",
+    "text": "30.1 Conectividad y ensamblaje\nCada elemento \\(e\\) conoce sus cuatro nodos globales. Sus 20 g.d.l. locales ocupan en el vector global las posiciones\n\\[\n\\mathbf g_e=\\bigl[\\,5(n_1-1)+1:5n_1,\\ \\ 5(n_2-1)+1:5n_2,\\ \\ 5(n_3-1)+1:5n_3,\\ \\ 5(n_4-1)+1:5n_4\\,\\bigr],\n\\tag{30.1}\\]\ny el ensamblaje es el de E1 (ecuación 22.5): para cada elemento, \\(K[\\mathbf g_e,\\mathbf g_e]\\mathrel{+}=\\mathbf K_e\\) y \\(F[\\mathbf g_e]\\mathrel{+}=\\mathbf F_e\\). Los nodos compartidos reciben la suma de las contribuciones de todos los elementos que los tocan.\n\nEjemplo 30.1 (Ejemplo resuelto: g.d.l. del elemento 4) En la Figura 30.1 el elemento 4 tiene los nodos \\((5,6,10,9)\\). Con ecuación 30.1: \\[\n\\mathbf g_4=[\\,21\\!:\\!25,\\ 26\\!:\\!30,\\ 46\\!:\\!50,\\ 41\\!:\\!45\\,].\n\\] El g.d.l. \\(u_3\\) del nodo 10 (tercer componente) es el \\(5\\cdot9+3=\\mathbf{48}\\) del vector global, y aparece en la posición \\(13\\) del vector local del elemento 4 (tercer nodo: \\(5\\cdot2+3\\)). Resultado analítico.\n\n\nEn una malla de nodos numerados como en la Figura 30.1, ¿qué posición ocupa en el vector global el g.d.l. \\(u_3\\) (tercer componente) del nodo 10?\n\n\\(5(n-1)+c\\) con \\(n=10\\), \\(c=3\\).\n\n\n\\(5\\cdot9+3=48\\).\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nEl orden de los g.d.l. en el elemento y en el global debe ser el mismo. Si cada nodo se ordena \\([u_1,u_2,u_3,\\varphi_1,\\varphi_2]\\), el elemento también.\nLa matriz global es dispersa (la fila de un g.d.l. sólo tiene entradas de los nodos vecinos). Para mallas grandes se guarda en formato disperso: es lo que hace ensamblar.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-contorno-e9",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-contorno-e9",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "30.2 Condiciones de contorno",
+    "text": "30.2 Condiciones de contorno\nUna condición de contorno esencial fija un g.d.l.; se «aplica» eliminándolo. Las más habituales, para una lámina con la convención de este libro (g.d.l. \\(u_1,u_2,u_3,\\varphi_1,\\varphi_2\\) covariantes; borde \\(\\theta^1=\\text{cte}\\)):\n\n\n\n\n\n\n\nApoyo\nSe fijan en los nodos del borde\n\n\n\n\nEmpotrado\nlos cinco: \\(u_1,u_2,u_3,\\varphi_1,\\varphi_2\\)\n\n\nSimplemente apoyado «duro»\n\\(u_3\\) y el giro tangente al borde (\\(\\varphi_2\\) en un borde \\(\\theta^1=\\text{cte}\\))\n\n\nArticulado de membrana\n\\(u_1,u_2,u_3\\) (los giros, libres)\n\n\nDiafragma rígido en su plano\ndesplazamientos en el plano de la sección (\\(u_2\\) y \\(u_3\\) en un extremo de cilindro de eje \\(\\theta^1\\))\n\n\nPlano de simetría (borde \\(\\theta^1=\\text{cte}\\))\n\\(u_1\\) y \\(\\varphi_1\\)\n\n\n\n\n\n\n\n\n\nAdvertenciaConvenio por confirmar\n\n\n\nLa tabla usa g.d.l. covariantes y los giros \\(\\varphi_\\alpha\\) del tema D5. Si el autor decide trabajar con g.d.l. físicos o fija otro convenio de giros (pendiente), cambia qué g.d.l. se fija en cada apoyo (por ejemplo, \\(\\varphi_2\\) puede ser el giro respecto del eje tangente o su normal), no la estructura del método.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-estatica-e9",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-estatica-e9",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "30.3 Problema estático",
+    "text": "30.3 Problema estático\nCon los g.d.l. fijos eliminados, \\(\\mathbf K_{ff}\\,\\mathbf d_f=\\mathbf F_f\\). Se resuelve por factorización (matrices dispersas simétricas definidas positivas: Cholesky). Las reacciones se recuperan después: \\(\\mathbf R=\\mathbf K_{cf}\\mathbf d_f-\\mathbf F_c\\) en los g.d.l. fijos.\n\n\n\n\n\n\nImportanteIdea clave: la comprobación mínima\n\n\n\nTras resolver, comprobar siempre la suma de reacciones frente a la carga aplicada (equilibrio global). Si no coincide, hay un error de ensamblaje o de apoyos antes de cualquier consideración sobre «precisión del elemento».",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-autovalores-e9",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-autovalores-e9",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "30.4 Problema de autovalores",
+    "text": "30.4 Problema de autovalores\nPara vibraciones libres, \\(\\mathbf d(t)=\\boldsymbol\\phi\\,e^{i\\omega t}\\) y\n\\[\n\\bigl(\\mathbf K_{ff}-\\omega^2\\,\\mathbf M_{ff}\\bigr)\\,\\boldsymbol\\phi=\\mathbf 0 .\n\\tag{30.2}\\]\nEs un problema de autovalores generalizado con \\(\\mathbf K\\), \\(\\mathbf M\\) simétricas y \\(\\mathbf M\\) definida positiva: los autovalores \\(\\lambda=\\omega^2\\) son reales y positivos y los modos \\(\\boldsymbol\\phi_i\\) son \\(\\mathbf M\\)-ortogonales: \\(\\boldsymbol\\phi_i^{\\mathsf T}\\mathbf M\\boldsymbol\\phi_j=\\delta_{ij}\\). Si se deja libre algún movimiento rígido, aparecen \\(\\omega=0\\) (tantos como movimientos rígidos permitidos).\n\nEjemplo 30.2 (Ejemplo resuelto: la respiración de un cilindro) En un cilindro largo (sin movimiento axial, \\(u_1=0\\)) cuyo radio se hincha y contrae uniformemente, no hay flexión: sólo la deformación de aro \\(\\varepsilon=u_3/R\\) con \\(N_\\varphi=Et\\,\\varepsilon/(1-\\nu^2)\\) (con \\(\\varepsilon_{x}=0\\)). La ecuación del movimiento de un trozo de arco, por unidad de longitud, es \\(\\rho t\\,\\ddot u_3=-N_\\varphi/R\\), de modo que \\[\n\\omega=\\frac1R\\sqrt{\\frac{E}{\\rho\\,(1-\\nu^2)}} .\n\\] Para acero (\\(E=210\\) GPa, \\(\\nu=0{,}3\\), \\(\\rho=7850\\) kg/m³) y \\(R=0{,}5\\) m: \\(\\omega=\\dfrac1{0{,}5}\\sqrt{\\dfrac{210\\cdot10^9}{7850\\cdot0{,}91}}=\\mathbf{10\\,844}\\) rad/s (\\(f=1726\\) Hz). Resultado analítico; el programa lo localiza en la lista de autovalores de la malla.\n\n\nEn el Ejemplo 30.2, ¿cuánto vale la frecuencia de respiración \\(\\omega\\) para acero (\\(E=210\\) GPa, \\(\\nu=0{,}3\\), \\(\\rho=7850\\) kg/m³) y \\(R=0{,}5\\) m?\n\n\\(\\omega=\\frac1R\\sqrt{E/(\\rho(1-\\nu^2))}=2\\sqrt{2{,}675\\cdot10^7/0{,}91}=2\\sqrt{2{,}9396\\cdot10^{7}}=10\\,844\\) rad/s.\n\n\n\nLos modos de vibración de la estructura son ortogonales respecto de la matriz de masa: \\(\\boldsymbol\\phi_i^{\\mathsf T}\\mathbf M\\boldsymbol\\phi_j=0\\) si \\(i\\ne j\\).\n\nVerdadero, para autovalores distintos y \\(\\mathbf K,\\mathbf M\\) simétricas con \\(\\mathbf M&gt;0\\). También son \\(\\mathbf K\\)-ortogonales.\n\n\n\n\n\n\n\n\nTipAplicación real: modos propios de cubiertas y de huesos\n\n\n\nilustrativo El análisis modal de una cubierta o torre de lámina da las frecuencias que deben quedar lejos de las excitaciones del viento o del sismo. En biomecánica, el análisis modal de huesos o de la cavidad craneal se usa, por ejemplo, para comparar frecuencias propias entre individuos o antes y después de una intervención. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-julia-e9",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-julia-e9",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "30.5 Práctica guiada en Julia",
+    "text": "30.5 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) Conectividad y g.d.l. del elemento 4 de la Figura 30.1. (2) Una malla de cilindro con \\(u_1=0\\) y las simetrías: se calculan los autovalores y se busca el de respiración. (3) Una placa libre: seis frecuencias nulas.\n\n\n\nusing Geometria, LinearAlgebra\n\nnodos, conn = malla_rectangular((0.0, 3.0), (0.0, 2.0), 3, 2)\n(nodos_elem4 = conn[:, 4], gdl_elem4 = gdl_elemento(conn, 4), u3_nodo10 = gdl(10, 3))\n\n(nodos_elem4 = [5, 6, 10, 9], gdl_elem4 = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 46, 47, 48, 49, 50, 41, 42, 43, 44, 45], u3_nodo10 = 48)\n\n\n\n# Respiración de un cilindro de acero (SI), R = 0.5 m\nE, ν, ρ, R, t = 210e9, 0.3, 7850.0, 0.5, 0.01\nr = θ -&gt; [θ[1], R * sin(θ[2]), R * cos(θ[2])]\nnodos, conn = malla_rectangular((0.0, 0.5), (0.0, π / 2), 2, 8)\nK, M, _ = ensamblar(r, nodos, conn, E, ν, t; ρ)\nfij = Int[]\nfor k in 1:size(nodos, 2)\n    _, φ = nodos[:, k]\n    append!(fij, [gdl(k, 1), gdl(k, 4)])                                   # u₁ = 0 (sin movimiento axial), giro axial nulo\n    (φ ≈ 0 || φ ≈ π / 2) && append!(fij, [gdl(k, 2), gdl(k, 5)])           # planos de simetría\nend\nω, _ = frecuencias(K, M, unique(fij); n = 30)\nωres = sqrt(E / (ρ * R^2 * (1 - ν^2)))\n(ω_teórica = ωres, ω_más_cercana = ω[argmin(abs.(ω .- ωres))], f_Hz = ωres / 2π)\n\n(ω_teórica = 10843.865406416398, ω_más_cercana = 10844.046144376005, f_Hz = 1725.8547816543744)\n\n\n\n# Placa libre: tantos modos de frecuencia nula como movimientos rígidos (6)\nplana = placa_oblicua(π / 2)\nnodos, conn = malla_rectangular((0.0, 1.0), (0.0, 1.0), 3, 3)\nK, M, _ = ensamblar(plana, nodos, conn, 1e4, 0.3, 0.05; ρ = 1.0)\nλ = eigvals(Symmetric(Matrix(K)), Symmetric(Matrix(M)))\n(autovalores_casi_nulos = count(&lt;(1e-6 * maximum(λ)), λ), primeros = round.(sqrt.(max.(λ[1:8], 0.0)), digits = 3))\n\n(autovalores_casi_nulos = 6, primeros = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 21.048, 32.482])",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-ejercicios-e9",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#sec-ejercicios-e9",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "30.6 Ejercicios",
+    "text": "30.6 Ejercicios\n\nContar incógnitas. ¿Cuántos g.d.l. tiene una malla de \\(20\\times10\\) elementos? ¿Cuántos quedan libres si se empotra un borde largo?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(21\\cdot11=231\\) nodos \\(\\Rightarrow1155\\) g.d.l. El borde largo tiene 21 nodos: \\(21\\cdot5=105\\) g.d.l. fijos, quedan \\(1050\\).\n\n\n\nApoyo sin carga. ¿Por qué una placa sin ningún apoyo da error al resolver \\(\\mathbf K\\mathbf d=\\mathbf F\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\mathbf K\\) es singular (seis autovalores nulos de sólido rígido): el sistema no tiene solución única, o ninguna si \\(\\mathbf F\\) no está equilibrada.\n\n\n\nFrecuencias y mallas. Si una malla da \\(\\omega_1\\) y otra más fina da un valor menor, ¿con cuál se queda?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nCon la más fina: con masa consistente el valor converge desde arriba (cota superior, E8), de modo que la menor es la más cercana a la verdadera.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#la-doy-por-superada-si",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#la-doy-por-superada-si",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nCalculo los g.d.l. globales de un elemento a partir de su conectividad.\nEnsamblo \\(\\mathbf K\\), \\(\\mathbf M\\) y \\(\\mathbf F\\) y aplico los apoyos eliminando g.d.l.\nTraduzco empotrado, apoyo simple, simetría y diafragma a g.d.l. fijos.\nEscribo el problema de autovalores y sé cuántos modos nulos esperar.\nVerifico un resultado contra una solución conocida y compruebo el equilibrio global.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; ensamblaje, condiciones de contorno y análisis modal son estándar (Bathe 1996; Hughes 1987; Zienkiewicz y Taylor, s. f.). La frecuencia de respiración es un resultado analítico (deducción propia, comprobada con el programa).\nQué queda pendiente. El convenio de g.d.l. y giros (determina la tabla de apoyos); la reacción \\(\\mathbf R\\) no se calcula en la práctica; no hay nota histórica por falta de fuente verificada; la «Aplicación real» es una orientación sin fuente.\n\n\n\n\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#referencias-unidad",
+    "href": "book/E-elementos-finitos/E9-ensamblaje-autovalores.html#referencias-unidad",
+    "title": "30  Ensamblaje, condiciones de contorno y autovalores",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque E · Elementos finitos de lámina",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Ensamblaje, condiciones de contorno y autovalores</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html",
+    "title": "31  Validación estática (I): la placa",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E9 y E5.\nSecciones del tema",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#objetivos-y-prerrequisitos",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#objetivos-y-prerrequisitos",
+    "title": "31  Validación estática (I): la placa",
+    "section": "",
+    "text": "distinguir verificación (¿resuelvo bien las ecuaciones?) de validación (¿resuelvo las ecuaciones correctas?);\nplantear y comprobar un patch test de membrana y de flexión;\ncomparar la flecha de una placa simplemente apoyada con la solución de Navier y medir el orden de convergencia;\nreproducir la flecha de una placa empotrada y estudiar una placa oblicua;\ndecidir cuándo un resultado numérico es fiable.\n\n\n\n\nSección 31.1 · Verificar y validar · Sección 31.2 · Patch test · Sección 31.3 · Placa simplemente apoyada\nSección 31.4 · Placa empotrada · Sección 31.5 · Placa oblicua · Sección 31.7 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(D=Et^3/\\bigl(12(1-\\nu^2)\\bigr)\\)\nrigidez a flexión de la placa\n\n\n\\(q,\\ L\\)\ncarga uniforme por unidad de superficie y lado de la placa\n\n\n\\(\\alpha=w_{\\text{centro}}\\,D/(qL^4)\\)\ncoeficiente adimensional de la flecha central\n\n\n\\(n\\)\nelementos por lado de la malla\n\n\nsimplemente apoyada\napoyo «duro»: \\(u_3=0\\) y giro tangente nulo en el borde\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: el parche de tela y la balanza calibrada\n\n\n\nUn patch test es como tirar uniformemente de un parche de tela cosido con distintos retales: si el tirón es uniforme, todos los retales deben estirarse por igual, da igual cómo estén cortados. Si el programa no consigue eso, tiene un error de base, y ninguna malla fina lo arreglará. La comparación con Navier es la balanza calibrada: se le pone al programa un caso del que se conoce la respuesta exacta y se ve si marca el peso correcto. Un programa que pasa las dos pruebas merece confianza en problemas parecidos, pero no en los muy distintos: por eso en los temas siguientes se repite con cilindros y con el paraboloide.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-validar-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-validar-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.1 Verificar y validar",
+    "text": "31.1 Verificar y validar\n\nVerificación: comprobar que el programa resuelve correctamente el modelo matemático (sin errores de código, con la convergencia esperada). Se hace comparando con soluciones analíticas o con otras soluciones numéricas conocidas.\nValidación: comprobar que el modelo describe la realidad (que la hipótesis de Reissner–Mindlin o la de Kirchhoff–Love es adecuada, que el material es el correcto). Se hace con experimentos.\n\nEste libro, en los temas F1–F3, verifica. Para cada caso se da la referencia y su procedencia: analítica (se deduce y se calcula), de la literatura (con cita) o calculada con malla fina (sin referencia externa).",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-patch-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-patch-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.2 Patch test",
+    "text": "31.2 Patch test\n\nDefinición 31.1 (Patch test) Se toma un grupo («parche») de elementos de forma irregular y se imponen en el contorno los valores nodales de un campo de deformación constante (en membrana) o de curvatura constante (en flexión). El elemento supera el test si los nodos interiores y las deformaciones del interior reproducen exactamente ese campo.\n\nEs una condición necesaria de convergencia (el elemento es consistente): si no reproduce estados constantes, al refinar no tiende a la solución. No es suficiente por sí sola (también hace falta estabilidad, es decir, no tener modos espurios, tema E5).\n\nEjemplo 31.1 (Ejemplo resuelto: campos del patch test) Sobre un parche de \\(4\\times4\\) elementos rectangulares no uniformes en el plano paramétrico:\n\nMembrana: \\(u=10^{-3}x+5\\cdot10^{-4}y\\), \\(v=-3\\cdot10^{-4}x+8\\cdot10^{-4}y\\) (deformación constante).\nFlexión: \\(w=\\tfrac12\\bigl(x^2+\\tfrac12xy+\\tfrac45y^2\\bigr)\\) con \\(\\varphi_\\alpha=-w_{,\\alpha}\\): curvatura constante \\(\\kappa_{xx}=-1\\), \\(\\kappa_{yy}=-0{,}8\\), \\(\\kappa_{xy}=-0{,}25\\) y cortante nulo.\n\nSe fijan los nodos del borde a esos valores, se resuelve el parche sin carga y se mide la fuerza residual en los nodos interiores: \\(\\|\\mathbf K\\mathbf d\\|_{\\text{libres}}/\\|\\mathbf K\\mathbf d\\|_{\\text{fijos}}\\). Con la formulación de subdominios, el residuo es \\(\\sim10^{-9}\\) (ruido de las derivadas numéricas de la geometría); con la de desplazamientos, \\(\\sim1\\). Resultado calculado: lo reproduce la práctica de Julia.\n\n\nSi un elemento pasa el patch test, queda garantizado que converge a la solución correcta al refinar la malla.\n\nFalso. Pasar el patch test es condición necesaria (consistencia), pero hace falta además estabilidad (ausencia de modos espurios): existen elementos que lo pasan y no convergen.\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nEl patch test no mide precisión, sólo comprueba que la formulación no tiene fallos de base. La precisión se mide con la convergencia (Sección 31.3).\nEl parche debe ser irregular. Con una malla uniforme y ordenada pasan el test elementos que fallan con mallas distorsionadas.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-navier-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-navier-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.3 Placa simplemente apoyada: la solución de Navier",
+    "text": "31.3 Placa simplemente apoyada: la solución de Navier\nUna placa cuadrada de lado \\(L\\) con carga uniforme \\(q\\) y los cuatro bordes simplemente apoyados tiene, en la teoría de Kirchhoff, la solución en serie doble de senos:\n\\[\nw(x,y)=\\frac{16\\,q}{\\pi^6D}\\sum_{m,n=1,3,5,\\dots}\\frac{\\sin\\frac{m\\pi x}L\\,\\sin\\frac{n\\pi y}L}{m\\,n\\,\\bigl(\\frac{m^2}{L^2}+\\frac{n^2}{L^2}\\bigr)^2},\\qquad w_{\\text{centro}}=\\alpha\\,\\frac{qL^4}D,\\ \\ \\alpha\\simeq0{,}00406 .\n\\tag{31.1}\\]\nEl coeficiente \\(\\alpha\\) se obtiene sumando la serie, que converge muy deprisa (\\(\\sim1/(mn)^5\\)). Es un resultado analítico (calculado numéricamente: \\(\\alpha=0{,}004062\\)).\n\nSuma la serie ecuación 31.1 (basta \\(m,n\\le9\\)) y da el coeficiente \\(\\alpha=w_{\\text{centro}}D/(qL^4)\\) de la placa cuadrada simplemente apoyada.\n\nEn el centro \\(\\sin\\frac{m\\pi}2\\sin\\frac{n\\pi}2=\\pm1\\) con signo \\((-1)^{(m+n)/2-1}\\); el primer término (\\(m=n=1\\)) vale \\(16/(\\pi^6\\cdot4)=0{,}00416\\).\n\n\nSuma de la serie con \\(m,n\\le9\\) (impares): \\(\\alpha=0{,}004062\\). El primer término ya da \\(0{,}00416\\) (2,4 % de error): la serie converge muy deprisa.\n\n\nEl elemento de este libro, con \\(t/L=0{,}001\\) y mallas de \\(2,4,8,16\\) y \\(32\\) elementos por lado, tiene un error de la flecha central que baja con pendiente \\(2\\) en escala logarítmica (Figura 31.2): es el orden esperado de un elemento bilineal. Con \\(t/L=0{,}01\\) la solución se estanca en \\(+0{,}03\\,\\%\\): es la deformación por cortante de Reissner–Mindlin, que Navier (Kirchhoff) no recoge.\n\n\n\n\n\n\nFigura 31.2: Error relativo de la flecha central de la placa delgada (\\(t/L=0{,}001\\)) respecto de Navier. Los subdominios (azul) y la integración reducida selectiva (violeta) bajan con pendiente 2 (gris discontinuo). Cálculo calculado.\n\n\n\n\n\n\n\n\n\nTipAplicación real: losas, forjados y huesos planos\n\n\n\nilustrativo Obra civil. Una losa de forjado apoyada en todo su contorno y cargada de forma uniforme es, casi literalmente, el problema de Navier; los reglamentos y programas de cálculo de losas se contrastan con estas soluciones. Biomecánica. Los huesos planos (calota craneal, escápula) se idealizan a veces como placas o láminas delgadas con presión uniforme. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-empotrada-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-empotrada-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.4 Placa empotrada",
+    "text": "31.4 Placa empotrada\nCon los cuatro bordes empotrados (\\(u_3=\\varphi_1=\\varphi_2=0\\)) la placa es más rígida. La solución de la teoría de placas para la placa cuadrada uniformemente cargada se da en tablas del tipo \\(w_{\\text{centro}}=\\alpha\\,qL^4/D\\) con \\(\\alpha\\approx0{,}00126\\) (valor que se recuerda de la literatura clásica de placas (Timoshenko y Woinowsky-Krieger, s. f.); sin verificar en la edición). El elemento da \\(\\alpha=0{,}001267\\) con \\(24\\times24\\) elementos (Sección 31.7), coherente con ese valor.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-oblicua-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-oblicua-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.5 Placa oblicua",
+    "text": "31.5 Placa oblicua\nUna placa oblicua (un paralelogramo) tiene un sistema de coordenadas no ortogonal: su métrica es \\(a_{12}\\ne0\\) y las componentes covariantes de los desplazamientos no son las físicas. Es el caso que justifica todo el cálculo tensorial del libro. Con un ángulo de \\(60^\\circ\\), simplemente apoyada y \\(q=L=1\\), los coeficientes \\(\\alpha\\) de \\(4,8,16\\) y \\(24\\) elementos por lado son \\(0{,}002354\\), \\(0{,}002485\\), \\(0{,}002530\\) y \\(0{,}002542\\): la secuencia converge monótonamente a \\(\\alpha\\approx0{,}0025\\), algo más de la mitad que la cuadrada.\n\n\n\n\n\n\nFigura 31.3: Placa oblicua de \\(60^\\circ\\) simplemente apoyada con carga uniforme (\\(12\\times12\\) elementos): deformada exagerada, coloreada por la flecha. Cálculo calculado; los elementos son rectángulos del plano paramétrico, paralelogramos en la placa.\n\n\n\n\n\n\n\n\n\nAdvertenciaSin referencia externa verificada\n\n\n\nPara la placa oblicua no se ha verificado ningún valor de la literatura (el caso de referencia habitual, por ejemplo con un ángulo de \\(30^\\circ\\), no se ha podido contrastar). Lo que se afirma aquí es convergencia con la malla y plausibilidad física (menor flecha que la cuadrada). Calculado, sin comparación externa.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-historia-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-historia-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.6 Un poco de historia",
+    "text": "31.6 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: Navier, Lévy y el patch test\n\n\n\nLa ecuación de la placa fue obtenida por Lagrange en 1811 al corregir el trabajo de Sophie Germain. Navier resolvió después la placa simplemente apoyada con una serie trigonométrica doble (las fuentes dan 1820 o 1823), y Lévy (1899, según la fuente más citada) propuso una serie simple para placas con dos bordes opuestos apoyados. El patch test nació en los años sesenta con el grupo de Bruce Irons: Bazeley, Cheung, Irons y Zienkiewicz (1966) lo emplearon para placas triangulares, e Irons y Razzaque (1972) lo describieron con detalle; más tarde se demostró que es necesario, pero no suficiente, para la convergencia (Stummel dio contraejemplos en 1980).\nFuentes (secundarias): A review of the analytical solution methods for the eigenvalue problems of rectangular plates (ScienceDirect); Analysis of Isotropic Rectangular Kirchhoff Plates… Modified Lévy Solution (Preprints); Experience with the patch test for convergence of finite elements (Semantic Scholar); Note on the Necessity of the Patch Test. Las fechas de Navier y de Lévy difieren entre fuentes; no se leyeron los originales. Consultado el 23-10-2026.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-julia-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-julia-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.7 Práctica guiada en Julia",
+    "text": "31.7 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) El patch test mixto del Ejemplo 31.1 con las dos formulaciones, para la placa cuadrada y la oblicua. (2) La convergencia frente a Navier (\\(t/L=0{,}001\\)). (3) Los coeficientes de la placa empotrada y de la oblicua.\n\n\n\nusing Geometria, LinearAlgebra\n\nfunction residuo_patch(geom, modo)\n    L = 1.0; E, ν, t = 1.0e4, 0.3, 0.01\n    xs = [0, 0.18, 0.5, 0.62, 1.0]; ys = [0, 0.3, 0.41, 0.8, 1.0]          # malla no uniforme\n    nodos = hcat([[x, y] for y in ys for x in xs]...); id(i, j) = (j - 1) * 5 + i\n    conn = hcat([[id(i, j), id(i + 1, j), id(i + 1, j + 1), id(i, j + 1)] for j in 1:4 for i in 1:4]...)\n    K, _, _ = ensamblar(geom, nodos, conn, E, ν, t; modo)\n    ufun(p) = [1e-3 * p[1] + 5e-4 * p[2], -3e-4 * p[1] + 8e-4 * p[2], 0.0]\n    wf(p) = 0.5 * (p[1]^2 + 0.5 * p[1] * p[2] + 0.8 * p[2]^2)\n    gw(p) = [p[1] + 0.25 * p[2], 0.25 * p[1] + 0.8 * p[2], 0.0]\n    nn = size(nodos, 2); d = zeros(5nn); fij = Int[]\n    for k in 1:nn\n        θ = nodos[:, k]; g = geometria_punto(geom, θ); p = geom(θ)\n        d[gdl(k, 1):gdl(k, 2)] = g.A' * ufun(p)           # uα = u·aα (componentes covariantes)\n        d[gdl(k, 3)] = wf(p)\n        d[gdl(k, 4):gdl(k, 5)] = -(g.A' * gw(p))         # φα = −w,α  (Kirchhoff: cortante nulo)\n        x, y = θ\n        (x ≈ 0 || x ≈ L || y ≈ 0 || y ≈ L) && append!(fij, gdl(k, 1):gdl(k, 5))\n    end\n    lib = setdiff(1:5nn, fij); res = K * d\n    norm(res[lib]) / norm(res[fij])\nend\n\n[(placa = nombre, subdominios = residuo_patch(g, :subdominios), desplazamientos = residuo_patch(g, :desplazamientos))\n for (nombre, g) in ((\"cuadrada\", placa_oblicua(π / 2)), (\"oblicua 60°\", placa_oblicua(π / 3)))]\n\n2-element Vector{@NamedTuple{placa::String, subdominios::Float64, desplazamientos::Float64}}:\n (placa = \"cuadrada\", subdominios = 3.763157742854868e-9, desplazamientos = 1.0065349829630812)\n (placa = \"oblicua 60°\", subdominios = 1.0549601601941344e-8, desplazamientos = 0.47032501638217494)\n\n\n\nnavier(a, q, D; N = 199) = 16q / (π^6 * D) * sum(sin(m * π / 2) * sin(n * π / 2) / (m * n * (m^2 + n^2)^2 / a^4) for m in 1:2:N, n in 1:2:N)\n\nfunction placa(n, t, modo; E = 1.0e4, ν = 0.3, geom = placa_oblicua(π / 2), empotrada = false)\n    nodos, conn = malla_rectangular((0, 1.0), (0, 1.0), n, n)\n    K, _, F = ensamblar(geom, nodos, conn, E, ν, t; modo, f = θ -&gt; [0, 0, -1.0])\n    fij = Int[]\n    for k in 1:size(nodos, 2)\n        x, y = nodos[:, k]; append!(fij, [gdl(k, 1), gdl(k, 2)])\n        borde = x ≈ 0 || x ≈ 1 || y ≈ 0 || y ≈ 1\n        if empotrada\n            borde && append!(fij, gdl(k, 3):gdl(k, 5))\n        else\n            borde && push!(fij, gdl(k, 3))\n            (x ≈ 0 || x ≈ 1) && push!(fij, gdl(k, 5)); (y ≈ 0 || y ≈ 1) && push!(fij, gdl(k, 4))\n        end\n    end\n    u = resolver_estatica(K, F, unique(fij))\n    c = argmin([norm(nodos[:, k] .- [0.5, 0.5]) for k in 1:size(nodos, 2)])\n    -u[gdl(c, 3)]\nend\n\nE, ν, t = 1.0e4, 0.3, 0.001; D = E * t^3 / (12 * (1 - ν^2))\nwref = navier(1.0, 1.0, D)\ntabla = [(n = n, error_relativo = abs(placa(n, t, :subdominios) / wref - 1)) for n in (2, 4, 8, 16)]\n(α_Navier = wref * D, tabla = tabla,\n orden_observado = [log(tabla[i].error_relativo / tabla[i+1].error_relativo) / log(2) for i in 1:3])\n\n(α_Navier = 0.0040623526606342365, tabla = [(n = 2, error_relativo = 0.14526228472737934), (n = 4, error_relativo = 0.00653980318407732), (n = 8, error_relativo = 0.0012623542933304366), (n = 16, error_relativo = 0.00030445938561440844)], orden_observado = [4.473269147901182, 2.3731303432931687, 2.051795182142271])\n\n\n\n# Empotrada y oblicua (t/L = 0.01): coeficientes α = w·D/(q L⁴)\nt = 0.01; D = 1.0e4 * t^3 / (12 * (1 - 0.3^2))\n(α_empotrada = [placa(n, t, :subdominios; empotrada = true) * D for n in (8, 16, 24)],\n α_oblicua_60 = [placa(n, t, :subdominios; geom = placa_oblicua(π / 3)) * D for n in (4, 8, 16, 24)])\n\n(α_empotrada = [0.00126204767036301, 0.0012660355628241159, 0.0012668019834004296], α_oblicua_60 = [0.0023541735338720566, 0.002485162600201785, 0.002530147776401988, 0.002542080000790622])",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-ejercicios-f1",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#sec-ejercicios-f1",
+    "title": "31  Validación estática (I): la placa",
+    "section": "31.8 Ejercicios",
+    "text": "31.8 Ejercicios\n\nOrden de convergencia. Si el error pasa de \\(6{,}1\\cdot10^{-3}\\) (\\(n=4\\)) a \\(8{,}3\\cdot10^{-4}\\) (\\(n=8\\)), ¿qué orden se observa?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\log_2(6{,}1\\cdot10^{-3}/8{,}3\\cdot10^{-4})=\\log_2(7{,}35)\\approx2{,}9\\): algo por encima de 2 (régimen preasintótico). Con mallas más finas se estabiliza cerca de 2.\n\n\n\nEstancamiento. ¿Por qué con \\(t/L=0{,}01\\) el error frente a Navier se estanca en \\(+0{,}03\\,\\%\\) y no sigue bajando?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPorque el elemento (Reissner–Mindlin) incluye la deformación por cortante y Navier (Kirchhoff) no: la solución exacta de Reissner–Mindlin es algo mayor, y el elemento converge a ésa. El efecto crece como \\((t/L)^2\\) y desaparece al adelgazar la placa.\n\n\n\nDiseñar un patch test. ¿Qué campo se impondría para comprobar el cortante?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nUn giro constante \\(\\varphi_1=\\bar\\varphi\\) con \\(w=-\\bar\\varphi\\,x\\) (inclinación rígida): \\(\\gamma_1=\\varphi_1+w_{,1}=0\\) y curvatura nula; basta que el parche lo reproduzca sin esfuerzos. Para cortante constante no nulo, \\(w=\\bar\\gamma x\\) con \\(\\varphi_1=0\\).",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#la-doy-por-superada-si",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#la-doy-por-superada-si",
+    "title": "31  Validación estática (I): la placa",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nDistingo verificar de validar y digo cuál de las dos hace este tema.\nPlanteo el patch test de membrana y de flexión y sé qué prueba y qué no.\nCalculo la flecha de Navier y el coeficiente \\(0{,}00406\\).\nMido el orden de convergencia a partir de dos mallas.\nReconozco que la placa oblicua no tiene referencia verificada y qué se afirma sobre ella.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; la solución de Navier y los coeficientes de placas son clásicos (Timoshenko y Woinowsky-Krieger, s. f.) (datos editoriales sin verificar); el patch test, en (Bathe 1996; Hughes 1987; Zienkiewicz y Taylor, s. f.). El coeficiente de Navier y los de la placa empotrada y oblicua son calculados; el de la empotrada no se ha contrastado con la tabla original.\nQué queda pendiente. Referencia verificada de la placa oblicua (por ejemplo, el caso de \\(30^\\circ\\)) y de la empotrada; momentos flectores (sólo se estudia la flecha); la nota histórica y la «Aplicación real» usan fuentes secundarias o ninguna; figuras con revisión visual pendiente.\n\n\n\n\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\nTimoshenko, S. P., y S. Woinowsky-Krieger. s. f. Theory of Plates and Shells. McGraw-Hill.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F1-validacion-placa.html#referencias-unidad",
+    "href": "book/F-validacion-vibraciones/F1-validacion-placa.html#referencias-unidad",
+    "title": "31  Validación estática (I): la placa",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall.\n\n\nTimoshenko, S. P., y S. Woinowsky-Krieger. s. f. Theory of Plates and Shells. McGraw-Hill.\n\n\nZienkiewicz, O. C., y R. L. Taylor. s. f. The Finite Element Method. Butterworth-Heinemann.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Validación estática (I): la placa</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. F1 y E9 (condiciones de contorno).\nSecciones del tema",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#objetivos-y-prerrequisitos",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#objetivos-y-prerrequisitos",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "",
+    "text": "comprobar un cilindro a presión con la solución de membrana (analítica);\nplantear el techo de Scordelis–Lo y el cilindro pinzado con sus apoyos y simetrías;\nexplicar por qué se modela un cuarto o un octavo y qué condición pone cada plano de simetría;\ncomparar el resultado con la referencia de la literatura y medir el error con la malla;\nreconocer el bloqueo de membrana en el resultado de la formulación de desplazamientos.\n\n\n\n\nSección 32.1 · Cilindro a presión · Sección 32.2 · Scordelis–Lo · Sección 32.3 · Cilindro pinzado\nSección 32.4 · Cómo leer los resultados · Sección 32.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(r(\\theta^1,\\theta^2)=(x,\\ R\\sin\\varphi,\\ R\\cos\\varphi)\\)\ncilindro de eje \\(x\\), con \\(\\theta^1=x\\) y \\(\\theta^2=\\varphi\\) (normal exterior)\n\n\n\\(R,\\ L,\\ t\\)\nradio, longitud y espesor\n\n\ndiafragma\nextremo que impide los desplazamientos en su plano (\\(u_2=u_3=0\\)) pero deja libre el axial\n\n\nsimetría en \\(x=L/2\\)\n\\(u_1=0\\), \\(\\varphi_1=0\\)\n\n\nsimetría en \\(\\varphi=\\text{cte}\\)\n\\(u_2=0\\), \\(\\varphi_2=0\\)\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: ¿por qué un cuarto o un octavo?\n\n\n\nUn techo con peso simétrico se comporta igual a la izquierda que a la derecha, y por delante que por detrás. Cortarlo por los planos de simetría y calcular sólo un cuarto da el mismo resultado con una cuarta parte del trabajo, siempre que en cada plano de corte se impida lo que la mitad ausente impediría: no se puede cruzar el plano (desplazamiento perpendicular nulo) ni girar la sección (giro nulo alrededor de la normal al plano). Si se olvida un giro, el modelo del cuarto es más flexible que el entero y la flecha sale mayor.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-presion-f2",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-presion-f2",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "32.1 Cilindro a presión",
+    "text": "32.1 Cilindro a presión\nUn cilindro largo, con el desplazamiento axial impedido (\\(\\varepsilon_x=0\\)) y presión interior \\(p\\), tiene una solución de membrana sencilla: la tensión de aro \\(N_\\varphi=pR\\) produce \\(\\varepsilon_\\varphi=u_3/R\\) y, con \\(N_\\varphi=Et\\,\\varepsilon_\\varphi/(1-\\nu^2)\\),\n\\[\nu_3=\\frac{p\\,R^2\\,(1-\\nu^2)}{E\\,t}.\n\\tag{32.1}\\]\n\nEjemplo 32.1 (Ejemplo resuelto: tubo de acero a presión) Tubo de acero (\\(E=210\\) GPa, \\(\\nu=0{,}3\\)) con \\(R=500\\) mm, \\(t=5\\) mm y \\(p=0{,}5\\) MPa. Con ecuación 32.1: \\[\nu_3=\\frac{0{,}5\\cdot500^2\\cdot0{,}91}{210\\,000\\cdot5}=\\frac{113\\,750}{1\\,050\\,000}=\\mathbf{0{,}1083}\\ \\text{mm}.\n\\] Es una prueba de sólo membrana: no depende de la flexión y la debe reproducir cualquier elemento correcto (la práctica la comprueba con un error relativo de \\(10^{-5}\\)). Resultado analítico.\n\n\nEn el Ejemplo 32.1, ¿cuánto se hincha el radio del tubo (\\(u_3\\))?\n\n\\(u_3=pR^2(1-\\nu^2)/(Et)=0{,}5\\cdot250\\,000\\cdot0{,}91/(210\\,000\\cdot5)=0{,}1083\\) mm.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-scordelis-f2",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-scordelis-f2",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "32.2 El techo de Scordelis–Lo",
+    "text": "32.2 El techo de Scordelis–Lo\n\nDefinición 32.1 (Techo de Scordelis–Lo) Cubierta cilíndrica de radio \\(R=25\\), longitud \\(L=50\\), espesor \\(t=0{,}25\\), abertura \\(2\\cdot40^\\circ\\), con \\(E=4{,}32\\cdot10^8\\), \\(\\nu=0\\), bajo peso propio \\(q=90\\) por unidad de superficie (hacia abajo). Los dos extremos curvos tienen diafragma y los bordes longitudinales están libres.\n\nEl valor de referencia es el desplazamiento vertical del punto medio del borde libre: \\(0{,}3024\\), la cifra de uso general que proviene del conjunto de problemas de MacNeal y Harder (MacNeal y Harder 1985); la solución original de Scordelis y Lo es \\(0{,}3086\\), y otros trabajos dan \\(0{,}3006\\). Se modela un cuarto: \\(x\\in[0,L/2]\\) y \\(\\varphi\\in[0,40^\\circ]\\), con diafragma en \\(x=0\\), simetría en \\(x=L/2\\) y simetría en \\(\\varphi=0\\).\n\n\n\n\\(n\\) (elementos/lado)\n4\n8\n16\n32\n\n\n\n\nSubdominios\n0,2690\n0,2925\n0,2988\n0,3006\n\n\nCociente respecto de 0,3024\n0,889\n0,967\n0,988\n0,994\n\n\n\nCalculado con este elemento. El error baja del 11 % al 0,6 %.\n\n\n\n\n\n\nAdvertenciaTres referencias distintas\n\n\n\nHay tres valores en circulación: \\(0{,}3024\\) (el más usado, de MacNeal–Harder), \\(0{,}3086\\) (el de Scordelis y Lo) y \\(0{,}3006\\) (otros trabajos). La diferencia (2 %) es de la misma magnitud que el error de un elemento de cuatro nodos con malla media: conviene declarar con qué referencia se compara. Aquí se usa \\(0{,}3024\\) y se ve que el resultado converge entre las tres.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-pinzado-f2",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-pinzado-f2",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "32.3 El cilindro pinzado",
+    "text": "32.3 El cilindro pinzado\n\nDefinición 32.2 (Cilindro pinzado con diafragmas) Cilindro de \\(R=300\\), \\(L=600\\), \\(t=3\\), \\(E=3\\cdot10^6\\), \\(\\nu=0{,}3\\), con diafragmas en los extremos y dos cargas puntuales radiales opuestas \\(P=1\\) en el plano central. El valor de referencia es el desplazamiento radial bajo la carga: \\(1{,}8248\\cdot10^{-5}\\).\n\nEs un problema muy exigente: la carga puntual crea una concentración de flexión y la lámina trabaja casi sin estirarse (inextensional), de modo que el bloqueo de membrana se nota enseguida. Se modela un octavo (\\(x\\in[0,L/2]\\), \\(\\varphi\\in[0,90^\\circ]\\)), con diafragma en \\(x=0\\), simetría en \\(x=L/2\\) y en \\(\\varphi=0\\) y \\(\\varphi=90^\\circ\\), y la carga \\(P/4\\) en el vértice.\n\n\n\n\n\n\nFigura 32.2: Un octavo del cilindro pinzado con \\(14\\times14\\) elementos: la carga puntual está en la esquina donde la lámina se hunde (azul). El diafragma impide el movimiento en el extremo del tubo. Deformada exagerada. Cálculo calculado.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(n\\) (elementos/lado)\n4\n8\n16\n32\n\n\n\n\nSubdominios (\\(\\times10^{-5}\\))\n1,680\n1,740\n1,808\n1,833\n\n\nCociente respecto de \\(1{,}8248\\cdot10^{-5}\\)\n0,920\n0,953\n0,991\n1,005\n\n\n\nCon \\(32\\times32\\) el resultado pasa ligeramente de la referencia (+0,5 %): es normal en elementos de cuatro nodos y no es un error, sino una convergencia no monótona.\n\n\n\n\n\n\nFigura 32.3: Valor calculado dividido por la referencia (0,3024 en Scordelis–Lo; \\(1{,}8248\\cdot10^{-5}\\) en el pinzado) frente al número de elementos por lado. Los subdominios (continua) llegan al 100 %; los desplazamientos puros (discontinua), no: con \\(32\\times32\\) elementos aún quedan en el 47 % (Scordelis–Lo) y el 30 % (pinzado). Cálculo calculado.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-lectura-f2",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-lectura-f2",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "32.4 Cómo leer los resultados",
+    "text": "32.4 Cómo leer los resultados\n\nLa formulación de desplazamientos puros da, con \\(8\\times8\\), el 12 % (Scordelis–Lo) y el 6 % (pinzado) de la referencia: el bloqueo de membrana y de cortante del tema E5, a plena vista.\nLa integración reducida selectiva (reducción del cortante a un punto) con \\(8\\times8\\) da el 22 % y el 35 %: no basta en láminas curvas y además introduce modos espurios.\nLos subdominios llegan al 97 % y 95 % con \\(8\\times8\\) y al 100 % con mallas finas.\n\n\nEn el cuarto de techo de Scordelis–Lo, en el plano de simetría \\(x=L/2\\), ¿qué g.d.l. se fijan?\n\n\n\\(u_2\\) y \\(u_3\\) (el movimiento en el plano de la sección)\n\\(u_3\\) y \\(\\varphi_2\\)\n\\(u_1\\) y \\(\\varphi_1\\)\nNinguno: es un borde libre\n\n\n\nEn un plano de simetría \\(x=\\text{cte}\\) el desplazamiento perpendicular al plano (\\(u_1\\), axial) y el giro alrededor de la normal al plano de corte (\\(\\varphi_1\\)) son nulos. Los de un diafragma (\\(u_2,u_3\\)) se fijan en el extremo \\(x=0\\), no en el plano de simetría.\n\n\n\n\n\n\n\n\nTipAplicación real: cubiertas en bóveda, tuberías y vasos sanguíneos\n\n\n\nilustrativo Obra civil. El techo de Scordelis–Lo es una bóveda cilíndrica de hormigón de las que se usaron mucho en naves; el cilindro pinzado es un tubo (conducto, tubería o depósito) al que se aplica una carga concentrada, como un apoyo mal repartido o un golpe. Biomecánica. La pared de arterias y venas se modela como un cilindro de pared delgada; un pinzamiento localizado recuerda la compresión de un vaso por una estructura vecina o por una pinza quirúrgica. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-historia-f2",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-historia-f2",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "32.5 Un poco de historia",
+    "text": "32.5 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: el conjunto de problemas de MacNeal y Harder\n\n\n\nEn 1985 Richard MacNeal y Robert Harder publicaron A proposed standard set of problems to test finite element accuracy, un conjunto de problemas con solución conocida pensado para comparar elementos, entre ellos el techo de Scordelis–Lo, el cilindro pinzado y la semiesfera con agujeros. Desde entonces es la batería obligada de cualquier elemento de lámina. El valor \\(0{,}3024\\) del Scordelis–Lo es el que figura en ese conjunto, aunque la solución analítica original de Scordelis y Lo (1964) era \\(0{,}3086\\); el valor \\(1{,}8248\\cdot10^{-5}\\) del cilindro pinzado se atribuye a la línea de trabajo de Belytschko.\nFuentes (secundarias): OS-V: 0730 Scordelis-Lo Roof (Altair); Benchmark Example No. 41 Linear Pinched Cylinder (SOFiSTiK); (MacNeal y Harder 1985). El original de MacNeal y Harder no se leyó; la atribución a Belytschko procede de un resumen de búsqueda. Consultado el 23-10-2026.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-julia-f2",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-julia-f2",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "32.6 Práctica guiada en Julia",
+    "text": "32.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) El tubo a presión del Ejemplo 32.1. (2) El techo de Scordelis–Lo y el cilindro pinzado con las tres formulaciones y comparación con las referencias.\n\n\n\nusing Geometria, LinearAlgebra\n\ncil_x(R) = θ -&gt; [θ[1], R * sin(θ[2]), R * cos(θ[2])]\nnodo_en(nodos, p) = argmin([norm(nodos[:, k] .- p) for k in 1:size(nodos, 2)])\n\n# (1) Tubo a presión (un cuarto de sección, u₁ = 0, simetrías en φ = 0 y π/2)\nfunction presion(n; E = 210e3, ν = 0.3, R = 500.0, t = 5.0, p = 0.5)\n    r = cil_x(R); nodos, conn = malla_rectangular((0, 100.0), (0, π / 2), 2, n)\n    f = θ -&gt; p .* [0, sin(θ[2]), cos(θ[2])]                              # presión hacia fuera: p·n̂\n    K, _, F = ensamblar(r, nodos, conn, E, ν, t; f)\n    fij = Int[]\n    for k in 1:size(nodos, 2)\n        _, φ = nodos[:, k]; append!(fij, [gdl(k, 1), gdl(k, 4)])\n        (φ ≈ 0 || φ ≈ π / 2) && append!(fij, [gdl(k, 2), gdl(k, 5)])\n    end\n    u = resolver_estatica(K, F, unique(fij))\n    u[gdl(nodo_en(nodos, [50.0, π / 4]), 3)]\nend\n(u3_FE = presion(8), u3_teoría = 0.5 * 500.0^2 * (1 - 0.3^2) / (210e3 * 5.0))\n\n(u3_FE = 0.10833215598052337, u3_teoría = 0.10833333333333334)\n\n\n\n# (2) Scordelis–Lo (un cuarto) y cilindro pinzado (un octavo)\nfunction scordelis(n; modo = :subdominios)\n    R, L, t, E, ν = 25.0, 50.0, 0.25, 4.32e8, 0.0; φm = deg2rad(40); r = cil_x(R)\n    nodos, conn = malla_rectangular((0, L / 2), (0, φm), n, n)\n    K, _, F = ensamblar(r, nodos, conn, E, ν, t; modo, f = θ -&gt; [0, 0, -90.0])\n    fij = Int[]\n    for k in 1:size(nodos, 2)\n        x, φ = nodos[:, k]\n        x ≈ 0 && append!(fij, [gdl(k, 2), gdl(k, 3)])                    # diafragma\n        x ≈ L / 2 && append!(fij, [gdl(k, 1), gdl(k, 4)])                # simetría en x = L/2\n        φ ≈ 0 && append!(fij, [gdl(k, 2), gdl(k, 5)])                    # simetría en φ = 0\n    end\n    u = resolver_estatica(K, F, unique(fij))\n    desplazamiento_cartesiano(r, nodos, u, nodo_en(nodos, [L / 2, φm]))[3]       # borde libre, punto medio\nend\n\nfunction pinzado(n; modo = :subdominios)\n    R, L, t, E, ν = 300.0, 600.0, 3.0, 3.0e6, 0.3; r = cil_x(R)\n    nodos, conn = malla_rectangular((0, L / 2), (0, π / 2), n, n)\n    K, _, _ = ensamblar(r, nodos, conn, E, ν, t; modo)\n    nn = size(nodos, 2); F = zeros(5nn); c = nodo_en(nodos, [L / 2, 0.0]); F[gdl(c, 3)] = -0.25   # P/4 hacia dentro\n    fij = Int[]\n    for k in 1:nn\n        x, φ = nodos[:, k]\n        x ≈ 0 && append!(fij, [gdl(k, 2), gdl(k, 3)])\n        x ≈ L / 2 && append!(fij, [gdl(k, 1), gdl(k, 4)])\n        (φ ≈ 0 || φ ≈ π / 2) && append!(fij, [gdl(k, 2), gdl(k, 5)])\n    end\n    u = resolver_estatica(K, F, unique(fij)); u[gdl(c, 3)]\nend\n\n[(n = n, SL = abs(scordelis(n)) / 0.3024, pinzado = abs(pinzado(n)) / 1.8248e-5) for n in (4, 8, 16)]\n\n3-element Vector{@NamedTuple{n::Int64, SL::Float64, pinzado::Float64}}:\n (n = 4, SL = 0.8894240206459509, pinzado = 0.9203798731378694)\n (n = 8, SL = 0.9673146069751656, pinzado = 0.9534545485608125)\n (n = 16, SL = 0.988149083235555, pinzado = 0.9907914724933071)\n\n\n\n# Mismas mallas (8×8) con las tres formulaciones: el bloqueo a la vista\n[(modo = m, SL = abs(scordelis(8; modo = m)) / 0.3024, pinzado = abs(pinzado(8; modo = m)) / 1.8248e-5)\n for m in (:desplazamientos, :reducida_selectiva, :subdominios)]\n\n3-element Vector{@NamedTuple{modo::Symbol, SL::Float64, pinzado::Float64}}:\n (modo = :desplazamientos, SL = 0.11965313510984481, pinzado = 0.06392237035142141)\n (modo = :reducida_selectiva, SL = 0.21782788851450857, pinzado = 0.3493550668323573)\n (modo = :subdominios, SL = 0.9673146069751656, pinzado = 0.9534545485608125)",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-ejercicios-f2",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#sec-ejercicios-f2",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "32.7 Ejercicios",
+    "text": "32.7 Ejercicios\n\nOtro material. ¿Cómo cambia \\(u_3\\) del Ejemplo 32.1 si se duplica el espesor?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSe reduce a la mitad: \\(u_3\\propto1/t\\). La tensión de aro \\(pR/t\\) también se reduce a la mitad.\n\n\n\nUn giro olvidado. Si en el plano de simetría \\(x=L/2\\) se olvida fijar \\(\\varphi_1\\), ¿la flecha del modelo del cuarto será mayor o menor que la real?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nMayor: la sección de simetría podría girar, y el modelo es más flexible que el entero, que no puede girar por simetría.\n\n\n\nReferencia. Si un código da \\(0{,}3086\\) en el Scordelis–Lo, ¿está bien o mal?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nCoincide con la solución original de Scordelis y Lo, pero difiere un 2 % de la referencia habitual (0,3024). Hay que decir con cuál se compara; un 2 % es un error típico de un elemento de cuatro nodos.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#la-doy-por-superada-si",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#la-doy-por-superada-si",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nCalculo el hinchado de un cilindro a presión con la solución de membrana.\nPlanteo Scordelis–Lo y el cilindro pinzado con sus apoyos y simetrías.\nDigo qué g.d.l. se fijan en un diafragma y en un plano de simetría.\nComparo con la referencia declarando cuál uso, y mido el error con la malla.\nReconozco el bloqueo de membrana en la formulación de desplazamientos.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; las referencias (0,3024 y 1,8248·10⁻⁵) y las geometrías proceden de las fuentes secundarias citadas (MacNeal y Harder 1985); no se han contrastado con los artículos originales. El tubo a presión es analítico; el resto, calculado.\nQué queda pendiente. Verificación del valor de Belytschko y de los datos exactos de las cargas del pinzado frente a la publicación original; el tercer benchmark de MacNeal–Harder (semiesfera) no se aborda; la nota histórica y la «Aplicación real» emplean fuentes secundarias o ninguna; revisión visual de las figuras.\n\n\n\n\n\n\nMacNeal, R. H., y R. L. Harder. 1985. «A proposed standard set of problems to test finite element accuracy». Finite Elements in Analysis and Design 1: 3-20.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#referencias-unidad",
+    "href": "book/F-validacion-vibraciones/F2-validacion-cilindro.html#referencias-unidad",
+    "title": "32  Validación estática (II): el cilindro",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nMacNeal, R. H., y R. L. Harder. 1985. «A proposed standard set of problems to test finite element accuracy». Finite Elements in Analysis and Design 1: 3-20.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Validación estática (II): el cilindro</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. F2, El paraboloide hiperbólico (C5) y Leyes constitutivas.\nSecciones del tema",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#objetivos-y-prerrequisitos",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#objetivos-y-prerrequisitos",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "",
+    "text": "deducir que un paraboloide hiperbólico \\(z=cxy\\) bajo carga vertical uniforme soporta la carga con cortante puro \\(N^{12}=p/(2c)\\) (teoría de membrana);\nexplicar el reparto en arcos y cables a lo largo de las diagonales;\ncomparar el resultado de elementos finitos con la membrana y medir la diferencia con la malla y el espesor;\ndistinguir el efecto de los bordes (articulados o empotrados) de la solución de interior;\ncalcular las tensiones principales de una cubierta real.\n\n\n\n\nSección 33.1 · Teoría de membrana del hypar · Sección 33.2 · Arcos y cables · Sección 33.3 · Elementos finitos\nSección 33.4 · El efecto de los bordes · Sección 33.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(z=c\\,x\\,y\\)\nsuperficie media (bordes rectos; \\(c\\) en 1/longitud)\n\n\n\\(p\\)\ncarga vertical por unidad de superficie en planta\n\n\n\\(N^{\\alpha\\beta}\\)\nresultantes de membrana (fuerza por unidad de longitud)\n\n\n\\(b_{12}=\\hat{\\mathbf a}_3\\cdot\\mathbf a_{1,2}\\simeq c\\)\nsegunda forma fundamental (convenio del libro)\n\n\nrasante (shallow)\nsuperficie de pendiente pequeña (\\(c\\,a\\ll1\\))\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: dos arcos y dos cables cruzados\n\n\n\nUna silla de montar tiene dos diagonales distintas: a lo largo de una la superficie se curva hacia arriba (forma de arco) y a lo largo de la otra hacia abajo (forma de cable colgado). Bajo una carga uniforme hacia abajo, el «arco» trabaja a compresión y el «cable» a tracción, con la misma intensidad. Como no hay nada que flecte, la lámina puede ser delgadísima. En cada punto, el estado de tensión es de cortante puro: si se gira la mirada \\(45^\\circ\\), son tracción y compresión iguales y perpendiculares. Por eso las cubiertas de Candela se pueden hacer de pocos centímetros de espesor.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-membrana-f3",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-membrana-f3",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "33.1 Teoría de membrana del hypar",
+    "text": "33.1 Teoría de membrana del hypar\nEn la teoría de membrana se desprecia la flexión: sólo hay resultantes \\(N^{\\alpha\\beta}\\) en el plano tangente. Las ecuaciones de equilibrio (tema D7) son las tangenciales, \\(N^{\\alpha\\beta}{}_{\\|\\beta}=0\\), y la normal, \\(N^{\\alpha\\beta}b_{\\alpha\\beta}+\\hat{\\mathbf n}\\cdot\\mathbf f=0\\), con \\(\\mathbf f\\) la carga por unidad de superficie. En un hypar rasante los símbolos de Christoffel son pequeños y la superficie tiene \\(b_{11}\\simeq b_{22}\\simeq0\\), \\(b_{12}\\simeq c\\); si \\(N^{11}=N^{22}=0\\), las ecuaciones tangenciales se reducen a \\(\\partial N^{12}/\\partial x=\\partial N^{12}/\\partial y=0\\) (\\(N^{12}\\) constante) y la normal queda \\(2c\\,N^{12}-p=0\\):\n\\[\nN^{12}=\\frac{p}{2c},\\qquad N^{11}=N^{22}=0,\\qquad \\text{(carga vertical }p\\text{ por unidad de planta).}\n\\tag{33.1}\\]\nLa resultante es uniforme en toda la lámina. Para que exista hacen falta bordes que la absorban: en cada borde recto se necesita una fuerza de borde (de un elemento rígido, o de un arco o cable en el borde) que equilibre el cortante.\n\nEjemplo 33.1 (Ejemplo resuelto: una cubierta de \\(10\\times10\\) m) Cubierta \\(z=c\\,x\\,y\\) en \\([-5,5]^2\\) m con \\(c=0{,}1\\) m\\(^{-1}\\) (la esquina \\(x=y=5\\) queda a \\(z=2{,}5\\) m), \\(t=50\\) mm y carga \\(p=1{,}5\\) kN/m² (peso propio y nieve, por unidad de planta). Con ecuación 33.1: \\[\nN^{12}=\\frac{1{,}5}{2\\cdot0{,}1}=7{,}5\\ \\text{kN/m}=7{,}5\\ \\text{N/mm},\\qquad \\sigma_{\\text{cortante}}=\\frac{N^{12}}t=\\frac{7{,}5}{50}=0{,}15\\ \\text{MPa}.\n\\] Las tensiones principales (giradas \\(45^\\circ\\)) son \\(\\pm\\sigma_{\\text{cortante}}=\\pm\\mathbf{0{,}15}\\) MPa: una tracción y una compresión de 0,15 MPa, muy por debajo de la resistencia del hormigón. Resultado analítico (teoría de membrana rasante).\n\n\nEn el Ejemplo 33.1, ¿cuánto vale la tensión principal (en valor absoluto) de la cubierta de \\(50\\) mm de espesor?\n\n\\(N^{12}=p/(2c)=1{,}5/0{,}2=7{,}5\\) N/mm; \\(\\sigma=7{,}5/50=0{,}15\\) MPa.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-arcos-f3",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-arcos-f3",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "33.2 Arcos y cables",
+    "text": "33.2 Arcos y cables\nCon \\(N^{12}\\) constante y \\(N^{11}=N^{22}=0\\), el tensor de resultantes en las diagonales \\(\\xi=(x+y)/\\sqrt2\\) y \\(\\zeta=(x-y)/\\sqrt2\\) es \\(N_{\\xi\\xi}=N^{12}\\) y \\(N_{\\zeta\\zeta}=-N^{12}\\): tracción a lo largo de una diagonal y compresión a lo largo de la otra (ecuación 33.1 con \\(p&gt;0\\) hacia abajo: la diagonal que sube es el arco). La carga baja por el sistema de arcos y cables hasta los bordes.\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\n«Casi sin flexión» no es «sin flexión». La membrana pura exige bordes ideales. En el borde real aparecen momentos locales (capa límite) que decaen en una distancia del orden de \\(\\sqrt{Rt}\\).\nLa fórmula es para láminas rasantes. Si el hypar es muy empinado (\\(c\\,a\\gtrsim1\\)), \\(b_{11},b_{22}\\) y los Christoffel ya no son despreciables y ecuación 33.1 deja de ser exacta; en los casos calculados aquí (\\(c\\le1\\), \\(a=1\\)) la diferencia del centro sigue siendo del orden del 1 %.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-fe-f3",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-fe-f3",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "33.3 Elementos finitos",
+    "text": "33.3 Elementos finitos\nSe discretiza \\(z=cxy\\) en \\([-a,a]^2\\) con \\(a=1\\), \\(t=0{,}01\\), \\(E=10^4\\), \\(\\nu=0{,}3\\), \\(p=1\\) y bordes articulados (\\(u_1=u_2=u_3=0\\), giros libres: el apoyo compatible con la membrana). Se mide \\(N^{12}\\) en el centro con las resultantes de los elementos centrales:\n\n\n\n\\(c\\)\n\\(n\\)\n\\(N^{12}\\) (EF)\n\\(p/(2c)\\)\nDiferencia\n\n\n\n\n0,25\n16\n2,0192\n2,0\n\\(+1{,}0\\,\\%\\)\n\n\n0,25\n32\n2,0097\n2,0\n\\(+0{,}5\\,\\%\\)\n\n\n0,5\n16\n0,9905\n1,0\n\\(-0{,}9\\,\\%\\)\n\n\n1,0\n16\n0,4978\n0,5\n\\(-0{,}4\\,\\%\\)\n\n\n\nCalculado con este elemento, como media de los cuatro elementos que rodean el centro (el valor de un solo elemento depende de su posición respecto del eje, como se ve en la Figura 33.2, y puede alejarse un 2 % o más). El resultado coincide con la membrana en torno al 1 % y se acerca al refinar la malla. Si se adelgaza la lámina (\\(t=0{,}02\\), \\(0{,}005\\), \\(0{,}002\\) con \\(c=0{,}5\\), \\(n=16\\)) el valor oscila entre \\(1{,}020\\), \\(0{,}996\\) y \\(1{,}002\\): la membrana domina más cuanto más delgada es.\n\n\n\n\n\n\nFigura 33.2: Resultante \\(N^{12}\\) a lo largo del eje central (\\(y\\approx0\\)) para \\(c=0{,}25\\), \\(p=1\\), \\(24\\times24\\) elementos. En el interior es casi uniforme y próxima a \\(p/(2c)=2\\) (verde); cerca de los bordes se aparta, más con los bordes empotrados (naranja) que con los articulados (azul). Calculado.\n\n\n\n\nEn un hypar rasante \\(z=cxy\\) con carga uniforme \\(p\\) por unidad de planta, ¿qué esfuerzos de membrana aparecen?\n\n\nSólo cortante \\(N^{12}=p/(2c)\\), con \\(N^{11}=N^{22}=0\\)\nTracciones \\(N^{11}=N^{22}=p/(2c)\\) y cortante nulo\nCompresión uniforme isótropa\nNinguno: la carga se soporta sólo por flexión\n\n\n\nCon \\(b_{11}\\simeq b_{22}\\simeq0\\) y \\(b_{12}\\simeq c\\), la ecuación normal \\(2cN^{12}=p\\) se cumple con cortante puro. Es el estado que hace tan eficiente esta forma.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-bordes-f3",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-bordes-f3",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "33.4 El efecto de los bordes",
+    "text": "33.4 El efecto de los bordes\nLa solución de membrana (ecuación 33.1) vale en el interior; cerca de los bordes, el apoyo real no puede suministrar exactamente la reacción de membrana y aparece flexión. Con bordes articulados el efecto es pequeño y de poca extensión; con bordes empotrados es mayor (Figura 33.2), porque se impide el giro y hay un momento de empotramiento. Dos consecuencias prácticas: (i) el espesor crece hacia los bordes en muchas cubiertas reales, y (ii) los elementos de borde (nervios, vigas, arcos) se dimensionan con la reacción de membrana más un término de flexión.\n\n\n\n\n\n\nTipAplicación real: Félix Candela y el Oceanogràfic de Valencia\n\n\n\nilustrativo Obra civil. El paraboloide hiperbólico es la forma de las cubiertas de Candela. En el Oceanogràfic de Valencia (Candela, proyecto de 1997, con los ingenieros Alberto Domingo y Carlos Lázaro) la cubierta del restaurante se compone de cuatro hypar que se intersecan y la de la entrada es un hypar equilátero de 30 m de luz; los textos técnicos lo describen como un caso de acción de membrana, con cargas transmitidas por esfuerzos en el plano. El espesor, según fuentes comerciales, ronda los 6 cm, aunque otra fuente indica 6 cm en los bordes y hasta unos 22 cm en la intersección de los nervios, y no se ha verificado cuál describe cada estructura.\nFuentes (secundarias): L’Oceanogràfic (Wikipedia); Shell structure at the entrance of the L’Oceanogràfic (ResearchGate); Saddle roof (Wikipedia). Los espesores son discordantes entre fuentes; no se consultaron planos de proyecto. Consultado el 23-10-2026.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-historia-f3",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-historia-f3",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "33.5 Un poco de historia",
+    "text": "33.5 Un poco de historia\n\n\n\n\n\n\nNotaUn poco de historia: Candela y la lámina delgada\n\n\n\nFélix Candela (1910–1997) construyó desde los años cincuenta cubiertas de hormigón de pocos centímetros de espesor con formas de paraboloide hiperbólico, como el restaurante Los Manantiales de Ciudad de México (1958), que se cita como precedente de las cubiertas del Oceanogràfic. Wikipedia atribuye al Oceanogràfic un proyecto de Candela con 87 años en 1997. Aquí no se ha podido verificar el resto de la cronología con una fuente especializada: se reproduce sólo lo que las fuentes secundarias coinciden en decir.\nFuentes (secundarias): Saddle roof (Wikipedia); L’Oceanogràfic (Wikipedia). Las fechas de vida y de obra de Candela proceden de lo que resumen esas páginas; no se leyeron fuentes biográficas. Consultado el 23-10-2026.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-julia-f3",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-julia-f3",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "33.6 Práctica guiada en Julia",
+    "text": "33.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) La cubierta del Ejemplo 33.1. (2) \\(N^{12}\\) del centro de un hypar para varias pendientes y mallas. (3) El perfil de \\(N^{12}\\) con bordes articulados y empotrados.\n\n\n\nusing Geometria, LinearAlgebra\n\n# (1) Cubierta real\nc, p, t = 0.1, 1.5, 50.0              # 1/m, kN/m², mm\nN12 = p / (2c)                         # kN/m = N/mm\n(N12_kN_m = N12, tensión_principal_MPa = N12 / t)\n\n(N12_kN_m = 7.5, tensión_principal_MPa = 0.15)\n\n\n\nfunction hypar_estatico(n, c; t = 0.01, E = 1.0e4, ν = 0.3, p = 1.0, a = 1.0, apoyo = :articulado)\n    r = paraboloide_recto(c)\n    nodos, conn = malla_rectangular((-a, a), (-a, a), n, n)\n    f = θ -&gt; [0.0, 0.0, -p / geometria_punto(r, θ).sa]               # p por unidad de planta\n    K, _, F = ensamblar(r, nodos, conn, E, ν, t; f)\n    fij = Int[]\n    for k in 1:size(nodos, 2)\n        x, y = nodos[:, k]\n        if abs(x) ≈ a || abs(y) ≈ a\n            append!(fij, [gdl(k, 1), gdl(k, 2), gdl(k, 3)])\n            apoyo == :empotrado && append!(fij, [gdl(k, 4), gdl(k, 5)])\n        end\n    end\n    (r, nodos, conn, resolver_estatica(K, F, unique(fij)))\nend\n\n# N¹² de los elementos centrales (media de los que están a ambos lados del eje y = 0)\nfunction n12_centro(n, c; t = 0.01, E = 1.0e4, ν = 0.3, kw...)\n    r, nodos, conn, u = hypar_estatico(n, c; t, E, ν, kw...)\n    vals = Float64[]\n    for e in axes(conn, 2)\n        X = nodos[:, conn[:, e]]\n        xc = (X[1, 1] + X[1, 2]) / 2; yc = (X[2, 1] + X[2, 4]) / 2\n        (abs(xc) &lt;= 1.0 / n * 1.001 && abs(yc) &lt;= 1.0 / n * 1.001) && push!(vals, deformaciones_medias(r, nodos, conn, e, u, E, ν, t).N[3])\n    end\n    sum(vals) / length(vals)\nend\n\n[(c = c, n = n, N12_EF = n12_centro(n, c), teoría = 1 / (2c)) for (c, n) in ((0.25, 16), (0.25, 32), (0.5, 16), (1.0, 16))]\n\n4-element Vector{@NamedTuple{c::Float64, n::Int64, N12_EF::Float64, teoría::Float64}}:\n (c = 0.25, n = 16, N12_EF = 2.0192332270226747, teoría = 2.0)\n (c = 0.25, n = 32, N12_EF = 2.009741692492367, teoría = 2.0)\n (c = 0.5, n = 16, N12_EF = 0.9905409560932471, teoría = 1.0)\n (c = 1.0, n = 16, N12_EF = 0.4978203426549612, teoría = 0.5)\n\n\n\n# (3) Efecto del espesor (c = 0.5): más delgada → más cerca de la membrana\n[(t = t, N12 = n12_centro(16, 0.5; t = t)) for t in (0.02, 0.005, 0.002)]\n\n3-element Vector{@NamedTuple{t::Float64, N12::Float64}}:\n (t = 0.02, N12 = 1.020285274743213)\n (t = 0.005, N12 = 0.9959166789268626)\n (t = 0.002, N12 = 1.0016558481836835)",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-ejercicios-f3",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#sec-ejercicios-f3",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "33.7 Ejercicios",
+    "text": "33.7 Ejercicios\n\nCambio de carga. Si la carga se duplica, ¿cómo cambia \\(N^{12}\\) y la tensión?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSe duplica (\\(N^{12}\\propto p\\)). Con la cubierta de 50 mm, \\(0{,}30\\) MPa.\n\n\n\nMás curvatura. Si \\(c\\) se duplica manteniendo \\(p\\) y \\(t\\), ¿qué ocurre con \\(N^{12}\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSe reduce a la mitad: una silla más curvada soporta la misma carga con menor esfuerzo (por eso las cubiertas reales no son planas). Pero deja de ser rasante y hay que revisar la fórmula.\n\n\n\nBordes. ¿Por qué un hypar sin elementos de borde no puede trabajar como membrana?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPorque en un borde libre la lámina no puede transmitir fuerza: debería ser \\(N^{12}=0\\) allí, y con \\(N^{12}=p/(2c)\\) uniforme eso es imposible. Hace falta un elemento de borde (viga, arco o cable) que reciba la fuerza tangencial que la lámina le entrega y la lleve a los apoyos.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#la-doy-por-superada-si",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#la-doy-por-superada-si",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nDeduzco \\(N^{12}=p/(2c)\\) del equilibrio normal con \\(b_{12}\\simeq c\\).\nDescribo el reparto en arcos y cables y las tensiones principales.\nCalculo una cubierta real y sé que su tensión es pequeña.\nComparo EF y membrana y explico cuándo coinciden.\nSé que cerca de los bordes hay flexión y que depende del tipo de apoyo.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; la teoría de membrana de láminas es estándar (Flügge 1972; Novozhilov 1959); la deducción para el hypar rasante es propia y los resultados de EF son calculados. Las fuentes de Candela y del Oceanogràfic son secundarias.\nQué queda pendiente. No hay comparación con resultados de la literatura para el hypar estático (sólo con la teoría de membrana rasante); la teoría de membrana no rasante no se ha deducido; la solución de capa límite se describe sólo cualitativamente; espesores del Oceanogràfic discordantes; la dependencia de \\(N^{12}\\) del elemento muestreado indica que conviene promediar (lección registrada); revisión visual de las figuras.\n\n\n\n\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F3-hypar-estatico.html#referencias-unidad",
+    "href": "book/F-validacion-vibraciones/F3-hypar-estatico.html#referencias-unidad",
+    "title": "33  El paraboloide hiperbólico bajo carga",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics. Springer-Verlag.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff ltd.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>El paraboloide hiperbólico bajo carga</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html",
+    "title": "34  Vibraciones de láminas",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. E9 (problema de autovalores) y F1. Para el oscilador de un grado de libertad, véanse las unidades de vibraciones de Resonancia.\nSecciones del tema",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#objetivos-y-prerrequisitos",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#objetivos-y-prerrequisitos",
+    "title": "34  Vibraciones de láminas",
+    "section": "",
+    "text": "pasar del oscilador de un grado de libertad a una lámina con infinitas frecuencias propias;\nescribir el parámetro adimensional \\(\\lambda=\\omega a^2\\sqrt{\\rho t/D}\\) y usarlo para comparar placas de distinto tamaño y material;\ncalcular las frecuencias de una placa simplemente apoyada y comprobar los resultados de elementos finitos;\nexplicar cómo cambian las frecuencias con el espesor (cortante, inercia de giro) y con la curvatura;\nleer los modos como patrones de líneas nodales.\n\n\n\n\nSección 34.1 · Del oscilador a la lámina · Sección 34.2 · La placa simplemente apoyada · Sección 34.3 · Resultado de elementos finitos\nSección 34.4 · Efecto del espesor · Sección 34.5 · Efecto de la curvatura · Sección 34.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\omega,\\ f=\\omega/2\\pi\\)\nfrecuencia propia (rad/s y Hz)\n\n\n\\(\\lambda=\\omega\\,a^2\\sqrt{\\rho t/D}\\)\nparámetro adimensional de frecuencia (lado \\(a\\))\n\n\n\\(D=Et^3/\\bigl(12(1-\\nu^2)\\bigr)\\)\nrigidez a flexión\n\n\n\\(\\rho t\\)\nmasa por unidad de superficie\n\n\n\\((m,n)\\)\nnúmero de semiondas en \\(x\\) y en \\(y\\)\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: la regla en el borde de la mesa\n\n\n\nUna regla sujeta con la mano al borde de una mesa vibra con un tono grave si sobresale mucho y más agudo si sobresale poco: la frecuencia sube con la rigidez y baja con la masa, \\(\\omega\\sim\\sqrt{\\text{rigidez}/\\text{masa}}\\). Una lámina es como una regla en dos dimensiones, y no tiene un tono sino muchos (un «instrumento»): el más grave (modo fundamental) es una joroba única; los siguientes tienen líneas nodales (zonas que no se mueven) que dividen la placa en regiones que suben y bajan alternadas, como los dibujos de arena de una placa que suena. Una placa curva es más rígida que una plana de la misma masa y suena más aguda.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-un-gdl-f4",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-un-gdl-f4",
+    "title": "34  Vibraciones de láminas",
+    "section": "34.1 Del oscilador a la lámina",
+    "text": "34.1 Del oscilador a la lámina\nUn oscilador de un grado de libertad (\\(m\\ddot x+kx=0\\)) tiene una frecuencia \\(\\omega=\\sqrt{k/m}\\). Una estructura discretizada con \\(N\\) g.d.l. tiene un sistema \\(\\mathbf M\\ddot{\\mathbf d}+\\mathbf K\\mathbf d=\\mathbf 0\\) y \\(N\\) frecuencias, cada una asociada a un modo \\(\\boldsymbol\\phi_i\\) (ecuación 30.2). Una lámina continua tiene infinitas; el elemento finito aproxima las más graves y las altas pierden precisión (el modo \\(i\\) está bien resuelto sólo si cabe con holgura en la malla). Cada modo se comporta como un oscilador de un grado de libertad: con \\(\\mathbf d=\\sum q_i\\boldsymbol\\phi_i\\) las ecuaciones se desacoplan en \\(\\ddot q_i+\\omega_i^2q_i=0\\).",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-placa-f4",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-placa-f4",
+    "title": "34  Vibraciones de láminas",
+    "section": "34.2 La placa simplemente apoyada",
+    "text": "34.2 La placa simplemente apoyada\nPara una placa rectangular \\(a\\times b\\) simplemente apoyada (Kirchhoff) las frecuencias se obtienen con senos, como en la solución de Navier de F1:\n\\[\n\\omega_{mn}=\\pi^2\\Bigl(\\frac{m^2}{a^2}+\\frac{n^2}{b^2}\\Bigr)\\sqrt{\\frac{D}{\\rho\\,t}},\\qquad w_{mn}=\\sin\\frac{m\\pi x}a\\,\\sin\\frac{n\\pi y}b .\n\\tag{34.1}\\]\nPara la placa cuadrada el parámetro adimensional es \\(\\lambda_{mn}=\\pi^2(m^2+n^2)\\): \\(2\\pi^2=19{,}74\\) (\\(m=n=1\\)), \\(5\\pi^2=49{,}35\\) (doble: \\((1,2)\\) y \\((2,1)\\)), \\(8\\pi^2=78{,}96\\) y \\(10\\pi^2=98{,}70\\) (doble).\n\nEjemplo 34.1 (Ejemplo resuelto: una placa de acero) Placa cuadrada de acero de \\(1\\times1\\) m, \\(t=10\\) mm (\\(E=210\\) GPa, \\(\\nu=0{,}3\\), \\(\\rho=7850\\) kg/m³), simplemente apoyada. Entonces \\(D=210\\cdot10^9\\cdot(0{,}01)^3/(12\\cdot0{,}91)=19\\,231\\) N·m, \\(\\rho t=78{,}5\\) kg/m² y \\[\n\\omega_{11}=2\\pi^2\\sqrt{\\frac{D}{\\rho t}}\\,\\frac1{a^2}=19{,}74\\cdot\\sqrt{244{,}98}=\\mathbf{308{,}95}\\ \\text{rad/s}\\qquad f_{11}=\\mathbf{49{,}17}\\ \\text{Hz}.\n\\] Un modo propio de unos 50 Hz: la fundamental de una placa de ese tamaño y espesor. Resultado analítico.\n\n\nEn el Ejemplo 34.1, ¿cuánto vale la frecuencia fundamental \\(f_{11}\\) de la placa de acero de \\(1\\times1\\) m y \\(10\\) mm?\n\n\\(f=\\omega/(2\\pi)\\) con \\(\\omega=2\\pi^2\\sqrt{D/(\\rho t)}/a^2\\) y \\(D=Et^3/(12(1-\\nu^2))\\).\n\n\n\\(D=19\\,231\\) N·m, \\(D/(\\rho t)=244{,}98\\), \\(\\omega=19{,}739\\cdot15{,}652=308{,}95\\) rad/s, \\(f=49{,}17\\) Hz.\n\n\n\nSi se duplica el lado de una placa (mismo espesor y material), ¿cómo cambia la frecuencia fundamental?\n\n\nSe duplica\nSe divide por 4\nSe divide por 2\nNo cambia\n\n\n\n\\(\\omega\\propto1/a^2\\): con \\(a\\to2a\\), \\(\\omega\\to\\omega/4\\). Las placas grandes y delgadas suenan mucho más graves.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-fe-f4",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-fe-f4",
+    "title": "34  Vibraciones de láminas",
+    "section": "34.3 Resultado de elementos finitos",
+    "text": "34.3 Resultado de elementos finitos\nEl elemento da los valores de la Figura 34.2 con \\(\\mathbf M\\) consistente (cota superior, tema E8): con una placa delgada (\\(t/a=0{,}001\\)), el error del modo fundamental es del 6 % con \\(4\\times4\\) elementos, del 1,6 % con \\(8\\times8\\) y del 0,4 % con \\(16\\times16\\); los modos superiores (el segundo y el cuarto) convergen más despacio (30 % con \\(4\\times4\\), 1,5 % con \\(16\\times16\\)), porque necesitan más elementos por semionda.\n\n\n\n\n\n\nFigura 34.2: Parámetros de frecuencia de la placa cuadrada simplemente apoyada, cociente entre el valor del elemento y el exacto, frente al número de elementos por lado (\\(t/a=0{,}001\\)). Siempre por encima de 1 (masa consistente); los modos con más semiondas convergen más despacio. Calculado.\n\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nFrecuencias dobles. En la placa cuadrada, \\((1,2)\\) y \\((2,1)\\) tienen la misma frecuencia, y cualquier combinación de ambos es también un modo: el programa puede devolver una mezcla arbitraria de los dos. En una malla imperfecta, la degeneración se rompe ligeramente.\n«Más malla» no mejora los modos altos al mismo ritmo. Para fiarse del modo \\(k\\) conviene comprobar su convergencia, no la del fundamental.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-espesor-f4",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-espesor-f4",
+    "title": "34  Vibraciones de láminas",
+    "section": "34.4 Efecto del espesor",
+    "text": "34.4 Efecto del espesor\nLa teoría de Kirchhoff (ecuación 34.1) desprecia el cortante y la inercia de giro; ambos bajan las frecuencias de una placa gruesa. Con \\(t/a=0{,}1\\) la placa simplemente apoyada da \\(\\lambda_1\\approx19{,}2\\) con \\(16\\times16\\) elementos, un 3 % por debajo del valor de Kirchhoff de \\(19{,}74\\) (el elemento sobreestima además ~0,4 % por la malla). Es la razón de usar un elemento de Reissner–Mindlin en láminas de espesor moderado.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-curvatura-f4",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-curvatura-f4",
+    "title": "34  Vibraciones de láminas",
+    "section": "34.5 Efecto de la curvatura",
+    "text": "34.5 Efecto de la curvatura\nUna lámina curva tiene rigidez de membrana frente a la flexión: para abombarse debe estirarse, lo que cuesta mucho más que flexarse, y las frecuencias suben. La Figura 34.3 muestra la primera frecuencia de un panel cilíndrico de lado \\(a=1\\) simplemente apoyado (con diafragmas) para curvaturas crecientes.\n\n\n\n\n\n\nFigura 34.3: Parámetro de frecuencia \\(\\lambda_1\\) de un panel cilíndrico de lado \\(a\\) y radio \\(R\\) frente a \\(a/R\\), con \\(t/a=0{,}01\\). Con \\(a/R=0\\) se recupera la placa plana (\\(2\\pi^2\\), gris); la curvatura la cuadruplica con \\(a/R=1\\). Calculado con \\(12\\times12\\) elementos.\n\n\n\n\n\n\n\n\n\nImportanteIdea clave: la curvatura es rigidez\n\n\n\nCon la misma masa y el mismo espesor, una lámina curva suena más aguda que una plana: la curvatura convierte parte de la flexión (barata) en esfuerzo de membrana (caro). Es la misma razón por la que una cubierta curva soporta una carga con muy poco espesor (F3), y por la que el hypar del tema siguiente tiene frecuencias distintas de las de una placa.\n\n\n\n\n\n\n\n\nTipAplicación real: forjados, cubiertas y membrana del tímpano\n\n\n\nilustrativo Obra civil. En forjados y pasarelas la frecuencia fundamental debe quedar lejos de la del paso de las personas; en cubiertas y torres de lámina se compara con la excitación del viento o del sismo. Biomecánica. Estructuras laminares del cuerpo como la membrana timpánica o la calota craneal se estudian mediante sus modos propios. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-julia-f4",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-julia-f4",
+    "title": "34  Vibraciones de láminas",
+    "section": "34.6 Práctica guiada en Julia",
+    "text": "34.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) Las frecuencias analíticas de ecuación 34.1 y las del elemento, para \\(t/a=0{,}01\\) y \\(0{,}1\\). (2) La placa de acero del Ejemplo 34.1. (3) El panel cilíndrico: \\(\\lambda_1\\) frente a la curvatura.\n\n\n\nusing Geometria, LinearAlgebra\n\ncil_x(R) = θ -&gt; [θ[1], R * sin(θ[2]), R * cos(θ[2])]\n\n# Placa cuadrada simplemente apoyada (lado 1): primeros λ = ω a² √(ρt/D)\nfunction lambdas_placa(n, t; E = 1.0e4, ν = 0.3, ρ = 1.0, k = 5)\n    nodos, conn = malla_rectangular((0, 1.0), (0, 1.0), n, n)\n    K, M, _ = ensamblar(placa_oblicua(π / 2), nodos, conn, E, ν, t; ρ)\n    fij = Int[]\n    for j in 1:size(nodos, 2)\n        x, y = nodos[:, j]; append!(fij, [gdl(j, 1), gdl(j, 2)])\n        (x ≈ 0 || x ≈ 1 || y ≈ 0 || y ≈ 1) && push!(fij, gdl(j, 3))\n        (x ≈ 0 || x ≈ 1) && push!(fij, gdl(j, 5)); (y ≈ 0 || y ≈ 1) && push!(fij, gdl(j, 4))\n    end\n    ω, _ = frecuencias(K, M, unique(fij); n = k)\n    D = E * t^3 / (12 * (1 - ν^2))\n    ω .* sqrt(ρ * t / D)\nend\n\nexactas = [π^2 * (m^2 + k^2) for (m, k) in ((1, 1), (1, 2), (2, 1), (2, 2), (1, 3))]\n(exactas_Kirchhoff = round.(exactas, digits = 2),\n delgada_t001 = round.(lambdas_placa(16, 0.01), digits = 2),\n gruesa_t01 = round.(lambdas_placa(16, 0.1), digits = 2))\n\n(exactas_Kirchhoff = [19.74, 49.35, 49.35, 78.96, 98.7], delgada_t001 = [19.81, 50.05, 50.05, 80.07, 102.38], gruesa_t01 = [19.22, 46.55, 46.55, 71.73, 89.32])\n\n\n\n# (2) Placa de acero 1×1 m, t = 10 mm\nE, ν, ρ, t, a = 210e9, 0.3, 7850.0, 0.01, 1.0\nD = E * t^3 / (12 * (1 - ν^2))\nω = 2π^2 * sqrt(D / (ρ * t)) / a^2\n(D = D, ω = ω, f_Hz = ω / 2π)\n\n(D = 19230.769230769234, ω = 308.9535863275534, f_Hz = 49.171490449998736)\n\n\n\n# (3) Panel cilíndrico con diafragmas: λ₁ frente a la curvatura a/R\nfunction lambda_panel(R; n = 10, t = 0.01, E = 1.0e4, ν = 0.3, ρ = 1.0)\n    r = cil_x(R); nodos, conn = malla_rectangular((0, 1.0), (0, 1.0 / R), n, n)\n    K, M, _ = ensamblar(r, nodos, conn, E, ν, t; ρ)\n    fij = Int[]\n    for j in 1:size(nodos, 2)\n        x, φ = nodos[:, j]\n        (x ≈ 0 || x ≈ 1) && append!(fij, [gdl(j, 2), gdl(j, 3), gdl(j, 5)])           # extremos: diafragma + giro tangente\n        (φ ≈ 0 || φ ≈ 1 / R) && append!(fij, [gdl(j, 1), gdl(j, 3), gdl(j, 4)])\n    end\n    D = E * t^3 / (12 * (1 - ν^2))\n    frecuencias(K, M, unique(fij); n = 1)[1][1] * sqrt(ρ * t / D)\nend\n[(curvatura_a_sobre_R = c, λ₁ = round(lambda_panel(1 / c), digits = 2)) for c in (0.05, 0.2, 0.5, 1.0)]\n\n4-element Vector{@NamedTuple{curvatura_a_sobre_R::Float64, λ₁::Float64}}:\n (curvatura_a_sobre_R = 0.05, λ₁ = 21.54)\n (curvatura_a_sobre_R = 0.2, λ₁ = 38.3)\n (curvatura_a_sobre_R = 0.5, λ₁ = 59.6)\n (curvatura_a_sobre_R = 1.0, λ₁ = 79.15)",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-ejercicios-f4",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#sec-ejercicios-f4",
+    "title": "34  Vibraciones de láminas",
+    "section": "34.7 Ejercicios",
+    "text": "34.7 Ejercicios\n\nCambio de material. Si la placa de acero se sustituye por aluminio (\\(E=70\\) GPa, \\(\\rho=2700\\) kg/m³, \\(\\nu=0{,}33\\)), ¿sube o baja la frecuencia?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\(\\omega\\propto\\sqrt{E/\\bigl(\\rho(1-\\nu^2)\\bigr)}\\): acero \\(\\sqrt{210\\cdot10^9/(7850\\cdot0{,}91)}=5422\\) y aluminio \\(\\sqrt{70\\cdot10^9/(2700\\cdot0{,}891)}=5394\\) (1/s·m): la frecuencia es casi igual (un 0,5 % menor en aluminio), porque \\(E/\\rho\\) de ambos materiales es muy parecido; el aluminio sólo gana si se aumenta el espesor sin aumentar el peso.\n\n\n\nLíneas nodales. ¿Qué forma tiene el modo \\((2,2)\\) de una placa cuadrada simplemente apoyada?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nCuatro lóbulos alternos separados por dos líneas nodales (la mediana vertical y la horizontal): el modo 4 de la Figura 34.1.\n\n\n\nFrecuencias dobles. ¿Cuántos modos tienen \\(\\lambda=5\\pi^2\\) en una placa cuadrada? ¿Y en una rectangular \\(a\\times1{,}2a\\)?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nDos \\((1,2)\\) y \\((2,1)\\) en la cuadrada. En la rectangular, \\(\\lambda_{12}\\ne\\lambda_{21}\\) y la degeneración desaparece.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#la-doy-por-superada-si",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#la-doy-por-superada-si",
+    "title": "34  Vibraciones de láminas",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nExplico qué es un modo propio y por qué una lámina tiene infinitos.\nCalculo \\(\\lambda_{mn}\\) y \\(f\\) de una placa simplemente apoyada.\nSé que la masa consistente da cota superior y que los modos altos convergen más despacio.\nDigo por qué el espesor baja las frecuencias y la curvatura las sube.\nLeo un modo por sus líneas nodales.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; las frecuencias de una placa simplemente apoyada son un resultado clásico (Kirchhoff) (Timoshenko y Woinowsky-Krieger, s. f.) (datos editoriales sin verificar) y aquí se calculan; vibraciones de láminas, en (Narita y Leissa 1984) para láminas rasantes con apoyos en esquina. Los efectos del espesor y de la curvatura se muestran con cálculo propio, sin comparar con fuente externa.\nQué queda pendiente. No se ha verificado el efecto del espesor frente a una solución de Reissner–Mindlin (con factor de cortante): el elemento usa \\(\\kappa=1\\) (por confirmar); no hay nota histórica por falta de fuente verificada (véase la de Chladni en D7); la «Aplicación real» es una orientación sin fuente; revisión visual de las figuras.\n\n\n\n\n\n\nNarita, Y., y A. W. Leissa. 1984. «Vibrations of Corner Point Supported Shallow Shells of Rectangular Planform». Earthquake Engineering and Structural Dynamics 12: 651-61.\n\nTimoshenko, S. P., y S. Woinowsky-Krieger. s. f. Theory of Plates and Shells. McGraw-Hill.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#referencias-unidad",
+    "href": "book/F-validacion-vibraciones/F4-vibraciones-laminas.html#referencias-unidad",
+    "title": "34  Vibraciones de láminas",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nNarita, Y., y A. W. Leissa. 1984. «Vibrations of Corner Point Supported Shallow Shells of Rectangular Planform». Earthquake Engineering and Structural Dynamics 12: 651-61.\n\n\nTimoshenko, S. P., y S. Woinowsky-Krieger. s. f. Theory of Plates and Shells. McGraw-Hill.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Vibraciones de láminas</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. F4, F3 y El paraboloide hiperbólico (C5).\nSecciones del tema",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#objetivos-y-prerrequisitos",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#objetivos-y-prerrequisitos",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "",
+    "text": "distinguir el hypar de bordes curvos del de bordes rectos (la misma superficie con dos plantas distintas) y plantear sus apoyos SSSS y CCCC;\ncalcular las primeras frecuencias adimensionales y compararlas con las de una placa plana;\nextrapolar el valor límite a partir de una serie de mallas (Richardson) y declarar su incertidumbre;\ndistinguir modos de membrana y de flexión por su dependencia del espesor;\nconvertir un \\(\\lambda\\) en una frecuencia en Hz para una cubierta real.\n\n\n\n\nSección 35.1 · Dos plantas, una superficie · Sección 35.2 · Frecuencias y parámetros · Sección 35.3 · Convergencia y extrapolación\nSección 35.4 · Membrana o flexión · Sección 35.5 · Una cubierta real · Sección 35.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(L=2a\\)\nlado de la planta cuadrada \\([-a,a]^2\\)\n\n\n\\(\\lambda=\\omega L^2\\sqrt{\\rho t/D}\\)\nparámetro de frecuencia (el de F4, con el lado completo \\(L\\))\n\n\nbordes curvos\n\\(z=\\tfrac1{2R}(y^2-x^2)\\) ( paraboloide_curvo(R,−R) ): los bordes de la planta son parábolas\n\n\nbordes rectos\n\\(z=c\\,x\\,y\\) ( paraboloide_recto(c) ), \\(c=1/R\\): los bordes de la planta son rectas\n\n\nSSSS\nborde con \\(u_{\\text{tang}}=u_3=0\\) y \\(\\varphi_{\\text{tang}}=0\\) (diafragma de corte)\n\n\nCCCC\nempotrado: \\(u_1=u_2=u_3=\\varphi_1=\\varphi_2=0\\)\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: la cometa tensa, no la losa doblada\n\n\n\nUna losa plana vibra flectando; un hypar vibra, sobre todo, estirándose y cizallándose como una cometa tensa: al subir una diagonal y bajar la otra, la superficie tiene que cambiar de longitud, y eso cuesta mucho más que flectar. Por eso un hypar de la misma planta, material y espesor que una losa tiene frecuencias varias veces más altas. Y por eso una cubierta de hypar es muy sensible a cómo se apoya en sus bordes: si el borde no puede suministrar el cortante de membrana, la lámina pierde su «tensión» y su rigidez.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-dos-hypar-f5",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-dos-hypar-f5",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "35.1 Dos plantas, una superficie",
+    "text": "35.1 Dos plantas, una superficie\nEl paraboloide hiperbólico \\(z=\\tfrac1{2R}(y^2-x^2)\\) es la misma superficie que \\(z=c\\,x\\,y\\) con \\(c=1/R\\) girada \\(45^\\circ\\) en planta (tema C5). Por eso hay dos problemas distintos, según qué cuadrado se recorte:\n\nBordes curvos: la planta \\([-a,a]^2\\) tiene los lados paralelos a los ejes de curvatura; los bordes de la lámina son parábolas.\nBordes rectos: la planta es el cuadrado girado, con los lados siguiendo las generatrices rectas (reglada). Los bordes son rectas inclinadas.\n\nCon \\(R=2\\), \\(a=1\\) (es decir, \\(c=0{,}5\\)) ambas son la misma superficie: el desnivel entre el centro de un borde y la esquina es \\(a^2/2R=0{,}25\\) en el curvo y \\(c\\,a^2=0{,}5\\) en el recto. Los apoyos que se estudian son SSSS (diafragma de corte: la lámina no se puede desplazar perpendicular ni tangente a su borde, pero sí girar respecto de él) y CCCC (empotrado).\n\n\n\n\n\n\nAdvertenciaConvenio por confirmar\n\n\n\nLa definición de «simplemente apoyado» (SSSS) para una lámina curva no es única: aquí se usa el diafragma de corte con g.d.l. covariantes: \\(u_{\\text{tang}}=u\\cdot\\mathbf a_t=0\\), \\(u_3=0\\) y \\(\\varphi_{\\text{tang}}=0\\). Otras definiciones (por ejemplo con el desplazamiento tangente libre) dan frecuencias distintas. Los convenios de g.d.l. y de giros (tema E3) están por confirmar con el autor.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-lambda-f5",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-lambda-f5",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "35.2 Frecuencias y parámetros",
+    "text": "35.2 Frecuencias y parámetros\nCon \\(t/a=0{,}01\\) (esto es, \\(t/L=0{,}005\\)) y mallas de \\(24\\times24\\) elementos, los cuatro primeros \\(\\lambda\\) son:\n\n\n\n\n\n\n\n\n\n\nCaso\n\\(\\lambda_1\\)\n\\(\\lambda_2\\)\n\\(\\lambda_3\\)\n\\(\\lambda_4\\)\n\n\n\n\nPlaca plana SSSS (referencia \\(2\\pi^2,5\\pi^2,5\\pi^2,8\\pi^2\\))\n19,74\n49,35\n49,35\n78,96\n\n\nCurvo \\(R=2\\), SSSS\n41,88\n72,70\n164,23\n252,28\n\n\nRecto \\(c=0{,}5\\), SSSS\n98,68\n98,68\n137,96\n158,72\n\n\nCurvo \\(R=2\\), CCCC\n347,85\n355,99\n355,99\n366,57\n\n\nRecto \\(c=0{,}5\\), CCCC\n366,72\n366,72\n374,66\n376,26\n\n\n\nCalculado con este elemento (\\(E=10^4\\), \\(\\nu=0{,}3\\), \\(\\rho=1\\)). Tres cosas llaman la atención. (i) El hypar es entre 2 y 5 veces más rígido que la losa plana en SSSS y unas 10 veces en CCCC (el valor de la placa empotrada con este elemento es \\(\\lambda_1\\approx36\\), con \\(12\\times12\\) elementos). (ii) En el hypar de bordes rectos las dos primeras frecuencias son iguales (simetría de la planta cuadrada con generatrices rectas: dos modos cruzados). (iii) El empotramiento eleva la frecuencia mucho más en la lámina curva que en la plana, porque impide que el borde ceda y deshace la acción de membrana.\n\n¿Por qué un hypar SSSS tiene frecuencias mucho más altas que una losa plana de la misma planta y espesor?\n\n\nPorque pesa menos\nPorque el material es distinto\nPorque para vibrar debe estirarse y cizallarse (rigidez de membrana), además de flectar\nPorque la planta es cuadrada\n\n\n\nLa curvatura de doble signo obliga a que cualquier movimiento vertical cambie la longitud de las curvas de la superficie: la rigidez de membrana (\\(\\propto t\\)) domina frente a la de flexión (\\(\\propto t^3\\)). La losa plana sólo flecta.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-conv-f5",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-conv-f5",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "35.3 Convergencia y extrapolación",
+    "text": "35.3 Convergencia y extrapolación\nLa convergencia del \\(\\lambda_1\\) es lenta (Figura 35.2): con \\(24\\times24\\) elementos el valor aún está un 2 % por encima de su límite. La figura muestra \\(\\lambda_1\\) frente a \\((1/n)^2\\): los puntos caen casi sobre una recta (error \\(O(h^2)\\)) y se puede extrapolar a \\(h\\to0\\) con dos mallas consecutivas (extrapolación de Richardson):\n\\[\n\\lambda_\\infty\\simeq\\lambda_{n_2}-\\frac{\\lambda_{n_1}-\\lambda_{n_2}}{(n_2/n_1)^2-1}.\n\\tag{35.1}\\]\n\n\n\n\n\n\nFigura 35.2: Primera frecuencia \\(\\lambda_1\\) del hypar SSSS (\\(t/a=0{,}01\\)) frente a \\((1/n)^2\\). Los puntos se alinean; la extrapolación con las dos mallas más finas (\\(24\\) y \\(32\\)) da \\(\\lambda_1\\approx40{,}8\\) (curvo) y \\(\\approx96{,}8\\) (recto). Cálculo calculado; los valores extrapolados son estimaciones.\n\n\n\n\nEjemplo 35.1 (Ejemplo resuelto: extrapolar el hypar curvo) Con \\(n_1=24\\) y \\(n_2=32\\): \\(\\lambda_{24}=41{,}88\\) y \\(\\lambda_{32}=41{,}43\\). Con ecuación 35.1, \\((n_2/n_1)^2-1=0{,}778\\) y \\[\n\\lambda_\\infty\\simeq41{,}43-\\frac{41{,}88-41{,}43}{0{,}778}=41{,}43-0{,}58=\\mathbf{40{,}85}.\n\\] Con las mallas \\(16\\) y \\(24\\) resulta \\(40{,}9\\): dos extrapolaciones coinciden en \\(40{,}9\\pm0{,}1\\), indicio de que el error \\(O(h^2)\\) está bien descrito. Resultado calculado (no es una solución exacta).\n\n\nCon los valores del Ejemplo 35.1 (\\(\\lambda_{24}=41{,}88\\), \\(\\lambda_{32}=41{,}43\\)), ¿qué valor extrapolado de \\(\\lambda_1\\) da ecuación 35.1?\n\n\\((n_2/n_1)^2-1=(32/24)^2-1=0{,}7778\\).\n\n\n\\(\\lambda_\\infty=41{,}43-(41{,}88-41{,}43)/0{,}7778=41{,}43-0{,}5786=40{,}85\\).\n\n\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nExtrapolar no es exacto. La estimación \\(40{,}8\\) supone un error \\(\\propto h^2\\); con modos de flexión muy localizados o con espesores muy pequeños puede no valer. Se debe comprobar que dos extrapolaciones coincidan.\nPocas mallas, mucha cautela. Con \\(8\\times8\\) el hypar curvo da \\(\\lambda_1=48{,}0\\) (\\(+18\\,\\%\\) sobre el límite estimado): nunca se debe fiar un valor de una sola malla.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-espesor-f5",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-espesor-f5",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "35.4 Membrana o flexión",
+    "text": "35.4 Membrana o flexión\nPara un modo de flexión pura \\(\\omega\\propto t\\) (porque \\(D\\propto t^3\\) y \\(\\rho t\\propto t\\)), mientras que para uno de membrana \\(\\omega\\) no depende de \\(t\\). Comparando la frecuencia con espesor \\(t/2\\) y \\(t\\) (razón \\(\\omega(t/2)/\\omega(t)\\): 0,5 = flexión; 1 = membrana), con \\(16\\times16\\) elementos:\n\n\n\nCaso\nmodo 1\nmodo 2\nmodo 3\nmodo 4\n\n\n\n\nCurvo SSSS\n0,85\n0,53\n0,50\n0,60\n\n\nRecto SSSS\n0,71\n0,71\n0,67\n0,66\n\n\nCurvo CCCC\n0,80\n0,79\n0,79\n0,77\n\n\nRecto CCCC\n0,77\n0,78\n0,78\n0,76\n\n\n\nLos modos del hypar son mixtos: el primero del curvo es casi de membrana (0,85), y los segundo y tercero son casi de flexión pura (0,50–0,53). Calculado. Es una consecuencia útil: aumentar el espesor sube las frecuencias, pero menos que proporcionalmente, y puede no compensar el peso añadido.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-real-f5",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-real-f5",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "35.5 Una cubierta real",
+    "text": "35.5 Una cubierta real\n\nEjemplo 35.2 (Ejemplo resuelto: la cubierta de F3) Hypar de bordes rectos de \\(L=10\\) m (\\(a=5\\) m), \\(c=0{,}1\\) m\\(^{-1}\\) (es decir, \\(c\\,a=0{,}5\\)), \\(t=50\\) mm (así \\(t/a=0{,}01\\), justo el espesor relativo de los cálculos de este tema), hormigón con \\(E=30\\) GPa, \\(\\nu=0{,}3\\), \\(\\rho=2500\\) kg/m³, SSSS. Con \\(\\lambda_1\\approx96{,}8\\) (extrapolado): \\[\nD=\\frac{Et^3}{12(1-\\nu^2)}=343\\,407\\ \\text{N·m},\\quad \\rho t=125\\ \\text{kg/m}^2,\\quad \\omega_1=\\lambda_1\\frac{1}{L^2}\\sqrt{\\frac D{\\rho t}}=96{,}8\\cdot\\frac{52{,}42}{100}=50{,}7\\ \\text{rad/s},\n\\] es decir, \\(f_1\\approx\\mathbf{8{,}1}\\) Hz. Una losa plana de las mismas dimensiones y espesor (\\(\\lambda_1=2\\pi^2\\)) vibraría a \\(1{,}65\\) Hz: el hypar es unas cinco veces más rígido. Resultado calculado: el \\(\\lambda\\) corresponde a \\(\\nu=0{,}3\\) y a la definición SSSS de este tema, de modo que es una estimación orientativa.\n\n\nEn el Ejemplo 35.2, ¿cuánto vale la frecuencia fundamental \\(f_1\\) de la cubierta con \\(\\lambda_1=96{,}8\\), \\(L=10\\) m, \\(E=30\\) GPa, \\(\\nu=0{,}3\\), \\(\\rho=2500\\) kg/m³ y \\(t=50\\) mm?\n\n\\(D=30\\cdot10^9\\cdot(0{,}05)^3/(12\\cdot0{,}91)=343\\,407\\) N·m; \\(D/(\\rho t)=2747\\); \\(\\omega=96{,}8\\cdot52{,}4/100=50{,}7\\) rad/s; \\(f=8{,}07\\) Hz.\n\n\n\n\n\n\n\n\nTipAplicación real: cubiertas de Candela y control de vibraciones\n\n\n\nilustrativo En cubiertas delgadas de hormigón como las de Candela, las frecuencias propias (del orden de unos pocos Hz a unas decenas de Hz según luz y curvatura) deben compararse con las excitaciones del viento y, en zonas sísmicas, del terremoto; la sensibilidad de las frecuencias a los apoyos (SSSS frente a CCCC) obliga a modelar bien el contorno. En biomecánica, el mismo problema aparece al estudiar la respuesta dinámica de estructuras laminares curvas con borde apoyado de forma imperfecta, como membranas y cúpulas óseas. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-julia-f5",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-julia-f5",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "35.6 Práctica guiada en Julia",
+    "text": "35.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) Las frecuencias de los dos hypar SSSS y CCCC con una serie de mallas. (2) La extrapolación de Richardson. (3) La frecuencia en Hz del Ejemplo 35.2.\n\n\n\nusing Geometria, LinearAlgebra\n\nE, ν, ρ = 1.0e4, 0.3, 1.0\nfunction hypar_lambda(r, n, t, bc; k = 4, a = 1.0)\n    nodos, conn = malla_rectangular((-a, a), (-a, a), n, n)\n    K, M, _ = ensamblar(r, nodos, conn, E, ν, t; ρ)\n    fij = Int[]\n    for j in 1:size(nodos, 2)\n        x, y = nodos[:, j]; e1 = abs(x) ≈ a; e2 = abs(y) ≈ a\n        if bc == :SSSS\n            e1 && append!(fij, [gdl(j, 2), gdl(j, 3), gdl(j, 5)])       # borde x = ±a: tangente = a₂\n            e2 && append!(fij, [gdl(j, 1), gdl(j, 3), gdl(j, 4)])       # borde y = ±a: tangente = a₁\n        else\n            (e1 || e2) && append!(fij, gdl(j, 1):gdl(j, 5))\n        end\n    end\n    ω, _ = frecuencias(K, M, unique(fij); n = k)\n    D = E * t^3 / (12 * (1 - ν^2))\n    ω .* (2a)^2 .* sqrt(ρ * t / D)\nend\n\ncurvo = paraboloide_curvo(2.0, -2.0); recto = paraboloide_recto(0.5)\ntabla = [(caso = nombre, n = n, λ = round.(hypar_lambda(r, n, 0.01, :SSSS), digits = 2))\n         for (nombre, r) in ((\"curvo SSSS\", curvo), (\"recto SSSS\", recto)), n in (8, 12, 16, 24)]\nvec(tabla)\n\n8-element Vector{@NamedTuple{caso::String, n::Int64, λ::Vector{Float64}}}:\n (caso = \"curvo SSSS\", n = 8, λ = [48.01, 77.0, 186.49, 272.79])\n (caso = \"recto SSSS\", n = 8, λ = [107.16, 107.16, 148.32, 173.63])\n (caso = \"curvo SSSS\", n = 12, λ = [44.59, 74.35, 172.2, 260.0])\n (caso = \"recto SSSS\", n = 12, λ = [102.63, 102.63, 142.06, 164.39])\n (caso = \"curvo SSSS\", n = 16, λ = [43.09, 73.4, 167.5, 255.5])\n (caso = \"recto SSSS\", n = 16, λ = [100.55, 100.55, 139.73, 161.13])\n (caso = \"curvo SSSS\", n = 24, λ = [41.88, 72.7, 164.23, 252.28])\n (caso = \"recto SSSS\", n = 24, λ = [98.68, 98.68, 137.96, 158.72])\n\n\n\n# (2) Richardson con las mallas 16 y 24 (curvo SSSS, modo 1) y con 24 y 32\nrich(l1, n1, l2, n2) = l2 - (l1 - l2) / ((n2 / n1)^2 - 1)\nl16, l24, l32 = [hypar_lambda(curvo, n, 0.01, :SSSS; k = 1)[1] for n in (16, 24, 32)]\n(λ16 = l16, λ24 = l24, λ32 = l32, extrapolado_16_24 = rich(l16, 16, l24, 24), extrapolado_24_32 = rich(l24, 24, l32, 32))\n\n(λ16 = 43.086053573613576, λ24 = 41.883530494374774, λ32 = 41.430679409624965, extrapolado_16_24 = 40.921512030983735, extrapolado_24_32 = 40.84844230066092)\n\n\n\n# (3) Cubierta real: f₁ con λ₁ = 96.8\nEc, νc, ρc, t, L, λ1 = 30e9, 0.3, 2500.0, 0.05, 10.0, 96.8\nDc = Ec * t^3 / (12 * (1 - νc^2))\nω1 = λ1 / L^2 * sqrt(Dc / (ρc * t))\n(D = Dc, ω = ω1, f_Hz = ω1 / 2π, f_losa_Hz = 2π^2 / L^2 * sqrt(Dc / (ρc * t)) / 2π)\n\n(D = 343406.5934065935, ω = 50.736986097340846, f_Hz = 8.075042134976568, f_losa_Hz = 1.646641970957577)",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-ejercicios-f5",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#sec-ejercicios-f5",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "35.7 Ejercicios",
+    "text": "35.7 Ejercicios\n\nÁngulo de planta. ¿Por qué el hypar de bordes rectos y el de bordes curvos con la misma superficie tienen frecuencias distintas?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPorque la planta (el recorte de la superficie) y los bordes son distintos: el curvo tiene lados paralelos a los ejes de curvatura y el recto sigue las generatrices. Las condiciones de contorno actúan sobre direcciones distintas de la superficie y cambian cómo se transmite el cortante de membrana.\n\n\n\nEspesor. Si se duplica el espesor de la cubierta del Ejemplo 35.2, ¿cómo cambia \\(f_1\\) en un modo de flexión pura y en uno de membrana?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nFlexión: se duplica (\\(\\omega\\propto t\\)). Membrana: no cambia. Un modo mixto (el caso real) sube entre un 0 y un 100 %: con la razón 0,71 del primer modo del hypar recto SSSS, al duplicar \\(t\\) la frecuencia sube \\(1/0{,}71\\approx1{,}4\\) veces (+40 %).\n\n\n\nDos mallas. Con \\(\\lambda_{16}=43{,}09\\) y \\(\\lambda_{24}=41{,}88\\), extrapola \\(\\lambda_1\\).\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\\((24/16)^2-1=1{,}25\\); \\(\\lambda_\\infty\\simeq41{,}88-(43{,}09-41{,}88)/1{,}25=40{,}91\\).",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#la-doy-por-superada-si",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#la-doy-por-superada-si",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nDescribo los dos hypar y los apoyos SSSS y CCCC.\nComparo sus frecuencias con las de una placa plana y explico la diferencia.\nExtrapolo con Richardson y declaro la incertidumbre.\nReconozco modos de membrana y de flexión por su dependencia del espesor.\nConvierto un \\(\\lambda\\) en Hz para una cubierta real.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; todos los valores de \\(\\lambda\\) son calculados con el elemento de este libro; la geometría y las definiciones siguen los temas C5 y E3. Sobre vibraciones de láminas rasantes con apoyos de esquina, véase (Narita y Leissa 1984) (no se ha usado para contrastar números).\nQué queda pendiente. Comparación con valores publicados (otros autores, soluciones de referencia) para los dos hypar: sin verificar (no se ha podido contrastar ningún valor externo); la definición de SSSS (convenio por confirmar); los modos CCCC en los que las cuatro primeras frecuencias son casi iguales (agrupadas) no se han extrapolado; la extrapolación de Richardson supone orden 2 y se ha comprobado sólo con \\(\\lambda_1\\) del curvo; la «Aplicación real» es una orientación sin fuente; no hay nota histórica por falta de fuente verificada; revisión visual de las figuras.\n\n\n\n\n\n\nNarita, Y., y A. W. Leissa. 1984. «Vibrations of Corner Point Supported Shallow Shells of Rectangular Planform». Earthquake Engineering and Structural Dynamics 12: 651-61.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#referencias-unidad",
+    "href": "book/F-validacion-vibraciones/F5-frecuencias-hypar.html#referencias-unidad",
+    "title": "35  Frecuencias del paraboloide hiperbólico",
+    "section": "Referencias",
+    "text": "Referencias\nSon las mismas que aparecen en el margen, junto al texto.\n\n\nNarita, Y., y A. W. Leissa. 1984. «Vibrations of Corner Point Supported Shallow Shells of Rectangular Planform». Earthquake Engineering and Structural Dynamics 12: 651-61.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>Frecuencias del paraboloide hiperbólico</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "",
+    "text": "Objetivos y prerrequisitos\nObjetivos. Al terminar el tema sabrás:\nPrerrequisitos. Los temas F1–F5 y E9.\nSecciones del tema",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#objetivos-y-prerrequisitos",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#objetivos-y-prerrequisitos",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "",
+    "text": "describir la arquitectura del paquete Geometria (geometría, láminas, elemento) y qué función corresponde a cada tema;\nexplicar la pirámide de pruebas: identidades, patch test, soluciones analíticas y benchmarks;\nelegir tolerancias con criterio y justificar cada una;\nrepetir un resultado del libro desde cero (entorno, semilla, versiones);\nconocer las limitaciones del código y las mejoras previstas.\n\n\n\n\nSección 36.1 · Arquitectura · Sección 36.2 · Pirámide de pruebas · Sección 36.3 · Tolerancias\nSección 36.4 · Repetir un resultado · Sección 36.5 · Límites y mejoras · Sección 36.6 · Práctica guiada\n\n\n\n\n\n\n\nNotaNotación y convenciones de este tema\n\n\n\n\n\n\n\n\n\n\nTérmino\nSignificado\n\n\n\n\nGeometria\npaquete Julia del libro (julia/), con tres archivos de código\n\n\ncalculado / analítico / ilustrativo\netiqueta de la procedencia de cada resultado\n\n\nverificación\ncomprobar que el código resuelve bien el modelo (F1)\n\n\nfreeze\nresultados de las celdas Julia guardados en _freeze/ para publicar sin ejecutar\n\n\n\n\n\n\n\n\n\n\n\nNotaExplicación para ingenieros: el cuaderno de laboratorio y la báscula certificada\n\n\n\nUn resultado de cálculo sin código y sin pruebas es como una medida sin báscula certificada ni cuaderno de laboratorio: puede ser cierta, pero nadie puede comprobarlo. La báscula certificada son los casos con solución conocida (Navier, el cilindro a presión, el patch test); el cuaderno son las versiones fijas, las semillas y la receta para repetir el cálculo. Con ambos, quien lea el libro (o un revisor dentro de cinco años) puede llegar a los mismos números y detectar un error si lo hay.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-arquitectura-f6",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-arquitectura-f6",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "36.1 Arquitectura",
+    "text": "36.1 Arquitectura\nEl paquete tiene tres capas, cada una apoyada en la anterior:\n\n\n\n\n\n\n\n\nArchivo\nContenido\nTemas\n\n\n\n\nGeometria.jl\nbases, métrica, Christoffel, superficies (hypar, cilindro, esfera…), curvaturas, operadores tensoriales\nA–C\n\n\nLaminas.jl\nelasticidad del sólido, cinemática de la lámina, deformaciones lineales y exactas, rigideces CE, CB, CS\nD\n\n\nElementoLamina.jl\nfunciones de forma, matrices_H, rigidez por subdominios, masa, cargas, ensamblaje, autovalores\nE, F\n\n\n\nCada función lleva su documentación (?rigidez_elemento) y se usa igual en el libro y en las pruebas: no hay una versión «para el texto» y otra «real». El flujo de trabajo para cambiar algo es: código → tests → capítulo. Si la geometría cambia, se regeneran los JSON de referencia que usa el JavaScript de los laboratorios interactivos y se comprueba que ambos lenguajes coinciden (npm test).\n\n\n\n\n\n\nAdvertenciaDos puntos que suelen confundir\n\n\n\n\nEl código del libro no es «pseudocódigo». Se ejecuta al publicar; sus salidas son las que se leen en cada capítulo. Si se modifica una función, los resultados cambian y las pruebas deben seguir pasando.\nLas derivadas de la geometría son numéricas (diferencias finitas, \\(h\\sim10^{-6}\\)). Limitan la precisión de \\(\\Gamma\\) y \\(b_{\\alpha\\beta}\\) a unos \\(10^{-8}\\) relativos (sección Sección 36.5).",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-piramide-f6",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-piramide-f6",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "36.2 Pirámide de pruebas",
+    "text": "36.2 Pirámide de pruebas\nLas pruebas van de lo más pequeño a lo más grande:\n\nIdentidades (base de la pirámide): reciprocidad \\(\\mathbf g_i\\cdot\\mathbf g^j=\\delta_i^j\\), \\(\\Gamma\\) frente a la métrica, Gauss–Codazzi, equivalencia de \\(\\mathbf H\\boldsymbol\\delta\\) con las relaciones de D6 (error \\(&lt;10^{-8}\\)). Muchas, rápidas, locales.\nPropiedades del elemento: simetría de \\(\\mathbf K\\), seis autovalores nulos, partición de la unidad de \\(N_k\\), masa total \\(=\\rho tA\\), cargas que suman la presión por área.\nPatch test (F1): estados constantes en mallas irregulares, con \\(\\mathbf K\\mathbf d\\) residual \\(\\sim10^{-9}\\).\nSoluciones analíticas: Navier, cilindro a presión, respiración del cilindro, barra (exacta en los nodos), hypar de membrana (F3), frecuencias de la placa (F4).\nBenchmarks de la literatura: Scordelis–Lo y cilindro pinzado (F2). Es la capa más cara y la que más confianza da.\nVerificación de los ejercicios: todas las respuestas numéricas de los ejercicios interactivos se recalculan con el código (scripts/verificar_ejercicios.jl) y deben coincidir.\n\nUn error de signo en la curvatura \\(b_{\\alpha\\beta}\\), por ejemplo, rompe a la vez el patch test de láminas curvas, el cilindro a presión y el Scordelis–Lo; en cambio una placa plana lo ignora. Por eso hay pruebas en cada nivel y sobre superficies distintas.\n\nSe introduce un error de signo en la curvatura \\(b_{\\alpha\\beta}\\) del código. ¿Qué prueba lo detectaría y cuál no?\n\n\nEl patch test de una placa plana lo detecta\nLa solución de Navier de una placa plana lo detecta\nNinguna prueba lo detectaría\nEl cilindro a presión lo detecta; la placa plana (con \\(b_{\\alpha\\beta}=0\\)) no\n\n\n\nEn una placa plana \\(b_{\\alpha\\beta}=0\\), y el signo no importa. En el cilindro a presión, el término \\(-b_{22}u_3\\) de la deformación de aro cambia de signo y el hinchado sale negativo: error inmediato (y en Scordelis–Lo, la flecha cambia de valor). Por eso las pruebas deben incluir superficies curvas.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-tolerancias-f6",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-tolerancias-f6",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "36.3 Tolerancias",
+    "text": "36.3 Tolerancias\nUna tolerancia no se elige «a ojo»: depende de qué error se espera.\n\n\n\n\n\n\n\n\nPrueba\nTolerancia\nPor qué\n\n\n\n\nIdentidad algebraica exacta (por ejemplo, \\(\\mathbf K=\\mathbf K^{\\mathsf T}\\))\n\\(10^{-10}\\)–\\(10^{-12}\\)\nsólo redondeo\n\n\nRelaciones con geometría derivada numéricamente\n\\(10^{-6}\\)–\\(10^{-8}\\)\nerror de diferencias finitas\n\n\nPatch test\n\\(&lt;10^{-6}\\)\nruido de \\(\\Gamma,b\\) numéricos, no del elemento\n\n\nSolución analítica con malla (Navier, F1)\n2 × 10⁻³ (con \\(n=8\\))\nerror de discretización conocido\n\n\nBenchmark de la literatura\n2 %–5 %\nla referencia misma varía un 2 % (F2)\n\n\n\n\n\n\n\n\n\nImportanteIdea clave: la tolerancia es una afirmación\n\n\n\nEscribir @test x ≈ y rtol = 1e-6 afirma que el error es menor que \\(10^{-6}\\). Una tolerancia más ancha de lo necesaria puede esconder un error real; una más estrecha da falsos fallos con otros compiladores o versiones. Cada tolerancia debe poder justificarse con una frase.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-repetir-f6",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-repetir-f6",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "36.4 Repetir un resultado",
+    "text": "36.4 Repetir un resultado\nPara repetir cualquier resultado del libro desde cero:\n\nEntorno: Julia 1.12 y el paquete Geometria (Project.toml en la raíz; Pkg.instantiate()). El único añadido a la biblioteca estándar es SparseArrays, también estándar.\nCódigo: la función citada en el capítulo, con los mismos datos (están en la celda).\nSemilla: las pocas celdas con números aleatorios usan semilla fija.\nPruebas: julia --project=julia -e 'using Pkg; Pkg.test()'.\nLibro completo: quarto render (los resultados Julia se guardan en _freeze/ para publicar sin Julia).\n\nLos SVG de las figuras se generan con scripts (julia/scripts/generar_figuras*.jl) a partir de los mismos cálculos: no hay figuras «dibujadas a mano» de resultados numéricos.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-limites-f6",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-limites-f6",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "36.5 Límites y mejoras",
+    "text": "36.5 Límites y mejoras\n\nGeometría numérica. \\(\\mathbf a_\\alpha\\), \\(b_{\\alpha\\beta}\\) y \\(\\Gamma\\) se obtienen por diferencias finitas; una derivada automática (con un paquete como ForwardDiff) o fórmulas analíticas por superficie reduciría el error y el tiempo. No se adoptó para no añadir dependencias externas.\nAutovalores densos. Con \\(n=32\\) el problema del hypar tiene \\(\\sim5000\\) g.d.l. libres y la resolución densa tarda unos 15 s; para mallas mayores hace falta un solver de autovalores dispersos (Lanczos).\nMalla rectangular en el plano paramétrico. El elemento exige rectángulos de \\((\\theta^1,\\theta^2)\\): no sirve para contornos arbitrarios sin una transformación previa.\nConvenios por confirmar. g.d.l. covariantes, giros del director, factor de cortante (el código usa \\(\\kappa=1\\)) y definición de apoyo simple en láminas curvas.\nSólo comportamiento lineal. La formulación por subdominios admite extensión no lineal (tema E6), no implementada aquí.\n\n\nEn el hypar SSSS de \\(32\\times32\\) elementos (nodos \\(33\\times33\\)), en cada borde se fijan \\(u_{\\text{tang}}\\), \\(u_3\\) y \\(\\varphi_{\\text{tang}}\\) (3 g.d.l.), y en las cuatro esquinas (que pertenecen a dos bordes) quedan fijos los cinco. ¿Cuántos g.d.l. libres quedan?\n\nNodos: \\(33^2=1089\\) (\\(5445\\) g.d.l.). Esquinas: 4. Nodos de borde que no son esquina: \\(4\\cdot31=124\\).\n\n\nFijos: \\(4\\cdot5+124\\cdot3=392\\). Libres: \\(5445-392=5053\\).\n\n\n\n\n\n\n\n\nTipAplicación real: modelos que respaldan decisiones\n\n\n\nilustrativo En ingeniería estructural y en biomecánica, los modelos de elementos finitos que apoyan una decisión (un peritaje, el diseño de una prótesis, la verificación de una cubierta) se acompañan de una verificación documentada: las pruebas de esta sección, sus tolerancias y la versión exacta del código. El mismo esquema (pirámide de pruebas y registro de versiones) es el que haría falta para pasar de este libro a un uso profesional. Idea de aplicación sin fuente verificada: es una orientación, no una cita.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-julia-f6",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-julia-f6",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "36.6 Práctica guiada en Julia",
+    "text": "36.6 Práctica guiada en Julia\n\n\n\n\n\n\nTipEjemplo computacional\n\n\n\ncalculado (1) Una verificación rápida de cuatro de los niveles de la pirámide, con sus tolerancias. (2) El número de g.d.l. libres del hypar de \\(32\\times32\\) y el tiempo del problema de autovalores en una malla menor. (3) El entorno en uso.\n\n\n\nusing Geometria, LinearAlgebra\n\ncil_x(R) = θ -&gt; [θ[1], R * sin(θ[2]), R * cos(θ[2])]\nresultados = Tuple{String,Bool}[]\nreg(nombre, ok) = push!(resultados, (nombre, ok))\n\n# Nivel 2: propiedades del elemento (6 autovalores nulos, simetría)\nplana = placa_oblicua(π / 2); X = [0.0 1 1 0; 0 0 1 1]\nK = rigidez_elemento(plana, X, 1.0, 0.3, 0.1)\nev = eigvals(Symmetric(K))\nreg(\"K simétrica (1e-10)\", norm(K - K') &lt; 1e-10)\nreg(\"6 autovalores nulos\", count(&lt;(1e-9 * maximum(ev)), ev) == 6)\n\n# Nivel 4: tubo a presión (analítica)\nR, t, E, ν, p = 500.0, 5.0, 210e3, 0.3, 0.5\nr = cil_x(R); nodos, conn = malla_rectangular((0, 100.0), (0, π / 2), 2, 8)\nKc, _, F = ensamblar(r, nodos, conn, E, ν, t; f = θ -&gt; p .* [0, sin(θ[2]), cos(θ[2])])\nfij = Int[]\nfor k in 1:size(nodos, 2)\n    _, φ = nodos[:, k]; append!(fij, [gdl(k, 1), gdl(k, 4)])\n    (φ ≈ 0 || φ ≈ π / 2) && append!(fij, [gdl(k, 2), gdl(k, 5)])\nend\nu = resolver_estatica(Kc, F, unique(fij))\nk45 = argmin([norm(nodos[:, k] .- [50.0, π / 4]) for k in 1:size(nodos, 2)])\nreg(\"tubo a presión (rtol 1e-4)\", isapprox(u[gdl(k45, 3)], p * R^2 * (1 - ν^2) / (E * t); rtol = 1e-4))\n\n# Nivel 2: masa total y carga total de un elemento\nM = masa_elemento(cil_x(0.5), [0.0 0.1 0.1 0; 0 0 0.1 0.1], 7850.0, 0.005)\nδ = zeros(20); for k in 1:4; δ[5(k-1)+1] = 1.0; end\nreg(\"masa total ρtA (rtol 1e-9)\", isapprox(δ' * M * δ, 7850 * 0.005 * 0.1 * 0.5 * 0.1; rtol = 1e-9))\n\n[(nombre = n, pasa = ok) for (n, ok) in resultados]\n\n4-element Vector{@NamedTuple{nombre::String, pasa::Bool}}:\n (nombre = \"K simétrica (1e-10)\", pasa = 1)\n (nombre = \"6 autovalores nulos\", pasa = 1)\n (nombre = \"tubo a presión (rtol 1e-4)\", pasa = 1)\n (nombre = \"masa total ρtA (rtol 1e-9)\", pasa = 1)\n\n\n\n# (2) g.d.l. libres del hypar 32×32 SSSS y tiempo de autovalores en 12×12\nn = 32\nnodos, conn = malla_rectangular((-1.0, 1.0), (-1.0, 1.0), n, n)\nfijos = Int[]\nfor j in 1:size(nodos, 2)\n    x, y = nodos[:, j]\n    abs(x) ≈ 1 && append!(fijos, [gdl(j, 2), gdl(j, 3), gdl(j, 5)])\n    abs(y) ≈ 1 && append!(fijos, [gdl(j, 1), gdl(j, 3), gdl(j, 4)])\nend\nlibres = 5 * size(nodos, 2) - length(unique(fijos))\n\nnodos12, conn12 = malla_rectangular((-1.0, 1.0), (-1.0, 1.0), 12, 12)\nK12, M12, _ = ensamblar(paraboloide_recto(0.5), nodos12, conn12, 1.0e4, 0.3, 0.01; ρ = 1.0)\nfij12 = Int[]\nfor j in 1:size(nodos12, 2)\n    x, y = nodos12[:, j]\n    abs(x) ≈ 1 && append!(fij12, [gdl(j, 2), gdl(j, 3), gdl(j, 5)])\n    abs(y) ≈ 1 && append!(fij12, [gdl(j, 1), gdl(j, 3), gdl(j, 4)])\nend\ntiempo = @elapsed frecuencias(K12, M12, unique(fij12); n = 4)\n(gdl_libres_32x32 = libres, segundos_autovalores_12x12 = round(tiempo, digits = 2))\n\n(gdl_libres_32x32 = 5053, segundos_autovalores_12x12 = 0.16)\n\n\n\n# (3) Entorno\n(julia = string(VERSION), hilos = Threads.nthreads(), paquete = \"Geometria\", modulos = (\"Geometria.jl\", \"Laminas.jl\", \"ElementoLamina.jl\"))\n\n(julia = \"1.12.3\", hilos = 1, paquete = \"Geometria\", modulos = (\"Geometria.jl\", \"Laminas.jl\", \"ElementoLamina.jl\"))",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-ejercicios-f6",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#sec-ejercicios-f6",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "36.7 Ejercicios",
+    "text": "36.7 Ejercicios\n\nJustificar una tolerancia. Un test compara \\(\\mathbf H\\boldsymbol\\delta\\) con las relaciones de D6 con rtol = 1e-6. ¿Por qué no 1e-14?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nPorque las relaciones de D6 usan derivadas covariantes calculadas por diferencias finitas (\\(h\\sim10^{-5}\\)) y los símbolos de Christoffel numéricos: el error de truncamiento es \\(\\sim10^{-8}\\). Una tolerancia de \\(10^{-14}\\) daría fallos falsos.\n\n\n\nFalso negativo. Un test de convergencia del hypar usa una sola malla. ¿Qué se puede estar perdiendo?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nQue el valor está lejos del límite (con \\(8\\times8\\) el hypar curvo está un 18 % por encima, F5). Se necesita al menos una secuencia de mallas y comprobar el orden de convergencia.\n\n\n\nNueva superficie. Quieres usar el elemento en un toroide. ¿Qué pruebas harías antes de fiarte?\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\n\n\\(\\mathbf H\\boldsymbol\\delta\\) frente a D6 con la nueva \\(\\mathbf r\\); (ii) patch test sobre ella; (iii) un caso analítico (presión interna, que en un toro tiene solución de membrana); (iv) convergencia con mallas sucesivas.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
+    "objectID": "book/F-validacion-vibraciones/F6-implementacion-julia.html#la-doy-por-superada-si",
+    "href": "book/F-validacion-vibraciones/F6-implementacion-julia.html#la-doy-por-superada-si",
+    "title": "36  Implementación reproducible en Julia",
+    "section": "La doy por superada si…",
+    "text": "La doy por superada si…\n\nNombro las tres capas del código y qué temas cubre cada una.\nEnumero la pirámide de pruebas y sé qué detecta cada nivel.\nJustifico una tolerancia con una frase.\nSé repetir un resultado del libro desde cero.\nConozco las limitaciones y los convenios por confirmar.\n\n\n\n\n\n\n\nNotaFuentes, correcciones y qué queda pendiente\n\n\n\n\n\nFuentes. Texto autónomo; es una descripción del propio proyecto (julia/, scripts/, web/). La práctica verifica el estado actual del código.\nQué queda pendiente. Derivación automática de la geometría; solver disperso de autovalores; una prueba de convergencia automática en CI (hoy los benchmarks de F2 se ejecutan al renderizar, no en las pruebas); no hay nota histórica; la «Aplicación real» es una orientación sin fuente.",
+    "crumbs": [
+      "Bloque F · Validación y vibraciones",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Implementación reproducible en Julia</span>"
+    ]
+  },
+  {
     "objectID": "book/referencias.html",
     "href": "book/referencias.html",
     "title": "Referencias",
     "section": "",
-    "text": "Ahmad, S., B. M. Irons, and O. C. Zienkiewicz. 1970. “Analysis of\nThick and Thin Shell Structures by Curved Finite Elements.”\nInternational Journal for Numerical Methods in Engineering 2\n(3): 419–51. https://doi.org/10.1002/nme.1620020310.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nBathe, K. J., and E. N. Dvorkin. 1985. “A Four-Node Plate Bending\nElement Based on Mindlin/Reissner Plate Theory and a Mixed\nInterpolation.” International Journal for Numerical Methods\nin Engineering 21: 367–83.\n\n\nCanals, I. 1976. Cascarones Parabólicos-Hiperbólicos. Editorial\nLimusa, s.a.\n\n\nCarmo, M. do. 1994. Geometría Diferencial de Curvas y\nSuperficies. Alianza Universidad.\n\n\nCosta, A. F., M. Gamboa, and A. M. Porto. 1997. Ejercicios de\nGeometría Diferencial de Curvas y Superficies. Sanz y Torres.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics.\nSpringer-Verlag.\n\n\nHeinbockel, J. H. 1996. Introduction to Tensor Calculus and\nContinuum Mechanics. Department of Mathematics; Statistics, Old\nDominion University.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and\nDynamic Finite Element Analysis. Prentice-Hall.\n\n\nLebedev, L. P., and M. J. Cloud. 2003. Tensor Analysis. World\nScientific.\n\n\nLipschultz, M. 1969. Differential Geometry. Schaum’s Outlines.\n\n\nMargarit, J., and C. Buxadé. n.d. Cálculo de Estructuras En\nParaboloide Hiperbólico. Editorial Blume.\n\n\nNarita, Y., and A. W. Leissa. 1984. “Vibrations of Corner Point\nSupported Shallow Shells of Rectangular Planform.” Earthquake\nEngineering and Structural Dynamics 12: 651–61.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff\nltd.\n\n\nRomano, A., R. Lancellota, and A. Marasco. 2006. Continuum Mechanics\nUsing Mathematica. Birkhäuser, Boston.\n\n\nSpiegel, M. R. 1959. Vector Analysis and an Introduction to Tensor\nAnalysis. Schaum’s Outlines.\n\n\nStruik, D. J. 1955. Geometría Diferencial Clásica. Aguilar.\n\n\nTimoshenko, S. P., and S. Woinowsky-Krieger. n.d. Theory of Plates\nand Shells. McGraw-Hill.\n\n\nTurner, M. J., R. W. Clough, H. C. Martin, and L. J. Topp. 1956.\n“Stiffness and Deflection Analysis of Complex Structures.”\nJournal of the Aeronautical Sciences 23: 805–23.\n\n\nWeatherburn, C. E. 1927. Differential Geometry. Cambridge\nPress.\n\n\nZienkiewicz, O. C., and R. L. Taylor. n.d. The Finite Element\nMethod. Butterworth-Heinemann.\n\n\nZienkiewicz, O. C., R. L. Taylor, and J. M. Too. 1971. “Reduced\nIntegration Technique in General Analysis of Plates and Shells.”\nInternational Journal for Numerical Methods in Engineering 3:\n275–90.",
+    "text": "Ahmad, S., B. M. Irons, and O. C. Zienkiewicz. 1970. “Analysis of\nThick and Thin Shell Structures by Curved Finite Elements.”\nInternational Journal for Numerical Methods in Engineering 2\n(3): 419–51. https://doi.org/10.1002/nme.1620020310.\n\n\nBathe, K. J. 1996. Finite Element Procedures. Prentice Hall.\n\n\nBathe, K. J., and E. N. Dvorkin. 1985. “A Four-Node Plate Bending\nElement Based on Mindlin/Reissner Plate Theory and a Mixed\nInterpolation.” International Journal for Numerical Methods\nin Engineering 21: 367–83.\n\n\nCanals, I. 1976. Cascarones Parabólicos-Hiperbólicos. Editorial\nLimusa, s.a.\n\n\nCarmo, M. do. 1994. Geometría Diferencial de Curvas y\nSuperficies. Alianza Universidad.\n\n\nCosta, A. F., M. Gamboa, and A. M. Porto. 1997. Ejercicios de\nGeometría Diferencial de Curvas y Superficies. Sanz y Torres.\n\n\nFlügge, W. 1972. Tensor Analysis and Continuum Mechanics.\nSpringer-Verlag.\n\n\nHeinbockel, J. H. 1996. Introduction to Tensor Calculus and\nContinuum Mechanics. Department of Mathematics; Statistics, Old\nDominion University.\n\n\nHughes, T. J. R. 1987. The Finite Element Method: Linear Static and\nDynamic Finite Element Analysis. Prentice-Hall.\n\n\nLebedev, L. P., and M. J. Cloud. 2003. Tensor Analysis. World\nScientific.\n\n\nLipschultz, M. 1969. Differential Geometry. Schaum’s Outlines.\n\n\nMacNeal, R. H., and R. L. Harder. 1985. “A Proposed Standard Set\nof Problems to Test Finite Element Accuracy.” Finite Elements\nin Analysis and Design 1: 3–20.\n\n\nMargarit, J., and C. Buxadé. n.d. Cálculo de Estructuras En\nParaboloide Hiperbólico. Editorial Blume.\n\n\nNarita, Y., and A. W. Leissa. 1984. “Vibrations of Corner Point\nSupported Shallow Shells of Rectangular Planform.” Earthquake\nEngineering and Structural Dynamics 12: 651–61.\n\n\nNovozhilov, V. V. 1959. The Theory of Thin Shells. P. Noordhoff\nltd.\n\n\nRomano, A., R. Lancellota, and A. Marasco. 2006. Continuum Mechanics\nUsing Mathematica. Birkhäuser, Boston.\n\n\nSpiegel, M. R. 1959. Vector Analysis and an Introduction to Tensor\nAnalysis. Schaum’s Outlines.\n\n\nStruik, D. J. 1955. Geometría Diferencial Clásica. Aguilar.\n\n\nTimoshenko, S. P., and S. Woinowsky-Krieger. n.d. Theory of Plates\nand Shells. McGraw-Hill.\n\n\nTurner, M. J., R. W. Clough, H. C. Martin, and L. J. Topp. 1956.\n“Stiffness and Deflection Analysis of Complex Structures.”\nJournal of the Aeronautical Sciences 23: 805–23.\n\n\nWeatherburn, C. E. 1927. Differential Geometry. Cambridge\nPress.\n\n\nZienkiewicz, O. C., and R. L. Taylor. n.d. The Finite Element\nMethod. Butterworth-Heinemann.\n\n\nZienkiewicz, O. C., R. L. Taylor, and J. M. Too. 1971. “Reduced\nIntegration Technique in General Analysis of Plates and Shells.”\nInternational Journal for Numerical Methods in Engineering 3:\n275–90.",
     "crumbs": [
       "Referencias"
     ]

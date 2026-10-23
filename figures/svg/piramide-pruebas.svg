@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720.0 330.0" role="img" aria-label="Pirámide de seis niveles de pruebas: de las identidades algebraicas en la base a la verificación de los ejercicios en la cúspide">
+<title>Pirámide de seis niveles de pruebas: de las identidades algebraicas en la base a la verificación de los ejercicios en la cúspide</title>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="265.0" y="12.0" width="190.0" height="46.0" rx="4" fill="#6f42c1" fill-opacity="0.16" stroke="#6f42c1" stroke-width="2.2"/>
+<text x="360.0" y="40.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">6. Verificación de los ejercicios</text>
+<rect x="220.0" y="62.0" width="280.0" height="46.0" rx="4" fill="#8a5a00" fill-opacity="0.16" stroke="#8a5a00" stroke-width="2.2"/>
+<text x="360.0" y="90.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">5. Benchmarks (Scordelis–Lo, pinzado)</text>
+<rect x="175.0" y="112.0" width="370.0" height="46.0" rx="4" fill="#2a9d8f" fill-opacity="0.16" stroke="#2a9d8f" stroke-width="2.2"/>
+<text x="360.0" y="140.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">4. Soluciones analíticas (Navier, presión)</text>
+<rect x="130.0" y="162.0" width="460.0" height="46.0" rx="4" fill="#d95f02" fill-opacity="0.16" stroke="#d95f02" stroke-width="2.2"/>
+<text x="360.0" y="190.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">3. Patch test</text>
+<rect x="85.0" y="212.0" width="550.0" height="46.0" rx="4" fill="#1b6ca8" fill-opacity="0.16" stroke="#1b6ca8" stroke-width="2.2"/>
+<text x="360.0" y="240.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">2. Propiedades del elemento</text>
+<rect x="40.0" y="262.0" width="640.0" height="46.0" rx="4" fill="#6b7280" fill-opacity="0.16" stroke="#6b7280" stroke-width="2.2"/>
+<text x="360.0" y="290.0" fill="#1f2937" font-size="13" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">1. Identidades (reciprocidad, Christoffel, H = D6)</text>
+</svg>
