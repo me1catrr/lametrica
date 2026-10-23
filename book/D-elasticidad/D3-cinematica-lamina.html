@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8cb3beb3142a5dea5acd345491dee53e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -473,11 +473,11 @@ window.Quarto = {
   <ul>
   <li><a href="#objetivos-y-prerrequisitos" id="toc-objetivos-y-prerrequisitos" class="nav-link active" data-scroll-target="#objetivos-y-prerrequisitos">Objetivos y prerrequisitos</a></li>
   <li><a href="#sec-solido-lamina" id="toc-sec-solido-lamina" class="nav-link" data-scroll-target="#sec-solido-lamina"><span class="header-section-number">16.1</span> El sólido-lámina</a></li>
-  <li><a href="#sec-hipotesis-cin" id="toc-sec-hipotesis-cin" class="nav-link" data-scroll-target="#sec-hipotesis-cin"><span class="header-section-number">16.2</span> La hipótesis cinemática</a></li>
-  <li><a href="#sec-gl-lamina" id="toc-sec-gl-lamina" class="nav-link" data-scroll-target="#sec-gl-lamina"><span class="header-section-number">16.3</span> La deformación de Green–Lagrange de la lámina</a></li>
-  <li><a href="#sec-gdl" id="toc-sec-gdl" class="nav-link" data-scroll-target="#sec-gdl"><span class="header-section-number">16.4</span> Grados de libertad</a></li>
-  <li><a href="#sec-julia-d3" id="toc-sec-julia-d3" class="nav-link" data-scroll-target="#sec-julia-d3"><span class="header-section-number">16.5</span> Práctica guiada en Julia</a></li>
-  <li><a href="#sec-ejercicios-d3" id="toc-sec-ejercicios-d3" class="nav-link" data-scroll-target="#sec-ejercicios-d3"><span class="header-section-number">16.6</span> Ejercicios</a></li>
+  <li><a href="#sec-hipotesis-cin" id="toc-sec-hipotesis-cin" class="nav-link" data-scroll-target="#sec-hipotesis-cin"><span class="header-section-number">16.3</span> La hipótesis cinemática</a></li>
+  <li><a href="#sec-gl-lamina" id="toc-sec-gl-lamina" class="nav-link" data-scroll-target="#sec-gl-lamina"><span class="header-section-number">16.4</span> La deformación de Green–Lagrange de la lámina</a></li>
+  <li><a href="#sec-gdl" id="toc-sec-gdl" class="nav-link" data-scroll-target="#sec-gdl"><span class="header-section-number">16.5</span> Grados de libertad</a></li>
+  <li><a href="#sec-julia-d3" id="toc-sec-julia-d3" class="nav-link" data-scroll-target="#sec-julia-d3"><span class="header-section-number">16.6</span> Práctica guiada en Julia</a></li>
+  <li><a href="#sec-ejercicios-d3" id="toc-sec-ejercicios-d3" class="nav-link" data-scroll-target="#sec-ejercicios-d3"><span class="header-section-number">16.7</span> Ejercicios</a></li>
   <li><a href="#la-doy-por-superada-si" id="toc-la-doy-por-superada-si" class="nav-link" data-scroll-target="#la-doy-por-superada-si">La doy por superada si…</a></li>
   <li><a href="#referencias-unidad" id="toc-referencias-unidad" class="nav-link" data-scroll-target="#referencias-unidad">Referencias</a></li>
   <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
@@ -533,8 +533,8 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 <p><strong>Prerrequisitos.</strong> <a href="../../book/D-elasticidad/D1-deformacion-tension.html">Deformación y tensión en el sólido</a> y <a href="../../book/C-superficies/C3-curvaturas.html">Curvaturas</a> (la base de la lámina y <span class="math inline">\(\sqrt g\)</span>).</p>
 <p><strong>Secciones del tema</strong></p>
 <ul>
-<li><strong><a href="#sec-solido-lamina" class="quarto-xref"><span>Sección 16.1</span></a></strong> · El sólido-lámina · <strong><a href="#sec-hipotesis-cin" class="quarto-xref"><span>Sección 16.2</span></a></strong> · La hipótesis cinemática</li>
-<li><strong><a href="#sec-gl-lamina" class="quarto-xref"><span>Sección 16.3</span></a></strong> · Deformación de Green–Lagrange · <strong><a href="#sec-gdl" class="quarto-xref"><span>Sección 16.4</span></a></strong> · Grados de libertad · <strong><a href="#sec-julia-d3" class="quarto-xref"><span>Sección 16.5</span></a></strong> · Práctica guiada</li>
+<li><strong><a href="#sec-solido-lamina" class="quarto-xref"><span>Sección 16.1</span></a></strong> · El sólido-lámina · <strong><a href="#sec-hipotesis-cin" class="quarto-xref"><span>Sección 16.3</span></a></strong> · La hipótesis cinemática</li>
+<li><strong><a href="#sec-gl-lamina" class="quarto-xref"><span>Sección 16.4</span></a></strong> · Deformación de Green–Lagrange · <strong><a href="#sec-gdl" class="quarto-xref"><span>Sección 16.5</span></a></strong> · Grados de libertad · <strong><a href="#sec-julia-d3" class="quarto-xref"><span>Sección 16.6</span></a></strong> · Práctica guiada</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Notación y convenciones de este tema">
 <div class="callout-header d-flex align-content-center">
@@ -601,13 +601,32 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 \mathbf{g}_3=\hat{\mathbf{a}}_3 .
 \tag{16.2}\]</span></span> Es la base de la lámina del tema de curvaturas: los vectores tangentes <strong>se acortan o alargan</strong> según la curvatura y el signo de <span class="math inline">\(\theta^3\)</span>. Su volumen es <span class="math inline">\(\sqrt g\,d\theta^1d\theta^2d\theta^3\)</span> con <span class="math inline">\(\sqrt g=\sqrt a\,(1-2H\theta^3+K\theta^{3\,2})\)</span>.</p>
 <div id="exm-cilindro-ref" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 16.1 (Ejemplo resuelto: la base de un cilindro)</strong></span> Cilindro de radio <span class="math inline">\(R\)</span> con <span class="math inline">\(\theta^1=\varphi\)</span> (ángulo) y <span class="math inline">\(\theta^2=z\)</span>, y normal exterior. Entonces <span class="math inline">\(\mathbf{a}_\varphi=R\,\mathbf{e}_\varphi\)</span>, <span class="math inline">\(\mathbf{a}_z=\mathbf{e}_z\)</span> y <span class="math inline">\(b_{\varphi\varphi}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\varphi,\varphi}=-R\)</span>, de modo que <span class="math inline">\(b^\varphi_\varphi=-1/R\)</span>. Por <a href="#eq-base-lamina-d3" class="quarto-xref">ecuación&nbsp;<span>16.2</span></a>, <span class="math display">\[
+<p><span class="theorem-title"><strong>Ejemplo 16.1</strong></span> &nbsp;</p>
+<div class="noticia callout callout-style-simple callout-note no-icon callout-titled" title="En las noticias: una lámina de hormigón de doble curvatura">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>En las noticias: una lámina de hormigón de doble curvatura
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El 28 de octubre de 2020, ETH Zúrich anunció que el techo de hormigón de doble curvatura de la unidad <strong>HiLo</strong> del edificio NEST (Dübendorf, Suiza) estaba terminado y, por primera vez, a la intemperie. Lo diseñó el Block Research Group de ETH con socios de la construcción; ETH lo presenta como una «estructura de lámina expresiva» que combina estructuras de hormigón eficientes con nuevos métodos de fabricación, y el nombre HiLo alude a alto rendimiento (<em>high</em>) con bajas emisiones incorporadas (<em>low</em>). La noticia remite a otra de 2017 sobre un prototipo de cubierta de hormigón ultrafina.</p>
+<p>Es, literalmente, el <strong>sólido-lámina</strong> de este tema: un espesor pequeñísimo frente a la luz y a los radios de curvatura de la superficie media.</p>
+<p><span class="fuentes-caja">Enlaces: <a href="https://ethz.ch/en/news-and-events/eth-news/news/2020/10/doubly-curved-concrete-roof-complete.html">Doubly curved concrete roof complete, ETH Zúrich, 28-10-2020</a>; <a href="https://ethz.ch/en/news-and-events/eth-news/news/2017/10/innovative-construction.html">Construction prototype for ultra-thin concrete roof, ETH Zúrich, 2017</a> (solo se verificó el título y la fecha en la dirección). La página de 2020 no indica espesor ni superficie, por eso aquí no se dan. Consultado el 22-10-2026.</span></p>
+</div>
+</div>
+<section id="ejemplo-resuelto-la-base-de-un-cilindro" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="ejemplo-resuelto-la-base-de-un-cilindro"><span class="header-section-number">16.2</span> Ejemplo resuelto: la base de un cilindro</h2>
+<p>Cilindro de radio <span class="math inline">\(R\)</span> con <span class="math inline">\(\theta^1=\varphi\)</span> (ángulo) y <span class="math inline">\(\theta^2=z\)</span>, y normal exterior. Entonces <span class="math inline">\(\mathbf{a}_\varphi=R\,\mathbf{e}_\varphi\)</span>, <span class="math inline">\(\mathbf{a}_z=\mathbf{e}_z\)</span> y <span class="math inline">\(b_{\varphi\varphi}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\varphi,\varphi}=-R\)</span>, de modo que <span class="math inline">\(b^\varphi_\varphi=-1/R\)</span>. Por <a href="#eq-base-lamina-d3" class="quarto-xref">ecuación&nbsp;<span>16.2</span></a>, <span class="math display">\[
 \mathbf{g}_\varphi=\Bigl(1+\frac{\theta^3}{R}\Bigr)\mathbf{a}_\varphi=(R+\theta^3)\,\mathbf{e}_\varphi ,
 \]</span> que es lo correcto: la fibra a distancia <span class="math inline">\(\theta^3\)</span> de la superficie media es un círculo de radio <span class="math inline">\(R+\theta^3\)</span>. Y <span class="math inline">\(\sqrt g=R+\theta^3\)</span>, de manera que el volumen de una rebanada crece hacia fuera.</p>
+</section>
 </div>
 </section>
-<section id="sec-hipotesis-cin" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="sec-hipotesis-cin"><span class="header-section-number">16.2</span> La hipótesis cinemática</h2>
+<section id="sec-hipotesis-cin" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="sec-hipotesis-cin"><span class="header-section-number">16.3</span> La hipótesis cinemática</h2>
 <p>Seguir a todos los puntos del sólido sería un problema 3D. La teoría de láminas lo reduce a <strong>dos dimensiones</strong> con una hipótesis sobre cómo se mueve la fibra del espesor:</p>
 <div id="def-hipotesis-cin" class="theorem definition">
 <p><span class="theorem-title"><strong>Definición 16.1 (Hipótesis cinemática de la lámina)</strong></span> Cada <strong>línea normal</strong> <span class="math inline">\(\{\theta^\alpha\ \text{fijas}\}\)</span> de la configuración de referencia <strong>sigue siendo una recta</strong> tras la deformación, de modo que <span id="eq-hipotesis"><span class="math display">\[
@@ -631,8 +650,8 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 </div>
 </div>
 </section>
-<section id="sec-gl-lamina" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="sec-gl-lamina"><span class="header-section-number">16.3</span> La deformación de Green–Lagrange de la lámina</h2>
+<section id="sec-gl-lamina" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="sec-gl-lamina"><span class="header-section-number">16.4</span> La deformación de Green–Lagrange de la lámina</h2>
 <p>Con la definición <span class="math inline">\(\gamma_{ij}=\tfrac12(G_{ij}-g_{ij})\)</span> y las bases (<a href="#eq-base-lamina-d3" class="quarto-xref">ecuación&nbsp;<span>16.2</span></a>, <a href="#eq-base-deformada" class="quarto-xref">ecuación&nbsp;<span>16.4</span></a>) se obtiene un resultado exacto:</p>
 <div id="prp-gl-lamina" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposición 16.1 (Deformación exacta de la lámina)</strong></span> <span id="eq-gl-lamina"><span class="math display">\[
@@ -648,7 +667,7 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 \tag{16.6}\]</span></span></p>
 </div>
 <div class="demostracion callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -657,7 +676,7 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Es multiplicar bases. De <a href="#eq-base-deformada" class="quarto-xref">ecuación&nbsp;<span>16.4</span></a>, <span class="math inline">\(G_{\alpha\beta}=\mathbf{R}_{0,\alpha}\cdot\mathbf{R}_{0,\beta}+\theta^3(\mathbf{R}_{0,\alpha}\cdot\mathbf{A}_{3,\beta}+\mathbf{R}_{0,\beta}\cdot\mathbf{A}_{3,\alpha})+(\theta^3)^2\mathbf{A}_{3,\alpha}\cdot\mathbf{A}_{3,\beta}\)</span>, y lo mismo para <span class="math inline">\(g_{\alpha\beta}\)</span> con <span class="math inline">\(\mathbf{r}\)</span> y <span class="math inline">\(\hat{\mathbf{a}}_3\)</span>. Al restar, el término lineal contiene <span class="math inline">\(-(\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_{3,\beta}+\mathbf{a}_\beta\cdot\hat{\mathbf{a}}_{3,\alpha})=2b_{\alpha\beta}\)</span> por Weingarten (<a href="../C-superficies/C2-formas-fundamentales.html#eq-weingarten" class="quarto-xref">ecuación&nbsp;<span>9.4</span></a>): de ahí el <span class="math inline">\(+b_{\alpha\beta}\)</span> de <span class="math inline">\(\gamma^1\)</span>. Para <span class="math inline">\(\gamma_{\alpha3}\)</span> y <span class="math inline">\(\gamma_{33}\)</span>: <span class="math inline">\(G_{\alpha3}=\mathbf{R}_{0,\alpha}\cdot\mathbf{A}_3+\theta^3\mathbf{A}_{3,\alpha}\cdot\mathbf{A}_3\)</span>, <span class="math inline">\(G_{33}=\mathbf{A}_3\cdot\mathbf{A}_3\)</span>, y en referencia <span class="math inline">\(g_{\alpha3}=\mathbf{a}_\alpha\cdot\hat{\mathbf{a}}_3+\theta^3\hat{\mathbf{a}}_{3,\alpha}\cdot\hat{\mathbf{a}}_3=0\)</span>, <span class="math inline">\(g_{33}=1\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 </div>
@@ -749,8 +768,8 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 </div>
 </div>
 </section>
-<section id="sec-gdl" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="sec-gdl"><span class="header-section-number">16.4</span> Grados de libertad</h2>
+<section id="sec-gdl" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="sec-gdl"><span class="header-section-number">16.5</span> Grados de libertad</h2>
 <p>La cantidad de funciones independientes que quedan en cada punto distingue las teorías:</p>
 <table class="caption-top table">
 <colgroup>
@@ -790,8 +809,8 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 </table>
 <p>El elemento finito de lámina del libro usa <strong>cinco</strong> grados de libertad por nodo (tres desplazamientos y dos giros del director).</p>
 </section>
-<section id="sec-julia-d3" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="sec-julia-d3"><span class="header-section-number">16.5</span> Práctica guiada en Julia</h2>
+<section id="sec-julia-d3" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="sec-julia-d3"><span class="header-section-number">16.6</span> Práctica guiada en Julia</h2>
 <div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -832,27 +851,10 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 </div>
 </div>
 </section>
-<section id="sec-ejercicios-d3" class="level2" data-number="16.6">
-<h2 data-number="16.6" class="anchored" data-anchor-id="sec-ejercicios-d3"><span class="header-section-number">16.6</span> Ejercicios</h2>
+<section id="sec-ejercicios-d3" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="sec-ejercicios-d3"><span class="header-section-number">16.7</span> Ejercicios</h2>
 <ol type="1">
 <li><p><strong>Estiramiento del espesor.</strong> Si el director mide <span class="math inline">\(|\mathbf{A}_3|=1{,}05\)</span>, ¿cuánto vale <span class="math inline">\(\gamma_{33}\)</span>?</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(\gamma_{33}=\tfrac12(1{,}05^2-1)=0{,}05125\)</span>: un 5 % de alargamiento da una deformación de Green–Lagrange del 5,1 %.</p>
-</div>
-</div>
-</div></li>
-<li><p><strong>Esfera.</strong> Una esfera de radio <span class="math inline">\(R\)</span> se infla a radio <span class="math inline">\(R+u\)</span> con director = normal. Calcula <span class="math inline">\(\gamma^0\)</span> y <span class="math inline">\(\gamma^1\)</span> (en componentes físicas, divide por <span class="math inline">\(a_{\alpha\alpha}\)</span>).</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -865,11 +867,11 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Por simetría, en cualquier dirección del plano <span class="math inline">\(\gamma^0\to Ru+\tfrac12u^2\)</span> (en la base de longitud <span class="math inline">\(R\)</span>, <span class="math inline">\(\varepsilon^0=u/R+\tfrac12u^2/R^2\)</span>) y <span class="math inline">\(\gamma^1=u\)</span>. Es el cilindro de dos curvaturas iguales.</p>
+<p><span class="math inline">\(\gamma_{33}=\tfrac12(1{,}05^2-1)=0{,}05125\)</span>: un 5 % de alargamiento da una deformación de Green–Lagrange del 5,1 %.</p>
 </div>
 </div>
 </div></li>
-<li><p><strong>Giro rígido.</strong> Prueba que si <span class="math inline">\(\mathbf{R}_0\)</span> y <span class="math inline">\(\mathbf{A}_3\)</span> son los de referencia girados por la misma rotación <span class="math inline">\(Q\)</span>, todas las deformaciones son nulas.</p>
+<li><p><strong>Esfera.</strong> Una esfera de radio <span class="math inline">\(R\)</span> se infla a radio <span class="math inline">\(R+u\)</span> con director = normal. Calcula <span class="math inline">\(\gamma^0\)</span> y <span class="math inline">\(\gamma^1\)</span> (en componentes físicas, divide por <span class="math inline">\(a_{\alpha\alpha}\)</span>).</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -881,6 +883,23 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por simetría, en cualquier dirección del plano <span class="math inline">\(\gamma^0\to Ru+\tfrac12u^2\)</span> (en la base de longitud <span class="math inline">\(R\)</span>, <span class="math inline">\(\varepsilon^0=u/R+\tfrac12u^2/R^2\)</span>) y <span class="math inline">\(\gamma^1=u\)</span>. Es el cilindro de dos curvaturas iguales.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Giro rígido.</strong> Prueba que si <span class="math inline">\(\mathbf{R}_0\)</span> y <span class="math inline">\(\mathbf{A}_3\)</span> son los de referencia girados por la misma rotación <span class="math inline">\(Q\)</span>, todas las deformaciones son nulas.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Los productos escalares <span class="math inline">\(\mathbf{R}_{0,\alpha}\cdot\mathbf{R}_{0,\beta}\)</span>, etc. no cambian con una rotación (ortogonal), así que <span class="math inline">\(G_{ij}=g_{ij}\)</span> y <span class="math inline">\(\gamma_{ij}=0\)</span>. Es la propiedad de invariancia de Green–Lagrange (D1).</p>
 </div>
@@ -897,7 +916,7 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 <li>Cuento los grados de libertad por punto de cada teoría.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -906,7 +925,7 @@ Figura&nbsp;16.1: Sección de una lámina antes (gris discontinuo) y después de
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Fuentes.</strong> Texto autónomo; cinemática de láminas con director en la línea de las referencias estándar <span class="citation" data-cites="Novozhilov Flugge">(<a href="../referencias.html#ref-Novozhilov" role="doc-biblioref">Novozhilov 1959</a>; <a href="../referencias.html#ref-Flugge" role="doc-biblioref">Flügge 1972</a>)</span>. Todas las fórmulas de <a href="#prp-gl-lamina" class="quarto-xref">Proposición&nbsp;<span>16.1</span></a> se comprueban con <code>deformacion_lamina_exacta</code> (conjunto «Cinemática de láminas» de los tests).</p>
 <p><strong>Correcciones.</strong> La expresión de <span class="math inline">\(\gamma^1_{\alpha\beta}\)</span> lleva el signo <span class="math inline">\(+b_{\alpha\beta}\)</span> con el convenio <span class="math inline">\(b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}\)</span>; con el signo contrario de la curvatura cambia el de ese término (ver notación).</p>

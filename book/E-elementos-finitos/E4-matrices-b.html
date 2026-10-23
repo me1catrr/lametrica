@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8cb3beb3142a5dea5acd345491dee53e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -617,6 +617,20 @@ Figura&nbsp;25.1: Valor absoluto de las matrices <span class="math inline">\(\ma
 \boldsymbol\gamma^0=\mathbf H_E\,\boldsymbol\delta,\qquad \boldsymbol\gamma^1=\mathbf H_B\,\boldsymbol\delta,\qquad \boldsymbol\gamma_S=\mathbf H_S\,\boldsymbol\delta,
 \tag{25.2}\]</span></span> donde las entradas dependen de <span class="math inline">\(N_k\)</span>, <span class="math inline">\(N_{k,\beta}\)</span> y de la geometría <span class="math inline">\((\Gamma^\gamma_{\alpha\beta},b_{\alpha\beta},b^\rho_\alpha)\)</span> <strong>en ese punto</strong>.</p>
 </div>
+<div class="historia callout callout-style-simple callout-note no-icon callout-titled" title="Un poco de historia: el elemento «isoparamétrico»">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un poco de historia: el elemento «isoparamétrico»
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Las matrices de este tema se evalúan punto a punto en el elemento de referencia <span class="math inline">\((\xi,\eta)\)</span>, que se proyecta sobre la geometría real. Cuando la misma interpolación sirve para la geometría y para los desplazamientos se habla de elemento <strong>isoparamétrico</strong>, nombre que se asocia al artículo de I. Ergatoudis, B. M. Irons y O. C. Zienkiewicz «Curved isoparametric, “quadrilateral” elements for finite element analysis» (<em>International Journal of Solids and Structures</em>, 4, 31–42, 1968). El elemento de lámina «degenerado» de Ahmad, Irons y Zienkiewicz (1968, 1970) fue su aplicación a láminas (véase E3). Un capítulo de Springer, al que no se pudo acceder, atribuye además la idea de origen a un informe de Ian Taig de 1962.</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://www.swansea.ac.uk/science-and-engineering/research/zienkiewicz-institute-for-modelling-data-ai/about/history/">Historia del Zienkiewicz Institute, Swansea (lista de referencias)</a> (da la referencia de 1968 y las de Ahmad–Irons–Zienkiewicz); <a href="https://link.springer.com/chapter/10.1007/978-1-4939-7423-8_5">capítulo de Springer 10.1007/978-1-4939-7423-8_5</a> (solo resumen de búsqueda; acceso restringido). La atribución a Taig <strong>no está verificada</strong>. No se leyeron los originales. Consultado el 22-10-2026.</span></p>
+</div>
+</div>
 </section>
 <section id="sec-extension-e4" class="level2" data-number="25.2">
 <h2 data-number="25.2" class="anchored" data-anchor-id="sec-extension-e4"><span class="header-section-number">25.2</span> Extensión</h2>
@@ -820,23 +834,6 @@ Figura&nbsp;25.1: Valor absoluto de las matrices <span class="math inline">\(\ma
 <ol type="1">
 <li><p><strong>Giros y membrana.</strong> Explica por qué un movimiento de sólo-giros no genera energía de membrana en este elemento.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Porque <span class="math inline">\(\gamma^0_{\alpha\beta}\)</span> en <a href="#eq-relaciones-e4" class="quarto-xref">ecuación&nbsp;<span>25.1</span></a> sólo contiene <span class="math inline">\(u_\alpha\)</span> y <span class="math inline">\(u_3\)</span>: los giros <span class="math inline">\(\varphi\)</span> aparecen únicamente en <span class="math inline">\(\gamma^1\)</span> y <span class="math inline">\(\gamma_S\)</span>.</p>
-</div>
-</div>
-</div></li>
-<li><p><strong>Placa plana.</strong> Escribe la fila <span class="math inline">\(\gamma_1\)</span> de <span class="math inline">\(\mathbf H_S\)</span> para el nodo <span class="math inline">\(k\)</span> de una placa plana con <span class="math inline">\(\theta^\alpha\)</span> cartesianas.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -848,11 +845,11 @@ Figura&nbsp;25.1: Valor absoluto de las matrices <span class="math inline">\(\ma
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(\gamma_1=\varphi_1+w_{,1}\)</span>: la columna <span class="math inline">\(\varphi_{1k}\)</span> vale <span class="math inline">\(N_k\)</span>, la columna <span class="math inline">\(w_k\)</span> vale <span class="math inline">\(N_{k,1}\)</span> y las demás, 0.</p>
+<p>Porque <span class="math inline">\(\gamma^0_{\alpha\beta}\)</span> en <a href="#eq-relaciones-e4" class="quarto-xref">ecuación&nbsp;<span>25.1</span></a> sólo contiene <span class="math inline">\(u_\alpha\)</span> y <span class="math inline">\(u_3\)</span>: los giros <span class="math inline">\(\varphi\)</span> aparecen únicamente en <span class="math inline">\(\gamma^1\)</span> y <span class="math inline">\(\gamma_S\)</span>.</p>
 </div>
 </div>
 </div></li>
-<li><p><strong>Contar entradas.</strong> ¿Cuántos g.d.l. entran en <span class="math inline">\(\gamma^0_{11}\)</span> para una lámina curva? ¿Y en una placa plana?</p>
+<li><p><strong>Placa plana.</strong> Escribe la fila <span class="math inline">\(\gamma_1\)</span> de <span class="math inline">\(\mathbf H_S\)</span> para el nodo <span class="math inline">\(k\)</span> de una placa plana con <span class="math inline">\(\theta^\alpha\)</span> cartesianas.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -864,6 +861,23 @@ Figura&nbsp;25.1: Valor absoluto de las matrices <span class="math inline">\(\ma
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\gamma_1=\varphi_1+w_{,1}\)</span>: la columna <span class="math inline">\(\varphi_{1k}\)</span> vale <span class="math inline">\(N_k\)</span>, la columna <span class="math inline">\(w_k\)</span> vale <span class="math inline">\(N_{k,1}\)</span> y las demás, 0.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Contar entradas.</strong> ¿Cuántos g.d.l. entran en <span class="math inline">\(\gamma^0_{11}\)</span> para una lámina curva? ¿Y en una placa plana?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Curva: <span class="math inline">\(u_1,u_2,u_3\)</span> de cada nodo (12); plana (<span class="math inline">\(b=0\)</span>, <span class="math inline">\(\Gamma=0\)</span>): sólo <span class="math inline">\(u_1\)</span> de cada nodo (4).</p>
 </div>
@@ -881,7 +895,7 @@ Figura&nbsp;25.1: Valor absoluto de las matrices <span class="math inline">\(\ma
 <li>Sé que las componentes físicas sólo se dan en bases ortogonales y que el resto está por confirmar.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -890,7 +904,7 @@ Figura&nbsp;25.1: Valor absoluto de las matrices <span class="math inline">\(\ma
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Fuentes.</strong> Texto autónomo; las relaciones de partida son las de D6 <span class="citation" data-cites="Novozhilov Flugge">(<a href="../referencias.html#ref-Novozhilov" role="doc-biblioref">Novozhilov 1959</a>; <a href="../referencias.html#ref-Flugge" role="doc-biblioref">Flügge 1972</a>)</span>; la construcción de <span class="math inline">\(\mathbf H\)</span> es estándar en elementos finitos <span class="citation" data-cites="Bathe Hughes">(<a href="../referencias.html#ref-Bathe" role="doc-biblioref">Bathe 1996</a>; <a href="../referencias.html#ref-Hughes" role="doc-biblioref">Hughes 1987</a>)</span>. La equivalencia <span class="math inline">\(\mathbf H\boldsymbol\delta\)</span> ↔︎ relaciones de D6 se comprueba con test automático (error <span class="math inline">\(&lt;10^{-8}\)</span>).</p>
 <p><strong>Qué queda pendiente.</strong> Los convenios de componentes físicas no ortogonales y de g.d.l. físicos; este tema no lleva nota histórica por no haber fuente verificada; revisión visual de la figura; la «Aplicación real» es una orientación sin fuente.</p>

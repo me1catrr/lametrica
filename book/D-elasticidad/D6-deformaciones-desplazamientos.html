@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8cb3beb3142a5dea5acd345491dee53e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -636,6 +636,20 @@ Figura&nbsp;19.1: Los tres modos de deformación de una lámina de Reissner–Mi
 <p>En una placa (<span class="math inline">\(b_{\alpha\beta}=0\)</span>) las tres relaciones se <strong>desacoplan</strong>: la extensión solo depende de <span class="math inline">\(u_\alpha\)</span> (problema plano), la flexión de <span class="math inline">\(\varphi_\alpha\)</span> y el cortante de <span class="math inline">\(\varphi_\alpha+w_{,\alpha}\)</span>. En una lámina curva, <span class="math inline">\(b_{\alpha\beta}\neq0\)</span> <strong>mezcla</strong> membrana y flexión: empujar la superficie normalmente (<span class="math inline">\(u_3\)</span>) la estira, y estirarla (<span class="math inline">\(u_\alpha\)</span>) la flexa.</p>
 </div>
 </div>
+<div class="historia callout callout-style-simple callout-note no-icon callout-titled" title="Un poco de historia: una «primera aproximación consistente»">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un poco de historia: una «primera aproximación consistente»
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En agosto de 1959 se celebró en Delft un simposio sobre la teoría de láminas elásticas delgadas (24–28 de agosto). Allí presentó W. T. Koiter «A consistent first approximation in the general theory of thin elastic shells», publicado en las actas de 1960 (editadas por el propio Koiter y publicadas por North-Holland; las citas dan las páginas 12–33). Según una fuente secundaria, J. L. Sanders y B. Budiansky desarrollaron de forma independiente, en la misma época, esencialmente la misma teoría lineal. El título resume una idea que este tema aplica a su escala: al linealizar con giros moderados se conservan solo los términos de un mismo orden de magnitud.</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://katalog.lib.cas.cz/Record/001122510">Proceedings of the Symposium on the Theory of Thin Elastic Shells, Delft, 1959 (registro de catálogo)</a>; <a href="https://journals.sagepub.com/doi/10.1177/10812865241269725">artículo de SAGE sobre el modelo de Koiter (solo resumen de búsqueda)</a>; <a href="https://arxiv.org/abs/2410.16837">Koiter, modelo de láminas (arXiv:2410.16837)</a> (se abrió la página, pero no trata la historia). No se leyó el artículo de Koiter; la atribución a Sanders y Budiansky proviene de un resumen, sin contrastar. Consultado el 22-10-2026.</span></p>
+</div>
+</div>
 </section>
 <section id="sec-curv-acopla" class="level2" data-number="19.2">
 <h2 data-number="19.2" class="anchored" data-anchor-id="sec-curv-acopla"><span class="header-section-number">19.2</span> Cómo actúa la curvatura</h2>
@@ -778,23 +792,6 @@ Figura&nbsp;19.1: Los tres modos de deformación de una lámina de Reissner–Mi
 <ol type="1">
 <li><p><strong>Traslación rígida.</strong> Una lámina cilíndrica se desplaza una distancia <span class="math inline">\(c\)</span> en la dirección <span class="math inline">\(z\)</span> (el eje): <span class="math inline">\(u_z=c\)</span>. ¿Qué deformaciones produce?</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Ninguna: <span class="math inline">\(u_{\alpha\|\beta}=0\)</span> (campo constante en la base cartesiana) y <span class="math inline">\(b_{zz}=0\)</span>. Los movimientos rígidos no deforman.</p>
-</div>
-</div>
-</div></li>
-<li><p><strong>Acople.</strong> Explica por qué un cilindro con <span class="math inline">\(u_3=1\)</span> mm uniforme tiene deformación de membrana, aunque no haya fuerzas en el plano.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -806,11 +803,11 @@ Figura&nbsp;19.1: Los tres modos de deformación de una lámina de Reissner–Mi
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Porque <span class="math inline">\(\gamma^0_{\varphi\varphi}=-b_{\varphi\varphi}u_3=Ru_3\neq0\)</span>: ensanchar un aro alarga su perímetro. Ese es el origen del efecto membrana.</p>
+<p>Ninguna: <span class="math inline">\(u_{\alpha\|\beta}=0\)</span> (campo constante en la base cartesiana) y <span class="math inline">\(b_{zz}=0\)</span>. Los movimientos rígidos no deforman.</p>
 </div>
 </div>
 </div></li>
-<li><p><strong>Orden.</strong> ¿Qué relación de <a href="#eq-relaciones" class="quarto-xref">ecuación&nbsp;<span>19.1</span></a> contiene la derivada <strong>más alta</strong> de los desplazamientos? ¿Y de <span class="math inline">\(u_3\)</span> en KL?</p>
+<li><p><strong>Acople.</strong> Explica por qué un cilindro con <span class="math inline">\(u_3=1\)</span> mm uniforme tiene deformación de membrana, aunque no haya fuerzas en el plano.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -822,6 +819,23 @@ Figura&nbsp;19.1: Los tres modos de deformación de una lámina de Reissner–Mi
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Porque <span class="math inline">\(\gamma^0_{\varphi\varphi}=-b_{\varphi\varphi}u_3=Ru_3\neq0\)</span>: ensanchar un aro alarga su perímetro. Ese es el origen del efecto membrana.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Orden.</strong> ¿Qué relación de <a href="#eq-relaciones" class="quarto-xref">ecuación&nbsp;<span>19.1</span></a> contiene la derivada <strong>más alta</strong> de los desplazamientos? ¿Y de <span class="math inline">\(u_3\)</span> en KL?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>En RM, <span class="math inline">\(\gamma^1\)</span> contiene primeras derivadas de <span class="math inline">\(\varphi\)</span> y <span class="math inline">\(u_\mu\)</span> y <span class="math inline">\(\gamma^0\)</span> primeras derivadas de <span class="math inline">\(u_\alpha\)</span>: todo de orden uno. En KL, <span class="math inline">\(\varphi_\alpha\)</span> se sustituye por <span class="math inline">\(-(u_{3,\alpha}+b^\rho_\alpha u_\rho)\)</span> y aparecen segundas derivadas de <span class="math inline">\(u_3\)</span>.</p>
 </div>
@@ -838,7 +852,7 @@ Figura&nbsp;19.1: Los tres modos de deformación de una lámina de Reissner–Mi
 <li>Sé que las bases no ortogonales y los giros físicos tienen convenios por confirmar.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -847,7 +861,7 @@ Figura&nbsp;19.1: Los tres modos de deformación de una lámina de Reissner–Mi
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Fuentes.</strong> Texto autónomo <span class="citation" data-cites="Novozhilov Flugge">(<a href="../referencias.html#ref-Novozhilov" role="doc-biblioref">Novozhilov 1959</a>; <a href="../referencias.html#ref-Flugge" role="doc-biblioref">Flügge 1972</a>)</span>. <a href="#eq-relaciones" class="quarto-xref">ecuación&nbsp;<span>19.1</span></a> se comprueba con <code>deformacion_lamina_lineal</code> frente a <code>deformacion_lamina_exacta</code>; los ejemplos del cilindro, con los mismos tests.</p>
 <p><strong>Correcciones.</strong> Con el convenio del libro (<span class="math inline">\(b_{\alpha\beta}=\hat{\mathbf{a}}_3\cdot\mathbf{a}_{\alpha,\beta}\)</span>) los signos de <span class="math inline">\(\gamma^0\)</span> y del acople <span class="math inline">\(b^\mu_\alpha u_{\mu\|\beta}\)</span> en <span class="math inline">\(\gamma^1\)</span> son los de <a href="#eq-relaciones" class="quarto-xref">ecuación&nbsp;<span>19.1</span></a>; una fuente de partida imprime el signo de <span class="math inline">\(\gamma^1\)</span> de forma incoherente con el de <span class="math inline">\(b\)</span>, y se considera error de la fuente (el signo exacto de <span class="math inline">\(\gamma^1\)</span> en KL es <span class="math inline">\(-(B-b)\)</span>, D4).</p>

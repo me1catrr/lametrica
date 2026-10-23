@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8cb3beb3142a5dea5acd345491dee53e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -475,9 +475,9 @@ window.Quarto = {
   <li><a href="#sec-cargas-e8" id="toc-sec-cargas-e8" class="nav-link" data-scroll-target="#sec-cargas-e8"><span class="header-section-number">29.1</span> Cargas consistentes</a></li>
   <li><a href="#sec-peso-e8" id="toc-sec-peso-e8" class="nav-link" data-scroll-target="#sec-peso-e8"><span class="header-section-number">29.2</span> Peso propio de una lámina</a></li>
   <li><a href="#sec-masa-e8" id="toc-sec-masa-e8" class="nav-link" data-scroll-target="#sec-masa-e8"><span class="header-section-number">29.3</span> Matriz de masa</a></li>
-  <li><a href="#sec-concentrada-e8" id="toc-sec-concentrada-e8" class="nav-link" data-scroll-target="#sec-concentrada-e8"><span class="header-section-number">29.4</span> Masa concentrada y comparación</a></li>
-  <li><a href="#sec-julia-e8" id="toc-sec-julia-e8" class="nav-link" data-scroll-target="#sec-julia-e8"><span class="header-section-number">29.5</span> Práctica guiada en Julia</a></li>
-  <li><a href="#sec-ejercicios-e8" id="toc-sec-ejercicios-e8" class="nav-link" data-scroll-target="#sec-ejercicios-e8"><span class="header-section-number">29.6</span> Ejercicios</a></li>
+  <li><a href="#sec-concentrada-e8" id="toc-sec-concentrada-e8" class="nav-link" data-scroll-target="#sec-concentrada-e8"><span class="header-section-number">29.5</span> Masa concentrada y comparación</a></li>
+  <li><a href="#sec-julia-e8" id="toc-sec-julia-e8" class="nav-link" data-scroll-target="#sec-julia-e8"><span class="header-section-number">29.6</span> Práctica guiada en Julia</a></li>
+  <li><a href="#sec-ejercicios-e8" id="toc-sec-ejercicios-e8" class="nav-link" data-scroll-target="#sec-ejercicios-e8"><span class="header-section-number">29.7</span> Ejercicios</a></li>
   <li><a href="#la-doy-por-superada-si" id="toc-la-doy-por-superada-si" class="nav-link" data-scroll-target="#la-doy-por-superada-si">La doy por superada si…</a></li>
   <li><a href="#referencias-unidad" id="toc-referencias-unidad" class="nav-link" data-scroll-target="#referencias-unidad">Referencias</a></li>
   <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
@@ -534,7 +534,7 @@ Figura&nbsp;29.1: Primera frecuencia de una barra empotrada–libre calculada co
 <p><strong>Secciones del tema</strong></p>
 <ul>
 <li><strong><a href="#sec-cargas-e8" class="quarto-xref"><span>Sección 29.1</span></a></strong> · Cargas consistentes · <strong><a href="#sec-peso-e8" class="quarto-xref"><span>Sección 29.2</span></a></strong> · Peso propio de una lámina · <strong><a href="#sec-masa-e8" class="quarto-xref"><span>Sección 29.3</span></a></strong> · Matriz de masa</li>
-<li><strong><a href="#sec-concentrada-e8" class="quarto-xref"><span>Sección 29.4</span></a></strong> · Masa concentrada · <strong><a href="#sec-julia-e8" class="quarto-xref"><span>Sección 29.5</span></a></strong> · Práctica guiada</li>
+<li><strong><a href="#sec-concentrada-e8" class="quarto-xref"><span>Sección 29.5</span></a></strong> · Masa concentrada · <strong><a href="#sec-julia-e8" class="quarto-xref"><span>Sección 29.6</span></a></strong> · Práctica guiada</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Notación y convenciones de este tema">
 <div class="callout-header d-flex align-content-center">
@@ -682,7 +682,25 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 \tag{29.5}\]</span></span></p>
 <p>Tres bloques: <strong>traslación</strong> (<span class="math inline">\(\rho t\)</span> por la métrica inversa en <span class="math inline">\(u_1,u_2\)</span> y por 1 en <span class="math inline">\(u_3\)</span>), <strong>rotatoria</strong> (<span class="math inline">\(\rho t^3/12\)</span> en los giros) y <strong>acoplamiento</strong> (proporcional a <span class="math inline">\(H\)</span>, pequeño). Con la integración <span class="math inline">\(2\times2\)</span> el programa la forma exactamente y <strong>es la misma energía</strong> de la que sale la matriz de rigidez en <a href="E7-hu-washizu-subdominios.html#eq-hw-e7" class="quarto-xref">ecuación&nbsp;<span>28.1</span></a>: <span class="math inline">\(\mathbf M\)</span> es simétrica y semidefinida positiva.</p>
 <div id="exm-masa-e8" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 29.2 (Ejemplo resuelto: la masa de un elemento)</strong></span> Elemento de acero sobre un cilindro de <span class="math inline">\(R=0{,}5\)</span> m, de <span class="math inline">\(0{,}1\)</span> m de longitud axial y <span class="math inline">\(0{,}1\)</span> rad de abertura, con <span class="math inline">\(t=5\)</span> mm y <span class="math inline">\(\rho=7850\)</span> kg/m³. Una <strong>traslación axial rígida</strong> unidad (<span class="math inline">\(u_1=1\)</span> en los cuatro nodos) debe dar <span class="math inline">\(\boldsymbol\delta^{\mathsf T}\mathbf M\boldsymbol\delta=m\)</span> (la masa total). Como <span class="math inline">\(K=0\)</span> en el cilindro, <span class="math inline">\(m=\rho\,t\,A=7850\cdot0{,}005\cdot(0{,}1\cdot0{,}5\cdot0{,}1)=\mathbf{0{,}19625}\)</span> kg, con <span class="math inline">\(A=0{,}005\)</span> m². Resultado <em>analítico</em>; la práctica lo obtiene con <code>masa_elemento</code>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 29.2</strong></span> &nbsp;</p>
+<div class="historia callout callout-style-simple callout-note no-icon callout-titled" title="Un poco de historia: la masa «consistente»">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un poco de historia: la masa «consistente»
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hasta comienzos de los años sesenta era habitual repartir la masa de un elemento entre sus nodos de forma más o menos arbitraria. La alternativa <strong>consistente</strong> (construir la matriz de masa con las mismas funciones de forma que la de rigidez) se atribuye a John S. Archer, que la presentó en 1963 en el <em>Journal of the Structural Division</em> de la ASCE y la extendió a estructuras de elementos finitos en un artículo de 1965 del <em>AIAA Journal</em>. Un informe de la NASA lo describe como el que quitó la arbitrariedad al reparto de la masa en los elementos finitos.</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://ascelibrary.com/doi/10.1061/%28ASCE%290893-1321%282006%2919%3A4%28241%29">Construction of Customized Mass-Stiffness Pairs Using Templates, J. Aerosp. Eng. 2006</a> (cita Archer 1963, vol.&nbsp;89, pp.&nbsp;161–178; Archer 1965, <em>AIAA J.</em> 3, 1910–1918); <a href="https://ntrs.nasa.gov/api/citations/19870017808/downloads/19870017808.pdf">informe de la NASA, 1987</a> (solo resumen de búsqueda). Un índice de ASCE sitúa el artículo (agosto de 1963) en un fichero del volumen 90: <strong>comprueba el volumen antes de citarlo</strong>. No se leyó el original. Consultado el 22-10-2026.</span></p>
+</div>
+</div>
+<section id="ejemplo-resuelto-la-masa-de-un-elemento" class="level2" data-number="29.4">
+<h2 data-number="29.4" class="anchored" data-anchor-id="ejemplo-resuelto-la-masa-de-un-elemento"><span class="header-section-number">29.4</span> Ejemplo resuelto: la masa de un elemento</h2>
+<p>Elemento de acero sobre un cilindro de <span class="math inline">\(R=0{,}5\)</span> m, de <span class="math inline">\(0{,}1\)</span> m de longitud axial y <span class="math inline">\(0{,}1\)</span> rad de abertura, con <span class="math inline">\(t=5\)</span> mm y <span class="math inline">\(\rho=7850\)</span> kg/m³. Una <strong>traslación axial rígida</strong> unidad (<span class="math inline">\(u_1=1\)</span> en los cuatro nodos) debe dar <span class="math inline">\(\boldsymbol\delta^{\mathsf T}\mathbf M\boldsymbol\delta=m\)</span> (la masa total). Como <span class="math inline">\(K=0\)</span> en el cilindro, <span class="math inline">\(m=\rho\,t\,A=7850\cdot0{,}005\cdot(0{,}1\cdot0{,}5\cdot0{,}1)=\mathbf{0{,}19625}\)</span> kg, con <span class="math inline">\(A=0{,}005\)</span> m². Resultado <em>analítico</em>; la práctica lo obtiene con <code>masa_elemento</code>.</p>
+</section>
 </div>
 <div id="e8-masa" class="ejercicio" data-tipo="numerico" data-respuesta="0.19625" data-tol="0.5%" data-unidad="kg">
 <p>En el <a href="#exm-masa-e8" class="quarto-xref">Ejemplo&nbsp;<span>29.2</span></a>, ¿cuánto vale la masa del elemento?</p>
@@ -691,8 +709,8 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 </div>
 </div>
 </section>
-<section id="sec-concentrada-e8" class="level2" data-number="29.4">
-<h2 data-number="29.4" class="anchored" data-anchor-id="sec-concentrada-e8"><span class="header-section-number">29.4</span> Masa concentrada y comparación</h2>
+<section id="sec-concentrada-e8" class="level2" data-number="29.5">
+<h2 data-number="29.5" class="anchored" data-anchor-id="sec-concentrada-e8"><span class="header-section-number">29.5</span> Masa concentrada y comparación</h2>
 <p>La <strong>masa concentrada</strong> (diagonal) se obtiene colocando en cada nodo <span class="math inline">\(\rho tA/4\)</span> de masa (y la inercia rotatoria que corresponda), sin acoplamientos. Con la misma malla da frecuencias <strong>por debajo</strong> de las exactas, y la consistente <strong>por encima</strong> (<a href="#fig-masa-barra" class="quarto-xref">Figura&nbsp;<span>29.1</span></a>). Para una barra:</p>
 <p><span class="math display">\[
 \mathbf M_{\text{cons}}=\frac{\rho Ah}{6}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix},\qquad \mathbf M_{\text{conc}}=\frac{\rho Ah}{2}\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}.
@@ -742,8 +760,8 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 </div>
 </div>
 </section>
-<section id="sec-julia-e8" class="level2" data-number="29.5">
-<h2 data-number="29.5" class="anchored" data-anchor-id="sec-julia-e8"><span class="header-section-number">29.5</span> Práctica guiada en Julia</h2>
+<section id="sec-julia-e8" class="level2" data-number="29.6">
+<h2 data-number="29.6" class="anchored" data-anchor-id="sec-julia-e8"><span class="header-section-number">29.6</span> Práctica guiada en Julia</h2>
 <div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo computacional">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -796,27 +814,10 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 </div>
 <p>El peso converge cuadráticamente (<span class="math inline">\(5\,\%\to1{,}3\,\%\to0{,}3\,\%\)</span>): la traslación rígida expresada en componentes covariantes sólo se representa bien con elementos pequeños (aviso de E3).</p>
 </section>
-<section id="sec-ejercicios-e8" class="level2" data-number="29.6">
-<h2 data-number="29.6" class="anchored" data-anchor-id="sec-ejercicios-e8"><span class="header-section-number">29.6</span> Ejercicios</h2>
+<section id="sec-ejercicios-e8" class="level2" data-number="29.7">
+<h2 data-number="29.7" class="anchored" data-anchor-id="sec-ejercicios-e8"><span class="header-section-number">29.7</span> Ejercicios</h2>
 <ol type="1">
 <li><p><strong>Carga lineal.</strong> Un elemento de barra de longitud <span class="math inline">\(h\)</span> con carga <span class="math inline">\(b(x)=b_0\,x/h\)</span> (cero en el nodo 1, <span class="math inline">\(b_0\)</span> en el 2). Obtén <span class="math inline">\(\mathbf f_e\)</span>.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(f_1=\int_0^h b_0\frac xh\,(1-\tfrac xh)\,dx=b_0h/6\)</span>, <span class="math inline">\(f_2=\int_0^h b_0\frac xh\cdot\frac xh\,dx=b_0h/3\)</span>. Suman <span class="math inline">\(b_0h/2\)</span> (el área del triángulo): el nodo más cargado recibe más.</p>
-</div>
-</div>
-</div></li>
-<li><p><strong>Frecuencia de un elemento.</strong> Barra de un elemento, empotrada en el nodo 1 y masa consistente: ¿qué frecuencia da? Compárala con la exacta <span class="math inline">\(\tfrac\pi2\sqrt{E/\rho}/L\)</span>.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -829,11 +830,11 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(K=EA/L\)</span> y <span class="math inline">\(M=\rho AL/3\)</span> (sólo el término del nodo libre de <span class="math inline">\(\tfrac{\rho AL}6\cdot2\)</span>): <span class="math inline">\(\omega=\sqrt{3E/\rho}/L=1{,}732\sqrt{E/\rho}/L\)</span> frente a <span class="math inline">\(1{,}571\)</span>: un 10 % por encima (primer punto de la <a href="#fig-masa-barra" class="quarto-xref">Figura&nbsp;<span>29.1</span></a>).</p>
+<p><span class="math inline">\(f_1=\int_0^h b_0\frac xh\,(1-\tfrac xh)\,dx=b_0h/6\)</span>, <span class="math inline">\(f_2=\int_0^h b_0\frac xh\cdot\frac xh\,dx=b_0h/3\)</span>. Suman <span class="math inline">\(b_0h/2\)</span> (el área del triángulo): el nodo más cargado recibe más.</p>
 </div>
 </div>
 </div></li>
-<li><p><strong>Masa rotatoria.</strong> ¿Por qué el término rotatorio es proporcional a <span class="math inline">\(t^3\)</span>?</p>
+<li><p><strong>Frecuencia de un elemento.</strong> Barra de un elemento, empotrada en el nodo 1 y masa consistente: ¿qué frecuencia da? Compárala con la exacta <span class="math inline">\(\tfrac\pi2\sqrt{E/\rho}/L\)</span>.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -845,6 +846,23 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(K=EA/L\)</span> y <span class="math inline">\(M=\rho AL/3\)</span> (sólo el término del nodo libre de <span class="math inline">\(\tfrac{\rho AL}6\cdot2\)</span>): <span class="math inline">\(\omega=\sqrt{3E/\rho}/L=1{,}732\sqrt{E/\rho}/L\)</span> frente a <span class="math inline">\(1{,}571\)</span>: un 10 % por encima (primer punto de la <a href="#fig-masa-barra" class="quarto-xref">Figura&nbsp;<span>29.1</span></a>).</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Masa rotatoria.</strong> ¿Por qué el término rotatorio es proporcional a <span class="math inline">\(t^3\)</span>?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Es el momento de inercia de la sección por unidad de longitud: <span class="math inline">\(\int\rho(\theta^3)^2d\theta^3=\rho t^3/12\)</span>. Para láminas delgadas es despreciable frente a <span class="math inline">\(\rho t\)</span>; en láminas gruesas y a frecuencias altas puede importar.</p>
 </div>
@@ -862,7 +880,7 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 <li>Compruebo la masa total y el peso total de una malla.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -871,7 +889,7 @@ T=\tfrac12\rho\int_A\Bigl[\bigl(t+\tfrac{Kt^3}{12}\bigr)\,|\dot{\mathbf u}|^2-\t
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Fuentes.</strong> Texto autónomo: la forma de <a href="#eq-peso-e8" class="quarto-xref">ecuación&nbsp;<span>29.2</span></a> y <a href="#eq-cinetica-e8" class="quarto-xref">ecuación&nbsp;<span>29.4</span></a> es una <strong>derivación propia</strong> con el desarrollo exacto de <span class="math inline">\(\mu\)</span> (verificada numéricamente), no tomada de ninguna publicación; las cargas consistentes y las masas consistente/concentrada son estándar <span class="citation" data-cites="Bathe Hughes ZienkiewiczTaylor">(<a href="../referencias.html#ref-Bathe" role="doc-biblioref">Bathe 1996</a>; <a href="../referencias.html#ref-Hughes" role="doc-biblioref">Hughes 1987</a>; <a href="../referencias.html#ref-ZienkiewiczTaylor" role="doc-biblioref">Zienkiewicz y Taylor, s.&nbsp;f.</a>)</span>.</p>
 <p><strong>Corrección registrada.</strong> La expresión de fuerzas de volumen de unos apuntes previos del autor, marcada por él mismo como errónea, se sustituye por <a href="#eq-peso-e8" class="quarto-xref">ecuación&nbsp;<span>29.2</span></a>.</p>

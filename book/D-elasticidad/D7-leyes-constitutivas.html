@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-43f4aada40237f55078395223bd701f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8cb3beb3142a5dea5acd345491dee53e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -642,6 +642,20 @@ Q^\alpha=t\,\mu\,a^{\alpha\beta}\gamma_\beta,
 <p>En la literatura se multiplica la rigidez a cortante por un factor <span class="math inline">\(K_s\)</span> (p.&nbsp;ej. <span class="math inline">\(5/6\)</span> para una placa homogénea con tensión parabólica). El modelo del libro toma <span class="math inline">\(K_s=1\)</span>, es decir, <strong>no lo aplica</strong>: es el cortante constante en el espesor de la hipótesis cinemática. Es una decisión del modelo de partida, <strong>por confirmar</strong> si se mantiene.</p>
 </div>
 </div>
+<div class="historia callout callout-style-simple callout-note no-icon callout-titled" title="Un poco de historia: la ecuación de las placas nació de un concurso">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un poco de historia: la ecuación de las placas nació de un concurso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La rigidez a flexión que aparece entre las rigideces de la lámina es el coeficiente del operador biarmónico en la ecuación de las placas, y esa ecuación tiene un origen curioso. En 1808, el físico Ernst Chladni mostró en la Academia de Ciencias de París las figuras que forma la arena sobre una placa vibrante, y Napoleón propuso un premio a quien las explicara matemáticamente. Sophie Germain fue la única concursante de la primera convocatoria, se presentó en total tres veces y ganó en 1816 el Gran Premio de Matemáticas de la Academia, la primera mujer en conseguirlo. Según una de las fuentes, no llegó a una solución completa del problema, aunque abrió nuevas formas de explicar las vibraciones elásticas de las placas.</p>
+<p><span class="fuentes-caja">Fuentes (secundarias): <a href="https://thatsmaths.com/2020/01/16/the-extraordinary-talent-and-superior-genius-of-sophie-germain/">The «extraordinary talent and superior genius» of Sophie Germain, That’s Maths</a>; <a href="https://www.irishtimes.com/news/science/the-extraordinary-talent-and-superior-genius-of-sophie-germain-1.4130947">The «extraordinary talent and superior genius» of Sophie Germain, The Irish Times</a> (solo resumen de búsqueda). Las fechas de la convocatoria varían entre fuentes (1808, 1809). Ninguna fuente consultada deduce aquí la constante de rigidez; esa relación con el operador biarmónico es la ecuación clásica de placas y no se apoya en estas páginas. Consultado el 22-10-2026.</span></p>
+</div>
+</div>
 </section>
 <section id="sec-matricial" class="level2" data-number="20.3">
 <h2 data-number="20.3" class="anchored" data-anchor-id="sec-matricial"><span class="header-section-number">20.3</span> Forma matricial y energía</h2>
@@ -757,23 +771,6 @@ U=\tfrac12\bigl[\boldsymbol{\gamma}^{0\,\mathsf T}\mathbf{C}^E\boldsymbol{\gamma
 <ol type="1">
 <li><p><strong>Cortante.</strong> Para el acero con <span class="math inline">\(t=10\)</span> mm, calcula <span class="math inline">\(C^S_{11}=t\mu\)</span>.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(10\cdot80\,769=8{,}08\cdot10^5\)</span> N/mm.</p>
-</div>
-</div>
-</div></li>
-<li><p><strong>Energía de flexión pura.</strong> En flexión pura la fibra extrema se deforma <span class="math inline">\(\varepsilon_{\max}=\kappa t/2\)</span>. Compara <span class="math inline">\(U_B\)</span> con la energía <span class="math inline">\(U_E\)</span> que almacenaría una membrana con esa misma deformación en todo el espesor.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -785,11 +782,11 @@ U=\tfrac12\bigl[\boldsymbol{\gamma}^{0\,\mathsf T}\mathbf{C}^E\boldsymbol{\gamma
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(U_E=\tfrac12tD\varepsilon_{\max}^2=\tfrac18t^3D\kappa^2\)</span> y <span class="math inline">\(U_B=\tfrac12\tfrac{t^3}{12}D\kappa^2\)</span>, de modo que <span class="math inline">\(U_B/U_E=\tfrac13\)</span>.</p>
+<p><span class="math inline">\(10\cdot80\,769=8{,}08\cdot10^5\)</span> N/mm.</p>
 </div>
 </div>
 </div></li>
-<li><p><strong>Acople.</strong> ¿Por qué no hay término cruzado membrana–flexión en <a href="#eq-energia-lamina" class="quarto-xref">ecuación&nbsp;<span>20.4</span></a>?</p>
+<li><p><strong>Energía de flexión pura.</strong> En flexión pura la fibra extrema se deforma <span class="math inline">\(\varepsilon_{\max}=\kappa t/2\)</span>. Compara <span class="math inline">\(U_B\)</span> con la energía <span class="math inline">\(U_E\)</span> que almacenaría una membrana con esa misma deformación en todo el espesor.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Solución">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -801,6 +798,23 @@ U=\tfrac12\bigl[\boldsymbol{\gamma}^{0\,\mathsf T}\mathbf{C}^E\boldsymbol{\gamma
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(U_E=\tfrac12tD\varepsilon_{\max}^2=\tfrac18t^3D\kappa^2\)</span> y <span class="math inline">\(U_B=\tfrac12\tfrac{t^3}{12}D\kappa^2\)</span>, de modo que <span class="math inline">\(U_B/U_E=\tfrac13\)</span>.</p>
+</div>
+</div>
+</div></li>
+<li><p><strong>Acople.</strong> ¿Por qué no hay término cruzado membrana–flexión en <a href="#eq-energia-lamina" class="quarto-xref">ecuación&nbsp;<span>20.4</span></a>?</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Solución">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Porque la deformación varía simétricamente en el espesor y la integral <span class="math inline">\(\int\theta^3d\theta^3=0\)</span> (material homogéneo, referencia en la superficie media). En un laminado o en un material con propiedades no simétricas en el espesor aparecería un término cruzado.</p>
 </div>
@@ -817,7 +831,7 @@ U=\tfrac12\bigl[\boldsymbol{\gamma}^{0\,\mathsf T}\mathbf{C}^E\boldsymbol{\gamma
 <li>Sé por qué no se acoplan membrana y flexión constitutivamente y qué decisión se tomó sobre el cortante.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Fuentes, correcciones y qué queda pendiente">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -826,7 +840,7 @@ U=\tfrac12\bigl[\boldsymbol{\gamma}^{0\,\mathsf T}\mathbf{C}^E\boldsymbol{\gamma
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Fuentes.</strong> Texto autónomo, teoría clásica de placas y láminas <span class="citation" data-cites="Flugge Novozhilov">(<a href="../referencias.html#ref-Flugge" role="doc-biblioref">Flügge 1972</a>; <a href="../referencias.html#ref-Novozhilov" role="doc-biblioref">Novozhilov 1959</a>)</span>. Las rigideces se verifican con <code>rigidez_lamina</code> (tests «Rigidez de la lámina»), incluida la base oblicua frente a la condensación estática de Hooke 3D.</p>
 <p><strong>Correcciones.</strong> En una fuente de partida el tensor 3D aparece con el factor <span class="math inline">\(2\nu/(1-2\nu)\)</span> en lugar del de tensión plana <span class="math inline">\(2\nu/(1-\nu)\)</span> del material con <span class="math inline">\(\sigma^{33}=0\)</span>: aquí se usa la condensación estática, que es coherente. El factor 2 del cortante de la fuente de partida no se mantiene (ver errores frecuentes).</p>
